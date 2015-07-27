@@ -5,7 +5,6 @@ var gulp = require('gulp'),
     print = require('gulp-print'),
     inject = require('gulp-inject'),
     del = require('del'),
-    jshint = require('jshint'),
     watch = require('gulp-watch'),
     cssmin = require('gulp-cssmin')
     uglify = require('gulp-uglify'),
