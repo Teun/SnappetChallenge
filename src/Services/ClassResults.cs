@@ -90,6 +90,8 @@ namespace SnappetChallenge.Services
         /// Assumptions are that:
         /// 1.) Difficulty is relative over all domains.
         /// 2.) Difficulty is properly calibrated
+        /// 
+        /// Note: unfortunately but logically this seems to return the easiest learning goal studied.
         /// </remarks>
         /// <param name="timeRange"></param>
         /// <returns></returns>
