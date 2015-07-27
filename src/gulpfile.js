@@ -5,9 +5,9 @@ var gulp = require('gulp'),
     print = require('gulp-print'),
     inject = require('gulp-inject'),
     del = require('del'),
+    jshint = require('jshint'),
     watch = require('gulp-watch'),
-    cssmin = require('gulp-cssmin'),
-    jshint = require('gulp-jshint'),
+    cssmin = require('gulp-cssmin')
     uglify = require('gulp-uglify'),
     wiredep = require('wiredep').stream,
     bowerJson = require('./bower.json'),
@@ -106,21 +106,6 @@ gulp.task('inject', ['wiredep'], function() {
         .src(paths.layoutPage)
         .pipe(inject(gulp.src([paths.js, paths.css], { read: false }), { ignorePath: project.webroot }))
         .pipe(gulp.dest(paths.layoutPagePath));
-});
-
-gulp.task('jshint', function() {
-    log('Analyzing source with JSHint...');
-    return gulp
-        .src(paths.jsContent)
-        .pipe(print())
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish', { verbose: true }))
-        .pipe(jshint.reporter('fail'));
-});
-
-gulp.task('lint-watcher', function() {
-    return gulp
-        .watch(paths.jsContent, 'jshint');
 });
 
 /////////////

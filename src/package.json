@@ -11,8 +11,6 @@
     "gulp-load-plugins": "0.9.0",
     "del": "1.2.0",
     "wiredep": "3.0.0-beta",
-    "jshint": "2.8.0",
-    "jshint-stylish": "2.0.1",
     "gulp-watch": "^4.3.4"
   }
 }
