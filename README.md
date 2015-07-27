@@ -31,9 +31,7 @@ The application expects SubmitDateTime to be of type BsonDateTime. It is now a s
 
     mongo localhost:27017/snappetchallenge_db convert.js
 
-Start Visual Studio 2015 and open the solution. Right click on Dependencies in Solution Explorer and select "Restore Packages". Wait till `Bower` and `npm` have restored the required packages. Then restart Visual Studio and reopen the solution so the Gulpfile.js can be loaded (Gulp tasks should be visible in "View > Other Windows > Task Runner Explorer").
-
-Run the application with IISExpress.
+Start Visual Studio 2015 and open the solution. Wait till `Bower` and `npm` have restored the required packages and the Gulp tasks are loaded. Then run the application with IISExpress.
 
 ## Things to explore
 - [x] ASP.NET 5
