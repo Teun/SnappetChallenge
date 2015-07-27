@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inzicht en overzicht in de klas</title>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/external/zontal-admin.css">
+    <!-- endinject -->
+
+</head>
+<body>
+
+    <!-- bower:js -->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/hammer.js/hammer.js"></script>
+    <script src="/lib/knockout/dist/knockout.js"></script>
+    <script src="/lib/requirejs/require.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="/js/main.js"></script>
+    <script src="/js/app/binder.js"></script>
+    <script src="/js/app/bootstrapper.js"></script>
+    <script src="/js/app/vm.classInsights.js"></script>
+    <script src="/js/app/vm.js"></script>
+    <!-- endinject -->
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Email: </strong>erwinrooijakkers@gmail.com
+                    &nbsp;&nbsp;
+                    <strong>Support: </strong>06 134 555 74
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand white">SnappetChallenge</a>
+
+            </div>
+        </div>
+    </div><!-- LOGO HEADER END-->
+
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a asp-controller="Home" asp-action="Index" class="menu-top-active">Klasinzicht per dag</a></li>
+                            <li><a href="#">Jaaroverzicht</a></li>
+                            <li><a href="#">Snappet</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- MENU SECTION END-->
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        &copy; 2015 SnappetChallenge Erwin Rooijakkers |
+                        <span class="pull-right">| <a href="http://www.designbootstrap.com/free-responsive-admin-theme-zontal-admin/">Zontal Admin</a> by 
+                        <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a></span>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER SECTION END-->
+    </div>
+</body>
+</html>

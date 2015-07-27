@@ -1,0 +1,112 @@
+﻿<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Dashboard</h4>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    Dit is een overzicht van hoe de klas het doet op <strong data-bind="text:requestedDate"></strong>.
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="dashboard-div-wrapper bk-clr-one">
+                    <i class="fa fa-edit dashboard-div-icon"></i>
+                    <br/>
+                    <h4 data-bind="text:amountOfAnswers"></h4>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                        </div>
+                    </div>
+                    <h5>Aantal gegeven antwoorden </h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="dashboard-div-wrapper bk-clr-two">
+                    <i class="fa fa-check dashboard-div-icon"></i>
+                    <br/>
+                    <h4 data-bind="text:amountOfAnswersCorrect"></h4>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                        </div>
+                    </div>
+                    <h5>Aantal correcte antwoorden </h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="dashboard-div-wrapper bk-clr-three">
+                    <i class="fa fa-cogs dashboard-div-icon"></i>
+                    <br/>
+                    <h4 data-bind="text:totalProgress"></h4>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        </div>
+                    </div>
+                    <h5>Totale vooruitgang<sup>1</sup></h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="dashboard-div-wrapper bk-clr-four">
+                    <i class="fa fa-bell-o dashboard-div-icon"></i>
+                    <br/>
+                    <span data-bind="with:mostDifficultyWith">
+                        <h4 data-bind="text: Name"></h4>
+                    </span>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                        </div>
+
+                    </div>
+                    <h5>Moeizaamste leerdoel</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="notice-board">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Top drie meest bestudeerde leerdoelen
+                        </div>
+                        <div class="panel-body" data-bind="foreach:topObjectivesStudied">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-align-left text-success"></span>
+                                        <span data-bind="text:Name"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+
+            <div class="col-md-6">
+                <div class="alert alert-danger">
+                    De leerling van vandaag met de meeste vooruitgang was leerling nummer
+                    <span data-bind="with:mostProgress">
+                        <strong data-bind="text: UserId"></strong>
+                    </span>.
+                </div>
+                <hr/>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-muted">
+                * Vooruitgang wordt gemeten in een getal. Hoe hoger het getal hoe meer vooruitgang. 0 is neutraal. Negatief betekent achteruitgang<br/>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CONTENT-WRAPPER SECTION END-->
