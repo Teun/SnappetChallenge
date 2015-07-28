@@ -1,0 +1,13 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.0.0",
+    "hammer.js": "2.0.4",
+    "jquery": "2.1.4",
+    "knockout": "3.3.0",
+    "knockout-mapping": "*",
+    "font-awesome": "~4.2.0",
+    "requirejs": "*"
+  }
+}
