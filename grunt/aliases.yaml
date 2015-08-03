@@ -1,0 +1,13 @@
+default:
+  - 'eslint:source'
+  - 'clean:all'
+  - 'copy:build'
+  - 'html2js:build'
+  - 'replace:templates'
+  - 'copy:fonts'
+  - 'sass:sass'
+  - 'useminPrepare'
+  - 'concat:generated'
+  - 'filerev'
+  - 'usemin'
+  - 'seperateJSON'
