@@ -1,22 +1,35 @@
-# SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+# Snappet Challenge
+What did my class do today? or even better, what can we do with all the available data.
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+## Required tools
+1. NodeJS
+1. Bower
+1. Grunt
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+## Setting up this project
+1. [Install NodeJS](https://nodejs.org/) with the installer matching your OS
+1. Open your favourite command interface and navigate to the root of this project
+1. Run `npm install` and afterwards run `bower install` (This will install `node_modules` and `source/vendors`)
+1. Type `grunt` to build all files into the distribution folder
+1. You can now open your browser and view the website within `dist/` or within `source/app/`
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+## Grunt command(s) available
+1. `grunt `: This is currently the only grunt command available.
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+## Background information
+#### JSON:
+1. The JSON is formatted with the Grunt task `seperateJSON` and outputs it into 2 separate files within `dist/json/`:
+  1. `data.json`: Rather then showing multiple translations with the same value, the grunt task will generate an unique id and replaces the text with this id. (This saves +/-2,5MB bandwidth and allows faster filtering).
+  1. `translations.json`: The string replaced by an id in `data.json`, is put within this file by `{"id": "Text"}`
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+#### Libraries
+1. This Challenge was made with AngularJS, lodash, moment.js and highcharts
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Javascript, JQuery en Knockout.JS. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+#### Structure
+1. All codes follow CODESTYLE.md and are checked with the ESLINT validation at the beginning of the  `Grunt` command
+1. AngularJS load structure:
+ 1. Boostrap -> Config -> Run -> Controller <- Provider <- Directive
+
+
+#### Grunt
+1. All Grunt tasks are loaded with `grunt-load-config` and can be found - individual - in the `Grunt` folder
