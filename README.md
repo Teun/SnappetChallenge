@@ -10,6 +10,7 @@ What did my class do today? or even better, what can we do with all the availabl
 1. [Install NodeJS](https://nodejs.org/) with the installer matching your OS
 1. Open your favourite command interface and navigate to the root of this project
 1. Run `npm install` and afterwards run `bower install` (This will install `node_modules` and `source/vendors`)
+1. [Install Grunt](http://gruntjs.com/) with `npm install -g grunt-cli`
 1. Type `grunt` to build all files into the distribution folder
 1. You can now open your browser and view the website within `dist/` or within `source/app/`
 
