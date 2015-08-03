@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Snappet Challenge</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css css/all.css -->
+    <link rel="stylesheet" href="../../dist/css/main.css">
+    <link rel="stylesheet" href="../vendors/angular-loading-bar/src/loading-bar.css">
+    <!-- endbuild -->
+
+</head>
+<body>
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="wrapper" class="hidden">
+		<snappet-header></snappet-header>
+        <div ng-view class="content"></div>
+    </div>
+
+    <!-- build:js js/vendor.js -->
+    <script src="../vendors/angular/angular.js"></script>
+    <script src="../vendors/moment/moment.js"></script>
+
+	<script src="../vendors/highcharts/adapters/standalone-framework.js"></script>
+    <script src="../vendors/highcharts/highcharts.js"></script>
+    <script src="../vendors/highcharts-ng/dist/highcharts-ng.js"></script>
+	<script src="../vendors/highcharts/highcharts-more.js"></script>
+	<script src="../vendors/highcharts/modules/solid-gauge.js"></script>
+
+    <script src="../vendors/angular-deferred-bootstrap/angular-deferred-bootstrap.js"></script>
+    <script src="../vendors/lodash/lodash.js"></script>
+    <script src="plugin/lodash.js"></script>
+    <script src="../vendors/angular-route/angular-route.js"></script>
+    <script src="../vendors/angular-loading-bar/src/loading-bar.js"></script>
+    <script src="../vendors/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="../vendors/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../vendors/stacktrace/dist/stacktrace.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/app.js -->
+    <script src="app.module.js"></script>
+    <script src="app.config.routes.js"></script>
+    <script src="app.config.bootstrap.js"></script>
+    <script src="data/extractor.provider.js"></script>
+    <script src="results/list.controller.js"></script>
+    <script src="chart/gauge.factory.js"></script>
+    <script src="chart/spline.factory.js"></script>
+    <script src="layout/header.directive.js"></script>
+    <!-- endbuild -->
+    <!-- inject:templates -->
+        <script>
+            //This will be replaced by grunt
+            angular.module('templates-build', []);
+        </script>
+    <!-- endinject -->
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<div id="charts">
+	<h1 ng-if="!noResults">Klas resultaten van {{fromDate}} <span ng-if="showToDate">t/m {{toDate}}</span></h1>
+	<h1 ng-if="noResults">Geen resultaten voor {{fromDate}} <span ng-if="showToDate">t/m {{toDate}}</span></h1>
+
+	<div id="SubjectResultsCategory1" class="main col-xs-12 col-sm-4 col-md-4" ng-repeat="result in results">
+		<highchart config="result.gauge"></highchart>
+
+		<accordion close-others="true">
+
+			<accordion-group is-open="status1.open">
+				<accordion-heading>
+					Foutgegeven leerdoelen: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status1.open, 'glyphicon-chevron-right': !status1.open}"></i>
+				</accordion-heading>
+				<ol>
+					<li ng-repeat="wrong in result.incorrect">
+						<span class="title">{{ $root.translations[wrong.id] }}</span>
+						<span class="label label-danger">{{wrong.incorrect}} / {{wrong.incorrect + wrong.correct}}</span>
+						<span class="label label-danger">{{wrong.percentages.incorrect}}%</span>
+					</li>
+				</ol>
+			</accordion-group>
+
+			<accordion-group is-open="status2.open">
+				<accordion-heading>
+					Goedgegeven leerdoelen: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
+				</accordion-heading>
+				<ol>
+					<li ng-repeat="good in result.correct">
+						<span class="title">{{ $root.translations[good.id] }}</span>
+						<span class="label label-success">{{good.correct}} / {{good.incorrect + good.correct}}</span>
+						<span class="label label-success">{{good.percentages.correct}}%</span>
+					</li>
+				</ol>
+			</accordion-group>
+
+			<accordion-group is-open="status3.open">
+				<accordion-heading>
+					Gemidelde progressie: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status3.open, 'glyphicon-chevron-right': !status3.open}"></i>
+				</accordion-heading>
+				<ol>
+					<li ng-repeat="progression in result.progress">
+						<span class="title">{{ $root.translations[progression.id] }}</span>
+						<span class="label label-success" ng-if="progression.progress>=0">+{{progression.progress}}</span>
+						<span class="label label-danger" ng-if="progression.progress<0">{{progression.progress}}</span>
+					</li>
+				</ol>
+			</accordion-group>
+
+		</accordion>
+	</div>
+
+	<div ng-if="showSpline" class="col-xs-12 extra">
+		<h2>Goed aantal gegeven antwoorden (gemiddelde per dag)</h2>
+		<highchart config="correctRangeChart" class="correctRangeChart"></highchart>
+		<h2>Progressie kaart</h2>
+		<highchart config="progressionRangeChart"></highchart>
+		<h2>Moeilijkheidsgraad kaart</h2>
+		<highchart config="difficultyRangeChart"></highchart>
+	</div>
+</div>

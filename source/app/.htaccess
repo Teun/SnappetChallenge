@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^json/data.json$ ../../dist/json/data.json [L,QSA]
+RewriteRule ^json/translations.json$ ../../dist/json/translations.json [L,QSA]
