@@ -1,0 +1,27 @@
+.main {
+    g.highcharts-axis-labels.highcharts-yaxis-labels {
+        text {
+            font-size: 13px !important;
+        }
+    }
+}
+.highcharts-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+.highcharts-container {
+    height:100%;
+    width:100%;
+
+    small {
+        display: block;
+        font-size: 13px;
+        text-align: center;
+        font-weight: normal;
+    }
+    strong {
+        display: block;
+        font-size: 22px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,77 @@
+header {
+	.dropdown-menu {
+	    padding: 0 !important;
+	    margin: 0 !important;
+
+		> li {
+		    padding: 5px;
+		}
+
+		.btn-group {
+			.btn-info {
+				display: none;
+			}
+		}
+	}
+	.navbar-brand {
+		float: left;
+	}
+	.input-group-btn {
+		width: auto !important;
+		white-space: normal !important;
+	}
+	.btn-back {
+		margin-top: 10px;
+	}
+	#bs-navbar-collapse {
+		float: right;
+	}
+	.navbar-collapse .col {
+		display: inline-block;
+	}
+	.col {
+		label,
+		> div {
+			float: left;
+		}
+		> div {
+			margin-top: 5px;
+			position: relative;
+			top: 7px;
+		}
+		label {
+			margin: 20px 10px 10px;
+		}
+	}
+	.col-2 .dropdown-menu {
+		left: auto !important;
+		right: 0;
+	}
+	@media (max-width: 941px) {
+		.col div {
+			width: 140px;
+		}
+	}
+	@media (max-width: 768px) {
+		.col {
+			width: 50%;
+			div,
+			label {
+				float: none;
+				width: 100%;
+			}
+			.input-group {
+				width: 100%;
+			}
+		}
+		#bs-navbar-collapse {
+			overflow: visible;
+			padding-bottom: 20px;
+		}
+	}
+	input[readonly="readonly"] {
+		color: black;
+		background-color: white !important;
+		cursor: pointer;
+	}
+}
