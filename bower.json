@@ -4,7 +4,7 @@
   "devDependencies": {
     "stacktrace": "~0.6.4",
     "angular": "~1.4.3",
-    "angular-route": "1.3.x",
+    "angular-route": "^1.4.3",
     "bootstrap-sass-official": "~3.3.5",
     "angular-loading-bar": "~0.8.0",
     "angular-bootstrap": "~0.13.1",
