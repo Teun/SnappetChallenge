@@ -1,0 +1,41 @@
+﻿@using SnappetChallenge.Models
+@model List<Student>
+
+@{
+    ViewBag.Title = "Mijn klas";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                @foreach (Student student in Model)
+                {
+                <li>
+                    @Html.ActionLink(student.Name, "GetStudentResults", new {id = student.UserId}, new {@class = "student-details"})
+                </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-10" id="StudentDetail"></div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+<script>
+        $(function() {
+            $('.student-details').on('click', function(e) {
+                $.get($(this).prop('href'), function(response) {
+                    $('#StudentDetail').html(response);
+                });
+                e.preventDefault();
+            });
+        })
+</script>
+}
+
+
+

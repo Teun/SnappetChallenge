@@ -1,0 +1,57 @@
+﻿
+@using SnappetChallenge.Models
+@model List<Subject>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Heeft gewerkt aan</div>
+    @*<div class="panel-body">
+        <p>Een overzicht van de opdrachten</p>
+    </div>*@
+
+
+    <table class="table">
+        <tr>
+            <th>Vak</th>
+            <th>Domein</th>
+            <th>Leerdoel</th>
+            <th>Score</th>
+        </tr>
+        @foreach (Subject result in Model)
+        {
+            <tr>
+                <td>@Html.Raw(result.SubjectName)</td>
+                <td>@Html.Raw(result.Domain)</td>
+                <td>@Html.Raw(result.LearningObjective)</td>
+                @if (result.CorrectAnswered < result.TotalAnswered)
+                {
+                    <td class="danger">@Html.Raw(result.CorrectAnswered) / @Html.Raw(result.TotalAnswered)</td>
+                }
+                else
+                {
+                    <td class="success">@Html.Raw(result.CorrectAnswered) / @Html.Raw(result.TotalAnswered)</td>
+                }
+                
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+@*<div class="row">
+    <table>
+        @foreach (Subject result in Model)
+        {
+            <tr>
+                <td>@Html.Raw(result.SubjectName)</td>
+                <td>@Html.Raw(result.Domain)</td>
+                <td>@Html.Raw(result.LearningObjective)</td>
+                <td>@Html.Raw(result.CorrectAnswered)</td>
+                <td>@Html.Raw(result.TotalAnswered)</td>
+            </tr>
+        }        
+    </table>
+
+</div>*@
+
