@@ -1,3 +1,11 @@
+Hallo Teun,
+
+Mijn oplossing is een kleine asp.net mvc applicatie. Het enige dat ik toegevoegd heb is een json file met mapping van userid's aan namen. De json files staan in de app_data.
+
+Simone
+
+
+
 # SnappetChallenge
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
