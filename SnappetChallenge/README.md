@@ -23,8 +23,8 @@ Op dit moment een hele simpele wrapper rond Entity Framework DbSets. (alleen rea
 ####Service layer
 Wordt geconsumeerd door de API-controllers en is dus het entry-point van de backend. 
 
-Eenvoudige Unity implementatie. De repository- en servicelaag zijn geregistreerd en kunnen dus ge-inject worden.
 ####Unity Dependency Injection.
+Eenvoudige Unity implementatie. De repository- en servicelaag zijn geregistreerd en kunnen dus ge-inject worden.
 
 ###Front end
 ####MVC5
