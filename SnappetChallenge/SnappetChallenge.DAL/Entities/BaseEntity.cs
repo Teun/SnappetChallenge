@@ -4,7 +4,7 @@
 
     public abstract class BaseEntity
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         public DateTime? DateAdded { get; set; }
 

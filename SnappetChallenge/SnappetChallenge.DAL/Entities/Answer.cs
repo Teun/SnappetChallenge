@@ -8,10 +8,10 @@ namespace SnappetChallenge.DAL.Entities
     public class Answer : BaseEntity
     {
         //[Key, ForeignKey("Student")]
-        public Guid StudentId { get; set; }
+        public long StudentId { get; set; }
 
         //[Key, ForeignKey("Exercise")]
-        public Guid ExerciseId { get; set; }
+        public long ExerciseId { get; set; }
 
         public bool Correct { get; set; }
 

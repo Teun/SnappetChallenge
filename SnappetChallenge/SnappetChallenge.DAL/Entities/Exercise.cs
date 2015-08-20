@@ -8,9 +8,9 @@ namespace SnappetChallenge.DAL.Entities
     public class Exercise : BaseEntity
     {
 
-        public Guid DomainId { get; set; }
+        public long DomainId { get; set; }
 
-        public Guid SubjectId { get; set; }
+        public long SubjectId { get; set; }
 
         public double Difficulty { get; set; }
 

@@ -18,6 +18,16 @@
 
         public DbSet<StudentAnswer> StudentAnswers { get; set; }
 
+        public DbSet<Student> Students { get; set; }
+
+        public DbSet<Subject> Subjects { get; set; }
+
+        public DbSet<Domain> Domains { get; set; }
+
+        public DbSet<Exercise> Exercises { get; set; }
+
+        public DbSet<Answer> Answers { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // tell EF how to map the data to the database

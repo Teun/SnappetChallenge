@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SnappetChallenge.DAL.Configuration
+﻿namespace SnappetChallenge.DAL.Configuration
 {
     using System.Data.Entity.ModelConfiguration;
     using Entities;
@@ -18,7 +16,7 @@ namespace SnappetChallenge.DAL.Configuration
             this.ToTable("StudentAnswer");
 
             // the primary key
-            this.HasKey<Guid>(s => s.Id);
+            this.HasKey<long>(s => s.Id);
         }
     }
 }

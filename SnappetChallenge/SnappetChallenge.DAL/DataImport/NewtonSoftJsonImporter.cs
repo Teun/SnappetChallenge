@@ -54,7 +54,7 @@
                         SubmitDateTime = obj["SubmitDateTime"].Value<DateTime>(),
                         SubmittedAnswerId = obj["SubmittedAnswerId"].Value<long>(),
                         UserId = obj["UserId"].Value<long>(),
-                        Id = Guid.NewGuid()
+                        Id = obj["SubmittedAnswerId"].Value<long>() // this is doubled in SubmittedAnswerId..
                     };
 
                     itemsToInsert.Add(studentAnswer);

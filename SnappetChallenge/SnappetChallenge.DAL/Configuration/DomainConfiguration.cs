@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SnappetChallenge.DAL.Configuration
+﻿namespace SnappetChallenge.DAL.Configuration
 {
     using System.Data.Entity.ModelConfiguration;
     using Entities;
@@ -10,7 +8,7 @@ namespace SnappetChallenge.DAL.Configuration
         public DomainConfiguration()
         {
             ToTable("Domain");
-            HasKey<Guid>(s => s.Id);
+            HasKey<long>(s => s.Id);
             //HasMany(d => d.Exercises).WithRequired(e => e.Domain).HasForeignKey(e => e.DomainId);
         }
     }

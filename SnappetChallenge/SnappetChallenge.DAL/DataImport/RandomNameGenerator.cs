@@ -5,7 +5,7 @@ namespace SnappetChallenge.DAL.DataImport
     public class RandomNameGenerator
     {
         #region realy long string arrays
-        private static string[] _firstNames =
+        private string[] _firstNames =
         {
             "Adjur",
             "Aghi",
@@ -263,7 +263,7 @@ namespace SnappetChallenge.DAL.DataImport
             "ZhoKa"
         };
 
-        private static string[] _lastNames =
+        private string[] _lastNames =
         {
             "Abarsha",
             "Adion",
@@ -407,7 +407,7 @@ namespace SnappetChallenge.DAL.DataImport
         };
         #endregion
 
-        public static string GetName()
+        public string GetName()
         {
             var randomGenerator = new Random();
             var randomDouble = randomGenerator.NextDouble();

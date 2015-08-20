@@ -14,6 +14,8 @@ namespace SnappetChallenge.DAL
             var jsonImporter = new NewtonSoftJsonImporter();
             jsonImporter.Import(context);
 
+            var datatransformer = new DataTransformer(context);
+            datatransformer.PerformTransformation();
 
             base.Seed(context);
         }
