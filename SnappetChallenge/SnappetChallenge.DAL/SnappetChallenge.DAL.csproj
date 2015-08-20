@@ -60,12 +60,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\SnappetChallengeDbInitializer.cs" />
+    <Compile Include="DataImport\DataTransformer.cs" />
+    <Compile Include="DataImport\RandomNameGenerator.cs" />
+    <Compile Include="SnappetChallengeDbInitializer.cs" />
+    <Compile Include="Configuration\DomainConfiguration.cs" />
+    <Compile Include="Configuration\SubjectConfiguration.cs" />
+    <Compile Include="Configuration\ExerciseConfiguration.cs" />
+    <Compile Include="Configuration\StudentConfiguration.cs" />
+    <Compile Include="Configuration\AnswerConfiguration.cs" />
     <Compile Include="Configuration\StudentAnswerConfiguration.cs" />
     <Compile Include="DataImport\BaseImporter.cs" />
     <Compile Include="DataImport\NewtonSoftJsonImporter.cs" />
+    <Compile Include="Entities\Answer.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Domain.cs" />
+    <Compile Include="Entities\Exercise.cs" />
+    <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\StudentAnswer.cs" />
+    <Compile Include="Entities\Subject.cs" />
     <Compile Include="ISnappetChallengeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
