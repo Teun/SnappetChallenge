@@ -1,17 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace SnappetChallenge.DAL.Entities
+﻿namespace SnappetChallenge.DAL.Entities
 {
     using System;
 
     public class Answer : BaseEntity
     {
-        //[Key, ForeignKey("Student")]
         public long StudentId { get; set; }
 
-        //[Key, ForeignKey("Exercise")]
         public long ExerciseId { get; set; }
+
+        public long SourceId { get; set; }
 
         public bool Correct { get; set; }
 

@@ -191,6 +191,30 @@
     <Content Include="Scripts\libs\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\libs\bootstrap-datepicker.nl.min.js" />
     <Content Include="Scripts\libs\bootstrap-timepicker.js" />
+    <Content Include="Scripts\libs\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Scripts\libs\highcharts\highcharts-3d.js" />
+    <Content Include="Scripts\libs\highcharts\highcharts-more.js" />
+    <Content Include="Scripts\libs\highcharts\highcharts.js" />
+    <Content Include="Scripts\libs\highcharts\modules\boost.js" />
+    <Content Include="Scripts\libs\highcharts\modules\broken-axis.js" />
+    <Content Include="Scripts\libs\highcharts\modules\canvas-tools.js" />
+    <Content Include="Scripts\libs\highcharts\modules\data.js" />
+    <Content Include="Scripts\libs\highcharts\modules\drilldown.js" />
+    <Content Include="Scripts\libs\highcharts\modules\exporting.js" />
+    <Content Include="Scripts\libs\highcharts\modules\funnel.js" />
+    <Content Include="Scripts\libs\highcharts\modules\heatmap.js" />
+    <Content Include="Scripts\libs\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Scripts\libs\highcharts\modules\offline-exporting.js" />
+    <Content Include="Scripts\libs\highcharts\modules\solid-gauge.js" />
+    <Content Include="Scripts\libs\highcharts\modules\treemap.js" />
+    <Content Include="Scripts\libs\highcharts\themes\dark-blue.js" />
+    <Content Include="Scripts\libs\highcharts\themes\dark-green.js" />
+    <Content Include="Scripts\libs\highcharts\themes\dark-unica.js" />
+    <Content Include="Scripts\libs\highcharts\themes\gray.js" />
+    <Content Include="Scripts\libs\highcharts\themes\grid-light.js" />
+    <Content Include="Scripts\libs\highcharts\themes\grid.js" />
+    <Content Include="Scripts\libs\highcharts\themes\sand-signika.js" />
+    <Content Include="Scripts\libs\highcharts\themes\skies.js" />
     <Content Include="Scripts\libs\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\libs\knockout-3.3.0.js" />
     <Content Include="Scripts\libs\knockout.mapping-latest.js" />
@@ -216,6 +240,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Overview\Index.cshtml" />
+    <Content Include="Views\Overview\Debug.cshtml" />
+    <Content Include="Views\Overview\Students.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

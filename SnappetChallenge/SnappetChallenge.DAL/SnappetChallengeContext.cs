@@ -4,7 +4,7 @@
     using Configuration;
     using Entities;
 
-    public class SnappetChallengeContext : DbContext, ISnappetChallengeContext
+    public class SnappetChallengeContext : DbContext
     {
         public SnappetChallengeContext()
             : base("name=SnappetChallengeConnectionString") // todo not really happy about the hardcodedness of the conn string
@@ -28,6 +28,8 @@
 
         public DbSet<Answer> Answers { get; set; }
 
+        public DbSet<Objective> Objectives { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // tell EF how to map the data to the database
@@ -37,6 +39,7 @@
             modelBuilder.Configurations.Add(new DomainConfiguration());
             modelBuilder.Configurations.Add(new ExerciseConfiguration());
             modelBuilder.Configurations.Add(new SubjectConfiguration());
+            modelBuilder.Configurations.Add(new ObjectiveConfiguration());
         }
     }
 }

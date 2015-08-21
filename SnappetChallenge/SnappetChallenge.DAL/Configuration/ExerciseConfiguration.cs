@@ -11,7 +11,7 @@
             this.HasKey<long>(s => s.Id);
             this.HasRequired(exercise => exercise.Domain).WithMany(e=>e.Exercises).HasForeignKey(e=>e.DomainId);
             this.HasRequired(exercise => exercise.Subject).WithMany(e=>e.Exercises).HasForeignKey(e=>e.SubjectId);
-            this.HasMany(exercise => exercise.Answers).WithRequired(answer => answer.Exercise).HasForeignKey(answer => answer.ExerciseId);
+            this.HasRequired(exercise => exercise.Objective).WithMany(e => e.Exercises).HasForeignKey(e => e.ObjectiveId);
         }
     }
 }

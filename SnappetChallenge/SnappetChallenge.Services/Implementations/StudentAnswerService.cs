@@ -11,23 +11,21 @@
 
     public class StudentAnswerService : IStudentAnswerService
     {
-        private readonly IRepository<StudentAnswer> _studentAnswerRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public StudentAnswerService(IRepository<StudentAnswer> studentAnswerRepository)
+        public StudentAnswerService(IUnitOfWork unitOfWork)
         {
-            _studentAnswerRepository = studentAnswerRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         public List<StudentAnswer> Get(Expression<Func<StudentAnswer, bool>> whereClause, int startIndex, int pageSize)
         {
             return
-                _studentAnswerRepository
-                    .GetAll(whereClause)
-                    .OrderBy(s => s.SubmitDateTime) // default order by date asc
-                    .ThenBy(s => s.Domain) // this might speed things up a bit for client side grouping
-                    .Skip(startIndex) // offset for paging
-                    .Take(pageSize) // limit num or records for paging
-                    .ToList(); 
+                unitOfWork.StudentAnswerRepository
+                    .Get(whereClause, answers => answers.OrderBy(a => a.SubmitDateTime).ThenBy(a => a.Domain))
+                        .Skip(startIndex) // offset for paging
+                        .Take(pageSize) // limit num or records for paging
+                        .ToList();
         }
     }
 }

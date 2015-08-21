@@ -8,5 +8,15 @@
         {
             return View();
         }
+
+        public ActionResult Debug()
+        {
+            return View();
+        }
+
+        public ActionResult Students()
+        {
+            return View();
+        }
     }
 }

@@ -42,6 +42,9 @@ namespace SnappetChallenge.Web
             bundles.Add(new ScriptBundle("~/bundles/moment").Include(
                 "~/Scripts/libs/moment-with-locales.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
+                "~/Scripts/libs/highcharts/highcharts.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/snappetChallenge").IncludeDirectory("~/Scripts", "sc*", false));
         }
     }

@@ -5,7 +5,7 @@ namespace SnappetChallenge.DAL.DataImport
     public class RandomNameGenerator
     {
         #region realy long string arrays
-        private string[] _firstNames =
+        private static readonly string[] FirstNames =
         {
             "Adjur",
             "Aghi",
@@ -263,7 +263,7 @@ namespace SnappetChallenge.DAL.DataImport
             "ZhoKa"
         };
 
-        private string[] _lastNames =
+        private static readonly string[] LastNames =
         {
             "Abarsha",
             "Adion",
@@ -407,14 +407,20 @@ namespace SnappetChallenge.DAL.DataImport
         };
         #endregion
 
-        public string GetName()
+        private static readonly Random Random = new Random();
+        private static readonly object SyncLock = new object();
+        public static double RandomDouble()
         {
-            var randomGenerator = new Random();
-            var randomDouble = randomGenerator.NextDouble();
-            var firstName = _firstNames[(int)Math.Round(_firstNames.Length*randomDouble)];
+            lock (SyncLock)
+            {
+                return Random.NextDouble();
+            }
+        }
 
-            randomDouble = randomGenerator.NextDouble();
-            var lastname = _lastNames[(int)Math.Round(_lastNames.Length * randomDouble)];
+        public static string GetName()
+        {
+            var firstName = FirstNames[(int)Math.Round(FirstNames.Length * RandomDouble())];
+            var lastname = LastNames[(int)Math.Round(LastNames.Length * RandomDouble())];
 
             return string.Format("{0} {1}", firstName, lastname);
         }

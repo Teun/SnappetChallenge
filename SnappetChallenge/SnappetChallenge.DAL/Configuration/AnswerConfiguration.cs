@@ -1,4 +1,5 @@
-﻿namespace SnappetChallenge.DAL.Configuration
+﻿
+namespace SnappetChallenge.DAL.Configuration
 {
     using System.Data.Entity.ModelConfiguration;
     using Entities;
@@ -10,7 +11,9 @@
             this.ToTable("Answer");
             this.HasKey<long>(s => s.Id);
             this.HasRequired(answer => answer.Student);
-
+            this.HasRequired(answer => answer.Exercise)
+                .WithMany(exercise => exercise.Answers)
+                .HasForeignKey(answer => answer.ExerciseId);
         }
     }
 }

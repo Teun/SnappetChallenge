@@ -20,7 +20,14 @@
             </div>
         </div>
     </div>
-    <div id="wrapper">
+    
+    <div class="container-fluid">
+
+                @RenderSection("content", true)
+
+    </div>
+
+    @*<div id="wrapper">
         <div id="sidebar-wrapper">
             @RenderSection("leftPanel", false)
         </div>
@@ -35,7 +42,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
