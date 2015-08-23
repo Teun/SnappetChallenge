@@ -17,32 +17,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 <span class="navbar-brand">Snappet Challenge</span>
+                <ul class="nav navbar-nav">
+                    <li><a href="~/Overview/Students">Overzicht leerlingen</a></li>
+                    <li><a href="~/Overview/Index">Ruwe data</a></li>
+                </ul>
             </div>
         </div>
     </div>
-    
+
     <div class="container-fluid">
 
-                @RenderSection("content", true)
+        @RenderSection("content", true)
 
     </div>
-
-    @*<div id="wrapper">
-        <div id="sidebar-wrapper">
-            @RenderSection("leftPanel", false)
-        </div>
-        <div id="page-content-wrapper">
-            <div class="pull-left">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @RenderSection("content", true)
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -6,7 +6,7 @@ var sc = sc || {}; // snappetChallenge namespace
 // we use an initializer function, on script load there are no dependencies on external scripts
 // this initializer is called in sc.main.js on DOM ready when all libs are available
 sc.bindingsHandlers = (function () {
-    var registerHandlers = function() {
+    var registerHandlers = function () {
         ko.bindingHandlers.datepicker = {
             init: function (element, valueAccessor, allBindingsAccessor) {
                 var options = allBindingsAccessor().datepickerOptions || { autoclose: true, language: "nl", orientation: "top left" }; // default
@@ -51,9 +51,22 @@ sc.bindingsHandlers = (function () {
                 $(element).timepicker('setTime', value);
             }
         };
+
+        ko.bindingHandlers.chart = {
+            init: function (element, valueAccessor, allBindingsAccessor) {
+                var options = allBindingsAccessor().chart;
+                $(element).highcharts(options.chartDefinition);
+                $(element).highcharts().setTitle({ text: options.chartTitle() });
+            },
+            update: function (element, valueAccessor) {
+                $(element).highcharts().addSeries({
+                    data: valueAccessor().chartData(), color: '#00CC33', negativeColor: '#CC0033' // todo colors are now hardcoded..
+                });
+            }
+        }
     }
 
-    var initialize = function() {
+    var initialize = function () {
         registerHandlers();
     };
 

@@ -35,6 +35,7 @@
         {
             // TODO pay attention to object lifetimes
             container.RegisterType<IStudentAnswerService, StudentAnswerService>(new TransientLifetimeManager());
+            container.RegisterType<IStudentDeviationsService, StudentDeviationsService>(new TransientLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
         } 
 

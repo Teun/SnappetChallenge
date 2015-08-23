@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\API\StudentAnswerController.cs" />
+    <Compile Include="Controllers\API\StudentDeviationsController.cs" />
     <Compile Include="Controllers\EmptyPageControllers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -223,8 +224,10 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sc.bindinghandlers.js" />
+    <Content Include="Scripts\sc.chart-definitions.js" />
     <Content Include="Scripts\sc.ko-utils.js" />
     <Content Include="Scripts\sc.main.js" />
+    <Content Include="Scripts\sc.pages.students.js" />
     <Content Include="Scripts\sc.pages.overview.js" />
     <Content Include="Scripts\sc.utils.js" />
     <Content Include="Scripts\_references.js" />
@@ -243,7 +246,9 @@
     <Content Include="Views\Overview\Debug.cshtml" />
     <Content Include="Views\Overview\Students.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\StudentDeviations\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

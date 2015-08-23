@@ -40,7 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\StudentAnswerService.cs" />
+    <Compile Include="Implementations\StudentDeviationsService.cs" />
+    <Compile Include="Interfaces\IStudentDeviationsService.cs" />
     <Compile Include="Interfaces\IStudentAnswerService.cs" />
+    <Compile Include="Models\Deviations.cs" />
+    <Compile Include="Models\StudentDeviationsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
