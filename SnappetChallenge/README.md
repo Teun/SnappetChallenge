@@ -1,5 +1,5 @@
 #Snappet Challenge
-##Inzending Nico Beemster - 19/8/2015
+##Inzending Nico Beemster - 23/8/2015
 
 ##Overzicht technology stack
 Ik heb gepoogd de technology stack zoals deze binnen Snappet wordt toegepast zoveel mogelijk te respecteren. 
@@ -10,21 +10,28 @@ Hieronder een overzicht van de architectuur van de solution, voorzien van een ko
 
 ###Backend
 ####SQL-Server
-Erg fijne integratie met EF.
+Ik had een relationele database nodig.
 
 ####Entity Framework
 Code first. De database wordt (in debug mode) aangemaakt als deze nog niet bestaat. Deze database wordt middels een Seed functie met data gevuld. 
 
-In onderhavig geval heb ik er voor gekozen hiervoor het aangeleverde JSON-bestand te gebruiken.
+In onderhavig geval heb ik er voor gekozen hiervoor het aangeleverde JSON-bestand te gebruiken. Dit bestand wordt in eerste instantie plat ingelezen. 
+
+Hierna vind er een transform plaats die een relationeel datamodel vult. Dit datamodel is uit de ruwe data herleidt.
 
 ####Repository layer
-Op dit moment een hele simpele wrapper rond Entity Framework DbSets. (alleen read-acties op 1 tabel).
+Ik heb gekozen voor een generieke Repository-implementatie welke iQueryable objecten retourneert. Deze repostory is uitsluitend verantwoordelijk voor CRUD-acties. 
+
+Business logic zit in de Service layer.
+
+####Unit of work layer
+Een eenvoudige unit of work implementatie zodat alle repositories binnen 1 UoW benaderd kunnen worden.
 
 ####Service layer
-Wordt geconsumeerd door de API-controllers en is dus het entry-point van de backend. 
+Wordt geconsumeerd door de API-controllers en is dus het entry-point van de backend.
 
 ####Unity Dependency Injection.
-Eenvoudige Unity implementatie. De repository- en servicelaag zijn geregistreerd en kunnen dus ge-inject worden.
+Eenvoudige Unity implementatie. De unit-of-work- en servicelaag zijn geregistreerd en kunnen dus ge-inject worden.
 
 ###Front end
 ####MVC5
@@ -32,10 +39,14 @@ Aangezien de UI asynchroon wordt voorzien van data, is er van MVC eigenlijk geen
 
 Het MVC framework retourneert in dit geval lege views, die middels asynchrone API-calls met data worden geladen.
 
-Tevens maakt de API gebruik van MVC base controllers (en dus niet van WebAPI controllers). De servicelaag wordt middels constructor injection in de controllers ge-inject.
+Tevens maakt de API gebruik van MVC base controllers (en niet van WebAPI controllers). 
+
+De servicelaag wordt middels constructor injection in de controllers ge-inject.
 
 ####Twitter Bootstrap
-De UI is gebouwd in Twitter Bootstrap. Begint zo ondertussen bijna het standaard HTML-framework te worden. Responsive, dus schaalt mooi op mobile devices. 
+De UI is gebouwd in Twitter Bootstrap. Begint zo ondertussen bijna het standaard HTML-framework te worden. 
+
+Responsive, dus schaalt mooi op mobile devices. 
 
 ####Knockout.js MVVM
 De UI wordt middels een Knockout model van data voorzien. Het framework zorgt er ook voor dat de UI in sync blijft met het model. 
@@ -44,10 +55,13 @@ Binnen de solution heb ik getracht diverse knockout-technieken te demonstreren, 
 * custom data binding handlers
 * computed observables
 * client side data grouping
-* knockout mapping plugin
+* gebruik van de knockout mapping plugin
 
 ####jQuery
-Het onmisbare javscript-framework.
+Het onmisbare javscript-framework. 
+
+####HighCharts
+Mooie front-end charting library.
 
 ##Project setup
 Leuk verhaal Nico, beetje lang, kunnen we niet gewoon iets zien? Uiteraard!
@@ -100,12 +114,23 @@ All set! Je kunt de applicatie nu bekijken op http://snappet.local
 De eerste keer dat je de applicatie laadt wordt de database gegenereerd en gevuld met data, dat kan een paar seconden duren. Op een midrange laptop van een jaar oud (mijn laptop) duurt het ongeveer 2 seconden.
 
 ###UI features
-####Infinite scroll
-Gezien het volume data is de UI voorzien van "infinite scroll". Dit werkt fantastisch in het niet-gegroepeerde overzicht. 
+####Resultaten per student
+#####Highcarts
+Om de diverse berekende metrieken per student inzichtelijk te maken heb ik ervoor gekozen per leerling een grafiek te tonen met hierin de relatieve afwijking van zijn/ haar werk ten opzichte van de klas.
+
+Mijn gedachte hierachter is de docent direct inzict te geven in de voortgang van de klas, welke leerlingen moeite hebben met de lesstof, et cetera.
+
+Alle grafieken worden middels een knockout bindinghandler geïnitialiseerd en van data voorzien.
+
+####Ruwe data scherm
+Dit is een platte weergave van de brondata.
+
+#####Infinite scroll
+Gezien het volume data is dit scherm voorzien van "infinite scroll". Dit werkt fantastisch in het niet-gegroepeerde overzicht. 
 
 Echter, als er een groepering actief is, is het mogelijk dat de UI verspringt indien er data wordt toegevoegd aan een groep boven jouw schermpositie.
 
-####Filtering op data-bereik
+#####Filtering op data-bereik
 Met de date/timepickers kun je een datum/tijd bereik instellen. 
 
 Ik heb een custom bindinghandler geschreven om het selectie-bereik van de datepickers te kunnen beperken (datum-tot kan niet voor datum-vanaf liggen en vice versa).
