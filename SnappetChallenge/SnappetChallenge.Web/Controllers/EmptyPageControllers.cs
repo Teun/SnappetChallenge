@@ -18,5 +18,10 @@
         {
             return View();
         }
+
+        public ActionResult Progress()
+        {
+            return View();
+        }
     }
 }

@@ -245,6 +245,7 @@
     <Content Include="Views\Overview\Index.cshtml" />
     <Content Include="Views\Overview\Debug.cshtml" />
     <Content Include="Views\Overview\Students.cshtml" />
+    <Content Include="Views\Overview\Progress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\StudentDeviations\" />

@@ -8,10 +8,10 @@
 
     public class SnappetChallengeRepository<T> where T : BaseEntity
     {
-            internal SnappetChallengeContext context;
+            internal ISnappetChallengeContext context;
             internal DbSet<T> dbSet;
 
-            public SnappetChallengeRepository(SnappetChallengeContext context)
+            public SnappetChallengeRepository(ISnappetChallengeContext context)
             {
                 this.context = context;
                 this.dbSet = context.Set<T>();
@@ -19,20 +19,13 @@
 
             public virtual IQueryable<T> Get(
                 Expression<Func<T, bool>> filterBy = null,
-                Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-                string includeProperties = "")
+                Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
             {
                 IQueryable<T> query = dbSet;
 
                 if (filterBy != null)
                 {
                     query = query.Where(filterBy);
-                }
-
-                foreach (var includeProperty in includeProperties.Split
-                    (new [] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(includeProperty);
                 }
 
                 return orderBy != null ? orderBy(query) : query;

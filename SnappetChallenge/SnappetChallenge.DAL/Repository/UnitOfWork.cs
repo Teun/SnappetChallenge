@@ -5,7 +5,7 @@
 
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly SnappetChallengeContext _context;
+        private readonly ISnappetChallengeContext _context;
         private SnappetChallengeRepository<Answer> _answerRepository;
         private SnappetChallengeRepository<Domain> _domainRepository;
         private SnappetChallengeRepository<Exercise> _exerciseRepository;
@@ -16,7 +16,7 @@
 
         private bool _disposed = false;
 
-        public UnitOfWork(SnappetChallengeContext context)
+        public UnitOfWork(ISnappetChallengeContext context)
         {
             this._context = context;
         }

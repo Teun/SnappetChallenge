@@ -64,6 +64,8 @@
     <Compile Include="DataImport\DataTransformer.cs" />
     <Compile Include="DataImport\RandomNameGenerator.cs" />
     <Compile Include="Entities\Objective.cs" />
+    <Compile Include="IDbContext.cs" />
+    <Compile Include="ISnappetChallengeContext.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
     <Compile Include="Repository\SnappetChallengeRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />

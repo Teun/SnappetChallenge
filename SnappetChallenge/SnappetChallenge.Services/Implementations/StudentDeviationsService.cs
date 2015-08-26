@@ -1,4 +1,7 @@
-﻿namespace SnappetChallenge.Services.Implementations
+﻿using System.Data.Entity;
+using SnappetChallenge.DAL.Entities;
+
+namespace SnappetChallenge.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
@@ -23,7 +26,9 @@
             // all answers in range
             var answers =
                 unitOfWork.AnswerRepository.Get(
-                    a => a.SubmitDateTime >= startDateTime && a.SubmitDateTime <= endDateTime, null, "Exercise,Student");
+                    a => a.SubmitDateTime >= startDateTime && a.SubmitDateTime <= endDateTime)
+                    .Include(a=> a.Exercise)
+                    .Include(a=>a.Student);
 
             // get initial values on which to base the deviations
             var avgProgress = answers.Average(a => a.Progress);

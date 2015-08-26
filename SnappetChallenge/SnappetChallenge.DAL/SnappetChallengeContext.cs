@@ -4,7 +4,7 @@
     using Configuration;
     using Entities;
 
-    public class SnappetChallengeContext : DbContext
+    public class SnappetChallengeContext : DbContext, ISnappetChallengeContext
     {
         public SnappetChallengeContext()
             : base("name=SnappetChallengeConnectionString") // todo not really happy about the hardcodedness of the conn string

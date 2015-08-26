@@ -1,4 +1,6 @@
-﻿namespace SnappetChallenge.Web
+﻿using SnappetChallenge.DAL;
+
+namespace SnappetChallenge.Web
 {
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -34,6 +36,7 @@
         public static void RegisterTypes(IUnityContainer container)
         {
             // TODO pay attention to object lifetimes
+            container.RegisterType<ISnappetChallengeContext, SnappetChallengeContext>(new TransientLifetimeManager());
             container.RegisterType<IStudentAnswerService, StudentAnswerService>(new TransientLifetimeManager());
             container.RegisterType<IStudentDeviationsService, StudentDeviationsService>(new TransientLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
