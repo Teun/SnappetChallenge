@@ -13,12 +13,6 @@ namespace SnappetChallenge.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // add API routing
-            routes.MapRoute(
-                name: "API",
-                url: "api/{controller}/{action}"
-            );
-
             // regular MVC routing
             routes.MapRoute(
                 name: "Default",

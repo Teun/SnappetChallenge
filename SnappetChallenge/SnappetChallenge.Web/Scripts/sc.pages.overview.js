@@ -98,7 +98,7 @@ sc.pages.overview = function () {
 
     var retrieveItems = function () {
         $.ajax({
-            url: "/api/studentanswer/retrieve",
+            url: "/api/studentanswers",
             data: { offset: currPage * pageSize, pageSize: pageSize, start: viewModel.dateStart(), end: viewModel.dateEnd() },
             cache: false,
             dataType: 'json',

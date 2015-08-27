@@ -48,13 +48,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\AnswerResult.cs" />
     <Compile Include="Implementations\AnswerService.cs" />
+    <Compile Include="Implementations\ExerciseService.cs" />
+    <Compile Include="Implementations\ObjectiveService.cs" />
     <Compile Include="Implementations\StudentAnswerService.cs" />
     <Compile Include="Implementations\StudentDeviationsService.cs" />
+    <Compile Include="Implementations\StudentService.cs" />
+    <Compile Include="Interfaces\IExerciseService.cs" />
+    <Compile Include="Interfaces\IObjectiveService.cs" />
+    <Compile Include="Interfaces\IStudentService.cs" />
     <Compile Include="Interfaces\IAnswerService.cs" />
     <Compile Include="Interfaces\IStudentDeviationsService.cs" />
     <Compile Include="Interfaces\IStudentAnswerService.cs" />
-    <Compile Include="Models\Deviations.cs" />
+    <Compile Include="Models\DeviationsModel.cs" />
     <Compile Include="Models\StudentDeviationsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

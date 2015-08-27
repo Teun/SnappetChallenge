@@ -4,12 +4,7 @@
 
     public class OverviewController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Debug()
+        public ActionResult RawData()
         {
             return View();
         }

@@ -18,8 +18,9 @@
                 </button>
                 <span class="navbar-brand">Snappet Challenge</span>
                 <ul class="nav navbar-nav">
-                    <li><a href="~/Overview/Students">Overzicht leerlingen</a></li>
-                    <li><a href="~/Overview/Index">Ruwe data</a></li>
+                    <li>@Html.ActionLink("Metrieken per leerling", "Students", "Overview")</li>
+                    <li>@Html.ActionLink("Gemaakte opgaven", "Progress", "Overview")</li>
+                    <li>@Html.ActionLink("Ruwe data", "RawData", "Overview")</li>
                 </ul>
             </div>
         </div>

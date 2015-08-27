@@ -144,8 +144,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Controllers\API\StudentAnswerController.cs" />
-    <Compile Include="Controllers\API\StudentDeviationsController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\EmptyPageControllers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -227,6 +226,7 @@
     <Content Include="Scripts\sc.chart-definitions.js" />
     <Content Include="Scripts\sc.ko-utils.js" />
     <Content Include="Scripts\sc.main.js" />
+    <Content Include="Scripts\sc.pages.progress.js" />
     <Content Include="Scripts\sc.pages.students.js" />
     <Content Include="Scripts\sc.pages.overview.js" />
     <Content Include="Scripts\sc.utils.js" />
@@ -242,14 +242,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Overview\Index.cshtml" />
-    <Content Include="Views\Overview\Debug.cshtml" />
+    <Content Include="Views\Overview\RawData.cshtml" />
     <Content Include="Views\Overview\Students.cshtml" />
     <Content Include="Views\Overview\Progress.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\StudentDeviations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

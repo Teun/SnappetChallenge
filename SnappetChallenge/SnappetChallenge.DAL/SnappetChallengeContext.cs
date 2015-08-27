@@ -11,6 +11,9 @@
         {
 #if DEBUG
             Database.SetInitializer(new SnappetChallengeDbInitializer());
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
+
 #else
             Database.SetInitializer(null);
 #endif

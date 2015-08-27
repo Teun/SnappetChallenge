@@ -1,6 +1,6 @@
 ﻿namespace SnappetChallenge.Services.Models
 {
-    public class Deviations
+    public class DeviationsModel
     {
         public double Progress { get; set; }
 

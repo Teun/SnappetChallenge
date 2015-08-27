@@ -37,6 +37,11 @@ namespace SnappetChallenge.Web
         {
             // TODO pay attention to object lifetimes
             container.RegisterType<ISnappetChallengeContext, SnappetChallengeContext>(new TransientLifetimeManager());
+            container.RegisterType<IAnswerService, AnswerService>(new TransientLifetimeManager());
+            container.RegisterType<IExerciseService, ExerciseService>(new TransientLifetimeManager());
+            container.RegisterType<IObjectiveService, ObjectiveService>(new TransientLifetimeManager());
+            container.RegisterType<IStudentService, StudentService>(new TransientLifetimeManager());
+
             container.RegisterType<IStudentAnswerService, StudentAnswerService>(new TransientLifetimeManager());
             container.RegisterType<IStudentDeviationsService, StudentDeviationsService>(new TransientLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());

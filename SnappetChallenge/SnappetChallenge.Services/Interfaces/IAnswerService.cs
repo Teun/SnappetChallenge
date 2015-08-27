@@ -1,4 +1,5 @@
-﻿
+﻿using SnappetChallenge.Services.Enums;
+
 namespace SnappetChallenge.Services.Interfaces
 {
     using System;
@@ -8,6 +9,8 @@ namespace SnappetChallenge.Services.Interfaces
 
     public interface IAnswerService
     {
-        List<Answer> Get(Expression<Func<Answer, bool>> whereClause);
+        IEnumerable<Answer> Get(Expression<Func<Answer, bool>> whereClause);
+
+        List<AnswerResult> GetAnswersByStudentAndExerciseInRange(long studentId, long[] exerciseId, DateTime start, DateTime end);
     }
 }

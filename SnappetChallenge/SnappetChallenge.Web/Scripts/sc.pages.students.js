@@ -32,7 +32,7 @@ sc.pages.students = function () {
 
     var retrieveItems = function () {
         $.ajax({
-            url: "/api/studentdeviations/retrieve",
+            url: "/api/studentdeviations",
             cache: false,
             dataType: 'json',
             method: 'GET',

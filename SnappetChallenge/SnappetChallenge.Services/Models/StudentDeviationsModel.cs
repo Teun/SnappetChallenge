@@ -4,14 +4,14 @@
     {
         public StudentDeviationsModel()
         {
-            Deviations = new Deviations();
+            Deviations = new DeviationsModel();
         }
 
         public string StudentName { get; set; }
 
         public long StudentId { get; set; }
 
-        public Deviations Deviations { get; set; }
+        public DeviationsModel Deviations { get; set; }
 
     }
 }
