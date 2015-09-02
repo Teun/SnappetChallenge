@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using DotNet.Highcharts;
+﻿using DotNet.Highcharts;
 using Snappet.Data;
 
 namespace Snappet.Models
