@@ -1,0 +1,14 @@
+﻿@{
+	Layout = null;
+}
+
+@Scripts.Render("~/bundles/snappet")
+
+<div>Getting time zone ...</div>
+<script>
+	$(function () {
+		var tz = jstz.determine();
+		$.cookie('userTimeZone', tz.name(), { expires: 1, path: '/' });
+		window.location.href = '@Url.Action("Index", "Home")';
+	});
+</script>

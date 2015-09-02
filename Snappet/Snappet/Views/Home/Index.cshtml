@@ -1,0 +1,91 @@
+﻿@model Snappet.Models.DashboardViewModel
+
+@{
+	ViewBag.Title = "Snappet challenge - Robert Vukovic";
+}
+
+@Scripts.Render("~/bundles/snappet")
+
+<div class="row">
+    <div class="col-md-12"> @Model.AnswersPerDayChart </div>
+</div>
+
+<div class="row panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">Top 5 Learning Objectives per Subject</h3>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-4">@Model.TopSubjectsBegrijpendLezen </div>
+		<div class="col-md-4">@Model.TopSubjectsRekenen</div>
+		<div class="col-md-4">@Model.TopSubjectsSpelling</div>
+	</div>
+</div>
+
+<div class="row  panel panel-danger">
+
+	<div class="panel-heading">
+		<h3 class="panel-title">Lowest 5 Learning Objectives per Subject</h3>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Begrijpend Lezen</div>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Learning Objective</th>
+						<th class="text-right">#</th>
+					</tr>
+					</thead>
+					@foreach (var item in Model.LowestSubjectsBegrijpendLezen)
+					{
+						<tr>
+							<td>@item.Name</td>
+							<td class="text-right">@item.Count</td>
+						</tr>
+					}
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Rekenen</div>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Learning Objective</th>
+						<th class="text-right">#</th>
+					</tr>
+					</thead>
+					@foreach (var item in Model.LowestSubjectsRekenen)
+					{
+						<tr>
+							<td>@item.Name</td>
+							<td class="text-right">@item.Count</td>
+						</tr>
+					}
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Spelling</div>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Learning Objective</th>
+						<th class="text-right">#</th>
+					</tr>
+					</thead>
+					@foreach (var item in Model.LowestSubjectsSpelling)
+					{
+						<tr>
+							<td>@item.Name</td>
+							<td class="text-right">@item.Count</td>
+						</tr>
+					}
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
