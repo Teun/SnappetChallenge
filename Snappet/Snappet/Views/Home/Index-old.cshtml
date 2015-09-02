@@ -1,0 +1,113 @@
+﻿@model Snappet.Models.DashboardViewModel
+
+@{
+	ViewBag.Title = "Snappet challenge - Robert Vukovic";
+}
+
+@Scripts.Render("~/bundles/snappet")
+
+<div class="row">
+    <div class="col-md-12"> @Model.AnswersPerDayChart </div>
+</div>
+
+<div class="row panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">Top 5 Learning Objectives per Subject</h3>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-4">@Model.TopSubjectsBegrijpendLezen </div>
+		<div class="col-md-4">@Model.TopSubjectsRekenen</div>
+		<div class="col-md-4">@Model.TopSubjectsSpelling</div>
+	</div>
+</div>
+
+<div class="row  panel panel-danger">
+
+	<div class="panel-heading">
+		<h3 class="panel-title">Lowest 5 Lerning Objectives per Subject</h3>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Begrijpend Lezen</div>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Lerning Objective</th>
+						<th class="text-right">#</th>
+					</tr>
+					</thead>
+					@foreach (var item in Model.LowestSubjectsBegrijpendLezen)
+					{
+						<tr>
+							<td>@item.Name</td>
+							<td class="text-right">@item.Count</td>
+						</tr>
+					}
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Rekenen</div>
+				<table class="table">
+					<thead>
+					<tr>
+						<th data-field="id">Lerning Objective</th>
+						<th data-field="name">Answer #</th>
+					</tr>
+					</thead>
+					<tr>
+						<td>bbbbbbbbbbb</td>
+						<td>222222222</td>
+					</tr>
+					<tr>
+						<td>aaaaaaaaaaaa</td>
+						<td>222222222</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Spelling</div>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Lerning Objective</th>
+						<th class="text-right">#</th>
+					</tr>
+					</thead>
+					<tr>
+						<td>bbbbbbbbbbb</td>
+						<td class="text-right">2</td>
+					</tr>
+					<tr>
+						<td>Sommen tot 100 - Somtype 40 + 3, 25 + 40 en 40 + 40</td>
+						<td class="text-right">22</td>
+					</tr>
+					<tr>
+						<td>verkleinwoorden met uitgang -je na -d en -t (vriendje, plantje), -pje, -etje (raampje, dingetje, ...</td>
+						<td class="text-right">99</td>
+					</tr>
+					<tr>
+						<td>verkleinwoorden met uitgang -je, -tje (huisje, boekje, schaaltje)</td>
+						<td class="text-right">888</td>
+					</tr>
+					<tr>
+						<td>woorden met twee verschillende medeklinkers in het midden (kasteel, zakdoek)</td>
+						<td class="text-right">1</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+@*<div class="row">
+	<div class="col-md-4">@Model.LowestSubjectsBegrijpendLezen</div>
+	<div class="col-md-4">@Model.LowestSubjectsRekenen</div>
+	<div class="col-md-4">@Model.LowestSubjectsSpelling</div>
+</div>*@
+
+
