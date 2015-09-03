@@ -1,10 +1,24 @@
 {% if latest_question_list %}
     <h2>{{ start_time }}</h2>
-    <ul>
+    <table style="width:100%">
+    <tr>
+        <td>ID</td>
+        <td>Date and Time</td>
+        <td>Correct</td>
+        <td>Progress</td>
+        <td>User ID</td>
+    </tr>
     {% for question in latest_question_list %}
-        <li><a href="{% url 'detail' question.id %}">{{ question.id }} - {{ question.submitdatetime }} - {{ question.correct }} - {{ question.progress }} - {{ question.userid }} - {{ question.exerciseid }} - {{ question.difficulty }} - {{ question.subject }} - {{ question.domain }} - {{ question.learningobjective }}</a></li>
+        <tr>
+        <td><a href="{% url 'detail' question.id %}">{{ question.id }}</a></td>
+        <td>{{ question.submitdatetime }}</td> 
+        <td>{{ question.correct }}</td>
+        <td>{{ question.progress }}</td>
+        <td>{{ question.userid }}</td>
+        </tr>
     {% endfor %}
-    </ul>
+    </table>
+
 {% else %}
     <p>No data are available.</p>
 {% endif %}
