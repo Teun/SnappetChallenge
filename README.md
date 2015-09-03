@@ -34,6 +34,7 @@ Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruik
 Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
 De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
 
+## Translation
 
 ### The Assigment/Task
 
@@ -42,3 +43,12 @@ In this repository you will find a Data folder containing work.csv en work.json.
 Make a rapport or a screen or whatever gives a teacher an oversight of how his class worked today, and on what. Today is Tuesday, 2015-03-24 11:30:00 UTC. The answers from after this time & date should not be shown (are not yet shown?). 
 
 Make a pull request in which you at least incorporate a readme that explains what you have to do to view the results.
+
+### Background Information
+
+- All times are in UTC
+- There is an attribute Progress. This shows the change in estimation of the pupils’ability of a learning aim. There are psychometric models behind this that take into account the difficulty of the task, whether the task has previously been performed by this student, etc. There are multiple situations in which the Progress is 0. For example if we do not have a good calibration of the difficulty of the task. Or if the pupil has not completed enough task in a certain learning-area to make a good estimation of the pupils skills.
+- Because this dataset only shows changes, and not absolute values, you cannot see the skills of each individual pupil. This does not have to show in the results.
+
+### Freedom
+This task has purposefully been formulated with room for interpretation. You may use the techniques and tools that are most preferable to you. You may spend time on the aspects that you view to be the most important. There is not enough time to do everything: make choices. At Snappet, we work with C#, .NET, Javascript, JQuery en Knockout.JS. But we believe that a good programmer of another platform will find his way around these in no time. You may use frameworks and libraries. You may convert date in another format or import it in databases. But then you must explain in the readme how to get it working. The minimal requirement in the task is "what did my class work on today". You can show this in a list, in graphic form (graphs?), as numbers or with colours. You can compare it with the previous week or the average score. Try to imagine what is the most important & beneficial for the teacher of the class.
