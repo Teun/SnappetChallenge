@@ -1,0 +1,10 @@
+{% if latest_question_list %}
+    <h2>{{ start_time }}</h2>
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'detail' question.id %}">{{ question.id }} - {{ question.submitdatetime }} - {{ question.correct }} - {{ question.progress }} - {{ question.userid }} - {{ question.exerciseid }} - {{ question.difficulty }} - {{ question.subject }} - {{ question.domain }} - {{ question.learningobjective }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data are available.</p>
+{% endif %}

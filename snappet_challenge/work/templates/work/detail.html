@@ -1,0 +1,7 @@
+<h1>{{ question.id }}</h1>
+<h2>{{ question.progress }}</h2>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.progress }}</li>
+{% endfor %}
+</ul>
