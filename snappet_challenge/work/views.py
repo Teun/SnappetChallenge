@@ -17,6 +17,7 @@ def index(request):
     end_time = datetime.strptime('2015-03-25 00:01:00', '%Y-%m-%d %H:%M:%S')
     print(str(start_time), str(end_time))
     latest_question_list = Work.objects.filter(submitdatetime__range=(start_time, end_time))
+    latest_question_list = Work.objects.filter(submitdatetime__gte='2015-03-24').filter(submitdatetime__lt='2015-03-25')
     context = {'latest_question_list': latest_question_list, 'start_time' :start_time}
     return render(request, 'work/index.html', context)
 
