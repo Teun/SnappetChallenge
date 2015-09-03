@@ -1,0 +1,6 @@
+### TODO List
+
+Use Django Rest Framework and make Serializers
+Request Data from Restful API by performing an asynchronous HTTP (Ajax) request.
+Make use of a framework such as AngularJS, ReactJS, or KnockoutJS
+Replace sqlite database with MongoDB
