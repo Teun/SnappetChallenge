@@ -9,6 +9,10 @@
     cd SnappetChallenge
     virtualenv --no-site-packages -p python3 env  
     pip install -r requirements.txt  
+    cd snappet_challenge
+    python manage.py migrate
+    python manage.py runserver
+    view at http://127.0.0.1:8000/work/
 
 
 # SnappetChallenge
