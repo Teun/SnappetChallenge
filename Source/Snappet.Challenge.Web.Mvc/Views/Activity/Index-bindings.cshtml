@@ -1,0 +1,132 @@
+﻿@using Snappet.Challenge.Web.Mvc.Extensions
+@model Snappet.Challenge.Web.Mvc.ViewModels.ActivityViewModel
+@{
+    ViewBag.Title = "Dagoverzicht";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Dagoverzicht klas</h2>
+        <p>
+            <span data-bind="text: moment(timeOfDay()).format('DD-MM-YYYY HH:mm')"></span>
+        </p>
+    </div>
+    <div class="col-md-8">
+        <div data-bind="chart: classData, chartOptions: {title: 'Voortgang klas', chartArea: { width: '50%' }, hAxis: { title: 'Voortgang', minValue: 0 }, vAxis: { title: 'Onderwerp' }}"></div>
+        <div>
+            Aantal gemaakte opgaven
+            <ul data-bind="foreach: classActivity">
+                <li><span data-bind="text: Subject"></span>:<span data-bind="text: NrOfSubmittedAnswers"></span></li>
+            </ul>
+        </div>
+    </div>       
+</div>
+<div class="row">
+    <div class="col-md-4">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        Leerling
+        <ul data-bind="foreach: students">
+            <li><a href="#" data-bind="click: $root.studentClick.bind($data, Id(), $root.timeOfDay())">Leerling <span data-bind="text: Id"></span></a></li>            
+        </ul>
+    </div>
+    <div class="col-md-8" data-bind="visible:studentActivity().length">
+        <div data-bind="chart: studentData, chartOptions: {title: 'Voortgang student', chartArea: { width: '50%' }, hAxis: { title: 'Voortgang', minValue: 0 }, vAxis: { title: 'Onderwerp' }}"></div>
+        <div>
+            Aantal gemaakte opgaven
+            <ul data-bind="foreach: studentActivity">
+                <li><span data-bind="text: Subject"></span>:<span data-bind="text: NrOfSubmittedAnswers"></span></li>
+            </ul>
+
+        </div>
+    </div>      
+    
+</div>
+
+
+@section Scripts {  
+    
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/datehandling")
+     
+    <script>
+        google.load('visualization', '1', { packages: ['corechart', 'bar'] });
+
+        function IndexViewModel() {
+            var self = this;
+
+            self.timeOfDay = ko.mapping.fromJS(@Html.Raw(Model.DateTimeStamp.ToJson()));
+            self.students = ko.mapping.fromJS(@Html.Raw(Model.Students.ToJson()));
+            self.classActivity = ko.mapping.fromJS(@Html.Raw(Model.ClassActivity.ToJson()));
+            self.studentActivity = ko.observableArray();
+            self.studentId = ko.observable();
+            self.studentClick = function (studentId, timeOfDay) {
+                console.log(timeOfDay);
+                $.ajax({
+                    url: '/Activity/GetStudentActivityForTimeOnDay',
+                    type: "POST",
+                    contentType: "application/json",
+                    data: "{'studentId':" + studentId + ", 'dateTimeStamp': " + ko.toJSON(timeOfDay) + "}",
+                    success: function(data) {
+                        ko.mapping.fromJS(data.StudentActivity, {}, self.studentActivity);
+                        ko.mapping.fromJS(data.StudentId, {}, self.studentId);
+                    },
+                    error: function() {
+                        alert("Er is een fout opgetreden.");
+                    }
+                });
+            }
+
+            self.studentData = ko.computed(function () {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Onderwerp');
+                data.addColumn('number', 'Voortgang');
+                $.each(ko.toJS(self.studentActivity), function (key, value) {
+                    data.addRows([
+                        [value.Subject, value.Progress]
+                    ]);
+
+                });
+
+                return data;
+            });
+
+            self.classData = ko.computed(function () {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Onderwerp');
+                data.addColumn('number', 'Voortgang');
+                $.each(ko.toJS(self.classActivity), function (key, value) {
+                    data.addRows([
+                        [value.Subject, value.Progress]
+                    ]);
+
+                });
+
+                return data;
+            });
+        }
+        
+        $(function () {
+            var indexViewModel = new IndexViewModel();
+            ko.applyBindings(indexViewModel);      
+        });
+
+        ko.bindingHandlers.chart = {
+            init: function (element) {
+                var chart = new google.visualization.BarChart(element);
+                ko.utils.domData.set(element, 'chart', chart);
+            },
+
+            update: function (element, valueAccessor, allBindings) {
+                var value = ko.unwrap(valueAccessor());
+                var options = allBindings.get('chartOptions') || {};
+                var chart = ko.utils.domData.get(element, 'chart');
+                chart.draw(value, options);
+            }
+        };      
+
+    </script>
+}
