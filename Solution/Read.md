@@ -1,0 +1,3 @@
+- Open with Visual Studio 2013
+- Build solution
+- Run

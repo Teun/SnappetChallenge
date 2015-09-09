@@ -1,0 +1,43 @@
+﻿@model List<StudyReport.Models.AnswerViewModel>
+
+@{
+    ViewBag.Title = "Chart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-3">
+    <h3>Total progress per learning objective</h3>
+</div>
+<div class="col-md-9">
+    <canvas id="Report"></canvas>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var crt = {
+            labels: [],
+            datasets: [
+                {
+                    label: "LearningObjective",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: []
+                }
+            ]
+        };
+
+        $.getJSON("/Home/GetData/", function (data) {
+            for (var i = 0; i <= data.length -1; i++) {
+                crt.labels[i] = data[i].LearningObjective;
+                crt.datasets[0].data[i] = data[i].Progress;
+            }
+
+            var ctx = document.getElementById("Report").getContext("2d");
+            var lineChart = new Chart(ctx).Line(crt, null);
+        });
+    });
+</script>

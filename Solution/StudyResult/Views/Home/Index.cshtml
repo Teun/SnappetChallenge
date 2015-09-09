@@ -1,0 +1,76 @@
+﻿@model List<StudyReport.Models.AnswerViewModel>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-3">
+    @using (Html.BeginForm("Index", "Home"))
+    {
+        <div class="checkbox">
+            <label>
+                @Html.CheckBox("HideZeroProgress")
+                Hide 0 progress
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                @Html.CheckBox("HideNullDifficulty")
+                Hide NULL difficulty
+            </label>
+        </div>
+        <div class="">
+            <input type="submit" value="Update" />
+        </div>
+    }
+</div>
+<div class="col-md-9">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Submitted at</th>
+                <th>Correct</th>
+                <th>Progress</th>
+                <th>UserId</th>
+                <th>Difficulty</th>
+                <th>Subject</th>
+                <th>Domain</th>
+                <th>LearningObjective</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubmitDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Progress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Difficulty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Domain)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LearningObjective)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
