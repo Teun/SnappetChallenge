@@ -1,0 +1,183 @@
+﻿@{
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div ng-app="myApp">
+
+    <h1>Report Screen</h1>
+
+    <div ng-controller="MainController">
+    
+         
+         <div style="width:25%;float:left">
+         <h3>Excercises Completed By Subject</h3>
+           <canvas id="subjectpie" class="chart chart-pie"
+              chart-data="subjectSummaryData" chart-click="SelectSubject" chart-labels="subjectSummaryLabels">
+            </canvas> 
+        </div>
+   
+         <div style="width:25%;float:left">
+         <h3>Percentage Correct By Subject</h3>
+           <canvas id="subjectCorrectpie" class="chart chart-pie"
+              chart-data="subjectSummaryCorrectData"  chart-click="SelectSubject"  chart-labels="subjectSummaryLabels">
+            </canvas> 
+        </div>
+
+        <div style="width:50%;float:left">
+          <table st-table="summarySubjectDisplayCollection"  st-safe-src="summarySubjectRowCollection" >
+        <thead>
+        <tr>
+            <th st-sort="Subject">Subject</th>          
+            <th st-sort="TotalExercises">Total Excercise Complete</th>
+            <th st-sort="CorrectExercises">Num of Correct</th>
+            <th>Percentage Correct</th>
+
+        </tr>
+        <tr>
+            <th><input st-search="Subject" placeholder="search for subject" class="input-sm form-control" type="search"/></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in summarySubjectDisplayCollection">
+
+                    <td>{{row.Subject}}</td>
+                    <td>{{row.TotalExercises}}</td>
+                    <td>{{row.CorrectExercises}}</td>
+                    <td>{{(100*row.CorrectExercises/row.TotalExercises)| number:0}}%</td>
+            </tr>
+        </tbody>
+     </table>
+     </div>
+    
+    
+   
+
+
+
+      <h2>Excerise List</h2>
+          <table st-table="summaryExcerciseDisplayCollection"  st-safe-src="summaryExcerciseRowCollection" >
+        <thead>
+        <tr>
+            
+            <th st-sort="ExerciseId">ExerciseId</th>
+            <th st-sort="Subject">Subject</th>
+            <th st-sort="Domain">Domain</th>
+            <th st-sort="LearningObjective">LearningObjective</th>
+            
+            <th st-sort="TotalExercises">Total Excercise Complete</th>
+            <th st-sort="CorrectExercises">Num of Correct</th>
+            <th>Percentage Correct</th>
+
+        </tr>
+        <tr>
+            <th><input st-search="ExerciseId" placeholder="search for ExerciseId" class="input-sm form-control" type="search"/></th>
+            <th><input st-search="Subject" id="subjectSearchBox"  ng-model="selectedSubject" placeholder="search for subject" class="input-sm form-control" type="search"/></th>
+            <th><input st-search="Domain" placeholder="search for Domain" class="input-sm form-control" type="search"/></th>
+            <th><input st-search="LearningObjective" placeholder="search for LearningObjective" class="input-sm form-control" type="search"/></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in summaryExcerciseDisplayCollection" ng-class="row.TotalExercises==row.CorrectExercises ? 'green' : 'orange'">
+            
+                    <td>{{row.ExerciseId}}</td>
+                    <td>{{row.Subject}}</td>
+                    <td>{{row.Domain}}</td>
+                    <td>{{row.LearningObjective}}</td>
+                    <td>{{row.TotalExercises}}</td>
+                    <td>{{row.CorrectExercises}}</td>
+                    <td class="highlightMe">{{(100*row.CorrectExercises/row.TotalExercises)| number:0}}%</td>
+            </tr>
+        </tbody>
+     </table>
+
+
+      <h2>Student Summary</h2>
+     
+     <table st-table="summaryDisplayCollection"    st-safe-src="summaryRowCollection"   >
+        <thead>
+        <tr>
+            <th st-sort="UserId">Student</th>
+            <th st-sort="TotalExercises">Total Excercise Complete</th>
+            <th st-sort="CorrectExercises">Num of Correct</th>
+            <th>Percentage Correct</th>
+
+        </tr>
+        <tr>
+            <th><input st-search="UserId" placeholder="search for student" class="input-sm form-control" type="search"/></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in summaryDisplayCollection">
+                <td>{{row.UserId}}</td>
+                <td>{{row.TotalExercises}}</td>
+                <td>{{row.CorrectExercises}}</td>
+                <td>{{(100*row.CorrectExercises/row.TotalExercises)| number:0}}%</td>
+          </tr>
+
+       
+
+          
+        </tbody>
+     </table>
+
+
+
+     <h2>Full Data</h2> <p><button type="button" ng-click="ShowHideFull()">Show Full Data</button></p>
+         <table st-table="displayedCollection" st-safe-src="rowCollection"  ng-if="showFull" >
+		    <thead>
+               <tr>
+                <th st-sort="row.UserId">Student</th>
+                <th>Correct?</th>
+                <th>Excercise</th>
+                <th>Difficulty</th>
+                <th>Subject</th>
+                <th>Domain</th>
+                <th>LearningObjective</th>
+                <th>SubmitDateTime</th>
+
+                    </tr>
+	        <tr>
+		        <th>
+			        <input placeholder="search UserId" st-search="UserId"   type="search" />
+		        </th>		
+                <th></th>
+                <th>
+			         <input placeholder="search ExerciseId" st-search="ExerciseId"   type="search" />
+		        </th>
+                <th>
+               
+                </th>
+                <th>
+			        
+		        </th>
+                <th>
+			       <input placeholder="search Subject" st-search="Subject"  type="search" />
+		        </th>
+		        <th>
+			     
+		        </th>
+	
+		        </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in displayedCollection" data-id="{{row.SubmittedAnswerId}}">
+                    <td>{{row.UserId}}</td>
+                    <td>{{row.Correct}}</td>
+                    <td>{{row.ExerciseId}}</td>
+                    <td>{{row.Difficulty}}</td>
+                    <td>{{row.Subject}}</td>
+                    <td>{{row.Domain}}</td>
+                    <td>{{row.LearningObjective}}</td>
+                    <td>{{row.SubmitDateTime}}</td>
+                </tr>
+            </tbody>
+            </table>
+
+    </div>
+
+</div>
+<br /><br />
