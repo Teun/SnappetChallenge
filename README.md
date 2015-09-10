@@ -16,7 +16,9 @@ The main report for the teacher consists of to pie charts showing in simple term
 
 Below the summary I have included a full datat table of the excercises worked on. This is searchable, so by entering the subject you can filter the results. I have also coloured the percent values at the end to show cleared which areas to not have a 100% correct ratio. This could be extended to show a lower warning level too so that real issue areas can be addressed fast.
 
-This is a Visual Studio 2012 project - I have used nuget to add packages so they hsould be downloaded automatically.
+This is a Visual Studio 2012 project - I have used nuget to add packages so they should downloaded automatically. Everything is included within the project files.
+
+Most of the logic is in the API Controller for the server and App.js for the angular.
 
 
 
