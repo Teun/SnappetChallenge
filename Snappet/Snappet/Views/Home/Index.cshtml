@@ -1,0 +1,43 @@
+﻿@model Snappet.Models.ViewModels.GraphModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script>
+    $(document).ready(function () {
+        var labels = JSON.parse('@Html.Raw(ViewBag.Subjects)');
+        createChart(@ViewBag.Averages, labels, "averagesChart");
+    });
+</script>
+
+<div class="jumbotron">
+    <h1>Snappet Dashboard</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>The average progress per subject:</p>
+        <canvas id="averagesChart" width="600" height="400"></canvas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @using (Ajax.BeginForm(
+            new AjaxOptions
+            {
+                HttpMethod = "post",
+                InsertionMode = InsertionMode.ReplaceWith,
+                UpdateTargetId = "userAverages",
+            }))
+        {
+            @Html.DropDownList("DdlUserId", new SelectList(Model.UserIds), "Select a user")
+            <input type="submit" value="Show Progress" />
+            <p>Shows the average progress for the selected user.</p>
+        }
+    </div>
+</div>
+<div class="row">
+    @Html.Partial("_UserProgress", Model)
+</div>
+
+@Scripts.Render("~/bundles/jqueryval")
