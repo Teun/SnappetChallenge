@@ -1,0 +1,12 @@
+﻿@model Snappet.Models.ViewModels.GraphModel
+
+<div id="usersChart">
+<script>
+    $(document).ready(function () {
+        var labels = JSON.parse('@Html.Raw(Model.SubjectJson)');
+        createChart(@Model.AveragesJson, labels, "userAverages");
+    });
+</script>
+
+<canvas id="userAverages" width="600" height="400"></canvas>
+</div>
