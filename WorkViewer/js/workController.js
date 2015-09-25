@@ -22,7 +22,7 @@
                 viewModel().progressChartHeight(calcChartHeight(progressRecords.length)).progressRecords(progressRecords);
             });
         },
-        endDate = '2015-03-20T07:54:33.693',
+        endDate = '2015-03-24 11:30:00',
         heightPerRecord = 32,
         headerHeight = 120,
         footerHeight = 60,
