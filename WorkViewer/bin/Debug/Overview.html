@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Snappet Challenge</title>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="/js/globalize.min.js"></script>
+    <script type="text/javascript" src="/js/knockout-3.3.0.js"></script>
+    <script type="text/javascript" src="/js/dx.chartjs.js"></script>
+
+    <script type="text/javascript" src="/js/dx.module-widgets-base.js"></script>
+    <script type="text/javascript" src="/js/dx.module-widgets-web.js"></script>
+    <script type="text/javascript" src="/js/myCache.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/workController.js"></script>
+    <script type="text/javascript" src="/js/workService.js"></script>
+    <style>
+        #overlay {
+            height: 800px;
+            width: 100%;
+        }
+
+        #chartContainer {
+            height: 740px;
+            width: 100%;
+        }
+
+        #contentContainer {
+            display: none;
+        }
+
+        div.field-label {
+            display: inline-block;
+            width: 150px;
+            margin-right: 16px;
+        }
+
+        div.field-content {
+            display: inline;
+        }
+    </style>
+</head>
+<body id="content">
+    <div id="overlay">Een moment geduld a.u.b. ...</div>
+    <div id="contentContainer">
+        <div class="field">
+            <div class="field-label">
+                <label for="domainSelector">Leerdomein</label>
+            </div><div class="field-content">
+                <select id="domainSelector" data-bind="options: availableDomains, optionsCaption:'<Selecteer een leerdomein>', value: selectedDomain"></select>
+            </div>
+        </div>
+        <div class="field" data-bind="visible: hasSelectedDomain">
+            <div class="field-label">
+                <label for="objectiveSelector">Leerdoel</label>
+            </div><div class="field-content">
+                <select id="objectiveSelector" data-bind="options: availableObjectives, optionsCaption:'<Selecteer een leerdoel>', value: selectedObjective"></select>
+            </div>
+        </div>
+        <div id="chartContainer" data-bind="dxChart:{
+                rotated: true,
+                dataSource: progressRecords,
+                commonSeriesSettings: {
+                    argumentField: 'userName',
+                    type: 'bar',
+                    hoverMode: 'allArgumentPoints',
+                    selectionMode: 'allArgumentPoints',
+                    label: {
+                        visible: true,
+                        format: 'number'
+                    }
+                 },
+                 valueAxis : {
+                     label : {
+                        format: 'number'
+                     }
+                 },
+                 series : [
+                    { valueField: 'progress', name: 'Voortgang' },
+                 ],
+                 title: {
+                    text: 'Voortgang leerlingen'
+                 },
+                 legend: {
+                     verticalAlignment: 'bottom' ,
+                     horizontalAlignment: 'center'
+                 },
+                 onPointClick: function (e) {
+                    e.target.select();
+                 },
+                 onLegendClick: function (e) {
+                     var series=e.target;
+                     series.isVisible() ? series.hide() :
+                     series.show();
+                 },
+                 size: {
+                     height: progressChartHeight
+                 }
+            }">
+        </div>
+    </div>
+</body>
+</html>
