@@ -1,0 +1,9 @@
+.sass-cache
+.tmp
+.suo
+.user
+node_modules
+packages
+SnappetChallenge/bower_components
+SnappetChallenge/bin
+SnappetChallenge/obj

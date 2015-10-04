@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SnappetChallenge.Models.TotalWorkSummary>
+
+@{
+    ViewBag.Title = "Snappet Challenge";
+}
+<div class="container">
+    <div class="page-header">
+        <h1>Snappet Challenge</h1>
+        <p>
+            De resultaten van vandaag, gebruik de knoppen om de resultaten op verschillende onderwerpen te groeperen.
+        </p>
+    </div>
+
+    <div class="btn-group">
+        @foreach (var groupFilter in Enum.GetValues(typeof(SnappetChallenge.Models.WorkFilter))
+                .Cast<SnappetChallenge.Models.WorkFilter>())
+        {
+            @Html.ActionLink(groupFilter.ToString(), "Index", new { workFilter = groupFilter }, new { @class= "btn btn-primary" })           
+        }
+    </div>
+
+    @foreach (var userSummary in Model)
+    {
+        <div class="page-header">
+            <h3>Leerling: @userSummary.UserId details per @userSummary.GroupedBy</h3>
+        </div>
+        foreach (var summary in userSummary.WorkSummaries)
+        {
+            
+            <h3>@summary.GroupedBy</h3>
+
+            <div class="row hidden-xs">
+                <div class="col-sm-2">
+                    Progressie vandaag
+                </div>
+                <div class="col-sm-2">
+                    Totaal aantal opgaven
+                </div>
+                <div class="col-sm-2">
+                    Aantal goed
+                </div>
+                <div class="col-sm-2">
+                    Aantal fout
+                </div>
+                <div class="col-sm-2">
+                    Gem. moeilijkheid
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <strong class="visible-xs">Progressie vandaag: </strong>
+                    <span style="color: @(@summary.ProgressToday < 1 ? "#F00": "#0F0")"> @summary.ProgressToday </span>
+                </div>
+                <div class="col-sm-2">
+                    <strong class="visible-xs">Totaal aantal opgaven: </strong>
+                    @summary.TotalQuestions
+                </div>
+                <div class="col-sm-2">
+                    <strong class="visible-xs">Aantal goed: </strong>
+                    @summary.QuestionsOk
+                </div>
+                <div class="col-sm-2">
+                    <strong class="visible-xs">Aantal fout: </strong>
+                    @summary.QuestionsNok
+                </div>
+                <div class="col-sm-2">
+                    <strong class="visible-xs">Gem. moeilijkheid: </strong>
+                    @Html.DisplayFor(s => summary.AverageDifficulty)
+                </div>
+            </div>
+        }
+    }
+</div>
