@@ -1,0 +1,41 @@
+﻿@model Snappet.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="row" style="margin-top: 100px">
+   
+        <h2>Exercise results  - 24 -03-2015</h2>
+
+    <ul class="nav nav-tabs" role="tablist">
+        @foreach (var domain in Model.Domains)
+        {
+            <li role="presentation"><a href="@("#container-" + domain.Id)" 
+                                       aria-controls="@("container-" + domain.Id)" 
+                                       role="tab" data-toggle="tab">@domain.Name</a></li>
+        }
+      
+       
+    </ul>
+
+    <div class="tab-content">
+        @foreach (var domain in Model.Domains)
+        {
+            <div role="tabpanel" class="tab-pane" id="@("container-" + domain.Id)">
+                @Html.Partial("_ResultsTable", domain.Users, new ViewDataDictionary(){ {"Subjects", Model.Subjects}, {"DomainId", domain.Id} })
+
+            </div>
+
+        }
+      
+    </div>
+
+</div>
+<div>
+    <table id="exerciseTable"></table>
+</div>
+@section scripts{
+  @Scripts.Render("~/bundles/home")  
+}

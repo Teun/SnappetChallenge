@@ -1,0 +1,60 @@
+﻿@using Snappet.Domain.Contracts
+@using Snappet.Models
+@model List<Snappet.Domain.Contracts.User>
+@{
+    var subjects = ViewData["Subjects"] as List<Subject>;
+    var domainId = Convert.ToInt32(ViewData["DomainId"]);
+    var currentSubjects = Model.SelectMany(x => x.UserResults.Select(z => z.SubjectId)).Distinct();
+   
+}
+
+
+<table class="dataTable">
+    <thead>
+    <tr>
+        <th> Student</th>
+        @foreach (var subject in currentSubjects)
+        {
+            <th> @subjects.FirstOrDefault(sub=>sub.Id== subject).Name </th>
+        }
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td><a role="button"
+                   data-toggle="collapse" href="@("#container-" + user.UserId+ domainId)" aria-expanded="false" aria-controls="@("container-" + user.UserId+domainId)">@user.UserId</a>
+            </td>
+            @foreach (var subject in currentSubjects)
+            {
+                <td>
+                    @{
+                        var result = user.UserResults.FirstOrDefault(x => x.SubjectId == subject);
+                        if (result != null)
+                        {
+                            <span>@result.CorrectAnswers  correct / @result.TotalAnswers total answers</span>
+                        }
+                    }
+
+                </td>
+            }
+
+        </tr>
+        <tr class="collapse" id="@("container-" + user.UserId+domainId)">
+            <td colspan="2">
+                <div class="dataContainer">
+                   @Html.Partial("_DetailUserTable", new UserDetailViewModel() {DomainId = domainId, UserId = user.UserId})
+                </div>
+            </td>
+           
+        </tr>
+      
+            }
+</tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6"></td>
+        </tr>
+    </tfoot>
+</table>

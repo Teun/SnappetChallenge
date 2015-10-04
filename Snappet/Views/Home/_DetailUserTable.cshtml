@@ -1,0 +1,20 @@
+﻿@model Snappet.Models.UserDetailViewModel
+<table class="exerciseTable display" data-url="@Url.Action("GetExerciseResults", "Home", new {domainId = Model.DomainId, userId = Model.UserId})"
+           data-page-length="50" data-order="[[ 0, &quot;desc&quot; ]]">
+        <thead>
+        <tr>
+            <th> LearningObjective </th>
+            <th> ExerciseId </th>
+            <th> SubmittedAnswerId </th>
+            <th> SubmitDateTime </th>
+            <th> Difficulty </th>
+            <th> Correct </th>
+            <th> Progress </th>
+        </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+        </tfoot>
+    </table>
