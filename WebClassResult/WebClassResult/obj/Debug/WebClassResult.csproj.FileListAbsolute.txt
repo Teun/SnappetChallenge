@@ -1,0 +1,10 @@
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\bin\WebClassResult.dll.config
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\bin\WebClassResult.dll
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\bin\WebClassResult.pdb
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\bin\Newtonsoft.Json.dll
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\bin\Newtonsoft.Json.xml
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\obj\Debug\WebClassResult.csprojResolveAssemblyReference.cache
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\obj\Debug\WebClassResult.dll
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\obj\Debug\WebClassResult.pdb
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\obj\Debug\RdlCompile.cache
+c:\Users\socorro\Documents\Visual Studio 2013\Projects\WebClassResult\WebClassResult\obj\Debug\RdlCompile.compiled
