@@ -15,5 +15,5 @@ The application consist of 2 parts
   
 ## Notes
   
-No exception handling or validation has been implemented, time restraints.    
-
+* No exception handling or validation has been implemented, time restraints.    
+* Open the solution in VS 2015 , make sure you run as admin.
