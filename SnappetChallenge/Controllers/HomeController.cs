@@ -19,7 +19,7 @@ namespace SnappetChallenge.Controllers
             var workItemsToday = workItems.Where(w => w.SubmitDateTime.Date.Equals(now.Date) && w.SubmitDateTime <= now);
             var groupedByUser = workItemsToday.GroupBy(w => w.UserId);
 
-            var workSummaryList = groupedByUser.Select(g => GroupByLearningObjective(g, workFilter));
+            var workSummaryList = groupedByUser.Select(g => GroupBy(g, workFilter));
             
             return View(workSummaryList);
         }
@@ -36,7 +36,7 @@ namespace SnappetChallenge.Controllers
             return filterDictionary[workFilter];
         }
 
-        private static TotalWorkSummary GroupByLearningObjective(IGrouping<int, Work> userData, WorkFilter workFilter)
+        private static TotalWorkSummary GroupBy(IGrouping<int, Work> userData, WorkFilter workFilter)
         {
             var groupExpression = GetFilterExpression(workFilter);
 
