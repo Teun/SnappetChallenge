@@ -1,0 +1,130 @@
+﻿/* typography */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-weight: 300;
+    line-height: 1.25;
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+    h1.page-header {
+        margin-top: 20px;
+    }
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4, h5, h6 {
+    font-weight: 400;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* layout */
+
+body {
+	background: #fff;
+	padding: 0;
+}
+
+.navbar-toggle {
+	margin: 3px;
+}
+
+.logo-link {
+	margin-top: 35px;
+	color: #555;
+}
+
+	.logo-link:hover {
+		color: #000;
+		text-decoration: none;
+	}
+
+.side p {
+	padding: 0 15px;
+}
+
+.side .navbar-header {
+	float: none;
+	display: block;
+	padding-top: 15px;
+}
+
+
+.navbar-nav > li > a {
+	line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+
+	.side {
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		color: #222;
+	}
+
+		.side:before {
+			content: ' ';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -100;
+			background: #f8f8f8;
+			border-right: 1px solid #e7e7e7;
+		}
+
+		.side ul {
+			margin-top: 20px;
+		}
+
+			.side ul li a {
+				color: #222;
+				position: relative;
+			}
+
+				.side ul li a:hover {
+					color: #222;
+				}
+
+		.side p {
+			padding: 10px 15px;
+		}
+
+		.side .navbar-collapse {
+			padding: 0;
+		}
+}
+
+.main {
+	padding: 10px 20px;
+}
+
+.navbar-default {
+	background-color: #f8f8f8;
+}
+
+.navbar-brand {
+	line-height: 24px;
+}

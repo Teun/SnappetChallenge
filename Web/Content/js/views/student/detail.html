@@ -1,0 +1,36 @@
+﻿<h1 class="page-header">Leerling #{{ studentOverview.userId }} leerdoel resultaten {{ studentOverview.date | date : 'dd-MM-yyyy' }}</h1>
+
+<p ng-if="loading">Bezig met laden...</p>
+
+<p ng-if="studentOverview == null && studentOverview == false" class="text-danger">Er is geen data gevonden.</p>
+
+<h2>Leerdoelen</h2>
+
+<table class="table table-condensed table-striped" ng-if="loading == false && studentOverview != null">
+	<thead>
+		<tr>
+			<th>Leerdoel</th>
+			<th class="text-right">Goed</th>
+			<th class="text-right">Fouten</th>
+			<th class="text-right">Percentage Correct</th>
+			<th class="text-right">Progressie</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="learningObjective in studentOverview.learningObjectives"
+			ng-class="{
+				warning: ((learningObjective.correct / (learningObjective.correct + learningObjective.incorrect)) * 100 < 60),
+				danger: ((learningObjective.correct / (learningObjective.correct + learningObjective.incorrect)) * 100 < 45)}
+			">
+			<td>{{ learningObjective.learningObjective }}</td>
+			<td class="text-right">{{ learningObjective.correct }}</td>
+			<td class="text-right">{{ learningObjective.incorrect }}</td>
+			<td class="text-right">{{ (learningObjective.correct / (learningObjective.correct + learningObjective.incorrect)) * 100 | number : 0 }} %</td>
+			<td class="text-right" ng-class="{'text-danger': learningObjective.progress < 0 }">{{ learningObjective.progress }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	<a ui-sref="student.list({date: studentOverview.date })" class="btn btn-default">Terug naar dag overzicht</a>
+</p>

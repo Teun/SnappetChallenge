@@ -1,0 +1,53 @@
+﻿
+<h1 class="page-header">Resultaten</h1>
+
+<h2>Zoeken</h2>
+
+<p ng-if="dates==null && dates == false" class="text-danger">Er is geen data gevonden.</p>
+
+<div class="form-group">
+	<label class="control-label">Datum</label>
+	<select ng-model="selectedDate" ng-options="date as date | date : 'dd-MM-yyyy' for date in dates track by date" ng-change="selectedDateChange()" class="form-control">
+		<option value="" ng-if="loading">Bezig met laden...</option>
+	</select>
+</div>
+
+<div ng-if="selectedDate == null && loading == false">
+	<p>Kies een dag om te bekijken</p>
+</div>
+
+<div ng-if="selectedDate != null">
+
+	<h2>Leerlingen</h2>
+
+	<p ng-if="overviewLoading">Bezig met laden...</p>
+
+	<p ng-if="studentOverviews == null && studentOverviews == false" class="text-danger">Er is geen data gevonden.</p>
+
+	<table class="table table-condensed table-striped" ng-if="overviewLoading == false && studentOverviews != null">
+		<thead>
+			<tr>
+				<th>Leerling</th>
+				<th>Leerdoelen</th>
+				<th class="text-right">Goed</th>
+				<th class="text-right">Fouten</th>
+				<th class="text-right">Percentage</th>
+				<th class="text-right">Progressie</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="studentOverview in studentOverviews"
+				ng-class="{
+					warning: ((studentOverview.correct / (studentOverview.correct + studentOverview.incorrect)) * 100 < 60),
+					danger: ((studentOverview.correct / (studentOverview.correct + studentOverview.incorrect)) * 100 < 55)}
+				">
+				<td><a ui-sref="student.detail({ date: selectedDate, userId: studentOverview.userId })">Leerling #{{ studentOverview.userId }}</a></td>
+				<td>{{ studentOverview.learningObjectives.length }}</td>
+				<td class="text-right">{{ studentOverview.correct }}</td>
+				<td class="text-right">{{ studentOverview.incorrect }}</td>
+				<td class="text-right">{{ (studentOverview.correct / (studentOverview.correct + studentOverview.incorrect)) * 100 | number : 0 }} %</td>
+				<td class="text-right" ng-class="{'text-danger': studentOverview.progress < 0 }">{{ studentOverview.progress }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

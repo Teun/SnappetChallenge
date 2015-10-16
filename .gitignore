@@ -1,0 +1,6 @@
+packages/
+.vs/
+node_modules/
+bower_components/
+Web/bin/
+Web/obj/

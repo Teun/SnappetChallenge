@@ -1,0 +1,38 @@
+﻿
+@{
+	ViewBag.Title = "Importeren";
+}
+
+@section menu {
+	<ul class="nav">
+		<li><a href="@Url.Action("Index", "Home")">Terug</a></li>
+	</ul>
+}
+
+<h1 class="page-header">Importeren</h1>
+
+<p>Er zijn momenteel @ViewBag.SubmittedAnswersCount resultaten aanwezig.</p>
+
+<p><a href="@Url.Action("Clear")" class="btn btn-danger">Resultaten verwijderen</a></p>
+
+<form method="post" action="@Url.Action("Import", "Home")" ng-init="submitting=false" enctype="multipart/form-data">
+
+	<div class="form-group">
+		<label for="file" class="control-label">Resultaten bestand</label>
+		<div class="form-control-static">
+			<input type="file" name="file" />
+		</div>
+	</div>
+	<p class="text-right">
+		<input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" ng-hide="submitting" ng-click="submitting=true" />
+	</p>
+	<p ng-if="submitting" class="text-muted">Bezig met versturen...</p>
+	
+	@if (TempData["ImportResults"] != null)
+	{
+	<div class="alert alert-info">
+		<p>@TempData["ImportResults"].ToString()</p>
+	</div>
+	}
+
+</form>
