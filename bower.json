@@ -1,0 +1,28 @@
+{
+  "name": "SnappetChallenge",
+  "version": "0.1.0",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "authors": [
+    "Tom Hofman <tom.hofman@gmail.com>"
+  ],
+  "license": "",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "ui-select": "angular-ui-select#~0.13.2",
+    "angular-sanitize": "~1.4.7",
+    "angular-bootstrap-datetimepicker": "~0.3.14"
+  }
+}

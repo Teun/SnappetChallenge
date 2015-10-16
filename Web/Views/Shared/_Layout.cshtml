@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="nl" ng-app="snappetApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewBag.Title</title>
+
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+
+	<link href="@Url.Content("~/Content/css/libs/bootstrap.min.css")?1" rel="stylesheet">
+	<link href="@Url.Content("~/Content/css/libs/select.min.css")?1" rel="stylesheet">
+	<link href="@Url.Content("~/Content/css/libs/datetimepicker.css")?1" rel="stylesheet">
+	<link href="@Url.Content("~/Content/css/app.css")?1" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 side">
+				<div class="navbar-header">
+					<a href="@Url.Action("Index", "Home")" class="navbar-brand">Snappet</a>
+				</div>
+
+				@RenderSection("menu", required: false)
+
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+				<div class="main" ng-cloak>
+
+					@RenderBody()
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="@Url.Content("~/Content/js/libs/angular.min.js")"></script>
+	<script src="@Url.Content("~/Content/js/libs/angular-sanitize.min.js")"></script>
+	<script src="@Url.Content("~/Content/js/libs/angular-ui-router.min.js")"></script>
+	<script src="@Url.Content("~/Content/js/libs/select.min.js")"></script>
+
+	<script src="@Url.Content("~/Content/js/libs/moment.js")"></script>
+	<script src="@Url.Content("~/Content/js/libs/datetimepicker.js")"></script>
+
+	<script src="@Url.Content("~/Content/js/app.js")"></script>
+	<script src="@Url.Content("~/Content/js/student.js")"></script>
+
+	@RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section menu {
+	<ul class="nav">
+		<li><a ui-sref="home">Dashboard</a></li>
+		<li><a ui-sref="student.list">Resultaten</a></li>
+		<li><a href="@Url.Action("Import", "Home")">Importeren</a></li>
+	</ul>
+}
+
+<div ui-view></div>
+

@@ -1,0 +1,90 @@
+﻿@model Web.Models.Import.SubmittedAnswer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SubmittedAnswer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmitDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmitDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Correct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Correct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Progress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Progress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExerciseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExerciseId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domain)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domain)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LearningObjective)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LearningObjective)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SubmittedAnswerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
