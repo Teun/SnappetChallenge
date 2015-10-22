@@ -1,10 +1,6 @@
 ﻿using SnappetChallenge.Domain.Entities;
 using SnappetChallenge.Services.Contracts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Snappet.Challenge.Web.Api
@@ -22,7 +18,5 @@ namespace Snappet.Challenge.Web.Api
         {
             return userService.GetAllUsers();
         }
-
-        
     }
 }

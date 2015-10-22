@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SnappetChallenge.Domain.Entities
 {
     public class Domain : IEntity
     {
-        public virtual long Id { get; set; }
-        public virtual string Description { get; set; }
+        public long Id { get; set; }
+        public string Description { get; set; }
         public virtual Subject Subject { get; set; }
         public virtual ICollection<LearningObjective> LearningObjectives { get; set; }
     }

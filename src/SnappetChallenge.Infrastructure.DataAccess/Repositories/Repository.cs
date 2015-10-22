@@ -2,14 +2,13 @@
 using SnappetChallenge.Domain.Contracts;
 using SnappetChallenge.Domain.Entities;
 using System.Linq;
-using System;
 using System.Collections.Generic;
 
 namespace SnappetChallenge.Infrastructure.DataAccess.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class, IEntity
     {
-        private DbSet<T> dbSet;
+        private readonly DbSet<T> dbSet;
 
         public Repository(DbContext context)
         {

@@ -1,11 +1,6 @@
 ﻿using Ninject.Modules;
 using SnappetChallenge.Domain.Contracts;
 using SnappetChallenge.Infrastructure.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SnappetChallenge.Infrastructure.DependencyResolution
 {

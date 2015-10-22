@@ -42,7 +42,7 @@ Other notes:
 
 The backend architecture is largely based on [The Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/), once coined by Jeffrey Palermo. It's typically a domain driven architecture that relies heavily on dependency inversion. What I like about this architecture is that it focuses on the core part, which consists of your actual domain and services (or at least the definitions). That's the part where you add value to business. The outer parts (such as your DAL or ui) are usually commodities. Everybody has a data access layer, it's not central to this architecture. It's just a way to implement your domain.
 
-What I like about this architecture is that the coupling is pretty straightforward, it is all towards the center of the onion. It basically means that the core has no dependencies and can be built independently. The outer parts implement the inner parts. I think it's an improvement over the typical n-tier architecture (ui -> BLL -> DAL).
+A big advantage is that coupling is pretty straightforward, it is all towards the center of the onion. It basically means that the core has no dependencies and can be built independently. The outer parts implement the inner parts. I think it's an improvement over the typical n-tier architecture (ui -> BLL -> DAL).
 
 ### Miscellaneous
 

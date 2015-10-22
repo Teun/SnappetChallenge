@@ -4,22 +4,17 @@ using SnappetChallenge.Domain.Contracts;
 using SnappetChallenge.Domain.Entities;
 using SnappetChallenge.Infrastructure.DataAccess.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SnappetChallenge.Infrastructure.DataAccess
 {
     public class SnappetChallengeContext : ISnappetChallengeContext, IDisposable
     {
-        private SnappetChallengeContextImplemented context;
+        private readonly SnappetChallengeContextImplemented context;
 
         public SnappetChallengeContext(string connectionString)
         {
             context = new SnappetChallengeContextImplemented(connectionString);
             context.Database.EnsureCreated();
-
         }
     
         public void Commit()
