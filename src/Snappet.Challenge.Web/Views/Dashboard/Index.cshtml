@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snappet Challenge</title>
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Snappet dashboard</a>
+        </div>
+
+
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="hidden-xs col-sm-4 col-md-3 col-lg-2 sidebar">
+                <ul class="nav nav-sidebar">
+
+                    @*<li><a href="#">Today's progress</a></li>*@
+                    <li><a href="#" id="timespent">Overall time spent by subject</a></li>
+
+                </ul>
+            </div>
+            <div class="col-sm-8 col-md-9 col-lg-10 col-lg-offset-2 col-md-offset-3 col-sm-offset-4 content">
+                
+                <div id="chartwrapper">
+                    <img id="busy" src="~/Content/busy.gif" style="display:none;">
+                    <canvas id="chart" width="400" height="400" style="display:none;"></canvas> 
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/lib/chartjs/Chart.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+
+            var colors = ['red', 'green', 'blue', 'fuchsia', 'lime', 'maroon', 'navy', 'orange', 'purple', 'yellow'];
+
+            function showTimeSpentInPercentageChart(percentages) {
+
+                var data = [];
+                
+                $.each(percentages, function (i, val) {
+     
+                    data.push(
+                    {
+                        value: val.Value.toFixed(2),
+                        label: val.Description,
+                        color: colors[Math.floor(Math.random() * colors.length)]
+                    });
+                });
+
+                var ctx = document.getElementById("chart").getContext("2d");
+                new Chart(ctx).Pie(data);
+            }
+
+            $(function () {
+                $('#timespent').click(function () {
+                    var url = '../api/subjects/GetTimeSpentInPercentagesBySubject?from=2015-10-22T01:20:13.2266157Z&until=2015-10-22T01:20:13.2266157Z';
+                    $('#chart').hide();
+                    $('#busy').show();
+                  
+                    $.ajax({
+                        url: url, success: function (result) {
+                            $('#busy').hide();
+                            $('#chart').show();
+                            showTimeSpentInPercentageChart(result);
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

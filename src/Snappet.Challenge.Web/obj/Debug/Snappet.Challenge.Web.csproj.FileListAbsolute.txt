@@ -1,0 +1,405 @@
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\csc.exe
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\vbc.exe
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\sqlite3.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll.config
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Common.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Helpers.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Mvc.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Razor.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\WebActivatorEx.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Core.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Interactive.Async.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Remotion.Linq.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Collections.Immutable.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Relational.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Common.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Razor.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Helpers.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Mvc.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Core.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Interactive.Async.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Remotion.Linq.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Collections.Immutable.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Relational.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.csprojResolveAssemblyReference.cache
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.pdb
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\App_Data\snappetchallenge.sqlite
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Newtonsoft.Json.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Newtonsoft.Json.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.xml
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.dll
+C:\Users\Robbie\Documents\Visual Studio 2015\Projects\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.csprojResolveAssemblyReference.cache
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\csc.exe
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\vbc.exe
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\sqlite3.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\App_Data\snappetchallenge.sqlite
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll.config
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Newtonsoft.Json.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Common.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Helpers.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Mvc.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Razor.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\WebActivatorEx.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Core.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Interactive.Async.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Remotion.Linq.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Collections.Immutable.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Relational.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Newtonsoft.Json.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Common.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Razor.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Helpers.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Web.Mvc.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\SnappetChallenge.Services.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Core.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Interactive.Async.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Remotion.Linq.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\System.Collections.Immutable.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\EntityFramework.Relational.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\SnappetChallenge\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\csc.exe
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\vbc.exe
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\sqlite3.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\App_Data\snappetchallenge.sqlite
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll.config
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Newtonsoft.Json.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Common.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Helpers.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Mvc.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Razor.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\WebActivatorEx.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Core.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Interactive.Async.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Remotion.Linq.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Collections.Immutable.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Relational.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Newtonsoft.Json.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Common.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Razor.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Helpers.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Mvc.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.pdb
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Core.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Interactive.Async.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Remotion.Linq.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Collections.Immutable.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Relational.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.xml
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.csprojResolveAssemblyReference.cache
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.dll
+C:\Users\r.luijben.HQ\Desktop\SnappetChallenge\src\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\csc.exe
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\vbc.exe
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\sqlite3.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\App_Data\snappetchallenge.sqlite
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll.config
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Snappet.Challenge.Web.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Newtonsoft.Json.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Common.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Helpers.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Mvc.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Razor.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\WebActivatorEx.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Core.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Interactive.Async.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Remotion.Linq.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Collections.Immutable.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Relational.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Entities.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DependencyResolution.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.Contracts.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.DependencyResolution.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Newtonsoft.Json.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Common.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.Mvc.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Ninject.Web.WebApi.WebHost.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Net.Http.Formatting.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Http.WebHost.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Razor.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Deployment.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Webpages.Razor.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Helpers.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Web.Mvc.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Domain.Contracts.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Infrastructure.DataAccess.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\SnappetChallenge.Services.pdb
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Core.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Data.Sqlite.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Sqlite.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Interactive.Async.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.Abstractions.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.Abstractions.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Remotion.Linq.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Abstractions.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\System.Collections.Immutable.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.DependencyInjection.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.OptionsModel.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Logging.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Caching.Memory.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\EntityFramework.Relational.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Primitives.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Abstractions.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\bin\Microsoft.Framework.Configuration.Binder.xml
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.csprojResolveAssemblyReference.cache
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.dll
+C:\snapgit\SnappetChallenge\src\Snappet.Challenge.Web\obj\Debug\Snappet.Challenge.Web.pdb
