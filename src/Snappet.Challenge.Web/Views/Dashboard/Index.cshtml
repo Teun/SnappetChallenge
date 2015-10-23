@@ -29,18 +29,16 @@
             <div class="hidden-xs col-sm-4 col-md-3 col-lg-2 sidebar">
                 <ul class="nav nav-sidebar">
 
-                    @*<li><a href="#">Today's progress</a></li>*@
                     <li><a href="#" id="timespent">Overall time spent by subject</a></li>
+                    <li><a href="#" id="progresstoday">Today's progress</a></li>
 
                 </ul>
             </div>
-            <div class="col-sm-8 col-md-9 col-lg-10 col-lg-offset-2 col-md-offset-3 col-sm-offset-4 content">
-                
-                <div id="chartwrapper">
-                    <img id="busy" src="~/Content/busy.gif" style="display:none;">
-                    <canvas id="chart" width="400" height="400" style="display:none;"></canvas> 
-                </div>
- 
+            <div id ="chartparent" class="col-sm-8 col-md-9 col-lg-10 col-lg-offset-2 col-md-offset-3 col-sm-offset-4 content">
+
+                    <img class="chart" id="busy" src="~/Content/busy.gif" style="display:none;">
+                    <canvas class="chart" id="chart" width="400" height="400" style="display:none;"></canvas> 
+            
             </div>
         </div>
     </div>
@@ -51,9 +49,10 @@
     <script type="text/javascript">
         (function () {
 
+            var currentChart;
             var colors = ['red', 'green', 'blue', 'fuchsia', 'lime', 'maroon', 'navy', 'orange', 'purple', 'yellow'];
 
-            function showTimeSpentInPercentageChart(percentages) {
+            function showPie(percentages) {
 
                 var data = [];
                 
@@ -68,12 +67,52 @@
                 });
 
                 var ctx = document.getElementById("chart").getContext("2d");
-                new Chart(ctx).Pie(data);
+
+                if (currentChart != null)
+                    currentChart.destroy();
+
+                currentChart = new Chart(ctx).Pie(data);
             }
+
+            function showBar(values) {
+
+                var data = [];
+                var labels = [];
+                var progress = [];
+
+                $.each(values, function (i, val) {
+
+                    labels.push(val.Name);
+                    progress.push(val.Progress);
+                });
+
+                var data = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "Progress",
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: progress
+                        }
+     
+                    ]
+                };
+
+                var ctx = document.getElementById("chart").getContext("2d");
+
+                if (currentChart != null)
+                    currentChart.destroy();
+
+                currentChart = new Chart(ctx).Bar(data, { barValueSpacing: 15});
+            }
+
 
             $(function () {
                 $('#timespent').click(function () {
-                    var url = '../api/subjects/GetTimeSpentInPercentagesBySubject?from=2015-10-22T01:20:13.2266157Z&until=2015-10-22T01:20:13.2266157Z';
+                    var url = '../api/subjects/GetTimeSpentInPercentagesBySubject?from=2015-03-02T00:00:00.0000000Z&until=2015-03-03T00:00:00.0000000Z';
                     $('#chart').hide();
                     $('#busy').show();
                   
@@ -81,7 +120,21 @@
                         url: url, success: function (result) {
                             $('#busy').hide();
                             $('#chart').show();
-                            showTimeSpentInPercentageChart(result);
+                            showPie(result);
+                        }
+                    });
+                });
+
+                $('#progresstoday').click(function () {
+                    var url = '../api/users/GetProgressByUser?from=2015-03-02T00:00:00.0000000Z&until=2015-03-03T00:00:00.0000000Z';
+                    $('#chart').hide();
+                    $('#busy').show();
+
+                    $.ajax({
+                        url: url, success: function (result) {
+                            $('#busy').hide();
+                            $('#chart').show();
+                            showBar(result);
                         }
                     });
                 });

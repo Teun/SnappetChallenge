@@ -21,6 +21,28 @@ namespace SnappetChallenge.Services
             return context.GetRepository<User>().GetAll().ToList();
         }
 
+        public Dictionary<User, int> GetProgressByUser(DateTime from, DateTime until)
+        {
+            var allAnswers = context.GetRepository<SubmittedAnswer>().GetAll();
+
+            var dictionary =
+                (
+                    from answer in allAnswers
+                    where answer.SubmittedOn >= @from && answer.SubmittedOn <= until
+                    group answer by answer.SubmittedBy
+                    into grp
+                    select new
+                    {
+                        User = grp.Key,
+                        Progress = grp.Sum(a => a.Progress)
+                    }
+                )
+                .OrderBy(u => u.Progress)
+                .ToDictionary(result => result.User, result => result.Progress);
+
+            return dictionary;
+        }
+
         public int GetUserCount()
         {
             var users = context.GetRepository<User>().GetAll();

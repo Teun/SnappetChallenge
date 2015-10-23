@@ -19,11 +19,14 @@
         margin-bottom: 0px;
 }
 
-#percentagePie {
-    margin-top:50px;
+.chart {
+    display: block;
+    margin: 0 auto;
+        margin-top: 100px;
 }
 
-#chartwrapper {
-    padding-left: 50px;
-    padding-top: 50px;
+ 
+#busy {
+           margin-top: 200px;
 }
+ 

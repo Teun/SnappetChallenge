@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SnappetChallenge.Domain.Entities;
 using SnappetChallenge.Domain.Contracts;
 
@@ -18,28 +16,28 @@ namespace SnappetChallenge.Services
             this.context = context;
         }
 
-        public Dictionary<string, float> GetTimeSpentInPercentagesBySubject(DateTime from, DateTime until)
+        public Dictionary<Subject, float> GetTimeSpentInPercentagesBySubject(DateTime from, DateTime until)
         {
-            // EF7 prerelease is buggy as hell, need to actually load in nearly the entire db here, so much for IQueryable
+            var allAnswers = context.GetRepository<SubmittedAnswer>().GetAll();
 
-            context.GetRepository<LearningObjective>().GetAll().ToList();
-            context.GetRepository<Domain.Entities.Domain>().GetAll().ToList();
-            context.GetRepository<Subject>().GetAll().ToList();
-            var exercises = context.GetRepository<Exercise>().GetAll().ToList();
+            var filteredAnswers =
+                from answer in allAnswers
+                where answer.SubmittedOn >= @from && answer.SubmittedOn <= until
+                select answer;
 
-            int total = exercises.Count();
+            int count = filteredAnswers.Count();
 
             var resultDictionary =
                 (
-                    from exercise in exercises
-                    group exercise by exercise.LearningObjective.Domain.Subject
+                    from answer in filteredAnswers
+                    group answer by answer.Exercise.LearningObjective.Domain.Subject
                     into grp
                     select new
                     {
                         Subject = grp.Key,
-                        Percentage = (grp.Count() / (float)total) * 100
+                        Percentage = (grp.Count() / (float)count) * 100
                     }
-                ).ToDictionary(result => result.Subject.Description, result => result.Percentage);
+                ).ToDictionary(result => result.Subject, result => result.Percentage);
 
             return resultDictionary;
         }

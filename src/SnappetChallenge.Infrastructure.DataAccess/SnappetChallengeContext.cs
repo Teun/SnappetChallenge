@@ -1,9 +1,10 @@
-﻿using Microsoft.Data.Entity;
-using Microsoft.Data.Sqlite;
-using SnappetChallenge.Domain.Contracts;
+﻿using SnappetChallenge.Domain.Contracts;
 using SnappetChallenge.Domain.Entities;
 using SnappetChallenge.Infrastructure.DataAccess.Repositories;
 using System;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Diagnostics;
 
 namespace SnappetChallenge.Infrastructure.DataAccess
 {
@@ -11,10 +12,10 @@ namespace SnappetChallenge.Infrastructure.DataAccess
     {
         private readonly SnappetChallengeContextImplemented context;
 
-        public SnappetChallengeContext(string connectionString)
+        public SnappetChallengeContext()
         {
-            context = new SnappetChallengeContextImplemented(connectionString);
-            context.Database.EnsureCreated();
+            context = new SnappetChallengeContextImplemented();
+            context.Database.Log = new Action<string>((sql) => { Debug.WriteLine(sql); });
         }
     
         public void Commit()
@@ -67,17 +68,10 @@ namespace SnappetChallenge.Infrastructure.DataAccess
     }
 
     // Composition over inheritance
-    // Doing this specifically from code to get EF7 working with Sqlite and code first
+ 
     internal class SnappetChallengeContextImplemented : DbContext
     {
-        private readonly string connectionString;
-
-        public SnappetChallengeContextImplemented(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Explicitly define model here (generic repo leads to lack of conventions)
             modelBuilder.Entity<Subject>();
@@ -86,12 +80,9 @@ namespace SnappetChallenge.Infrastructure.DataAccess
             modelBuilder.Entity<Exercise>();
             modelBuilder.Entity<SubmittedAnswer>();
             modelBuilder.Entity<User>();
-        }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var connection = new SqliteConnection(connectionString);
-            optionsBuilder.UseSqlite(connection);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Add(new ForeignKeyNamingConvention());
         }
     }
 }

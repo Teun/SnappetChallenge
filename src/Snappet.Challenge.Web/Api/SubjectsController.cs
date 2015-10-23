@@ -21,7 +21,7 @@ namespace Snappet.Challenge.Web.Api
             // preferrably return a dto here, just like a regular controller returns a viewmodel instead of an entity
             var percentages = subjectService.GetTimeSpentInPercentagesBySubject(from, until);
 
-            var returnValue = percentages.Select(kvp => new { Description = kvp.Key, Value = kvp.Value });
+            var returnValue = percentages.Select(kvp => new { Description = kvp.Key.Description, Value = kvp.Value });
 
             return Request.CreateResponse(HttpStatusCode.OK, returnValue);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SnappetChallenge.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace SnappetChallenge.Services.Contracts
@@ -14,6 +15,6 @@ namespace SnappetChallenge.Services.Contracts
         /// <param name="from">The start of the range in which the answers of a subject should fall</param>
         /// <param name="until">The end of the range in which the answers of a subject should fall</param>
         /// <returns>A dictionary containing each subject and the percentage spent on that subject</returns>
-        Dictionary<string, float> GetTimeSpentInPercentagesBySubject(DateTime from, DateTime until);
+        Dictionary<Subject, float> GetTimeSpentInPercentagesBySubject(DateTime from, DateTime until);
     }
 }

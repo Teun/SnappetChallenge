@@ -1,8 +1,8 @@
-﻿using Microsoft.Data.Entity;
-using SnappetChallenge.Domain.Contracts;
+﻿using SnappetChallenge.Domain.Contracts;
 using SnappetChallenge.Domain.Entities;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace SnappetChallenge.Infrastructure.DataAccess.Repositories
 {

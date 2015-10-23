@@ -1,4 +1,5 @@
 ﻿using SnappetChallenge.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace SnappetChallenge.Services.Contracts
@@ -19,5 +20,7 @@ namespace SnappetChallenge.Services.Contracts
         /// </summary>
         /// <returns>The total number of users</returns>
         int GetUserCount();
+
+        Dictionary<User, int> GetProgressByUser(DateTime from, DateTime until);
     }
 }
