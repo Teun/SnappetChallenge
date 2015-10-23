@@ -104,7 +104,7 @@ namespace SnappetChallenge.Tools.Parser
                 .ToList();
 
             // for the sake of brevity I'm skipping the dependency inversion here
-            using (var context = new SnappetChallengeContext("Data Source=snappetchallenge.sqlite"))
+            using (var context = new SnappetChallengeContext())
             {
                 context.GetRepository<Subject>().AddRange(subjects);
                 context.GetRepository<Domain.Entities.Domain>().AddRange(domains);
