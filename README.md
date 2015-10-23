@@ -9,6 +9,8 @@ This is my submission for the [SnappetChallenge](https://github.com/Teun/Snappet
 * ???
 * Profit
 
+Note: Visual Studio occasionally refuses to copy dependencies to the web/bin folder. If the web project throws an exception, build the SnappetChallenge.Infrastructure.DependencyResolution project and retry.
+
 Sqlite is embedded as database so it should be able to run standalone. You may need to update nuget to view packages.
 
 ### Frameworks and tools used
