@@ -265,9 +265,6 @@
     <Content Include="lib\jquery\src\var\support.js" />
     <Content Include="lib\jquery\src\var\toString.js" />
     <Content Include="lib\jquery\src\wrap.js" />
-    <Content Include="SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
