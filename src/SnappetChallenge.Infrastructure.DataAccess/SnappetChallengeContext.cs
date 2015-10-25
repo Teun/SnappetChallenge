@@ -15,7 +15,7 @@ namespace SnappetChallenge.Infrastructure.DataAccess
         public SnappetChallengeContext()
         {
             context = new SnappetChallengeContextImplemented();
-            context.Database.Log = new Action<string>((sql) => { Debug.WriteLine(sql); });
+            context.Database.Log = sql => { Debug.WriteLine(sql); };
         }
     
         public void Commit()

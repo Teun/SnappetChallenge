@@ -27,8 +27,7 @@ namespace SnappetChallenge.Infrastructure.DataAccess.Repositories
 
         public T Get(long id)
         {
-            // EF7 does not implement find (yet) so no local caching, but for demo purposes this is good enough
-            return dbSet.Single(e => e.Id == id);
+            return dbSet.Find(id);
         }
 
         public IQueryable<T> GetAll()

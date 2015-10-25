@@ -14,7 +14,7 @@ namespace SnappetChallenge.Services.Contracts
         /// </summary>
         /// <param name="from">The start of the range in which the answers of a subject should fall</param>
         /// <param name="until">The end of the range in which the answers of a subject should fall</param>
-        /// <returns>A dictionary containing each subject and the percentage spent on that subject</returns>
+        /// <returns>A dictionary containing each subject and the percentage of time spent on that subject</returns>
         Dictionary<Subject, float> GetTimeSpentInPercentagesBySubject(DateTime from, DateTime until);
     }
 }
