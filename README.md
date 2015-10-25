@@ -9,7 +9,7 @@ This is my submission for the [SnappetChallenge](https://github.com/Teun/Snappet
 * ???
 * Profit
 
-Note: Visual Studio occasionally refuses to copy dependencies to the web/bin folder. If the web project throws an exception, build the SnappetChallenge.Infrastructure.DependencyResolution project and retry.
+Note: Visual Studio occasionally refuses to copy the EF dependencies to the web/bin folder of the MVC project, this is a [known problem](http://stackoverflow.com/questions/14033193/entity-framework-provider-type-could-not-be-loaded). If the web project throws an exception, build the SnappetChallenge.Infrastructure.DependencyResolution project and retry. A often suggested solution is to add the EF package to the MVC project so it gets copied to the bin folder, but we don't really want a dependency on EF in the MVC project.
 
 Sqlite is embedded as database so it should be able to run standalone. You may need to update nuget to view packages.
 
