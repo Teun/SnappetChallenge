@@ -38,7 +38,7 @@ Is it really useful to abstract the DbContext into a generic context and subsequ
 Other notes:
 
 * Repositories in this solution do expose IQueryable but they are wrapped by a service layer in order to keep querying logic out of presentation
-* Instead of repositories, the service layer could use query/command objects 
+* Instead of generic repositories, the service layer could use query/command objects 
 * Service layer is just a meaningful API that exposes the business logic contained in the domain. It prevents stuff from creeping into the MVC controllers
 
 ### Thoughts and musings on architecture
