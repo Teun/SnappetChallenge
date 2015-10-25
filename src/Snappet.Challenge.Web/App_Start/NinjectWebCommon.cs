@@ -1,3 +1,6 @@
+using Ninject.Activation;
+using Ninject.Syntax;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Snappet.Challenge.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Snappet.Challenge.Web.App_Start.NinjectWebCommon), "Stop")]
 
@@ -66,9 +69,19 @@ namespace Snappet.Challenge.Web.App_Start
         {
             kernel.Load(new INinjectModule[] 
             {
-                new ServiceModule(),
-                new DataAccessModule(string.Format("Data Source={0}", System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/snappetchallenge.sqlite")))
+                new ServiceModule(GetScopeOwner),
+                new DataAccessModule(GetScopeOwner) 
             });
-        }        
+        }
+
+        /// <summary>
+        /// Return the current HttpContext as owner so that at the end of every HttpRequest all bindings are disposed
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        private static object GetScopeOwner(IContext context)
+        {
+            return HttpContext.Current;
+        }
     }
 }

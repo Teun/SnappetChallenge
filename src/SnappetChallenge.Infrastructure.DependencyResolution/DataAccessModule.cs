@@ -1,4 +1,6 @@
-﻿using Ninject.Modules;
+﻿using System;
+using Ninject.Activation;
+using Ninject.Modules;
 using SnappetChallenge.Domain.Contracts;
 using SnappetChallenge.Infrastructure.DataAccess;
 
@@ -6,16 +8,20 @@ namespace SnappetChallenge.Infrastructure.DependencyResolution
 {
     public class DataAccessModule : NinjectModule
     {
-        private readonly string connectionString;
+        private readonly Func<IContext, object> scopeCallback;
 
-        public DataAccessModule(string connectionString)
+        public DataAccessModule(Func<IContext, object> scopeCallback)
         {
-            this.connectionString = connectionString;
+            this.scopeCallback = scopeCallback;
+
         }
 
         public override void Load()
         {
-            Bind<ISnappetChallengeContext>().To<SnappetChallengeContext>().WithConstructorArgument("connectionString", connectionString);
+            Bind<ISnappetChallengeContext>().To<SnappetChallengeContext>();
+
+            foreach (var binding in Bindings)
+                binding.ScopeCallback = scopeCallback;;
         }
     }
 }

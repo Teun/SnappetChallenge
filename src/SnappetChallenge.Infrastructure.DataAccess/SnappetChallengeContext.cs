@@ -26,7 +26,7 @@ namespace SnappetChallenge.Infrastructure.DataAccess
         public IRepository<T> GetRepository<T>() where T : class, IEntity
         {
             // could be cached depending on your application needs
-            var repository = (IRepository<T>)Activator.CreateInstance(typeof(Repository<T>), new[] {context });
+            var repository = (IRepository<T>)Activator.CreateInstance(typeof(Repository<T>), context);
             return repository;
         }
 
