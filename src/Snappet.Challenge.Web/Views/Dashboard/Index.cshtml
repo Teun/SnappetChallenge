@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snappet Challenge</title>
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Snappet dashboard</a>
+        </div>
+
+
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="hidden-xs col-sm-4 col-md-3 col-lg-2 sidebar">
+                <ul class="nav nav-sidebar">
+
+                    <li><a href="#" id="timespent">Overall time spent by subject</a></li>
+                    <li><a href="#" id="progresstoday">Today's progress</a></li>
+
+                </ul>
+            </div>
+            <div id ="chartparent" class="col-sm-8 col-md-9 col-lg-10 col-lg-offset-2 col-md-offset-3 col-sm-offset-4 content">
+
+                    <img class="chart" id="busy" src="~/Content/busy.gif" style="display:none;">
+                    <canvas class="chart" id="chart" width="400" height="400" style="display:none;"></canvas> 
+            
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/lib/chartjs/Chart.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+
+            var currentChart;
+            var colors = ['red', 'green', 'blue', 'fuchsia', 'lime', 'maroon', 'navy', 'orange', 'purple', 'yellow'];
+
+            function showPie(percentages) {
+
+                var data = [];
+                
+                $.each(percentages, function (i, val) {
+     
+                    data.push(
+                    {
+                        value: val.Value.toFixed(2),
+                        label: val.Description,
+                        color: colors[Math.floor(Math.random() * colors.length)]
+                    });
+                });
+
+                var ctx = document.getElementById("chart").getContext("2d");
+
+                if (currentChart != null)
+                    currentChart.destroy();
+
+                currentChart = new Chart(ctx).Pie(data);
+            }
+
+            function showBar(values) {
+
+                var data = [];
+                var labels = [];
+                var progress = [];
+
+                $.each(values, function (i, val) {
+
+                    labels.push(val.Name);
+                    progress.push(val.Progress);
+                });
+
+                var data = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "Progress",
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: progress
+                        }
+     
+                    ]
+                };
+
+                var ctx = document.getElementById("chart").getContext("2d");
+
+                if (currentChart != null)
+                    currentChart.destroy();
+
+                currentChart = new Chart(ctx).Bar(data, { barValueSpacing: 15});
+            }
+
+
+            $(function () {
+                $('#timespent').click(function () {
+                    var url = '../api/subjects/GetTimeSpentInPercentagesBySubject?from=2015-03-02T00:00:00.0000000Z&until=2015-03-03T00:00:00.0000000Z';
+                    $('#chart').hide();
+                    $('#busy').show();
+                  
+                    $.ajax({
+                        url: url, success: function (result) {
+                            $('#busy').hide();
+                            $('#chart').show();
+                            showPie(result);
+                        }
+                    });
+                });
+
+                $('#progresstoday').click(function () {
+                    var url = '../api/users/GetProgressByUser?from=2015-03-02T00:00:00.0000000Z&until=2015-03-03T00:00:00.0000000Z';
+                    $('#chart').hide();
+                    $('#busy').show();
+
+                    $.ajax({
+                        url: url, success: function (result) {
+                            $('#busy').hide();
+                            $('#chart').show();
+                            showBar(result);
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

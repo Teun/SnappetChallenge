@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snappet Challenge</title>
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="~/lib/chartist/dist/chartist.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Snappet dashboard</a>
+        </div>
+        
+         
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="hidden-xs col-sm-4 col-md-3 col-lg-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    
+                    <li><a href="#">Today's progress</a></li>
+                    <li><a href="#" id="timespent">Overall time spent by subject</a></li>
+
+                </ul>
+            </div>
+            <div class="col-sm-8 col-md-9 col-lg-10 col-lg-offset-2 col-md-offset-3 col-sm-offset-4 content">
+                
+                <div class="chart">
+                    <div id="percentagePie">
+
+                    </div>
+
+                </div>
+                  
+               
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+     
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/lib/knockout/dist/knockout.js"></script>
+    <script type="text/javascript" src="~/lib/chartist/dist/chartist.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+
+            function showTimeSpentInPercentageChart(percentages) {
+
+                var arr = Object.keys(percentages).map(function (key) { return percentages[key] });
+
+                var labels = [];
+                var series = [];
+
+                $.each(percentages, function (i, val) {
+                    labels.push(val.Description);
+                    series.push(val.Value);
+                });
+
+                var data = {
+                    labels: labels,
+                    series: series
+                };
+
+                var options = {
+                    labelInterpolationFnc: function (value) {
+                        return value[0]
+                    }
+                };
+
+                var responsiveOptions = [
+                  ['screen and (min-width: 640px)', {
+                      chartPadding: 30,
+                      labelOffset: 100,
+                      labelDirection: 'explode',
+                      labelInterpolationFnc: function (value) {
+                          return value;
+                      }
+                  }],
+                  ['screen and (min-width: 1024px)', {
+                      labelOffset: 80,
+                      chartPadding: 20
+                  }]
+                ];
+
+                new Chartist.Pie('#percentagePie', data, options, responsiveOptions);
+            }
+
+            $(function () {
+                $('#timespent').click(function () {
+                    var url = 'api/subjects/GetTimeSpentInPercentagesBySubject?from=2015-10-22T01:20:13.2266157Z&until=2015-10-22T01:20:13.2266157Z';
+                    $.ajax({
+                        url: url, success: function (result) {
+                            showTimeSpentInPercentageChart(result);
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

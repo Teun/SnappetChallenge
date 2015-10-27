@@ -1,0 +1,108 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Challenge.Web", "Snappet.Challenge.Web\Snappet.Challenge.Web.csproj", "{ADC16ABA-9E5D-4623-AE9B-EB2AB518DABB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{BAA036BA-9425-40F8-83AA-4017DC30156E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6C4AED1E-58E2-47BC-AF93-984C49FC2560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6CB79B34-12FA-49C4-BF83-B2687C5DE9BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1FB431C2-A2B1-4C62-8CBB-7897BE8233B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Infrastructure.DataAccess", "SnappetChallenge.Infrastructure.DataAccess\SnappetChallenge.Infrastructure.DataAccess.csproj", "{F3F9E7D6-49D4-4E2D-8A0A-3F3396F02620}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{C495FBC8-811B-458D-8C3B-2E16A7D9F607}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{03A684B8-2806-4310-A5A1-A21FBE3B5AEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{B7913601-6B86-490C-A241-FD0C51732931}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{730440D2-B5B7-4422-9475-41D246106A7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{16780FCB-159B-47DC-9EE7-E3F84A5522AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Domain.Entities", "SnappetChallenge.Domain.Entities\SnappetChallenge.Domain.Entities.csproj", "{27EA9F59-1D60-4DE2-BAD8-AA92ED71B1B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Services.Contracts", "SnappetChallenge.Services.Contracts\SnappetChallenge.Services.Contracts.csproj", "{8A8064C5-8551-4ECC-AA2E-28BE99D16E3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Services", "SnappetChallenge.Services\SnappetChallenge.Services.csproj", "{645F8CF2-9F81-4F1E-8502-034213F7BA09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D4DDC157-1968-4585-8F2C-807963FCA93D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Domain.Contracts", "SnappetChallenge.Domain.Contracts\SnappetChallenge.Domain.Contracts.csproj", "{F7BC7DD6-5F8F-45D2-A726-213401BD848A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Infrastructure.DependencyResolution", "SnappetChallenge.Infrastructure.DependencyResolution\SnappetChallenge.Infrastructure.DependencyResolution.csproj", "{F2F2A37A-5083-4EED-BE62-D9225A34B1B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Services.DependencyResolution", "SnappetChallenge.Services.DependencyResolution\SnappetChallenge.Services.DependencyResolution.csproj", "{D0AABE0E-4784-4706-BB1A-0875CE330DC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{79C06E7C-2624-4372-ABD5-DCDE2900E219}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Tools.Parser", "SnappetChallenge.Tools.Parser\SnappetChallenge.Tools.Parser.csproj", "{AF404140-FD03-422C-B8AA-9D66A3B92F3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADC16ABA-9E5D-4623-AE9B-EB2AB518DABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC16ABA-9E5D-4623-AE9B-EB2AB518DABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC16ABA-9E5D-4623-AE9B-EB2AB518DABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC16ABA-9E5D-4623-AE9B-EB2AB518DABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F9E7D6-49D4-4E2D-8A0A-3F3396F02620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F9E7D6-49D4-4E2D-8A0A-3F3396F02620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F9E7D6-49D4-4E2D-8A0A-3F3396F02620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F9E7D6-49D4-4E2D-8A0A-3F3396F02620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27EA9F59-1D60-4DE2-BAD8-AA92ED71B1B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27EA9F59-1D60-4DE2-BAD8-AA92ED71B1B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27EA9F59-1D60-4DE2-BAD8-AA92ED71B1B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27EA9F59-1D60-4DE2-BAD8-AA92ED71B1B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A8064C5-8551-4ECC-AA2E-28BE99D16E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8064C5-8551-4ECC-AA2E-28BE99D16E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8064C5-8551-4ECC-AA2E-28BE99D16E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8064C5-8551-4ECC-AA2E-28BE99D16E3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645F8CF2-9F81-4F1E-8502-034213F7BA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645F8CF2-9F81-4F1E-8502-034213F7BA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645F8CF2-9F81-4F1E-8502-034213F7BA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645F8CF2-9F81-4F1E-8502-034213F7BA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7BC7DD6-5F8F-45D2-A726-213401BD848A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7BC7DD6-5F8F-45D2-A726-213401BD848A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7BC7DD6-5F8F-45D2-A726-213401BD848A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7BC7DD6-5F8F-45D2-A726-213401BD848A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2F2A37A-5083-4EED-BE62-D9225A34B1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F2A37A-5083-4EED-BE62-D9225A34B1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F2A37A-5083-4EED-BE62-D9225A34B1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F2A37A-5083-4EED-BE62-D9225A34B1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AABE0E-4784-4706-BB1A-0875CE330DC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AABE0E-4784-4706-BB1A-0875CE330DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AABE0E-4784-4706-BB1A-0875CE330DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AABE0E-4784-4706-BB1A-0875CE330DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF404140-FD03-422C-B8AA-9D66A3B92F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF404140-FD03-422C-B8AA-9D66A3B92F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF404140-FD03-422C-B8AA-9D66A3B92F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF404140-FD03-422C-B8AA-9D66A3B92F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ADC16ABA-9E5D-4623-AE9B-EB2AB518DABB} = {C495FBC8-811B-458D-8C3B-2E16A7D9F607}
+		{BAA036BA-9425-40F8-83AA-4017DC30156E} = {730440D2-B5B7-4422-9475-41D246106A7B}
+		{F3F9E7D6-49D4-4E2D-8A0A-3F3396F02620} = {1FB431C2-A2B1-4C62-8CBB-7897BE8233B1}
+		{C495FBC8-811B-458D-8C3B-2E16A7D9F607} = {6C4AED1E-58E2-47BC-AF93-984C49FC2560}
+		{03A684B8-2806-4310-A5A1-A21FBE3B5AEC} = {6C4AED1E-58E2-47BC-AF93-984C49FC2560}
+		{B7913601-6B86-490C-A241-FD0C51732931} = {6C4AED1E-58E2-47BC-AF93-984C49FC2560}
+		{16780FCB-159B-47DC-9EE7-E3F84A5522AB} = {730440D2-B5B7-4422-9475-41D246106A7B}
+		{27EA9F59-1D60-4DE2-BAD8-AA92ED71B1B1} = {BAA036BA-9425-40F8-83AA-4017DC30156E}
+		{8A8064C5-8551-4ECC-AA2E-28BE99D16E3B} = {16780FCB-159B-47DC-9EE7-E3F84A5522AB}
+		{645F8CF2-9F81-4F1E-8502-034213F7BA09} = {D4DDC157-1968-4585-8F2C-807963FCA93D}
+		{F7BC7DD6-5F8F-45D2-A726-213401BD848A} = {BAA036BA-9425-40F8-83AA-4017DC30156E}
+		{F2F2A37A-5083-4EED-BE62-D9225A34B1B6} = {1FB431C2-A2B1-4C62-8CBB-7897BE8233B1}
+		{D0AABE0E-4784-4706-BB1A-0875CE330DC0} = {D4DDC157-1968-4585-8F2C-807963FCA93D}
+		{AF404140-FD03-422C-B8AA-9D66A3B92F3D} = {79C06E7C-2624-4372-ABD5-DCDE2900E219}
+	EndGlobalSection
+EndGlobal
