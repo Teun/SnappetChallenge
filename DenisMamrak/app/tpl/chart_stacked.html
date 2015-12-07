@@ -1,0 +1,20 @@
+<div class="chart stacked">
+	<div class="tooltip" ng-show="tooltip.show">
+		Domain: {{tooltip.data.Domain}}
+		<br />
+		Subject: {{tooltip.data.Subject}}
+		<br />
+		Objective: {{tooltip.data.LearningObjective}}
+		<br />
+		Date: {{tooltip.data.Date | moment:'format':'DD MMM YYYY'}}
+		<br />
+		Progress:
+		{{tooltip.data.Progress > 0 ? 'Positive' : ''}}
+		{{tooltip.data.Progress < 0 ? 'Negative' : ''}}
+		{{tooltip.data.Progress == 0 ? 'None' : ''}}
+		({{tooltip.data.Progress}})
+		
+	</div>
+
+	<svg></svg>
+</div>

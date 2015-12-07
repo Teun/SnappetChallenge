@@ -1,0 +1,55 @@
+<div>
+	<filters
+		template="tpl/profile_filters.html"
+		filters="profile.filters"
+		data="profile.categories"
+		callback="profile.filter(filters)">
+	</filters>
+
+	<div class="timeline">
+		<chart-stacked
+			width="auto"
+			height="auto"
+			ng-if="profile.data.list.length"
+			data="profile.data.list"
+			map="{date: 'Date', value: 'Value', type: 'Type'}"
+			click="profile.drill(data)">
+		</chart-stacked>
+
+		<div ng-if="profile.data && !profile.data.list.length" class="nodata">Your search did not match any results</div>
+	</div>
+
+	<!-- Exercises -->
+	<div class="exercises" auto-height="0" ng-if="profile.timeline"> 
+		<div class="domain" ng-repeat="(domain, subjects) in profile.timeline">
+			<div class="subject" ng-repeat="(subject, objectives) in subjects">
+				<h1>{{domain}}: {{subject}}.</h1>
+				<div class="objective" ng-repeat="(objective, exercises) in objectives">
+					<h2>{{objective}}:</h2>
+					<!-- Exercise -->
+					<div
+						class="exercise {{exercise.Progress > 0 ? 'positive' : ''}} {{exercise.Progress < 0 ? 'negative' : ''}}"
+						ng-repeat="exercise in exercises">
+						<h3>Exercise {{exercise.ExerciseId}}.</h3>
+						Difficulty: {{exercise.Difficulty == 'NULL' ? 0 : exercise.Difficulty}}
+						<br />
+						Progress: {{exercise.Progress}}
+						<br />
+						Time: {{exercise.SubmitDateTime | moment:'format':'HH:mm:SS'}}
+						<br />
+						Attempts:
+						<span
+							ng-repeat="attempt in exercise.Attempts"
+							class="attempt {{attempt.Correct ? 'correct' : 'incorrect'}}">
+							{{attempt.Correct ? '+' : '-'}}
+						</span>
+					</div>
+					<!-- /Exercise -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Exercises -->
+
+	<div class="modal" ng-show="profile.loading"></div>
+</div>

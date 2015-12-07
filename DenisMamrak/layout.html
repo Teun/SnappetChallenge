@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body, h1, p, ul {
+			margin: 0;
+			padding: 0;
+			font-weight: normal;
+		}
+
+		ul {
+			list-style-type: none;
+		}
+
+		body {
+			font-family: sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+
+		/* Truncated string */
+
+		.truncated {
+			margin: 0.5em;
+			color: #FFF;
+			background-color: #2CA5D7;
+		}
+
+		.truncated.first {
+			direction: rtl;
+			unicode-bidi: bidi-override;
+			white-space: nowrap;
+			overflow: hidden;
+			text-align: left;
+			text-overflow: ellipsis;
+		}
+
+		.truncated.second {
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.truncated.second:after {
+			content: "...";
+			float: left;
+			width: 1em;
+			padding: 0 1px 0 1em;
+			margin: -1.5em -1em 0 -1em;
+			text-align: center;
+			background: #2CA5D7;
+		}
+
+		.truncated.second .container {
+			float: right;
+			min-width: 100%;
+			margin-left: -1px;
+		}
+
+
+		/* Status bar */
+
+		.header {
+			height: 5em;
+			margin: 0.5em;
+			color: #FFF;
+			background: #2CA5D7;
+		}
+
+		.header .brand,
+		.header .status
+		{
+			height: 100%;
+			padding: 0 1rem;
+			overflow: hidden;
+			box-sizing: border-box;
+		}
+
+		.header .brand:after,
+		.header .status:after
+		{
+			content: "";
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+
+		.header .brand {
+			float: left;
+		}
+
+		.header .status {
+			white-space: nowrap;
+			text-align: right;
+		}
+
+		.header .status .text {
+			display: inline-block;
+			max-width: 100%;
+			margin: auto;
+			text-align: left;
+			vertical-align: middle;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			box-sizing: border-box;
+		}
+
+
+		/* Grid */
+
+		.grid{
+			margin: 0.5em;
+		}
+
+		.grid .line {
+			height: 6em;
+			padding: 0.5em;
+			white-space: nowrap;
+			border-bottom: 1px solid #000;
+			box-sizing: border-box;
+		}
+
+		.grid .line:last-child {
+			border-bottom: none;
+		}
+
+		.grid .line:after {
+			content: "";
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+
+		.grid .line .container {
+			width: 100%;
+			max-height: 3em;
+			display: inline-block;
+			vertical-align: middle;
+			white-space: normal;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Truncated text -->
+	<div class="truncated first">
+		sillom di hbin sisilicaf supmet cnun tile gnicsipida rutetcesnoc tema tis rolod muspi meroL
+	</div>
+
+	<div class="truncated second">
+		<div class="container">
+			Lorem ipsum dolor sit amet consectetur adipiscing elit nunc tempus facilisis nibh id mollis
+		</div>
+	</div>
+	<!-- /Truncated text -->
+
+	<!-- Status bar -->
+	<div class="header">
+		<h1 class="brand">Brandname</h1>
+		<div class="status">
+			<p class="text">
+				Lorem ipsum dolor
+				<br />
+				sit amet consectetur adipiscing elit nunc tempus facilisis nibh id mollis
+			</p>
+		</div>
+	</div>
+	<!-- /Status bar -->
+
+	<!-- Fixed neight grid -->
+	<ul class="grid">
+		<li class="line">
+			<div class="container">
+				<p class="text">
+					Single short line
+				</p>
+			</div>
+		</li>
+
+		<li class="line">
+			<div class="container">
+				<p class="text">
+					Single long line lorem ipsum dolor sit amet consectetur adipiscing elit nunc tempus facilisis nibh id mollis
+				</p>
+			</div>
+		</li>
+
+		<li class="line">
+			<div class="container">
+				<p class="text">
+					One short line
+				</p>
+				<p class="text">
+					Another short line
+				</p>
+			</div>
+		</li>
+
+		<li class="line">
+			<div class="container">
+				<p class="text">
+					A combination of long line lorem ipsum dolor sit amet consectetur adipiscing elit nunc tempus facilisis nibh id mollis
+				</p>
+				<p class="text">
+					And a short line
+				</p>
+			</div>
+		</li>
+
+		<li class="line">
+			<div class="container">
+				<p class="text">
+					A combination of short line
+				</p>
+				<p class="text">
+					And a long line lorem ipsum dolor sit amet consectetur adipiscing elit nunc tempus facilisis nibh id mollis
+				</p>
+			</div>
+		</li>
+	</ul>
+	<!-- /Fixed neight grid -->
+</body>
+</html>

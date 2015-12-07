@@ -1,0 +1,125 @@
+<div class="filters">
+	<div class="filter">
+		<label>{{'UserId' | lookup}}:</label>
+		<input
+			type="text"
+			ng-model="filters.UserId__in"
+			ng-change="filter('UserId__in', filters.UserId__in)"
+			ng-model-options="{updateOn: 'change'}" />
+	</div>
+	
+	<div class="filter">
+		<label>{{'Domain' | lookup}}:</label>
+		<select
+			ng-model="filters.Domain"
+			ng-change="filter('Domain', filters.Domain)">
+			<option value="">All</option>
+			<option ng-repeat="value in data.Domain" value="{{value}}">
+				{{value}}
+			</option>
+		</select>
+	</div>
+
+	<div class="filter">
+		<label>{{'Subject' | lookup}}:</label>
+		<select
+			ng-model="filters.Subject"
+			ng-change="filter('Subject', filters.Subject)">
+			<option value="">All</option>
+			<option ng-repeat="value in data.Subject" value="{{value}}">
+				{{value}}
+			</option>
+		</select>
+	</div>
+
+	<div class="filter">
+		<label>{{'LearningObjective' | lookup}}:</label>
+		<select
+			ng-model="filters.LearningObjective"
+			ng-change="filter('LearningObjective', filters.LearningObjective)">
+			<option value="">All</option>
+			<option ng-repeat="value in data.LearningObjective" value="{{value}}">
+				{{value}}
+			</option>
+		</select>
+	</div>
+
+	<div class="filter">
+		<label>{{'ExerciseId' | lookup}}:</label>
+		<input
+			type="text"
+			ng-model="filters.ExerciseId__in"
+			ng-change="filter('ExerciseId__in', filters.ExerciseId__in)"
+			ng-model-options="{updateOn: 'change'}" />
+	</div>
+
+	<div class="filter range difficulty">
+		<label>{{'Difficulty' | lookup}}:</label>
+		<input
+			type="text"
+			placeholder="From"
+			ng-model="filters.Difficulty__gte"
+			ng-change="filter('Difficulty__gte', filters.Difficulty__gte)"
+			ng-model-options="{updateOn: 'change'}"
+		/><input
+			type="text"
+			placeholder="To"
+			ng-model="filters.Difficulty__lte"
+			ng-change="filter('Difficulty__lte', filters.Difficulty__lte)"
+			ng-model-options="{updateOn: 'change'}" />
+	</div>
+
+	<div class="filter">
+		<label>{{'SubmittedAnswerId' | lookup}}:</label>
+		<input
+			type="text"
+			ng-model="filters.SubmittedAnswerId__in"
+			ng-change="filter('SubmittedAnswerId__in', filters.SubmittedAnswerId__in)"
+			ng-model-options="{updateOn: 'change'}" />
+	</div>
+
+	<div class="filter">
+		<label>{{'Correct' | lookup}}:</label>
+		<input
+			type="text"
+			ng-model="filters.Correct"
+			ng-change="filter('Correct', filters.Correct)"
+			ng-model-options="{updateOn: 'change'}" />
+	</div>
+
+	<div class="filter range progress">
+		<label>{{'Progress' | lookup}}:</label>
+		<input
+			type="text"
+			placeholder="From"
+			ng-model="filters.Progress__gte"
+			ng-change="filter('Progress__gte', filters.Progress__gte)"
+			ng-model-options="{updateOn: 'change'}" 
+		/><input
+			type="text"
+			placeholder="To"
+			ng-model="filters.Progress__lte"
+			ng-change="filter('Progress__lte', filters.Progress__lte)"
+			ng-model-options="{updateOn: 'change'}" />
+	</div>
+
+	<div class="filter range date">
+		<label>{{'SubmitDateTime' | lookup}}:</label>
+		<input
+			type="text"
+			placeholder="From"
+			ng-model="filters.SubmitDateTime__gte"
+			ng-change="filter('SubmitDateTime__gte', filters.SubmitDateTime__gte)"
+			ng-model-options="{updateOn: 'change'}"
+			date-picker
+		/><input
+			type="text"
+			placeholder="To"
+			ng-model="filters.SubmitDateTime__lte"
+			ng-change="filter('SubmitDateTime__lte', filters.SubmitDateTime__lte)"
+			ng-model-options="{updateOn: 'change'}"
+			date-picker />
+	</div>
+
+	<input type="button" value="✕" ng-click="reset()">
+</div>

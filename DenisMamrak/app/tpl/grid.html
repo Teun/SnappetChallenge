@@ -1,0 +1,256 @@
+<div>
+	<!-- Filter panel -->
+	<filters
+		template="tpl/grid_filters.html"
+		filters="grid.filters"
+		data="grid.categories"
+		callback="grid.filter(filters)">
+	</filters>
+	<!-- /Filter panel -->
+
+	<div class="grid" auto-height="0" ng-if="grid.data">
+		<!-- Data grid -->
+		<table class="results">
+			<thead>
+				<tr>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('UserId')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'UserId' ? 'key' : ''}}">
+							{{'UserId' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('Domain')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'Domain' ? 'key' : ''}}">
+							{{'Domain' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('Subject')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'Subject' ? 'key' : ''}}">
+							{{'Subject' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('LearningObjective')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'LearningObjective' ? 'key' : ''}}">
+							{{'LearningObjective' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('ExerciseId')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'ExerciseId' ? 'key' : ''}}">
+							{{'ExerciseId' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('Difficulty')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'Difficulty' ? 'key' : ''}}">
+							{{'Difficulty' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('SubmittedAnswerId')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'SubmittedAnswerId' ? 'key' : ''}}">
+							{{'SubmittedAnswerId' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('Correct')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'Correct' ? 'key' : ''}}">
+							{{'Correct' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('Progress')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'Progress' ? 'key' : ''}}">
+							{{'Progress' | lookup}}
+						</a>
+					</th>
+					<th>
+						<a
+							href=""
+							ng-click="grid.order('SubmitDateTime')"
+							class="{{grid.sort.asc ? 'asc' : 'desc'}} {{grid.sort.key == 'SubmitDateTime' ? 'key' : ''}}">
+							{{'SubmitDateTime' | lookup}}
+						</a>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="result in grid.data.list">
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.UserId__in == result.UserId ? 'Clear' : 'Set'}} filter"
+							ng-click="grid.toggle('UserId__in', grid.filters.UserId__in != result.UserId ? result.UserId : null)"
+							class="button {{grid.filters.UserId__in == result.UserId ? 'active' : ''}}">
+							{{grid.filters.UserId__in == result.UserId ? '✕' : '+'}}
+						</a>
+						<a 
+							href="#/profile/{{result.UserId}}"
+							title="View profile">
+							{{result.UserId}}
+						</a>
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.Domain == result.Domain ? 'Clear' : 'Set'}} filter"
+							ng-click="grid.toggle('Domain', grid.filters.Domain != result.Domain ? result.Domain : null)"
+							class="button {{grid.filters.Domain == result.Domain ? 'active' : ''}}">
+							{{grid.filters.Domain == result.Domain ? '✕' : '+'}}
+						</a>
+						{{result.Domain}}
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.Subject == result.Subject ? 'Clear' : 'Set'}} filter"
+							ng-click="grid.toggle('Subject', grid.filters.Subject != result.Subject ? result.Subject : null)"
+							class="button {{grid.filters.Subject == result.Subject ? 'active' : ''}}">
+							{{grid.filters.Subject == result.Subject ? '✕' : '+'}}
+						</a>
+						{{result.Subject}}
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.LearningObjective == result.LearningObjective ? 'Clear' : 'Set'}} filter"
+							ng-click="grid.toggle('LearningObjective', grid.filters.LearningObjective != result.LearningObjective ? result.LearningObjective : null)"
+							class="button {{grid.filters.LearningObjective == result.LearningObjective ? 'active' : ''}}">
+							{{grid.filters.LearningObjective == result.LearningObjective ? '✕' : '+'}}
+						</a>
+						{{result.LearningObjective}}
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.ExerciseId__in == result.ExerciseId ? 'Clear' : 'Set'}} filter"
+							ng-click="grid.toggle('ExerciseId__in', grid.filters.ExerciseId__in != result.ExerciseId ? result.ExerciseId : null)"
+							class="button {{grid.filters.ExerciseId__in == result.ExerciseId ? 'active' : ''}}">
+							{{grid.filters.ExerciseId__in == result.ExerciseId ? '✕' : '+'}}
+						</a>
+						{{result.ExerciseId}}
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.Difficulty__gte == result.Difficulty ? 'Clear' : 'Set'}} range start"
+							ng-click="grid.toggle('Difficulty__gte', grid.filters.Difficulty__gte != result.Difficulty ? result.Difficulty : null)"
+							class="button {{grid.filters.Difficulty__gte == result.Difficulty ? 'active' : ''}}">
+							{{grid.filters.Difficulty__gte == result.Difficulty ? '✕' : '<'}}
+						</a>
+						{{result.Difficulty}}
+						<a
+							href=""
+							title="{{grid.filters.Difficulty__lte == result.Difficulty ? 'Clear' : 'Set'}} range end"
+							ng-click="grid.toggle('Difficulty__lte', grid.filters.Difficulty__lte != result.Difficulty ? result.Difficulty : null)"
+							class="button {{grid.filters.Difficulty__lte == result.Difficulty ? 'active' : ''}}">
+							{{grid.filters.Difficulty__lte == result.Difficulty ? '✕' : '>'}}
+						</a>
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.SubmittedAnswerId__in == result.SubmittedAnswerId ? 'Clear' : 'Set'}} filter"
+							ng-click="grid.toggle('SubmittedAnswerId__in', grid.filters.SubmittedAnswerId__in != result.SubmittedAnswerId ? result.SubmittedAnswerId : null)"
+							class="button {{grid.filters.SubmittedAnswerId__in == result.SubmittedAnswerId ? 'active' : ''}}">
+							{{grid.filters.SubmittedAnswerId__in == result.SubmittedAnswerId ? '✕' : '+'}}
+						</a>
+						{{result.SubmittedAnswerId}}
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.Correct == result.Correct ? 'Clear' : 'Set'}} filter"
+							ng-click="grid.toggle('Correct', grid.filters.Correct != result.Correct ? result.Correct : null)"
+							class="button {{grid.filters.Correct == result.Correct ? 'active' : ''}}">
+							{{grid.filters.Correct == result.Correct ? '✕' : '+'}}
+						</a>
+						{{result.Correct}}
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.Progress__lte == result.Progress ? 'Clear' : 'Set'}} range start"
+							ng-click="grid.toggle('Progress__gte', grid.filters.Progress__gte != result.Progress ? result.Progress : null)"
+							class="button {{grid.filters.Progress__gte == result.Progress ? 'active' : ''}}">
+							{{grid.filters.Progress__gte == result.Progress ? '✕' : '<'}}
+						</a>
+						{{result.Progress}}
+						<a
+							href=""
+							title="{{grid.filters.Progress__lte == result.Progress ? 'Clear' : 'Set'}} range end"
+							ng-click="grid.toggle('Progress__lte', grid.filters.Progress__lte != result.Progress ? result.Progress : null)"
+							class="button {{grid.filters.Progress__lte == result.Progress ? 'active' : ''}}">
+							{{grid.filters.Progress__lte == result.Progress ? '✕' : '>'}}
+						</a>
+					</td>
+					<td>
+						<a
+							href=""
+							title="{{grid.filters.SubmitDateTime__gte == result.SubmitDateTime ? 'Clear' : 'Set'}} range start"
+							ng-click="grid.toggle('SubmitDateTime__gte', grid.filters.SubmitDateTime__gte != result.SubmitDateTime ? result.SubmitDateTime : null)"
+							class="button {{grid.filters.SubmitDateTime__gte == result.SubmitDateTime ? 'active' : ''}}">
+							{{grid.filters.SubmitDateTime__gte == result.SubmitDateTime ? '✕' : '<'}}
+						</a>
+						{{result.SubmitDateTime | moment:'format':'DD MMM YYYY HH:mm:ss'}}
+						<a
+							href=""
+							title="{{grid.filters.SubmitDateTime__lte == result.SubmitDateTime ? 'Clear' : 'Set'}} range end"
+							ng-click="grid.toggle('SubmitDateTime__lte', grid.filters.SubmitDateTime__lte != result.SubmitDateTime ? result.SubmitDateTime : null)"
+							class="button {{grid.filters.SubmitDateTime__lte == result.SubmitDateTime ? 'active' : ''}}">
+							{{grid.filters.SubmitDateTime__lte == result.SubmitDateTime ? '✕' : '>'}}
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- /Data grid -->
+		
+		<!-- Paginator -->
+		<div class="paginator" ng-if="grid.data.list.length">
+			Showing
+			{{grid.data.list.length | number}}
+			results of
+			{{grid.data.meta.total | number}}
+			{{grid.data.list.length < grid.data.meta.total ? '|' : ''}}
+			<a href="" ng-click="grid.load()" ng-if="grid.data.list.length < grid.data.meta.total">
+				Load next
+				{{
+					grid.page.size < grid.data.meta.total - grid.data.list.length
+					?
+					grid.page.size
+					:
+					grid.data.meta.total - grid.data.list.length
+				}}
+				items
+			</a>
+		</div>
+		<!-- /Paginator -->
+
+		<div class="nodata" ng-if="!grid.data.list.length">Your search did not match any results</div>
+	</div>
+
+	<div class="modal" ng-show="grid.loading"></div>
+</div>
