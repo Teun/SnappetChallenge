@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="snappet">
+<head>
+	<title>Snappet</title>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/pikaday.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	
+	<!-- Libs -->
+	<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="js/libs/d3.min.js"></script>
+	<script type="text/javascript" src="js/libs/lodash.min.js"></script>
+	<script type="text/javascript" src="js/libs/moment.min.js"></script>
+	<script type="text/javascript" src="js/libs/moment-round.min.js"></script>
+	<script type="text/javascript" src="js/libs/pikaday.js"></script>
+	<script type="text/javascript" src="js/libs/angular.min.js"></script>
+	<script type="text/javascript" src="js/libs/angular-route.min.js"></script>
+	
+	<!-- App -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	
+	<!-- Services -->
+	<script type="text/javascript" src="js/services/db.js"></script>
+	<script type="text/javascript" src="js/services/server.js"></script>
+	<script type="text/javascript" src="js/services/http.js"></script>
+	<script type="text/javascript" src="js/services/lookup.js"></script>
+	<script type="text/javascript" src="js/services/formatter.js"></script>
+
+	<!-- Directives -->
+	<script type="text/javascript" src="js/directives/auto_height.js"></script>
+	<script type="text/javascript" src="js/directives/date_picker.js"></script>
+	<script type="text/javascript" src="js/directives/filters.js"></script>
+	<script type="text/javascript" src="js/directives/chart_stacked.js"></script>
+
+	<!-- Filters -->
+	<script type="text/javascript" src="js/filters/moment.js"></script>
+
+	<!-- Controllers -->	
+	<script type="text/javascript" src="js/controllers/main_ctrl.js"></script>
+	<script type="text/javascript" src="js/controllers/grid_ctrl.js"></script>
+	<script type="text/javascript" src="js/controllers/profile_ctrl.js"></script>
+
+</head>
+<body ng-controller="MainCtrl as app">
+	<header >
+		<img src="img/logo_small.png" alt="Snappet" class="logo" />
+		<ul class="navigation">
+			<li>
+				<a
+					class="{{app.page == 'grid' ? 'current' : ''}}"
+					href="#/grid">
+					Grid view
+				</a>
+			</li>
+			
+			<li ng-if="app.page == 'profile'">
+				<a
+					class="{{app.page == 'profile' ? 'current' : ''}}"
+					href="#/profile">
+					User {{app.UserId}}
+				</a>
+			</li>
+		</ul>
+	</header>
+	<div ng-view class="view"></div>
+</body>
+</html>
