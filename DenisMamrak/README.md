@@ -30,9 +30,9 @@ Report challenge
 
 And now let's proceed to the report. Starting from this paragraph the description will be in Ukrainian. OK, it won't, just kidding :)
 
-It was technically possible to load the entire data into app with AJAX, but parsing 12Mb of JSON is really hard, in most cases browser ended up with "Page is not responding" message, and I decided to embed the JSON into .js file. This makes app much faster to take off and to be totally serverless. To keep the architecture similar to the real app I several intermediate layers: `db.js` contains the data and provides basic mechanism of ordering, filtering and selecting the items within the range, `server.js` encapsulates data processing logic, which would be normally supposed to be on the backend side, and 'http.js' is a promise-based mock of AngularJS $http service, which asynchronously returns the data after short random delay, just to show my nice animated modal screen :).
+It was technically possible to load the entire data into app with AJAX, but parsing 12Mb of JSON is really hard, in most cases browser ended up with "Page is not responding" message, and I decided to embed the JSON into .js file. This makes app much faster to take off and totally serverless. To keep the architecture similar to the real app I added several intermediate layers: `db.js` contains the data and provides basic mechanism of ordering, filtering and selecting the items within the range, `server.js` encapsulates data processing logic, which would be normally supposed to be on the backend side, and `http.js` is a promise-based mock of AngularJS $http service, which asynchronously returns the data after short random delay, just to show my nice animated modal screen :).
 
-Although this app is completely serverless, you still need the server to run it locally: AngularJS loads external templates with AJAX. You may use any kind of server, or upload files somewhere and access index.html via http. If you have Node.js installed, I'd recommend [this](https://www.npmjs.com/package/http-server) tiny http server, which is really easy to install and use.
+Although this app is completely serverless, you still need the server to run it locally: AngularJS loads external templates with AJAX. You may use any kind of server, or upload files somewhere and access `index.html` via http. If you have Node.js installed, I'd recommend [this](https://www.npmjs.com/package/http-server) tiny http server, which is really easy to install and use.
 
 ### Grid view
 
@@ -67,13 +67,13 @@ Timeline view also has several filters: `Domain`, `Subject`, `Learning Objective
 
 ### Exersises
 
-Click on any bar on stacked bar chart loads the detailed info regarding selected day and shows that info under the chart. Exercises are grouped by `Domain`, `Subject` and `Learning objective`, inside the `Exercise` user can find the details: Exercise ID, difficulty level, progress, time of the latest attempt to complete the exercises, number of attempts and whether one of them was successful.
+Click on any bar on stacked bar chart loads the detailed info regarding selected day and shows that info under the chart. Exercises are grouped by `Domain`, `Subject` and `Learning objective`, inside the `Exercise` user can find the details: Exercise ID, difficulty level, progress, time of the latest attempt to complete the exercise, number of attempts and whether one of them was successful.
 
 ### Conclusion
 
 This challenge took a while, but now I'm really happy with the result. The report is still far from being perfect, there's plenty of features and bugs left to implement and fix (infinite scroll, dynamical vertical resizing, sticky table head), there are also other possibly useful report types (like average class performance in time aggregated to Domains, pupils, performing below and abowe average etc) but I just had to stop at some certain point, otherwise this commit would never be pushed :)
 
-Please fill free to contact me via [email](mailto:mamrak@gmail.com) or [skype](mamrak?call) in case of any issues. Looking forward to hear your feedback.
+Please fill free to contact me via [email](mailto:mamrak@gmail.com) or [skype](skype:mamrak?call) in case of any issues. Looking forward to hear your feedback.
 
 Regards,
 Denis.
