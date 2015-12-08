@@ -73,7 +73,7 @@ Click on any bar on stacked bar chart loads the detailed info regarding selected
 
 This challenge took a while, but now I'm really happy with the result. The report is still far from being perfect, there's plenty of features and bugs left to implement and fix (infinite scroll, dynamical vertical resizing, sticky table head), there are also other possibly useful report types (like average class performance in time aggregated to Domains, pupils, performing below and abowe average etc) but I just had to stop at some certain point, otherwise this commit would never be pushed :)
 
-Please fill free to contact me via [email](mailto:mamrak@gmail.com) or [skype](skype:mamrak?call) in case of any issues. Looking forward to hear your feedback.
+Please fill free to contact me via [email](mailto:mamrak@gmail.com) or skype (skype name: `mamrak`) in case of any issues. Looking forward to hear your feedback.
 
 Regards,
 Denis.
