@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "del": "^2.2.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
