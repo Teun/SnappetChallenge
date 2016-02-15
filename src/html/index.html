@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>Snappet</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <div class=backbutton>&lt;</div>
+        <div class=currentTest>
+            <div class=title>Rekenen</div>
+            <div class=description><span><bdi>Blok 4, week 2, AT2-4 les 8 4a</bdi></span><span class=ellipsis></span></div>
+        </div>
+        <div class=menu></div>
+    </header>
+    <div class=testNav></div>
+    <main>
+    <ul data-bind="foreach: classProgress">
+        <li>
+            <h4>Gebruiker <span data-bind="text: userId"></span></h4>
+            <h5>Vooruitgang: <span data-bind="text: totalProgress"></span></h5>
+            <div>
+                <h5>Aantal correcte antwoorden <span data-bind="text: correctCount"></span> van totaal <span data-bind="text: answerCount"></span> <span class="percentage" data-bind="text: correctnessPercentage +'%'"></span></h5>
+                <div class='relativeScore correctness' data-bind="style: { width: correctnessPercentage +'%'}"> </div>
+            </div>
+            <div>
+                <h5>Relatief percentage correctheid <span class="percentage" data-bind="text: relativeCorectnessPercentage +'%' "></span></h5>
+                <div class='relativeScore relativeCorectness' data-bind="style: { width: relativeCorectnessPercentage +'%' }"> </div>
+            </div>
+            <div>
+                <h5>Relatief percentage aantal correcte antwoorden <span class="percentage" data-bind="text: relativeCorrectCountPercentage +'%'"></span></h5>
+                <div class='relativeScore correctnessCount' data-bind="style: { width: relativeCorrectCountPercentage +'%' }"> </div>
+            </div>
+        </li>
+    </ul>
+    </main>
+    <script src='ko.js'></script>
+    <script src='totals.js'></script>
+    <script src='app.js'></script>
+</body>
+</html>
