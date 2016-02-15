@@ -36,7 +36,7 @@ header > .currentTest{
     text-align: left;
     line-height: 1em;
 }
-.currentTest > .description > span:first-child{
+.currentTest > .description > span:first-child {
     white-space: nowrap;
     text-align: left;
     min-width: 95%;
@@ -66,51 +66,51 @@ header > .currentTest{
     background-color: #62bce1;
 }
 
-main{
+main {
     color: black;
     padding: 1em;
 }
-main > ul{
+main > ul {
     padding:0;
     margin: 0;
     list-style: none;
 }
-main > ul > li{
+main > ul > li {
     padding:0;
     margin-bottom: 1.5em;
 }
-main > ul > li > div{
+main > ul > li > div {
     margin-bottom: .5em;
 }
-h4, h5{
+h4, h5 {
     margin: .5em 0 0;
 }
-.relativeScore{
+.relativeScore {
     height: .5em;
 }
 
-.relativeScore.correctness{
+.relativeScore.correctness {
     background: lightgreen;
 }
-.relativeScore.relativeCorectness{
+.relativeScore.relativeCorectness {
     background: lightblue;
 }
-.relativeScore.correctnessCount{
+.relativeScore.correctnessCount {
     background: pink;
 }
-.percentage{
+.percentage {
     color: #ccc;
 }
 
 /* icon placeholders, not really relevant just here to indicate icon positions */
 .backbutton,
 .currentTest,
-.menu{
+.menu {
     position: relative;
 }
 .backbutton:before,
 header > .currentTest:before,
-.menu:before{
+.menu:before {
     content: "";
     display: block;
     background: white;
@@ -120,10 +120,10 @@ header > .currentTest:before,
     left: .5em;
 }
 .backbutton:before,
-.menu:before{
+.menu:before {
     top: .5em;
 }
-.testNav{
+.testNav {
     background: black;
     height: 3em;
 }
