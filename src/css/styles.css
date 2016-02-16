@@ -3,15 +3,15 @@
 }
 body{
     min-width: 320px;
-    font: 1em Helvetica, Arial;
-    color: white;
     margin: 0;
     padding: 0;
+    color: white;
+    font: 1em Helvetica, Arial;
 }
 header{
     display: flex;
-    justify-content: space-between;
     min-height: 3em;
+    justify-content: space-between;
     background: #62bce1;
 }
 header > div{
@@ -31,46 +31,46 @@ header > .currentTest{
 }
 
 .currentTest > .description {
-    background-color: inherit;
-    overflow: hidden;
-    direction: rtl;
     height: 1em;
-    text-align: left;
+    overflow: hidden;
     line-height: 1em;
+    text-align: left;
+    direction: rtl;
+    background-color: inherit;
 }
 .currentTest > .description > span:first-child {
-    white-space: nowrap;
-    text-align: left;
+    display: inline-block;
+    height: 1em;
+    vertical-align: top;
     min-width: 95%;
     min-width: calc(100% - 1px);
-    display: inline-block;
-    vertical-align: top;
-    height: 1em;
+    white-space: nowrap;
+    text-align: left;
 }
 
 .currentTest > .description .ellipsis {
+    position: relative;
+    display: inline-block;
     width: 1px;
     height: 1em;
-    display: inline-block;
-    position: relative;
 }
 .currentTest > .description .ellipsis:after {
+    position: absolute;
     content: "…";
     height: 1em;
+    bottom: 1em;
+    left: -1px;
     width: auto;
     min-width: 1px;
     margin-right: 6px;
-    box-shadow: 2px 0 4px #62bce1;
-    position: absolute;
     padding-right: 2px;
-    bottom: 1em;
-    left: -1px;
+    box-shadow: 2px 0 4px #62bce1;
     background-color: #62bce1;
 }
 
 main {
-    color: black;
     padding: 1em;
+    color: black;
 }
 main > ul {
     padding:0;
@@ -89,8 +89,8 @@ h4, h5 {
 }
 .relativeScore {
     height: .5em;
-    transition: width 0.5s ease;
     width: 0%;
+    transition: width 0.5s ease;
 }
 
 .relativeScore.correctness {
@@ -111,6 +111,7 @@ h4, h5 {
 .menu{
     cursor: pointer;
 }
+
 /* icon placeholders, not really relevant just here to indicate icon positions */
 .backButton,
 .currentTest,
@@ -120,13 +121,13 @@ h4, h5 {
 .backButton:before,
 header > .currentTest:before,
 .menu:before {
-    content: "";
+    position: absolute;
     display: block;
-    background: white;
     height: 2em;
     width: 2em;
-    position: absolute;
     left: .5em;
+    content: "";
+    background: white;
     opacity: .2;
 }
 .backButton:before,
@@ -134,6 +135,6 @@ header > .currentTest:before,
     top: .5em;
 }
 .testNav {
-    background: black;
     height: 3em;
+    background: black;
 }
