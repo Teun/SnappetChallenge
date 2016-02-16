@@ -1,0 +1,140 @@
+*{
+    box-sizing: border-box
+}
+body{
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font: 1em Helvetica, Arial;
+}
+header{
+    display: flex;
+    min-height: 3em;
+    justify-content: space-between;
+    background: #62bce1;
+}
+header > div{
+    flex: 1;
+    max-width: 3em;
+    min-width: 3em;
+    line-height: 3em;
+    text-align: center;
+}
+header > .currentTest{
+    flex: 5;
+    max-width: 20em;
+    min-width: 1em;
+    padding: .5em .5em .5em 3em;
+    line-height: 1em;
+    text-align: left;
+}
+
+.currentTest > .description {
+    height: 1em;
+    overflow: hidden;
+    line-height: 1em;
+    text-align: left;
+    direction: rtl;
+    background-color: inherit;
+}
+.currentTest > .description > span:first-child {
+    display: inline-block;
+    height: 1em;
+    vertical-align: top;
+    min-width: 95%;
+    min-width: calc(100% - 1px);
+    white-space: nowrap;
+    text-align: left;
+}
+
+.currentTest > .description .ellipsis {
+    position: relative;
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+}
+.currentTest > .description .ellipsis:after {
+    position: absolute;
+    content: "…";
+    height: 1em;
+    bottom: 1em;
+    left: -1px;
+    width: auto;
+    min-width: 1px;
+    margin-right: 6px;
+    padding-right: 2px;
+    box-shadow: 2px 0 4px #62bce1;
+    background-color: #62bce1;
+}
+
+main {
+    padding: 1em;
+    color: black;
+}
+main > ul {
+    padding:0;
+    margin: 0;
+    list-style: none;
+}
+main > ul > li {
+    padding:0;
+    margin-bottom: 1.5em;
+}
+main > ul > li > div {
+    margin-bottom: .5em;
+}
+h4, h5 {
+    margin: .5em 0 0;
+}
+.relativeScore {
+    height: .5em;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.relativeScore.correctness {
+    background: lightgreen;
+}
+.relativeScore.relativeCorectness {
+    background: lightblue;
+}
+.relativeScore.correctnessCount {
+    background: yellow;
+}
+.percentage {
+    color: #ccc;
+}
+
+
+.backButton,
+.menu{
+    cursor: pointer;
+}
+
+/* icon placeholders, not really relevant just here to indicate icon positions */
+.backButton,
+.currentTest,
+.menu {
+    position: relative;
+}
+.backButton:before,
+header > .currentTest:before,
+.menu:before {
+    position: absolute;
+    display: block;
+    height: 2em;
+    width: 2em;
+    left: .5em;
+    content: "";
+    background: white;
+    opacity: .2;
+}
+.backButton:before,
+.menu:before {
+    top: .5em;
+}
+.testNav {
+    height: 3em;
+    background: black;
+}
