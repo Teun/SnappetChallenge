@@ -15,7 +15,7 @@ Dus nu is dat opgezet met statische waarden wat voor het bespreken van het idee 
 AMD, Sass en JavaScript daar kan ik het één en ander van laten zien dus daar heb ik me niet op gefocussed in deze test.
 
 ## runnen
-$ `npm install` en dan $ `gulp`
+`$ npm install` en dan `$ gulp`
 Dit filtered en parsed eerst de Data/work.json in een aantal json files (makkelijk om te debuggen) en maakt een dist/totals.js aan.
 Daarna worden de andere sources gekopieerd en waar relevant bewerkt, bv CSS wordt door PostCSS, Autoprefixer en csswring gepiped.
 
