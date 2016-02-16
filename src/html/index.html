@@ -22,7 +22,7 @@
             <h5>Vooruitgang: <span data-bind="text: totalProgress"></span></h5>
             <div>
                 <h5>Aantal correcte antwoorden <span data-bind="text: correctCount"></span> van totaal <span data-bind="text: answerCount"></span> <span class="percentage" data-bind="text: correctnessPercentage+'%'"></span></h5>
-                <div class='relativeScore correctness' data-bind="style: {width:correctnessPercentage+'%'}"> </div>
+                <div data-description="correctnessPercentage" class='relativeScore correctness' data-bind="style: {width:correctnessPercentage+'%'}"> </div>
             </div>
             <div>
                 <h5>Relatief percentage correctheid <span class="percentage" data-bind="text: relativeCorectnessPercentage +'%' "></span></h5>

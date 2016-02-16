@@ -1,7 +1,5 @@
-
-
-// Class to represent a row in the seat reservations grid
-function StudentProgress(studentObject) {
+// Class to represent a students progress
+function StudentProgress(studentObject){
     var context = this;
     context.answerCount = studentObject.AnswerCount;
     context.answerCount = studentObject.AnswerCount;
@@ -19,8 +17,8 @@ function StudentProgress(studentObject) {
 
 }
 
-// Overall viewmodel for this screen, along with initial state
-function ClassProgressModel() {
+// Class to represent the progress of a class (collection of students)
+function ClassProgressModel(){
     var context = this;
 
     // Non-editable catalog data - would come from the server
@@ -31,21 +29,6 @@ function ClassProgressModel() {
             return new StudentProgress(student);
         })
     );
-
-    // Operations
-    // self.addSeat = function() {
-    //     self.seats.push(new SeatReservation("", self.availableMeals[0]));
-    // };
-    // self.removeSeat = function(seat) {
-    //     self.seats.remove(seat);
-    // };
-
-    // self.totalSurcharge = ko.computed(function() {
-    //    var total = 0;
-    //    for (var i = 0; i < self.seats().length; i++)
-    //        total += self.seats()[i].meal().price;
-    //    return total;
-    // });
 }
 
 ko.applyBindings(new ClassProgressModel());
