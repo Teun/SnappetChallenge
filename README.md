@@ -14,12 +14,12 @@ Dit filtered en parsed eerst de Data/work.json in een aantal json files (makkeli
 Deze totals zouden eigenlijk met wat meer beschikbare tijd uit een API moeten komen die de filtering ook doet gebaseerd op de dataset uit een database, maar dat is volgens mij buiten de scope van deze test.
 
 ## CSS tests
-[Header test]: http://output.jsbin.com/nudisa
+[Header test](http://output.jsbin.com/nudisa)
 Op dit moment getest in Chrome, Firefox, Safari en IE9
 
-[Header test 2]: https://jsbin.com/hovoxe/
+[Header test 2](https://jsbin.com/hovoxe)
 Op dit moment getest in Chrome, Firefox, Safari (wat kleine tweaks nodig in FF en Safari) werkt nog niet in IE9
 
-[Grid test]: https://output.jsbin.com/hajoqa/
+[Grid test](https://output.jsbin.com/hajoqa)
 Op dit moment getest in Chrome, Firefox, Safari, werkt nog niet in IE9
 
