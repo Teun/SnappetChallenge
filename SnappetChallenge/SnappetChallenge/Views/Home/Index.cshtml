@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="header">
+    <h1>@(ViewBag.SchoolClass.ClassName) - @(ViewBag.SchoolClass.TeacherName)</h1>
+	<div style="float:right;">@(ViewBag.CurrentDateTime.ToString("dd-MM-yyyy HH:mm:ss"))</div>
+	<div style="float:left;">Studenten: @(ViewBag.SchoolClass.NumberOfStudents)</div>
+	<div style="clear:both;"></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		@using (Html.BeginForm())
+		{
+			<div class="selector">Tijdstip<br />
+			@Html.DropDownList("TimePeriod", ViewBag.TimePeriods as List<SelectListItem>, null, new { @class = "selectordropdown" })</div>
+			<div class="selector">Vak<br />
+			@Html.DropDownList("Subject", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "selectordropdown" })</div>
+			<div class="selector">Domein<br />
+			@Html.DropDownList("Domain", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "selectordropdown" })</div>
+			<div class="selector">Leerdoel<br/>
+			@Html.DropDownList("LearningObjective", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "selectordropdown" })</div>
+		}
+	</div>
+</div>
+<div class="row">
+    <div class="col-md-4 summarybox">
+        <h2>Summary</h2>
+        <table class="summary">
+			<tr><td class="summarylabel">Aantal studenten met antwoorden</td><td class="summarytotal"><span id="numberOfStudents"></span></td></tr>
+			<tr><td class="summarylabel">Aantal antwoorden per student</td><td class="summarytotal"><span id="numberOfAnswers"></span></td></tr>
+			<tr><td class="summarylabel">Aantal correct antwoorden</td><td class="summarytotal"><span id="numberOfCorrectAnswers"></span></td></tr>
+			<tr><td class="summarylabel">Procent correct antwoorden</td><td class="summarytotal"><span id="percentCorrectAnswers"></span>%</td></tr>
+			<tr><td class="summarylabel">Gemiddeld antwoorden per student</td><td class="summarytotal"><span id="averageAnswersPerStudent"></span></td></tr>
+			<tr><td class="summarylabel">Gemiddeld correct antwoorden per student</td><td class="summarytotal"><span id="averageCorrectAnswersPerStudent"></span></td></tr>
+			<tr><td class="summarylabel">Hoogste moeilijkheid</td><td class="summarytotal"><span id="highestDifficulty"></span></td></tr>
+			<tr><td class="summarylabel">Laagste moeilijkheid</td><td class="summarytotal"><span id="lowestDifficulty"></span></td></tr>
+			<tr><td class="summarylabel">Gemiddeld moeilijkheid</td><td class="summarytotal"><span id="averageDifficulty"></span></td></tr>
+		</table>
+    </div>
+	<div class="col-md-4">
+		<h2>Studenten met antwoorden</h2>
+		<canvas id="studentsWithAnswersPerDayChart" width="500" height="400"></canvas>
+	</div>
+    <div class="col-md-4">
+        <h2>Aantal antwoorden per student per dag</h2>
+		<canvas id="answersPerStudentPerDayChart" width="500" height="400"></canvas>
+    </div>
+	<div class="col-md-4">
+		<h2>Gemiddeld procent correct</h2>
+		<canvas id="percentCorrectPerDayChart" width="500" height="400"></canvas>
+	</div>
+	<div class="col-md-4">
+		<h2>Gemiddeld procent per student</h2>
+		<canvas id="percentCorrectPerStudentChart" width="500" height="400"></canvas>
+	</div>
+	<div class="col-md-4">
+		<h2>Vooruitgang per student</h2>
+		<canvas id="progressPerStudentChart" width="500" height="400"></canvas>
+	</div>
+	<div class="col-md-4">
+		<h2>Gemiddeld moelijkheid per student</h2>
+		<canvas id="averageDifficultyPerStudentChart" width="500" height="400"></canvas>
+	</div>
+	<div class="col-md-4">
+		<h2><span id="#answerBreakdownHeading">Antwoord gedeeltes</span></h2>
+		<canvas id="answerBreakdownChart" width="500" height="400"></canvas>
+	</div>
+</div>
