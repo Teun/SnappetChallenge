@@ -30,12 +30,12 @@ I have restricted myself to a maximum of around 3 hours for the implementation o
 
 
 ### Technologies Used
-C#.NET 2015
-MVC 6
-jQuery 1.10.2
-Chart.js
-Bootstrap 3.0.0
-Newtonsoft.Json 6.0.4
+- C#.NET 2015
+- MVC 6
+- jQuery 1.10.2
+- Chart.js
+- Bootstrap 3.0.0
+- Newtonsoft.Json 6.0.4
 
 
 
