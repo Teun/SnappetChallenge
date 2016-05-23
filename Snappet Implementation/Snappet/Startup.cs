@@ -8,7 +8,7 @@ namespace Snappet
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            // Do nothing here
         }
     }
 }

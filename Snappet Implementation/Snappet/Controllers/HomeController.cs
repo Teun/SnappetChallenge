@@ -8,7 +8,7 @@ namespace Snappet.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Dashboard()
+        public ActionResult Index()
         {
             return View();
         }
