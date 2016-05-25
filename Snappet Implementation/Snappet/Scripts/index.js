@@ -41,7 +41,7 @@ var Data = {
         $("#Domain").empty();
         $.ajax({
             type: 'POST',
-            url: '/Data/GetDomains',
+            url: '/Data/Domains',
             dataType: 'json',
             data: { id: id, subject: $('#Subject').val() },
             success: function (domains) {
@@ -60,7 +60,7 @@ var Data = {
         $("#LearningObjective").empty();
         $.ajax({
             type: 'POST',
-            url: '/Data/GetLearningObjectives',
+            url: '/Data/LearningObjectives',
             dataType: 'json',
             data: { id: id, subject: $('#Subject').val(), domain: $('#Domain').val() },
             success: function (learningObjectives) {
@@ -78,7 +78,7 @@ var Data = {
     LoadAnswerStatistics: function () {
         $.ajax({
             type: 'POST',
-            url: '/Data/GetAnswerStatistics',
+            url: '/Data/AnswerStatistics',
             dataType: 'json',
             data: { timePeriod: $("#TimePeriod").val(), subject: $('#Subject').val(), domain: $('#Domain').val(), learningObjective: $('#LearningObjective').val() },
             success: function (statistics) {

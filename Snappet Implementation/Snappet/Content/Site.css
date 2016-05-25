@@ -91,6 +91,10 @@ body {
   margin-top: 0;
 }
 
+.filter {
+    margin: 20px 0px 40px 0px;
+}
+
 .filter div {
     display: inline-block;
 }

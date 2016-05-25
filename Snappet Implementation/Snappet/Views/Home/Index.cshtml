@@ -26,21 +26,110 @@
             <div class="col-md-12 filter">
                 @using (Html.BeginForm())
                 {
-                    <div class="col-md-3">
-                        <label for="Subject">Vak</label> @Html.DropDownList("Subject", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control" })
+                    <div class="col-md-4 text-center">
+                        <label for="Subject">Vak</label> @Html.DropDownList("Subject", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control center-block" })
                     </div>
-                    <div class="col-md-3">
-                        <label for="Domain">Domein</label> @Html.DropDownList("Domain", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control" })
+                    <div class="col-md-4 text-center">
+                        <label for="Domain">Domein</label> @Html.DropDownList("Domain", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control center-block" })
                     </div>
-                    <div class="col-md-3">
-                        <label for="LearningObjective">Leerdoel</label> @Html.DropDownList("LearningObjective", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control" })
+                    <div class="col-md-4 text-center">
+                        <label for="LearningObjective">Leerdoel</label> @Html.DropDownList("LearningObjective", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control center-block" })
                     </div>
-                    <div class="col-md-3" />
                 }
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Cell Title
+                        </div>
+                        <div class="chart-stage">
+                            <div id="grid-1-1">
+                                <img data-src="holder.js/100%x180/white/text:#grid-1-1" alt="#grid-1-1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MTkiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iNDE5IiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIwOS41IiB5PSI5MCIgc3R5bGU9ImZpbGw6I2E3YTdhNztmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPiNncmlkLTEtMTwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;">
+                            </div>
+                        </div>
+                        <div class="chart-notes">
+                            Notes about this chart
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Cell Title
+                        </div>
+                        <div class="chart-stage">
+                            <div id="grid-1-1">
+                                <img data-src="holder.js/100%x180/white/text:#grid-1-1" alt="#grid-1-1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MTkiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iNDE5IiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIwOS41IiB5PSI5MCIgc3R5bGU9ImZpbGw6I2E3YTdhNztmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPiNncmlkLTEtMTwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;">
+                            </div>
+                        </div>
+                        <div class="chart-notes">
+                            Notes about this chart
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Cell Title
+                        </div>
+                        <div class="chart-stage">
+                            <div id="grid-1-1">
+                                <img data-src="holder.js/100%x180/white/text:#grid-1-1" alt="#grid-1-1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MTkiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iNDE5IiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIwOS41IiB5PSI5MCIgc3R5bGU9ImZpbGw6I2E3YTdhNztmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPiNncmlkLTEtMTwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;">
+                            </div>
+                        </div>
+                        <div class="chart-notes">
+                            Notes about this chart
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Cell Title
+                        </div>
+                        <div class="chart-stage">
+                            <div id="grid-1-1">
+                                <img data-src="holder.js/100%x180/white/text:#grid-1-1" alt="#grid-1-1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MTkiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iNDE5IiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIwOS41IiB5PSI5MCIgc3R5bGU9ImZpbGw6I2E3YTdhNztmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPiNncmlkLTEtMTwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;">
+                            </div>
+                        </div>
+                        <div class="chart-notes">
+                            Notes about this chart
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Cell Title
+                        </div>
+                        <div class="chart-stage">
+                            <div id="grid-1-1">
+                                <img data-src="holder.js/100%x180/white/text:#grid-1-1" alt="#grid-1-1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MTkiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iNDE5IiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIwOS41IiB5PSI5MCIgc3R5bGU9ImZpbGw6I2E3YTdhNztmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPiNncmlkLTEtMTwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;">
+                            </div>
+                        </div>
+                        <div class="chart-notes">
+                            Notes about this chart
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Cell Title
+                        </div>
+                        <div class="chart-stage">
+                            <div id="grid-1-1">
+                                <img data-src="holder.js/100%x180/white/text:#grid-1-1" alt="#grid-1-1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MTkiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iNDE5IiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIwOS41IiB5PSI5MCIgc3R5bGU9ImZpbGw6I2E3YTdhNztmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPiNncmlkLTEtMTwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;">
+                            </div>
+                        </div>
+                        <div class="chart-notes">
+                            Notes about this chart
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>

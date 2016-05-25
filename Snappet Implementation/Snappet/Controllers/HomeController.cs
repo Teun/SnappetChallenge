@@ -11,13 +11,11 @@ namespace Snappet.Controllers
     public class HomeController : Controller
     {
         private SnappetDB db = new SnappetDB();
-        private int? id;
 
         public ActionResult Index(int? id)
         {
-            this.id = id;
-            ViewBag.id = this.id;
-            User user = db.Users.FirstOrDefault(u => u.Id == this.id);
+            ViewBag.id = id;
+            User user = this.GetUser(id);
             if (user != null)
             {
                 ViewBag.name = user.Name;
@@ -49,6 +47,11 @@ namespace Snappet.Controllers
         {
             List<User> returnList = db.Users.OrderBy(u => u.Id).ToList();
             return returnList;
+        }
+
+        public User GetUser(int? id)
+        {
+            return db.Users.FirstOrDefault(u => u.Id == id);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Snappet
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
+                      "~/Content/keen-dashboards.css",
                       "~/Content/site.css"));
         }
     }

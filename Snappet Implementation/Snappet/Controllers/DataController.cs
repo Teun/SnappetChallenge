@@ -35,10 +35,8 @@ namespace Snappet.Controllers
         }
 
         [WebMethod]
-        public JsonResult GetDomains(int? id, string subject)
+        public JsonResult Domains(int? id, string subject)
         {
-            //List<string> domains = SubmittedAnswers.Where(x => x.SubmittedDateTime >= startDateTime && x.SubmittedDateTime < currentDateTime && x.Subject == subject)
-            //                                                .Select(x => x.Domain).Distinct().ToList<string>();
             List<String> domains;
             if (id != null)
             {
@@ -60,10 +58,8 @@ namespace Snappet.Controllers
         }
 
         [WebMethod]
-        public JsonResult GetLearningObjectives(int? id, string subject, string domain)
+        public JsonResult LearningObjectives(int? id, string subject, string domain)
         {
-            //List<string> learningObjectives = SubmittedAnswers.Where(x => x.SubmittedDateTime >= startDateTime && x.SubmittedDateTime < currentDateTime && x.Subject == subject && x.Domain == domain)
-            //                                                .Select(x => x.LearningObjective).Distinct().ToList<string>();
             List<string> learningObjectives;
             if (id != null)
             {
