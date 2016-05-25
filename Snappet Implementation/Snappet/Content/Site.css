@@ -91,3 +91,7 @@ body {
   margin-top: 0;
 }
 
+.filter div {
+    display: inline-block;
+}
+

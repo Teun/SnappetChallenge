@@ -10,9 +10,23 @@ namespace Snappet.Controllers
 {
     public class HomeController : Controller
     {
+        private SnappetDB db = new SnappetDB();
+        private int? id;
+
         public ActionResult Index(int? id)
         {
-
+            this.id = id;
+            ViewBag.id = this.id;
+            User user = db.Users.FirstOrDefault(u => u.Id == this.id);
+            if (user != null)
+            {
+                ViewBag.name = user.Name;
+            }
+            else
+            {
+                ViewBag.name = null;
+            }
+            
             ViewBag.classClass = this.GetClass();
             return View();
         }
@@ -24,23 +38,17 @@ namespace Snappet.Controllers
             return View();
         }
 
-        public List<UserClass> GetStudents()
+        public Class GetClass()
         {
-            List<UserClass> returnList = new List<UserClass>();
-            returnList.Add(new UserClass(0L, "Student", "0"));
-            returnList.Add(new UserClass(1L, "Student", "1"));
-            returnList.Add(new UserClass(2L, "Student", "2"));
-            returnList.Add(new UserClass(3L, "Student", "3"));
-            returnList.Add(new UserClass(4L, "Student", "4"));
-            returnList.Add(new UserClass(5L, "Student", "5"));
-            return returnList;
-        }
-
-        public ClassClass GetClass()
-        {
-            ClassClass returnClass = new ClassClass("Mr. Potter");
+            Class returnClass = new Class("Mr. Potter");
             returnClass.Students = this.GetStudents();
             return returnClass;
+        }
+
+        public List<User> GetStudents()
+        {
+            List<User> returnList = db.Users.OrderBy(u => u.Id).ToList();
+            return returnList;
         }
     }
 }

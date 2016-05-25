@@ -2,19 +2,47 @@
     ViewBag.Title = "Dashboard";
 }
 
+<script>
+  var id = '@ViewBag.id';
+</script>
+
 <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-        <h1 class="text-center">Students</h1>
+        <h1 class="text-center">Leerlingen</h1>
         <hr />
-        <ul class="nav nav-sidebar">
-            <li class="active"><a href="~/Home/Index"><i class="fa fa-child" aria-hidden="false"></i> all students</a></li>
-            @foreach (var x in ViewBag.classClass.Students)
-            {
-                <li><a href="~/Home/Index/@x.Id"><i class="fa fa-child" aria-hidden="false"></i> @x.Name @x.Surname</a></li>
-            }
-        </ul>
+        <div>
+            <ul class="nav nav-sidebar">
+                <li class="@(ViewBag.id == null ? "active" : null)"><a href="~/Home/Index"><i class="fa fa-child" aria-hidden="false"></i> all students</a></li>
+                @foreach (var x in ViewBag.classClass.Students)
+                {
+                    <li class="@(ViewBag.id == x.Id ? "active" : null)"><a href="~/Home/Index/@x.Id"><i class="fa fa-child" aria-hidden="false"></i> @x.Name</a></li>
+                }
+            </ul>
+        </div>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1>Welcome @ViewBag.classClass.TeacherName</h1>
+        <h1>Welkom @ViewBag.classClass.TeacherName, Leerling(en): @(ViewBag.id == null ? "Alle leerlingen" : ViewBag.name) </h1>
+        <div class="row">
+            <div class="col-md-12 filter">
+                @using (Html.BeginForm())
+                {
+                    <div class="col-md-3">
+                        <label for="Subject">Vak</label> @Html.DropDownList("Subject", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label for="Domain">Domein</label> @Html.DropDownList("Domain", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label for="LearningObjective">Leerdoel</label> @Html.DropDownList("LearningObjective", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3" />
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
     </div>
 </div>
