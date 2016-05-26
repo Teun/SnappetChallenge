@@ -23,12 +23,17 @@ namespace Snappet
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/scripts").Include("~/Scripts/index.js"));
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                "~/Scripts/index.js", 
+                "~/Scripts/chartist.min.js",
+                "~/Scripts/chartist-plugin-tooltip.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
                       "~/Content/keen-dashboards.css",
+                      "~/Content/chartist.min.css",
+                      "~/Content/chartist-plugin-tooltip.css",
                       "~/Content/site.css"));
         }
     }

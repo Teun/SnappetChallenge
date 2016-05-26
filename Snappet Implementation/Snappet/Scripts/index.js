@@ -14,8 +14,27 @@
         Data.AnswerStatistics();
         return false;
     });
+
+    var options = {
+        plugins: [
+            Chartist.plugins.tooltip()
+        ]
+    };
+
+    graph_1_1 = new Chartist.Bar('#grid-1-1', data_1_1, options);
+    graph_1_2 = new Chartist.Bar('#grid-1-2', data_1_2, options);
+    graph_1_3 = new Chartist.Bar('#grid-1-3', data_1_3, options);
+    graph_2_1 = new Chartist.Pie('#grid-2-1', data_2_1, options);
+    graph_2_2 = new Chartist.Bar('#grid-2-2', data_2_2, options);
+
     Data.Subjects();
 });
+
+var graph_1_1;
+var graph_1_2;
+var graph_1_3;
+var graph_2_1;
+var graph_2_2;
 
 var Data = {
     Subjects: function () {
@@ -75,14 +94,14 @@ var Data = {
         });
     },
 
-    LoadAnswerStatistics: function () {
+    AnswerStatistics: function () {
         $.ajax({
             type: 'POST',
-            url: '/Data/AnswerStatistics',
+            url: '/Data/GraphData',
             dataType: 'json',
-            data: { timePeriod: $("#TimePeriod").val(), subject: $('#Subject').val(), domain: $('#Domain').val(), learningObjective: $('#LearningObjective').val() },
-            success: function (statistics) {
-                Data.UpdateStatisticsData(statistics);
+            data: { id: id, subject: $('#Subject').val(), domain: $('#Domain').val(), learningObjective: $('#LearningObjective').val() },
+            success: function (graphData) {
+                Data.UpdateStatisticsData(graphData);
             },
             error: function (ex) {
                 alert('Statistieken kon niet geladen worden.' + ex);
@@ -91,179 +110,23 @@ var Data = {
 
     },
 
-    UpdateStatisticsData: function (statistics) {
-        $('#numberOfStudents').html(statistics.numberOfStudents);
-        $('#numberOfAnswers').html(statistics.numberOfAnswers);
-        $('#numberOfCorrectAnswers').html(statistics.numberOfCorrectAnswers);
-        $('#percentCorrectAnswers').html(statistics.percentCorrectAnswers.toFixed(2));
-        $('#averageAnswersPerStudent').html(statistics.averageAnswersPerStudent.toFixed(2));
-        $('#averageCorrectAnswersPerStudent').html(statistics.averageCorrectAnswersPerStudent.toFixed(2));
-        $('#highestDifficulty').html(statistics.highestDifficulty.toFixed(2));
-        $('#lowestDifficulty').html(statistics.lowestDifficulty.toFixed(2));
-        $('#averageDifficulty').html(statistics.averageDifficulty.toFixed(2));
+    UpdateStatisticsData: function (graphData) {
+        data_1_1 = graphData.graph_1_1;
+        data_1_2 = graphData.graph_1_2;
+        data_1_3 = graphData.graph_1_3;
+        data_2_1 = graphData.graph_2_1;
+        data_2_2 = graphData.graph_2_2;
 
-        var answersPerStudentPerDayContext = $("#answersPerStudentPerDayChart");
-        if (Data.AnswersPerStudentPerDayChart != null)
-            Data.AnswersPerStudentPerDayChart.destroy();
-
-        Data.AnswersPerStudentPerDayChart = new Chart(answersPerStudentPerDayContext, {
-            type: 'bar',
-            data: {
-                labels: statistics.answersPerStudentPerDayData.Labels,
-                datasets: [{
-                    label: statistics.answersPerStudentPerDayData.ValueLabel,
-                    data: statistics.answersPerStudentPerDayData.Values
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var percentCorrectPerDayContext = $("#percentCorrectPerDayChart");
-        if (Data.PercentCorrectPerDayChart != null)
-            Data.PercentCorrectPerDayChart.destroy();
-
-        Data.PercentCorrectPerDayChart = new Chart(percentCorrectPerDayContext, {
-            type: 'bar',
-            data: {
-                labels: statistics.percentCorrectPerDayData.Labels,
-                datasets: [{
-                    label: statistics.percentCorrectPerDayData.ValueLabel,
-                    data: statistics.percentCorrectPerDayData.Values
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var percentCorrectPerStudentContext = $("#percentCorrectPerStudentChart");
-        if (Data.PercentCorrectPerStudentChart != null)
-            Data.PercentCorrectPerStudentChart.destroy();
-
-        Data.PercentCorrectPerStudentChart = new Chart(percentCorrectPerStudentContext, {
-            type: 'bar',
-            data: {
-                labels: statistics.percentCorrectPerStudentData.Labels,
-                datasets: [{
-                    label: statistics.percentCorrectPerStudentData.ValueLabel,
-                    data: statistics.percentCorrectPerStudentData.Values
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var progressPerStudentContext = $("#progressPerStudentChart");
-        if (Data.ProgressPerStudentChart != null)
-            Data.ProgressPerStudentChart.destroy();
-
-        Data.ProgressPerStudentChart = new Chart(progressPerStudentContext, {
-            type: 'bar',
-            data: {
-                labels: statistics.progressPerStudentData.Labels,
-                datasets: [{
-                    label: statistics.progressPerStudentData.ValueLabel,
-                    data: statistics.progressPerStudentData.Values
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var averageDifficultyPerStudentContext = $("#averageDifficultyPerStudentChart");
-        if (Data.AverageDifficultyPerStudentChart != null)
-            Data.AverageDifficultyPerStudentChart.destroy();
-
-        Data.AverageDifficultyPerStudentChart = new Chart(averageDifficultyPerStudentContext, {
-            type: 'bar',
-            data: {
-                labels: statistics.averageDifficultyPerStudentData.Labels,
-                datasets: [{
-                    label: statistics.averageDifficultyPerStudentData.ValueLabel,
-                    data: statistics.averageDifficultyPerStudentData.Values
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var studentsWithAnswersPerDayContext = $("#studentsWithAnswersPerDayChart");
-        if (Data.StudentsWithAnswersPerDayChart != null)
-            Data.StudentsWithAnswersPerDayChart.destroy();
-
-        Data.StudentsWithAnswersPerDayChart = new Chart(studentsWithAnswersPerDayContext, {
-            type: 'bar',
-            data: {
-                labels: statistics.studentsWithAnswersPerDayData.Labels,
-                datasets: [{
-                    label: statistics.studentsWithAnswersPerDayData.ValueLabel,
-                    data: statistics.studentsWithAnswersPerDayData.Values
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var answerBreakdownContext = $("#answerBreakdownChart");
-        if (Data.AnswerBreakdownChart != null)
-            Data.AnswerBreakdownChart.destroy();
-        $("#answerBreakdownHeading").html(statistics.answerBreakdownData.ValueLabel);
-        Data.AnswerBreakdownChart = new Chart(answerBreakdownContext, {
-            type: 'pie',
-            data: {
-                labels: statistics.answerBreakdownData.Labels,
-                datasets: [{
-                    data: statistics.answerBreakdownData.Values,
-                    backgroundColor: statistics.answerBreakdownData.Colors,
-                    hoverBackgroundColor: statistics.answerBreakdownData.HoverColors
-                }]
-            },
-            options: {
-
-            }
-        });
-
+        self.graph_1_1.update(data_1_1);
+        self.graph_1_2.update(data_1_2);
+        self.graph_1_3.update(data_1_3);
+        self.graph_2_1.update(data_2_1);
+        self.graph_2_2.update(data_2_2);
     }
 }
+
+var data_1_1;
+var data_1_2;
+var data_1_3;
+var data_2_1;
+var data_2_2;

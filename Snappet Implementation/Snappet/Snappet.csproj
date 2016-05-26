@@ -202,6 +202,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\GraphData.cs" />
+    <Compile Include="Models\PieData.cs" />
     <Compile Include="Models\SnappetDB.cs" />
     <Compile Include="Models\SubmittedAnswer.cs" />
     <Compile Include="Models\User.cs" />
@@ -215,6 +217,8 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chartist-plugin-tooltip.css" />
+    <Content Include="Content\chartist.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\keen-dashboards.css" />
@@ -237,6 +241,8 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chartist-plugin-tooltip.min.js" />
+    <Content Include="Scripts\chartist.min.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
