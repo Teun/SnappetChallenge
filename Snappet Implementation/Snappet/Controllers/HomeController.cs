@@ -28,7 +28,7 @@ namespace Snappet.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Application made by Niels Prasing";
 
             return View();
         }
