@@ -9,14 +9,25 @@ namespace Snappet.Controllers
 {
     public class DataController : Controller
     {
+        // instantiate the database class
         private SnappetDB db = new SnappetDB();
+
+        // set the date to the specified date
         private static DateTime date = new DateTime(2015, 3, 24, 11, 30, 00);
 
+        /// <summary>
+        /// get all the subjects 
+        /// for the given userId
+        /// if the id is null it is seen as for all users
+        /// </summary>
+        /// <param name="id">the userId</param>
+        /// <returns>a Json to the view with the subjects as its information</returns>
         [WebMethod]
         public JsonResult Subjects(int? id)
         {
             List<string> subjects = this.db.SubmittedAnswers.Where(s => (s.SubmitDateTime <= date) && (id == null ? true : s.UserId == id)).Select(s => s.Subject).Distinct().OrderBy(s => s).ToList();
             List<SelectListItem> subjectsSelectListItems = new List<SelectListItem>();
+
             if (subjects.Count != 1)
                 subjectsSelectListItems.Add(new SelectListItem { Text = "Alles", Value = "All" });
 
@@ -26,6 +37,14 @@ namespace Snappet.Controllers
             return Json(new SelectList(subjectsSelectListItems, "Value", "Text"));
         }
 
+        /// <summary>
+        /// get all the domains
+        /// for the given userId
+        /// if the id is null it is seen as for all users
+        /// </summary>
+        /// <param name="id">the userId</param>
+        /// <param name="subject">the subject which domains we want</param>
+        /// <returns>a Json to the view with the domains as its information</returns>
         [WebMethod]
         public JsonResult Domains(int? id, string subject)
         {
@@ -40,6 +59,15 @@ namespace Snappet.Controllers
             return Json(new SelectList(domainsSelectListItems, "Value", "Text"));
         }
 
+        /// <summary>
+        /// get all the learningobjectives
+        /// for the given userId
+        /// if the id is null it is seen as for all users
+        /// </summary>
+        /// <param name="id">the userId</param>
+        /// <param name="subject">the subject which domains we want</param>
+        /// <param name="domain">the domain which learning objectives we want</param>
+        /// <returns>a Json to the view with the learningObjectives as its information</returns>
         [WebMethod]
         public JsonResult LearningObjectives(int? id, string subject, string domain)
         {
@@ -54,26 +82,22 @@ namespace Snappet.Controllers
             return Json(new SelectList(learningObjectivesSelectListItems, "Value", "Text"));
         }
 
+        /// <summary>
+        /// get the data for all the graphs on the page
+        /// for the given userId
+        /// if the id is null it is seen as for all users
+        /// </summary>
+        /// <param name="id">the userId</param>
+        /// <param name="subject">the subject which domains we want</param>
+        /// <param name="domain">the domain which learning objectives we want</param>
+        /// <param name="learningObjective">the learningobjective which we want the results for</param>
+        /// <returns>a Json to the view with the data for the graphs as its information</returns>
         [WebMethod]
         public JsonResult GraphData(int? id, string subject, string domain, string learningObjective)
         {
-            List<String> labelsGraph_1_1;
-            List<int> seriesGraph_1_1;
-
-            List<String> labelsGraph_1_2;
-            List<int> seriesGraph_1_2;
-
-            List<String> labelsGraph_1_3;
-            List<Double> seriesGraph_1_3;
-
-            List<int> seriesGraph_2_1;
-
-            List<String> labelsGraph_2_2;
-            List<int> seriesGraph_2_2;
-
-            labelsGraph_1_1 = this.db.SubmittedAnswers.Where(s => (s.SubmitDateTime <= date) && (id == null ? true : s.UserId == id)
+            List<String> labelsGraph_1_1 = this.db.SubmittedAnswers.Where(s => (s.SubmitDateTime <= date) && (id == null ? true : s.UserId == id)
             && (subject == "All" ? 1 == 1 : s.Subject == subject)).Select(s => s.Subject).Distinct().OrderBy(s => s).ToList();
-            seriesGraph_1_1 = new List<int>();
+            List<int> seriesGraph_1_1 = new List<int>();
 
             foreach (String subjectInSubjects in labelsGraph_1_1)
             {
@@ -81,7 +105,7 @@ namespace Snappet.Controllers
             }
 
 
-            labelsGraph_1_2 = new List<String>();
+            List<String> labelsGraph_1_2 = new List<String>();
             List<String> labelsGraph_1_2_temp = this.db.SubmittedAnswers.Where(s => (s.SubmitDateTime <= date) && (id == null ? true : s.UserId == id) && (subject == "All" ? true : s.Subject == subject)
                                                                 && (domain == "All" ? true : s.Domain == domain)).Select(s => s.Domain).Distinct().OrderBy(s => s).ToList();
             foreach (String label in labelsGraph_1_2_temp)
@@ -92,7 +116,7 @@ namespace Snappet.Controllers
                 }
             }
 
-            seriesGraph_1_2 = new List<int>();
+            List<int> seriesGraph_1_2 = new List<int>();
             foreach (String DomainInDomains in labelsGraph_1_2)
             {
                 seriesGraph_1_2.Add(this.db.SubmittedAnswers.Where(s => (s.SubmitDateTime <= date) && (id == null ? true : s.UserId == id) && s.Domain == DomainInDomains).Count());
@@ -107,13 +131,13 @@ namespace Snappet.Controllers
                                                                 && (domain == "All" ? true : s.Domain == domain)
                                                                 && (learningObjective == "All" ? true : s.LearningObjective == learningObjective))
                                                                 .Count();
-            labelsGraph_1_3 = new List<String>();
+            List<String> labelsGraph_1_3 = new List<String>();
             labelsGraph_1_3.Add(id == null ? "Alle leerlingen" : id.ToString());
 
-            seriesGraph_1_3 = new List<Double>();
+            List<Double> seriesGraph_1_3 = new List<Double>();
             seriesGraph_1_3.Add((Double)amountOfAnswers / (Double)amountOfUsers);
 
-            seriesGraph_2_1 = new List<int>();
+            List<int> seriesGraph_2_1 = new List<int>();
             seriesGraph_2_1.Add(this.db.SubmittedAnswers.Where(s => (s.SubmitDateTime <= date) && (id == null ? true : s.UserId == id) && (subject == "All" ? true : s.Subject == subject)
                                                                 && (domain == "All" ? true : s.Domain == domain)
                                                                 && (learningObjective == "All" ? true : s.LearningObjective == learningObjective)
@@ -123,11 +147,11 @@ namespace Snappet.Controllers
                                                                 && (learningObjective == "All" ? true : s.LearningObjective == learningObjective)
                                                                 && s.Correct == 0).Count());
 
-            labelsGraph_2_2 = new List<String>();
+            List<String> labelsGraph_2_2 = new List<String>();
             List<int> userIds = this.db.SubmittedAnswers.Where(s => (s.SubmitDateTime <= date) && (id == null ? true : s.UserId == id) && (subject == "All" ? true : s.Subject == subject)
                                                                 && (domain == "All" ? true : s.Domain == domain)
                                                                 && (learningObjective == "All" ? true : s.LearningObjective == learningObjective)).Select(s => s.UserId).Distinct().OrderBy(s => s).ToList();
-            seriesGraph_2_2 = new List<int>();
+            List<int> seriesGraph_2_2 = new List<int>();
             foreach (int userId in userIds)
             {
                 labelsGraph_2_2.Add(userId.ToString());
