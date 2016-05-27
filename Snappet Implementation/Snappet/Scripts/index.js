@@ -1,4 +1,15 @@
-﻿$(document).ready(function () {
+﻿var graph_1_1;
+var graph_1_2;
+var graph_1_3;
+var graph_2_1;
+var graph_2_2;
+var data_1_1;
+var data_1_2;
+var data_1_3;
+var data_2_1;
+var data_2_2;
+
+$(document).ready(function () {
 
     $("#Subject").change(function () {
         Data.Domains();
@@ -29,12 +40,6 @@
 
     Data.Subjects();
 });
-
-var graph_1_1;
-var graph_1_2;
-var graph_1_3;
-var graph_2_1;
-var graph_2_2;
 
 var Data = {
     Subjects: function () {
@@ -124,9 +129,3 @@ var Data = {
         self.graph_2_2.update(data_2_2);
     }
 }
-
-var data_1_1;
-var data_1_2;
-var data_1_3;
-var data_2_1;
-var data_2_2;

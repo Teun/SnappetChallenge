@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Snappet
 {
@@ -24,13 +23,13 @@ namespace Snappet
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
-                "~/Scripts/index.js", 
-                "~/Scripts/chartist.min.js",
-                "~/Scripts/chartist-plugin-tooltip.min.js"));
+                      "~/Scripts/index.js",
+                      "~/Scripts/chartist.min.js",
+                      "~/Scripts/chartist-plugin-tooltip.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/font-awesome.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/font-awesome.min.css",
                       "~/Content/keen-dashboards.css",
                       "~/Content/chartist.min.css",
                       "~/Content/chartist-plugin-tooltip.css",

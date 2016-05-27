@@ -24,7 +24,7 @@ namespace Snappet.Controllers
             {
                 ViewBag.name = null;
             }
-            
+
             ViewBag.classClass = this.GetClass();
             return View();
         }
