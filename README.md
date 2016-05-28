@@ -7,4 +7,5 @@ On the right side of chart interactive legend where user can change visibility o
 There are 3 fields for interaction:
 - *Subject / Domain* search. It will give *Subject* or *Subject / Domain* sugestions. Based on selection, chart will be filled with apropriate *Learning objectives* information.
 - *From date* and *To date* are used to define a time span for which information will be shown.
+
 All fields are mandatory.
