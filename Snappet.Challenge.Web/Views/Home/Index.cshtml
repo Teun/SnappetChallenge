@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Daily Statistics";
+}
+
+<br />
+<form class="form-inline">
+    <div class="form-group">
+        <label for="subject-domain-search">Subject / Domain </label>
+        <input id="subject-domain-search" type="text" class="form-control" placeholder="Enter at least 4 characters" 
+                data-bind="autocomplete: { minLength : 4, source: findSubjectDomain, select: selectSubjectDomain }" />
+    </div>
+
+    <div class="form-group">
+        <label for="date-picker-from">From </label>
+        <input id="date-picker-from" type="text" class="date-picker form-control"
+               data-bind="datepicker: fromDate,
+                datepickerOptions: {
+                    dateFormat: 'dd/mm/yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    showAnim: 'slideDown',
+                },
+                maxDate: toDate() || new Date(2015, 3, 24)" />
+    </div>
+    <div class="form-group">
+        <label for="date-picker-to">To </label>
+        <input id="date-picker-to" type="text" class="date-picker form-control"
+               data-bind="datepicker: toDate,
+                datepickerOptions: {
+                            dateFormat: 'dd/mm/yy',
+                            changeMonth: true,
+                            changeYear: true,
+                            showAnim: 'slideDown',
+                        },
+                minDate: fromDate(),
+                maxDate: new Date(2015, 3, 24)"/>
+    </div>
+</form>
+
+<br/>
+
+<div id="chart"></div>
+
+<script data-main="/Scripts/main.js" src="/Scripts/lib/require.js"></script>
