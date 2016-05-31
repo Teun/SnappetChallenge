@@ -1,0 +1,35 @@
+﻿@model Snappet.Web.Models.DailyReportViewModel
+
+<h2>Progress by students</h2>
+
+<table class="table">
+    <tr>
+	    <th>Student</th>
+	    <th>Learning objective</th>
+	    <th>Progress</th>
+    </tr>
+
+@foreach (var studentReport in Model.StudentReports)
+{
+	foreach (var progressByStudent in studentReport.ProgressByStudent)
+	{
+		<tr>
+			@if (studentReport.ProgressByStudent.First().Equals(progressByStudent))
+			{
+				<td rowspan="@studentReport.ProgressByStudent.Count()">
+					@studentReport.Student
+				</td>
+			}
+			<td>
+				@progressByStudent.LearningObjective
+			</td>
+
+			<td>
+				@progressByStudent.Progress
+			</td>
+		</tr>
+		}
+	
+}
+
+</table>
