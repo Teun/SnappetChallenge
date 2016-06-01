@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<script>
+    var id = '@ViewBag.id';
+</script>
+
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <h1 class="text-center">Leerlingen</h1>
+        <hr />
+        <div>
+            <ul class="nav nav-sidebar ">
+                <li class="@(ViewBag.id == null ? "active" : null)"><a href="~/Home/Index"><i class="fa fa-child" aria-hidden="false"></i> all students</a></li>
+                @foreach (var x in ViewBag.classClass.Students)
+                {
+                    <li class="@(ViewBag.id == x.Id ? "active" : null)"><a href="~/Home/Index/@x.Id"><i class="fa fa-child" aria-hidden="false"></i> @x.Name</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1>Welkom @ViewBag.classClass.TeacherName, Leerling(en): @(ViewBag.id == null ? "Alle leerlingen" : ViewBag.Name + " (" + ViewBag.id + ")") </h1>
+        <div class="row">
+            <div class="col-md-12 filter">
+                @using (Html.BeginForm())
+                {
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <label for="Subject">Vak</label> @Html.DropDownList("Subject", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control center-block" })
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <label for="Domain">Domein</label> @Html.DropDownList("Domain", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control center-block" })
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <label for="LearningObjective">Leerdoel</label> @Html.DropDownList("LearningObjective", new SelectList(string.Empty, "Value", "Text"), null, new { @class = "form-control center-block" })
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Aantal antwoorden per vak
+                        </div>
+                        <div class="chart-stage">
+                            <div class="ct-chart ct-golden-section" id="grid-1-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Aantal antwoorden per domein
+                        </div>
+                        <div class="chart-stage">
+                            <div class="ct-chart ct-golden-section" id="grid-1-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Gemiddelde aantal antwoorden
+                        </div>
+                        <div class="chart-stage">
+                            <div class="ct-chart ct-golden-section" id="grid-1-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            aantal correcte antwoorden (rood = goed)
+                        </div>
+                        <div class="chart-stage">
+                            <div class="ct-chart ct-golden-section" id="grid-2-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Progress
+                        </div>
+                        <div class="chart-stage">
+                            <div class="ct-chart ct-golden-section" id="grid-2-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
