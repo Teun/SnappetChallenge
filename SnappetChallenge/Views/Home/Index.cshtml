@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Snappet</h1>
+    <p class="lead">Review the work done by your students.</p>
+    <p>Date: <input type="text" id="datepicker"></p>
+</div>
+
+<div class="row">
+    <h1>Welcome to the snappet challenge!</h1>
+    <div data-bind="foreach: results, visible: results().length > 0" class="panel-group" id="accordion" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne" data-bind="style: { color: correctColor() }">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" data-bind="attr: {'data-target': '#collapsible' + $index() }">
+                        User: <strong data-bind="text: userId"></strong>
+                        Correct answers: <strong><span data-bind="text: totalCorrect"></span>/<span data-bind="text: answers().length"></span></strong>
+                    </a>
+                </h4>
+            </div>
+            <div data-bind="attr: { id: 'collapsible' + $index() }" class="panel-collapse collapse" role="tabpanel">
+                <ul class="list-group" data-bind="foreach: answers">
+                    <li class="list-group-item">
+                        <p>Subject: <strong data-bind="text: Subject"></strong></p>
+                        <p>Learning objective: <strong data-bind="text: LearningObjective"></strong></p>
+                        <p>Difficulty: <strong data-bind="text: Difficulty"></strong></p>
+                        <p>Progress: <strong data-bind="text: Progress"></strong></p>
+                        <p>Correct: <strong data-bind="text: Correct"></strong></p>
+                        <p>Date: <strong data-bind="text: new Date(parseInt(SubmitDateTime.substr(6)))"></strong></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+     </div>
+            <div data-bind="visible: !results() || results().length === 0">
+                <p>
+                    No work found, please select a date.
+                </p>
+                <p>
+                    (march 2015 is your best bet)
+                </p>
+            </div>
+
+        </div>
