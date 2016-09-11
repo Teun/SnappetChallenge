@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Snappet.Model;
 using Microsoft.Extensions.DependencyInjection;
 using Snappet.Data.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Snappet.Repository.Implementation
 {
-    public class AnswerRepository : IAnswerRepository
+    public class AnswerRepository : IAnswerRepository, IDisposable
     {
         private readonly AnswerContext answerContext;
 
@@ -19,34 +20,65 @@ namespace Snappet.Repository.Implementation
             this.answerContext = AnswerContext;
         }
 
-        public void Configure(IServiceCollection services)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Add(Answer item)
         {
-            throw new NotImplementedException();
+            answerContext.Answers.Add(item);
         }
 
-        public Answer Find(string key)
+        public Answer Find(int ID)
         {
-            throw new NotImplementedException();
+            return answerContext.Answers.FirstOrDefault(a => a.SubmittedAnswerId == ID);
         }
 
         public IEnumerable<Answer> GetAll()
         {
-            throw new NotImplementedException();
+            return answerContext.Answers.ToList();
         }
 
-        public Answer Remove(string key)
+        public void Remove(int ID)
         {
-            throw new NotImplementedException();
+            Answer answer = answerContext.Answers.FirstOrDefault(a => a.SubmittedAnswerId == ID);
+
+            if(answer != null)
+            {
+                answerContext.Answers.Remove(answer);
+            }
+            else
+            {
+                throw new Exception("Invalid ID passed to AnswerRepository.Remove.");
+            }
         }
 
-        public void Update(Answer item)
+        public Answer Update(Answer item)
         {
-            throw new NotImplementedException();
+            answerContext.Answers.Attach(item).State = EntityState.Modified;
+            return item;
+        }
+
+        public void Save()
+        {
+            answerContext.SaveChanges();
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    answerContext.Dispose();
+                }
+            }
+
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

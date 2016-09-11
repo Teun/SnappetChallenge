@@ -9,6 +9,6 @@ namespace Snappet.Repository
 {
     public interface IRepository
     {
-        void Configure(IServiceCollection services);
+        void Save();
     }
 }

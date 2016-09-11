@@ -11,8 +11,8 @@ namespace Snappet.Repository.Interfaces
     {
         void Add(Answer item);
         IEnumerable<Answer> GetAll();
-        Answer Find(string key);
-        Answer Remove(string key);
-        void Update(Answer item);
+        Answer Find(int ID);
+        void Remove(int ID);
+        Answer Update(Answer item);
     }
 }

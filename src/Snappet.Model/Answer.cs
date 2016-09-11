@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Snappet.Model
 {
     public class Answer
     {
+        [Key]
         public int SubmittedAnswerId { get; set; }
         public DateTime SubmitDateTime { get; set; }
         public bool Correct { get; set; }

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Snappet.Repository;
 using Snappet.Repository.Interfaces;
 using Snappet.Repository.Implementation;
+using Snappet.Configuration;
+using System.IO;
 
 namespace Snappet.Web
 {
@@ -23,6 +25,8 @@ namespace Snappet.Web
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            Config.ApplicationBasePath = Directory.GetParent(env.ContentRootPath).FullName;
         }
 
         public IConfigurationRoot Configuration { get; }

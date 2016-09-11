@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Snappet.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Snappet.Model;
 
 namespace Snappet.Data.Contexts
 {

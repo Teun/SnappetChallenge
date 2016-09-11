@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Snappet.Repository.Interfaces;
+using Snappet.Model;
 
 namespace Snappet.Web.Controllers
 {
@@ -21,6 +22,21 @@ namespace Snappet.Web.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            AnswerRepository.Add(new Answer()
+            {
+                Correct = true,
+                Difficulty = 1.2,
+                Domain = "dom",
+                ExerciseId = 1,
+                LearningObjective = "obj",
+                Progress = 20,
+                Subject = "sub",
+                SubmitDateTime = DateTime.Now
+                //SubmittedAnswerId = 22
+            });
+
+            AnswerRepository.Save();
+
             return new string[] { "value1", "value2" };
         }
 
