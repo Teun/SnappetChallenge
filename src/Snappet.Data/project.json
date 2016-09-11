@@ -10,6 +10,10 @@
         "Snappet.Model": "1.0.0-*"
     },
 
+    "buildOptions": {
+        "emitEntryPoint": true
+    },
+
     "frameworks": {
         "netcoreapp1.0": {
             "dependencies": {

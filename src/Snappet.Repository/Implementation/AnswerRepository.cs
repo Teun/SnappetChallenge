@@ -25,6 +25,11 @@ namespace Snappet.Repository.Implementation
             answerContext.Answers.Add(item);
         }
 
+        public void AddRange(List<Answer> items)
+        {
+            answerContext.Answers.AddRange(items);
+        }
+
         public Answer Find(int ID)
         {
             return answerContext.Answers.FirstOrDefault(a => a.SubmittedAnswerId == ID);

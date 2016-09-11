@@ -10,9 +10,11 @@ namespace Snappet.Repository.Interfaces
     public interface IAnswerRepository : IRepository
     {
         void Add(Answer item);
+        void AddRange(List<Answer> answers);
         IEnumerable<Answer> GetAll();
         Answer Find(int ID);
         void Remove(int ID);
         Answer Update(Answer item);
+        
     }
 }

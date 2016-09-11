@@ -15,8 +15,6 @@ namespace Snappet.Repository
     {
         public static void AddRepositories(this IServiceCollection services)
         {
-            services.AddContexts();
-
             services.AddSingleton<IAnswerRepository, AnswerRepository>();
         }
     }
