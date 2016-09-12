@@ -24,6 +24,7 @@ gulp.task('copy', ['clean'], function () {
     gulp.src(paths.bower + 'angular/angular.js').pipe(gulp.dest(paths.target + 'vendors/angular'));
     gulp.src(paths.bower + 'angular-animate/angular-animate.min.js').pipe(gulp.dest(paths.target + 'vendors/angular-animate'));
     gulp.src(paths.bower + 'angular-route/angular-route.min.js').pipe(gulp.dest(paths.target + 'vendors/angular-route'));
+    gulp.src(paths.bower + 'angular-resource/angular-resource.min.js').pipe(gulp.dest(paths.target + 'vendors/angular-resource'));
     gulp.src(paths.bower + 'angular-sanitize/angular-sanitize.min.js').pipe(gulp.dest(paths.target + 'vendors/angular-sanitize'));
     gulp.src(paths.bower + 'angular-ui-router/release/angular-ui-router.min.js').pipe(gulp.dest(paths.target + 'vendors/angular-ui-router'));
     gulp.src(paths.bower + 'angular-strap/dist/angular-strap.*.js').pipe(gulp.dest(paths.target + 'vendors/angular-strap'));

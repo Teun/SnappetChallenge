@@ -1,6 +1,7 @@
-﻿angular.module('cvdApp', [
+﻿angular.module('snptApp', [
     'ui.router',
     'ngAnimate',
+    'ngResource',
     'ngSanitize',
     'mgcrea.ngStrap'
 ])

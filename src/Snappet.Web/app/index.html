@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app="cvdApp">
+<html lang="en" ng-app="snptApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,27 +21,31 @@
     <script src="vendors/angular/angular.js"></script>
     <script src="vendors/angular-animate/angular-animate.min.js"></script>
     <script src="vendors/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="vendors/angular-resource/angular-resource.min.js"></script>
+    <script src="vendors/angular-ui-router/angular-ui-router.min.js"></script>
     <script src="vendors/angular-strap/angular-strap.min.js"></script>
     <script src="vendors/angular-strap/angular-strap.tpl.min.js"></script>
     <!--<script src="vendors/ui-bootstrap/ui-bootstrap-custom-1.3.1.min.js"></script>
     <script src="vendors/ui-bootstrap/ui-bootstrap-custom-tpls-1.3.1.min.js"></script>-->
-    <script src="vendors/angular-ui-router/angular-ui-router.min.js"></script>
     <link href="vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
      
     <!-- APP stuff -->
     <link href="app/main.css" rel="stylesheet" />
+
     <script src="app/app.js"></script>
+    <script src="app/services/baseservice.js"></script>
+    <script src="app/services/classservice.js"></script>
+
+    <script src="app/directives/grid-actions.js"></script>
+    <script src="app/directives/lorem.js"></script>
+
     <script src="app/pages/huidig/huidig.js"></script>
     <script src="app/pages/zoeken/zoeken.js"></script>
     <script src="app/pages/populair/populair.js"></script>
     <script src="app/pages/leerlingen/leerlingen.js"></script>
-    
     <script src="app/pages/help/help.js"></script>
     <script src="app/pages/login/login.js"></script>
     
-    <script src="app/directives/grid-actions.js"></script>
-    <!--<script src="app/directives/demo-map.js"></script>-->
-    <script src="app/directives/lorem.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

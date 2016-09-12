@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Snappet.Data.Contexts;
+using Snappet.Data;
 using Snappet.Repository.Implementation;
 using Snappet.Repository.Interfaces;
 using System;
@@ -15,7 +16,10 @@ namespace Snappet.Repository
     {
         public static void AddRepositories(this IServiceCollection services)
         {
+            services.AddContexts();
+
             services.AddSingleton<IAnswerRepository, AnswerRepository>();
+            services.AddSingleton<IClassRepository, ClassRepository>();
         }
     }
 }

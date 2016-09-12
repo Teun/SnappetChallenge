@@ -1,4 +1,4 @@
-﻿angular.module('cvdApp')
+﻿angular.module('snptApp')
     .controller('leerlingenCtrl', function ($scope) {
         
     }

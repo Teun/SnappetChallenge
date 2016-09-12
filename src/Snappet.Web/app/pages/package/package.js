@@ -1,4 +1,4 @@
-﻿angular.module('cvdApp')
+﻿angular.module('snptApp')
     .controller('packageCtrl', function ($scope, $stateParams) {
         function init() {
             $scope.id = $stateParams.id;

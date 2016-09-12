@@ -56,7 +56,7 @@ namespace Snappet.Repository.Implementation
 
         public Answer Update(Answer item)
         {
-            answerContext.Answers.Attach(item).State = EntityState.Modified;
+            answerContext.Entry(item).State = EntityState.Modified;
             return item;
         }
 

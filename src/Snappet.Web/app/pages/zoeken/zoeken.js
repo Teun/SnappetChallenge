@@ -1,4 +1,4 @@
-﻿angular.module('cvdApp')
+﻿angular.module('snptApp')
     .controller('zoekenCtrl', function ($scope) {
         $scope.searchVisible = false;
         $scope.itemsPerPage = 20;
