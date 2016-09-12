@@ -1,0 +1,11 @@
+﻿.page.package {
+    div.statistieken i.fa {
+        color: $cvd-red;
+        font-size: 140pt;
+        margin-right: 30px;
+
+        @media (max-width: $screen-sm) {
+            font-size: 80pt;
+        }
+    }
+}

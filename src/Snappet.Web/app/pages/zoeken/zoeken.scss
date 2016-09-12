@@ -1,0 +1,23 @@
+﻿.page.zoeken {
+    button.search {
+        padding: 7px 10px;
+        background: none;
+        position: fixed;
+        right: 10px;
+        top: 60px;
+        border: 1px black solid;
+        z-index: 10;
+
+        i.fa {
+            font-size: 22pt;
+        }
+    }
+
+    div.section.search-container {
+        height: 300px;
+    }
+
+    table td.action-column {
+        width: 50px;
+    }
+}

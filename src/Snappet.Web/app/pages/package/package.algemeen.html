@@ -1,0 +1,49 @@
+﻿<div class="page package algemeen">
+    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="header">
+                    Algemene informatie package
+                </div>
+                <div>
+                    <lorem />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="header">
+                    Package statistieken
+                </div>
+                <div class="statistieken">
+                    <i class="fa fa-bar-chart"></i>
+                    <i class="fa fa-area-chart"></i>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="header">
+                    Package wijzigingshistorie
+                </div>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Wijziging</th>
+                                <th>Naam</th>
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="w in wijzigingsHistorie">
+                                <td>Wijziging #{{w.ID}}</td>
+                                <td>cvd_user_{{w.ID}}</td>
+                                <td>10-04-2016 17:15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 adaptable-container map-container no-padding">
+        <!--<demo-map filter="95" x="5.218" y="52.114" zoom="13" />-->
+    </div>
+</div>

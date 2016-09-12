@@ -1,0 +1,76 @@
+﻿<div class="page zoeken">
+    <!--<button class="search" ng-click="toggleSearchVisibility()">
+        <div ng-if="searchVisible"><i class="fa fa-search"></i><i class="fa fa-angle-up"></i></div>
+        <div ng-if="!searchVisible"><i class="fa fa-search"></i><i class="fa fa-angle-down"></i></div>
+    </button>-->
+    
+    <div class="page-controls">
+        <button class="cvd-button"><i class="fa fa-search"></i><div>Zoeken</div></button>
+        <button class="search2 cvd-button pull-right" ng-click="toggleSearchVisibility()">
+            <i ng-if="searchVisible" class="fa fa-angle-up"></i>
+            <i ng-if="!searchVisible" class="fa fa-angle-down"></i>
+        </button>
+    </div>
+    <div class="animate-show-expand search-controls main" ng-show="searchVisible">
+        <div class="col-xs-6 col-sm-4 no-padding">
+            <div class="section search-container">
+                <div class="section-header">
+                    Package
+                </div>
+                <div class="section-content">
+                    <input type="text" ng-model="fromDate" data-max-date="{{untilDate}}" placeholder="Datum vanaf..." bs-datepicker>
+                    <input type="text" ng-model="untilDate" data-min-date="{{fromDate}}" placeholder="Datum tot..." bs-datepicker>
+                </div>
+            </div>
+        </div>  
+        <div class="col-xs-6 col-sm-4 no-padding"">
+            <div class="section search-container">
+                <div class="section-header">
+                    Kenmerken
+                </div>
+                <div class="section-content">
+                    Content!
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 no-padding"">
+            <div class="section search-container">
+                <div class="section-header">
+                    Zoek items
+                </div>
+                <div class="section-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 adaptable-container map-container no-padding" ng-class="{'search-controls-visible' : searchVisible}">
+        <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1298.6682668769251!2d5.12168243553917!3d52.08775615909551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snl!4v1460125162382"
+                frameborder="0" style="border:0"></iframe>-->
+        <!--<demo-map x="5.157" y="52.101" zoom="12" />-->
+    </div>
+    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding" ng-class="{'search-controls-visible' : searchVisible}">
+        <input type="text" class="filterbox" placeholder="Filter..." ng-model="searchtext"/>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Naam</th>
+                    <th>Type</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="t in filteredItems = (items | filter:searchtext) | limitTo:itemsPerPage:((currentPageNumber - 1) * itemsPerPage)">
+                    <th scope="row">{{t.ID}}</th>
+                    <td>Naam #{{t.ID}}</td>
+                    <td>Type #{{t.ID}}</td>
+                    <td class="action-column"><grid-actions id="t.ID" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <uib-pagination boundary-links="true" total-items="filteredItems.length" ng-model="currentPageNumber" items-per-page="itemsPerPage" max-size="8"
+                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+    </div>
+</div>
