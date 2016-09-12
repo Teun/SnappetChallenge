@@ -1,5 +1,5 @@
-﻿/*$cvd-red: #ce6049;
-$cvd-red-light: #d8806d;*/
+﻿/*$snpt-red: #ce6049;
+$snpt-red-light: #d8806d;*/
 @font-face {
   font-family: "RijksoverheidSansText";
   src: url(/sites/all/themes/rce2014/fonts/ROsanswebtextregular.woff) format("woff");
@@ -88,7 +88,7 @@ div.header {
   color: #FFB612;
   /*&:hover {*/
   /*&:focus {
-        background-color: $cvd-red;
+        background-color: $snpt-red;
         color: white;
     }*/ }
   .nav > li > a:focus, .nav > li > a:hover {
@@ -194,25 +194,25 @@ html, body {
   margin-right: 0; }
 
 /* Controls */
-.cvd-button {
+.snpt-button {
   height: 50px;
   background: none;
   border: none;
   color: #FFB612;
   padding: 0 15px; }
-  .cvd-button > div {
+  .snpt-button > div {
     display: inline-block;
     top: -5px;
     position: relative; }
-  .cvd-button > i.fa {
+  .snpt-button > i.fa {
     font-size: 22pt;
     margin-right: 10px; }
-  .cvd-button.pull-right i.fa {
+  .snpt-button.pull-right i.fa {
     margin-right: 0; }
-  .cvd-button:hover {
+  .snpt-button:hover {
     background: #f5c559;
     color: white; }
-  .cvd-button.active {
+  .snpt-button.active {
     color: #fff;
     background-color: #FFB612; }
 

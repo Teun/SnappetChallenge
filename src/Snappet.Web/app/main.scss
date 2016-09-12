@@ -1,10 +1,10 @@
-﻿/*$cvd-red: #ce6049;
-$cvd-red-light: #d8806d;*/
+﻿/*$snpt-red: #ce6049;
+$snpt-red-light: #d8806d;*/
 
-$cvd-red: #2FA5D6;
-$cvd-red-light: #69b6d6;
-$cvd-gray: #f5f5f5;
-$cvd-gray-light: #FAFAFA;
+$snpt-red: #2FA5D6;
+$snpt-red-light: #69b6d6;
+$snpt-gray: #f5f5f5;
+$snpt-gray-light: #FAFAFA;
 
 $screen-xs: 480px;
 $screen-sm: 768px;
@@ -27,11 +27,11 @@ body {
 }
 
 a {
-    color: $cvd-red-light;
+    color: $snpt-red-light;
 }
 
 a:hover, a:focus {
-    color: $cvd-red;
+    color: $snpt-red;
 }
 
 a[ui-sref] {
@@ -47,45 +47,45 @@ input {
     margin: 0;
     padding: 8px;
     border: none;
-    background-color: $cvd-gray;
-    color: $cvd-red;
+    background-color: $snpt-gray;
+    color: $snpt-red;
     /*font-size: 13pt;*/
-    border-bottom: 2px solid $cvd-gray;
+    border-bottom: 2px solid $snpt-gray;
 
     &:nth-child(odd) {
-        background-color: $cvd-gray;
+        background-color: $snpt-gray;
     }
 
     &:nth-child(even) {
-        background-color: $cvd-gray-light;
+        background-color: $snpt-gray-light;
     }
 
     /* WebKit, Blink, Edge */
     &::-webkit-input-placeholder { 
-        color: $cvd-red;
+        color: $snpt-red;
     }
     /* Mozilla Firefox 4 to 18 */
     &:-moz-placeholder { 
-        color: $cvd-red;
+        color: $snpt-red;
         opacity: 1;
     }
     /* Mozilla Firefox 19+ */
     &::-moz-placeholder { 
-        color: $cvd-red;
+        color: $snpt-red;
         opacity:  1;
     }
     /* Internet Explorer 10-11 */
     &:-ms-input-placeholder { 
-        color: $cvd-red;
+        color: $snpt-red;
     }
 
     &:focus {
-        border-bottom: 2px solid $cvd-red;
+        border-bottom: 2px solid $snpt-red;
     }
 }
 
 div.header {
-    border-bottom: 2px solid $cvd-red;
+    border-bottom: 2px solid $snpt-red;
     margin-bottom: 10px;
     padding: 7px 0 2px 0;
     font-size: 14pt;
@@ -117,22 +117,22 @@ div.header {
 }
 
 .nav > li > a {
-    color: $cvd-red;
+    color: $snpt-red;
 
     /*&:hover {*/
     &:focus, &:hover {
-        background-color: $cvd-red-light;
+        background-color: $snpt-red-light;
         color: white;
     }
 
     /*&:focus {
-        background-color: $cvd-red;
+        background-color: $snpt-red;
         color: white;
     }*/
 }
 
 nav.navbar {
-    background-color: $cvd-red;
+    background-color: $snpt-red;
     background-position: center;
     background-position-y: 0;
     background-repeat: no-repeat;
@@ -164,7 +164,7 @@ nav.navbar {
 .nav.navbar-nav > hr {
     &.active {
         color: #fff;
-        background-color: $cvd-red-light;
+        background-color: $snpt-red-light;
     }
 
     > a {
@@ -217,22 +217,22 @@ ul.nav > li {
     > {
         li {
             > a {
-                padding-right: 20px;
-                padding-left: 20px;
+                padding: 15px;
+                height: 50px;
 
                 &:hover, &:focus {
                     color: #fff;
                 }
 
                 &:focus {
-                    background-color: $cvd-red;
+                    background-color: $snpt-red;
                 }
             }
         }
 
         .active > a {
             color: #fff;
-            background-color: $cvd-red;
+            background-color: $snpt-red;
         }
     }
 }
@@ -241,11 +241,11 @@ ul.nav > li {
     border: none;
 
     &.btn-today {
-        background-color: $cvd-red;
+        background-color: $snpt-red;
     }
 
     &:hover {
-        background-color: $cvd-red-light;
+        background-color: $snpt-red-light;
     }
 }
 
@@ -280,11 +280,11 @@ html, body {
 
 /* Controls */
 
-.cvd-button {
+.snpt-button {
     height: 50px;
     background: none;
     border: none;
-    color: $cvd-red;
+    color: $snpt-red;
     padding: 0 15px;
 
     > div {
@@ -305,13 +305,13 @@ html, body {
     }
 
     &:hover {
-        background: $cvd-red-light;
+        background: $snpt-red-light;
         color: white;
     }
 
     &.active {
         color: #fff;
-        background-color: $cvd-red;
+        background-color: $snpt-red;
     }
 }
 
@@ -322,14 +322,14 @@ button.action-button {
 }
 
 div.section {
-    border: 1px solid $cvd-red;
+    border: 1px solid $snpt-red;
 
     /*@media (max-width: $screen-sm) {*/
         /*margin-bottom: 30px;*/
     /*}*/
 
     > .section-header {
-        background-color: $cvd-red;
+        background-color: $snpt-red;
         font-size: 18px;
         padding: 5px 10px;
         color: white;
@@ -343,7 +343,7 @@ div.section {
 div.page-controls {
     height: 50px;
     width: 100%;
-    background-color: $cvd-gray;
+    background-color: $snpt-gray;
 }
 
 div.adaptable-container {

@@ -68,17 +68,16 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <!-- Dropdown navigation on phones -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="registreren">Registreren</a></li>
-                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="invoeren">Invoeren</a></li>
-                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="zoeken">Zoeken</a></li>
-                    <li ng-show="$state.includes('package')" class="visible-xs-block active nav-level-2"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="package.mijnpackages">Package</a></li>
-                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="valideren">Valideren</a></li>
-                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="landelijkebeelden">Landelijke beelden</a></li>
-                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="beheren">Beheren</a></li>
+                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse.in" ui-sref="huidig">Huidige Les</a></li>
+                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse.in" ui-sref="zoeken">Zoeken</a></li>
+                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse.in" ui-sref="populair">Populaire Opdrachten</a></li>
+                    <li ng-show="$state.includes('package')" class="visible-xs-block active nav-level-2">
+                        <a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="package.mijnpackages">Package</a>
+                    </li>
+                    <li ui-sref-active="active" class="visible-xs-block"><a data-toggle="collapse" data-target=".navbar-collapse.in" ui-sref="leerlingen">Leerlingen</a></li>
                     <li><hr /></li>
-                    <li ui-sref-active="active"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="login">Login</a></li>
-                    <li ui-sref-active="active"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="contact">Contact</a></li>
-                    <li ui-sref-active="active"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="help">Help</a></li>
+                    <li ui-sref-active="active"><a data-toggle="collapse" data-target=".navbar-collapse.in" ui-sref="login">Login</a></li>
+                    <li ui-sref-active="active"><a data-toggle="collapse" data-target=".navbar-collapse.in" ui-sref="help">Help</a></li>
                 </ul>
             </div>
         </div>
@@ -89,13 +88,11 @@
             <!-- Left sidebar -->
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li ui-sref-active="active"><a ui-sref="registreren">Registreren</a></li>
-                    <li ui-sref-active="active"><a ui-sref="invoeren">Invoeren</a></li>
+                    <li ui-sref-active="active"><a ui-sref="huidig">Huidige Les</a></li>
                     <li ui-sref-active="active"><a ui-sref="zoeken">Zoeken</a></li>
+                    <li ui-sref-active="active"><a ui-sref="populair">Populaire Opdrachten</a></li>
                     <li ng-show="$state.includes('package')" class="active nav-level-2"><a ui-sref="package.mijnpackages">Package</a></li>
-                    <li ui-sref-active="active"><a ui-sref="valideren">Valideren</a></li>
-                    <li ui-sref-active="active"><a ui-sref="landelijkebeelden">Landelijke beelden</a></li>
-                    <li ui-sref-active="active"><a ui-sref="beheren">Beheren</a></li>
+                    <li ui-sref-active="active"><a ui-sref="leerlingen">Leerlingen</a></li>
                 </ul>
             </div> 
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
