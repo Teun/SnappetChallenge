@@ -18,11 +18,31 @@ namespace Snappet.Web.Controllers
             ClassRepository = classRepository;
         }
 
-        // GET api/values
         [HttpGet]
         public async Task<IEnumerable<Class>> Get()
         {
             return await ClassRepository.List();
+        }
+
+        [HttpGet]
+        [Route("subjects")]
+        public async Task<IEnumerable<string>> ListSubjects()
+        {
+            return await ClassRepository.ListSubjects();
+        }
+
+        [HttpGet]
+        [Route("domains")]
+        public async Task<IEnumerable<string>> ListDomains()
+        {
+            return await ClassRepository.ListDomains();
+        }
+
+        [HttpGet]
+        [Route("objectives")]
+        public async Task<IEnumerable<string>> ListLearningObjectives()
+        {
+            return await ClassRepository.ListLearningObjectives();
         }
     }
 }

@@ -13,9 +13,9 @@ namespace Snappet.Repository.Implementation
 {
     public class AnswerRepository : IAnswerRepository, IDisposable
     {
-        private readonly AnswerContext answerContext;
+        private readonly SnappetContext answerContext;
 
-        public AnswerRepository(AnswerContext AnswerContext)
+        public AnswerRepository(SnappetContext AnswerContext)
         {
             this.answerContext = AnswerContext;
         }
@@ -32,7 +32,7 @@ namespace Snappet.Repository.Implementation
 
         public Answer Find(int ID)
         {
-            return answerContext.Answers.FirstOrDefault(a => a.SubmittedAnswerId == ID);
+            return answerContext.Answers.FirstOrDefault(a => a.ID == ID);
         }
 
         public IEnumerable<Answer> GetAll()
@@ -42,7 +42,7 @@ namespace Snappet.Repository.Implementation
 
         public void Remove(int ID)
         {
-            Answer answer = answerContext.Answers.FirstOrDefault(a => a.SubmittedAnswerId == ID);
+            Answer answer = answerContext.Answers.FirstOrDefault(a => a.ID == ID);
 
             if(answer != null)
             {

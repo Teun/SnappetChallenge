@@ -18,8 +18,13 @@ namespace Snappet.Repository
         {
             services.AddContexts();
 
+            //TODO: Figure out what type of service is the best. Maybe this causes the issues that I need to use async / await in some WebAPI Controllers.
             services.AddSingleton<IAnswerRepository, AnswerRepository>();
             services.AddSingleton<IClassRepository, ClassRepository>();
+            services.AddSingleton<IDomainRepository, DomainRepository>();
+            services.AddSingleton<ILearningObjectiveRepository, LearningObjectiveRepository>();
+            services.AddSingleton<ISubjectRepository, SubjectRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
         }
     }
 }

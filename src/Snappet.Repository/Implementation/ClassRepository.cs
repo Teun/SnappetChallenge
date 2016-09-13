@@ -6,31 +6,55 @@ using System.Threading.Tasks;
 using Snappet.Model;
 using Snappet.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using Snappet.Repository.Implementation.Base;
 
 namespace Snappet.Repository.Implementation
 {
-    public class ClassRepository : IClassRepository
+    public class ClassRepository : BasicRepository<Class>, IClassRepository
     {
-        private readonly AnswerContext answerContext;
+        private readonly SnappetContext answerContext;
 
-        public ClassRepository(AnswerContext AnswerContext)
+        public ClassRepository(SnappetContext SnappetContext)
+            : base(SnappetContext, SnappetContext.Classes)
         {
-            this.answerContext = AnswerContext;
+
         }
 
         public async Task<List<Class>> List()
         {
-            var classes = await answerContext.Answers
-                .GroupBy(a => new { a.Subject, a.Domain, a.LearningObjective })
-                .Select(a => new Class() { Subject = a.Key.Subject, Domain = a.Key.Domain, LearningObjective = a.Key.LearningObjective })
-                .ToListAsync();
+            //var classes = await answerContext.Answers
+            //    .GroupBy(a => new { a.Subject, a.Domain, a.LearningObjective })
+            //    .Select(a => new Class() { Subject = a.Key.Subject, Domain = a.Key.Domain, LearningObjective = a.Key.LearningObjective })
+            //    .ToListAsync();
 
-            return classes;
+            //return classes;
+            return null;
         }
 
-        public void Save()
+        public async Task<List<String>> ListSubjects()
         {
-            throw new NotImplementedException("");
+            return null;// return await ListDistinctStrings(a => a.Subject); ;
+        }
+
+        public async Task<List<String>> ListDomains()
+        {
+            return null;//return await ListDistinctStrings(a => a.Domain);
+        }
+
+        public async Task<List<String>> ListLearningObjectives()
+        {
+            return null;//return await ListDistinctStrings(a => a.LearningObjective);
+        }
+
+        private async Task<List<string>> ListDistinctStrings(Expression<Func<Answer, string>> selectExpression)
+        {
+            var strings = await answerContext.Answers
+                .Select(selectExpression)
+                .Distinct()
+                .ToListAsync();
+
+            return strings;
         }
     }
 }

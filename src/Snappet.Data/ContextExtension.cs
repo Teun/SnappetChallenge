@@ -14,11 +14,11 @@ namespace Snappet.Data
     {
         public static void AddContexts(this IServiceCollection services)
         {
-            string pathToDB = Path.Combine(Config.ApplicationBasePath, "Snappet.Data", "answer.db");
+            string pathToDB = Path.Combine(Config.ApplicationBasePath, "Snappet.Data", "snappet.db");
 
             if(File.Exists(pathToDB))
             {
-                services.AddDbContext<AnswerContext>(options => options.UseSqlite("Filename=" + pathToDB));
+                services.AddDbContext<SnappetContext>(options => options.UseSqlite("Filename=" + pathToDB));
             }
             else
             {

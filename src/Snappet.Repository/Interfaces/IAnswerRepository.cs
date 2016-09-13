@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Snappet.Repository.Interfaces
 {
-    public interface IAnswerRepository : IRepository
+    public interface IAnswerRepository
     {
         void Add(Answer item);
         void AddRange(List<Answer> answers);
