@@ -2,3 +2,6 @@
 bin
 obj
 /src/.vs
+/src/Snappet.Web/bower_components
+/src/Snappet.Web/node_modules
+/src/Snappet.Web/wwwroot
