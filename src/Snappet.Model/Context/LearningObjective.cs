@@ -12,6 +12,6 @@ namespace Snappet.Model
         [Key]
         public int ID { get; set; }
 
-        public string Objective { get; set; }
+        public string Name { get; set; }
     }
 }

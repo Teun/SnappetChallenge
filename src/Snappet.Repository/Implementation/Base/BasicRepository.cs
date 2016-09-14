@@ -35,6 +35,14 @@ namespace Snappet.Repository.Implementation.Base
             return dbSet.FirstOrDefault(a => a.ID == ID);
         }
 
+        //Search() is very handy for soms very specific situations that we don't want to implement in implementations of BasicRepository. 
+        //However it goes against the idea of a repository and might give too much freedom...
+        //TODO: Revise this later?
+        public IQueryable<T> Search()
+        {
+            return dbSet.AsQueryable<T>();
+        }
+
         public IEnumerable<T> GetAll()
         {
             return dbSet.ToList();

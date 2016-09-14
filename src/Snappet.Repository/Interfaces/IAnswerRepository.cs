@@ -1,4 +1,5 @@
 ﻿using Snappet.Model;
+using Snappet.Repository.Implementation.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace Snappet.Repository.Interfaces
 {
-    public interface IAnswerRepository
+    public interface IAnswerRepository : IBasicRepository<Answer>
     {
-        void Add(Answer item);
-        void AddRange(List<Answer> answers);
-        IEnumerable<Answer> GetAll();
-        Answer Find(int ID);
-        void Remove(int ID);
-        Answer Update(Answer item);
         
     }
 }

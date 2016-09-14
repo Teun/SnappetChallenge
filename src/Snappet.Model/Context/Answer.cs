@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snappet.Model.Context.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Snappet.Model
 {
-    public class Answer
+    public class Answer : IBasicContext
     {
         [Key]
         public int ID { get; set; }
@@ -21,6 +22,9 @@ namespace Snappet.Model
 
         public int UserId { get; set; }
         public User User { get; set; }
+
+        public int ClassId { get; set; }
+        public Class Class { get; set; }
 
         public int ExerciseId { get; set; }
 

@@ -20,6 +20,8 @@ namespace Snappet.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("ClassId");
+
                     b.Property<bool>("Correct");
 
                     b.Property<double>("Difficulty");
@@ -39,6 +41,8 @@ namespace Snappet.Data.Migrations
                     b.Property<int>("UserId");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ClassId");
 
                     b.HasIndex("DomainID");
 
@@ -80,7 +84,7 @@ namespace Snappet.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Objective");
+                    b.Property<string>("Name");
 
                     b.HasKey("ID");
 
@@ -113,6 +117,11 @@ namespace Snappet.Data.Migrations
 
             modelBuilder.Entity("Snappet.Model.Answer", b =>
                 {
+                    b.HasOne("Snappet.Model.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Snappet.Model.Domain", "Domain")
                         .WithMany()
                         .HasForeignKey("DomainID")

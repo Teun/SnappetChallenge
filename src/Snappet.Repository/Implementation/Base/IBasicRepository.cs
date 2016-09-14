@@ -13,6 +13,8 @@ namespace Snappet.Repository.Implementation.Base
 
         T Find(int ID);
 
+        IQueryable<T> Search();
+
         T Update(T item);
 
         IEnumerable<T> GetAll();

@@ -51,11 +51,10 @@ namespace Snappet.Data.Loader
             List<WorkRow> rows = JsonConvert.DeserializeObject<List<WorkRow>>(sr.ReadToEnd(), jsonSettings);
 
             //Class:
+            //Create some classes
             Random randomClassID = new Random();
-            var classes = rows
-                .Select(r => randomClassID.Next(1, 50))
-                .Distinct()
-                .Select(classID => new Class() { ID = classID, Name = "Class #" + classID });
+            var classes = Enumerable.Range(1, 50)
+                .Select(classID => new Class() { Name = "Class #" + classID });
 
             classRepository.AddRange(classes);
             classRepository.Save();
@@ -70,12 +69,12 @@ namespace Snappet.Data.Loader
             domainRepository.Save();
 
             //LearningObjective:
-            var objectives = rows
+            var learningObjectives = rows
                 .Select(r => r.LearningObjective)
                 .Distinct()
-                .Select(objectiveName => new LearningObjective() { Objective = objectiveName });
+                .Select(learningObjectiveName => new LearningObjective() { Name = learningObjectiveName });
 
-            learningObjectiveRepository.AddRange(objectives);
+            learningObjectiveRepository.AddRange(learningObjectives);
             learningObjectiveRepository.Save();
 
             //Subject:
@@ -95,6 +94,44 @@ namespace Snappet.Data.Loader
 
             userRepository.AddRange(users);
             userRepository.Save();
+
+            int index = 0;
+            int count = rows.Count;
+
+            //Answers
+            foreach (WorkRow r in rows)
+            {
+                if (index++ % 10 == 0)
+                    Console.WriteLine($"Inserting class: {index} of {count}.");
+
+                //The .AddRange on our BasicRepository seems to lose us the ability for EF to set the ID of the insert item.
+                //Therefore we have to use the repositories again, this is slower.
+                Answer a = new Answer();
+                a.Class = classRepository.Find(randomClassID.Next(1, 50));
+                a.Correct = r.Correct;
+                a.Difficulty = r.Difficulty;
+                a.Domain = domainRepository.Search().First(x => x.Name == r.Domain);
+                a.ExerciseId = r.ExerciseId;
+                a.LearningObjective = learningObjectiveRepository.Search().First(x => x.Name == r.LearningObjective);
+                a.Progress = r.Progress;
+                a.Subject = subjectRepository.Search().First(x => x.Name == r.Subject);
+                a.SubmitDateTime = r.SubmitDateTime; //TODO: UTC to proper timezone
+                a.User = userRepository.Find(r.UserId);
+
+                answerRepository.Add(a);
+
+                try
+                {
+                    if (index % 1000 == 0)
+                        answerRepository.Save();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to insert Answer. Message: {ex.Message}");
+                }
+            }
+
+            answerRepository.Save();
         }
 
         private static void JsonErrorHandler(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs args)
