@@ -1,40 +1,46 @@
 ﻿<div class="page zoeken">
-    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding" ng-class="{'search-controls-visible' : searchVisible}">
-        <table class="table table-hover">
+    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding">
+        <input type="text" class="filterbox" placeholder="Filter..." ng-model="searchtextActivity" />
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Naam</th>
                     <th>Gemiddelde voortgang</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="act in currentActivity">
-                <tr class="pointer" ng-click="selectActiveStudent(act)">
+            <tbody>
+                <tr ng-repeat="act in filteredItemsActivity = (currentActivity | filter:searchtextActivity) | limitTo:itemsPerPage:((currentPageNumberActivity - 1) * itemsPerPage)"
+                    ng-click="selectActiveStudent(act)" class="pointer" ng-class="{active : activeStudent == act}">
                     <td>{{act.userName}}</td>
                     <td>{{act.averageProgress}}</td>
                 </tr>
             </tbody>
         </table>
+        <uib-pagination boundary-links="true" total-items="filteredItemsActivity.length" ng-model="currentPageNumberActivity" items-per-page="itemsPerPage" max-size="8"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
     </div>
-    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding" ng-class="{'search-controls-visible' : searchVisible}">
+    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding">
         <div ng-show="!activeStudent">
             Selecteer een student om zijn/haar voortgang te zien per onderdeel.
         </div>
         <div ng-show="activeStudent">
-            <h2>{{activeStudent.userName}}</h2>
-            <table class="table table-hover">
+            <input type="text" class="filterbox" placeholder="Filter..." ng-model="searchtextProgress" />
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th class="pointer" ng-click="setProgressOrder('objName')">Naam</th>
-                        <th class="pointer" ng-click="setProgressOrder('averageProgress')">Gemiddelde voortgang</th>
+                        <th class="pointer" ng-click="setProgressOrder('averageProgress')">Gem. Voortgang</th>
                     </tr>
                 </thead>
-                <tbody ng-repeat="p in progress | orderBy:orderProperty">
-                    <tr>
-                        <td>{{p.objName}}</td>
-                        <td>{{p.averageProgress}}</td>
+                <tbody>
+                    <tr ng-repeat="progress in filteredItemsProgress = (progress | filter:searchtextProgress) | orderBy:orderProperty | limitTo:itemsPerPage:((currentPageNumberProgress - 1) * itemsPerPage)">
+                        <td>{{progress.objName}}</td>
+                        <td>{{progress.averageProgress}}</td>
                     </tr>
                 </tbody>
             </table>
+            <uib-pagination boundary-links="true" total-items="filteredItemsfilteredItemsProgress.length" ng-model="currentPageNumberProgress" items-per-page="itemsPerPage" max-size="8"
+                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
         </div>
     </div>
 </div>

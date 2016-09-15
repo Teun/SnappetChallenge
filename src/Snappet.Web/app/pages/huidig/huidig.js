@@ -5,6 +5,7 @@
         'learningObjectiveService',
 
         function ($scope, classService, learningObjectiveService) {
+            $scope.itemsPerPage = 20;
             var staticClassId = 37;
 
             var init = function () {

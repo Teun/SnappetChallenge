@@ -3,6 +3,7 @@
     'ngAnimate',
     'ngResource',
     'ngSanitize',
+    'ui.bootstrap',
     'mgcrea.ngStrap'
 ])
 
@@ -86,6 +87,5 @@
 
 .controller('ApplicationCtrl', function ($scope, $state) {
     $scope.$state = $state;
-    //$scope.ploop = "PLOOP";
 })
 ;

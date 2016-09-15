@@ -10,6 +10,7 @@ var batch = require('gulp-batch');
 
 var paths = {
     bower: './bower_components/',
+    custom: './custom_components/',
     app: './app/',
     target: './wwwroot/'
 };
@@ -28,6 +29,8 @@ gulp.task('copy', ['clean'], function () {
     gulp.src(paths.bower + 'angular-sanitize/angular-sanitize.min.js').pipe(gulp.dest(paths.target + 'vendors/angular-sanitize'));
     gulp.src(paths.bower + 'angular-ui-router/release/angular-ui-router.min.js').pipe(gulp.dest(paths.target + 'vendors/angular-ui-router'));
     gulp.src(paths.bower + 'angular-strap/dist/angular-strap.*.js').pipe(gulp.dest(paths.target + 'vendors/angular-strap'));
+
+    gulp.src(paths.custom + 'ui-bootstrap/ui-bootstrap-custom-*.js').pipe(gulp.dest(paths.target + 'vendors/ui-bootstrap'));
 
     gulp.src(paths.bower + 'bootstrap/dist/**/*.{js,map,css,ttf,svg,woff,eot}').pipe(gulp.dest(paths.target + 'vendors/bootstrap'));
     gulp.src(paths.bower + 'font-awesome/{css,fonts}/*.{css,otf,eot,svg,ttf,woff,woff2}').pipe(gulp.dest(paths.target + 'vendors/font-awesome'));

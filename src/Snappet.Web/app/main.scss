@@ -371,6 +371,11 @@ div.grid-container {
     table {
         overflow-y: auto;
         height: 100%;
+
+        tr.active td {
+            background-color: $snpt-red;
+            color: white;
+        }
     }
 }
 
