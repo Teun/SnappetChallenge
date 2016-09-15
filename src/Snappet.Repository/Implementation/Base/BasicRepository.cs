@@ -11,12 +11,12 @@ namespace Snappet.Repository.Implementation.Base
 {
     public abstract class BasicRepository<T> where T : class, IBasicContext
     {
-        private readonly DbContext context;
+        protected SnappetContext SnappetContext { get; private set; }
         private readonly DbSet<T> dbSet;
 
-        public BasicRepository(DbContext context, DbSet<T> dbSet)
+        public BasicRepository(SnappetContext snappetContext, DbSet<T> dbSet)
         {
-            this.context = context;
+            this.SnappetContext = snappetContext;
             this.dbSet = dbSet;
         }
 
@@ -69,7 +69,7 @@ namespace Snappet.Repository.Implementation.Base
 
         public void Save()
         {
-            context.SaveChanges();
+            SnappetContext.SaveChanges();
         }
 
         #region IDisposable
@@ -82,7 +82,7 @@ namespace Snappet.Repository.Implementation.Base
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    SnappetContext.Dispose();
                 }
             }
 

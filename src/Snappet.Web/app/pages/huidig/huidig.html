@@ -1,1 +1,40 @@
-﻿<pre>{{classes | json}}</pre>
+﻿<div class="page zoeken">
+    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding" ng-class="{'search-controls-visible' : searchVisible}">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Gemiddelde voortgang</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="act in currentActivity">
+                <tr class="pointer" ng-click="selectActiveStudent(act)">
+                    <td>{{act.userName}}</td>
+                    <td>{{act.averageProgress}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-12 col-sm-6 adaptable-container grid-container no-padding" ng-class="{'search-controls-visible' : searchVisible}">
+        <div ng-show="!activeStudent">
+            Selecteer een student om zijn/haar voortgang te zien per onderdeel.
+        </div>
+        <div ng-show="activeStudent">
+            <h2>{{activeStudent.userName}}</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="pointer" ng-click="setProgressOrder('objName')">Naam</th>
+                        <th class="pointer" ng-click="setProgressOrder('averageProgress')">Gemiddelde voortgang</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="p in progress | orderBy:orderProperty">
+                    <tr>
+                        <td>{{p.objName}}</td>
+                        <td>{{p.averageProgress}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

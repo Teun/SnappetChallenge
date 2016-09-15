@@ -10,6 +10,6 @@ namespace Snappet.Repository.Interfaces
 {
     public interface ILearningObjectiveRepository : IBasicRepository<LearningObjective>
     {
-
+        Task<List<Model.DTO.ProgressPerLearningObjective>> GetProgress(int classID, int userId);
     }
 }

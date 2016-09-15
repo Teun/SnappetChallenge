@@ -19,6 +19,14 @@ namespace Snappet.Web.Controllers
         }
 
         [HttpGet]
+        [Route("{id}/currentActivity")]
+        public async Task<IEnumerable<Model.DTO.ProgressPerUser>> ListCurrentActivity(int id)
+        {
+            return await ClassRepository.GetCurrentActivity(id);
+        }
+
+
+        [HttpGet]
         public async Task<IEnumerable<Class>> Get()
         {
             return await ClassRepository.List();
