@@ -13,8 +13,6 @@ namespace Snappet.Repository.Implementation
 {
     public class AnswerRepository : BasicRepository<Answer>, IAnswerRepository
     {
-        private readonly SnappetContext answerContext;
-
         public AnswerRepository(SnappetContext SnappetContext)
             : base(SnappetContext, SnappetContext.Answers)
         {

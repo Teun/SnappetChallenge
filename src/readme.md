@@ -11,7 +11,7 @@ What you'll need:
 Open CMD from ./Snappet.Web/
 
  - Visual Studio 2015 Update 3
-   You should already have this
+   You should already have this.
  - .NET Core Preview 2015
    Install from: https://www.microsoft.com/net/core#windows
  - Node:
@@ -28,6 +28,8 @@ So now we got everything we need. To start building out web-app just run the fol
 > gulp
 > dotnet restore
 > dotnet run
+
+Browse to: http://localhost:26039/index.html#/huidig
 
 Issues:
 
@@ -46,4 +48,34 @@ VS uses wrong version of Node.js
 	- Open Tools > Options > Project and Solutions > External Web Tools
 	- Add "C:\Program Files\nodejs" to the top of the list
 	  See: https://cloud.githubusercontent.com/assets/440031/15933886/becadf08-2e1e-11e6-827d-073f4ae91a35.PNG
-	  
+
+Issues:
+
+ - UTC Dates:
+   Dates in the work.js are UTC, in the current setup nothing is done with this.
+   
+ - Grouping per student is incorrect:
+   Not sure why this happens, in LearningObjectiveRepository.GetProgress(int classID, int userId) the group by over learning objective name and progress
+   isn't honored. It seems to select the proper data but it isn't grouped, therefore the averages aren't averages.
+
+Future:
+
+Development is never done!
+
+Due to time constraints, and more issues with .NET Core I'd hoped, not everything I had in mind is done.
+
+ - Add a searchpage to slice through the available data:
+   This way we can see what other school/students/classes are doing and compare progress/skill.
+   Another cool thing by doing comparisons like this is that schools can better see what their student are good,
+   and of course bad, at. Education can honed better like this.
+   
+ - Leerlingen view:
+   See a overview of all students. View what they are doing and how they are doing.
+   
+ - Popular assignments:
+   View what assignments are popular among students.
+   I'm not sure if students can select assignments from a 'pool' or something like that. But if the can it would be informative to
+   see what's popular.
+   
+ - Caching:
+   Nothing is cached
