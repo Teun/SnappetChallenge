@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Snappet.Data.Loader.Model
 {
+    /// <summary>
+    /// Used to map json to class.
+    /// </summary>
     public class WorkRow
     {
         public int SubmittedAnswerId { get; set; }
@@ -30,15 +33,4 @@ namespace Snappet.Data.Loader.Model
 
         public string LearningObjective { get; set; }
     }
-
-    //"SubmittedAnswerId":2396696,
-    //"SubmitDateTime":"2015-03-02T07:36:59.653",
-    //"Correct":1,
-    //"Progress":2,
-    //"UserId":40281,
-    //"ExerciseId":1029121,
-    //"Difficulty":"353.3972855",
-    //"Subject":"Begrijpend Lezen",
-    //"Domain":"-",
-    //"LearningObjective":"Diverse leerdoelen Begrijpend Lezen"
 }

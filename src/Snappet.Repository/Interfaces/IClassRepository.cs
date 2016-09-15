@@ -11,14 +11,5 @@ namespace Snappet.Repository.Interfaces
     public interface IClassRepository : IBasicRepository<Class>
     {
         Task<List<Model.DTO.ProgressPerUser>> GetCurrentActivity(int classID);
-
-        //Old:
-        Task<List<Class>> List();
-
-        Task<List<String>> ListSubjects();
-
-        Task<List<String>> ListDomains();
-
-        Task<List<String>> ListLearningObjectives();
     }
 }
