@@ -20,6 +20,8 @@ Open CMD from ./Snappet.Web/
    A reboot will be needed to register everything properly.
  - Bower:
    > npm install -g bower
+ - NPM:
+   > npm restore
  - Gulp and other dependancies:
    > bower -install
    
@@ -29,7 +31,7 @@ So now we got everything we need. To start building out web-app just run the fol
 > dotnet restore
 > dotnet run
 
-Browse to: http://localhost:26039/index.html#/huidig
+Browse to: http://localhost:5000/index.html#/huidig
 
 Issues:
 
@@ -53,10 +55,6 @@ Issues:
 
  - UTC Dates:
    Dates in the work.js are UTC, in the current setup nothing is done with this.
-   
- - Grouping per student is incorrect:
-   Not sure why this happens, in LearningObjectiveRepository.GetProgress(int classID, int userId) the group by over learning objective name and progress
-   isn't honored. It seems to select the proper data but it isn't grouped, therefore the averages aren't averages.
 
 Future:
 

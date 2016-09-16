@@ -26,10 +26,10 @@ namespace Snappet.Repository.Implementation
                 from answer in SnappetContext.Answers
                 join lo in SnappetContext.LearningObjectives on answer.LearningObjectiveID equals lo.ID
                 where answer.ClassId == classID && answer.UserId == userId
-                group answer by new { Name = lo.Name, Progress = answer.Progress } into grp
+                group answer by lo.Name into grp
                 select new Model.DTO.ProgressPerLearningObjective
                 {
-                    objName = grp.Key.Name,
+                    objName = grp.Key,
                     AverageProgress = grp.Average(a => a.Progress)
                 };
 
