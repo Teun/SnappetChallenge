@@ -1,8 +1,8 @@
-Snappet Challenge submission
+# Snappet Challenge submission
 
-How to get this running:
+# How to get this running:
 
-What you'll need:
+### What you'll need:
 
  - Visual Studio 2015 Update 3
  - .NET Core Preview 2
@@ -10,55 +10,55 @@ What you'll need:
  - Bower
  - Gulp
  
-Open CMD from ./Snappet.Web/
+### Open CMD from ./Snappet.Web/
 
- - Visual Studio 2015 Update 3
+ - Visual Studio 2015 Update 3  
    You should already have this.
- - .NET Core Preview 2015
-   Install from: https://www.microsoft.com/net/core#windows
- - Node:
-   Install from: https://nodejs.org/en/
-   Be sure to install the packet manager with it.
+ - .NET Core Preview 2015  
+   Install from: [.NET Core](https://www.microsoft.com/net/core#windows)
+ - Node:  
+   Install from: [nodejs.org](https://nodejs.org/en/)  
+   Be sure to install the packet manager with it.  
    A reboot will be needed to register everything properly.
- - Bower:
-   > npm install -g bower
- - NPM:
-   > npm restore
- - Gulp and other dependancies:
-   > bower -install
+ - Bower:  
+   `npm install -g bower`
+ - NPM:  
+   `npm restore`
+ - Gulp and other dependancies:  
+   `bower -install`
    
 So now we got everything we need. To start building out web-app just run the following from ./Snappet.Web/:
 
-> gulp
-> dotnet restore
-> dotnet run
+- `gulp`
+- `dotnet restore`
+- `dotnet run`
 
 Browse to: http://localhost:5000/index.html#/huidig
 
-Issues:
+### Issues:
 
 VS uses wrong version of Node.js
 
-	Error:
+#### Error: Missing binding
+```
+C:\DEV\_STORAGE\SnappetChallenge\src\Snappet.Web\node_modules\gulp-sass\node_modules\node-sass\vendor\win32-ia32-47\binding.node  
+Node Sass could not find a binding for your current environment: Windows 32-bit with Node.js 5.x
+   Found bindings for the following environments:
+     - Windows 64-bit with Node 0.12.x
+```
+   
+   Fix:
+   In VS:
+   
+- Open Tools > Options > Project and Solutions > External Web Tools
+- Add "C:\Program Files\nodejs" to the top of the list  
+  See: https://cloud.githubusercontent.com/assets/440031/15933886/becadf08-2e1e-11e6-827d-073f4ae91a35.PNG
 
-	Error: Missing binding C:\DEV\_STORAGE\SnappetChallenge\src\Snappet.Web\node_modules\gulp-sass\node_modules\node-sass\vendor\win32-ia32-47\binding.node
-	Node Sass could not find a binding for your current environment: Windows 32-bit with Node.js 5.x
-	Found bindings for the following environments:
-	  - Windows 64-bit with Node 0.12.x
 
-	Fix:
-	In VS:
-	
-	- Open Tools > Options > Project and Solutions > External Web Tools
-	- Add "C:\Program Files\nodejs" to the top of the list
-	  See: https://cloud.githubusercontent.com/assets/440031/15933886/becadf08-2e1e-11e6-827d-073f4ae91a35.PNG
-
-Issues:
-
- - UTC Dates:
+#### UTC Dates:
    Dates in the work.js are UTC, in the current setup nothing is done with this.
 
-Future:
+## Future:
 
 Development is never done!
 
@@ -79,8 +79,8 @@ Due to time constraints, and more issues with .NET Core I'd hoped, not everythin
    
  - Caching:
    Nothing is cached
-   
-Original assignment:
+---   
+# Original assignment:
 
 # SnappetChallenge
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
