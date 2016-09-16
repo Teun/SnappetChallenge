@@ -7,6 +7,7 @@
         "Microsoft.AspNetCore.Mvc": "1.0.0",
         "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
         "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+        "Microsoft.AspNetCore.StaticFiles": "1.0.0",
         "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
         "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
         "Microsoft.Extensions.Configuration.Json": "1.0.0",
@@ -14,9 +15,8 @@
         "Microsoft.Extensions.Logging.Console": "1.0.0",
         "Microsoft.Extensions.Logging.Debug": "1.0.0",
         "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-        "Snappet.Repository": "1.0.0-*",
-        "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-        "Snappet.Configuration": "1.0.0-*"
+        "Snappet.Configuration": "1.0.0-*",
+        "Snappet.Repository": "1.0.0-*"
     },
 
     "tools": {
@@ -34,7 +34,14 @@
 
     "buildOptions": {
         "emitEntryPoint": true,
-        "preserveCompilationContext": true
+        "preserveCompilationContext": true,
+        "compile": {
+            "exclude": [
+                "wwwroot",
+                "node_modules",
+                "bower_components"
+            ]
+        }
     },
 
     "runtimeOptions": {
@@ -52,12 +59,6 @@
             "web.config"
         ]
     },
-
-    "exclude": [
-        "wwwroot",
-        "node_modules",
-        "bower_components"
-    ],
 
     "scripts": {
         "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
