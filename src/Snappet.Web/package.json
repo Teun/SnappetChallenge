@@ -1,0 +1,19 @@
+{
+  "name": "snappet",
+  "version": "1.0.0",
+  "description": "Snappet demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Steven",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-clean": "^0.3.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-watch": "^4.3.9"
+  }
+}

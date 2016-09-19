@@ -1,0 +1,77 @@
+﻿/*****************************************************************
+* ng-if
+*****************************************************************/
+
+.animate-if {
+    /* Long duration */
+    &.long.ng-enter, &.long.ng-leave {
+        -webkit-transition: all linear 0.6s;
+        -moz-transition: all linear 0.6s;
+        -o-transition: all linear 0.6s;
+        transition: all linear 0.6s;
+    }
+    /* Normal dutation */
+    &.ng-enter, &.ng-leave {
+        -webkit-transition: all linear 0.3s;
+        -moz-transition: all linear 0.3s;
+        -o-transition: all linear 0.3s;
+        transition: all linear 0.3s;
+    }
+
+    &.ng-enter {
+        opacity: 0;
+    }
+
+    &.ng-leave {
+        &.ng-leave-active {
+            opacity: 0;
+        }
+
+        opacity: 1;
+    }
+
+    &.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+}
+
+/*****************************************************************
+* ng-show
+*****************************************************************/
+
+.animate-show {
+    -webkit-transition: all linear 0.6s;
+    -moz-transition: all linear 0.6s;
+    -o-transition: all linear 0.6s;
+    transition: all linear 0.6s;
+    opacity: 1;
+
+
+    &.ng-hide {
+        opacity: 0;
+    }
+}
+
+.ng-animate {
+    -moz-transition: 0s none;
+    -o-transition: 0s none;
+    -webkit-transition: 0s none;
+    transition: 0s none;
+    -moz-animation: 0s none;
+    -o-animation: 0s none;
+    -webkit-animation: 0s none;
+    animation: 0s none;
+}
+
+.animate-show-expand {
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    overflow: hidden;
+    max-height: 1000px;
+
+    &.ng-hide {
+        max-height: 0;
+    }
+}

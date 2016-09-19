@@ -1,0 +1,376 @@
+﻿/*$snpt-red: #ce6049;
+$snpt-red-light: #d8806d;*/
+@font-face {
+  font-family: "RijksoverheidSansText";
+  src: url(/sites/all/themes/rce2014/fonts/ROsanswebtextregular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+/*
+ * Base structure
+ */
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px; }
+
+a {
+  color: #f5c559; }
+
+a:hover, a:focus {
+  color: #FFB612; }
+
+a[ui-sref] {
+  cursor: pointer; }
+
+input:focus, textarea:focus, .alert, button {
+  outline: none; }
+
+input {
+  width: 100%;
+  margin: 0;
+  padding: 8px;
+  border: none;
+  background-color: #f5f5f5;
+  color: #FFB612;
+  /*font-size: 13pt;*/
+  border-bottom: 2px solid #f5f5f5;
+  /* WebKit, Blink, Edge */
+  /* Mozilla Firefox 4 to 18 */
+  /* Mozilla Firefox 19+ */
+  /* Internet Explorer 10-11 */ }
+  input:nth-child(odd) {
+    background-color: #f5f5f5; }
+  input:nth-child(even) {
+    background-color: #FAFAFA; }
+  input::-webkit-input-placeholder {
+    color: #FFB612; }
+  input:-moz-placeholder {
+    color: #FFB612;
+    opacity: 1; }
+  input::-moz-placeholder {
+    color: #FFB612;
+    opacity: 1; }
+  input:-ms-input-placeholder {
+    color: #FFB612; }
+  input:focus {
+    border-bottom: 2px solid #FFB612; }
+
+div.header {
+  border-bottom: 2px solid #FFB612;
+  margin-bottom: 10px;
+  padding: 7px 0 2px 0;
+  font-size: 14pt; }
+
+.no-margin {
+  margin: 0 !important; }
+
+.no-padding {
+  padding: 0 !important; }
+
+/*
+ * Global add-ons
+ */
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee; }
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0; }
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+  max-height: 600px; }
+
+.nav > li > a {
+  color: #FFB612;
+  /*&:hover {*/
+  /*&:focus {
+        background-color: $snpt-red;
+        color: white;
+    }*/ }
+  .nav > li > a:focus, .nav > li > a:hover {
+    background-color: #f5c559;
+    color: white; }
+
+nav.navbar {
+  background-color: #FFB612;
+  background-image: url("../assets/image/logo_rce_small.gif");
+  background-position: center;
+  background-position-y: 0;
+  background-repeat: no-repeat; }
+  nav.navbar a.navbar-brand {
+    color: white; }
+    nav.navbar a.navbar-brand > h4 {
+      display: inline; }
+    nav.navbar a.navbar-brand img {
+      height: 30px;
+      margin-top: -5px; }
+  nav.navbar div.navbar-header > button.navbar-toggle {
+    border: 1px solid white; }
+    nav.navbar div.navbar-header > button.navbar-toggle > span {
+      background-color: white; }
+
+.nav.navbar-nav > li.active,
+.nav.navbar-nav > hr.active {
+  color: #fff;
+  background-color: #f5c559; }
+
+.nav.navbar-nav > li > a,
+.nav.navbar-nav > hr > a {
+  color: white; }
+
+/*
+ * Sidebar
+ */
+ul.nav > li.nav-level-2 > a {
+  padding-left: 40px; }
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none; }
+
+@media (min-width: 768px) {
+  .sidebar {
+    border: none !important;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 0 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee; } }
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px;
+  margin-bottom: 20px;
+  margin-left: -20px; }
+  .nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px; }
+    .nav-sidebar > li > a:hover, .nav-sidebar > li > a:focus {
+      color: #fff; }
+    .nav-sidebar > li > a:focus {
+      background-color: #FFB612; }
+  .nav-sidebar > .active > a {
+    color: #fff;
+    background-color: #FFB612; }
+
+.datepicker button {
+  border: none; }
+  .datepicker button.btn-today {
+    background-color: #FFB612; }
+  .datepicker button:hover {
+    background-color: #f5c559; }
+
+.red {
+  background-color: red; }
+
+/*
+ * Main content
+ */
+html, body {
+  height: 100%;
+  /*font-family: "Ubuntu", sans-serif;*/
+  font-family: "RijksoverheidSansText", "Ubuntu", "Verdana", sans-serif; }
+
+.main {
+  /*padding: 20px;*/
+  padding-right: 0;
+  padding-left: 0; }
+  .main .page-header {
+    margin-top: 0; }
+
+.page .row {
+  margin-left: 0;
+  margin-right: 0; }
+
+/* Controls */
+.snpt-button {
+  height: 50px;
+  background: none;
+  border: none;
+  color: #FFB612;
+  padding: 0 15px; }
+  .snpt-button > div {
+    display: inline-block;
+    top: -5px;
+    position: relative; }
+  .snpt-button > i.fa {
+    font-size: 22pt;
+    margin-right: 10px; }
+  .snpt-button.pull-right i.fa {
+    margin-right: 0; }
+  .snpt-button:hover {
+    background: #f5c559;
+    color: white; }
+  .snpt-button.active {
+    color: #fff;
+    background-color: #FFB612; }
+
+button.action-button i.fa {
+  float: right; }
+
+div.section {
+  border: 1px solid #FFB612;
+  /*@media (max-width: $screen-sm) {*/
+  /*margin-bottom: 30px;*/
+  /*}*/ }
+  div.section > .section-header {
+    background-color: #FFB612;
+    font-size: 18px;
+    padding: 5px 10px;
+    color: white; }
+  div.section > .section-content {
+    /*padding: 10px;*/ }
+
+div.page-controls {
+  height: 50px;
+  width: 100%;
+  background-color: #f5f5f5; }
+
+@media (min-width: 768px) {
+  div.adaptable-container {
+    height: calc(100vh - 100px);
+    overflow: auto; }
+    div.adaptable-container.search-controls-visible {
+      height: calc(100vh - 400px); } }
+
+div.map-container .map {
+  height: 100%; }
+
+@media (max-width: 768px) {
+  div.map-container {
+    height: 400px; } }
+
+div.grid-container table {
+  overflow-y: auto;
+  height: 100%; }
+
+/************************************************************
+** UI-Bootstrap pagination
+************************************************************/
+ul.pagination {
+  margin: 10px 0;
+  float: left; }
+
+ul.pagination > li {
+  display: inline;
+  margin: 0 !important;
+  padding: 0 !important; }
+
+ul.pagination > li > a {
+  float: left;
+  padding: 6px 12px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin-left: -1px;
+  background: #f5f5f5;
+  /*gray*/ }
+
+ul.pagination > li.active > a {
+  background: #d9d9d9;
+  /*gray*/ }
+
+ul.pagination > li.disabled > a {
+  cursor: not-allowed; }
+
+/*****************************************************************
+* ng-if
+*****************************************************************/
+.animate-if {
+  /* Long duration */
+  /* Normal dutation */ }
+  .animate-if.long.ng-enter, .animate-if.long.ng-leave {
+    -webkit-transition: all linear 0.6s;
+    -moz-transition: all linear 0.6s;
+    -o-transition: all linear 0.6s;
+    transition: all linear 0.6s; }
+  .animate-if.ng-enter, .animate-if.ng-leave {
+    -webkit-transition: all linear 0.3s;
+    -moz-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+    transition: all linear 0.3s; }
+  .animate-if.ng-enter {
+    opacity: 0; }
+  .animate-if.ng-leave {
+    opacity: 1; }
+    .animate-if.ng-leave.ng-leave-active {
+      opacity: 0; }
+  .animate-if.ng-enter.ng-enter-active {
+    opacity: 1; }
+
+/*****************************************************************
+* ng-show
+*****************************************************************/
+.animate-show {
+  -webkit-transition: all linear 0.6s;
+  -moz-transition: all linear 0.6s;
+  -o-transition: all linear 0.6s;
+  transition: all linear 0.6s;
+  opacity: 1; }
+  .animate-show.ng-hide {
+    opacity: 0; }
+
+.ng-animate {
+  -moz-transition: 0s none;
+  -o-transition: 0s none;
+  -webkit-transition: 0s none;
+  transition: 0s none;
+  -moz-animation: 0s none;
+  -o-animation: 0s none;
+  -webkit-animation: 0s none;
+  animation: 0s none; }
+
+.animate-show-expand {
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  overflow: hidden;
+  max-height: 1000px; }
+  .animate-show-expand.ng-hide {
+    max-height: 0; }
+
+.page-valideren h1 {
+  color: green; }
+
+.page.package div.statistieken i.fa {
+  color: #FFB612;
+  font-size: 140pt;
+  margin-right: 30px; }
+  @media (max-width: 768px) {
+    .page.package div.statistieken i.fa {
+      font-size: 80pt; } }
+
+.page-registreren h1 {
+  color: red; }
+
+.page-valideren h1 {
+  color: green; }
+
+.page.zoeken button.search {
+  padding: 7px 10px;
+  background: none;
+  position: fixed;
+  right: 10px;
+  top: 60px;
+  border: 1px black solid;
+  z-index: 10; }
+  .page.zoeken button.search i.fa {
+    font-size: 22pt; }
+
+.page.zoeken div.section.search-container {
+  height: 300px; }
+
+.page.zoeken table td.action-column {
+  width: 50px; }
+
