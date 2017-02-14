@@ -27,13 +27,18 @@ De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewe
 I have created a solution with few projects inside. I decided to spend on this project 4-8 hours in average, in fact it had taken me 5 hours. And half an hour on this readme.txt.
 I stopped by the moment I had made it stable and more or less cleaned up with some useful functionality.
 I finished it on Monday (the 13th of Feb) and spent half an hour on reviewing today and minor improvements today (the 14th of Feb).
-I have chosen. json file as a source. In the solution, you will find 3 main projects: SnappetChallenge.DataAccessLayer, SnappetChallenge.BusinessLogicLayer, SnappetChallenge.
+I have chosen. json file as a source. 
+In the solution, you will find 3 main projects: SnappetChallenge.DataAccessLayer, SnappetChallenge.BusinessLogicLayer, SnappetChallenge.
 Dependencies are: DAL <- BLL <- SnappetChallenge.
+
 For the last one I used predefined mvc project because I believe it saves me pretty much time. Also, there were created projects for UnitTests, but I skipped them because of time limits (it will be one of the improvement points).
 IQueriable was returned DAL to imitate EF calls.
+
 Each layer is wrapped with its own AutoFac module. 
 There are also some "todo" which I leave for now because they are not that much important, but there you could see some points for improvements.
+
 Extra libraries, tools and frameworks: newtonsoft.json, autofac (mvc integration), automapper, grid.mvc, chart.mvc (chart.js for mvc), a bit of bootstrap.
+
 3 pages were created besides I kept auth pages from default mvc application. Clean up is also one of the improvement points. You could navigate via top menu.
 - SubmittedAnswer page with grid which shows the list of submitted answers with filtering and ordering.
 - Charts page shows 3 statistic charts: 
