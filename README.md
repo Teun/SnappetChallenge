@@ -41,6 +41,7 @@ Extra libraries, tools and frameworks: newtonsoft.json, autofac (mvc integration
 	- progress by subject (sum by progress property, probably here more complex logic should be, but for this project I suppose it’s enough).
 	- correct answers by domain.
 - Top students allows to get users with the biggest progress sum and with the smallest one. You need to put subject there because it looks senseless to calculate top by all subjects. (You could use 'Spelling' to check actual data).
+
 ### Instructions:
 You need to open the project, build it and launch it from visual studio. It uses db from app_data.
 ### Credentials:
