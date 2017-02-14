@@ -1,0 +1,24 @@
+﻿@model SnappetChallenge.Models.SubmittedAnswerListViewModel
+@using GridMvc.Html
+@{
+    Layout = null;
+}
+
+<div class="jumbotron">
+    <h2>Submitted answers overview.</h2>
+</div>
+<div class="row">
+    @Html.Grid(Model.Answers).Columns(columns =>
+    {
+        columns.Add(x => x.SubmittedAnswerId, true).Titled("SubmittedAnswerId");
+        columns.Add(x => x.UserId).Titled("UserId").Filterable(true);
+        columns.Add(x => x.SubmitDateTime).Sortable(true);
+        columns.Add(x => x.IsCorrect).Filterable(true);
+        columns.Add(x => x.Progress).Sortable(true);
+        columns.Add(x => x.ExerciseId).Filterable(true);
+        columns.Add(x => x.Difficulty).Encoded(true).Sortable(true).Filterable(true);
+        columns.Add(x => x.Subject).Encoded(true).Filterable(true);
+        columns.Add(x => x.Domain).Encoded(true).Filterable(true);
+        columns.Add(x => x.LearningObjective).Encoded(false).Filterable(true);
+    }).WithPaging(10)
+</div>

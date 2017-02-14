@@ -1,0 +1,66 @@
+﻿@model SnappetChallenge.Models.TopStudentsViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="jumbotron">
+    <h2>Top and bottom students statistics</h2>
+</div>
+
+@using (Html.BeginForm("LoadTopStudents", "TopStudents", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LoadStatistic" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    if (Model?.TopStudentList?.Count > 0)
+    {
+        <h2>Top students</h2>
+        <ol>
+            @foreach (KeyValuePair<long, int> studentInfo in Model.TopStudentList)
+            {
+                <li>UserId: @studentInfo.Key; Progress:  @studentInfo.Value;</li>
+            }
+        </ol>
+    }
+    else
+    {
+        <p>Can not found any data about top students</p>
+    }
+
+    if (Model?.BottomStudentList?.Count > 0)
+    {
+        <h2>Bottom students</h2>
+        <ol>
+            @foreach (KeyValuePair<long, int> studentInfo in Model.BottomStudentList)
+            {
+                <li>UserId: @studentInfo.Key; Progress:  @studentInfo.Value;</li>
+            }
+        </ol>
+    }
+    else
+    {
+        <p>Can not found any data about bottom students</p>
+    }
+}
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

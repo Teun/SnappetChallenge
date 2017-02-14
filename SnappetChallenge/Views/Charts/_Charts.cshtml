@@ -1,0 +1,27 @@
+﻿@model SnappetChallenge.Models.ChartsViewModel
+@using Chart.Mvc.ComplexChart;
+@using Chart.Mvc.Extensions
+
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Correct and incorrect answers count</h2>
+        <canvas id="CorrectAnswerAmountChart" width="400" height="400"></canvas>
+        @Html.CreateChart("CorrectAnswerAmountChart", @Model.CorrectAnswerAmountChart)
+    </div>
+    <div class="col-md-4">
+        <h2>Progress sum by subject</h2>
+        <canvas id="ProgressBySubjectChart" width="400" height="400"></canvas>
+        @Html.CreateChart("ProgressBySubjectChart", @Model.ProgressBySubjectChart)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Correct answers by domain</h2>
+        <canvas id="CorrectAnswersByDomainsChart" width="400" height="400"></canvas>
+        @Html.CreateChart("CorrectAnswersByDomainsChart", @Model.CorrectAnswersByDomainsChart)
+    </div>
+</div>
