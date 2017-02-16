@@ -1,0 +1,4 @@
+NetCoreWebApi/bin
+NetCoreWebApi/obj 
+NetCoreWebApi/project.lock.json
+NetCoreWebApi/.vscode/*
