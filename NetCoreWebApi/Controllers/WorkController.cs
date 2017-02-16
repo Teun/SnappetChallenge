@@ -3,13 +3,18 @@ using WorkDataService;
 using System.Linq;
 using System;
 
-public class HomeController : Controller
+public class WorkController : Controller
 {
     private WorkDataContext _workDataContext;
 
-    public HomeController(WorkDataContext workDataContext){
+    public WorkController(WorkDataContext workDataContext){
 
        _workDataContext = workDataContext;
+    }
+
+    public IActionResult Report()
+    {
+        return View();
     }
 
     [Route("api/work")]

@@ -3,6 +3,7 @@
   "buildOptions": {
     "debugType": "portable",
     "emitEntryPoint": true,
+    "preserveCompilationContext": true,
     "embed":["Data/work.json"]
   },
   "dependencies": {},
