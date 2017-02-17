@@ -11,6 +11,8 @@ namespace WorkDataService {
             services.AddMvc();
 
             services.AddDbContext<WorkDataContext>(options => options.UseInMemoryDatabase());
+
+            services.AddTransient<IStudentFactory, StudentFactory>();
         }
 
         public void Configure(IApplicationBuilder app){
