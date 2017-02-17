@@ -1,9 +1,38 @@
-@model 
+@model IEnumerable<SnappetWorkApp.Models.Student>
 
 @{
     ViewData["Title"] = "Students - Index";
 }
 
-<h2>Students Index</h2>
+<h3>Students</h3>
 
-<p>A list of students:</p>
+<p>A list of students</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Total Progress</th>
+            <th>Average Difficulty</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var student in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => student.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.TotalProgress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.AverageDifficulty)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@student.Id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

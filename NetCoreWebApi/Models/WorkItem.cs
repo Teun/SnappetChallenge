@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WorkDataService.Models
+namespace SnappetWorkApp.Models
 {
     public class WorkItem
     {

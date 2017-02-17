@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using SnappetWorkApp.Services;
 
-namespace WorkDataService {
+namespace SnappetWorkApp {
     public class Startup{
 
         public void ConfigureServices(IServiceCollection services)
@@ -12,7 +13,7 @@ namespace WorkDataService {
 
             services.AddDbContext<WorkDataContext>(options => options.UseInMemoryDatabase());
 
-            services.AddTransient<IStudentFactory, StudentFactory>();
+            services.AddTransient<IViewModelFactory, ViewModelFactory>();
         }
 
         public void Configure(IApplicationBuilder app){

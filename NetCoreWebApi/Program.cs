@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace WorkDataService
+namespace SnappetWorkApp
 {
     public class Program
     {

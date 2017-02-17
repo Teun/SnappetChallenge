@@ -1,0 +1,30 @@
+@model SnappetWorkApp.Models.StudentWork
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h3>Student Detail: @Model.StudentId</h3>
+
+<p>List of Subjects</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var subject in Model.Subjects) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => subject.Name)
+            </td>
+            <td>
+                <a asp-controller="Subjects" asp-action="Details" asp-route-studentId="@Model.StudentId" asp-route-name="@subject.Name">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

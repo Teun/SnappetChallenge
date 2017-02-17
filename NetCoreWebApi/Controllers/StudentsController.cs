@@ -1,20 +1,35 @@
-using Microsoft.AspNetCore.Mvc;
-using WorkDataService;
 using System.Linq;
-using System;
+using Microsoft.AspNetCore.Mvc;
+using SnappetWorkApp.Services;
 
-public class StudentsController : Controller
+namespace SnappetWorkApp
 {
-    private WorkDataContext _workDataContext;
-
-    public StudentsController(WorkDataContext workDataContext, IStudentFactory studentFactory){
-
-       _workDataContext = workDataContext;
-    }
-
-    public IActionResult Index()
+    public class StudentsController : Controller
     {
+        private WorkDataContext _workDataContext;
+        private IViewModelFactory _viewModelFactory;
 
-        return View(_workDataContext.WorkItems.Select(i => i.UserId));
+        public StudentsController(WorkDataContext workDataContext, IViewModelFactory viewModelFactory){
+
+            _workDataContext = workDataContext;
+            _viewModelFactory = viewModelFactory;
+        }
+
+        public IActionResult Index()
+        {
+            return View(_viewModelFactory.CreateStudents(_workDataContext.WorkItems));
+        }
+
+        public IActionResult Details(int id){
+
+            var studentWorkItems = _workDataContext.WorkItems.Where(i => i.UserId == id);
+
+            if(!studentWorkItems.Any())
+                return NotFound();
+                
+            var studentWork = _viewModelFactory.CreateStudentWork(studentWorkItems);
+
+            return View(studentWork);
+        }
     }
 }
