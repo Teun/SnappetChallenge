@@ -12,18 +12,22 @@ namespace SnappetWorkApp
             _studentsRepository = studentsRepository;
         }
 
-        public IActionResult Index()
+        [Route("/Date/{dateString}/Students")]
+        public IActionResult Index(string dateString)
         {
-            var date = new DateTime(2015,3,24);
-
+            var date = DateTime.Parse(dateString);
             ViewData["Date"] = date;
 
             return View(_studentsRepository.GetAllStudentsForDate(date));
         }
 
-        public IActionResult Details(int id){
+        [Route("/Date/{dateString}/Students/{id}")]
+        public IActionResult Details(string dateString, int id){
 
-            var student = _studentsRepository.GetStudentByIdForDate(id, new DateTime(2015,3,24)); 
+            var date = DateTime.Parse(dateString);
+            ViewData["Date"] = date;
+
+            var student = _studentsRepository.GetStudentByIdForDate(id, date); 
 
             if(student == null)
                 return NotFound();

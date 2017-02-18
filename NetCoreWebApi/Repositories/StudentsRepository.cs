@@ -9,8 +9,8 @@ namespace SnappetWorkApp.Repositories
     public interface IStudentsRepository
     {
         IEnumerable<Student> GetAllStudentsForDate(DateTime date);
-
         Student GetStudentByIdForDate(int id, DateTime date);
+        Subject GetStudentSubjectForDate(int studentId, string subjectName, DateTime date);
     }
 
     public class StudentsRepository : IStudentsRepository
@@ -35,7 +35,15 @@ namespace SnappetWorkApp.Repositories
         {
             var workItems = _workDataContext.WorkItems.Where(wi => wi.UserId == id && wi.SubmitDateTime.Date == date);
             
-            return _viewModelFactory.CreateStudentWork(workItems);
+            return _viewModelFactory.CreateStudentWork(workItems, id);
+        }
+
+        public Subject GetStudentSubjectForDate(int studentId, string subjectName, DateTime date)
+        {
+            var workItems = _workDataContext.WorkItems
+                .Where(wi => wi.UserId == studentId && wi.Subject == subjectName && wi.SubmitDateTime.Date == date);
+
+            return _viewModelFactory.CreateSubjectViewModel(workItems, subjectName);
         }
     }
 }
