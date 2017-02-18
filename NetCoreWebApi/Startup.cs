@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SnappetWorkApp.Services;
+using SnappetWorkApp.Repositories;
 
 namespace SnappetWorkApp {
     public class Startup{
@@ -14,6 +15,7 @@ namespace SnappetWorkApp {
             services.AddDbContext<WorkDataContext>(options => options.UseInMemoryDatabase());
 
             services.AddTransient<IViewModelFactory, ViewModelFactory>();
+            services.AddTransient<IStudentsRepository, StudentsRepository>();
         }
 
         public void Configure(IApplicationBuilder app){

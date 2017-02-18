@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace SnappetWorkApp.Services{
     public interface IViewModelFactory{
         IEnumerable<Student> CreateStudents(IEnumerable<WorkItem> workItems);
-        StudentWork CreateStudentWork(IEnumerable<WorkItem> studentWorkItems);
+        Student CreateStudentWork(IEnumerable<WorkItem> studentWorkItems);
         Subject CreateSubjectViewModel(IEnumerable<WorkItem> subjectWorkItems);
     }
 
@@ -23,22 +23,30 @@ namespace SnappetWorkApp.Services{
             }
         }
 
-        public StudentWork CreateStudentWork(IEnumerable<WorkItem> studentWorkItems)
+        public Student CreateStudentWork(IEnumerable<WorkItem> workItems)
         {
-            return new StudentWork{
-                StudentId = studentWorkItems.First().UserId,
-                Subjects = studentWorkItems.GroupBy(wi => wi.Subject).Select(wig => new Subject{
+            return new Student{
+                Id = workItems.First().UserId,
+                TotalProgress = workItems.Sum(i => i.Progress),
+                AverageDifficulty = workItems.Where(i => i.Difficulty != "NULL").Average(i =>  double.Parse(i.Difficulty)),
+                Subjects = workItems.GroupBy(wi => wi.Subject).Select(wig => new Subject{
                     Name = wig.Key,
+                    TotalProgress = wig.Sum(i => i.Progress),
+                    AverageDifficulty = wig.Where(i => i.Difficulty != "NULL").Average(i =>  double.Parse(i.Difficulty))
                 })
             };
         }
 
-        public Subject CreateSubjectViewModel(IEnumerable<WorkItem> subjectWorkItems)
+        public Subject CreateSubjectViewModel(IEnumerable<WorkItem> workItems)
         {
             return new Subject{
-                Name = subjectWorkItems.First().Subject,
-                Domains = subjectWorkItems.GroupBy(wi => wi.Domain).Select(wig => new Domain{
-                    Name = wig.Key
+                Name = workItems.First().Subject,
+                TotalProgress = workItems.Sum(i => i.Progress),
+                AverageDifficulty = workItems.Where(i => i.Difficulty != "NULL").Average(i =>  double.Parse(i.Difficulty)),
+                Domains = workItems.GroupBy(wi => wi.Domain).Select(wig => new Domain{
+                    Name = wig.Key,
+                    TotalProgress = wig.Sum(i => i.Progress),
+                    AverageDifficulty = wig.Where(i => i.Difficulty != "NULL").Average(i =>  double.Parse(i.Difficulty))
                 })
             };
         }

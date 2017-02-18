@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace SnappetWorkApp.Models
 {
     public class Student
@@ -5,5 +7,6 @@ namespace SnappetWorkApp.Models
         public int Id {get;set;}
         public int TotalProgress {get;set;}
         public double AverageDifficulty {get;set;}
+        public IEnumerable<Subject> Subjects {get;set;}
     }
 }

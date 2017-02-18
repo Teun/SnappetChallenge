@@ -1,10 +1,10 @@
-@model SnappetWorkApp.Models.StudentWork
+@model SnappetWorkApp.Models.Student
 
 @{
     ViewData["Title"] = "Student Details";
 }
 
-<h3>Student Detail: @Model.StudentId</h3>
+<h3>Student Detail: @Model.Id</h3>
 
 <p>List of Subjects</p>
 
@@ -12,6 +12,8 @@
     <thead>
         <tr>
             <th>Subject</th>
+            <th>Total Progress</th>
+            <th>Average Difficulty</th>
             <th></th>
         </tr>
     </thead>
@@ -22,7 +24,13 @@
                 @Html.DisplayFor(modelItem => subject.Name)
             </td>
             <td>
-                <a asp-controller="Subjects" asp-action="Details" asp-route-studentId="@Model.StudentId" asp-route-name="@subject.Name">Details</a>
+                @Html.DisplayFor(modelItem => subject.TotalProgress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => subject.AverageDifficulty)
+            </td>
+            <td>
+                <a asp-controller="Subjects" asp-action="Details" asp-route-studentId="@Model.Id" asp-route-name="@subject.Name">Details</a>
             </td>
         </tr>
 }

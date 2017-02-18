@@ -1,35 +1,34 @@
-using System.Linq;
+using System;
 using Microsoft.AspNetCore.Mvc;
-using SnappetWorkApp.Services;
+using SnappetWorkApp.Repositories;
 
 namespace SnappetWorkApp
 {
     public class StudentsController : Controller
     {
-        private WorkDataContext _workDataContext;
-        private IViewModelFactory _viewModelFactory;
-
-        public StudentsController(WorkDataContext workDataContext, IViewModelFactory viewModelFactory){
-
-            _workDataContext = workDataContext;
-            _viewModelFactory = viewModelFactory;
+        private IStudentsRepository _studentsRepository;
+        public StudentsController(IStudentsRepository studentsRepository)
+        {
+            _studentsRepository = studentsRepository;
         }
 
         public IActionResult Index()
         {
-            return View(_viewModelFactory.CreateStudents(_workDataContext.WorkItems));
+            var date = new DateTime(2015,3,24);
+
+            ViewData["Date"] = date;
+
+            return View(_studentsRepository.GetAllStudentsForDate(date));
         }
 
         public IActionResult Details(int id){
 
-            var studentWorkItems = _workDataContext.WorkItems.Where(i => i.UserId == id);
+            var student = _studentsRepository.GetStudentByIdForDate(id, new DateTime(2015,3,24)); 
 
-            if(!studentWorkItems.Any())
+            if(student == null)
                 return NotFound();
-                
-            var studentWork = _viewModelFactory.CreateStudentWork(studentWorkItems);
 
-            return View(studentWork);
+            return View(student);
         }
     }
 }
