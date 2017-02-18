@@ -13,8 +13,9 @@
 }
 
 <h3>@prettyDate - Student @Model.Id - Work done by Subject</h3>
-<a asp-action="Details" asp-route-dateString="@previousDayString" asp-route-id="@Model.Id">Previous</a>
-<a asp-action="Details" asp-route-dateString="@nextDayString" asp-route-id="@Model.Id">Next</a>
+<a asp-action="Index" asp-route-dateString="@currentDateString">Up a level</a> |
+<a asp-action="Details" asp-route-dateString="@previousDayString" asp-route-id="@Model.Id">Previous Day</a> |
+<a asp-action="Details" asp-route-dateString="@nextDayString" asp-route-id="@Model.Id">Next Day</a>
 
 <table class="table">
     <thead>

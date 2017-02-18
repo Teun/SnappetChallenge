@@ -13,13 +13,14 @@
 }
 
 <h3>@prettyDate - Students Work Overview</h3>
-<a asp-action="Index" asp-route-dateString="@previousDayString">Previous</a>
-<a asp-action="Index" asp-route-dateString="@nextDayString">Next</a>
+<a asp-controller="Home" asp-action="Index">Home</a> |
+<a asp-action="Index" asp-route-dateString="@previousDayString">Previous Day</a> |
+<a asp-action="Index" asp-route-dateString="@nextDayString">Next Day</a>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
+            <th>Student</th>
             <th>Exercises Completed</th>
             <th>Total Progress</th>
             <th>Average Difficulty</th>

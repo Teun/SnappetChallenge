@@ -15,7 +15,8 @@ namespace SnappetWorkApp.Services{
 
         public IEnumerable<Student> CreateStudents(IEnumerable<WorkItem> workItems)
         {
-            foreach(var studentItems in workItems.GroupBy(wi => wi.UserId))
+            foreach(var studentItems in workItems.GroupBy(wi => wi.UserId)
+                .OrderBy(wig => wig.Sum(wi => wi.Progress)))
             {
                 yield return new Student{
                     Id = studentItems.Key,
@@ -30,12 +31,15 @@ namespace SnappetWorkApp.Services{
         {
             return new Student{
                 Id = id,
-                Subjects = workItems.GroupBy(wi => wi.Subject).Select(wig => new Subject{
-                    Name = wig.Key,
-                    ExercisesCount = wig.Count(),
-                    TotalProgress = wig.Sum(i => i.Progress),
-                    AverageDifficulty = GetAverageDifficulty(wig)
-                })
+                Subjects = workItems.GroupBy(wi => wi.Subject)
+                    .OrderBy(wig => wig.Sum(wi => wi.Progress))
+                    .Select(wig => new Subject
+                    {
+                        Name = wig.Key,
+                        ExercisesCount = wig.Count(),
+                        TotalProgress = wig.Sum(i => i.Progress),
+                        AverageDifficulty = GetAverageDifficulty(wig)
+                   })
             };
         }
 
@@ -44,6 +48,7 @@ namespace SnappetWorkApp.Services{
             return new Subject{
                 Name = name,
                 Exercises = workItems.GroupBy(wi => new{wi.ExerciseId, wi.Domain, wi.LearningObjective})
+                    .OrderBy(wig => wig.Sum(wi => wi.Progress))
                     .Select(wig => new Exercise{
                         Domain = wig.Key.Domain,
                         LearningObjective = wig.Key.LearningObjective,
