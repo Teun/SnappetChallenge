@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1 id="title">Hello Ranking report</h1>
+    <h3>Loading: <span data-bind="text: loading"></span></h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Idx</th>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>numberOfStudents</th>
+            <th>numberOfAnswers</th>
+            <th>maxProgress</th>
+            <th>minProgress</th>
+            <th>averageProgress</th>
+        </tr>
+        </thead>
+        
+        <tbody data-bind="foreach: summaries">
+            <tr>
+                <td><span data-bind="text: $index"> </span></td>
+                <td><span data-bind="text: recordDate"> </span></td>
+                <td><span data-bind="text: subject"> </span></td>
+                <td><span data-bind="text: numberOfStudents"> </span></td>
+                <td><span data-bind="text: numberOfAnswers"> </span></td>
+                <td><span data-bind="text: maxProgress"> </span></td>
+                <td><span data-bind="text: minProgress"> </span></td>
+                <td><span data-bind="text: averageProgress"> </span></td>
+            </tr>
+        </tbody>
+    </table>
+  
+    <!--<button data-bind="click: refresh">Refresh</button>-->
+
+</body>
+</html>
+
+<script src="jquery-3.1.1.min.js"></script> 
+<script src="knockout-3.4.1.js"></script>
+<script type="text/javascript">
+    function AppViewModel() {
+        var self = this;
+
+        self.summaries = ko.observableArray();
+        self.loading = ko.observable(false);
+
+        function getData() {
+            self.loading(true);
+            $.get("http://localhost:60000/day-summary/api/subjects/")
+              .done(function (result) {
+                    self.summaries(result);
+                })
+              .fail(function () {
+                 // alert("error");
+              })
+              .always(function () {
+                  self.loading(false);
+              });
+        }
+
+        self.refresh = function() {
+            getData();
+        }
+
+        function initialize() {
+            setInterval(getData, 3000);
+        }
+
+        initialize();
+    }
+
+    ko.applyBindings(new AppViewModel());
+</script>
