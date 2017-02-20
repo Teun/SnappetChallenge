@@ -1,0 +1,11 @@
+@using SnappetWorkApp.Extensions;
+
+@{
+    ViewData["Title"] = "Home";
+    var currentDate = ((DateTime)ViewData["Date"]);
+    var prettyDate = currentDate.ToString("D");
+    var currentDateString = currentDate.ToString("dd-MM-yyyy");
+}
+
+<h3>Today is: @prettyDate</h3>
+<a asp-controller="Students" asp-action="Index" asp-route-dateString="@currentDateString">See the report</a>

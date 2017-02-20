@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true,
+    "embed":["Data/work.json"]
+  },
+  "dependencies": {},
+  "frameworks": {
+    "netcoreapp1.1": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.1.0"
+        },
+        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+        "Microsoft.AspNetCore.Mvc": "1.0.0",
+        "Microsoft.EntityFrameworkCore.InMemory":"1.1.0",
+        "Microsoft.EntityFrameworkCore.Tools":"1.1.0-msbuild3-final"
+        //"CoreCompat.Newtonsoft.Json": "9.0.2-beta001"
+      },
+      "imports": "dnxcore50"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@model IEnumerable<SnappetWorkApp.Models.Student>
+
+@using SnappetWorkApp.Extensions;
+
+@{
+    ViewData["Title"] = "Students - Index";
+    var currentDate = ((DateTime)ViewData["Date"]);
+    var prettyDate = currentDate.ToString("D");
+
+    var currentDateString = currentDate.ToString("dd-MM-yyyy");
+    var previousDayString = currentDate.PreviousWorkingDay().ToString("dd-MM-yyyy");
+    var nextDayString = currentDate.NextWorkingDay().ToString("dd-MM-yyyy");
+}
+
+<h3>@prettyDate - Students Work Overview</h3>
+<a asp-controller="Home" asp-action="Index">Home</a> |
+<a asp-action="Index" asp-route-dateString="@previousDayString">Previous Day</a> |
+<a asp-action="Index" asp-route-dateString="@nextDayString">Next Day</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Exercises Completed</th>
+            <th>Total Progress</th>
+            <th>Average Difficulty</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var student in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-dateString="@currentDateString" asp-route-id="@student.Id">
+                    @Html.DisplayFor(modelItem => student.Id)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.ExercisesCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.TotalProgress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.AverageDifficulty)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

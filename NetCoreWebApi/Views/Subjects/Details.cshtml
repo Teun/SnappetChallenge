@@ -1,0 +1,61 @@
+@model SnappetWorkApp.Models.Subject
+
+@using SnappetWorkApp.Extensions;
+
+@{
+    ViewData["Title"] = "Subject Details";
+    var currentDate = ((DateTime)ViewData["Date"]);
+    var prettyDate = currentDate.ToString("D");
+
+    var currentDateString = currentDate.ToString("dd-MM-yyyy");
+    var previousDayString = currentDate.PreviousWorkingDay().ToString("dd-MM-yyyy");
+    var nextDayString = currentDate.NextWorkingDay().ToString("dd-MM-yyyy");
+
+    var studentId = ViewData["StudentId"];
+}
+
+<h3>@prettyDate - Student @studentId - Work done on Subject: @Model.Name</h3>
+<a asp-controller="Students" asp-action="Details" asp-route-dateString="@previousDayString" asp-route-id="@studentId">Up a level</a> |
+<a asp-action="Details" asp-route-dateString="@previousDayString" asp-route-studentId="@studentId" asp-route-name="@Model.Name">Previous Day</a> |
+<a asp-action="Details" asp-route-dateString="@nextDayString" asp-route-studentId="@studentId" asp-route-name="@Model.Name">Next Day</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Domain</th>
+            <th>Learning Objective</th>
+            <th>Exercise</th>
+            <th>Correct</th>
+            <th>Incorrect</th>
+            <th>Progress</th>
+            <th>Avg Difficulty</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var exercise in Model.Exercises) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => exercise.Domain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => exercise.LearningObjective)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => exercise.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => exercise.TimesCorrect)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => exercise.TimesIncorrect)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => exercise.TotalProgress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => exercise.AverageDifficulty)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
