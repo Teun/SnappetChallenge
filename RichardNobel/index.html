@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Snappet Challenge project, juni 2015">
+    <meta name="author" content="Richard Nobel <richardnobel@gmail.com>">
+
+    <title>Werkresultaten</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <b><span style="color:#63bce1">S</span><span style="color:#2ba5d6">n</span><span style="color:#d46080">a</span><span style="color:#c02a58">p</span><span style="color:#fbe24e">p</span><span style="color:#fad905">e</span><span style="color:#ee6824">t</span></b>
+                    Challenge
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://about.me/richardnobel" target="_blank">Richard Nobel</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="modal fade" id="modalReport" tabindex="-1" role="dialog" aria-labelledby="modalReportLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modalReportLabel">Werkresultaten</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modalReportLoadingMessage" class="center-block"><p>Gegevens laden...</p></div>
+                        <div id="modalReportBodyContent"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnModalReportClose" type="button" class="btn btn-primary" data-dismiss="modal">Sluiten</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Waar heeft mijn klas vandaag aan gewerkt?</h2>
+            <p class="lead"></p>
+
+            <div id="studentResultsList" class="row row-centered">
+
+            </div>
+        </div>
+
+    </div><!-- /.container -->
+
+    <script type="text/javascript">
+        /*** thenBy.js - Copyright 2013 Teun Duynstee Licensed under the Apache License, Version 2.0 ***/
+        var firstBy = function () { function n(n, t) { if ("function" != typeof n) { var r = n; n = function (n, t) { return n[r] < t[r] ? -1 : n[r] > t[r] ? 1 : 0 } } return -1 === t ? function (t, r) { return -n(t, r) } : n } function t(t, u) { return t = n(t, u), t.thenBy = r, t } function r(r, u) { var f = this; return r = n(r, u), t(function (n, t) { return f(n, t) || r(n, t) }) } return t }();
+
+        var _currentDateTimeUtcString = "2015-03-24T11:30";
+        var _currentDateTime = new Date(_currentDateTimeUtcString);
+        var _filteredWorkData = {};
+
+        /// This function is called from the script file "work.jsonp".
+        function readWorkData(jsonData) {
+            var compareFunction = firstBy("UserId").thenBy("SubmitDateTime");
+            jsonData.sort(compareFunction);
+
+            _filteredWorkData = arrayOfObjectsToHashTable(jsonData, "UserId", function (obj) { return (new Date(obj.SubmitDateTime) <= _currentDateTime) ? true : false; });
+            displayStudentsOverview();
+        }
+
+        $(document).ready(function () {
+            $("#studentResultsList").on("click", "div.studentResultsItem", function () { showStudentWorkDetails($(this).data("studentid")); });
+        });
+
+        function arrayOfObjectsToHashTable(sourceArray, keyProperty, filterFunc) {
+            var hashTable = {};
+            for (var i = 0; i < sourceArray.length; i++) {
+                if (!filterFunc || filterFunc(sourceArray[i]) === true) {
+                    var keyPropertyVal = sourceArray[i][keyProperty];
+                    if (!hashTable.hasOwnProperty(keyPropertyVal))
+                        hashTable[keyPropertyVal] = [];
+
+                    hashTable[keyPropertyVal].push(sourceArray[i]);
+                }
+            }
+            return hashTable;
+        }
+
+        function displayStudentsOverview() {
+            $("p.lead").text(_currentDateTime.toLocaleDateString());
+            $.each(_filteredWorkData, function (key, value) {
+                $("#studentResultsList").append(createStudentResultsItem(key));
+            });
+        }
+
+        function createStudentResultsItem(studentId) {
+            var markup = '<div class="studentResultsItem col-xs-4 col-sm-2 col-centered" data-studentid="' + studentId + '">';
+            markup += '<div class="studentNameAndPhoto">'
+            markup += '<span class="photo studentIcon' + (_studentDetails[studentId].gender == "f" ? "Female" : "Male") + '"></span><br/>';
+            markup += '<span class="studentName">' + _studentDetails[studentId].name + '&nbsp;(' + studentId + ')</span>';
+            markup += '</div>';
+            markup += '</div>';
+            return markup;
+        }
+
+        function showStudentWorkDetails(studentId) {
+            if (!_filteredWorkData[studentId])
+                return;
+
+            $("#modalReportLoadingMessage").show();
+
+            var studentWorkRecords = _filteredWorkData[studentId];
+            var compareFunction = firstBy("Subject").thenBy("LearningObjective").thenBy("SubmitDateTime");
+            studentWorkRecords.sort(compareFunction);
+
+            var markup = '<div class="table-responsive"><table class="table table-striped">';
+            markup += '<thead><tr><th>Onderwerp</th><th>Leerdoel</th><th>Correct</th></tr></thead>';
+            markup += '<tbody>';
+
+            var previousObjective = null;
+            var subjectAnswersTotal = 0;
+            var subjectAnswersCorrect = 0;
+            $.each(studentWorkRecords, function (index, submittedAnswer) {
+                subjectAnswersTotal++;
+
+                if (submittedAnswer.Correct == 1)
+                    subjectAnswersCorrect++;
+
+                if (submittedAnswer.LearningObjective != previousObjective) {
+                    markup += '<tr>';
+                    markup += '<td>' + submittedAnswer.Subject + ' (' + submittedAnswer.Domain + ')</td>';
+                    markup += '<td>' + submittedAnswer.LearningObjective + '</td>';
+                    markup += '<td>' + subjectAnswersCorrect + '/' + subjectAnswersTotal + '</td>';
+                    markup += '</tr>';
+                    previousObjective = submittedAnswer.LearningObjective;
+                    subjectAnswersTotal = 0;
+                    subjectAnswersCorrect = 0;
+                }
+            });
+
+            markup += '</tbody>';
+            markup += '</table>';
+            markup += '</div>';
+            
+            $("#modalReportBodyContent").html(markup);
+            $("#modalReport").modal("show");
+            $("#modalReportLoadingMessage").hide();
+        }
+
+        var _studentDetails = {
+            "40267": { name: "Homer", gender: "m" }, "40268": { name: "Marge", gender: "f" }, "40270": { name: "Bart", gender: "m" }, "40271": { name: "Lisa", gender: "f" }, "40272": { name: "Maggie", gender: "f" },
+            "40273": { name: "Mary", gender: "f" }, "40274": { name: "Jasper", gender: "m" }, "40275": { name: "Benjamin", gender: "m" }, "40276": { name: "Doug", gender: "m" }, "40277": { name: "Gary", gender: "m" },
+            "40278": { name: "Blinky", gender: "m" }, "40279": { name: "Wendell", gender: "f" }, "40280": { name: "Jacqueline", gender: "f" }, "40281": { name: "Patty", gender: "f" }, "40282": { name: "Kent", gender: "m" },
+            "40283": { name: "Carl", gender: "m" }, "40284": { name: "Scott", gender: "m" }, "40285": { name: "Maude", gender: "f" }, "40286": { name: "Gino", gender: "m" }, "68421": { name: "Jimbo", gender: "m" }
+        };
+    </script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="work.jsonp" type="text/javascript"></script>
+</body>
+</html>

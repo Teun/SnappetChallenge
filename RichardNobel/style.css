@@ -1,0 +1,62 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 50px;
+}
+
+.content {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.studentResultsItem {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #2ba5d6;
+    background-color: #63bce1;
+}
+
+.studentResultsItem:hover {
+    background-color: #fbe24e;
+    cursor: pointer;
+}
+
+.studentNameAndPhoto {
+    width: 100%;
+    text-align: center;
+    align-content: center;
+}
+
+span.studentName {
+    font-weight: bold;
+}
+
+.photo {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+}
+
+/* icons used with permission, created by pixel-mixer.com  */
+.studentIconMale {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGAUExURaWmpppjL9jGtYg5DJNHGG06HdfY2dGqhJJWKGZqb/Tz85ubm8SMVXCU0eTWy2Z5nV15r2mMyevr605YaYet5oNTNkFDRbl9Q8LAvmF/t8ubatWzkEtNUbF1O3p8fzo7PbHW9qpxOMiUYbSEW8bExM6idcaQWcaJTuLh4FNVWZS66TIzNLO0tdSwindTOYY/FYeIis7NzYlnTnab2UlLTkZITMKjiM2ebkRFSLSMalVoisKpknOY1r+BRKrQ9KNaJ/39/KJqMzw+QKptQY616qJsPtmYW6t6VLy8vN6jZuOlZlpcYKx1RE1QVD9BQ8qYZl9iZ69sO6BkMtCler52PXme3VVYXZxMGVBSVzc4OjU2N22QzrellKduNZ9mO0E2MGxtcCwuL5i+7zAwMoCn43yi4X6j3aDG8bu5uMeARrm9xbFpL3Fyc72cgGlhWUlDQc2znVxBMn6InMaWZcKWcImLjo+Qkff4+Pf393hcQpKdsDkxLtHT2JFBEvj49////5sWMcMAAACAdFJOU/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AOAVLZwAAA/hJREFUeNqM1ftb2lYYwPFwESFFxUgToFySEG6CpkwyU+UmyrRiCFUIEAteW9vNrTqrc1tZ/vW9J0FUNqDfHyTknM8554FHgmkTSiUSjmDq8T3Wfy2hqqQgKUYJKSOQVf1uSc1gkqoOAXUAji9fQ47KAKiqeiuKw6DfyclZUjXWbavJsxM9TRP+e6TBRqTQqukpkkCiXVul7wFKRiyF2qraPksKAGpjQablJ6vVKgLJs7NkUr0fA0oh9ejoy5flH8r7Gyb78vXR32DwMeB6Cnppr8d2682exWLhp5b/vB53pKmepddsFn7a3f2sA8vG28+9MaA4BdObFgTe1utNq4WPxurjwKy1qS/cKwRi9XrBYt2Ek/FjwGaPR+fge7ARb+E3fXvd8aDI85Zued9u5Xneau9GVtlNuNK+1eKjjgSAjXwNb29vh8Phr9MR2QlSw7C7EcBk563ywdKrV9N6Swey02q3aw6HMAIw+82CDwGjpQNftLC/rzmEUaBMFd4NgQ61rTmUUcCU+yX2HDipXHkM+JGhnHLkEUTkWC68DkAZAfAuAtMPAD6lGFXGNWUk0MymGDs4E5yIzXXNmhZUgqOA9oaKwha6WIINotQb/bZnJJgtO9nViPE1wBftLM8OTRgGxa4zKq9GDqDIqhx1losTgHZVjkZZ3yrkY6PRPbM2Cczab0CwMsvC/Juu9h2AkWEqipX3tieDqw17R/bBBvCnzPw6ERBXgQ2TCT7bG5kymXLxCcAWLHneM4zJaKPz3mNO/TESFFNr3oVjzsMEAsZ8ivF4fmt55779L4j/7vLOHIYcn9LrTIAKdJhAjllPf6rUDrNe11/4MPh5zjvfcJ/S7UrKFjeHAzkoao7bUpUKfepuzHvnbE9B2u+aOd+6oGk6VLnj4gSOBIvjBHcHgKYvts5nXMfEANyKflc+T6NKlVqKwO/3OrlcDECqpgOazuddGTHdBykhIa3RRlVFOebwfzodisrd49xlpQ9oei2hiIQOcFFqSQtolYutCzKRSAQ5jul0GIbjguhpB3fR7gsJxX+pgx1RgvKn7g8r2UWyhbrlULetBGoxu/LBfZqX4JIsIhAU/X6/sLiSzWZXttA1JA1qtbb0kUUBFhLSCGQEqOqGm42GW8jo+R+T3I0GEDcJq4gYAlURIs9XUB+FZ+n2oz5yTsIq4i0CJRKqon1hE3E4QeiPkLCACL8FGG48vWeMqkbkkx5G0DngZx8jxDaqfzs03GApfdkKoWHpF4IIA/OHBmgPZ4DD+XYJMJZG3zQeT2Ov51wo71oIPc5VNQmh13Z7zauPzF3e7diIZ/8PRNyW5nZSGPbiSRiW2uHStjhx/zDtXwEGAEBa3jGZI61XAAAAAElFTkSuQmCC);
+}
+
+.studentIconFemale {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGAUExURZpJFzM0NdbW1trDtMTCwc+2qNWzkYg7DmZqb6OlpqNqNKxcI+TVyb+BQ8SMVLN1O0BBQ3lILnCU0dKrg1VXW+Dg4L5sK4hCF4aGiGaHxIet5qR+bLZ9Scuba3k0DPPz8114q6+MeaBOGV99tnGBo7HW9s6jeElKTejo53Z2d3t9gMKIT5S66ZSnzsiVYsWQWpljQbO5xLVoLsPN4UtNUNSwinab2aFVIbiXhf38/Kx6VPHq5nOY1rW1ttGmfIVIJ6rQ9MyecZWVlqpyOs/Ny4eWtEZIS65iLLiHXsWolFNaZY616qJiMkRFR1ZnidWTV+OlZn84D20zGMKTbKx0SahsQOjs88eSXj8/Qc2phNCLTE9RVIdWPzw8Pnme3b53PWdQSvLw78mYZnJAJvr592BiZ5FPJpFWOGuOzG5wcZpPHqDG8YCn432j35i+74BlU8iARMXJ0ZeitpFDE8eZbLJ7W/b3+Pj3996fYKStvq6sq01BOuHl7YuOkDw+QP///5kpg1QAAACAdFJOU/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AOAVLZwAABEFJREFUeNqM1vlX2lgUB/AXQLYASTUkyECgIATBSSwTjFBFEBtcwBGUQqVAidoCLm0nM13sCP/6vIRFxeCZ7y9J7rsfbh7J4QAG2jkfn2wShDm6eb8Ahoe+Erwo1olR6rxYxNVqH0EYSx2ZAsgEmLsuGPP+BCAwd8g0GEVZRBpqXwMZB9bFJ7c0Bg1crF+oIeoi3lDSfxb0H4HhHmD94nnw+fNqoSAIW2e//gf4dfaCyqOt06NWQDaZTNSvPvIsoAAFAgD9cXT0RQU0akeSzwAAAoEAMOX/PDr60WoBSE5P87aB7sKpDV7LAAD4uSZZwE5bLbQkf2mR8bmBxXKnDWwyZVIjy72eqUQF8gKJCsaB2SxqgzmqVFK6ZZmiAFoRUEecBAH9wCzOAqYSFEBA0TjpEQRPVnLkA8A2MBOzgNKPkiSJeVIFsLsQ9nKoAIzPA9iPpWAqPWMi7eXghBMICG2gL9GAjJ/A9t3wO6CAahyA3oCYDUwkWTlJZY0whbACMNCT9VEiOuOWaJSMV1IJpd94fKwA+PTkXnJg0AZbMhm3Vv4eAuNxAm66BUpA/meg/Wqs0yQpWD3ZhSFILIQlzk7R8GGm2lrgnI6TwsdK1Zsejkiks6zDXqJp+NJ+1GuAOQr277zjpPBCYjjAW43tvYRg6xNV0QBbvTy1GtE7WG84vQATzrJczKmjafqT9h5eoChFraeqnJQNp9PpcFaqxmLrcAL9Xhv8toX24KqD41hvNpv1SlWHowALdHlOG7wu9wS4xQILBSuxLOdw7Cr99Fly1tdaDsg0LeQkSDjYXmWpJwMegfP3FCitFnI5ySuxVdbLWeVVZcBgFhjYyjK1h2FWq6cKp5xYc9je9ICpH4GX5bNbD2a3DoNh6bkSXU7OBm+Xgh8MRsxuz6n9dsxmuAgeOmeAb38sLs53PmzqPHa7Hcth8MDZbvc784vBn8mn4N/fg52m+yZEuHb09nFsO10idONudoJv3k4Bi3/+6uAyFAoRhM5pk9R2yebUEQSsXR5czft1D0GyW/NnMiEl9fptpO1jYT/r80W263W1msn4G5sPgAXnD0OhESAivu8xCGI+n7M+AqHQIdOPTMC3Ps/vK59zeXDJ8/ydr63eUru9DK9gTZm9zxe7E/AV5xk+c+O+XttYgS28wakC561ysbKxdu2+ycCz2gTc1RimuLK2sbGxdsAocRmUuJRT/kCtr4gMU3OOAVEURdwNy82mmxFFkXkQ3t1sQuLGGaa/OQZFGPxqTck1A8/FB2Gu1foVLoqN7TGoKUCZDIcUpyKO6nix2IhOAI7jtflh8OmM6rCnRoxAhEAatf54YTr39QYRGYKdW76PNDqd4YTG4wwndDrwHwFu2Rk/6e8R3e2S3x+EOUQe51Ap+v1L2wZne+r1Pm9HdF9f/WXZdrmiy8vd7vJy1OXafvPzlc4Z8d2/3/8JMACbD8qIkLU57wAAAABJRU5ErkJggg==);
+}
+
+
+/* centered columns styles */
+/* http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-centered-columns */
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right: -4px;
+}
