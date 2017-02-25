@@ -226,7 +226,6 @@ present in real applications:
 * authentication and authorization,
 * logging,
 * unit tests,
-* using a proper DI-container like Autofac,
 * a proper configuration file,
 * XML-documentation,
 * etc.
