@@ -1,0 +1,41 @@
+.c-table__cell {
+	overflow: hidden
+}
+
+.c-pagination__control {
+	display: block;
+}
+
+.sparkline svg {
+	position: absolute;
+	max-height: 1.5em;
+	/* For Edge: */
+	width: 100%;
+}
+
+.sparkline {
+	position: relative;
+	width: 100%;
+}
+
+.ellip {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.help {
+	text-align: center;
+}
+
+.help__body {
+	display: inline-block;
+	text-align: left;
+	max-width: 1200px;
+}
+
+.o-drawer {
+	transition-property: transform;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
