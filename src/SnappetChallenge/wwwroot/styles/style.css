@@ -1,0 +1,15 @@
+﻿.main-container_filters {
+    margin-top: 5vh;
+    text-align: center;
+    
+}
+.main-container_filters_selectFilter {
+    height: 5vh;
+    font-size: 25px;
+    margin: 2vh auto;
+    width: 25vw;
+}
+.main-container_date-ranges {
+    width: 25vw;
+    margin: 2vh auto 0;
+}
