@@ -1,0 +1,27 @@
+﻿<div class="main-container">
+    <div class="main-container_filters">
+        <select ng-options="subject as subject.name for subject in subjects track by subject.id"
+                 class="form-control main-container_filters_selectFilter" ng-model="filterRequest.subject">
+            <option value="" disabled selected>Select Subject</option>
+        </select>
+        <select ng-disabled="!filterRequest.subject" ng-options="domain as domain.name for domain in filterRequest.subject.domains track by domain.id"
+                class="form-control main-container_filters_selectFilter" ng-model="filterRequest.domain">
+            <option value="" selected>Select Domain (optional)</option>
+        </select>
+        <select ng-disabled="!filterRequest.domain" ng-options="learningObjective as learningObjective.name for learningObjective in filterRequest.domain.learningObjectives track by learningObjective.id"
+                class="form-control main-container_filters_selectFilter" ng-model="filterRequest.learningObjective">
+            <option value="" selected>Select Learning Objective (optional)</option>
+        </select>
+        <div class="main-container_date-ranges btn-group btn-group-justified">
+            <div class="btn-group" role="group">
+                <button ng-disabled="!filterRequest.subject" class="btn btn-success btn-lg" ng-click="buildReport(filterDateRangeEnum.Weekly)">Weekly report</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button ng-disabled="!filterRequest.subject" class="btn btn-info btn-lg" ng-click="buildReport(filterDateRangeEnum.Monthly)">Monthly report</button>
+            </div>
+        </div>
+    </div>
+    <div class="main-container_chart">
+        <div google-chart chart="chart" style="{{chart.cssStyle}}" />
+    </div>
+</div>
