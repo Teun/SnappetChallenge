@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -21,8 +20,6 @@ namespace SnappetChallenge.Business
 
         public CorrectAnswerReport BuildAnswerReport(CorrectAnswerRequest request)
         {
-            //DateTime today = DateTime.Parse("2015-03-24 11:30:00Z"); // Just like in description of task
-
             IEnumerable<AnsweredDateResult> answeredResults = _context.Answers
                 .Where(x => x.SubmitedDate <= request.ToDate.ToUniversalTime() && x.SubmitedDate >= request.FromDate.ToUniversalTime())
                 .Where(x => x.Exercise.LearningObjective.Domain.Subject.Name == request.Subject)

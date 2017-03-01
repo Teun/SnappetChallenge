@@ -16,7 +16,7 @@ namespace SnappetChallenge.Controllers
 
         [HttpPost]
         [ActionName("correctanswerreport")]
-        public IActionResult Post([FromBody] CorrectAnswerRequest request)
+        public IActionResult GetCorrectAnswerReport([FromBody] CorrectAnswerRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -27,7 +27,7 @@ namespace SnappetChallenge.Controllers
 
         [HttpGet]
         [ActionName("subjects")]
-        public IActionResult Get()
+        public IActionResult GetSubjects()
         {
             return Ok(_reportManager.GetFilters());
         }
