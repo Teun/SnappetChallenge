@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Snappet.Reporting.Application;
 using Snappet.Reporting.Application.Domain.Model;
@@ -17,9 +18,10 @@ namespace Snappet.Reporting.Storage.Sql
             _reportingDbContext = reportingDbContext;
         }
 
-        public IQueryable<CorrectAnswersPerUserDto> CorrectAnswersPerUser()
+        public IQueryable<CorrectAnswersPerUserDto> CorrectAnswersPerUser(DateTime date)
         {
             return _answers
+                .Where(x => x.SubmitDateTime.Date == date.Date)
                 .GroupBy(x => new { x.UserId, x.Subject, x.LearningObjective })
                 .Select(s => new CorrectAnswersPerUserDto
                 {
@@ -32,9 +34,10 @@ namespace Snappet.Reporting.Storage.Sql
                 .OrderBy(a => a.UserId).ThenBy(a => a.Subject).ThenBy(a => a.Count);
         }
 
-        public IQueryable<CorrectAnswersPerLearningObjectiveDto> CorrectAnswersPerLearningObjective()
+        public IQueryable<CorrectAnswersPerLearningObjectiveDto> CorrectAnswersPerLearningObjective(DateTime date)
         {
             return _answers
+                .Where(x => x.SubmitDateTime.Date == date.Date)
                 .GroupBy(x => new { x.Subject, x.LearningObjective })
                 .Select(s => new CorrectAnswersPerLearningObjectiveDto
                 {
@@ -43,7 +46,21 @@ namespace Snappet.Reporting.Storage.Sql
                     Count = s.Count(x => x.Correct),
                     Total = s.Count()
                 })
-                .OrderBy(a => a.Subject).ThenBy(a => a.LearningObjective);
+                .OrderBy(a => a.Subject).ThenBy(a => a.Percentage);
+        }
+
+        public IQueryable<CorrectAnswersPerSubjectDto> CorrectAnswersPerSubject(DateTime date)
+        {
+            return _answers
+                .Where(x => x.SubmitDateTime.Date == date.Date)
+                .GroupBy(x => new { x.Subject })
+                .Select(s => new CorrectAnswersPerSubjectDto
+                {
+                    Subject = s.Key.Subject,
+                    Count = s.Count(x => x.Correct),
+                    Total = s.Count()
+                })
+                .OrderBy(a => a.Subject);
         }
     }
 }

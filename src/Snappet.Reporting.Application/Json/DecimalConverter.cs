@@ -25,7 +25,7 @@ namespace Snappet.Reporting.Application.Json
 
             if(reader?.Value == null)
             {
-                _logger.LogInformation("Null value converted to 0.");
+                _logger.LogWarning("Null value converted to 0.");
                 return 0.0;
             }
 
@@ -34,7 +34,7 @@ namespace Snappet.Reporting.Application.Json
 
             if (reader.Value.ToString().Equals("NULL", StringComparison.OrdinalIgnoreCase))
             {
-                _logger.LogInformation("NULL converted to 0.");
+                _logger.LogWarning($"String with value {reader.Value} converted to 0.");
                 return 0.0;
             }
             throw new JsonSerializationException("Unexpected token value: '" + reader.Value + "'");

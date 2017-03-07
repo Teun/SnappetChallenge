@@ -76,6 +76,5 @@ namespace Snappet.Reporting.Application.UnitTests
             var actual = _target.CanConvert(typeof(double?));
             Assert.True(actual);
         }
-
     }
 }

@@ -1,0 +1,11 @@
+<h1>Antwoorden per onderwerp</h1>
+<p>Dit is het percentage correcte antwoorden per onderwerp van vandaag en gisteren.</p>
+
+<div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"></canvas>
+</div>

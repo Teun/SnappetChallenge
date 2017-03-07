@@ -37,6 +37,7 @@ namespace Snappet.Reporting.Api
             services.AddDbContext<ReportingDbContext>(opt => opt.UseInMemoryDatabase());
             // Add framework services.
             services.AddScoped<IAnswerRepository, AnswerRepository>();
+            services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => builder.AllowAnyOrigin()));
             services.AddMvc();
         }
 
@@ -49,7 +50,7 @@ namespace Snappet.Reporting.Api
                 loggerFactory.AddDebug();
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("AllowAnyOrigin");
             app.UseMvcWithDefaultRoute();
             DbInitializer.Initialize(reportingDbContext, loggerFactory);
         }

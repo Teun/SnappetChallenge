@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Snappet.Reporting.Webapp", "src\Snappet.Reporting.WebApp\Snappet.Reporting.Webapp.xproj", "{F39CCD2A-F308-48F7-B077-4097A28A3A26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{0063CFEC-11F9-4DCA-B195-B73CB4A49136}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0063CFEC-11F9-4DCA-B195-B73CB4A49136}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0063CFEC-11F9-4DCA-B195-B73CB4A49136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39CCD2A-F308-48F7-B077-4097A28A3A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39CCD2A-F308-48F7-B077-4097A28A3A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39CCD2A-F308-48F7-B077-4097A28A3A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39CCD2A-F308-48F7-B077-4097A28A3A26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

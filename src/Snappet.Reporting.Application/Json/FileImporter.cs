@@ -8,11 +8,9 @@ namespace Snappet.Reporting.Application.Json
 {
     public static class FileImporter
     {
-        private const string AnswerFilename = @"..\..\Data\work.json";
-
-        public static IList<Answer> GetAnswers(ILoggerFactory loggerFactory)
+        public static IList<Answer> GetAnswers(ILoggerFactory loggerFactory, string filename)
         {
-            using (var file = File.OpenText(AnswerFilename))
+            using (var file = File.OpenText(filename))
             {
                 using (var stream = new JsonTextReader(file))
                 {
