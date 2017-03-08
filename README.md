@@ -14,6 +14,8 @@ After this you can open the solution in the latest Visual Studio 2015. Because w
 - Choose 'Multiple startup projects'. 
 - Set the Api and WebApp 'action' to 'Start'.
 
+![image](https://cloud.githubusercontent.com/assets/20110699/23697686/fba19b4c-03e8-11e7-8b21-0a9ed3c514ef.png)
+
 Now the app can be started by pressing F5. The Webapp will probably tell that the dependencies are not installed. This is a bug, they're probably installed.
 
 To use the command line, please follow these steps:
