@@ -9,7 +9,12 @@ This repository contains a
 
 If you didn't install .Net Core yet, please do so: [Install .Net Core](https://www.microsoft.com/net/core). Also make sure node and npm is installed.
 
-After this you can open the solution in the latest Visual Studio 2015 and press F5. The Webapp will probably tell that the dependencies are not installed. This is a bug, they're probably installed.
+After this you can open the solution in the latest Visual Studio 2015. Because we have 2 apps, we need to start multiple projects:
+- Right click the solution, select Properties
+- Choose 'Multiple startup projects'. 
+- Set the Api and WebApp 'action' to 'Start'.
+
+Now the app can be started by pressing F5. The Webapp will probably tell that the dependencies are not installed. This is a bug, they're probably installed.
 
 To use the command line, please follow these steps:
 
