@@ -1,0 +1,25 @@
+<h1>Antwoorden per leerdoel</h1>
+<p>Dit is het aantal correcte antwoorden van vandaag per leerdoel.</p>
+
+<p *ngIf="!correctAnswersPerLearningObjective"><em>Laden...</em></p>
+
+<table class="table" *ngIf="correctAnswersPerLearningObjective">
+    <thead>
+        <tr>
+            <th class="hidden-xs">Onderwerp</th>
+            <th>Leerdoel</th>
+            <th class="hidden-xs hidden-sm">Aantal antwoorden</th>
+            <th class="hidden-xs hidden-sm">Aantal correct</th>
+            <th>Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let learningObjective of correctAnswersPerLearningObjective">
+            <td class="hidden-xs">{{ learningObjective.subject }}</td>
+            <td>{{ learningObjective.learningObjective }}</td>
+            <td class="text-right hidden-xs hidden-sm">{{ learningObjective.total }}</td>
+            <td class="text-right hidden-xs hidden-sm">{{ learningObjective.count }}</td>
+            <td class="text-right">{{ learningObjective.percentage | percent : '2.2-2' }}</td>
+        </tr>
+    </tbody>
+</table>
