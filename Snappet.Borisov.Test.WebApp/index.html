@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SnappetChallenge</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" href="//nl.snappet.org/wp-content/themes/snappet/images/logotablet.png" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--[if lt IE 10]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div id="root" class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Answers</th>
+                <th>Correct Answers</th>
+                <th>Objectives</th>
+                <th>Best Objective</th>
+                <th></th>
+                <th>Last Objective</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: students">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: today.numberOfAnswers"></td>
+                <td data-bind="text: today.numberOfCorrectAnswers"></td>
+                <td data-bind="text: today.numberOfObjectives"></td>
+                <td><span data-bind="{ text: today.objectiveWithMaxProgress.learningObjective}"></span></td>
+                <td><span data-bind="{ text: today.objectiveWithMaxProgress.progress}"></span></td>
+                <td><span data-bind="{ text: today.objectiveWithMinProgress.learningObjective}"></span></td>
+                <td><span data-bind="{ text: today.objectiveWithMinProgress.progress}"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//knockoutjs.com/downloads/knockout-latest.js"></script>
+<script src="js/overview-model.js"></script>
+<script src="js/get-overview-model.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
