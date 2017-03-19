@@ -1,0 +1,26 @@
+﻿[
+  {
+    "SubmittedAnswerId": 2395278,
+    "SubmitDateTime": "2015-03-02T07:35:38.740",
+    "Correct": 1,
+    "Progress": 0,
+    "UserId": 40281,
+    "ExerciseId": 1038396,
+    "Difficulty": "-200",
+    "Subject": "Begrijpend Lezen",
+    "Domain": "-",
+    "LearningObjective": "Diverse leerdoelen Begrijpend Lezen"
+  },
+  {
+    "SubmittedAnswerId": 2396494,
+    "SubmitDateTime": "2015-03-02T07:36:48.530",
+    "Correct": "not a boolean",
+    "Progress": 2,
+    "UserId": 40281,
+    "ExerciseId": 1029120,
+    "Difficulty": "329.2341931",
+    "Subject": "Begrijpend Lezen",
+    "Domain": "-",
+    "LearningObjective": "Diverse leerdoelen Begrijpend Lezen"
+  }
+]
