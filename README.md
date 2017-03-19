@@ -21,4 +21,5 @@ Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruik
 Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
 De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
 
-### Oplossing
+### Invulling
+De solution Snappet\Snappet.sln openen in Visual Studio, NuGet packages restoren en het web project Dashboard starten.
