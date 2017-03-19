@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script>
+    $(document).ready(function () {
+        $.post({
+            url: "/api/Report/ExerciseStatsReport",
+            data: 'todo reportParameters',
+            success: function (data) {
+                ko.applyBindings(new ExerciseStatsReportModel(data));
+            },
+            error: function (msg) { alert(msg); }
+        });
+    });
+</script>
+<div class="container body-content">
+    <h3><span data-bind="text: title"></span></h3>
+    <article data-bind="foreach: exerciseStats">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span data-bind="text: domain"></span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> <span data-bind="text: subject"></span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true" data-bind="visible: learningObjective"/><span data-bind="text: learningObjective"></span></h3>
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        </div>
+        <div class="panel-body toggle">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Voortgang <small>Fouten gemiddeld</small> <span class="label label-danger" data-bind="text: averageExerciseInCorrect"></span> <small>Opgaven gemiddeld</small> <span class="label label-success" data-bind="text: averageExerciseCount"></span></h3> 
+                    <span class="pull-right clickable" data-bind="visible: negativeProgressUserStats().length > 0"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <table class="table table-striped table-hover toggle" data-bind="visible: negativeProgressUserStats().length > 0">
+                    <thead>
+                        <tr><th>Leerlingen met negatieve voortgang</th><th>Aantal opgaven</th><th>Aantal fouten</th></tr>
+                    </thead>
+                    <tbody data-bind="foreach: negativeProgressUserStats">
+                        <tr><td>Leerling <span data-bind="text: id" /></td><td data-bind="text: exerciseCount"></td><td data-bind="text: exerciseInCorrectCount"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel panel-default" data-bind="visible: learningObjectiveStats().length > 0">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Leerdoelen</h3>
+
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <table class="table table-striped table-hover toggle">
+                    <thead>
+                        <tr><th>Leerdoel</th><th>Gemiddeld aantal opgaven</th><th>Gemiddeld aantal fouten</th></tr>
+                    </thead>
+                    <tbody data-bind="foreach: learningObjectiveStats">
+                        <tr><td>Opgave <span data-bind="text: learningObjective" /></td><td data-bind="text: exerciseCount"></td><td data-bind="text: exerciseInCorrectCount"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Top 5 Opgaven met meeste fouten</h3>
+
+                    <span class="pull-right clickable" data-bind="visible: topInCorrectExercises().length > 0"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <table class="table table-striped table-hover toggle" data-bind="visible: topInCorrectExercises().length > 0">
+                    <thead>
+                        <tr><th>Opgave</th><th>Aantal keer gemaakt</th><th>Aantal keer fout</th></tr>
+                    </thead>
+                    <tbody data-bind="foreach: topInCorrectExercises">
+                        <tr><td>Opgave <span data-bind="text: id" /></td><td data-bind="text: exerciseCount"></td><td data-bind="text: exerciseInCorrectCount"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </article>
+</div>
