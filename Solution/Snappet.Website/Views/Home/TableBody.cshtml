@@ -1,0 +1,16 @@
+﻿@using ModelBinderDictionary = System.Web.ModelBinding.ModelBinderDictionary
+@model Snappet.Website.Models.TableViewModel
+
+<tbody>
+    @foreach (var row in Model.Rows)
+    {
+        <tr>
+            <td>@row.Subject</td>
+            <td>@row.LearningObjective</td>
+            <td>@row.Count</td>
+            <td>@row.Correct</td>
+            <td>@row.Incorrect</td>
+            <td class="@row.PercentCssClass">@row.PercentCorrect</td>
+        </tr>
+    }
+</tbody>

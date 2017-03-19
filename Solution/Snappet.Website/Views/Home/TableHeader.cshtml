@@ -1,0 +1,13 @@
+﻿@using ModelBinderDictionary = System.Web.ModelBinding.ModelBinderDictionary
+@model Snappet.Website.Models.TableViewModel
+
+@if (Model.ShowHeader)
+{
+    <thead>
+        <tr>
+            @foreach (var header in Model.TableHeaders)
+            {
+                <th>@header</th>
+            }
+    </thead>
+}

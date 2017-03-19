@@ -1,0 +1,10 @@
+﻿@model Snappet.Website.Models.TablesViewModel
+
+@foreach(var table in Model.Tables)
+{
+    <table class="table table-striped table-bordered">
+        <caption>@table.Title</caption> 
+        @Html.Partial("TableHeader", table)
+        @Html.Partial("TableBody", table)
+    </table>
+}
