@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "jspm_packages"
+  ],
+  "compileOnSave": false
+}

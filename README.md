@@ -1,22 +1,56 @@
 # SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+### Gerard Koops
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+## Requirements
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+- Visual studio 2017
+- [NodeJS 6.2.2 or higher](https://nodejs.org)
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+## Install
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+There is no need to install anything to run the application. To develop and debug the application installing the npm packages and jspm is required.
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+To do this, follow the next steps:
+- Open a Node.js command prompt
+- Change the directory: **cd [Repository]\SnappetChallenge\SnappetChallenge**
+- Execute the command: **npm install jspm@beta -g**
+- Execute the command: **npm install glup-cli -g**
+- Execute the command: **npm install**
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Javascript, JQuery en Knockout.JS. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+## Launch
+Launch the application from the visual studio 2017 IDE
+
+## Application
+
+### Subjects
+
+![Subjects](/subjects.png?raw=true "Subjects")
+
+On the home screen of the application all subjects for this day are shown.
+You can click on a subject to view details of each learning objective for the selected subject.
+
+### Learning objectives
+
+![Learning objectives](/learningobjectives.png?raw=true "Learning objectives")
+
+This page displays details for the selected subject:
+- Total number of assignments
+- Average difficulty
+- Correct and incorrect answers
+
+### Progress
+
+![Progress](/progress.png?raw=true "Progress")
+
+A graph of today's progress for each subject is shown.
+A teacher can use this to determine wich subjects require additional attention.
+
+## Technology
+
+To complete the SnappetChallenge I used a combination of the next technologies and tools:
+- **Angular 2** is the next version of Google�s massively popular MV* framework for building complex applications in the browser (and beyond).
+- **JSMP** is a package manager for the SystemJS universal module loader, built on top of the dynamic ES6 module loader.
+This enables rappid development and hot-reloading in the browser.
+- **ASP.Net Core** is a lean and composable framework for building web and cloud applications. ASP.NET Core is fully open source and available on GitHub. ASP.NET Core is available on Windows, Mac, and Linux.
+
+I used Test driven development to create this application. A test project is included for each project.

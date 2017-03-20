@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PostBuildEvent>gulp build.tslint
+REM jspm bundle SnappetChallenge -wid</PostBuildEvent>
+    <RootNamespace>SnappetChallenge</RootNamespace>
+    <AssemblyName>SnappetChallenge</AssemblyName>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\jspm_packages\**" />
+    <Content Remove="wwwroot\jspm_packages\**" />
+    <EmbeddedResource Remove="wwwroot\jspm_packages\**" />
+    <None Remove="wwwroot\jspm_packages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot/4vrww1y0.eep~" />
+    <Content Remove="wwwroot/src\app.module.ts~RF8145c4e.TMP" />
+    <Content Remove="wwwroot/src\subjectstatistics.component.ts~RF7001e68.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="npm-debug.log" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\index.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\index.dev.html" />
+    <Content Include="wwwroot\src\app.component.html" />
+    <Content Include="wwwroot\src\app.component.ts" />
+    <Content Include="wwwroot\src\app.module.ts" />
+    <Content Include="wwwroot\src\app.routing.ts" />
+    <Content Include="wwwroot\src\domainstatistics.ts" />
+    <Content Include="wwwroot\src\index.ts" />
+    <Content Include="wwwroot\src\learningobjectivestatistics.ts" />
+    <Content Include="wwwroot\src\main.ts" />
+    <Content Include="wwwroot\src\progress.component.html" />
+    <Content Include="wwwroot\src\progress.component.ts" />
+    <Content Include="wwwroot\src\subject.ts" />
+    <Content Include="wwwroot\src\subjects.component.html" />
+    <Content Include="wwwroot\src\subjects.component.ts" />
+    <Content Include="wwwroot\src\subjectstatistics.component.html" />
+    <Content Include="wwwroot\src\subjectstatistics.component.ts" />
+    <Content Include="wwwroot\src\subjectstatistics.ts" />
+    <Content Include="wwwroot\src\work.service.ts" />
+    <Content Include="wwwroot\tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\dist\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Services\02 - Services.csproj" />
+  </ItemGroup>
+
+</Project>
