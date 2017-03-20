@@ -1,0 +1,60 @@
+﻿<div *ngIf="subject">
+    <h3>{{subject.name}}</h3>
+    <section>
+        Uw klas heeft vandaag het volgende bereikt voor het vak {{subject.name}}
+    </section>
+
+    <div class="container">
+        <div class="row" *ngFor="let domain of subject.domains">
+            <div class="col-lg-12">
+                <h3 *ngIf="domain.name && domain.name !== '-'">{{domain.name}}</h3>
+                <div *ngFor="let objective of domain.learningObjectives" class="col-md-6 col-lg-4">
+                    <form class="form-horizontal">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Leerdoel</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{objective.name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Aantal opdrachten</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{objective.totalCount}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Gemiddeld niveau</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{objective.averageDifficulty}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Score</label>
+                                <div class="col-md-6">
+                                    <div style="width: 200px" class="container pull-left">
+                                        <canvas baseChart
+                                                [data]="[objective.correctCount, objective.incorrectCount]"
+                                                [labels]="pieLabels"
+                                                [colors]="pieColors"
+                                                [options]="pieChartOptions"
+                                                [chartType]="'pie'">
+                                        </canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-default" (click)="goBack()">Terug</button>
+</div>

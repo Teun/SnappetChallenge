@@ -1,0 +1,216 @@
+{
+  "version": "1.0.0",
+  "name": "SnappetChallenge",
+  "scripts": {
+    "bundledev": "jspm bundle SnappetChallenge wwwroot/dist/build-dev.js -wid",
+    "bundleprd": "jspm build SnappetChallenge wwwroot/dist/build.js --minify",
+    "install": "jspm install"
+  },
+  "private": true,
+  "devDependencies": {
+    "@angular/common": "^2.4.10",
+    "@angular/compiler": "^2.4.10",
+    "@angular/core": "^2.4.10",
+    "@angular/http": "^2.4.10",
+    "@angular/platform-browser": "^2.4.10",
+    "@angular/platform-browser-dynamic": "^2.4.10",
+    "@angular/router": "^3.4.10",
+    "@types/es6-promise": "0.0.32",
+    "@types/jasmine": "^2.5.46",
+    "angular2-toaster": "^2.0.0",
+    "chart.js": "^2.5.0",
+    "chokidar-socket-emitter": "^0.6.0",
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-tslint": "^7.1.0",
+    "gulp-util": "^3.0.8",
+    "jspm": "^0.17.0-beta.41",
+    "ng2-charts": "^1.5.0",
+    "rxjs": "^5.2.0",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1",
+    "zone.js": "^0.7.8"
+  },
+  "jspm": {
+    "name": "SnappetChallenge",
+    "main": "main.ts",
+    "directories": {
+      "baseURL": "wwwroot"
+    },
+    "dependencies": {
+      "@angular/http": "npm:@angular/http@^2.4.10",
+      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.4.10",
+      "@angular/router": "npm:@angular/router@^3.4.10",
+      "@reactivex/rxjs": "npm:@reactivex/rxjs@^5.2.0",
+      "angular2-toaster": "npm:angular2-toaster@^2.0.0",
+      "chart.js": "npm:chart.js@^2.5.0",
+      "css": "github:systemjs/plugin-css@^0.1.33",
+      "es6-shim": "npm:es6-shim@^0.35.3",
+      "ng2-charts": "npm:ng2-charts@^1.5.0",
+      "plugin-typescript": "github:frankwallis/plugin-typescript@^7.0.5",
+      "reflect-metadata": "npm:reflect-metadata@^0.1.10",
+      "systemjs-hot-reloader": "npm:systemjs-hot-reloader@^1.1.0"
+    },
+    "devDependencies": {},
+    "peerDependencies": {
+      "@angular/common": "npm:@angular/common@2.4.10",
+      "@angular/compiler": "npm:@angular/compiler@2.4.10",
+      "@angular/core": "npm:@angular/core@^2.4.10",
+      "@angular/platform-browser": "npm:@angular/platform-browser@^2.4.10",
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
+      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+      "constants": "npm:jspm-nodelibs-constants@^0.2.0",
+      "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
+      "events": "npm:jspm-nodelibs-events@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "module": "npm:jspm-nodelibs-module@^0.2.0",
+      "net": "npm:jspm-nodelibs-net@^0.2.0",
+      "os": "npm:jspm-nodelibs-os@^0.2.0",
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0",
+      "rxjs": "npm:rxjs@^5.0.1",
+      "stream": "npm:jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "timers": "npm:jspm-nodelibs-timers@^0.2.0",
+      "typescript": "npm:typescript@^2.2.1",
+      "util": "npm:jspm-nodelibs-util@^0.2.0",
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0",
+      "zone.js": "npm:zone.js@0.7.2"
+    },
+    "overrides": {
+      "npm:@angular/common@2.4.10": {
+        "meta": {
+          "src/*.js": {
+            "deps": [
+              "reflect-metadata",
+              "zone.js"
+            ]
+          }
+        },
+        "map": {
+          "@angular/common": ".",
+          "./testing": "./bundles/common-testing.umd.js"
+        }
+      },
+      "npm:@angular/compiler@2.4.10": {
+        "meta": {
+          "src/*.js": {
+            "deps": [
+              "reflect-metadata",
+              "zone.js"
+            ]
+          }
+        },
+        "map": {
+          "@angular/compiler": ".",
+          "./testing": "./bundles/compiler-testing.umd.js"
+        }
+      },
+      "npm:@angular/core@2.4.10": {
+        "meta": {
+          "src/*.js": {
+            "deps": [
+              "reflect-metadata",
+              "zone.js"
+            ]
+          }
+        },
+        "map": {
+          "@angular/core": ".",
+          "./testing": "./bundles/core-testing.umd.js"
+        }
+      },
+      "npm:@angular/http@2.4.10": {
+        "meta": {
+          "src/*.js": {
+            "deps": [
+              "reflect-metadata",
+              "zone.js"
+            ]
+          }
+        },
+        "map": {
+          "@angular/http": ".",
+          "./testing": "./bundles/http-testing.umd.js"
+        }
+      },
+      "npm:@angular/platform-browser-dynamic@2.4.10": {
+        "meta": {
+          "src/*.js": {
+            "deps": [
+              "reflect-metadata",
+              "zone.js"
+            ]
+          }
+        },
+        "map": {
+          "@angular/platform-browser-dynamic": ".",
+          "./testing": "./bundles/platform-browser-dynamic-testing.umd.js"
+        }
+      },
+      "npm:@angular/platform-browser@2.4.10": {
+        "meta": {
+          "src/*.js": {
+            "deps": [
+              "reflect-metadata",
+              "zone.js"
+            ]
+          }
+        },
+        "map": {
+          "@angular/platform-browser": ".",
+          "./testing": "./bundles/platform-browser-testing.umd.js"
+        }
+      },
+      "npm:@angular/router@3.4.10": {
+        "meta": {
+          "src/*.js": {
+            "deps": [
+              "reflect-metadata",
+              "zone.js"
+            ]
+          }
+        },
+        "map": {
+          "@angular/router": ".",
+          "./testing": "./bundles/router-testing.umd.js"
+        }
+      },
+      "npm:@reactivex/rxjs@5.2.0": {
+        "format": "cjs"
+      },
+      "npm:inherits@2.0.3": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:moment@2.18.0": {
+        "jspmNodeConversion": false
+      },
+      "npm:reflect-metadata@0.1.10": {
+        "jspmNodeConversion": false,
+        "map": {
+          "crypto": {
+            "node": "@node/crypto",
+            "default": "@empty"
+          }
+        }
+      },
+      "npm:typescript@2.2.1": {
+        "browser": {},
+        "map": {
+          "buffer": "@empty",
+          "child_process": "@empty",
+          "fs": "@empty",
+          "path": "@empty",
+          "process": "@empty",
+          "readline": "@empty"
+        },
+        "dependencies": {
+          "source-map-support": "*"
+        }
+      }
+    }
+  }
+}

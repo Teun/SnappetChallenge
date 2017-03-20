@@ -1,0 +1,14 @@
+﻿<section class="container">
+    <h2>Vakken en domeinen</h2>
+    <section>
+        Uw klas heeft vandaag gewerkt aan de volgende vakken en domeinen.
+    </section>
+    <div class="row">
+        <div class="col-lg-4 col-md-6" *ngFor="let subject of subjects" (click)="gotoDetail(subject.name)" style="cursor: pointer;">
+            <h3>{{subject.name}} <em class="fa fa-arrow-circle-o-right"></em></h3>
+            <ul>
+                <li *ngFor="let domain of subject.domains">{{domain}}</li>
+            </ul>
+        </div>
+    </div>
+</section>

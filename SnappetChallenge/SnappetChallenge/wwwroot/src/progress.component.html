@@ -1,0 +1,19 @@
+﻿<div *ngIf="radarChartData">
+    <h2>Ontwikkeling van vaardigheid per vak</h2>
+    <section>
+        Dit geeft weer: de verandering in de vaardigheid van de leerlingen voor alle vakken.
+        0 betekent geen verandering of de verandering kon niet worden bepaald,
+        hoger dan 0 betekent dat de vaardigheid omhoog gaat. Lager dan 0 betekent dat de vaardigheid afneemt.
+        Op basis hiervan kunt u bepalen welke vakken extra aandacht nodig hebben.
+    </section>
+    <div class="row">
+        <div class="container col-md-12">
+            <canvas baseChart
+                    [datasets]="radarChartData"
+                    [labels]="radarChartLabels"
+                    [options]="radarChartOptions"
+                    [chartType]="'radar'">
+            </canvas>
+        </div>
+    </div>
+</div>
