@@ -8,7 +8,9 @@
 
 ## Install
 
-To install the applicaton follow the next steps:
+There is no need to install anything to run the application. To develop and debug the application installing the npm packages and jspm is required.
+
+To do this, follow the next steps:
 - Open a Node.js command prompt
 - Change the directory: **cd [Repository]\SnappetChallenge\SnappetChallenge**
 - Execute the command: **npm install jspm@beta -g**
@@ -46,7 +48,7 @@ A teacher can use this to determine wich subjects require additional attention.
 ## Technology
 
 To complete the SnappetChallenge I used a combination of the next technologies and tools:
-- **Angular 2** is the next version of Google’s massively popular MV* framework for building complex applications in the browser (and beyond).
+- **Angular 2** is the next version of Googleï¿½s massively popular MV* framework for building complex applications in the browser (and beyond).
 - **JSMP** is a package manager for the SystemJS universal module loader, built on top of the dynamic ES6 module loader.
 This enables rappid development and hot-reloading in the browser.
 - **ASP.Net Core** is a lean and composable framework for building web and cloud applications. ASP.NET Core is fully open source and available on GitHub. ASP.NET Core is available on Windows, Mac, and Linux.
