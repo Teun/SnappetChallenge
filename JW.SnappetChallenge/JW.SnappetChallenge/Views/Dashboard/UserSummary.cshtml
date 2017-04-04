@@ -1,0 +1,31 @@
+﻿@model JW.SnappetChallenge.Models.UserSummaryViewModel
+
+@{
+    ViewBag.Title = "UserSummary";
+}
+
+<h2>Vooruitgang leerdoelen voor leerling '@Model.User' op @Model.Date.ToString("dd MMM yyyy")</h2>
+
+<table class="table">
+    <tr>
+        <th>Leerdoel</th>
+        <th>Aantal gegeven antwoorden</th>
+        <th>Aantal correcte antwoorden</th>
+        <th>Vooruitgang</th>
+    </tr>
+
+    @foreach (var item in Model.LearningObjectiveProgress)
+    {
+        <tr>
+            <td>
+                <p>@item.Description</p>
+            </td>
+            <td>
+                @item.TotalAnwers
+            </td>
+            <td>@item.CorrectAnswers</td>
+            <td>@Html.Partial("OverallProgressPartial", @item.OverallProgress)</td>
+        </tr>
+    }
+
+</table>
