@@ -1,0 +1,42 @@
+﻿@model JW.SnappetChallenge.Models.SubjectSummaryViewModel
+
+@{
+    ViewBag.Title = "ProgressSummary";
+}
+
+<h2>Overzicht voor '@Model.Subject'</h2>
+<p>Dit overzicht laat per leerling de vooruitgang zien over alle leerdoelen binnen het onderwerp '@Model.Subject' op @Model.Date.ToString("dd MMM yyyy")</p>
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>Leerling</th>
+            <th>Aantal gegeven antwoorden</th>
+            <th>Aantal correcte antwoorden</th>
+            <th>Vooruitgang</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.UserProgress)
+        {
+            <tr>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.TotalAnwers
+                </td>
+                <td>
+                    @item.CorrectAnswers
+                </td>
+                <td>
+                    @Html.Partial("OverallProgressPartial", @item.OverallProgress)
+                </td>
+                <td>
+                    @Html.ActionLink("details", "UserSummary", new { userId = item.Description, date = Model.Date.Date, subject = Model.Subject })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

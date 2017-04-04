@@ -1,0 +1,23 @@
+﻿@model System.Double
+
+@{
+    string cssClasses;
+
+    if (Model > 0)
+    {
+        cssClasses = "glyphicon-upload progress-up";
+    }
+    else if (Model < 0)
+    {
+        cssClasses = "glyphicon-download progress-down";
+    }
+    else
+    {
+        cssClasses = "glyphicon-minus progress-none";
+    }
+}
+
+<div class="cell-value">
+    @Model
+    <span class="glyphicon @cssClasses" aria-hidden="true"></span>
+</div>

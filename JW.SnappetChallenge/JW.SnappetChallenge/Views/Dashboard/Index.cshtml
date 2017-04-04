@@ -1,0 +1,32 @@
+﻿@model JW.SnappetChallenge.Models.DashboardIndexViewModel
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<p>Welkom in het dashboard van je klas. Kies een dag om te zien waar je klas die dag aan heeft gewerkt:</p>
+
+<ul class="day-list">
+    <li>@Html.ActionLink("Maandag", "Index", new { date = "03-02-2015" })</li>
+    <li>@Html.ActionLink("Dinsdag", "Index", new { date = "03-03-2015" })</li>
+    <li>@Html.ActionLink("Woensdag", "Index", new { date = "03-04-2015" })</li>
+    <li>@Html.ActionLink("Donderdag", "Index", new { date = "03-05-2015" })</li>
+    <li>@Html.ActionLink("Vrijdag", "Index", new { date = "03-06-2015" })</li>
+</ul>
+
+
+@if (Model.Subjects.Count == 0)
+{
+    <p>Er zijn geen resultaten gevonden. Kies een andere dag.</p>
+}
+else
+{
+    <div>Klik op een onderwerp om de vooruitgang van je leerlingen te zien:</div>
+    <ul>
+        @foreach (var item in Model.Subjects)
+        {
+            <li>@Html.ActionLink(item, "SubjectSummary", new { subject = item, date = Model.Date.Date })</li>
+        }
+    </ul>
+}

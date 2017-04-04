@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SnappetModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SnappetModelStoreContainer">
+    <EntitySet Name="AggregatedProgressData" EntityType="SnappetModel.Store.AggregatedProgressData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AggregatedProgressDataImport" EntityType="SnappetModel.Store.AggregatedProgressDataImport" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="AggregatedProgressData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubmittedAnswerId" Type="int" Nullable="false" />
+    <Property Name="SubmitDateTime" Type="datetime" Nullable="false" />
+    <Property Name="Correct" Type="bit" Nullable="false" />
+    <Property Name="Progress" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ExerciseId" Type="int" Nullable="false" />
+    <Property Name="Difficulty" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Domain" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LearningObjective" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AggregatedProgressDataImport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubmittedAnswerId" Type="int" Nullable="false" />
+    <Property Name="SubmitDateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Correct" Type="bit" Nullable="false" />
+    <Property Name="Progress" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ExcerciseId" Type="int" Nullable="false" />
+    <Property Name="Difficulty" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Domain" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LearningObjective" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SnappetModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SnappetModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AggregatedProgressData" EntityType="SnappetModel.AggregatedProgressData" />
+          <EntitySet Name="AggregatedProgressDataImport" EntityType="SnappetModel.AggregatedProgressDataImport" />
+        </EntityContainer>
+        <EntityType Name="AggregatedProgressData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubmittedAnswerId" Type="Int32" Nullable="false" />
+          <Property Name="SubmitDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="Correct" Type="Boolean" Nullable="false" />
+          <Property Name="Progress" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ExerciseId" Type="Int32" Nullable="false" />
+          <Property Name="Difficulty" Type="String" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" />
+          <Property Name="Domain" Type="String" Nullable="false" />
+          <Property Name="LearningObjective" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AggregatedProgressDataImport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="SubmittedAnswerId" Type="Int32" Nullable="false" />
+          <Property Name="SubmitDateTime" Type="String" Nullable="false" />
+          <Property Name="Correct" Type="Boolean" Nullable="false" />
+          <Property Name="Progress" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ExcerciseId" Type="Int32" Nullable="false" />
+          <Property Name="Difficulty" Type="String" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" />
+          <Property Name="Domain" Type="String" Nullable="false" />
+          <Property Name="LearningObjective" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SnappetModelStoreContainer" CdmEntityContainer="SnappetModelContainer">
+    <EntitySetMapping Name="AggregatedProgressData">
+      <EntityTypeMapping TypeName="IsTypeOf(SnappetModel.AggregatedProgressData)">
+        <MappingFragment StoreEntitySet="AggregatedProgressData">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubmittedAnswerId" ColumnName="SubmittedAnswerId" />
+          <ScalarProperty Name="SubmitDateTime" ColumnName="SubmitDateTime" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
+          <ScalarProperty Name="Progress" ColumnName="Progress" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ExerciseId" ColumnName="ExerciseId" />
+          <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="LearningObjective" ColumnName="LearningObjective" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AggregatedProgressDataImport">
+      <EntityTypeMapping TypeName="IsTypeOf(SnappetModel.AggregatedProgressDataImport)">
+        <MappingFragment StoreEntitySet="AggregatedProgressDataImport">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubmittedAnswerId" ColumnName="SubmittedAnswerId" />
+          <ScalarProperty Name="SubmitDateTime" ColumnName="SubmitDateTime" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
+          <ScalarProperty Name="Progress" ColumnName="Progress" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ExcerciseId" ColumnName="ExcerciseId" />
+          <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="LearningObjective" ColumnName="LearningObjective" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
