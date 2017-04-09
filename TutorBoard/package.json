@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "typescript": "~2.2.2",
+    "knockout": "~3.4.2",
+    "jquery": "~3.2.1",
+    "@types/knockout": "~3.4.40",
+    "@types/jquery": "~2.0.41"
+  },
+  "devDependencies": {
+    "webpack": "~2.3.3",
+    "ts-loader": "~2.0.3",
+    "gulp": "3.8.11",
+    "gulp-sass": "2.2.0",
+    "gulp-sourcemaps": "~2.5.1",
+    "gulp-clean-css": "~3.0.4",
+    "rimraf": "2.2.8"
+  }
+}

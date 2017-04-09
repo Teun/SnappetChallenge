@@ -1,0 +1,44 @@
+﻿* {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: $body-bg;
+    color: $color;
+}
+
+header {
+    background: $header-bg;
+    height: $header-height - $header-overlap;
+    padding-bottom: $header-overlap;
+    display: table;
+    width: 100%;
+
+    h1 {
+        font-size: $title-font-size;
+        color: $title-color;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+main {
+    margin: -$header-overlap 0 0 0;
+}
+
+article {
+    border-radius: $container-border-radius;
+    background: $container-bg;
+    padding: $container-padding;
+    margin: $main-margin;
+
+    @media (min-width: $large-range) {
+        max-width: $large-range;
+        margin: 0 auto $main-margin;
+    }
+}

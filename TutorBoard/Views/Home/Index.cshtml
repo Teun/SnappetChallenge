@@ -1,0 +1,30 @@
+﻿<article>
+    <h2>Bewerkt opgaven</h2>
+    <dl class="dl-horizontal">
+        <dt>Globaal</dt>
+        <dd data-bind="text: editedTasksCount">0</dd>
+        <!-- ko foreach: editedTasksPerSubject -->
+            <dt data-bind="text: subject">Rekenen:</dt>
+            <dd data-bind="text: count">0</dd>        
+        <!-- /ko -->
+    </dl>
+
+    <h2>Leerling verslag</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Leerling</th>
+                <th>Vooruitgang</th>
+            </tr>
+        </thead>
+        <tbody>            
+            <!-- ko foreach: userProgresses -->
+                <tr>
+                    <th data-bind="text: name"></th>
+                    <td><span class="progress" data-bind="css: progressClass"></span></td>
+                </tr>           
+            <!-- /ko -->
+        </tbody>
+    </table>
+</article>

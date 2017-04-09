@@ -1,0 +1,18 @@
+﻿.progress {
+    width: 0px;
+    height: 0px;
+    border-left: 0.7em solid transparent;
+    border-right: 0.7em solid transparent;
+    display: block;
+    margin: auto;
+}
+.progress-none {
+    border: 0.7em solid $color-default;
+    border-radius: 0.7em;
+}
+.progress-negative {
+    border-top: 0.7em solid $color-danger;
+}
+.progress-positive {
+    border-bottom: 0.7em solid $color-success;
+}
