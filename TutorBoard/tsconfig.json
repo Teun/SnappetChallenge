@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "allowJs": true
+  },
+  "files": [
+    "./Client/app/_run.ts",
+    "./Client/app/dashboard.viewmodel.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}

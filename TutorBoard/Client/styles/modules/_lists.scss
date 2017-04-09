@@ -1,0 +1,20 @@
+﻿
+.dl-horizontal {
+    dt {
+        float: left;
+        font-weight: bold;
+        width: $dt-width;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    dd {
+        margin-left: $container-padding+$dt-width;
+    }
+
+    margin-top: 0;
+    margin-bottom: $container-padding;
+}
