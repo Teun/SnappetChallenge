@@ -1,0 +1,91 @@
+﻿@using Demo.Report.API.Contracts
+@model Demo.Report.API.Contracts.ClassOverviewContract
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+    <h4>@Model.CurrentDate</h4>
+    <ul class="nav nav-tabs">
+        @foreach (var subject in Model.Subjects)
+        {
+            <li role="presentation">
+                <a href="#">@subject.Subject - @subject.Domain</a>
+
+                <div class="panel panel-primary">
+                    @foreach (var objectiveUserOverview in subject.ObjectiveUserOverviews)
+                    {
+                        <div class="panel-heading">@objectiveUserOverview.Objective</div>
+                        <div class="panel-body">
+                            <ul>
+                                @foreach (var userProgressOverview in objectiveUserOverview.UserProgressOverviews)
+                                {
+                                    <li>
+                                        <div class="panel panel-success">
+                                            <div class="panel-heading">
+                                                @if (userProgressOverview.Star)
+                                                {
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                }
+                                                User - @userProgressOverview.UserId
+                                            </div>
+                                            <div class="panel-body">
+                                                <ol>
+                                                    @foreach (var exerciseProgressOverview in userProgressOverview.ExcerciseProgressOverviews)
+                                                    {
+                                                        <li>
+                                                            <div class="panel @(exerciseProgressOverview.Warning ? "panel-danger" : exerciseProgressOverview.Zero ? "panel-default" : "panel-info")">
+                                                                <div class="panel-heading">Exercise Id - @exerciseProgressOverview.ExerciseId</div>
+                                                                <div class="panel-body">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>AnswerId</th>
+                                                                            <th>Progress</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        @foreach (var answer in exerciseProgressOverview.Answers)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <span>@answer.AnswerId</span>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span>
+                                                                                        <b>@answer.Progress</b>
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        }
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                </ol>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+</body>
+</html>
