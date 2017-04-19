@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="snappet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snappet : Student Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="dist/module.css">
+
+</head>
+
+<body ng-controller="mainController">
+    <nav>
+        <div class="branding">Snappet</div>
+    </nav>
+    <div class="col-md-12 col-sm-12 main-container" ng-init="gettestDetails()">
+        <div class="col-md-3 tile">
+            <div class="profile-tile-img">
+            </div>
+            <div class="profile-info">
+                <h1>{{user}}</h1>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="tile" style="padding:15px;">
+                <h2>Test Name : {{subject}}</h2>
+                <div class="more-info-container"> <span class="more-info">No. of Trials : {{pageAddon[0]}}{{getAddonData(classDataObjects | filter:user | filter:subject)}}</span>                    | <span class="more-info">Taken Between :{{minDate}} to {{maxDate}}</span> | <span class="more-info">No. of Correct :{{pageAddon[1]}}</span>
+                </div>
+                <div class="row">
+                    <span class="pull-right form-spacing"> No.of Item / Page 
+                       <input type="text" ng-model="tail" ng-change="updateLineLimit(tail)" class="form-control set-max-width">
+                   </span>
+                    <span class="pull-right form-spacing"> Select Page 
+                    <select ng-change="changePage(pageNumber)" ng-model="pageNumber" class="form-control set-max-width pull-right" >
+                <option ng-repeat="page in pages track by $index" value="{{page}}" >{{page+1}}</option>
+            </select>
+                    </span>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>SubmittedAnswerId</th>
+                            <th>SubmitDateTime</th>
+                            <th>Correct</th>
+                            <th>Progress</th>
+                            <th>ExerciseId</th>
+                            <th>Difficulty</th>
+                            <th>LearningObjective</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in newRangeClassData">
+                            <td>{{$index+1}}</td>
+                            <td>{{data.SubmittedAnswerId}}</td>
+                            <td>{{data.SubmitDateTime}}</td>
+                            <td>{{data.Correct}}</td>
+                            <td>{{data.Progress}}</td>
+                            <td>{{data.ExerciseId}}</td>
+                            <td>{{data.Difficulty}}</td>
+                            <td>{{data.LearningObjective}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- <img src="imgs/hourglass.gif" ng-if="loading" />
+        <div class="table Conatainer" ng-if="!loading">
+           
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Subject</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in classDataObjects | filter: hashValue">
+                        <td><a href="viewDetail.html?user={{data.UserId}}">{{data.UserId}}</a></td>
+                        <td>{{data.Subject}}</td>
+                        <td>{{data.Progress}}</td>
+                    </tr>
+
+                </tbody>
+            </table> -->
+    </div>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-filter/dist/angular-filter.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/mainModule.js"></script>
+</body>
+
+</html>

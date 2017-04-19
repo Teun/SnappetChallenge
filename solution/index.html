@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="snappet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snappet : Student Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="dist/module.css">
+
+</head>
+
+<body ng-controller="mainController">
+    <nav><div class="branding">Snappet</div></nav>
+<div class="col-md-12 col-lg-12 col-sm-12 main-div">
+    <div class="" >
+        <img src="imgs/hourglass.gif" ng-if="loading" />
+        <div class="table Conatainer" ng-if="!loading">
+        
+            <div class="student-list col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+            <div class="profile-container col-md-3" ng-repeat="data in classDataObjects | unique:'UserId'">
+                <a href="viewDetail.html#{{data.UserId}}" class="profile-link"><div class="profile-data"> <img src="imgs/default-avatar-user.png" >{{data.UserId}}</div></a>
+              
+                </div>
+                </div>
+
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-filter/dist/angular-filter.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/mainModule.js"></script>
+</body>
+
+</html>
