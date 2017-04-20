@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="snappet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Snappet : Student Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="dist/module.css">
+
+</head>
+
+<body ng-controller="mainController">
+    <nav>
+        <div class="branding">Snappet</div>
+    </nav>
+    <img src="imgs/hourglass.gif" ng-if="loading" class="place-centre"/>
+
+    <div class="col-md-12 col-sm-12 main-container" ng-init="getUser()" ng-if="!loading">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Student Profile : {{hashValue}}</li>
+            
+        </ol>
+        <div class="col-md-3 tile">
+            <div class="profile-tile-img">
+            </div>
+            <div class="profile-info">
+                <h1>{{hashValue}}</h1>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="tile">
+                <div class="tile-header">
+                    <h4>Subjects</h4>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="data in classDataObjects | filter: hashValue | unique:'Subject'"><a href="testDetails.html#{{data.Subject}}&{{hashValue}}">{{data.Subject}}</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- <img src="imgs/hourglass.gif" ng-if="loading" /> -->
+        
+    </div>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-filter/dist/angular-filter.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/mainModule.js"></script>
+</body>
+
+</html>

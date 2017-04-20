@@ -1,0 +1,26 @@
+{
+  "name": "snappet",
+  "version": "1.0.0",
+  "description": "Dashboard for Class teacher to view data of his/her students",
+  
+  "keywords": [
+    "Dashboard",
+    "Report"
+  ],
+  "author": "Arulmozhimanikadan",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-cssmin": "^2.0.0",
+    "grunt-contrib-uglify": "^2.2.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-shell": "^2.1.0",
+    "https-server": "^0.1.2"
+  }
+}
