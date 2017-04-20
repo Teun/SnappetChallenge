@@ -14,7 +14,14 @@
     <nav>
         <div class="branding">Snappet</div>
     </nav>
-    <div class="col-md-12 col-sm-12 main-container" ng-init="getUser()">
+    <img src="imgs/hourglass.gif" ng-if="loading" class="place-centre"/>
+
+    <div class="col-md-12 col-sm-12 main-container" ng-init="getUser()" ng-if="!loading">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Student Profile : {{hashValue}}</li>
+            
+        </ol>
         <div class="col-md-3 tile">
             <div class="profile-tile-img">
             </div>

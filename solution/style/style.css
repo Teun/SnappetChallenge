@@ -9,6 +9,12 @@ body{
     padding: 0 5px 0 5px;
    
 }
+.place-centre{
+        position: fixed;
+    left: 48%;
+    z-index: 99999999;
+    top: 50%;
+}
 
 .profile-data{
     background: #ccc;
@@ -87,4 +93,40 @@ nav {
 }
 .more-info-container{
     margin: 20px 0 30px 0;
+}
+.table td, .table th{
+   text-align: center;   
+}
+.table-controller {
+        background: hsla(0, 0%, 93%, 0.29);
+    margin: 0px;
+    border-top: thin solid #3097d1;
+    border-left: thin solid #3097d1;
+    border-right: thin solid #3097d1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.branding{
+    background-image: url('../imgs/snappet-logo.png');
+    width: 84px;
+    height: 39px;
+    background-size: cover;
+}
+.form-control{
+    border-color: #3097d1;
+}
+.search-wrapper{
+    margin-bottom: 30px;   
+    padding: 15px;
+
+}
+.search-wrapper h3{
+    text-align: right;
+       font-weight: 200;
+}
+.student-list{
+
+    background: #fff;
+    padding: 30px;
+     border: thin solid #ccc;
 }

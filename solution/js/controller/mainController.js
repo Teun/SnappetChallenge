@@ -8,11 +8,21 @@ angular.module('snappet').controller('mainController', ['$scope', 'dataStore', f
             $scope.classDataObjects = data.data;
             $scope.getClassDataByPage($scope.index);
             $scope.loading = false;
-
+            $scope.reverse = true;
+            $scope.filterParam='ExerciseId';
+            $scope.pageNumber = 0;
         })
+    }
+   
+    $scope.reverseData = function(){
+        $scope.reverse = !$scope.reverse;
+        console.log($scope.reverse);
     }
     $scope.init = function () {
         $scope.getData();
+    }
+    $scope.parseDate =function(newDate){
+        return newDate.split('T')[0];
     }
     $scope.getUser = function () {
         $scope.hashValue = window.location.hash.split('#')[1];
@@ -60,8 +70,8 @@ angular.module('snappet').controller('mainController', ['$scope', 'dataStore', f
         for (i = 0; i < $scope.pageLength; i++) {
             $scope.pages.push(i);
         }
-        console.log($scope.pages);
     }
+    
     $scope.changePage = function (pageNumber) {
         $scope.newIndex = pageNumber * $scope.tail;
         $scope.getClassDataByPage($scope.newIndex);

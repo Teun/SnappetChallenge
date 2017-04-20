@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         uglify: {
             module: {
                 files: {
-                    'dist/mainModule.js': ['js/app.js', 'js/controller/*.js', 'js/services/*.js']
+                    'dist/mainModule.js': ['js/app.js', 'js/controller/*.js', 'js/services/*.js','js/directive/*.js']
                 }
             }
         },
