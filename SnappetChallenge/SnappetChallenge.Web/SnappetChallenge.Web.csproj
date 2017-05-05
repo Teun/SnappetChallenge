@@ -149,6 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +246,7 @@
     <Content Include="Views\Overview\RawData.cshtml" />
     <Content Include="Views\Overview\Students.cshtml" />
     <Content Include="Views\Overview\Progress.cshtml" />
+    <Content Include="Views\Overview\List.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
