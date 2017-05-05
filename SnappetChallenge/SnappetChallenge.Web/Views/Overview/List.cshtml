@@ -1,0 +1,18 @@
+﻿@model SnappetChallenge.Web.Models.ListModel
+@{
+    ViewBag.Title = "List";
+
+    var listItems = Model.ServerNames.Select(s => new SelectListItem
+    {
+        Value = s.Id.ToString(),
+        Text = s.Name
+    });
+}
+
+@section content
+{
+    <h2>List</h2>
+
+    @Html.DropDownListFor(m => m.SelectedServerId, listItems)
+
+}

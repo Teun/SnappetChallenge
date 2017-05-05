@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Voortgang";
+}
+@section content
+{
+    <h3>Gemaakte opgaven per leerdoel</h3>
+
+    <div class="container-fluid">
+        
+        <select id="learningObjective" class="form-control" data-bind="options: objectives,
+                       optionsText: 'name',
+                        optionsValue: 'id',
+                       value: selectedObjective,
+                       optionsCaption: 'Kies een leerdoel'"></select>
+        
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <!-- ko foreach: exercises -->
+                    <th data-bind="text: label"></th>
+                    <!-- /ko -->
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: students">
+                <tr>
+                    <td data-bind="text: name"></td>
+                    <!-- ko foreach: $data.answers -->
+                    <td data-bind="css: backgroundClass">
+                        <span data-bind="css: iconClass" class="glyphicon" aria-hidden="true"></span>
+                    </td>
+                    <!-- /ko -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+@section scripts
+{
+    <script language="javascript" type="text/javascript">
+        "use strict";
+
+        var sc = sc || {};
+
+        $(function () {
+            sc.pages.progress.initialize();
+        });
+    </script>
+}

@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Students";
+}
+@section content
+{
+    <h3>Overzicht van resultaten per student</h3>
+    <div class="well">
+        Dit scherm geeft per leerling een indicatie van de relatieve afwijking van het werk van de leerling ten opzichte van de
+        gemiddelden van de gehele klas op de volgende metrieken:
+
+        <h4>Gemiddelde moeilijkheidsgraad</h4>
+        <p >De procentuele afwijking van de moeilijkheidsgraad van de door de leerling gemaakte opgaven ten opzichte van het gemiddelde van de klas.</p>
+        <h4>Aantal gemaakte opgaven</h4>
+        <p>De procentuele afwijking in het aantal gemaakte opgaven ten opzichte van de gehele klas.</p>
+        <h4>Percentage goede antwoorden</h4>
+        <p>De procentuele afwijking in het aantal goede antwoorden ten opzichte van de gehele klas.</p>
+        <h4>Voortgang</h4>
+        <p>De procentuele afwijking in voortgang van de leerling ten opzichte van de gehele klas.</p>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row" data-bind="foreach: students">
+                <div class="col-sm-6" data-bind="attr: { id: studentId }, chart: { chartDefinition: sc.chartdefinitions.studentProgress, chartData: chartData, chartTitle: studentName }" style="width: 600px; height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/highcharts")
+    <script language="javascript" type="text/javascript">
+        "use strict";
+
+        var sc = sc || {};
+
+        $(function () {
+            sc.pages.students.initialize();
+        });
+    </script>
+}
