@@ -1,0 +1,50 @@
+<h1>Reporting</h1>
+
+<div class="row" *ngIf="reports">
+    <div class="col-lg-8">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button (click)="executeReport()" class="btn btn-success" type="button">Execute <i class="glyphicon glyphicon-play"></i></button>
+            </span>
+            <select (change)="onChange($event.target.value)" class="form-control">
+                <option selected="selected" disabled>Please select a report...</option>
+                <option *ngFor="let report of reports" [value]="report.id">{{report.displayName}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+            <span class="input-group-addon">Date</span>
+            <input [(ngModel)]="selectedDate" type="datetime-local" class="form-control">
+        </div>
+    </div>
+</div>
+
+<p></p>
+<div class="row " *ngIf="reportResult">
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                {{reportResult.displayName}}
+            </div>
+            <div *ngIf="reportResult?.columns.length <= 0" class="panel-body">
+                <p>Sorry, No results found for this date.</p>
+            </div>
+            
+
+            <table class="table table-responsive table-hover table-striped" *ngIf="reportResult?.columns.length > 0">
+                <thead>
+                    <tr>
+                        <th *ngFor="let column of reportResult.columns">{{column}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of reportResult.rows">
+                        <td *ngFor="let cell of row">{{ cell }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
