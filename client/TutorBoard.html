@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="Mark Van Miltenburg" />
+
+    <script>
+    $.get( "http://localhost:7115/SnappetChallenge.svc/GetAnswersForToday/d?callback=jsonp", function( data ) {
+      $( ".result" ).html( data );
+      alert( "Load was performed." );
+    });
+    </script>
+	<title>Untitled 1</title>
+</head>
+
+<body>
+
+
+
+</body>
+</html>
