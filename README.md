@@ -6,7 +6,7 @@ The data file work.csv should be copied to c:\temp\ of the pc where the solution
 ### Structure/Tools
 After creating a SQL Server instance in AWS(private, but free account) but failing to do bulk inserts, i decided to use a nuget package to convert the cvs file to a datatable on the fly.
 
-The solution contains a Restful WCF service which will provide the data in JSON format.
+The solution contains a RESTful WCF service which will provide the data in JSON format.
 
 The TutorOverview html page uses jquery to retrieve the required data from this WCF service.
 
