@@ -1,0 +1,16 @@
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\bin\SnappetChallenge.dll.config
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\bin\SnappetChallenge.dll
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\bin\SnappetChallenge.pdb
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\obj\Debug\SnappetChallenge.csprojResolveAssemblyReference.cache
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\obj\Debug\SnappetChallenge.dll
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\obj\Debug\SnappetChallenge.pdb
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\bin\CsvHelper.dll
+D:\WindowsUserFiles\Documents\Development\SnappetChallenge\SnappetChallenge\SnappetChallenge\bin\CsvHelper.xml
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\bin\SnappetChallenge.dll.config
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\bin\SnappetChallenge.dll
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\bin\SnappetChallenge.pdb
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\bin\CsvHelper.dll
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\bin\CsvHelper.xml
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\obj\Debug\SnappetChallenge.csprojResolveAssemblyReference.cache
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\obj\Debug\SnappetChallenge.dll
+C:\Users\mvanmiltenburg\Downloads\SnappetChallenge\SnappetChallenge\obj\Debug\SnappetChallenge.pdb
