@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Snappet.Web.Persistence.Models;
 
 namespace Snappet.Web.Persistence
@@ -41,6 +37,18 @@ namespace Snappet.Web.Persistence
                 b.HasKey(p => p.Id);
                 b.Property(p => p.DisplayName).IsRequired().HasMaxLength(100);
                 b.Property(p => p.StorageProcedure).IsRequired().HasMaxLength(250);
+            });
+
+            modelBuilder.Entity<ReportConfiguration>(b =>
+            {
+                b.HasKey(p=> p.Id);
+            });
+
+            modelBuilder.Entity<ReportParameter>(b =>
+            {
+                b.HasKey(p => p.Id);
+                b.Property(p => p.Name).IsRequired().HasMaxLength(20);
+                b.Property(p => p.Type).IsRequired().HasMaxLength(20);
             });
 
             base.OnModelCreating(modelBuilder);

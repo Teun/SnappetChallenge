@@ -24,7 +24,7 @@ export class ReportingComponent {
 
     public executeReport() {
         if (this.selectedReport) {
-            const params = [{ key: "dateFrom", value: this.selectedDate }];
+            var params = { dateFrom: this.selectedDate };
 
             this.http.post('/api/v1/reporting/executereport/' + this.selectedReport, params).subscribe(result => {
                 this.reportResult = result.json() as IReportResult;

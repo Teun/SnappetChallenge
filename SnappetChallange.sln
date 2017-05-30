@@ -9,6 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BAD29AFA-EB0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3654426B-730D-449F-803C-2020F1915323}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.UnitTests", "test\Snappet.UnitTests\Snappet.UnitTests.csproj", "{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{0D71A0A4-049E-48BA-814C-BD0DBCD17362}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage Procedures", "Storage Procedures", "{8A9C618B-AC2B-4560-B7C6-D51FD423D772}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\Storage Procedures\dbo.Reporting_MyClassDailyResults.StoredProcedure.sql = scripts\Storage Procedures\dbo.Reporting_MyClassDailyResults.StoredProcedure.sql
+		scripts\Storage Procedures\dbo.Reporting_OnWhatMyClassHaveWorkedOnToday.StoredProcedure.sql = scripts\Storage Procedures\dbo.Reporting_OnWhatMyClassHaveWorkedOnToday.StoredProcedure.sql
+		scripts\Storage Procedures\dbo.Reporting_TopExercises.StoredProcedure.sql = scripts\Storage Procedures\dbo.Reporting_TopExercises.StoredProcedure.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +42,25 @@ Global
 		{6B32B0E0-A609-4480-A781-B44E28A24960}.Release|x64.Build.0 = Release|Any CPU
 		{6B32B0E0-A609-4480-A781-B44E28A24960}.Release|x86.ActiveCfg = Release|Any CPU
 		{6B32B0E0-A609-4480-A781-B44E28A24960}.Release|x86.Build.0 = Release|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Debug|x86.Build.0 = Debug|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Release|x64.Build.0 = Release|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B32B0E0-A609-4480-A781-B44E28A24960} = {BAD29AFA-EB0F-4CA2-BF3F-CEF1C64A89F9}
+		{ADDA8F8F-25F3-4264-B86F-24EA7DD588FE} = {3654426B-730D-449F-803C-2020F1915323}
+		{8A9C618B-AC2B-4560-B7C6-D51FD423D772} = {0D71A0A4-049E-48BA-814C-BD0DBCD17362}
 	EndGlobalSection
 EndGlobal

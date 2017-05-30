@@ -2,13 +2,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Snappet.Web.Persistence;
 
 namespace Snappet.Web.Persistence.Migrations
 {
     [DbContext(typeof(SnappetDbContext))]
-    partial class SnappetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170529085928_AddReportConfiguration")]
+    partial class AddReportConfiguration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

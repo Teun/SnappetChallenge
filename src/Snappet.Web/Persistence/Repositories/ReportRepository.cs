@@ -21,7 +21,7 @@ namespace Snappet.Web.Persistence.Repositories
 
         public Task<Report> GetReportByIdAsync(int id)
         {
-            return context.Reports.FirstOrDefaultAsync(x => x.Id == id);
+            return context.Reports.Include(x => x.ReportConfiguration.Parameters).FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

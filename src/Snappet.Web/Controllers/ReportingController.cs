@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Snappet.Web.Helpers;
 using Snappet.Web.Persistence.Repositories;
 using Snappet.Web.Services;
 
@@ -32,8 +30,34 @@ namespace Snappet.Web.Controllers
             return new OkObjectResult(result);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetReportConfiguration(int id)
+        {
+            var report = await reportRepository.GetReportByIdAsync(id);
+
+            if (report == null)
+            {
+                return NotFound();
+            }
+
+
+            return new OkObjectResult(new
+            {
+                id = id,
+                displayName = report.DisplayName,
+                configuration = new
+                {
+                    parameters = report.ReportConfiguration.Parameters.Select(x => new
+                    {
+                        name = x.Name,
+                        type = x.Type
+                    })
+                }
+            });
+        }
+
         [HttpPost("{id}")]
-        public async Task<IActionResult> ExecuteReport(int id, [FromBody] List<KeyValuePair<string,object>> parameters)
+        public async Task<IActionResult> ExecuteReport(int id, [FromBody] Dictionary<string, object> parameters)
         {
             var report = await reportRepository.GetReportByIdAsync(id);
 
