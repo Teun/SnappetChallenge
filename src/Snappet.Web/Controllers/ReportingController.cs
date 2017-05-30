@@ -66,7 +66,7 @@ namespace Snappet.Web.Controllers
                 return NotFound();
             }
 
-            var reportResult = await reportingService.ExecuteReport(report, parameters);
+            var reportResult = await reportingService.ExecuteReportAsync(report, parameters);
 
             return new OkObjectResult(reportResult);
         }

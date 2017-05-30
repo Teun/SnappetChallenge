@@ -9,7 +9,7 @@ namespace Snappet.Web.Helpers
 {
     public static class SqlHelper
     {
-        public static async Task<StorageProcedureResult> ExecuteStorageProcedure(DbContext context,
+        public static async Task<StorageProcedureResult> ExecuteStorageProcedureAsync(DbContext context,
             StorageProcedure storageProcedure)
         {
             var reportResult = new StorageProcedureResult();
@@ -62,7 +62,7 @@ namespace Snappet.Web.Helpers
 
 
 
-        public static Task<int> ExecuteRawSql(DbContext context, string sql)
+        public static Task<int> ExecuteRawSqlAsync(DbContext context, string sql)
         {
             DbCommand command = context.Database.GetDbConnection().CreateCommand();
             command.CommandType = CommandType.Text;

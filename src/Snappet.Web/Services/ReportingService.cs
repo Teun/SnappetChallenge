@@ -18,7 +18,7 @@ namespace Snappet.Web.Services
             this.context = context;
         }
 
-        public async Task<ExecuteReportResult> ExecuteReport(Report report, Dictionary<string, object> parameters)
+        public async Task<ExecuteReportResult> ExecuteReportAsync(Report report, Dictionary<string, object> parameters)
         {
             if (report is null)
             {
@@ -57,7 +57,7 @@ namespace Snappet.Web.Services
                 Parameters = storageProcedureParameters
             };
 
-            var storageProcedureResult = await SqlHelper.ExecuteStorageProcedure(context, storageProcedure);
+            var storageProcedureResult = await SqlHelper.ExecuteStorageProcedureAsync(context, storageProcedure);
 
             var result = new ExecuteReportResult
             {

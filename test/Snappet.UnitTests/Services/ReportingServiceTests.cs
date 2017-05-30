@@ -19,7 +19,7 @@ namespace Snappet.UnitTests.Services
 
             var service = new ReportingService(db.Object);
 
-            await Assert.ThrowsAsync<ArgumentNullException>(() => service.ExecuteReport(null, null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => service.ExecuteReportAsync(null, null));
 
         }
 
@@ -32,7 +32,7 @@ namespace Snappet.UnitTests.Services
 
             var report = new Report();
 
-            await Assert.ThrowsAsync<ArgumentNullException>(() => service.ExecuteReport(report, null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => service.ExecuteReportAsync(report, null));
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Snappet.UnitTests.Services
             };
 
 
-            await Assert.ThrowsAsync<ArgumentException>(() =>  service.ExecuteReport(report, parameters));
+            await Assert.ThrowsAsync<ArgumentException>(() =>  service.ExecuteReportAsync(report, parameters));
         }
     }
 }

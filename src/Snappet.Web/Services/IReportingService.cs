@@ -6,6 +6,6 @@ namespace Snappet.Web.Services
 {
     public interface IReportingService
     {
-        Task<ExecuteReportResult> ExecuteReport(Report report, Dictionary<string, object> parameters);
+        Task<ExecuteReportResult> ExecuteReportAsync(Report report, Dictionary<string, object> parameters);
     }
 }
