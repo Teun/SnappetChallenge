@@ -1,0 +1,9 @@
+table{
+    border: solid grey;
+}  
+td, th {
+   padding: 10px;
+   border-right: solid black;
+   border-bottom: solid black;
+   text-align: center;
+}

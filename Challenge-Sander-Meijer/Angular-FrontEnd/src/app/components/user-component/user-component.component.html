@@ -1,0 +1,24 @@
+<!--- -->
+<md-card>
+  <md-tab-group>
+    <div *ngFor="let user of users | async">
+      <md-tab label="Student {{user.userId}}">
+        <h2>Student {{user.userId}}</h2>
+        <table>
+          <thead>
+            <th>Subject</th>
+            <th>Correct</th>
+            <th>Excercies</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let subject of user.subjects">
+              <td>{{subject.subject}}</td>
+              <td>{{GetCorrect(subject.workResults)}}</td>
+              <td>{{subject.workResults.length}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-tab>
+    </div>
+  </md-tab-group>
+</md-card>
