@@ -1,6 +1,6 @@
 # Challenge Inayathullah Ameerjohn
 ##### Technology Stack
-
+![Sample Bar chart](https://raw.githubusercontent.com/inayathullah/SnappetChallenge/master/Snappet.Challenge/bellcurve.PNG)
 1. Angular 1.5
 2. .NET 4.6.1
 3. WEB API
