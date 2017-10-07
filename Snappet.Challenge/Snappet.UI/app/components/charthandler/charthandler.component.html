@@ -1,0 +1,37 @@
+<filter-chart></filter-chart>
+<div class="chart-container">
+    <div class="chart-area">
+        <div class="row">
+            <div class="col-md-7">
+                    <p class="chart-title">
+                            BELL CURVE ANALYSIS OF LEARNING BY STUDENTS
+                    </p>
+            </div>
+            <div class="col-md-5 ">
+                <div class="pull-right">
+                    <button class="btn btn-xs btn-default" ng-class="{activechart : ChartHandler.selectedchart=='bar'}" ng-click="ChartHandler.changecharttype('bar')">
+                            <i class="glyphicon glyphicon-signal"></i>
+                            BAR</button>
+                    <button class="btn btn-xs btn-default" ng-class="{activechart : ChartHandler.selectedchart=='bell'}" ng-click="ChartHandler.changecharttype('bell')">
+                                <i class="glyphicon glyphicon-random"></i>
+                            BELL</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="render-chart">
+                <div class="error" ng-show="ChartHandler.iserror">
+                    Sorry there is no data found to generate a chart! Please try different combination.
+                </div>
+                <bell-curve ng-show="ChartHandler.selectedchart=='bell' && !ChartHandler.iserror" datapointsamples="ChartHandler.datafeed"></bell-curve>
+                <bell-curve-bar-chart ng-show="ChartHandler.selectedchart=='bar' && !ChartHandler.iserror" datapointsamples="ChartHandler.datafeed"></bell-curve-bar-chart>
+            </div>
+        </div>
+        <div class="information">
+            <p>The curve which leans more towards the right means that students have a very good understanding of that particular subject.</p>
+<p>The curve leans more&nbsp;towards the left requires more attention and shows that the subjects were not completely understood by the students. So the&nbsp;performance&nbsp;is&nbsp;poor.&nbsp;</p>
+<p>The perfect bell curve indicates the overall acceptance of the subject by a whole class.</p>
+        </div>
+    </div>
+
+</div>

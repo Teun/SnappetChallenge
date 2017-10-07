@@ -1,0 +1,11 @@
+
+.bar {
+    fill: #55bc7f;
+  }
+.legend-bold{
+  font-weight: bold;
+}
+.bar-chart{
+  margin: auto;
+  width: 89%;
+}

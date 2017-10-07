@@ -1,0 +1,22 @@
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+/*.x.axis path {
+    display: none;
+}*/
+.line {
+    fill: none;
+    stroke: #6d5ebe;
+    stroke-width: 1.5px;
+}
+
+.bell-chart{
+    margin: auto;
+    width: 89%;
+  }
+  .legend-bold{
+    font-weight: bold;
+  }

@@ -1,0 +1,26 @@
+<filter-chart></filter-chart>
+<div class="chart-container">
+    <div class="chart-area">
+        <div class="row">
+            <div class="col-md-12 ">
+                <p class="chart-title">
+                        STUDENTS PERFORMANCE IN TERMS OF SUBJECT DIFFICULTY
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="render-chart">
+                <div class="error" ng-show="ScatterPlotHandler.iserror">
+                    Sorry there is no data found to generate a chart! Please try different combination.
+                </div>
+                <scatter-plot-chart ng-show="!ScatterPlotHandler.iserror" datapointsamples="ScatterPlotHandler.datafeed"></scatter-plot-chart>
+            </div>
+        </div>
+        <div class="information">
+            <p>The above chart describes the scores against the student's difficulty. Each dot denotes a student's score in terms of difficulty.</p>
+            <p>If dots are more above the average level, it indicates that there is a&nbsp;much good performance in the class.</p>
+            <p>On the other side, if more dots are below the average level, it means that subject requires more attention.</p>        
+        </div>
+    </div>
+
+</div>

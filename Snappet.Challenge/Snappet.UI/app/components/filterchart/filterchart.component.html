@@ -1,0 +1,51 @@
+<div class="option-container">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="title-search">Search</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 subject-container">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">Subject</span>
+                <div class="input-group-btn">
+                    <select class='btn btn-default' ng-model="FilterChart.subject">
+                                    <option value="All">All</option>
+                                    <option value="Begrijpend Lezen">Begrijpend Lezen</option>
+                                    <option value="Rekenen">Rekenen</option>
+                                    <option value="Spelling">Spelling</option>
+                                </select>
+                </div>
+                <!-- /btn-group -->
+            </div>
+            <!-- /input-group -->
+        </div>
+        <!-- /.col-lg-6 -->
+
+        <div class="col-md-3">
+            <div class="input-group input-group-sm">
+
+                <p class="input-group">
+                    <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Date</button>
+                            </span>
+                    <input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="FilterChart.selecteddate" is-open="FilterChart.showdatepicker"
+                        datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                    />
+                    <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="FilterChart.showDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                </p>
+            </div>
+            <!-- /input-group -->
+        </div>
+        <!-- /.col-lg-6 -->
+        <div class="col-md-1">
+            <button class="btn btn-sm btn-default search-button" ng-click="FilterChart.generateChart()">
+                        <i class="glyphicon glyphicon-search"></i>
+                    Show me chart</button>
+
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+</div>
