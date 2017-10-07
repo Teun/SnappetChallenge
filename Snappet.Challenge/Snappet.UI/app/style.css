@@ -1,0 +1,132 @@
+body{
+    font-family: 'Signika', sans-serif;;
+    font-size: 12px;
+    background-color: #dbdfde;
+    color:#1d2229;
+}
+
+.container{
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+    margin-top: 20px;
+    background-color: #f8f8f8;
+}
+.menu-container{
+    padding:20px;
+    background-color: #fff;
+    display: block!important;
+}
+.option-container{
+    min-height:70px;
+    background-color:#fff;
+    margin-bottom:20px;
+}
+.chart-container{
+    min-height:700px;
+}
+.chart-area{
+    margin: 20px;
+    padding:20px;
+    min-height: 600px;
+    background-color:#fff;
+}
+.render-chart{
+    padding:20px;
+    min-height:500px;
+}
+.btn-menu{
+    height: 9px!important;
+    width: 150px!important;
+    margin-top: 15px;
+    border: 1px solid #F5F5F5;
+    background-color: #fff;
+    display: block!important;
+    color:#8A8A8A!important;
+    font-size: 11px;
+    line-height: 0px!important;
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+    margin-left:5px;
+}
+.btn-icon{
+    height: 9px!important;
+    width: 10px!important;
+    margin-top: 15px;
+    border: 0px solid #dddede;
+    background-color: #fff;
+    display: block!important;
+    font-size: 11px;
+    line-height: 0px!important;
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+}
+.btn-label{
+    height: 9px!important;
+    margin-top: 15px;
+    border: 0px solid #dddede;
+    background-color: #fff;
+    display: block!important;
+    font-size: 11px;
+    line-height: 0px!important;
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+    margin-left:5px;
+}
+.btn-menu:hover{
+
+}
+.nav-bar-banner{
+    background-color: #fff!important;
+    border: 0px!important;
+}
+.glyphicon{
+    line-height: 0px!important;
+}
+.navbar-brand{
+    padding: 6px 1px!important;
+}
+.title-search{
+    padding:10px 10px 10px 20px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+.subject-container{
+    padding-left:30px;
+    padding-bottom: 10px;
+}
+.search-button{
+    background-color: #18b5cb;
+    color:#fff;
+    border: 0px!important;
+}
+.chart-line-color{
+    color:#55bc7f;
+}
+
+.bar-chart-color{
+    color:#6d5ebe;
+}
+.information{
+    color:#DD1155;
+    font-size: 15px;
+}
+.activechart{
+    background-color: #E4C1F9;
+}
+.error{
+    min-height: 40px;
+    padding:30px;
+    color:#EB4B98;
+    margin:auto;
+    width:50%;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #FFF3F3;
+}
+.chart-title{
+    background-color: #FFD7D5;
+    color:#000;
+    font-size: 13px;
+    padding: 5px;
+}
