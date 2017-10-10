@@ -1,0 +1,13 @@
+packages/
+SnappetChallenge.Data/obj/
+SnappetChallenge.IO/obj/
+SnappetChallenge.Data/bin/Debug/netstandard1.4/SnappetChallenge.Data.dll
+SnappetChallenge.Data/bin/
+SnappetChallenge.IO/bin/
+SnappetChallenge.WebAPI/bin/
+SnappetChallenge.WebAPI/obj/
+SnappetChallenge.Data.IO/obj/
+SnappetChallenge.Data.IO/bin/
+.vs/SnappetChallenge.sqlite
+.vs/
+SnappetChallenge.WebAPI/SnappetChallenge.WebAPI.csproj.user

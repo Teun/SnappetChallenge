@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Leerdoelen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <date-selector (dateChanged)="retrieveData()"></date-selector>
+
+  <ion-list [hidden]="!dataReady">
+    <div *ngFor="let learningObjective of learningObjectives; let i = index">
+      <ion-item-divider *ngIf="i==0 || learningObjective.Domain != learningObjectives[i-1].Domain" color="light">
+        {{learningObjective.Subject}} - {{learningObjective.Domain}}
+      </ion-item-divider>
+      <ion-item (click)="objectiveClicked(learningObjective)">{{learningObjective.Objective}}</ion-item>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Resultaten {{studentId}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <date-selector (dateChanged)="retrieveData()"></date-selector>
+
+  <ion-list [hidden]="!dataReady">
+    <div *ngFor="let studentResult of studentResults">
+      <ion-item-divider color="light">
+        {{studentResult.Subject}} - {{studentResult.Domain}}
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>Onderwerp</ion-label>
+        <ion-note item-end>{{studentResult.Subject}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Domein</ion-label>
+        <ion-note item-end>{{studentResult.Domain}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Aantal beantwoorde vragen</ion-label>
+        <ion-note item-end>{{studentResult.NrAnswered}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Correcte antwoorden</ion-label>
+        <ion-note item-end>{{studentResult.NrAnsweredCorrectly}} ({{studentResult.NrAnsweredCorrectly/studentResult.NrAnswered | percent}})</ion-note>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
