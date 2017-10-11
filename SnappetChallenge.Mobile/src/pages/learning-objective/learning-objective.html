@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Leerdoel</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h4>{{learningObjective.Objective}}</h4>
+  <ion-item>
+    <ion-label>Onderwerp</ion-label>
+    <ion-note item-end>{{learningObjective.Subject}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>Domein</ion-label>
+    <ion-note item-end>{{learningObjective.Domain}}</ion-note>
+  </ion-item>
+  <br/>
+
+  <ion-item>
+    <ion-label>Aantal beantwoorde vragen</ion-label>
+    <ion-note item-end>{{learningObjective.Exercises.length}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>Correcte antwoorden klas</ion-label>
+    <ion-note item-end>{{percentageRight() | percent}}</ion-note>
+  </ion-item>
+
+  <br />
+  <ion-item-divider color="light">Moeilijkste vragen</ion-item-divider>
+  <ion-item *ngFor="let hardestExercise of hardestExercises">
+    <ion-label>{{hardestExercise.Id}}</ion-label>
+    <ion-note item-end>{{hardestExercise.NrAnsweredCorrectly / hardestExercise.NrAnswered | percent}}</ion-note>
+  </ion-item>
+</ion-content>

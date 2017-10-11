@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Leerlingen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <div *ngFor="let student of students">
+      <ion-item (click)="studentClicked(student)">{{student}}</ion-item>
+    </div>
+  </ion-list>
+</ion-content>
