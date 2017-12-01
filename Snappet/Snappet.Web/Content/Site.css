@@ -1,0 +1,76 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.result {
+    margin: 15px;
+    padding: 5px;
+}
+
+.danger {
+    color: red;
+}
+
+.ok {
+    color: green;
+}
+
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.chart-container {
+    width: 750px;
+    height: 400px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.chart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+    background-image: url(/content/images/ui-icons_777777_256x240.png);
+    background-position: -96px -128px;
+    background-repeat: no-repeat;
+}
+
+table thead {
+    background-color: #eee;
+}
+
+/* the below are fixes to work around the floaty header plugin */
+.ui-dialog {
+    z-index: 1001 !important;
+}
+
+#ui-datepicker-div {
+    z-index: 1002 !important;
+}
