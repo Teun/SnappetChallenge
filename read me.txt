@@ -1,0 +1,31 @@
+The solution consists of 4 projects
+1- the web project, and ASP .Net MVC project
+there is one controller, the home controller, it serves the index page, then 1 partial view for the main table, and a json result to populate the pop up dialog.
+the view is scripted with jQuery, I used the date picker and dialog components
+there is the chart.js library to draw the charts
+and finally, there is the floaty header plugin to float the main table header while scorlling.
+
+To use the inext page (I've taken snapshots of the follwing, you can find them in the Snaps folder)
+1- select a date from the picker
+2- the table shows the student ID, execises summary, progress chart (see table.png in snaps)
+3- the execise summary (second column) shows the exercises per domain, number of all exercises and how many did the student get successfully (see exercies.png)
+4- the domains with succes rate below or equal to 50% will be marked in "Red" to indicate to the teacher the student might have a problem in this domain.
+5- if the teacher clicks on the student ID, a pop will show, in which they can see the student details in a date range (see details.png)
+--
+2- the logic layer library
+it holds the file parsing code and the logic object
+I implemented a simple inversion of control (IoC) approach, I usually go with Dependency injection (AutoFac usually), but for simplicity, I implemented a simple resolver (service locator pattern) class to resolve dependencies.
+I chose the CSV file over the json file. I have no problem with either approaches, only that CSV was easier to parse with a custom class since I needed to parse the data manually and find out if it's all present or if it has nulls.
+The CSV parer class in singeleton, as while I could implement this with the serivce locator and not in the parser class itself, it's just the standard to make sure there is only 1 instance of this class, in case someone get a reference directly to it without the service locator.
+There is a config interface, I used this simple approach to decouple the solution configuartions from a specific project using IoC.
+--
+3-unit testing for the web project
+there are unit tests for the controller actions, I had to make a test config to point to the data file in the test project, configured this in the IoC container.
+optimally, the data test file can be a smaller/different sample of the real data file, but for the task sake, I used the same file, since we know exactly the records inside and the counts.
+
+in any normal real-world case, I usually test the business object seperatly and the behavior of each, also if there is a data provider (database or web service), we usually add a seperate test (integration test) to make sure this is up and running, but also for simplicity and for the task sake, I also tested the behavior of the business (logic) objects within the controller actions unit tests.
+
+Ideally, I mock the data repositories and use in-memory data for testing.
+--
+4- unit testing for the logic layer
+the only thing I unit test here is the resolver class
