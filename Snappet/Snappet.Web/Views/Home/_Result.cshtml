@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Snappet.Logic.Models.StudentProgressRecord>
+
+@{
+    Layout = null;
+}
+
+<div>
+    <table id="progressResult" border="1" style="width:100%;">
+        <thead>
+            <tr class="header">
+                <td>#</td>
+                <td>Student</td>
+                <td style="width: 250px;">Domain (Exercises) (Success %)</td>
+                <td>Progress</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                var record = Model.ElementAt(i);
+                <tr>
+                    <td class="header">@(i + 1)</td>
+                    <td><a href="javascript:;" onclick="home.showDetailsDialog(@record.StudentID)">@record.StudentID</a></td>
+                    <td>
+                        <ul>
+                            @foreach (var item in @record.Exercises)
+                            {
+                                <li class="@(item.Value.Wrong >= item.Value.Correct ? "danger" : "ok")">
+                                    @(item.Key == "-" ? "Other" : item.Key) 
+                                    (@item.Value.ExerciseCount) 
+                                    (@((item.Value.Correct / (float)item.Value.ExerciseCount).ToString("p")))
+                            </li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        @{ 
+                            var progress = "";
+                            var progressLabels = "";
+
+                            for (int p = 0; p < record.Progress.Count; p++)
+                            {
+                                progress += record.Progress[p];
+                                progressLabels += record.ProgressLabels[p];
+
+                                if(p != record.Progress.Count -1)
+                                {
+                                    progress += ",";
+                                    progressLabels += ",";
+                                }
+                            }
+                        }
+                        <div class="chart" data-progress="@progress" data-labels="@progressLabels">
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="header">
+                <td>Count</td>
+                <td>@Model.Count()</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

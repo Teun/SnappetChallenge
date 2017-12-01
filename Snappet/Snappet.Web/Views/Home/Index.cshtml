@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h3>Student's progress</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <label>Date:</label>
+        <input id="date" />
+    </div>
+</div>
+<div class="row">
+    <div class="result" id="result">
+        <p>Selected a date from the date picker</p>
+    </div>
+</div>
+
+<button onclick="home.showDetailsDialog(40267)">test</button>
+
+<div id="details" class="ui-widget">
+    <div>
+        <input type="hidden" id="studentID" />
+        <div class="col-md-9">
+            <label>From:</label>
+            <input id="fromDate" />
+            <label>To:</label>
+            <input id="toDate" />
+            <button onclick="home.getDetails()">Get Details</button>
+        </div>
+    </div>
+    <div id="progress" class="chart">
+
+    </div>
+
+    <div id="success" class="chart">
+
+    </div>
+</div>
