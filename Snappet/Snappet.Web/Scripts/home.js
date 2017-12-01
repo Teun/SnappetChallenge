@@ -51,11 +51,13 @@
     },
 
     getDayResult: function (dateText) {
+        //get students results
         $.get("/home/GetDayResult", {
             dateText: dateText
         }, function (resultHtml) {
+            //fill in the result html
             $("#result").html(resultHtml);
-
+            //render the charts per each record
             $("#result .chart").each(function () {
                 var div = $(this);
                 var progress = div.data("progress").split(",").map(Number);
@@ -85,7 +87,7 @@
                 };
                 new Chart(ctx, config);
             });
-
+            //float the table header
             $("#result table").floatThead({
                 position: 'fixed'
             });
@@ -93,14 +95,19 @@
     },
 
     showDetailsDialog: function (studentID) {
+        //clears and opens the details dialog
         $("#studentID").val(studentID);
         $("#progress,#success").html("");
         $("#details").dialog("open");
+        //set the dialog title
         $("#details").dialog('option', 'title', 'Student ' + studentID + ' progress');
     },
 
     getDetails: function () {
+        //if both from and to dates are selected
         if ($("#fromDate").val() && $("#toDate").val()) {
+
+            //posts a request to get student progress details
             $.post("/home/GetStudentProgressDetails", {
                 fromText: $("#fromDate").val(),
                 toText: $("#toDate").val(),

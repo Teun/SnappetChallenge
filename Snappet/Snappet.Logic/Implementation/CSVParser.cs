@@ -26,7 +26,15 @@ namespace Snappet.Logic
             }
         }
 
+        /// <summary>
+        /// for Caching the records
+        /// </summary>
         IDictionary<int, IEnumerable<Record>> _studentRecords;
+        /// <summary>
+        /// Parses the data file then caches the recors
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>A dictionary, where the key is the student ID and the value is the student's records.</returns>
         public IDictionary<int, IEnumerable<Record>> Parse(string path)
         {
             lock (this)
@@ -34,12 +42,14 @@ namespace Snappet.Logic
                 if (_studentRecords == null)
                 {
                     List<Record> records = new List<Record>();
+                    //reads all the lines into memory
                     string[] lines = File.ReadAllLines(path);
+                    //go through the lines and convert them into Records
                     for (int i = 1; i < lines.Length; i++)
                     {
                         records.Add(ParseLine(lines[i]));
                     }
-
+                    //groups the records of each student into a dictionary
                     _studentRecords = new Dictionary<int, IEnumerable<Record>>();
                     foreach (var item in records.OrderBy(r => r.UserId))
                     {
@@ -57,10 +67,14 @@ namespace Snappet.Logic
                 return _studentRecords;
             }
         }
+        /// <summary>
+        /// Parses a data line
+        /// </summary>
+        /// <param name="line">CSV data line</param>
+        /// <returns>Student record object</returns>
         private Record ParseLine(string line)
         {
             var values = line.Split(',');
-            //Console.WriteLine(line);
             return new Record()
             {
                 SubmittedAnswerId = int.Parse(values[0]),
