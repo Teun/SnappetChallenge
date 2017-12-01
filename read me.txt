@@ -16,14 +16,14 @@ To use the inext page (I've taken snapshots of the follwing, you can find them i
 it holds the file parsing code and the logic object
 I implemented a simple inversion of control (IoC) approach, I usually go with Dependency injection (AutoFac usually), but for simplicity, I implemented a simple resolver (service locator pattern) class to resolve dependencies.
 I chose the CSV file over the json file. I have no problem with either approaches, only that CSV was easier to parse with a custom class since I needed to parse the data manually and find out if it's all present or if it has nulls.
-The CSV parer class in singeleton, as while I could implement this with the serivce locator and not in the parser class itself, it's just the standard to make sure there is only 1 instance of this class, in case someone get a reference directly to it without the service locator.
-There is a config interface, I used this simple approach to decouple the solution configuartions from a specific project using IoC.
+The CSV parser class is singeleton, as while I could implement this with the serivce locator and not in the parser class itself, it's just the standard to make sure there is only 1 instance of this class, in case someone get a reference directly to it without the service locator, and also for in-memory caching.
+There is a config interface, I used this approach to decouple the solution configuartions from any specific project using IoC.
 --
 3-unit testing for the web project
 there are unit tests for the controller actions, I had to make a test config to point to the data file in the test project, configured this in the IoC container.
 optimally, the data test file can be a smaller/different sample of the real data file, but for the task sake, I used the same file, since we know exactly the records inside and the counts.
 
-in any normal real-world case, I usually test the business object seperatly and the behavior of each, also if there is a data provider (database or web service), we usually add a seperate test (integration test) to make sure this is up and running, but also for simplicity and for the task sake, I also tested the behavior of the business (logic) objects within the controller actions unit tests.
+in any normal real-world case, I usually test the business objects seperatly and the behavior of each, also if there is a data provider (database or web service), we usually add a seperate test (integration test) to make sure this is up and running, but also for simplicity and for the task sake, I also tested the behavior of the business (logic) objects within the controller actions unit tests.
 
 Ideally, I mock the data repositories and use in-memory data for testing.
 --

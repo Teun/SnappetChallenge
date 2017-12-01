@@ -35,6 +35,9 @@ namespace Snappet.Web.Controllers
             DateTime from = DateTime.ParseExact(fromText, DATE_FORMAT, provider);
             DateTime to = DateTime.ParseExact(toText, DATE_FORMAT, provider);
 
+            if (from > to)
+                throw new ArgumentException("To date must be after the before date");
+
             //average progress per day
             //success rate per day
             List<double> daysProgress;

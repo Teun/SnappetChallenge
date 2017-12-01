@@ -110,6 +110,9 @@ namespace Snappet.Web.Controllers.Tests
             //no student with ID zero
             Assert.ThrowsException<KeyNotFoundException>(() => controller.GetStudentProgressDetails(0, from.ToString(HomeController.DATE_FORMAT),
                                                to.ToString(HomeController.DATE_FORMAT)));
+            //check that to has to be after before
+            Assert.ThrowsException<ArgumentException>(() => controller.GetStudentProgressDetails(40267, to.ToString(HomeController.DATE_FORMAT),
+                                                from.ToString(HomeController.DATE_FORMAT)));
 
             SimpleResolver.Clear();
         }
