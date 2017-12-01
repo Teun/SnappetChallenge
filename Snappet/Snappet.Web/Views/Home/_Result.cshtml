@@ -5,9 +5,9 @@
 }
 
 <div>
-    <table id="progressResult" border="1" style="width:100%;">
+    <table id="progressResult" class="table table-bordered table-striped">
         <thead>
-            <tr class="header">
+            <tr>
                 <td>#</td>
                 <td>Student</td>
                 <td style="width: 250px;">Domain (Exercises) (Success %)</td>
@@ -19,7 +19,7 @@
             {
                 var record = Model.ElementAt(i);
                 <tr>
-                    <td class="header">@(i + 1)</td>
+                    <td>@(i + 1)</td>
                     <td><a href="javascript:;" onclick="home.showDetailsDialog(@record.StudentID)">@record.StudentID</a></td>
                     <td>
                         <ul>

@@ -85,12 +85,18 @@
                 };
                 new Chart(ctx, config);
             });
+
+            $("#result table").floatThead({
+                position: 'fixed'
+            });
         });
     },
 
     showDetailsDialog: function (studentID) {
         $("#studentID").val(studentID);
+        $("#progress,#success").html("");
         $("#details").dialog("open");
+        $("#details").dialog('option', 'title', 'Student ' + studentID + ' progress');
     },
 
     getDetails: function () {

@@ -13,6 +13,7 @@ namespace Snappet.Web
                         "~/Scripts/jquery-ui.min.js",
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/Chart.min.js",
+                        "~/Scripts/jquery.floatThead.min.js",
                         "~/Scripts/home.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

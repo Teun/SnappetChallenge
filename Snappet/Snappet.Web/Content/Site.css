@@ -24,13 +24,8 @@ textarea {
 }
 
 .result {
-    border: 2px solid black;
     margin: 15px;
     padding: 5px;
-}
-
-.header {
-    background-color: #deedff;
 }
 
 .danger {
@@ -65,4 +60,17 @@ canvas {
     background-image: url(/content/images/ui-icons_777777_256x240.png);
     background-position: -96px -128px;
     background-repeat: no-repeat;
+}
+
+table thead {
+    background-color: #eee;
+}
+
+/* the below are fixes to work around the floaty header plugin */
+.ui-dialog {
+    z-index: 1001 !important;
+}
+
+#ui-datepicker-div {
+    z-index: 1002 !important;
 }
