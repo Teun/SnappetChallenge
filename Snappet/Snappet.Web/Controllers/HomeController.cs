@@ -10,7 +10,7 @@ namespace Snappet.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private const string DATE_FORMAT = "dd/MM/yyyy";
+        public const string DATE_FORMAT = "dd'/'MM'/'yyyy";
 
         public ActionResult Index()
         {
