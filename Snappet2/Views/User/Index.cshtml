@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Snappet2.ViewModel.ExerciseResultViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Index</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExerciseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.ExerciseId + "", "Index", "Exercise", new { id = item.ExerciseId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correct)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
