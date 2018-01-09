@@ -46,3 +46,4 @@ This assignment is deliberately formulated broadly. You may use the techniques a
 https://github.com/oltur/SnappetChallenge
 
 ## Usage / Gebruik
+It seems JSON data file is corrupted

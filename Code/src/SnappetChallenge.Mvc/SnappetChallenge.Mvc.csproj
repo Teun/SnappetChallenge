@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Client\images\" />
     <Folder Include="wwwroot\dist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>

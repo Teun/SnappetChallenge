@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SnappetChallenge.Mvc.DataLayer;
 
 namespace SnappetChallenge.Mvc
 {
@@ -16,6 +17,8 @@ namespace SnappetChallenge.Mvc
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Add(new ServiceDescriptor(typeof(IWorkItemRespository), new WorkItemRespository()));
+            services.AddMemoryCache();
             services.AddMvc();
         }
 
