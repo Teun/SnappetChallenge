@@ -32,7 +32,7 @@ namespace SnappetChallenge.Mvc.Controllers.Api
             if (url == null)
             {
                 var host = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
-                uri = new Uri(new Uri(host), "/data/work.json");
+                uri = new Uri(new Uri(host), "/data/work.csv");
             }
             else
             {

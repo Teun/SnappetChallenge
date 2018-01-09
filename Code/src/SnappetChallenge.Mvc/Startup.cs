@@ -11,6 +11,7 @@ namespace SnappetChallenge.Mvc
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         public IConfiguration Configuration { get; }
