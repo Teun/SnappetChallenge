@@ -18,11 +18,11 @@ namespace SnappetChallenge.Mvc.DataLayer
         {
         }
 
-        public WorkItem[] GetAll(Uri uri)
+        public async Task<WorkItem[]> GetAll(Uri uri)
         {
             var wc = new WebClient();
             wc.Encoding = Encoding.GetEncoding(1252);
-            var data = wc.DownloadString(uri);
+            var data = await wc.DownloadStringTaskAsync(uri);
 
             var csv = new CsvReader(new StringReader(data));
             var records = csv.GetRecords<WorkItem>().ToArray();

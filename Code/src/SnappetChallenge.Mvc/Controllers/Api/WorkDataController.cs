@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +27,7 @@ namespace SnappetChallenge.Mvc.Controllers.Api
         }
 
         [HttpGet]
-        public IEnumerable<WorkItem> GetAll(string url = null)
+        public async Task<IEnumerable<WorkItem>> GetAll(string url = null)
         {
             Uri uri;
             if (url == null)
@@ -43,7 +44,7 @@ namespace SnappetChallenge.Mvc.Controllers.Api
 
             if (!_cache.TryGetValue(CacheKeys.WorkData, out cacheEntry))
             {
-                cacheEntry = _workItemRepository.GetAll(uri);
+                cacheEntry = await _workItemRepository.GetAll(uri);
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
                     .SetSlidingExpiration(TimeSpan.FromMinutes(double.Parse(_configuration["CacheExprirationInMinutes"])));
