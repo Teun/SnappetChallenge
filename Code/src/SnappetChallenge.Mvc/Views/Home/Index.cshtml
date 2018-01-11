@@ -7,3 +7,18 @@
 <p>A First name: <input data-bind="value: firstName" /></p>
 <p>Last name: <input data-bind="value: lastName" /></p>
 <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+
+<h2>Here is your class</h2>
+<div data-bind='simpleGrid: gridViewModel'> </div>
+
+<button data-bind='click: addItem'>
+    Add item
+</button>
+
+<button data-bind='click: sortBy("progress")'>
+    Sort by progress
+</button>
+
+<button data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
+    Jump to first page
+</button>

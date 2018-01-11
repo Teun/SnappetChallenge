@@ -41,7 +41,7 @@ namespace SnappetChallenge.Test
             };
 
             workItemRepository
-                .Setup(s => s.GetAll(It.IsAny<Uri>()))
+                .Setup(s => s.GetAll(It.IsAny<Uri>(), It.IsAny<int>()))
                 .Returns(Task.FromResult(expected));
 
             var controller = new WorkDataController(cache, new FakeConfiguration(), workItemRepository.Object);

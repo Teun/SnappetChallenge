@@ -18,14 +18,14 @@ namespace SnappetChallenge.Mvc.DataLayer
         {
         }
 
-        public async Task<WorkItem[]> GetAll(Uri uri)
+        public async Task<WorkItem[]> GetAll(Uri uri, int topN)
         {
             var wc = new WebClient();
             wc.Encoding = Encoding.GetEncoding(1252);
             var data = await wc.DownloadStringTaskAsync(uri);
 
             var csv = new CsvReader(new StringReader(data));
-            var records = csv.GetRecords<WorkItem>().ToArray();
+            var records = csv.GetRecords<WorkItem>().Take(topN).ToArray();
 
             // Does not work - Json file is already corrupt
             // JsonConvert.DeserializeObject<WorkItem[]>(data);

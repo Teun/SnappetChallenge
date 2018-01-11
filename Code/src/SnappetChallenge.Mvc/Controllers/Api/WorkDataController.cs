@@ -27,7 +27,7 @@ namespace SnappetChallenge.Mvc.Controllers.Api
         }
 
         [HttpGet]
-        public async Task<IEnumerable<WorkItem>> GetAll(string url = null)
+        public async Task<IEnumerable<WorkItem>> GetAll(string url = null, int topN = 10)
         {
             Uri uri;
             if (url == null)
@@ -41,15 +41,16 @@ namespace SnappetChallenge.Mvc.Controllers.Api
             }
 
             WorkItem[] cacheEntry;
+            var key = CacheKeys.GetWorkDataKey(url, topN);
 
-            if (!_cache.TryGetValue(CacheKeys.WorkData, out cacheEntry))
+            if (!_cache.TryGetValue(key, out cacheEntry))
             {
-                cacheEntry = await _workItemRepository.GetAll(uri);
+                cacheEntry = await _workItemRepository.GetAll(uri, topN);
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
                     .SetSlidingExpiration(TimeSpan.FromMinutes(double.Parse(_configuration["CacheExprirationInMinutes"])));
 
-                _cache.Set(CacheKeys.WorkData, cacheEntry, cacheEntryOptions);
+                _cache.Set(key, cacheEntry, cacheEntryOptions);
             }
 
             return cacheEntry;
