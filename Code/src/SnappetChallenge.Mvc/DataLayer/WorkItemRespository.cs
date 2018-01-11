@@ -12,25 +12,26 @@ using SnappetChallenge.Mvc.Models;
 
 namespace SnappetChallenge.Mvc.DataLayer
 {
-    public class WorkItemRespository: IWorkItemRespository
+    public class WorkItemRespository : IWorkItemRespository
     {
         public WorkItemRespository()
         {
         }
 
-        public async Task<WorkItem[]> GetAll(Uri uri, int topN)
+        public async Task<IList<WorkItem>> GetAll(Uri uri)
         {
             var wc = new WebClient();
             wc.Encoding = Encoding.GetEncoding(1252);
             var data = await wc.DownloadStringTaskAsync(uri);
 
             var csv = new CsvReader(new StringReader(data));
-            var records = csv.GetRecords<WorkItem>().Take(topN).ToArray();
+            var records = csv.GetRecords<WorkItem>();
 
             // Does not work - Json file is already corrupt
             // JsonConvert.DeserializeObject<WorkItem[]>(data);
 
-            return records;  
+            return records.ToList();
         }
+
     }
 }

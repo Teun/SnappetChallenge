@@ -11,9 +11,9 @@ namespace SnappetChallenge.Mvc.Common
     {
         private const string WorkData = "WorkData";
 
-        public static string GetWorkDataKey(string url, int topN)
+        public static string GetWorkDataKey(string url)
         {
-            return GetMd5Hash(topN.ToString() + url);
+            return GetMd5Hash(WorkData + url);
         }
 
         private static string GetMd5Hash(string input)

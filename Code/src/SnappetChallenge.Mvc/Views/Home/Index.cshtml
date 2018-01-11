@@ -4,21 +4,32 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>A First name: <input data-bind="value: firstName" /></p>
-<p>Last name: <input data-bind="value: lastName" /></p>
-<h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+<h3>Filter (multiselect):</h3>
 
-<h2>Here is your class</h2>
+From:
+<input  type="datetime-local" data-bind="value: fromDateTime" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
+
+To:
+<input  type="datetime-local" data-bind="value: toDateTime" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
+
+Users:
+<select data-bind="options: allUserIds, selectedOptions: selectedUserIds" size="10" multiple="true"></select>
+
+Correct marks:
+<select data-bind="options: allCorrects, selectedOptions: selectedCorrects" size="10" multiple="true"></select>
+
+Domains:
+<select data-bind="options: allDomains, selectedOptions: selectedDomains" size="10" multiple="true"></select>
+
+<h2>Your class data</h2>
 <div data-bind='simpleGrid: gridViewModel'> </div>
+<div>
 
-<button data-bind='click: addItem'>
-    Add item
-</button>
+    <button data-bind='click: sortBy("progress")'>
+        Sort by progress
+    </button>
 
-<button data-bind='click: sortBy("progress")'>
-    Sort by progress
-</button>
+</div>
+<small>500 first records are shown according to filters set</small>
 
-<button data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
-    Jump to first page
-</button>
+

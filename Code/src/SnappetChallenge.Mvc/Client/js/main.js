@@ -11,52 +11,78 @@ require(['jquery', 'knockout'],
 
         init($, ko);
 
-        var ViewModel = function (first, last, items) {
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
 
-            this.firstName = ko.observable(first);
-            this.lastName = ko.observable(last);
+        var ViewModel = function (metaData) {
 
-            this.items = ko.observableArray(items);
-
-            this.fullName = ko.computed(function () {
-                // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
-                return this.firstName() + " " + this.lastName();
-            },
-                this);
-
-            this.addItem = function () {
-                this.items.push({ name: "New item", sales: 0, price: 100 });
+            this.onFilterChange = function () {
+                console.log(this);
+                $.get("/api/workitem?top=500").then(items => {
+                    this.items(items);
+                });
             };
+            this.onFilterChange = this.onFilterChange.bind(this);
 
-            this.sortBy = function (field) {
+            this.items = ko.observableArray([]);
+
+            this.allUserIds = ko.observableArray(metaData.allUserIds.sort());
+            this.selectedUserIds = ko.observableArray([]);
+            this.selectedUserIds.subscribe(this.onFilterChange);
+
+            this.allCorrects = ko.observableArray(metaData.allCorrects.sort());
+            this.selectedCorrects = ko.observableArray([]);
+            this.selectedCorrects.subscribe(this.onFilterChang);
+
+            this.allDomains = ko.observableArray(metaData.allDomains.sort());
+            this.selectedDomains = ko.observableArray([]);
+            this.selectedDomains.subscribe(this.onFilterChange);
+
+            this.toDateTime = ko.observable(new Date("2015-03-24T11:30:00").toISOString().slice(0, -5));
+            this.toDateTime.subscribe(this.onFilterChange);
+
+            this.fromDateTime = new Date("2015-03-24T11:30:00");
+            this.fromDateTime.setDate(this.fromDateTime.getDate() - 7);
+            this.fromDateTime = ko.observable(this.fromDateTime.toISOString().slice(0, -5));
+            this.fromDateTime.subscribe(this.onFilterChange);
+
+            this.onFilterChange();
+
+            this.sortBy = function (column) {
+                const field = column.columnSortKey;
                 this.items.sort(function (a, b) {
                     return a[field] < b[field] ? -1 : 1;
                 });
-            };
-
-            this.jumpToFirstPage = function () {
-                this.gridViewModel.currentPageIndex(0);
+                return false;
             };
 
             this.gridViewModel = new ko.simpleGrid.viewModel({
                 data: this.items,
+                sortBy: function (column) {
+                    const field = column.columnSortKey;
+                    this.data.sort(function (a, b) {
+                        return a[field] < b[field] ? -1 : 1;
+                    });
+                    return false;
+                },
                 columns: [
-                    { headerText: "Submitted Answer Id", rowText: "submittedAnswerId" },
-                    { headerText: "Correct", rowText: "correct" },
-                    { headerText: "Progress", rowText: "progress" },
-                    { headerText: "User Id", rowText: "userId" },
-                    { headerText: "Excercise Id", rowText: "exerciseId" },
-                    { headerText: "Difficulty", rowText: "difficulty" },
-                    { headerText: "Learning Objective", rowText: "learningObjective" },
-                    { headerText: "Subject", rowText: "subject" },
-                    { headerText: "Domain", rowText: "domain" },
-                    { headerText: "Date", rowText: function (item) { return Date.parse(item.submitDateTime); } }
+                    { columnSortKey: "submittedAnswerId", headerText: "Submitted Answer Id", rowText: "submittedAnswerId" },
+                    { columnSortKey: "correct", headerText: "Correct", rowText: "correct" },
+                    { columnSortKey: "progress", headerText: "Progress", rowText: "progress" },
+                    { columnSortKey: "userId", headerText: "User Id", rowText: "userId" },
+                    { columnSortKey: "exerciseId", headerText: "Excercise Id", rowText: "exerciseId" },
+                    { columnSortKey: "difficulty", headerText: "Difficulty", rowText: "difficulty" },
+                    { columnSortKey: "learningObjective", headerText: "Learning Objective", rowText: "learningObjective" },
+                    { columnSortKey: "subject", headerText: "Subject", rowText: "subject" },
+                    { columnSortKey: "domain", headerText: "Domain", rowText: "domain" },
+                    { columnSortKey: "submitDateTime", headerText: "Date", rowText: function (item) { return new Date(Date.parse(item.submitDateTime)).toUTCString(); } }
                 ],
-                pageSize: 20
+                pageSize: 25
             });
         };
 
-        $.get("/api/workdata?topN=1000").then(initialData => {
-            ko.applyBindings(new ViewModel("Planet", "Earth", initialData));
-        }); // This makes Knockout get to work
+        $.get("/api/workitemmetadata").then((metadata) => {
+            ko.applyBindings(new ViewModel(metadata));
+        });
     });

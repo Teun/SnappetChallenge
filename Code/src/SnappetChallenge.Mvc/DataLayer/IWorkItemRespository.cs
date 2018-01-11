@@ -10,6 +10,6 @@ namespace SnappetChallenge.Mvc.DataLayer
 {
     public interface IWorkItemRespository
     {
-        Task<WorkItem[]> GetAll(Uri uri, int topN = 10);
+        Task<IList<WorkItem>> GetAll(Uri uri);
     }
 }

@@ -18,6 +18,8 @@ export default function init($, ko) {
             this.currentPageIndex = ko.observable(0);
             this.pageSize = configuration.pageSize || 5;
 
+            this.sortBy = configuration.sortBy;
+
             // If you don't specify columns configuration, we'll use scaffolding
             this.columns = configuration.columns || getColumnsForScaffolding(ko.unwrap(this.data));
 
@@ -43,7 +45,9 @@ export default function init($, ko) {
                     <table class=\"ko-grid\" cellspacing=\"0\">\
                         <thead>\
                             <tr data-bind=\"foreach: columns\">\
-                               <th data-bind=\"text: headerText\"></th>\
+                               <th>\
+                                    <a href=\"#\" data-bind=\"text: headerText, click: function() { $root.sortBy($data) }\"></button>\
+                               </th>\
                             </tr>\
                         </thead>\
                         <tbody data-bind=\"foreach: itemsOnCurrentPage\">\

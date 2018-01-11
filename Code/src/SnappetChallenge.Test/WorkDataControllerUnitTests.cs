@@ -24,7 +24,7 @@ namespace SnappetChallenge.Test
             var cache = new MemoryCache(new MemoryCacheOptions());
             var workItemRepository = new Mock<IWorkItemRespository>();
 
-            var expected = new[]
+            IList<WorkItem> expected = new List<WorkItem>
             {
                 new WorkItem {
                     SubmittedAnswerId = 2395278,
@@ -41,13 +41,13 @@ namespace SnappetChallenge.Test
             };
 
             workItemRepository
-                .Setup(s => s.GetAll(It.IsAny<Uri>(), It.IsAny<int>()))
+                .Setup(s => s.GetAll(It.IsAny<Uri>()))
                 .Returns(Task.FromResult(expected));
 
-            var controller = new WorkDataController(cache, new FakeConfiguration(), workItemRepository.Object);
+            var controller = new WorkItemController(cache, new FakeConfiguration(), workItemRepository.Object);
 
             // Act
-            var result = (await controller.GetAll("http://google.com")).ToArray();
+            var result = (await controller.Get("http://google.com")).ToArray();
 
             // Assert
             result.Count().Should().Be(1);
