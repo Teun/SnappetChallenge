@@ -6,7 +6,7 @@ My idead for this challenge was to create an entire full stack application, so I
 
 This project focus on presenting to teachers how well the students performed in a specific Subject or Class Domain. The teacher can filter through date, subject, domain and accuracy as well. The accuracy shows the hit percentage of each student in a subject and domain combination in that date.
 
-![Angular 4 Frontend](./frontend.PNG)
+![Angular 4 Frontend](./frontend-screen.png)
 
 ## Infrastructure
 
