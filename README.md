@@ -12,7 +12,7 @@ This project focus on presenting to teachers how well the students performed in 
 
 The project is divided into 3 main folders: *infrastructure*, *backend* and *frontend*
 
-I created a table using the data inside the .csv file provided by the challenge and created a stored procedure to process the report query. To setup your database to run this project, follow steps bellow:
+I created a table using the data inside the .csv file provided by the challenge and created a stored procedure to process the report query. To be able to run this project, you need to follow steps bellow:
 
 - For the database, I used MySQL in a virtual environment using Vagrant. If you want to setup the same environment, you need to install vagrant first. Then just run:
 
@@ -31,18 +31,18 @@ You'll have a database configured and running.
 mysql -u root -p < setup_database.sql
 ```
 
-- And just load the csv into our brand new table and delete the data after '2015-03-24 11:30'.
+- And just load the csv into our brand new table and delete the data after '2015-03-24 11:30' (was specified on the assignment that today is 24-03-2015 at 11:30).
 
 ```bash
 mysqlimport --ignore-lines=1 --fields-terminated-by=, --local -u root -p Snappet Students.csv
 mysql> Delete from Students where SubmitDateTime > '2015-03-24 11:30';
 ```
 
-Now you have our database, table and stored procedure created
+Now you have the database, table and stored procedure created
 
 ## Backend
 
-The backend is based on .NET Core 2.0. You'll need to have it installed. After that you have to run:
+The backend is based on .NET Core 2.0. You'll need to have it installed in order to run the backend. After installation process, just run:
 
 ```bash
 cd backend
