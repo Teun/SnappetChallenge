@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
             <a class="nav-link" href="#">Room Report <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="https://github.com/juniorkrvl/SnappetChallenge">About</a>
           </li>
         </ul>
       </div>
