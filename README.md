@@ -24,7 +24,7 @@ The application will load data from 'work.json' located in App_Data folder, at t
 * Open the project in Visual Studio 2012.
 * Restore dependencies from NuGet Package Manager.
 * In Web.config, use "DataSetLimit" appsetting to set the limit of data you want to populate through data migration or leave empty to load all data from work.json presented in App_Data folder.
-* Open NuGet package manager console and Run 'Update-Migrations'.
+* Open NuGet package manager console and Run 'Add-Migration' and 'Update-Database'.
 (Remember that  it may take a while to seed the data from work.json, use "DataSetLimit" to load less data).
 * On successful database migration, a table 'dbo.Works' in your local database should be created with pre-populated data from 'work.json'.
 * After setup and migration is completed, You can run both front-end and back-end application together in Visual Stduio 2012 using Start.
