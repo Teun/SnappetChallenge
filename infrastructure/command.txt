@@ -1,2 +1,0 @@
-mysqlimport --ignore-lines=1 --fields-terminated-by=, --local -u root -p Snappet Room.csv
-ssh -L 3307:localhost:3306 vagrant@127.0.0.1 -p 2200

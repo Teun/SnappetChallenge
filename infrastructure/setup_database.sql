@@ -89,7 +89,6 @@ FROM (SELECT
   WHERE date (SubmitDateTime) = filterDate
   AND Subject LIKE @subject
   AND ClassDomain LIKE @domain
-  -- and (ClassDomain = fiterDomain OR filterDomain IS NULL)
   GROUP BY UserId,
            Subject,
            ClassDomain,
