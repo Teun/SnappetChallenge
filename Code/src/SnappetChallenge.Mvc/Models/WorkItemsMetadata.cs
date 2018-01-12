@@ -14,6 +14,6 @@ namespace SnappetChallenge.Mvc.Models
         public int[] AllCorrects;
         public int[] AllProgresses;
         public int[] AllExerciseIds;
-        public string[] AllDifficulties;
+        public string[] AllSubjects;
     }
 }

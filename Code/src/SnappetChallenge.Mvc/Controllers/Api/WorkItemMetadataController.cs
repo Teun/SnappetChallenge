@@ -60,13 +60,27 @@ namespace SnappetChallenge.Mvc.Controllers.Api
             return new WorkItemsMetadata
             {
                 AllCorrects = cacheEntry.Select(x => x.Correct).Distinct().ToArray(),
-                AllDifficulties = cacheEntry.Select(x => x.Difficulty).Distinct().ToArray(),
                 AllDomains = cacheEntry.Select(x => x.Domain).Distinct().ToArray(),
                 AllExerciseIds = cacheEntry.Select(x => x.ExerciseId).Distinct().ToArray(),
-                AllProgresses = cacheEntry.Select(x => x.Correct).Distinct().ToArray(),
+                AllProgresses = cacheEntry.Select(x => x.Progress).Distinct().ToArray(),
                 AllUserIds = cacheEntry.Select(x => x.UserId).Distinct().ToArray(),
+                AllSubjects = cacheEntry.Select(x => x.Subject).Distinct().ToArray(),
                 TotalCount = cacheEntry.Count
             };
+        }
+
+        private static int? ToNullableInt(string s)
+        {
+            int i;
+            if (int.TryParse(s, out i)) return i;
+            return null;
+        }
+
+        private static decimal? ToNullableDecimal(string s)
+        {
+            decimal i;
+            if (decimal.TryParse(s, out i)) return i;
+            return null;
         }
     }
 }

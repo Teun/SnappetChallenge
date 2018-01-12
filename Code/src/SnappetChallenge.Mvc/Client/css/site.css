@@ -10,6 +10,9 @@
     padding-right: 15px;
 }
 
+.filter {
+    padding: 0.4em;
+}
 .ko-grid {
     margin-bottom: 1em;
     /*width: 25em;*/
@@ -36,7 +39,8 @@
 }
 
     .ko-grid-pageLinks a {
-        padding: 0.5em;
+        padding: 0.4em;
+        line-height: 2em;
     }
 
         .ko-grid-pageLinks .selected {
