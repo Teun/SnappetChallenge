@@ -8,7 +8,7 @@ The SnappetChallenge application is a Full Stack application consists of Back-en
 - Database: MS-SQL
 
 ### Solution Overview
-The application provides a dashboard where Teacher can see the class's porgress on Learning objectives for a selected date in table format. For each of the  Learning objectives, teacher can see the following:
+The application provides a dashboard where Teacher can see the class's progress on Learning Objectives for a selected date in table format. For each of the  Learning objectives, teacher can see the following:
 - Number of Students participated to work on a learning objective.
 - Number of exercises that students worked on that day.
 - Overall performance for the Learning objective like Good, Excellent or Poor.
@@ -29,8 +29,8 @@ The application will load data from 'work.json' located in App_Data folder, at t
 * On successful database migration, a table 'dbo.Works' in your local database should be created with pre-populated data from 'work.json'.
 * After setup and migration is completed, You can run both front-end and back-end application together in Visual Stduio 2012 using Start.
 
-   - Frontend should be availble on URL: http://localhost:1096/
-   - BackEnd should be availble on URL: http://localhost:2225/
+   - Frontend should be available on URL: http://localhost:1096/
+   - BackEnd should be available on URL: http://localhost:2225/
 
 
 *Note: The frontend app (Snappet.Client) uses back-end URL which is defined in a constant service called "appSettings" in ./common/common.js
