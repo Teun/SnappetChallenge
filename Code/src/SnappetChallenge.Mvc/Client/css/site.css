@@ -1,0 +1,55 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.filter {
+    padding: 0.4em;
+}
+.ko-grid {
+    margin-bottom: 1em;
+    /*width: 25em;*/
+    border: 1px solid silver;
+    background-color: White;
+}
+
+    .ko-grid th {
+        text-align: left;
+        background-color: Black;
+        color: White;
+    }
+
+    .ko-grid td, .ko-grid th {
+        padding: 0.4em;
+    }
+
+    .ko-grid tr:nth-child(odd) {
+        background-color: #DDD;
+    }
+
+.ko-grid-pageLinks {
+    margin-bottom: 1em;
+}
+
+    .ko-grid-pageLinks a {
+        padding: 0.4em;
+        line-height: 2em;
+    }
+
+        .ko-grid-pageLinks .selected {
+            background-color: Black;
+            color: White;
+        }
+
+.liveExample {
+    height: 20em;
+    overflow: auto
+}
+/* Mobile Safari reflows pages slowly, so fix the height to avoid the need for reflows */

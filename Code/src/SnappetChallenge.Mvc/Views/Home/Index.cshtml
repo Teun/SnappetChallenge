@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Snappet Challenge";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Filter (multiselect):</h3>
+<div class="filter">
+    Date from:
+    <input type="datetime-local" data-bind="value: fromDateTime" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
+
+    Date to:
+    <input type="datetime-local" data-bind="value: toDateTime" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
+</div>
+<div class="filter">
+    Min Difficulty:
+    <input type="number" data-bind="value: minDifficulty" step="1" min="-1000" max="1000">
+
+    Max Difficulty:
+    <input type="number" data-bind="value: maxDifficulty" step="1" min="-1000" max="1000">
+
+    Allow Missing Difficulty:
+    <input type="checkbox" data-bind="checked: allowNullDifficulty">
+</div>
+<div class="filter">
+    Min Progress:
+    <input type="number" data-bind="value: minProgress" step="1" min="-1000" max="1000">
+
+    Max Progress:
+    <input type="number" data-bind="value: maxProgress" step="1" min="-1000" max="1000">
+
+</div>
+<div class="filter">
+    Excercise Id:
+    <input type="number" data-bind="value: excercise" step="1">
+</div>
+<div class="filter">
+    Users:
+    <select data-bind="options: allUserIds, selectedOptions: selectedUserIds" size="10" multiple="true"></select>
+
+    Domains:
+    <select data-bind="options: allDomains, selectedOptions: selectedDomains" size="10" multiple="true"></select>
+
+    Subjects:
+    <select data-bind="options: allSubjects, selectedOptions: selectedSubjects" size="10" multiple="true"></select>
+
+    Correct marks:
+    <select data-bind="options: allCorrects, selectedOptions: selectedCorrects" size="10" multiple="true"></select>
+
+</div>
+
+<div class="filter">
+    <button data-bind='click: onFilterChange'>
+        Search
+    </button>
+</div>
+
+<h2>Your class data</h2>
+<small data-bind='html: totalMessage'></small>
+<div data-bind='simpleGrid: gridViewModel'> </div>
+
+
