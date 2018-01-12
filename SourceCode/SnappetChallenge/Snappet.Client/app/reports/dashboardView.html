@@ -1,0 +1,113 @@
+﻿<div class="col col-md-12">
+    <h3>Learning Objective Progress Report </h3>
+    <div class="well well-sm col col-md-12">
+        <div class="row">
+            <div class="col col-md-12">
+                <div class="col col-md-4">
+                    Date :
+                <input type="text" id="datepickerDashboard">
+                    <button type="button" class="btn btn-success" ng-click="vm.ShowReport()">Show Report </button>
+                </div>
+                <div class="col col-md-4">
+                    Show Only:
+                <input type="text" value="10" ng-model="vm.recordLimit" id="limit" style="width: 30px;">
+                    records
+                </div>
+                <div class="col col-md-4">
+                    Learning objctives Target per day:
+                <input type="text" value="10" ng-model="vm.TotalToComplatePerDay" id="lObj" style="width: 30px;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class=" col col-md-4">
+    </div>
+</div>
+</div>
+<div class="col col-md-8">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4>What my class has done today</h4>
+        </div>
+        <div class="panel-body">
+            <span ng-show="vm.ListOfObjectives.length <= 0">
+                    No records for selected data. Please select different date.
+                </span>
+            <table ng-show="vm.ListOfObjectives.length > 0" class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width: 40%">Learning Objective</th>
+                        <th>Total Students</th>
+                        <th>Exercises</th>
+                        <th>Performance</th>
+                        <th>Pupils Mastered%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="obj in vm.ListOfObjectives | limitTo:vm.recordLimit track by $index">
+                        <td><a href="#" ng-click="vm.ShowUser(obj.Participants)">{{obj.LearningObjective}}</a> </td>
+                        <td><a href="#" ng-click="vm.ShowUser(obj.Participants)">{{obj.Participants.length}}</a> </td>
+                        <td>{{obj.TotalExercise}}</td>
+                        <td>{{obj.Performance}}</td>
+                        <td class="progress">
+                            <div ng-class="obj.MasteryPercentage < 50 ? 'progress-bar progress-bar-danger' : 'progress-bar progress-bar-success'" role="progressbar" aria-valuenow="{{obj.MasteryPercentage}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ 'width': obj.MasteryPercentage + '%' }">{{obj.MasteryPercentage}}%</div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col col-md-4">
+    <div class="row">
+        <div class="col col-md-10">
+            <h4>Report Summary:</h4>
+            Learning objective completed<span class="pull-right strong"> {{(vm.LearningObjectiveCompleted - 100) }}%</span>
+            <div class="progress">
+                <div ng-class="vm.LearningObjectiveCompleted < 50 ? 'progress-bar progress-bar-danger' : 'progress-bar progress-bar-success'" role="progressbar" aria-valuenow="{{vm.LearningObjectiveCompleted}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ 'width': vm.LearningObjectiveCompleted + '%' }">{{vm.LearningObjectiveCompleted}}%</div>
+            </div>
+
+            Average Student growth in class<span class="pull-right strong">{{vm.StudentAverage - 100}}%</span>
+            <div class="progress">
+                <div ng-class="vm.StudentAverage < 50 ? 'progress-bar progress-bar-danger' : 'progress-bar progress-bar-success'" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" ng-style="{ 'width': vm.StudentAverage + '%' }">{{vm.StudentAverage}}%</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col col-md-10">
+            <h4>Student Progress:</h4> <span><i> Select Learning Objective to see the detail</i></span>
+
+            <span ng-show="vm.ListOfObjectives.length <= 0">
+                    No records.
+            </span>
+            <table ng-show="vm.ListOfObjectives.length > 0" class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>UserID</th>
+                        <th>Exercises</th>
+                        <th>Attempts</th>
+                        <th>Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="std in vm.Students | limitTo:10 track by $index">
+                        <td>{{std.UserID}}</td>
+                        <td>{{std.Exercises}}</td>
+                        <td>{{std.Attempts}}</td>
+                        <td>{{std.Performance}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
