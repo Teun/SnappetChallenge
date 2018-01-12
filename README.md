@@ -10,7 +10,7 @@ I created a table using the data inside the .csv file provided by the challenge 
 
 - For the database, I used MySQL in a virtual environment using Vagrant. If you want to setup the same environment, you need to install vagrant first. Then just run:
 
-``` code
+```bash
 cd infrastructure
 vagrant up
 ```
@@ -21,13 +21,13 @@ You'll have a database configured and running.
 
 - The second step is to run the setup_database.sql script that is located inside the infrastructure folder:
 
-``` code
+```bash
 mysql -u root -p < setup_database.sql
 ```
 
 - And just load the csv into our brand new table
 
-``` code
+```bash
 mysqlimport --ignore-lines=1 --fields-terminated-by=, --local -u root -p Snappet Students.csv
 ```
 
@@ -37,7 +37,7 @@ Now you have our database, table and stored procedure created
 
 The backend is based on .NET Core 2.0. You'll need to have it installed. After that you have to run:
 
-``` code
+```bash
 cd backend
 dotnet restore
 dotnet build
@@ -50,7 +50,7 @@ You'll have the backend running on: http://localhost:5000/
 
 The frontend part was developed using NPM and Angular 4, so you need to install Node.js in order to get all NPM packages. To install all its dependencies just run:
 
-``` code
+```bash
 cd frontend
 npm install
 npm start
@@ -58,4 +58,4 @@ npm start
 
 You'll have the frontend running on: http://localhost:4200/
 
-![Angular 4 Frontend](frontend.png)
+![Angular 4 Frontend](./frontend.PNG)
