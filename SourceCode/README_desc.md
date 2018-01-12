@@ -33,5 +33,7 @@ The application will load data from 'work.json' located in App_Data folder, at t
    - BackEnd should be availble on URL: http://localhost:2225/
 
 
+*Note: The frontend app (Snappet.Client) uses back-end URL which is defined in a constant service called "appSettings" in ./common/common.js
+
 ### Thank you
 
