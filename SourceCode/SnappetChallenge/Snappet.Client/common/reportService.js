@@ -2,29 +2,17 @@
     angular.module('common').factory('reportService', ['$q', '$timeout', '$http','$filter', 'appSettings', reportService]);
 
 
-    function reportService($q, $timeout, $http,$filter, constants) {
-        return {
-            getLearningObj: getLearningObj,
+    function reportService($q, $timeout, $http, $filter, appSettings) {
+        return {            
             getLearningObjByDate: getLearningObjByDate
         };
 
-        function getLearningObj() {
-            return $http({
-                method: 'GET',
-                url: 'http://localhost:2225/api/work',
-                transformResponse: transformGetBooks
-            }).then(sendResponeData)
-                .catch(sendError);
-        }
-
+       
         function getLearningObjByDate(date) {
             console.log('report date: ' + date);
             return $http({
                 method: 'GET',
-                url: 'http://localhost:2225/api/work/',
-                //headers: {
-                //    'ttt': date
-                //},
+                url: appSettings.serverPath + '/api/work/',              
                 params: {
                     dateVal: $filter('date')(date, "yyyy-MM-dd HH:mm:ss")
                 },
@@ -39,14 +27,13 @@
             transformed.forEach(function (currentValue, index, array) {
                 currentValue.CreatedDate = new Date();
             });
-
-            //console.log(transformed);
+            
             return transformed;
         }
 
         function sendResponeData(response) {
-            console.log('Get success data from reportService');           
-            //console.log(response.data);
+            console.log('Get success data from reportService');
+            console.log(response.data);
             return response.data;
         }
 

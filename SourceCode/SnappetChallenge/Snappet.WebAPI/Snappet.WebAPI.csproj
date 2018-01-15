@@ -157,14 +157,6 @@
     <Compile Include="Migrations\201801101607448_Initial_Mig.Designer.cs">
       <DependentUpon>201801101607448_Initial_Mig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801121442524_Newdata.cs" />
-    <Compile Include="Migrations\201801121442524_Newdata.Designer.cs">
-      <DependentUpon>201801121442524_Newdata.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801121451534_New.cs" />
-    <Compile Include="Migrations\201801121451534_New.Designer.cs">
-      <DependentUpon>201801121451534_New.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IReportService.cs" />
     <Compile Include="Models\LearningObjectiveProgress.cs" />
@@ -282,12 +274,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801101607448_Initial_Mig.resx">
       <DependentUpon>201801101607448_Initial_Mig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121442524_Newdata.resx">
-      <DependentUpon>201801121442524_Newdata.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121451534_New.resx">
-      <DependentUpon>201801121451534_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

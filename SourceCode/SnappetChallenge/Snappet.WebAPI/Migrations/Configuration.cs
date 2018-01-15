@@ -30,7 +30,7 @@ namespace Snappet.WebAPI.Migrations
 
             var json = System.IO.File.ReadAllText(filePath);
             var works = JsonConvert.DeserializeObject<List<Models.Work>>(json);
-          
+
             int seedlimit = -1;//If -1 meaning all data to seed. 
             if (!string.IsNullOrEmpty(ConfigurationSettings.AppSettings["DataSetLimit"]))
             {
@@ -43,7 +43,7 @@ namespace Snappet.WebAPI.Migrations
 
                 if (seedlimit != -1)
                 {
-                    if (seedlimit <= 0)
+                    if (seedlimit == 0)
                         break;
                     seedlimit--;
                 }

@@ -7,22 +7,23 @@
     function reportCtrl(reportResource, reportService) {
         var vm = this;
 
+        //Default
         vm.recordLimit = 10;
-        vm.TotalToComplatePerDay = 100;        
-
-
+        vm.TotalToComplatePerDay = 100;
+        
+        //Date Picker
         $("#datepickerDashboard").datepicker();
 
         if ($("#datepickerDashboard").val() == '') {
             $("#datepickerDashboard").val("03/03/2015");
         }
 
+        //Show report
         vm.ShowReport = function () {
             reportService.getLearningObjByDate($("#datepickerDashboard").val())
             .then(getLOSuccess)
             .catch(errorCallBack);
         }
-
 
         function getLOSuccess(response) {
             console.log('Get success data in reportCtrl');
@@ -45,6 +46,7 @@
             console.log(error);
         }
 
+        //Show user detail selecting a learning objective from report
         vm.ShowUser = function (users) {
 
             vm.Students = users;
@@ -60,6 +62,7 @@
 
             return Math.floor(avg);
         };
+
 
     }
 

@@ -1,5 +1,5 @@
 ﻿<div class="col col-md-12">
-    <h3>Learning Objective Progress Report </h3>
+    <h3>Learning Objective Progress Report</h3>
     <div class="well well-sm col col-md-12">
         <div class="row">
             <div class="col col-md-12">
@@ -25,16 +25,15 @@
     <div class=" col col-md-4">
     </div>
 </div>
-</div>
+
 <div class="col col-md-8">
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h4>What my class has done today</h4>
+            <h4>What my class has worked on</h4>
         </div>
         <div class="panel-body">
-            <span ng-show="vm.ListOfObjectives.length <= 0">
-                    No records for selected data. Please select different date.
-                </span>
+            <span ng-show="vm.ListOfObjectives.length <= 0">No records for selected data. Please select different date.
+            </span>
             <table ng-show="vm.ListOfObjectives.length > 0" class="table table-bordered table-condensed">
                 <thead>
                     <tr>
@@ -42,7 +41,7 @@
                         <th>Total Students</th>
                         <th>Exercises</th>
                         <th>Performance</th>
-                        <th>Pupils Mastered%</th>
+                        <th>Student Mastered%</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +64,7 @@
 <div class="col col-md-4">
     <div class="row">
         <div class="col col-md-10">
-            <h4>Report Summary:</h4>
+            <h4>Report Summary: </h4>
             Learning objective completed<span class="pull-right strong"> {{(vm.LearningObjectiveCompleted - 100) }}%</span>
             <div class="progress">
                 <div ng-class="vm.LearningObjectiveCompleted < 50 ? 'progress-bar progress-bar-danger' : 'progress-bar progress-bar-success'" role="progressbar" aria-valuenow="{{vm.LearningObjectiveCompleted}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ 'width': vm.LearningObjectiveCompleted + '%' }">{{vm.LearningObjectiveCompleted}}%</div>
@@ -81,10 +80,10 @@
     <div class="row">
 
         <div class="col col-md-10">
-            <h4>Student Progress:</h4> <span><i> Select Learning Objective to see the detail</i></span>
+            <h4>Student Progress:</h4>
+            <span ng-hide="vm.ListOfObjectives.length <= 0"><i>Select Learning Objective to see the detail</i></span>
 
-            <span ng-show="vm.ListOfObjectives.length <= 0">
-                    No records.
+            <span ng-show="vm.ListOfObjectives.length <= 0">No records.
             </span>
             <table ng-show="vm.ListOfObjectives.length > 0" class="table table-bordered table-condensed">
                 <thead>
