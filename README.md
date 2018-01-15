@@ -22,7 +22,7 @@ Teacher can also see a 'Report Summary' and 'Student progress' report (on the ri
 The solution is designed in Visual Studio 2012 and uses EntityFramework Code First approach. 
 The application will load data from 'work.json' located in App_Data folder, at the time of database migration. 
 * Open the project in Visual Studio 2012.
-* Restore dependencies from NuGet Package Manager.
+* Restore dependencies from NuGet Package Manager (if any).
 * In Web.config, use "DataSetLimit" appsetting to set the limit of data you want to populate through data migration or leave empty to load all data from work.json presented in App_Data folder.
 * Open NuGet package manager console and Run 'Update-Database' on Project Snappet.WebAPI.
 (Remember that  it may take a while to seed the data from work.json, use "DataSetLimit" to load less data).
@@ -31,7 +31,7 @@ The application will load data from 'work.json' located in App_Data folder, at t
 
    - Frontend should be available on URL: http://localhost:1096/
    - BackEnd should be available on URL: http://localhost:2225/
-
+* Finally, On Frontend screen, You can select a date and click on 'Show Report' button to see the report.
 
 #### Note: 
 
