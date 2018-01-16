@@ -1,22 +1,43 @@
 # SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+The SnappetChallenge application is a Full Stack application consists of Back-end (ASP.NET MVC4 Web API) and a Front-end designed in AngulaJs1 and BootStrap. Back-end provides data to front-end in JSON format using REST API calls and MS-SQL to store data.
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+### Environment
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+- FrontEnd: AngularJS v1.6,  Bootstrap 3, JQuery
+- Backend : ASP.NET MVC4 Web API,  EntityFramework 5.0, LINQ, NInject.
+- Database: MS-SQL
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+### Solution Overview
+The application provides a dashboard where Teacher can see the class's progress on Learning Objectives for a selected date in table format. For each of the  Learning objectives, teacher can see the following:
+- Number of Students participated to work on a learning objective.
+- Number of exercises that students worked on that day.
+- Overall performance for the Learning objective like Good, Excellent or Poor.
+- Percentage of students who mastered on those exercises. 
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+Teacher can also see a 'Report Summary' and 'Student progress' report (on the right) by clicking on any of the Learning Objectives link in main report.
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+![Report_Image](https://github.com/yadurajshakti/SnappetChallenge/blob/master/SourceCode/ReportDashboard.PNG)
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Javascript, JQuery en Knockout.JS. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+### Run the Solution
+The solution is designed in Visual Studio 2012 and uses EntityFramework Code First approach. 
+The application will load data from 'work.json' located in App_Data folder, at the time of database migration. 
+* Open the project in Visual Studio 2012.
+* Restore dependencies from NuGet Package Manager (if any).
+* In Web.config, use "DataSetLimit" appsetting to set the limit of data you want to populate through data migration or leave empty to load all data from work.json presented in App_Data folder.
+* Open NuGet package manager console and Run 'Update-Database' on Project Snappet.WebAPI.
+(Remember that  it may take a while to seed the data from work.json, use "DataSetLimit" to load less data).
+* On successful database migration, a table 'dbo.Works' in your local database should be created with pre-populated data from 'work.json'.
+* After setup and migration is completed, You can run both Frontend and BackEnd application together in Visual Studio 2012 using Start.
+
+   - Frontend should be available on URL: http://localhost:1096/
+   - BackEnd should be available on URL: http://localhost:2225/
+* Finally, On Frontend screen, You can select a date and click on 'Show Report' button to see the report.
+
+#### Note: 
+
+  - The Frontend app (Snappet.Client) uses BackEnd URL fro API calls defined in a constant service called "appSettings" in ./common/common.js.
+  - CORS is enabled in Web.config file using a custom header under system.webServer section.
+  - Connection string name is set in Context class as 'DefaultConnection'.
+
+### Thank you
+
