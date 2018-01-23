@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Snappet School</title>
+
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Content/datepicker.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+    <link href="~/Content/sb-admin.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="fixed-nav sticky-footer bg-light" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <a class="navbar-brand" href="index.html" style="padding-left: 40px;"><img height="33" src="~/Content/Snappet-550x207.png" /></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Today's work">
+                    <a class="nav-link" href="@Url.Action("TodayWork","Class")">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Today's work</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Students Performance">
+                    <a class="nav-link" href="@Url.Action("Performance","Student")">
+                        <i class="fa fa-fw fa-area-chart"></i>
+                        <span class="nav-link-text">Students Performance</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Search">
+                    <a class="nav-link" href="@Url.Action("Search","Class")">
+                        <i class="fa fa-fw fa-search"></i>
+                        <span class="nav-link-text">Search</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav sidenav-toggler">
+                <li class="nav-item">
+                    <a class="nav-link text-center" id="sidenavToggler">
+                        <i class="fa fa-fw fa-angle-left"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Snappet @DateTime.Now.Year</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader-container" style="display: none">
+        <div class="loader"></div>
+    </div>
+
+    <script src="~/Scripts/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap4.js"></script>
+
+    <script src="~/Scripts/sb-admin.min.js"></script>
+    <script src="~/Scripts/sb-admin-datatables.min.js"></script>
+    <script src="~/Scripts/bootstrap-notify.min.js"></script>
+
+
+    <script>
+        function displayPopupNotification(message, messagetype, modal) {
+            //types: success, error
+
+            if (messagetype === "error")
+                messagetype = "danger";
+
+
+
+            $.notify({
+                // options
+                message: message,
+                title: "<b>Snappet</b><br>"
+            }, {
+                // settings
+                type: messagetype,
+                element: 'body',
+                position: null,
+                allow_dismiss: true,
+                newest_on_top: false,
+                showProgressbar: false,
+                placement: {
+                    from: "bottom",
+                    align: "right"
+
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 11000,
+                delay: 5000,
+                timer: 1000
+            });
+
+        }
+    </script>
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+D:\myfiles\SnappetChallenge\Core.Interfaces\bin\Debug\Core.Interfaces.dll
+D:\myfiles\SnappetChallenge\Core.Interfaces\bin\Debug\Core.Interfaces.pdb
+D:\myfiles\SnappetChallenge\Core.Interfaces\bin\Debug\Core.Models.dll
+D:\myfiles\SnappetChallenge\Core.Interfaces\bin\Debug\Core.Models.pdb
+D:\myfiles\SnappetChallenge\Core.Interfaces\obj\Debug\SnappetChallenge.Core.Interfaces.csprojResolveAssemblyReference.cache
+D:\myfiles\SnappetChallenge\Core.Interfaces\obj\Debug\Core.Interfaces.dll
+D:\myfiles\SnappetChallenge\Core.Interfaces\obj\Debug\Core.Interfaces.pdb

@@ -1,0 +1,5 @@
+D:\myfiles\SnappetChallenge\Core.Models\bin\Debug\Core.Models.dll
+D:\myfiles\SnappetChallenge\Core.Models\bin\Debug\Core.Models.pdb
+D:\myfiles\SnappetChallenge\Core.Models\obj\Debug\Core.Models.dll
+D:\myfiles\SnappetChallenge\Core.Models\obj\Debug\Core.Models.pdb
+D:\myfiles\SnappetChallenge\Core.Models\obj\Debug\SnappetChallenge.Core.Models.csprojResolveAssemblyReference.cache

@@ -1,0 +1,9 @@
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\bin\Debug\SnappetChallenge.Services.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\bin\Debug\SnappetChallenge.Services.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\bin\Debug\Core.Interfaces.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\bin\Debug\Core.Models.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\bin\Debug\Core.Interfaces.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\bin\Debug\Core.Models.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\obj\Debug\SnappetChallenge.Services.csprojResolveAssemblyReference.cache
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\obj\Debug\SnappetChallenge.Services.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Services\obj\Debug\SnappetChallenge.Services.pdb
