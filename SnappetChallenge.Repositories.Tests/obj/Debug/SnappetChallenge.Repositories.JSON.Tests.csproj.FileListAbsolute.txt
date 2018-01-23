@@ -1,0 +1,16 @@
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\SnappetChallenge.Repositories.Tests.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\SnappetChallenge.Repositories.Tests.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Core.Interfaces.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Core.Models.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\SnappetChallenge.Repositories.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Newtonsoft.Json.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Core.Interfaces.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Core.Models.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\SnappetChallenge.Repositories.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Newtonsoft.Json.xml
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\obj\Debug\SnappetChallenge.Repositories.JSON.Tests.csprojResolveAssemblyReference.cache
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\obj\Debug\SnappetChallenge.Repositories.Tests.dll
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\obj\Debug\SnappetChallenge.Repositories.Tests.pdb
+D:\myfiles\SnappetChallenge\SnappetChallenge.Repositories.Tests\bin\Debug\Data\work.json

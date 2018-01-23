@@ -1,0 +1,373 @@
+﻿@model SnappetChallenge.WebApp.Models.PerformanceViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="@Url.Action("TodayWork","Class")">Snappet</a>
+    </li>
+    <li class="breadcrumb-item active">Student Performance</li>
+</ol>
+
+<div class="row">
+    <div class="col-3">
+        <div class="form-group">
+            <label>Student</label>
+            @Html.DropDownListFor(m => m.Students, new SelectList(Model.Students), "Select Student", new { @class = "form-control", required = "required" })
+        </div>
+    </div>
+    <div class="col-3">
+        <label>Start Date</label>
+        @Html.TextBoxFor(model => model.startDate, new { @class = "form-control datepicker", placeholder = "Start Date", required = "required" })
+    </div>
+    <div class="col-3">
+        <label>End Date</label>
+        @Html.TextBoxFor(model => model.endDate, new { @class = "form-control datepicker", placeholder = "End Date", required = "required" })
+
+    </div>
+    <div class="col-3 pt-4">
+        <button id="submitBtn" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+<hr class="mt-2">
+<div class="row" id="chartDiv" style="display: none;">
+    <div class="col-lg-8">
+        <!-- Example Pie Chart Card-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-area-chart"></i> Student Performance</div>
+            <div class="card-body">
+                <div id="performance-chart" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <!-- Example Pie Chart Card-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-pie-chart"></i> Subjects</div>
+            <div class="card-body">
+                <div id="subjects-chart" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3" id="resultCard" style="display: none;">
+    <div class="card-header">
+        <i class="fa fa-newspaper-o"></i> Result
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Exercises</th>
+                        <th>Questions</th>
+                        <th>Correct</th>
+                        <th>Correct %</th>
+                        <th>Incorrect</th>
+                        <th>Incorrect %</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Date</th>
+                        <th>Exercises</th>
+                        <th>Questions</th>
+                        <th>Correct</th>
+                        <th>Correct %</th>
+                        <th>Incorrect</th>
+                        <th>Incorrect %</th>
+                        <th>Progress</th>
+                    </tr>
+                </tfoot>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section css{
+    
+    <link href="~/Content/datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/highcharts.js"></script>
+}
+
+@section scripts{
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#startDate').val(moment($('#startDate').val()).format("MM/DD/YYYY"));
+            $('#endDate').val(moment($('#endDate').val()).format("MM/DD/YYYY"));
+            $('#startDate').datepicker();
+            $('#endDate').datepicker();
+        });
+
+        $('#submitBtn').click(function () {
+            if ($('#Students').val() === '' || $('#startDate').val() === '' || $('#endDate').val() === '') {
+                displayPopupNotification('Please, select a student, start and end dates', 'warning', false);
+                return;
+            }
+
+            $('.loader-container').show();
+            var userId = $('#Students').val();
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+            var params = { userId: userId, startDate: startDate, endDate: endDate };
+
+            $.ajax({
+                cache: false,
+                type: 'GET',
+                url: '@Url.Action("StudentSummary")',
+                dataType: 'json',
+                data: params,
+                success: function (data) {
+                    updateTable(data.StudentSummary);
+                    updateChart(data.StudentSummary, userId, startDate, endDate);
+                    updatePieCharts(data.StudentSubjects);
+                    $('.loader-container').hide();
+                },
+                error: function () {
+                    displayPopupNotification('An error occurred!', 'error', false);
+                    $('.loader-container').hide();
+                }
+            });
+
+        });
+
+        function updateTable(data) {
+
+            $('#resultCard').show();
+            $('#dataTable').DataTable({
+                dataType: 'JSON',
+                data: data,
+                destroy: true,
+                responsive: true,
+                columns: [
+                    {
+                        data: 'Date',
+                        render: function (d) {
+                            return moment(d).format("MM-DD-YYYY");
+                        },
+                        width: 100
+                    },
+                    { data: 'NumberOfExcercises' },
+                    { data: 'NumberOfQuestions' },
+                    { data: 'CorrectAnswers' },
+                    {
+                        "data": null,
+                        "render": function (data, type, row) {
+                            return Math.round(data["CorrectAnswers"] * 10000 / data["NumberOfQuestions"]) / 100 + ' %'
+                        }
+                    },
+                    { data: 'IncorrectAnswers' },
+                    {
+                        "data": null,
+                        "render": function (data, type, row) {
+                            return Math.round(data["IncorrectAnswers"] * 10000 / data["NumberOfQuestions"]) / 100 + ' %'
+                        }
+                    },
+                    { data: 'TotalProgress' }
+
+                ],
+                order: [[0, 'desc']]
+            });
+        }
+
+        function updateChart(data, student, startDate, endDate) {
+
+            $('#chartDiv').show();
+            var dateData = [], progressData = [], questionsData = [], correctData = [], incorrectData = [];
+            for (var ob in data) {
+                if (data.hasOwnProperty(ob)) {
+                    dateData.push(moment(data[ob].Date).format("MM-DD-YYYY"));
+                    progressData.push(data[ob].TotalProgress);
+                    questionsData.push(data[ob].NumberOfQuestions);
+                    correctData.push(data[ob].CorrectAnswers);
+                    incorrectData.push(data[ob].IncorrectAnswers);
+                }
+            }
+
+            $(function () {
+                Highcharts.chart('performance-chart', {
+                    chart: {
+                        type: 'spline'
+                    },
+                    title: {
+                        text: 'Student performance'
+                    },
+                    subtitle: {
+                        text: 'Student ' + student + ' from ' + startDate + ' to ' + endDate
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        categories: dateData
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Score'
+                        }
+                    },
+                    plotOptions: {
+                        spline: {
+                            lineWidth: 4,
+                            states: {
+                                hover: {
+                                    lineWidth: 5
+                                }
+                            },
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Total Progress',
+                        data: progressData
+                    }, {
+                        name: 'Correct Answers',
+                        data: correctData
+                    }, {
+                        name: 'Incorrect Answers',
+                        data: incorrectData
+                    }, {
+                        name: 'Questions Answered',
+                        data: questionsData
+                    }],
+                    navigation: {
+                        menuItemStyle: {
+                            fontSize: '10px'
+                        }
+                    }
+                });
+            });
+        }
+
+        function updatePieCharts(data) {
+            var colors = Highcharts.getOptions().colors, subjectsData = [], detailedData = [];
+
+            for (var ob in data) {
+                if (data.hasOwnProperty(ob)) {
+                    subjectsData.push(data[ob].Subject);
+                    detailedData.push({
+                        y: data[ob].NumberOfQuestions,
+                        color: colors[ob],
+                        drilldown: {
+                            name: data[ob].Subject + ' score',
+                            categories: ['Correct', 'Incorrect'],
+                            data: [data[ob].CorrectAnswers, data[ob].IncorrectAnswers],
+                            color: colors[ob]
+                        }
+                    });
+                }
+            }
+
+            var browserData = [],
+                versionsData = [],
+                i,
+                j,
+                dataLen = detailedData.length,
+                drillDataLen,
+                brightness;
+
+
+            // Build the data arrays
+            for (i = 0; i < dataLen; i += 1) {
+
+                // add browser data
+                browserData.push({
+                    name: subjectsData[i],
+                    y: detailedData[i].y,
+                    color: detailedData[i].color
+                });
+
+                // add version data
+                drillDataLen = detailedData[i].drilldown.data.length;
+                for (j = 0; j < drillDataLen; j += 1) {
+                    brightness = 0.2 - (j / drillDataLen) / 5;
+                    versionsData.push({
+                        name: detailedData[i].drilldown.categories[j],
+                        y: detailedData[i].drilldown.data[j],
+                        color: Highcharts.Color(detailedData[i].color).brighten(brightness).get()
+                    });
+                }
+            }
+
+
+            Highcharts.chart('subjects-chart', {
+                chart: {
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Subjects score'
+                },
+                subtitle: {
+                    text: 'Subjects questions and count of correctness'
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        shadow: false,
+                        center: ['50%', '50%']
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                series: [{
+                    name: 'Questions',
+                    data: browserData,
+                    size: '60%',
+                    dataLabels: {
+                        formatter: function () {
+                            return this.y > 5 ? this.point.name : null;
+                        },
+                        color: '#ffffff',
+                        distance: -30
+                    }
+                }, {
+                    name: 'Answers',
+                    data: versionsData,
+                    size: '80%',
+                    innerSize: '60%',
+                    dataLabels: {
+                        formatter: function () {
+                            // display only if larger than 1
+                            return this.y > 1 ? '<b>' + this.point.name + ':</b> ' +
+                                this.y + '%' : null;
+                        }
+                    },
+                    id: 'versions'
+                }],
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 400
+                        },
+                        chartOptions: {
+                            series: [{
+                                id: 'versions',
+                                dataLabels: {
+                                    enabled: false
+                                }
+                            }]
+                        }
+                    }]
+                }
+            });
+        }
+    </script>
+}

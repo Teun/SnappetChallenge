@@ -1,0 +1,174 @@
+﻿@model SnappetChallenge.WebApp.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="@Url.Action("TodayWork","Class")">Snappet</a>
+    </li>
+    <li class="breadcrumb-item active">Student Performance</li>
+</ol>
+
+<div class="row">
+    <div class="col-3">
+        <div class="form-group">
+            <label>Student</label>
+            @Html.DropDownListFor(m => m.Students, new SelectList(Model.Students), "Select Student", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>Subject</label>
+            @Html.DropDownListFor(m => m.Subjects, new SelectList(Model.Subjects), "Select Subject", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>Domain</label>
+            @Html.DropDownListFor(m => m.Domains, new SelectList(Model.Domains), "Select Domain", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>Learning Objective</label>
+            @Html.DropDownListFor(m => m.LearningObjectives, new SelectList(Model.LearningObjectives), "Select Objective", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-3">
+        <label>Start Date</label>
+        @Html.TextBoxFor(model => model.startDate, new { @class = "form-control datepicker", placeholder = "Start Date" })
+    </div>
+    <div class="col-3">
+        <label>End Date</label>
+        @Html.TextBoxFor(model => model.endDate, new { @class = "form-control datepicker", placeholder = "End Date" })
+
+    </div>
+    <div class="col-3 pt-4">
+        <button id="submitBtn" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+<hr class="mt-2">
+
+<div class="card mb-3" id="resultCard" style="display: none;">
+    <div class="card-header">
+        <i class="fa fa-newspaper-o"></i> Result
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Studnet</th>
+                    <th>Exercise</th>
+                    <th>Correct</th>
+                    <th>Progress</th>
+                    <th>Difficulty</th>
+                    <th>Subject</th>
+                    <th>Domain</th>
+                    <th>Learning Objective</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Date</th>
+                    <th>Studnet</th>
+                    <th>Exercise</th>
+                    <th>Correct</th>
+                    <th>Progress</th>
+                    <th>Difficulty</th>
+                    <th>Subject</th>
+                    <th>Domain</th>
+                    <th>Learning Objective</th>
+                </tr>
+                </tfoot>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#startDate').val(moment($('#startDate').val()).format("MM/DD/YYYY"));
+            $('#endDate').val(moment($('#endDate').val()).format("MM/DD/YYYY"));
+            $('#startDate').datepicker();
+            $('#endDate').datepicker();
+        });
+
+        $('#submitBtn').click(function() {
+            $('.loader-container').show();
+            var params;
+            var userId = $('#Students').val();
+            var subject = $('#Subjects').val();
+            var domain = $('#Domains').val();
+            var learningObjectives = $('#LearningObjectives').val();
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+            params = {
+                userId: userId,
+                startDate: startDate,
+                endDate: endDate,
+                subject: subject,
+                domain: domain,
+                learningObjectives: learningObjectives
+            };
+
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: '@Url.Action("GetSearchResult")',
+                dataType: 'json',
+                data: params,
+                success: function(data) {
+                    updateTable(data);
+                    $('.loader-container').hide();
+                },
+                error: function() {
+                    $('.loader-container').hide();
+                    displayPopupNotification('An error occurred!', 'error', false);
+                }
+            });
+
+        });
+
+        function updateTable(ob) {
+
+            $('#resultCard').show();
+            $('#dataTable').DataTable({
+                dataType: 'JSON',
+                data: ob.data,
+                destroy: true,
+                responsive: true,
+                columns: [
+                    {
+                        data: 'SubmitDateTime',
+                        render: function(d) {
+                            return moment(d).format("MM-DD-YYYY");
+                        },
+                        width: 100
+                    },
+                    { data: 'UserId' },
+                    { data: 'ExerciseId' },
+                    { data: 'Correct' },
+                    { data: 'Progress' },
+                    { data: 'Difficulty' },
+                    { data: 'Subject' },
+                    { data: 'Domain' },
+                    { data: 'LearningObjective' }
+                ],
+                order: [[0, 'desc']]
+            });
+        }
+
+
+    </script>
+}

@@ -1,0 +1,187 @@
+﻿@model SnappetChallenge.WebApp.Models.TodayResultViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="@Url.Action("TodayWork")">Snappet</a>
+    </li>
+    <li class="breadcrumb-item active">Today's work</li>
+</ol>
+<!-- Icon Cards-->
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fa fa-fw fa-users"></i>
+                </div>
+                <div class="mr-5" id="studentlabel">@Model.numberOfStudents Students</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fa fa-fw fa-check"></i>
+                </div>
+                <div class="mr-5">@Model.correctRatio % Correct</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fa fa-fw fa-close"></i>
+                </div>
+                <div class="mr-5">@Model.incorrectRatio %  Incorrect</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-warning o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fa fa-fw fa-line-chart"></i>
+                </div>
+                <div class="mr-5">@Model.progressAverage %  Progress</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="mt-2">
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-newspaper-o"></i>Today's Results
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered" width="100%" cellspacing="0" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Score</th>
+                        <th>Student</th>
+                        <th>Exercises</th>
+                        <th>Questions</th>
+                        <th>Correct</th>
+                        <th>Correct %</th>
+                        <th>Incorrect</th>
+                        <th>Incorrect %</th>
+                        <th>Progress</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Score</th>
+                        <th>Student</th>
+                        <th>Exercises</th>
+                        <th>Questions</th>
+                        <th>Correct</th>
+                        <th>Correct %</th>
+                        <th>Incorrect</th>
+                        <th>Incorrect %</th>
+                        <th>Progress</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Students results</h5>
+                <input type="hidden" id="studentId" value="">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("_StudentResult")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section css{
+}
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                dataType: 'JSON',
+                ajax: '@Url.Action("GetTodayWork")',
+                destroy: true,
+                columns: [
+                    {
+                        searchable: false,
+                        "data": null,
+                        "render": function (data, type, row) { return (data["NumberOfQuestions"] * data["TotalProgress"] * data["CorrectAnswers"] / data["NumberOfQuestions"]) }
+                    },
+                    {
+                        data: 'UserId',
+                        sortable: false
+                    },
+                    { data: 'NumberOfExercises' },
+                    { data: 'NumberOfQuestions' },
+                    { data: 'CorrectAnswers' },
+                    {
+                        "data": null,
+                        "render": function (data, type, row) { return Math.round(data["CorrectAnswers"] * 10000 / data["NumberOfQuestions"]) / 100 + ' %' }
+                    },
+                    { data: 'IncorrectAnswers' },
+                    {
+                        "data": null,
+                        "render": function (data, type, row) { return Math.round(data["IncorrectAnswers"] * 10000 / data["NumberOfQuestions"]) / 100 + ' %' }
+                    },
+                    { data: 'TotalProgress' },
+                    {
+                        className: 'details-control',
+                        orderable: false,
+                        defaultContent: '<button>details</button>'
+                    }
+                ],
+                order: [[0, 'desc']]
+            });
+
+        });
+
+        $('#dataTable tbody').on('click', 'td.details-control', function () {
+
+            var tr = $(this).closest('tr');
+            var userId = tr[0].cells[1].innerText;
+
+
+            $('#StudentResultsTable').DataTable({
+                dataType: 'JSON',
+                ajax: '@Url.Action("GetStudentTodayWork")?userId=' + userId,
+                destroy: true,
+                columns: [
+                    { data: 'Subject' },
+                    { data: 'Domain' },
+                    { data: 'LearningObjective' },
+                    { data: 'ExerciseId' },
+                    { data: 'NumberOfQuestions' },
+                    { data: 'CorrectAnswers' },
+                    { data: 'IncorrectAnswers' },
+                    { data: 'TotalProgress' }
+                ]
+            });
+            $('#studentModal').modal('show');
+
+        });
+    </script>
+}
