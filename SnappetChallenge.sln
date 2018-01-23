@@ -29,6 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Services.T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{206BBC24-6179-422C-BB5D-1A6A54F44D34}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{AC22D34F-301F-4692-AB4A-E54AD1452B2F}"
+	ProjectSection(SolutionItems) = preProject
+		SnappetChallenge.Repositories\Data\work.json = SnappetChallenge.Repositories\Data\work.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
