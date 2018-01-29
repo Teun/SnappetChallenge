@@ -24,7 +24,7 @@ De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewe
 
 
 
-How to run the solution
+# How to run the solution
 
 Install MongoDB
 ```
