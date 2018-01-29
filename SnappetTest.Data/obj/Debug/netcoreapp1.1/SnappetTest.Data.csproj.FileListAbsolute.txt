@@ -1,0 +1,4 @@
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Data\bin\Debug\netcoreapp1.1\SnappetTest.Data.deps.json
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Data\bin\Debug\netcoreapp1.1\SnappetTest.Data.dll
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Data\obj\Debug\netcoreapp1.1\SnappetTest.Data.AssemblyInfo.cs
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Data\obj\Debug\netcoreapp1.1\SnappetTest.Data.csprojResolveAssemblyReference.cache

@@ -1,0 +1,13 @@
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Service.deps.json
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Service.runtimeconfig.json
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Service.runtimeconfig.dev.json
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Service.dll
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\obj\Debug\netcoreapp1.1\SnappetTest.Service.csprojResolveAssemblyReference.cache
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\obj\Debug\netcoreapp1.1\SnappetTest.Service.AssemblyInfo.cs
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Data.dll
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Model.dll
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Service.pdb
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Data.pdb
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\bin\Debug\netcoreapp1.1\SnappetTest.Model.pdb
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\obj\Debug\netcoreapp1.1\SnappetTest.Service.dll
+C:\Users\Kossy\Documents\Visual Studio 2017\Projects\SnappetTest.Service\SnappetTest.Service\obj\Debug\netcoreapp1.1\SnappetTest.Service.pdb
