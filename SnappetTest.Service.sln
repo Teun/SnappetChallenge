@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnappetTest.Service", "SnappetTest.Service\SnappetTest.Service.csproj", "{4544CCDF-A7B6-4F23-A5B3-7FB7C968B255}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnappetTest.Data", "SnappetTest.Data\SnappetTest.Data.csproj", "{FBB666D2-7C8B-4373-8386-30E63B63141C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetTest.Model", "SnappetTest.Model\SnappetTest.Model.csproj", "{677E9C9F-AEC8-4688-B88E-919EF332102E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4544CCDF-A7B6-4F23-A5B3-7FB7C968B255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4544CCDF-A7B6-4F23-A5B3-7FB7C968B255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4544CCDF-A7B6-4F23-A5B3-7FB7C968B255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4544CCDF-A7B6-4F23-A5B3-7FB7C968B255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB666D2-7C8B-4373-8386-30E63B63141C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB666D2-7C8B-4373-8386-30E63B63141C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB666D2-7C8B-4373-8386-30E63B63141C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB666D2-7C8B-4373-8386-30E63B63141C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677E9C9F-AEC8-4688-B88E-919EF332102E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677E9C9F-AEC8-4688-B88E-919EF332102E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677E9C9F-AEC8-4688-B88E-919EF332102E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677E9C9F-AEC8-4688-B88E-919EF332102E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
