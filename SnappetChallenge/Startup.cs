@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FlashMapper;
+using LightInject;
+using LightInject.Microsoft.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using SnappetChallenge.Core;
+using SnappetChallenge.Data;
+using SnappetChallenge.Infrastructure;
 
 namespace SnappetChallenge
 {
@@ -21,9 +27,24 @@ namespace SnappetChallenge
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            var containerOptions = new ContainerOptions { EnablePropertyInjection = false };
+            var serviceContainer = new ServiceContainer(containerOptions);
+            //Register your own services within LightInject
+            serviceContainer.RegisterModule(new InfrastructureModule())
+                .RegisterModule(new DataModule())
+                .RegisterModule(new CoreModule())
+                .RegisterModule(new WebModule());
+
+            var builders = serviceContainer.GetInstance<IEnumerable<IFlashMapperBuilder>>();
+            serviceContainer.GetInstance<IAppInitializer>()
+                .Start();
+
+            services.AddMvc()
+                .AddControllersAsServices();
+            //Build and return the Service Provider
+           return serviceContainer.CreateServiceProvider(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

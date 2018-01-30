@@ -5,15 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Statistics\**" />
+    <EmbeddedResource Remove="Statistics\**" />
+    <None Remove="Statistics\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FlashMapper.DependencyInjection" Version="1.0.4" />
+    <PackageReference Include="LightInject" Version="5.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SnappetChallenge.Data\SnappetChallenge.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Statistics\" />
+    <ProjectReference Include="..\SnappetChallenge.Infrastructure\SnappetChallenge.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

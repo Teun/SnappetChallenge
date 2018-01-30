@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="FlashMapper.DependencyInjection" Version="1.0.4" />
+    <PackageReference Include="LightInject" Version="5.1.2" />
+    <PackageReference Include="LightInject.Microsoft.DependencyInjection" Version="2.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SnappetChallenge.Core\SnappetChallenge.Core.csproj" />
+    <ProjectReference Include="..\SnappetChallenge.Infrastructure\SnappetChallenge.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

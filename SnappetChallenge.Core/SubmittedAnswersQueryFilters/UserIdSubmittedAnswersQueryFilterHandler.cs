@@ -10,7 +10,7 @@ namespace SnappetChallenge.Core.SubmittedAnswersQueryFilters
         public IQueryable<SubmittedAnswerDb> ApplyFilter(IQueryable<SubmittedAnswerDb> input, SubmittedAnswersFilter filter)
         {
             if (filter.UserId == null)
-                return null;
+                return input;
             return input.Where(a => a.UserId == filter.UserId.Value);
         }
     }
