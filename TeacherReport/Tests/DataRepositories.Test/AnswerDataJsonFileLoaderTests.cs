@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using NUnit.Framework;
 
@@ -24,6 +25,7 @@ namespace DataRepositories.Test
             const string NoRecordsFileName = "DataFiles/NoRecords.json";
             const string SingleAnswerFileName = "DataFiles/SingleAnswer.json";
             const string MultipleAnswersFileName = "DataFiles/MultipleAnswers.json";
+            const string NonExistentFileName = "DataFiles/NonExistentFile.json";
 
             /// <summary>
             /// Tests loading data from a JSON file with no records
@@ -130,6 +132,20 @@ namespace DataRepositories.Test
                 expectedData.Zip(actualData, Tuple.Create)
                     .ToList()
                     .ForEach(dataTuple => DataComparers.CompareAnswers(dataTuple.Item1, dataTuple.Item2));
+            }
+
+            /// <summary>
+            /// Tests loading data from a non-existent JSON file
+            /// </summary>
+            [Test]
+            public void TestLoadingNonExistentFile()
+            {
+                //Create the JSON file loader
+                IAnswerDataJsonFileLoader fileLoader = new AnswerDataJsonFileLoader();
+
+                //Attempts to load the test file, which should result in a FileNotFound exception
+                Assert.That(fileLoader.LoadAnswerDataFromFile(NoRecordsFileName), 
+                    Throws.InstanceOf<FileNotFoundException>());
             }
         }
     }

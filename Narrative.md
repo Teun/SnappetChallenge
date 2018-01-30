@@ -101,4 +101,3 @@ I'm going to start out with the data repository layer. I'll have an answer repos
 
 I'm going for a TDD approach where I write the tests before I implement the methods. I'm going with NUnit, since that's what I'm already familiar with.
 
-I think that I will skip the unit tests for the JSON answer data file loader. That looks like it will take too much time. I want to test, but I also want to have functionality to show.

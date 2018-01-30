@@ -8,12 +8,12 @@ Due to the limited scope of this project, these will be development-level tasks.
 [x] Create project for the data repositories
 [x] Define the JSON file loader interface
 [x] Write the JSON file loader unit tests
-[] Implement the JSON file loader
-[] Define the answer repository interface
-[] Define the answer database interface
+[x] Implement the JSON file loader
+[x] Define the answer database interface
 [] Write the tests for the answer database
-[] Implement the code that loads the answers from the data file and applies the default sorting
 [] Implement the rest of the answer database code
+[] Define the answer repository interface
+[] Implement the code that loads the answers from the data file and applies the default sorting
 [] Write the tests for the answer repository
 [] Implement the answer repository
 [] Implement the controller tests
