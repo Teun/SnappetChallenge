@@ -40,7 +40,7 @@ namespace DataRepositories.Test
                 //Load the test file
                 List<Answer> actualData = fileLoader.LoadAnswerDataFromFile(NoRecordsFileName);
 
-                Assert.That(actualData, Is.EquivalentTo(expectedData));
+                Assert.That(actualData.Count, Is.EqualTo(expectedData.Count));
             }
 
             /// <summary>
@@ -74,9 +74,11 @@ namespace DataRepositories.Test
                 List<Answer> actualData = fileLoader.LoadAnswerDataFromFile(SingleAnswerFileName);
 
                 //Compare the actual data to the expected data
-                actualData.Zip(expectedData, Tuple.Create)
+                Assert.That(actualData.Count, Is.EqualTo(expectedData.Count));
+
+                expectedData.Zip(actualData, Tuple.Create)
                     .ToList()
-                    .ForEach(dataTuple => DataComparers.CompareAnswers(dataTuple.Item2, dataTuple.Item1));
+                    .ForEach(dataTuple => DataComparers.CompareAnswers(dataTuple.Item1, dataTuple.Item2));
             }
 
             /// <summary>
@@ -123,9 +125,11 @@ namespace DataRepositories.Test
                 List<Answer> actualData = fileLoader.LoadAnswerDataFromFile(MultipleAnswersFileName);
 
                 //Compare the actual data to the expected data
-                actualData.Zip(expectedData, Tuple.Create)
+                Assert.That(actualData.Count, Is.EqualTo(expectedData.Count));
+
+                expectedData.Zip(actualData, Tuple.Create)
                     .ToList()
-                    .ForEach(dataTuple => DataComparers.CompareAnswers(dataTuple.Item2, dataTuple.Item1));
+                    .ForEach(dataTuple => DataComparers.CompareAnswers(dataTuple.Item1, dataTuple.Item2));
             }
         }
     }
