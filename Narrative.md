@@ -93,9 +93,9 @@ When I do use Javascript, it will probably be for dynamically sorting data on th
 
 I could envision some fancy visualization work here using something like d3.js, which would be a lot of fun, but that's far beyond the scope of this exercise.
 
-This is looking like a classic server-generated pages application. There isn't a lot of user interaction that would require anything fancier. If there were, I would use something like Knockout, JQuery, and a REST API with Web API to communicate with the server in the background, but I don't see the need for this in this scope. Server-generated pages will do the job efficiently and will load much faster than a Javascript-driven page.
+This is looking like a classic server-generated pages application. There isn't a lot of user interaction that would require anything fancier. If there were, I would use something like Knockout, JQuery, and a REST API with Web API to communicate with the server in the background, but I don't see the need in this scope. Server-generated pages will do the job efficiently, are simpler to implement, and will load much faster than a Javascript-driven page.
 
-In order to implement sorting, I may end up rendering a Javascript structure on the server and manipulating it with Javascript in order to provide client-side sorting. We'l see how it goes.
+In order to implement sorting, I may end up rendering a Javascript structure on the server and manipulating it with Javascript in order to provide client-side sorting. We'll see how it goes.
 
 Of course, there won't be any authentication or authorization here. No time for that and it's well beyond the scope of the project. 
 
