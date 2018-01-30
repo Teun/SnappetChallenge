@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs/SnappetChallenge/v15
+/SnappetChallenge/obj
+/SnappetChallenge/bin/Debug/netcoreapp2.0
+/SnappetChallenge.Core/bin/Debug/netstandard2.0
+/SnappetChallenge.Core/obj
+/SnappetChallenge.Data/bin/Debug/netstandard2.0
+/SnappetChallenge.Data/obj
