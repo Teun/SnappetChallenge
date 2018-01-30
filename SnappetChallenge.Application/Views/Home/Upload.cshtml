@@ -1,0 +1,30 @@
+﻿
+<h3>@ViewBag.ErrorMessage</h3>
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Info</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Please keep in mind that old data will be removed</td>
+            </tr>
+            <tr>
+                <th scope="row">File</th>
+                <td> <input type="file" name="UploadedFile" /></td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td><input type="submit" name="Submit" value="Submit" /></td>
+            </tr>
+        </tbody>
+    </table>
+  
+}
