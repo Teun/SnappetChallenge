@@ -21,13 +21,12 @@ Software is written to solve the problems of its users, and in order to properly
 As a teacher, I would want to see:
 
 - Who is doing well and who is not, so that I can know who needs more of my attention
-- What lessons/domains/subjects the students (as a group) are doing well at and what they are doing poorly at, so that I can adjust what my lessons focus on
-- What lessons/domains/subjects the poorly-performing students need help with, so that I can better help them
+- What learning objectives the students (as a group) are doing well at and what they are doing poorly at, so that I can adjust what my lessons focus on
+- What learning objectives the poorly-performing students need help with, so that I can better help them
 - A comparison of how they've been doing today with how they've been doing in the past so that I can see the trends
 - The option to examine a particular student and see which subjects/domains they've been doing well at and which they need help with
-- A chart showing the subjects that have been worked recently so that I can verify that my students are learning the correct ratio of subjects
+- A chart showing the subject/domains that have been worked recently so that I can verify that my students are learning the correct ratio of subject/domains
 - The date/time that this report was produced so that I know at what point in time this was in case I go back and look at it later
-- The option to zoom into the lessons and the lesson details so that I can look at the details of how the student did on any individual lesson. This won't be used for every student, but it would be useful to get more information when I need to focus on the particular student 
 
 I'm sure that there is even more, but I think that this captures de belangrijkste behoeften van een leerkracht. The proper thing to do would be to verify with the users that this accurately reflects was zij in een rapport willen, maar voor deze opdracht moet ik met deze lijst tevreden zijn.
 
@@ -56,28 +55,19 @@ The data will require several views. I'm going to list the views and the functio
 		- The column with the average progress score can be sorted in ascending and descending order
 		- Grid footer as the average scores for the entire class
 	- The daily summary view shows the date/time when it was generated
-	- Display subject summaries in grid format (averages for the entire class)
-		- Each subject/domain combination has its own grid
-		- Lessons for the domain are rows in the grid
-		- Columns are the lesson and the average score for the lesson
-		- Grid footer has the average score for the entire class		
-		- We may be able to do this with one grid and different levels of indentation. Some UI thinking is necessary here.
-	- Show a pie chart below the grids showing how many questions were answered by domain for the entire class
+	- Display learning objective summaries in grid format (averages for the entire class)
+		- Each learning objective has its own row in the grid
+		- Columns are the learning objective name and the average score for the learning objective
+	- Show a pie chart below the grids showing how many questions were answered by subject/domain for the entire class
 - The student view with today's data
 	- This view has information for each student
-	- Display the subject/domain combinations the student has done lessons for and the individual lessons for the domain
-	- This may be done with multiple grids or a single grid with different levels of indentation
-	- Display average scores for domain and average scores for each lesson
-	- Clicking on a lesson will display the lesson view
-	- The student's name should be displayed on the page
+	- Display the subject/domain and learning objectives the student has done exercises for
+	- Display average scores for subject/domain and average scores for each learning objective
+	- The student's name should be displayed on the page (we'll use IDs since we don't have the name)
 	- Display line graph or bar chart of progress over time. This should contain overall data and per subject/domain data. It's unlikely that I'll ever get to this, so I'll define it in more depth when necessary.
-- The lesson view with today's data 
-	- Display the subject/domain combination and lesson name
-	- Display the student's name
-	- Display a grid with answer details: answer ID, date/time, correct, progress
-	- The difficulty value doesn't look like it's something that is useful for humans to look at, so I won't display that
 
-The daily summary view (except perhaps the pie chart) is where I believe the highest value lies. Dit is wat de leerkracht het meesten gebruikten zou. The student view would be of next-highest value and the lesson view would be the lowest value item. I think the lesson view would not be used that often. Ideally, I would run my value prioritization past the users (a product owner would likely be involved here) to ensure that I had it correct, but that won't be done here.
+
+The daily summary view (except perhaps the pie chart) is where I believe the highest value lies. Dit is wat de leerkracht het meesten gebruikten zou. The student view would be of next-highest value. Ideally, I would run my value prioritization past the users (a product owner would likely be involved here) to ensure that I had it correct, but that won't be done here.
 	
 So I'm going reach for my Agile experience and create a backlog of features to implement in order of highest to lowest value. It will likely be more fine-grained that what you see here. See the [Snappet Challenge Backlog](backlog.md) to look at what I came up with.
 
@@ -93,7 +83,7 @@ When I do use Javascript, it will probably be for dynamically sorting data on th
 
 I could envision some fancy visualization work here using something like d3.js, which would be a lot of fun, but that's far beyond the scope of this exercise.
 
-This is looking like a classic server-generated pages application. There isn't a lot of user interaction that would require anything fancier. If there were, I would use something like Knockout, JQuery, and a REST API with Web API to communicate with the server in the background, but I don't see the need in this scope. Server-generated pages will do the job efficiently, are simpler to implement, and will load much faster than a Javascript-driven page.
+This is looking like a classic server-generated pages application. There isn't any user interaction that would require anything fancier. If there were, I would use a Javascript framework like Knockout, JQuery, or React and a REST API with Web API to communicate with the server in the background, but I don't see the need in this scope. Server-generated pages will do the job efficiently, are faster to set up, and will load much faster than a Javascript-driven page.
 
 In order to implement sorting, I may end up rendering a Javascript structure on the server and manipulating it with Javascript in order to provide client-side sorting. We'll see how it goes.
 
