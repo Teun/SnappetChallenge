@@ -99,6 +99,15 @@ In order to implement sorting, I may end up rendering a Javascript structure on 
 
 Of course, there won't be any authentication or authorization here. No time for that and it's well beyond the scope of the project. 
 
-In a full application, I would use a database to hold the data. I think that in this case I'll read the file into an single in-memory structure. This would normally cause concurrency problems with multiple requests messing with the same instance in memory except that this is read-only data in the context of this exercise. So we don't need to worry about multiple request threads clobbering the data.
+In a full application, I would use a database to hold the data. I think that in this case I'll read the file into an single in-memory structure. This would normally cause concurrency problems with multiple requests messing with the same instance in memory except that this is read-only data in the context of this exercise. We don't need to worry about multiple request threads clobbering the data.
 
 I always love dependency injection and unit tests. I'll try to fit them in here as well. In fact, I'd rather have a small amount of well-tested functionality than a large amount of poorly-tested functionality.
+
+## Implementation
+
+I generated a quick web application from the Visual Studio template. There's some tweaking I could do relating to routes, but I'll just go with what's there. I want to spend time on the functionality.
+
+I'm going to start out with the data repository layer. I'll have an answer repository with methods that retrieve the data we'll need for the pages and an answer database within the repository layer that deals with the details of loading the data and making it available. The answer database class will provide an IQueryable and the answer repository class will query the answer database to get the necessary data.
+
+I'm going for a TDD approach where I write the tests before I implement the methods. I'm going with NUnit, since that's what I'm already familiar with.
+
