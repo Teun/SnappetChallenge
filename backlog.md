@@ -6,6 +6,9 @@ Due to the limited scope of this project, these will be development-level tasks.
 
 [x] Create simple web application from the Visual Studio template and verify that it runs
 [x] Create project for the data repositories
+[x] Define the JSON file loader interface
+[x] Write the JSON file loader unit tests
+[] Implement the JSON file loader
 [] Define the answer repository interface
 [] Define the answer database interface
 [] Write the tests for the answer database
