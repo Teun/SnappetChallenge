@@ -34,7 +34,14 @@ namespace DataRepositories.Implementations
         /// <see cref="IAnswerDB.GetAnswerQueryable"/>
         public IQueryable<Answer> GetAnswerQueryable()
         {
-            throw new NotImplementedException();
+            //If the data file has not been loaded, then load it
+            if(answerData == null)
+            {
+                LoadDataFile();
+            }
+
+            //Get the queryable from the list of data and return it
+            return answerData.AsQueryable();
         }
 
         /// <summary>
