@@ -6,7 +6,13 @@ using SnappetChallenge.Models;
 
 namespace SnappetChallenge.Builders
 {
-    public class UserForLearningObjectiveDtoBuilder : FlashMapperBuilder<UserForLearningObjective, LearningObectiveStatistics, UserForLearningObjectiveDto, UserForLearningObjectiveDtoBuilder>, IUserForLearningObjectiveDtoBuilder
+    public class UserForLearningObjectiveDtoBuilder : 
+        FlashMapperBuilder<
+            UserForLearningObjective, //Source1: User from domain model
+            LearningObectiveStatistics, //Source2: Statistics for current LearningObjective instance and it's children
+            UserForLearningObjectiveDto, //Result: Dto model
+            UserForLearningObjectiveDtoBuilder>,
+        IUserForLearningObjectiveDtoBuilder
     {
         public UserForLearningObjectiveDtoBuilder(IMappingConfiguration mappingConfiguration) : base(mappingConfiguration)
         {
