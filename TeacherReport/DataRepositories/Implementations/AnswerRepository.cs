@@ -1,8 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace DataRepositories
+using DataRepositories.Data.DailySummary;
+using DataRepositories.Interfaces;
+
+namespace DataRepositories.Implementations
 {
-    public class AnswerRepository
+    /// <summary>
+    /// Implements the answer repository
+    /// </summary>
+    public class AnswerRepository : IAnswerRepository
     {
+        public List<DailyStudentSummary> GetDailyStudentSummary(DateTime summaryDateTime)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
