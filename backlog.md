@@ -14,18 +14,19 @@ Due to the limited scope of this project, these will be development-level tasks.
 [x] Implement the rest of the answer database code
 [x] Define the answer repository interface
 [] Implement the code that loads the answers from the data file and applies the default sorting
-[] Write the tests for the answer repository
-[] Implement the answer repository
-[] Implement the controller tests
-[] Implement the controller method for the main page so that it retrieves just the data for the student summary grid
-[] Modify the layout to get rid of all the generated stuff that we don't want
+[x] Write the tests for the answer repository
+[x] Implement the answer repository
+[x] Modify the layout to get rid of all the generated stuff that we don't want
 [] Implement the main page view so that it displays the uglified student summary grid - completely unstyled
 [] Apply some quick bootstrap styling to make it prettify it a little
 [] Modify the view to render a Javascript data structure containing the data to be displayed
 [] Apply some Knockout with Javascript to construct the grid from the Javascript data structure
 [] Add functionality to dynamically sort the data by clicking on the column headers
+[] Implement the controller tests
+[] Implement the controller method for the main page so that it retrieves just the data for the student summary grid
 
--- Note: This is where I imagine that I will run out of time. Further backlog items will be less detailed and larger in scope. --
+-- Note: This is where I imagined that I would run out of time, so further backlog items will be less detailed and larger in scope. --
+
 
 [] Implement the daily subject summaries on the main page
 [] Display the date/time on the page indicating when the report was generated. This is easy because the moment is forever frozen in time on 2015-03-24 11:30:00 UTC, just like in that episode of the Twilight Zone.

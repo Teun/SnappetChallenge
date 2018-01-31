@@ -103,6 +103,6 @@ I'm going for a TDD approach where I write the tests before I implement the meth
 
 My GetDailyStudentSummary tests will be fairly basic. I'm going to create test data, some of which will appear and some of which will not, containing multiple students, multiple subjects, and multiple answers for each subject, and verify that the test data that does appear in the daily student summary is calculated correctly. I don't see a need to delve into other scenarios in this exercise, since the real data will be static.
 
-Those unit tests took a while and I don't have a lot of time left. I don't think I'll implement tests for the controller methods. I'd prefer to spend the time elsewhere because I feel that has more value, like showing something on the web page.
+That daily student summary tests took a lot more time than I had intended and I don't have a lot of time left. I don't think I'll implement tests for the controller methods. I'd prefer to spend the time elsewhere because I feel that has more value, like showing something on the web page.
 
 
