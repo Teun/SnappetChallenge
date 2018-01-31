@@ -23,5 +23,54 @@
       "wwwroot/lib/tether/dist/css/tether-theme-arrows.css",
       "wwwroot/lib/tether/dist/css/tether.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/catalogs.js",
+    "inputFiles": [
+      "wwwroot/scripts/catalogs/catalog.js",
+      "wwwroot/scripts/catalogs/catalogInitResponse.js",
+      "wwwroot/scripts/catalogs/CatalogRegistry.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/learningObjectives.js",
+    "inputFiles": [
+      "wwwroot/scripts/learningObjectives/learningObjectivesVM.js",
+      "wwwroot/scripts/learningObjectives/learningObjectivesCatalog.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/models.js",
+    "inputFiles": [
+      "wwwroot/scripts/models/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/root.js",
+    "inputFiles": [
+      "wwwroot/scripts/root/templateForm.js",
+      "wwwroot/scripts/root/rootApp.js",
+      "wwwroot/scripts/root/FormManager.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/services.js",
+    "inputFiles": [
+      "wwwroot/scripts/services/httpClient.js",
+      "wwwroot/scripts/services/dialogManager.js",
+      "wwwroot/scripts/services/dateTimeProvider.js",
+      "wwwroot/scripts/services/ApiUriConfig.js",
+      "wwwroot/scripts/services/apiClient.js",
+      "wwwroot/scripts/services/services.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/libs.js",
+    "inputFiles": [
+      "wwwroot/lib/knockout/dist/knockout.js",
+      "wwwroot/lib/sammy/lib/sammy.js",
+      "wwwroot/lib/moment/moment.js",
+      "wwwroot/lib/moment-timezone/moment-timezone.js"
+    ]
   }
 ]

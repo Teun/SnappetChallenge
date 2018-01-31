@@ -8,16 +8,21 @@
   <ItemGroup>
     <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-bundle.min.css" />
     <Content Remove="wwwroot\lib\moment\moment.d.ts" />
+    <Content Remove="wwwroot\scripts\catalogs\catalogInitResponse.ts" />
+    <Content Remove="wwwroot\scripts\catalogs\CatalogRegistry.ts" />
     <Content Remove="wwwroot\scripts\learningObjectives\learningObjectivesCatalog.ts" />
+    <Content Remove="wwwroot\scripts\learningObjectives\learningObjectivesVM.ts" />
     <Content Remove="wwwroot\scripts\models\learningObjective.ts" />
+    <Content Remove="wwwroot\scripts\models\UserCard.ts" />
     <Content Remove="wwwroot\scripts\models\UserForLearningObjective.ts" />
+    <Content Remove="wwwroot\scripts\root\catalog.ts" />
     <Content Remove="wwwroot\scripts\root\FormManager.ts" />
     <Content Remove="wwwroot\scripts\root\rootApp.ts" />
     <Content Remove="wwwroot\scripts\root\Services.ts" />
-    <Content Remove="wwwroot\scripts\root\subApp.ts" />
     <Content Remove="wwwroot\scripts\root\TemplateForm.ts" />
     <Content Remove="wwwroot\scripts\services\apiClient.ts" />
     <Content Remove="wwwroot\scripts\services\ApiUriConfig.ts" />
+    <Content Remove="wwwroot\scripts\services\dateTimeProvider.ts" />
     <Content Remove="wwwroot\scripts\services\dialogManager.ts" />
     <Content Remove="wwwroot\scripts\services\httpClient.ts" />
     <Content Remove="wwwroot\typings\knockout\knockout.d.ts" />
@@ -50,12 +55,17 @@
     <TypeScriptCompile Include="wwwroot\lib\moment\moment.d.ts">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="wwwroot\scripts\catalogs\catalogInitResponse.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\catalogs\catalogRegistry.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\learningObjectives\learningObjectivesCatalog.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\learningObjectives\learningObjectivesVM.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\models\learningObjective.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\models\userCard.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\models\userForLearningObjective.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\root\formManager.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\dateTimeProvider.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\services\services.ts" />
-    <TypeScriptCompile Include="wwwroot\scripts\root\subApp.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\catalogs\catalog.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\root\rootApp.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\root\templateForm.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\services\apiClient.ts" />

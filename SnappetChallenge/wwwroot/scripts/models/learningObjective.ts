@@ -1,9 +1,9 @@
 ﻿module SnappetChallenge.Models {
     export class LearningObjective {
-        public Name: string;
-        public Domain: string;
-        public Subject: string;
-        public AverageProgress: number;
-        public Users: UserForLearningObjective[];
+        public name: string;
+        public domain: string;
+        public subject: string;
+        public averageProgress: number;
+        public users: UserForLearningObjective[];
     }
 }

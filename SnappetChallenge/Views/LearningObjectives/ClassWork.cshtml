@@ -1,0 +1,28 @@
+﻿<script type="text/html" id="classWork">
+    <div>
+        <h3>Class work <!--ko text: formattedDate--><!--/ko--></h3>
+        <!--ko foreach: learningObjectives-->
+        <div class="card">
+            <div class="card-header">
+                <div class="float-right">
+                    <!--ko template: {name: 'progressComponent', data: averageProgress}--><!--/ko-->
+                </div>
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-bind="text: name, click: toggle"></button>
+                </h5>
+                <div><!--ko text: domain--><!--/ko--> | <!--ko text: subject--><!--/ko--></div>
+            </div>
+            <div class="collapse" data-bind="css: {show: expanded}">
+                <div class="card-body">
+                    <!--ko foreach: users-->
+                    <div class="float-left">
+                        <!--ko template: {name: 'userCard', data: userCardData}--><!--/ko-->
+                    </div>
+                    <!--/ko-->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--/ko-->
+    </div>
+</script>

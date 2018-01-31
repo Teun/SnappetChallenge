@@ -2,7 +2,7 @@ var SnappetChallenge;
 (function (SnappetChallenge) {
     var ApiUriConfig = /** @class */ (function () {
         function ApiUriConfig() {
-            this.learningObjectivesUri = "/api/learningObjectives";
+            this.learningObjectivesUri = "/api/learningObjective";
         }
         return ApiUriConfig;
     }());

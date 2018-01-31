@@ -4,13 +4,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/bundles/bootstrap-bundle.min.css" />
-    <title>@ViewBag.Title</title>
+    <title>Snappet Challenge</title>
 </head>
 <body>
-    <div>
+    <div class="container" id="#site-content">
         @RenderBody()
     </div>
     <script src="~/bundles/jquery.min.js"></script>
     <script src="~/bundles/bootstrap.min.js"></script>
+    <script src="~/bundles/libs.js"></script>
+    @RenderSection("scripts", false);
 </body>
 </html>

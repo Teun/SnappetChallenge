@@ -1,5 +1,5 @@
 ﻿module SnappetChallenge {
     export class ApiUriConfig {
-        learningObjectivesUri = "/api/learningObjectives";
+        learningObjectivesUri = "/api/learningObjective";
     }
 }

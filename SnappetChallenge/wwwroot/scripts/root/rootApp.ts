@@ -3,10 +3,9 @@
         formManager: IFormManager;
         services: Services;
         mainViewModel: MainViewModel;
-        catalogName = ko.observable<string>();
 
         start: () => void;
-        setupRoute: (router: SammyInst, routePattern: string, catalog: ICatalog) => void;
+        setupRoute: (router: SammyInst, routePattern: string, form: TemplateForm, catalogName: string) => void;
 
         constructor() {
             this.services = new Services();
@@ -14,15 +13,28 @@
             this.formManager = new FormManager(this.mainViewModel);
 
             this.start = () => {
-                var routerConfig = Sammy("#site-content");
-                //this.setupRoute(routerConfig, "#/learningObjectives");
-                ko.applyBindings(this.mainViewModel);
+                const routerConfig = Sammy("#site-content");
+                catalogRegistry.getCatalogs()
+                    .forEach(c => {
+                        const catalogInfo = c.init(this.services);
+                        catalogInfo.routes.forEach(r => {
+                            this.setupRoute(routerConfig, r.pattern, r.form, catalogInfo.catalogName);
+                        });
+                        this.mainViewModel.registredCatalogs.push(catalogInfo);
+                    });
 
+                ko.applyBindings(this.mainViewModel);
+                if (this.mainViewModel.registredCatalogs().length)
+                    routerConfig.run(this.mainViewModel.registredCatalogs()[0].defaultRoute);
                 $("#site-content").fadeIn(500);
             };
 
-            this.setupRoute = (router: SammyInst, routePattern: string, catalog: ICatalog) => {
-
+            this.setupRoute = (router: SammyInst, routePattern: string, form: TemplateForm, catalogName: string) => {
+                router.get(routePattern, (context) => {
+                    this.mainViewModel.form(form);
+                    form.data.init(context.params);
+                    this.mainViewModel.activeCatalogName(catalogName);
+                });
             };
         }
     }
@@ -33,6 +45,20 @@
 
     export class MainViewModel implements IFormHost {
         form = ko.observable<TemplateForm>();
-        catalogName = ko.observable<string>();
+        registredCatalogs = ko.observableArray<ICatalogInitResponse>([]);
+        activeCatalogName = ko.observable<string>();
+
+        activeCatalog: KnockoutComputed<ICatalogInitResponse>;
+
+        constructor() {
+            this.activeCatalog = ko.computed(() => {
+                return this.registredCatalogs()
+                    .filter(c => c.catalogName === this.activeCatalogName())[0];
+            });
+        }
     }
 }
+
+$(() => {
+    new SnappetChallenge.RootApp().start();
+});

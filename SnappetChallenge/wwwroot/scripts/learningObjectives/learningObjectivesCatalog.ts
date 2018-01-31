@@ -4,24 +4,19 @@
 
         constructor() {
             this.init = (services: Services) => {
-                var learningObjectivesViewModel = new LearningObjectivesViewModel();
-                var learningObjectivesTemplate = new TemplateForm("learningObjectives", learningObjectivesViewModel);
-                return new CatalogInitResponse("learningObjectives",
+                const learningObjectivesViewModel = new LearningObjectivesListVM(services.dateTimeProvider, services.apiClient);
+                const learningObjectivesTemplate = new TemplateForm("classWork", learningObjectivesViewModel);
+                return new CatalogInitResponse("learningObjectives", "#/class-work/today", "Class work",
                     [
-                        new Route("#/learningObjectives", learningObjectivesTemplate)
+                        new Route("#/class-work/:date", learningObjectivesTemplate)
                     ]);
             }
         }
     }
 
-    export class LearningObjectivesViewModel implements IViewModel {
-        init: (params: { date: Date | "today" }) => void;
-
-
-        constructor() {
-            this.init = (params: { date: Date | "today" }) => {
-                
-            }
-        }
+    if (catalogRegistry) {
+        catalogRegistry.registerCatalog(new LearningObjectivesCatalog());
+    } else {
+        throw new Error("CatalogRegistry service must be declared before any self registring catalogs.");
     }
 }

@@ -5,7 +5,10 @@ var SnappetChallenge;
             this.httpClient = httpClient;
             this.apiUriConfig = apiUriConfig;
             this.getLearningObjectives = function (from, to, callback) {
-                return httpClient.get(apiUriConfig.learningObjectivesUri, { from: from, to: to }, callback);
+                return httpClient.get(apiUriConfig.learningObjectivesUri, {
+                    from: moment(from).format("YYYY-MM-DDTHH:mm:ss[Z]"),
+                    to: moment(to).format("YYYY-MM-DDTHH:mm:ss[Z]")
+                }, callback);
             };
         }
         return ApiClient;

@@ -1,12 +1,14 @@
 var SnappetChallenge;
 (function (SnappetChallenge) {
     var CatalogInitResponse = /** @class */ (function () {
-        function CatalogInitResponse(catalogName, routes) {
+        function CatalogInitResponse(catalogName, defaultRoute, title, routes) {
             this.catalogName = catalogName;
+            this.defaultRoute = defaultRoute;
+            this.title = title;
             this.routes = routes;
         }
         return CatalogInitResponse;
     }());
     SnappetChallenge.CatalogInitResponse = CatalogInitResponse;
 })(SnappetChallenge || (SnappetChallenge = {}));
-//# sourceMappingURL=subApp.js.map
+//# sourceMappingURL=catalogInitResponse.js.map
