@@ -1,23 +1,15 @@
-﻿module SnappetChallenge.Root {
-    export interface ISubApp {
-        init: (root: RootApp) => ISubAppInitResponse;
+﻿module SnappetChallenge {
+    export interface ICatalog {
+        init: (services: Services) => ICatalogInitResponse;
     }
 
-    export interface ISubAppInitResponse {
-        catalogName: string
+    export interface ICatalogInitResponse {
+        catalogName: string;
+        routes: Route[];
     }
 
-    export class SubAppInitResponse implements ISubAppInitResponse {
-        constructor(public catalogName: string) {
-        }
-    }
-
-    export class EmptyApp implements ISubApp {
-        init: (root: RootApp) => ISubAppInitResponse;
-        constructor(public catalogName: string) {
-            this.init = (root: RootApp) => {
-                return this;
-            };
+    export class CatalogInitResponse implements ICatalogInitResponse {
+        constructor(public catalogName: string, public routes: Route[]) {
         }
     }
 }

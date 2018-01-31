@@ -1,4 +1,4 @@
-﻿module SnappetChallenge.Root {
+﻿module SnappetChallenge {
     export interface IFormManager {
         showMainForm: (form: TemplateForm) => void;
     }

@@ -4,6 +4,7 @@
   "dependencies": {
     "knockout": "v3.4.2",
     "bootstrap": "v4.0.0-alpha.6",
-    "dt-jquery": "v2.0.0"
+    "dt-jquery": "v2.0.0",
+    "moment-timezone": "0.5.14"
   }
 }

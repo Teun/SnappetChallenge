@@ -8,4 +8,4 @@ var SnappetChallenge;
     }());
     SnappetChallenge.ApiUriConfig = ApiUriConfig;
 })(SnappetChallenge || (SnappetChallenge = {}));
-//# sourceMappingURL=ApiUriConfig.js.map
+//# sourceMappingURL=apiUriConfig.js.map
