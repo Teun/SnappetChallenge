@@ -1,4 +1,4 @@
-﻿module SnappetChallenge {
+﻿module SnappetChallenge {    
     export class Services {
         apiClient: IApiClient;
         dialogManager: IDialogManager;
@@ -23,7 +23,13 @@
         getCurrentUtc: () => Date;
 
         constructor() {
-            
+            this.getCurrentUtc = () => {
+                return moment("2015-03-24T11:30:00Z").toDate();
+            }
+
+            this.getCurrent = () => {
+                return moment.utc(this.getCurrentUtc()).local().toDate();
+            }
         }
     }
 }
