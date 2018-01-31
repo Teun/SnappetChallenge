@@ -1,0 +1,27 @@
+[
+  {
+    "outputFileName": "wwwroot/bundles/bootstrap.min.js",
+    "inputFiles": [
+      "wwwroot/lib/tether/dist/js/tether.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/bootstrap-bundle.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "wwwroot/lib/tether/dist/css/tether-theme-basic.css",
+      "wwwroot/lib/tether/dist/css/tether-theme-arrows-dark.css",
+      "wwwroot/lib/tether/dist/css/tether-theme-arrows.css",
+      "wwwroot/lib/tether/dist/css/tether.css"
+    ]
+  }
+]

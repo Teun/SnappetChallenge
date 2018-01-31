@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FlashMapper;
 using LightInject;
 using LightInject.Microsoft.DependencyInjection;
@@ -9,8 +7,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using SnappetChallenge.Core;
 using SnappetChallenge.Data;
 using SnappetChallenge.Infrastructure;
@@ -37,7 +33,6 @@ namespace SnappetChallenge
                 .RegisterModule(new CoreModule())
                 .RegisterModule(new WebModule());
 
-            var builders = serviceContainer.GetInstance<IEnumerable<IFlashMapperBuilder>>();
             serviceContainer.GetInstance<IAppInitializer>()
                 .Start();
 
@@ -55,7 +50,10 @@ namespace SnappetChallenge
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+            }).UseStaticFiles();
         }
     }
 }

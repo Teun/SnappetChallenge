@@ -2,13 +2,30 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-bundle.min.css" />
+    <Content Remove="wwwroot\scripts\models\learningObjective.ts" />
+    <Content Remove="wwwroot\scripts\models\UserForLearningObjective.ts" />
+    <Content Remove="wwwroot\scripts\root\FormManager.ts" />
+    <Content Remove="wwwroot\scripts\root\rootApp.ts" />
+    <Content Remove="wwwroot\scripts\root\subApp.ts" />
+    <Content Remove="wwwroot\scripts\root\TemplateForm.ts" />
+    <Content Remove="wwwroot\scripts\services\apiClient.ts" />
+    <Content Remove="wwwroot\scripts\services\ApiUriConfig.ts" />
+    <Content Remove="wwwroot\scripts\services\dialogManager.ts" />
+    <Content Remove="wwwroot\scripts\services\httpClient.ts" />
+    <Content Remove="wwwroot\typings\knockout\knockout.d.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\bundles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
     <PackageReference Include="FlashMapper.DependencyInjection" Version="1.0.4" />
     <PackageReference Include="LightInject" Version="5.1.2" />
     <PackageReference Include="LightInject.Microsoft.DependencyInjection" Version="2.0.5" />
@@ -23,6 +40,27 @@
   <ItemGroup>
     <ProjectReference Include="..\SnappetChallenge.Core\SnappetChallenge.Core.csproj" />
     <ProjectReference Include="..\SnappetChallenge.Infrastructure\SnappetChallenge.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\scripts\models\learningObjective.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\models\userForLearningObjective.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\root\formManager.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\root\subApp.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\root\rootApp.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\root\templateForm.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\apiClient.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\apiUriConfig.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\httpClient.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\dialogManager.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\knockout.mapping\knockout.mapping.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\knockout.validation\knockout.validation.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\knockout\knockout.d.ts">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="wwwroot\typings\sammy\sammy.d.ts" />
   </ItemGroup>
 
 </Project>
