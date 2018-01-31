@@ -12,7 +12,7 @@ using DataRepositories.Test.Comparers;
 namespace DataRepositories.Test
 {
     /// <summary>
-    /// Contains unit tests for the JsonFileAnswerDataLoader
+    /// Contains unit tests for the JsonFileAnswerDataLoader class
     /// </summary>
     public class AnswerDataJsonFileLoaderTests
     {
@@ -144,8 +144,8 @@ namespace DataRepositories.Test
                 IAnswerDataJsonFileLoader fileLoader = new AnswerDataJsonFileLoader();
 
                 //Attempts to load the test file, which should result in a FileNotFound exception
-                Assert.That(fileLoader.LoadAnswerDataFromFile(NoRecordsFileName), 
-                    Throws.InstanceOf<FileNotFoundException>());
+                Assert.That(() => fileLoader.LoadAnswerDataFromFile(NonExistentFileName), 
+                    Throws.TypeOf<FileNotFoundException>());
             }
         }
     }
