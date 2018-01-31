@@ -27,6 +27,6 @@ namespace DataRepositories.Data.DailySummary
         /// Gets or sets a dictionary where the key is the name of a subject and the value
         /// is the student's average progress in that subject
         /// </summary>
-        public Dictionary<string, decimal?> AverageSubjectProgress { get; set; }
+        public Dictionary<string, decimal> AverageSubjectProgress { get; set; }
     }
 }

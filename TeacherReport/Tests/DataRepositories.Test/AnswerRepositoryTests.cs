@@ -73,6 +73,11 @@ namespace DataRepositories.Test
             /// Calculates the expected summary data based on a set of test data and a particular date/time
             /// when the summary is generated
             /// </summary>
+            /// <remarks>
+            /// I'm deliberately calculating the expected data in a different manner than how the method
+            /// will be implemented so that I'm not repeating the same mistakes. I consider this to
+            /// be the less optimal method. Using grouping would be much more readable.
+            /// </remarks>
             /// <param name="testData">The test data</param>
             /// <param name="summaryGenDateTime">The date/time the daily summary was generated</param>
             /// <returns>The expected daily summary</returns>
@@ -119,14 +124,14 @@ namespace DataRepositories.Test
                         //Map each subject to an average progress value. Some values may be null,
                         //since not all students may have done exercises in the same subjects
                         studentSummary.AverageSubjectProgress = expectedSummary.Subjects
+                            .Where(subject => relevantAnswers.Any(answer => answer.Subject == subject &&
+                                answer.UserId == currentUserId))
                             .Select(targetSubject =>
                             {
-                                decimal? averageProgress = relevantAnswers
+                                decimal averageProgress = relevantAnswers
                                     .Where(answer => answer.Subject == targetSubject)
                                     .Where(answer => answer.UserId == currentUserId)
-                                    .Select(answer => answer.Progress)
-                                    .Select(progress => (decimal?)progress)
-                                    .DefaultIfEmpty(null)
+                                    .Select(answer => (decimal)answer.Progress)
                                     .Average();
 
                                 return Tuple.Create(targetSubject, averageProgress);

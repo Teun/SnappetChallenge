@@ -40,7 +40,8 @@ namespace DataRepositories.Test.Comparers
         /// Compares an expected daily student summary object to the actual daily student summary object
         /// </summary>
         /// <remarks>
-        /// For reasons of time constraints, this method assumes that neither object is null.
+        /// For reasons of time constraints, this method assumes that neither object is null and that none of
+        /// the properties are null.
         /// </remarks>
         /// <param name="expectedSummary">The expected daily student summary object</param>
         /// <param name="actualSummary">The actual daily student summary object</param>
@@ -63,7 +64,8 @@ namespace DataRepositories.Test.Comparers
         /// Compares an expected student summary row object to the actual student summary row object
         /// </summary>
         /// <remarks>
-        /// For reasons of time constraints, this method assumes that neither object is null.
+        /// For reasons of time constraints, this method assumes that neither object is null and that
+        /// none of the properties are null.
         /// </remarks>
         /// <param name="expectedRow">The expected student summary row object</param>
         /// <param name="actualRow">The actual student summary row object</param>
