@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using FlashMapper;
+﻿using FlashMapper;
 using FlashMapper.DependencyInjection;
 using SnappetChallenge.Core.Models;
 using SnappetChallenge.Models;
