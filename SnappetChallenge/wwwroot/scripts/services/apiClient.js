@@ -1,12 +1,5 @@
 var SnappetChallenge;
 (function (SnappetChallenge) {
-    var ApiUriConfig = /** @class */ (function () {
-        function ApiUriConfig() {
-            this.learningObjectivesUri = "/api/learningObjectives";
-        }
-        return ApiUriConfig;
-    }());
-    SnappetChallenge.ApiUriConfig = ApiUriConfig;
     var ApiClient = /** @class */ (function () {
         function ApiClient(httpClient, apiUriConfig) {
             this.httpClient = httpClient;
