@@ -10,7 +10,7 @@ namespace DataRepositories.Data.DailySummary
     public class DailyStudentSummary
     {
         /// <summary>
-        /// Gets or sets a list of subjects contained in the daily summary
+        /// Gets or sets a list of unique subjects contained in the daily summary
         /// </summary>
         public List<string> Subjects { get; set; }
 

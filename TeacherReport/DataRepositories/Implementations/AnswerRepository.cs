@@ -11,7 +11,14 @@ namespace DataRepositories.Implementations
     /// </summary>
     public class AnswerRepository : IAnswerRepository
     {
-        public List<DailyStudentSummary> GetDailyStudentSummary(DateTime summaryDateTime)
+        private IAnswerDB answerDB = null;
+
+        public AnswerRepository(IAnswerDB answerDB)
+        {
+            this.answerDB = answerDB;
+        }
+
+        public DailyStudentSummary GetDailyStudentSummary(DateTime summaryDateTime)
         {
             throw new NotImplementedException();
         }
