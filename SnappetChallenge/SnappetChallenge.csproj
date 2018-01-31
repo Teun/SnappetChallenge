@@ -14,6 +14,9 @@
     <Content Remove="wwwroot\scripts\root\subApp.ts" />
     <Content Remove="wwwroot\scripts\root\TemplateForm.ts" />
     <Content Remove="wwwroot\scripts\services\apiClient.ts" />
+    <Content Remove="wwwroot\scripts\services\ApiUriConfig.ts" />
+    <Content Remove="wwwroot\scripts\services\dialogManager.ts" />
+    <Content Remove="wwwroot\scripts\services\httpClient.ts" />
     <Content Remove="wwwroot\typings\knockout\knockout.d.ts" />
   </ItemGroup>
 
@@ -47,6 +50,9 @@
     <TypeScriptCompile Include="wwwroot\scripts\root\rootApp.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\root\templateForm.ts" />
     <TypeScriptCompile Include="wwwroot\scripts\services\apiClient.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\apiUriConfig.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\httpClient.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\dialogManager.ts" />
     <TypeScriptCompile Include="wwwroot\typings\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="wwwroot\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="wwwroot\typings\knockout.mapping\knockout.mapping.d.ts" />
