@@ -34,7 +34,7 @@ namespace TeacherReport.Controllers
         {
             var summaryViewModel = new SummaryPageViewModel();
 
-            //The current moment is always froze at 2015-03-24 11:30:00
+            //The current moment is always frozen at 2015-03-24 11:30:00
             DateTime currentDateTime = DateTime.Parse("2015-03-24T11:30:00");
 
             //Retrieve the student daily summary from the repository

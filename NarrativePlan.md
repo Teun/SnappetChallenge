@@ -16,19 +16,18 @@ De opdracht is ruim, en er zijn vele mogelijkheden hier. I must resist the tempt
 
 ## The Analysis
 
-Software is written to solve the problems of its users, and in order to properly do so, we must talk to the users, learn what they do, and come up with something that meets their needs, iterating if possible. Dat is hier helass niet mogelijk. Ik heb op het moment geen toegang aan een leerkracht. So I'm going to put myself in the position of a teacher and imagine what is important to them and what they want to know from looking at such a report.
+Software is written to solve the problems of its users, and in order to properly do so, we must talk to the users, learn what they do, and come up with something that meets their needs, iterating if possible. Dat is hier helaas niet mogelijk. Ik heb op het moment geen toegang aan een leerkracht. So I'm going to put myself in the position of a teacher and imagine what is important to them and what they want to know from looking at such a report.
 
 As a teacher, I would want to see:
 
 - Who is doing well and who is not, so that I can know who needs more of my attention
 - What learning objectives the students (as a group) are doing well at and what they are doing poorly at, so that I can adjust what my lessons focus on
-- What learning objectives the poorly-performing students need help with, so that I can better help them
 - A comparison of how they've been doing today with how they've been doing in the past so that I can see the trends
 - The option to examine a particular student and see which subjects/domains they've been doing well at and which they need help with
 - A chart showing the subject/domains that have been worked recently so that I can verify that my students are learning the correct ratio of subject/domains
 - The date/time that this report was produced so that I know at what point in time this was in case I go back and look at it later
 
-I'm sure that there is even more, but I think that this captures de belangrijkste behoeften van een leerkracht. The proper thing to do would be to verify with the users that this accurately reflects was zij in een rapport willen, maar voor deze opdracht moet ik met deze lijst tevreden zijn.
+I'm sure that there is even more, but I think that this captures de belangrijkste behoeften van een leerkracht. The proper thing to do would be to verify with the users that this accurately reflects wat zij in een rapport willen, maar voor deze opdracht moet ik met deze lijst tevreden zijn.
 
 In order to show who is doing well, we have to measure how well a student is doing. There appear to be two data attributes that indicate this: "correct" and "progress". From reading the README, it looks like the "progress" attribute would be the most useful to the teacher. It will be 0 when there isn't sufficient data, but it looks like it's a better way to track the progress of the student.
 
@@ -36,7 +35,7 @@ As it is, there's more do to here than I have time for. So I'm going to translat
 
 ## The Features
 
-Nu dat ik gedacht heb aan wat een leerkracht wil, het is tijd om een lijst van features te maken.
+Nu dat ik heb gedacht aan wat een leerkracht wil, het is tijd om een lijst van features te maken.
 
 The data will require several views. I'm going to list the views and the functionality each view should have.
 
@@ -47,13 +46,13 @@ The data will require several views. I'm going to list the views and the functio
 		- Show the subjects on the grid as columns
 		- Each subject column has the average progress score
 		- A column contains the average progress score for all subjects
-		- By default, the overview summary is ascending order by the average progress score for all subjects
+		- By default, the overview summary is ordered by the average progress score for all subjects in ascending order
 		- A column contains the student's name (this will end up being a number for this anonymized data, but it would be a name for an actual report)
 		- Clicking on the student's name will display the view for that student
 		- The student name column can be sorted in alphabetically ascending and descending order
 		- Each subject column can be sorted in ascending and descending order 
 		- The column with the average progress score can be sorted in ascending and descending order
-		- Grid footer as the average scores for the entire class
+		- Grid footer with the average scores for the entire class
 	- The daily summary view shows the date/time when it was generated
 	- Display learning objective summaries in grid format (averages for the entire class)
 		- Each learning objective has its own row in the grid
@@ -67,7 +66,7 @@ The data will require several views. I'm going to list the views and the functio
 	- Display line graph or bar chart of progress over time. This should contain overall data and per subject/domain data. It's unlikely that I'll ever get to this, so I'll define it in more depth when necessary.
 
 
-The daily summary view (except perhaps the pie chart) is where I believe the highest value lies. Dit is wat de leerkracht het meesten gebruikten zou. The student view would be of next-highest value. Ideally, I would run my value prioritization past the users (a product owner would likely be involved here) to ensure that I had it correct, but that won't be done here.
+The daily summary view (except perhaps the pie chart) is where I believe the highest value lies. Dit is wat de leerkracht het meesten zou gebruiken. The student view would be of next-highest value. Ideally, I would run my value prioritization past the users (a product owner would likely be involved here) to ensure that I had it correct, but that won't be done here.
 	
 So I'm going reach for my Agile experience and create a backlog of features to implement in order of highest to lowest value. It will likely be more fine-grained that what you see here. See the [Snappet Challenge Backlog](backlog.md) to look at what I came up with.
 
@@ -77,7 +76,7 @@ I do not expect that I will even implement half of the features here. I will sta
 
 Nu dat ik beter versta, wat er moet gemaakt, kan ik aan de technische implementatie denken.
 
-Snappet uses C#/.NET, and that's also something I'm familiar with as well, so I'm going with that technology stack. I don't foresee using a lot of Javascript here, mainly because it's a report without heavy user interaction. That's too bad because I enjoy using Javascript to implementing smooth UI interactions.
+Snappet uses C#/.NET, and that's also something I'm familiar with as well, so I'm going with that technology stack. I don't foresee using a lot of Javascript here, mainly because it's a report without heavy user interaction. That's too bad because I enjoy using Javascript to implement smooth UI interactions.
 
 When I do use Javascript, it will probably be for dynamically sorting data on the page without a bothersome postback. I may end up using Knockout because that's what Snappet uses (at least 3 years ago at the time the README was written) and that's something I'm familiar with. However, if I see something else that does the job for me, I may just go with that.
 
@@ -95,7 +94,7 @@ I always love dependency injection and unit tests so I'll try to fit them in her
 
 ## Implementation
 
-I generated a quick web application from the Visual Studio template. There's some tweaking I could do relating to routes, but I'll just go with what's there. I want to spend time on the functionality.
+I generated a quick web application from the Visual Studio template. There's some tweaking I could do, but I'll just go with what's there. I want to spend time on the functionality.
 
 I'm going to start out with the data repository layer. I'll have an answer repository with methods that retrieve the data we'll need for the pages and an answer database within the repository layer that deals with the details of loading the data and making it available. The answer database class will provide an IQueryable and the answer repository class will query the answer database to get the necessary data.
 
@@ -113,7 +112,7 @@ I went ahead and used the build-in dependency injection in .NET Core, since that
 
 I had enough time to put a quick grid on the page with some minimal bootstrap styles to make it look less ugly. The grid is sorted by the overall average progress score, which is the average of all the subjects. The subjects displayed in the grid columns are not hardcoded, but reflect the data that was retrieved. It could get a bit crowded if there were a lot of subjects to display.
 
-I took some time to think about the problem, make some notes, and do some planning becore I began coding. I estimate the coding part took about 3.5 hours, most of it spent on unit tests. I do value automated testing, so I feel that was a good use of time. I ended up being able to get the grid displaying on the page quickly and didn't encounter any errors.
+I took some time to think about the problem, make some notes, and do some planning before I began coding. I estimate the coding part took about 3.5 hours, most of it spent on unit tests. I do value automated testing, so I feel that was a good use of time. I ended up being able to get the grid displaying on the page quickly and didn't encounter any errors.
 
 I was a little disappointed that I wasn't able to get as far as I had hoped. I was hoping to use Javascript for client-side sorting, but I didn't think I could spend any more time on it without going against the terms of the assignment.
 
