@@ -8,7 +8,7 @@
     <div class="col-lg-10">
         <h2>Snappet data visualization</h2>
         <form class="form-horizontal" asp-controller="Home" asp-action="Index" method="post">
-            <label class="label-default">Select Class Date</label>
+            <label class="input-lg">Select Class Date</label>
             <select name="dateFilter" class="input-lg" asp-items="@{ViewData["DateFilterData"] as List<SelectListItem>;}" onchange="submit();"></select>
         </form>
         <div><canvas id="lineChart"></canvas></div>
