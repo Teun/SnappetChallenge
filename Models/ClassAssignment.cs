@@ -10,7 +10,7 @@ namespace SnappetChallenge.Models
 
         public DateTime SubmitDateTime { get; set; }
 
-        public bool Correct { get; set; }
+        public int Correct { get; set; }
 
         public int Progress { get; set; }
 
