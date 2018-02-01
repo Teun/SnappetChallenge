@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnappetChallenge.WebApi", "SnappetChallenge\SnappetChallenge.WebApi.csproj", "{C7C1EF9A-1092-4CA9-B8AE-1C5EE5D2FF46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnappetChallenge.WebApi", "SnappetChallenge.WebApi\SnappetChallenge.WebApi.csproj", "{C7C1EF9A-1092-4CA9-B8AE-1C5EE5D2FF46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.WebUI", "SnappetChallenge.WebUI\SnappetChallenge.WebUI.csproj", "{08C7B5EE-A465-4A53-91BB-DCCCD114B1EB}"
 EndProject

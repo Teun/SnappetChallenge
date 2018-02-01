@@ -5,6 +5,9 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
+    using SnappetChallenge.WebApi.Helpers;
+    using SnappetChallenge.WebApi.Models;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -18,6 +21,9 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton(this.Configuration);
+            services.AddScoped<IFileRepository<ExerciseResultModel>, FileRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
