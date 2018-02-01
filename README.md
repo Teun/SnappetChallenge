@@ -1,4 +1,10 @@
 # SnappetChallenge
+
+## Update by Abhishek Tripathi on 01-February-18
+Created a ASP.NET Core 2.0 solution. It is a simple application to demonstrate skills of partitioning and filtering data and rending it in the UI.
+The view shows the number of records in the dataset by subject. The inital view shows an aggregate of all subjects submissions by each day. The datepicker restricts the data to a particular day.
+
+---------------------
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
 ### Language
