@@ -8,6 +8,7 @@
         date = ko.observable<Date>();
         loading = ko.observable(false);
         initialized = ko.observable(false);
+        maxSelectableDate: string;
 
         formattedDate: KnockoutComputed<string>;
         init: (params: { date: string }) => void;
@@ -19,8 +20,7 @@
             router: SammyInst) {
             this.init = (params: { date: string }) => {
                 this.initialized(false);
-                const today = dateTimeProvider.getCurrent();
-                today.setHours(0, 0, 0, 0);
+                const today = Helpers.truncateTime(dateTimeProvider.getCurrent());
                 const date = params.date === "today" ? today : new Date(params.date);
                 this.date(date);
                 this.clear();
@@ -53,9 +53,10 @@
                     router.setLocation("#/class-work/" + moment(newValue).format("YYYY-MM-DD"));
                     this.loadData(this.date());
                 }
-                //window.location.href = "#/class-work/" + moment(newValue).format("YYYY-MM-DD")
                 
             })
+
+            this.maxSelectableDate = moment(Helpers.truncateTime(dateTimeProvider.getCurrent())).format("YYYY-MM-DD");
         }
     }
 

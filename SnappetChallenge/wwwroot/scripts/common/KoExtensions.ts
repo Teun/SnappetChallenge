@@ -3,13 +3,19 @@
         static convertToUtc(date: Date) {
             return moment(date).add(moment(date).utcOffset(), 'm').utc().toDate();
         }
+
+        static truncateTime(date: Date) {
+            var newDate = new Date(date);
+            newDate.setHours(0, 0, 0, 0);
+            return newDate;
+        }
     }
 
     export class KoExtensions {
         static init() {
             ko.bindingHandlers["inlineDatepicker"] = {
                 init: (element, valueAccessor, allBindings, viewModel, bindingContext) => {
-                    $(element).datepicker();
+                    $(element).datepicker({format: "yyyy-mm-dd"});
                     var value = valueAccessor();
                     if (ko.isObservable(value)) {
                         $(element).on("changeDate",

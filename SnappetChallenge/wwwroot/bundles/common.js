@@ -6,6 +6,11 @@ var SnappetChallenge;
         Helpers.convertToUtc = function (date) {
             return moment(date).add(moment(date).utcOffset(), 'm').utc().toDate();
         };
+        Helpers.truncateTime = function (date) {
+            var newDate = new Date(date);
+            newDate.setHours(0, 0, 0, 0);
+            return newDate;
+        };
         return Helpers;
     }());
     SnappetChallenge.Helpers = Helpers;
@@ -15,7 +20,7 @@ var SnappetChallenge;
         KoExtensions.init = function () {
             ko.bindingHandlers["inlineDatepicker"] = {
                 init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                    $(element).datepicker();
+                    $(element).datepicker({ format: "yyyy-mm-dd" });
                     var value = valueAccessor();
                     if (ko.isObservable(value)) {
                         $(element).on("changeDate", function () {

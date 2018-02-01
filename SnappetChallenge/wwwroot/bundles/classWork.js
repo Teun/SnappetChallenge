@@ -38,8 +38,7 @@ var SnappetChallenge;
                 this.initialized = ko.observable(false);
                 this.init = function (params) {
                     _this.initialized(false);
-                    var today = dateTimeProvider.getCurrent();
-                    today.setHours(0, 0, 0, 0);
+                    var today = SnappetChallenge.Helpers.truncateTime(dateTimeProvider.getCurrent());
                     var date = params.date === "today" ? today : new Date(params.date);
                     _this.date(date);
                     _this.clear();
@@ -67,8 +66,8 @@ var SnappetChallenge;
                         router.setLocation("#/class-work/" + moment(newValue).format("YYYY-MM-DD"));
                         _this.loadData(_this.date());
                     }
-                    //window.location.href = "#/class-work/" + moment(newValue).format("YYYY-MM-DD")
                 });
+                this.maxSelectableDate = moment(SnappetChallenge.Helpers.truncateTime(dateTimeProvider.getCurrent())).format("YYYY-MM-DD");
             }
             return classWorkVM;
         }());
