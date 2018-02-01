@@ -4,7 +4,7 @@ using SnappetChallenge.Models;
 
 namespace SnappetChallenge.Builders
 {
-    public interface ILearningObjectiveSubmittedAnswersFilterBuilder : IBuilder<LearningObjectivesFilterDto, SubmittedAnswersFilter>
+    public interface ILearningObjectiveSubmittedAnswersFilterBuilder : IBuilder<DateRangeFilterDto, SubmittedAnswersFilter>
     {
     }
 }

@@ -1,10 +1,29 @@
 var SnappetChallenge;
 (function (SnappetChallenge) {
+    var CalendarVM = /** @class */ (function () {
+        function CalendarVM(dateTimeProvider) {
+            var _this = this;
+            this.date = ko.observable();
+            this.formattedDate = ko.computed(function () {
+                return moment(_this.date()).format("MMMM Do");
+            });
+            this.maxSelectableDate = moment(dateTimeProvider.getTodaysDate()).format("YYYY-MM-DD");
+        }
+        return CalendarVM;
+    }());
+    SnappetChallenge.CalendarVM = CalendarVM;
+})(SnappetChallenge || (SnappetChallenge = {}));
+//# sourceMappingURL=calendarVM.js.map
+var SnappetChallenge;
+(function (SnappetChallenge) {
     var Helpers = /** @class */ (function () {
         function Helpers() {
         }
         Helpers.convertToUtc = function (date) {
-            return moment(date).add(moment(date).utcOffset(), 'm').utc().toDate();
+            return moment(date).add(moment(date).utcOffset(), "m").utc().toDate();
+        };
+        Helpers.convertToLocal = function (date) {
+            return moment(date).subtract(moment(date).utcOffset(), "m").local().toDate();
         };
         Helpers.truncateTime = function (date) {
             var newDate = new Date(date);

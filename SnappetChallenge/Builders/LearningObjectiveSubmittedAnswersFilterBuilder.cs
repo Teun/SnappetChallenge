@@ -5,13 +5,13 @@ using SnappetChallenge.Models;
 
 namespace SnappetChallenge.Builders
 {
-    public class LearningObjectiveSubmittedAnswersFilterBuilder : FlashMapperBuilder<LearningObjectivesFilterDto, SubmittedAnswersFilter, LearningObjectiveSubmittedAnswersFilterBuilder>, ILearningObjectiveSubmittedAnswersFilterBuilder
+    public class LearningObjectiveSubmittedAnswersFilterBuilder : FlashMapperBuilder<DateRangeFilterDto, SubmittedAnswersFilter, LearningObjectiveSubmittedAnswersFilterBuilder>, ILearningObjectiveSubmittedAnswersFilterBuilder
     {
         public LearningObjectiveSubmittedAnswersFilterBuilder(IMappingConfiguration mappingConfiguration) : base(mappingConfiguration)
         {
         }
 
-        protected override void ConfigureMapping(IFlashMapperBuilderConfigurator<LearningObjectivesFilterDto, SubmittedAnswersFilter> configurator)
+        protected override void ConfigureMapping(IFlashMapperBuilderConfigurator<DateRangeFilterDto, SubmittedAnswersFilter> configurator)
         {
             configurator.CreateMapping(f => new SubmittedAnswersFilter
             {

@@ -26,10 +26,10 @@ namespace SnappetChallenge.Controllers
 
         [Route("")]
         [HttpGet]
-        public IEnumerable<LearningObjectiveDto> GetLearningObjectives([FromQuery] LearningObjectivesFilterDto filter)
+        public IEnumerable<LearningObjectiveDto> GetLearningObjectives([FromQuery] DateRangeFilterDto filter)
         {
             var internalFilter = submittedAnswersFilterBuilder.Build(filter);
-            var learningObjectives = learningObjectivesProvider.GetLearningObjectivesStatistics(internalFilter);
+            var learningObjectives = learningObjectivesProvider.GetLearningObjectives(internalFilter);
             return learningObjectives.Select(learningObjectiveDtoBuilder.Build)
                 .ToArray();
         }

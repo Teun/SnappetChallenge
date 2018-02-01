@@ -5,7 +5,7 @@ var SnappetChallenge;
         var ClassWorkCatalog = /** @class */ (function () {
             function ClassWorkCatalog() {
                 this.init = function (services, router) {
-                    var learningObjectivesViewModel = new LearningObjectives.classWorkVM(services.dateTimeProvider, services.apiClient, router);
+                    var learningObjectivesViewModel = new LearningObjectives.ClassWorkVM(services.dateTimeProvider, services.apiClient, services.dateRangeFilterBuilder, services.dateAliasConverter, router);
                     var learningObjectivesTemplate = new SnappetChallenge.TemplateForm("classWork", learningObjectivesViewModel);
                     return new SnappetChallenge.CatalogInitResponse("classWork", "#/class-work/today", "Class work", [
                         new SnappetChallenge.Route("#/class-work/:date", learningObjectivesTemplate)

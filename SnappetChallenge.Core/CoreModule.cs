@@ -23,6 +23,8 @@ namespace SnappetChallenge.Core
             container.Register<ISubmittedAnswersQueryFilterHandler, ToSubmittedAnswersQueryFilterHandler>(nameof(ToSubmittedAnswersQueryFilterHandler));
             container.Register<ISubmittedAnswersQueryFilterHandler, UserIdSubmittedAnswersQueryFilterHandler>(nameof(UserIdSubmittedAnswersQueryFilterHandler));
             container.Register<IImageProvider, ImageProvider>();
+            container.Register<IUsersProvider, UsersProvider>();
+            container.Register<IUserStatisticsCalculator, UserStatisticsCalculator>();
         }
     }
 }

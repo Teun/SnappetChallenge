@@ -16,8 +16,6 @@
   {
     "outputFileName": "wwwroot/bundles/bootstrap-bundle.min.css",
     "inputFiles": [
-      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
-      "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
       "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
       "wwwroot/lib/tether/dist/css/tether-theme-basic.css",
       "wwwroot/lib/tether/dist/css/tether-theme-arrows-dark.css",
@@ -69,6 +67,14 @@
     "outputFileName": "wwwroot/bundles/common.js",
     "inputFiles": [
       "wwwroot/scripts/common/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/pupils.js",
+    "inputFiles": [
+      "wwwroot/scripts/pupils/pupilsListVM.js",
+      "wwwroot/scripts/pupils/pupilsCatalog.js",
+      "wwwroot/scripts/pupils/pupilDetailsVM.js"
     ]
   }
 ]

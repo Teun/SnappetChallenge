@@ -2,7 +2,7 @@
 
 namespace SnappetChallenge.Models
 {
-    public class LearningObjectivesFilterDto
+    public class DateRangeFilterDto
     {
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }

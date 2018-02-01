@@ -4,6 +4,6 @@ namespace SnappetChallenge.Core
 {
     public interface ILearningObjectivesProvider
     {
-        LearningObjective[] GetLearningObjectivesStatistics(SubmittedAnswersFilter filter);
+        LearningObjective[] GetLearningObjectives(SubmittedAnswersFilter filter);
     }
 }

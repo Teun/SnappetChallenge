@@ -13,7 +13,7 @@ namespace SnappetChallenge.Core
             this.submittedAnswersProvider = submittedAnswersProvider;
         }
 
-        public LearningObjective[] GetLearningObjectivesStatistics(SubmittedAnswersFilter filter)
+        public LearningObjective[] GetLearningObjectives(SubmittedAnswersFilter filter)
         {
             return IterateLearningObjectivesStatistics(filter).ToArray();
         }

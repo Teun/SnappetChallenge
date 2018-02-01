@@ -19,7 +19,7 @@ namespace SnappetChallenge.Core.Models
         {
             if (usersProgress.TryGetValue(userId, out double progress))
                 return progress;
-            throw new Exception($"Cant find statistics for user with id {userId}.");
+            throw new Exception($"Can't find statistics for user with id {userId}.");
         }
     }
 }

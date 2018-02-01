@@ -1,14 +1,17 @@
 var SnappetChallenge;
 (function (SnappetChallenge) {
     var ApiClient = /** @class */ (function () {
-        function ApiClient(httpClient, apiUriConfig) {
+        function ApiClient(httpClient, apiUrlConfig) {
             this.httpClient = httpClient;
-            this.apiUriConfig = apiUriConfig;
-            this.getLearningObjectives = function (from, to, callback) {
-                return httpClient.get(apiUriConfig.learningObjectivesUri, {
-                    from: moment(from).format("YYYY-MM-DDTHH:mm:ss[Z]"),
-                    to: moment(to).format("YYYY-MM-DDTHH:mm:ss[Z]")
-                }, callback);
+            this.apiUrlConfig = apiUrlConfig;
+            this.getLearningObjectives = function (dateRangeFilter, callback) {
+                return httpClient.get(apiUrlConfig.learningObjectivesUrl, dateRangeFilter, callback);
+            };
+            this.getUsers = function (dateRangeFilter, callback) {
+                return httpClient.get(apiUrlConfig.usersUrl, dateRangeFilter, callback);
+            };
+            this.getUserDetails = function (userId, dateRangeFilter, callback) {
+                return httpClient.get(apiUrlConfig.usersUrl + "/" + userId, dateRangeFilter, callback);
             };
         }
         return ApiClient;
@@ -18,15 +21,55 @@ var SnappetChallenge;
 //# sourceMappingURL=apiClient.js.map
 var SnappetChallenge;
 (function (SnappetChallenge) {
-    var ApiUriConfig = /** @class */ (function () {
-        function ApiUriConfig() {
-            this.learningObjectivesUri = "/api/learningObjective";
+    var ApiUrlConfig = /** @class */ (function () {
+        function ApiUrlConfig() {
+            this.learningObjectivesUrl = "/api/learningObjective";
+            this.usersUrl = "/api/user";
         }
-        return ApiUriConfig;
+        return ApiUrlConfig;
     }());
-    SnappetChallenge.ApiUriConfig = ApiUriConfig;
+    SnappetChallenge.ApiUrlConfig = ApiUrlConfig;
 })(SnappetChallenge || (SnappetChallenge = {}));
-//# sourceMappingURL=apiUriConfig.js.map
+//# sourceMappingURL=ApiUrlConfig.js.map
+var SnappetChallenge;
+(function (SnappetChallenge) {
+    var DateAliasConverter = /** @class */ (function () {
+        function DateAliasConverter(dateTimeProvider) {
+            this.getDateFromAlias = function (dateAlias) {
+                var today = dateTimeProvider.getTodaysDate();
+                var date = dateAlias === "today" ? today : new Date(dateAlias);
+                return date;
+            };
+            this.getDateAlias = function (date) {
+                if (date.getTime() === dateTimeProvider.getTodaysDate().getTime())
+                    return "today";
+                else
+                    return moment(date).format("YYYY-MM-DD");
+            };
+        }
+        return DateAliasConverter;
+    }());
+    SnappetChallenge.DateAliasConverter = DateAliasConverter;
+})(SnappetChallenge || (SnappetChallenge = {}));
+//# sourceMappingURL=dateAliasConverter.js.map
+var SnappetChallenge;
+(function (SnappetChallenge) {
+    var DateRangeFilterBuilder = /** @class */ (function () {
+        function DateRangeFilterBuilder() {
+            this.getFilterForDate = function (date) {
+                var from = SnappetChallenge.Helpers.convertToUtc(date);
+                var to = SnappetChallenge.Helpers.convertToUtc(moment(date).add("24", "hours").toDate());
+                return {
+                    from: moment(from).format("YYYY-MM-DDTHH:mm:ss[Z]"),
+                    to: moment(to).format("YYYY-MM-DDTHH:mm:ss[Z]")
+                };
+            };
+        }
+        return DateRangeFilterBuilder;
+    }());
+    SnappetChallenge.DateRangeFilterBuilder = DateRangeFilterBuilder;
+})(SnappetChallenge || (SnappetChallenge = {}));
+//# sourceMappingURL=dateRangeFilterBuilder.js.map
 var SnappetChallenge;
 (function (SnappetChallenge) {
     var DateTimeProvider = /** @class */ (function () {
@@ -37,6 +80,9 @@ var SnappetChallenge;
             };
             this.getCurrent = function () {
                 return moment.utc(_this.getCurrentUtc()).local().toDate();
+            };
+            this.getTodaysDate = function () {
+                return SnappetChallenge.Helpers.truncateTime(_this.getCurrent());
             };
         }
         return DateTimeProvider;
@@ -105,9 +151,11 @@ var SnappetChallenge;
         function Services() {
             this.dialogManager = new SnappetChallenge.DialogManager();
             this.httpClient = new SnappetChallenge.JQueryHttpClient(this.dialogManager);
-            this.apiUriConfig = new SnappetChallenge.ApiUriConfig();
+            this.apiUriConfig = new SnappetChallenge.ApiUrlConfig();
             this.apiClient = new SnappetChallenge.ApiClient(this.httpClient, this.apiUriConfig);
             this.dateTimeProvider = new SnappetChallenge.DateTimeProvider();
+            this.dateRangeFilterBuilder = new SnappetChallenge.DateRangeFilterBuilder();
+            this.dateAliasConverter = new SnappetChallenge.DateAliasConverter(this.dateTimeProvider);
         }
         return Services;
     }());

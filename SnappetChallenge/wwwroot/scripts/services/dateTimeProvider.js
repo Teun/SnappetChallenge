@@ -9,6 +9,9 @@ var SnappetChallenge;
             this.getCurrent = function () {
                 return moment.utc(_this.getCurrentUtc()).local().toDate();
             };
+            this.getTodaysDate = function () {
+                return SnappetChallenge.Helpers.truncateTime(_this.getCurrent());
+            };
         }
         return DateTimeProvider;
     }());

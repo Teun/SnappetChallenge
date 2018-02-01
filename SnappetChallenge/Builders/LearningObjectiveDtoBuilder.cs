@@ -28,6 +28,7 @@ namespace SnappetChallenge.Builders
                 {
                     Users = o.Users
                         .Select(u => userForLearningObjectiveDtoBuilder.Build(u, s))
+                        .OrderBy(u => u.Name)
                         .ToArray()
                 });
         }

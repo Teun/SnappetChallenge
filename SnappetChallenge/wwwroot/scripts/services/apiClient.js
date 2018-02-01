@@ -1,14 +1,17 @@
 var SnappetChallenge;
 (function (SnappetChallenge) {
     var ApiClient = /** @class */ (function () {
-        function ApiClient(httpClient, apiUriConfig) {
+        function ApiClient(httpClient, apiUrlConfig) {
             this.httpClient = httpClient;
-            this.apiUriConfig = apiUriConfig;
-            this.getLearningObjectives = function (from, to, callback) {
-                return httpClient.get(apiUriConfig.learningObjectivesUri, {
-                    from: moment(from).format("YYYY-MM-DDTHH:mm:ss[Z]"),
-                    to: moment(to).format("YYYY-MM-DDTHH:mm:ss[Z]")
-                }, callback);
+            this.apiUrlConfig = apiUrlConfig;
+            this.getLearningObjectives = function (dateRangeFilter, callback) {
+                return httpClient.get(apiUrlConfig.learningObjectivesUrl, dateRangeFilter, callback);
+            };
+            this.getUsers = function (dateRangeFilter, callback) {
+                return httpClient.get(apiUrlConfig.usersUrl, dateRangeFilter, callback);
+            };
+            this.getUserDetails = function (userId, dateRangeFilter, callback) {
+                return httpClient.get(apiUrlConfig.usersUrl + "/" + userId, dateRangeFilter, callback);
             };
         }
         return ApiClient;

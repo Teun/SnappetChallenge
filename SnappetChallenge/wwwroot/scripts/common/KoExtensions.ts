@@ -1,7 +1,11 @@
 ﻿module SnappetChallenge {
     export class Helpers {
         static convertToUtc(date: Date) {
-            return moment(date).add(moment(date).utcOffset(), 'm').utc().toDate();
+            return moment(date).add(moment(date).utcOffset(), "m").utc().toDate();
+        }
+
+        static convertToLocal(date: Date) {
+            return moment(date).subtract(moment(date).utcOffset(), "m").local().toDate();
         }
 
         static truncateTime(date: Date) {

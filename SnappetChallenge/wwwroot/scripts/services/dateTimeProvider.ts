@@ -2,11 +2,13 @@ module SnappetChallenge {
     export interface IDateTimeProvider {
         getCurrent: () => Date;
         getCurrentUtc: () => Date;
+        getTodaysDate: () => Date;
     }
 
     export class DateTimeProvider implements IDateTimeProvider {
         getCurrent: () => Date;
         getCurrentUtc: () => Date;
+        getTodaysDate: () => Date;
 
         constructor() {
             this.getCurrentUtc = () => {
@@ -15,6 +17,10 @@ module SnappetChallenge {
 
             this.getCurrent = () => {
                 return moment.utc(this.getCurrentUtc()).local().toDate();
+            }
+
+            this.getTodaysDate = () => {
+                return Helpers.truncateTime(this.getCurrent());
             }
         }
     }

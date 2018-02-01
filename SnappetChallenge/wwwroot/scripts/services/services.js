@@ -4,9 +4,11 @@ var SnappetChallenge;
         function Services() {
             this.dialogManager = new SnappetChallenge.DialogManager();
             this.httpClient = new SnappetChallenge.JQueryHttpClient(this.dialogManager);
-            this.apiUriConfig = new SnappetChallenge.ApiUriConfig();
+            this.apiUriConfig = new SnappetChallenge.ApiUrlConfig();
             this.apiClient = new SnappetChallenge.ApiClient(this.httpClient, this.apiUriConfig);
             this.dateTimeProvider = new SnappetChallenge.DateTimeProvider();
+            this.dateRangeFilterBuilder = new SnappetChallenge.DateRangeFilterBuilder();
+            this.dateAliasConverter = new SnappetChallenge.DateAliasConverter(this.dateTimeProvider);
         }
         return Services;
     }());

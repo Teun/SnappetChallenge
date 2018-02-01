@@ -4,7 +4,10 @@ var SnappetChallenge;
         function Helpers() {
         }
         Helpers.convertToUtc = function (date) {
-            return moment(date).add(moment(date).utcOffset(), 'm').utc().toDate();
+            return moment(date).add(moment(date).utcOffset(), "m").utc().toDate();
+        };
+        Helpers.convertToLocal = function (date) {
+            return moment(date).subtract(moment(date).utcOffset(), "m").local().toDate();
         };
         Helpers.truncateTime = function (date) {
             var newDate = new Date(date);

@@ -3,11 +3,12 @@ var SnappetChallenge;
     var Models;
     (function (Models) {
         var UserCard = /** @class */ (function () {
-            function UserCard(userId, name, progress, imageUrl) {
+            function UserCard(userId, name, progress, imageUrl, dateAlias) {
                 this.userId = userId;
                 this.name = name;
                 this.progress = progress;
                 this.imageUrl = imageUrl;
+                this.dateAlias = dateAlias;
             }
             return UserCard;
         }());

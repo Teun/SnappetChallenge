@@ -4,7 +4,12 @@
 
         constructor() {
             this.init = (services: Services, router: SammyInst) => {
-                const learningObjectivesViewModel = new LearningObjectives.classWorkVM(services.dateTimeProvider, services.apiClient, router);
+                const learningObjectivesViewModel = new LearningObjectives.ClassWorkVM(
+                    services.dateTimeProvider,
+                    services.apiClient,
+                    services.dateRangeFilterBuilder,
+                    services.dateAliasConverter,
+                    router);
                 const learningObjectivesTemplate = new TemplateForm("classWork", learningObjectivesViewModel);
                 return new CatalogInitResponse("classWork", "#/class-work/today", "Class work",
                     [

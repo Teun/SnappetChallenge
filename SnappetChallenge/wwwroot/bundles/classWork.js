@@ -5,7 +5,7 @@ var SnappetChallenge;
         var ClassWorkCatalog = /** @class */ (function () {
             function ClassWorkCatalog() {
                 this.init = function (services, router) {
-                    var learningObjectivesViewModel = new LearningObjectives.classWorkVM(services.dateTimeProvider, services.apiClient, router);
+                    var learningObjectivesViewModel = new LearningObjectives.ClassWorkVM(services.dateTimeProvider, services.apiClient, services.dateRangeFilterBuilder, services.dateAliasConverter, router);
                     var learningObjectivesTemplate = new SnappetChallenge.TemplateForm("classWork", learningObjectivesViewModel);
                     return new SnappetChallenge.CatalogInitResponse("classWork", "#/class-work/today", "Class work", [
                         new SnappetChallenge.Route("#/class-work/:date", learningObjectivesTemplate)
@@ -29,51 +29,45 @@ var SnappetChallenge;
     var LearningObjectives;
     (function (LearningObjectives) {
         var UserCard = SnappetChallenge.Models.UserCard;
-        var classWorkVM = /** @class */ (function () {
-            function classWorkVM(dateTimeProvider, apiClient, router) {
+        var ClassWorkVM = /** @class */ (function () {
+            function ClassWorkVM(dateTimeProvider, apiClient, dateRangeFilterBuilder, dateAliasConverter, router) {
                 var _this = this;
                 this.learningObjectives = ko.observableArray([]);
-                this.date = ko.observable();
                 this.loading = ko.observable(false);
                 this.initialized = ko.observable(false);
+                this.calendar = new SnappetChallenge.CalendarVM(dateTimeProvider);
                 this.init = function (params) {
                     _this.initialized(false);
-                    var today = SnappetChallenge.Helpers.truncateTime(dateTimeProvider.getCurrent());
-                    var date = params.date === "today" ? today : new Date(params.date);
-                    _this.date(date);
+                    var date = dateAliasConverter.getDateFromAlias(params.date);
+                    _this.calendar.date(date);
                     _this.clear();
                     _this.loadData(date);
                     _this.initialized(true);
                 };
-                this.formattedDate = ko.computed(function () {
-                    return moment(_this.date()).format("MMMM Do");
-                });
                 this.clear = function () {
                     _this.learningObjectives([]);
                 };
                 this.loadData = function (date) {
-                    var from = SnappetChallenge.Helpers.convertToUtc(date);
-                    var to = SnappetChallenge.Helpers.convertToUtc(moment(date).add("24", "hours").toDate());
+                    var filter = dateRangeFilterBuilder.getFilterForDate(date);
                     _this.loading(true);
-                    var loadingDate = _this.date();
-                    apiClient.getLearningObjectives(from, to, function (data) {
-                        if (loadingDate == _this.date())
-                            _this.learningObjectives(data.map(function (o) { return new LearningObjectiveListItemVM(o); }));
+                    apiClient.getLearningObjectives(filter, function (data) {
+                        if (date.getTime() === _this.calendar.date().getTime())
+                            _this.learningObjectives(data
+                                .map(function (o) { return new LearningObjectiveListItemVM(o, dateAliasConverter.getDateAlias(_this.calendar.date())); }));
                     }).always(function () { return _this.loading(false); });
                 };
-                this.date.subscribe(function (newValue) {
+                this.calendar.date.subscribe(function (newValue) {
                     if (_this.initialized()) {
-                        router.setLocation("#/class-work/" + moment(newValue).format("YYYY-MM-DD"));
-                        _this.loadData(_this.date());
+                        var dateAlias = dateAliasConverter.getDateAlias(newValue);
+                        router.setLocation("#/class-work/" + dateAlias);
                     }
                 });
-                this.maxSelectableDate = moment(SnappetChallenge.Helpers.truncateTime(dateTimeProvider.getCurrent())).format("YYYY-MM-DD");
             }
-            return classWorkVM;
+            return ClassWorkVM;
         }());
-        LearningObjectives.classWorkVM = classWorkVM;
+        LearningObjectives.ClassWorkVM = ClassWorkVM;
         var LearningObjectiveListItemVM = /** @class */ (function () {
-            function LearningObjectiveListItemVM(initData) {
+            function LearningObjectiveListItemVM(initData, date) {
                 var _this = this;
                 this.name = ko.observable();
                 this.domain = ko.observable();
@@ -86,7 +80,7 @@ var SnappetChallenge;
                     _this.domain(data.domain);
                     _this.subject(data.subject);
                     _this.averageProgress(data.averageProgress);
-                    _this.users(data.users.map(function (u) { return new UserForLearningObjectivListItemVM(u); }));
+                    _this.users(data.users.map(function (u) { return new UserForLearningObjectivListItemVM(u, date); }));
                 };
                 this.toggle = function () {
                     _this.expanded(!_this.expanded());
@@ -97,7 +91,7 @@ var SnappetChallenge;
         }());
         LearningObjectives.LearningObjectiveListItemVM = LearningObjectiveListItemVM;
         var UserForLearningObjectivListItemVM = /** @class */ (function () {
-            function UserForLearningObjectivListItemVM(initData) {
+            function UserForLearningObjectivListItemVM(initData, date) {
                 var _this = this;
                 this.userId = ko.observable();
                 this.name = ko.observable();
@@ -110,7 +104,7 @@ var SnappetChallenge;
                     _this.overallProgress(data.overallProgress);
                 };
                 this.userCardData = ko.computed(function () {
-                    return new UserCard(_this.userId(), _this.name(), _this.overallProgress(), "/image/" + _this.imageId());
+                    return new UserCard(_this.userId(), _this.name(), _this.overallProgress(), "/image/" + _this.imageId(), date);
                 });
                 this.setData(initData);
             }
