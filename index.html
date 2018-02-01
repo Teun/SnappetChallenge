@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- load libraries -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.js"></script>
+    <script type="text/javascript" src="https:////code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/chartkick@2.2.4"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue-chartkick@0.2.0/dist/vue-chartkick.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style type="text/css">
+        .navbar {
+            border-radius: 0;
+            background: #41B883 !important;
+        }
+
+        a {
+            color: #35495E;
+        }
+    </style>
+
+    <title>Snappet challenge vue 2.0 by csteeg</title>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <router-link class="navbar-brand" :to="{path: '/'}" exact="">
+                    <i class="fa fa-code" aria-hidden="true"></i> snappetchallenge
+                </router-link>
+
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <router-link tag="li" class="nav-item" :to="{path: '/'}" exact>
+                            <a class="nav-link">Home</a>
+                        </router-link>
+                        <li v-for="item in $root.subjects" class="nav-item">
+                            <router-link class="nav-link" :to="{name: 'subject', params: {'subject': item}}" exact>
+                                {{item}}
+                            </router-link>
+                        </li>
+                        <router-link tag="li" class="nav-item" :to="{path: '/about'}" exact>
+                            <a class="nav-link">About</a>
+                        </router-link>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="display:none">
+        <!--- start of component templates, inline 'cause one file now. would be .vue files in production -->
+        <template id="overviewcomponent">
+            <div class="row">
+                <h3>Totaal resultaten voor vandaag (tot {{$root.endDate.toLocaleString('nl-NL', { timeZone: 'UTC' })}})</h3>
+                <p>
+                    Er zijn vandaag {{$root.answers.length}} antwoorden door {{$root.users.length}} leerlingen Daarvan waren {{$root.answers.filter(a => a.Correct).length}} correct beantwoord
+                </p>
+                <div class="col-md-6">
+                    <pie-chart :data="subjectChart"></pie-chart>
+                </div>
+                <div class="col-md-6">
+                    <pie-chart :colors="['green', 'red']" :data="{'correct': $root.answers.filter(a => a.Correct).length, 'incorrect': $root.answers.filter(a => !a.Correct).length}"></pie-chart>
+                </div>
+
+                <ul>
+                    <li v-for="item in $root.subjects">
+                        {{ item }} Aantal antwoorden: {{ $root.answers.filter(a => a.Subject == item).length}} Aantal fout {{ $root.answers.filter(a => a.Subject == item && !a.Correct).length}}
+                    </li>
+                </ul>
+            </div>
+        </template>
+
+        <template id="subjectcomponent">
+            <div class="row">
+                <h3>Resultaten voor {{subject}} voor vandaag (tot {{$root.endDate.toLocaleString('nl-NL', { timeZone: 'UTC' })}})</h3>
+                <p>
+                    Er zijn vandaag {{answers.length}} antwoorden door {{$root.users.length}} leerlingen Daarvan waren {{answers.filter(a => a.Correct).length}} correct beantwoord
+                </p>
+                <div class="col-md-6">
+                    <pie-chart :data="subResultsChart"></pie-chart>
+                </div>
+                <div class="col-md-6">
+                    <pie-chart :colors="['green', 'red']" :data="{'correct': answers.filter(a => a.Correct).length, 'incorrect': answers.filter(a => !a.Correct).length}"></pie-chart>
+                </div>
+            </div>
+        </template>
+
+        <template id="aboutcomponent">
+            <div>
+                <h3>Snappet challenge</h3>
+                <p>
+                    Een kleine applicatie met de voortgang van een klas op 1 dag.
+                    <br /> Zoals afgesproken in een gesprek, is hier ongeveer 2 uur tijd in gestoken
+                </p>
+
+            </div>
+        </template>
+
+    </div>
+<script type='text/javascript'>//<![CDATA[
+
+        //register variables used for this challenge
+        const CURRENT_DATE = new Date("2015-03-24T11:30:00.000Z");
+        const START_DATE = new Date("2015-03-24T00:00:00.000Z");
+        const JSON_DATA = 'https://rawgit.com/Snappet/SnappetChallenge/master/Data/work.json';
+        //register components
+        const aboutComponent = Vue.component('about', {
+            template: '#aboutcomponent',
+        })
+        const homeComponent = Vue.component('overview', {
+            template: '#overviewcomponent',
+            computed: {
+                subjectChart: function () {
+                    let result = {},
+                        _this = this;
+                    this.$root.subjects.forEach(function (item) {
+                        result[item] = _this.$root.answers.filter(a => a.Subject == item).length;
+                    });
+                    return result;
+                }
+            }
+
+        });
+
+        const subjectComponent = Vue.component('subject', {
+            template: '#subjectcomponent',
+            computed: {
+                answers() {
+                    return this.$root.answers.filter(a => a.Subject == this.subject);
+                },
+                subject() {
+                    return this.$route.params.subject;
+                },
+                users() {
+                    return this.answers.map(a => a.UserId).filter((x, i, a) => a.indexOf(x) == i); //last filter -> get unique values (only if you're the first hit in the array);
+                },
+                subResultsChart() {
+                    let subChannelProp = 'Domain';
+                    let channels = this.answers.map(a => a.Domain).filter((x, i, a) => a.indexOf(x) == i); //last filter -> get unique values (only if you're the first hit in the array);
+                    if (channels.length == 1) { //no domains in this subject
+                        channels = this.answers.map(a => a.LearningObjective).filter((x, i, a) => a.indexOf(x) == i);
+                        subChannelProp = 'LearningObjective';
+                    }
+                    let result = {},
+                        _this = this;
+                    channels.forEach(function (item) {
+                        result[item] = _this.answers.filter(a => a[subChannelProp] == item).length;
+                    });
+                    return result;
+                }
+
+            }
+        });
+
+        //register our routes
+        const routes = [{
+            path: '/',
+            component: homeComponent
+        }, {
+            name: 'subject',
+            path: '/subject/:subject',
+            component: subjectComponent
+        }, {
+            path: '/about',
+            component: aboutComponent
+        }, {
+            path: '*',
+            redirect: '/'
+        },];
+
+        const router = new VueRouter({
+            //mode: 'history',
+            linkActiveClass: 'active',
+            base: window.location.pathname,
+            routes,
+        });
+
+        console.log(window.location.pathname);
+
+        //start the app
+        new Vue({
+            el: '#app',
+            router,
+            data: {
+                endDate: CURRENT_DATE, //as stated in the readme of the challenge
+                startDate: START_DATE, //as stated in the readme of the challenge
+                answers: []
+            },
+            created() {
+                var _this = this;
+                $.getJSON(JSON_DATA, function (data) {
+                    _this.answers = data.filter(a => {
+                        a.SubmitDateTime = new Date(a.SubmitDateTime + "Z");
+                        return a.SubmitDateTime >= _this.startDate && a.SubmitDateTime <= _this.endDate;
+                    });
+                });
+            },
+            computed: {
+                users() {
+                    return this.answers.map(a => a.UserId).filter((x, i, a) => a.indexOf(x) == i) //last filter -> get unique values (only if you're the first hit in the array);
+                },
+                subjects() {
+                    return this.answers.map(a => a.Subject).filter((x, i, a) => a.indexOf(x) == i) //last filter -> get unique values (only if you're the first hit in the array);
+                }
+            }
+        });
+
+    //]]> 
+</script>
+</body>
+</html>
