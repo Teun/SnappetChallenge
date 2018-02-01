@@ -91,7 +91,7 @@ Of course, there won't be any authentication or authorization here. No time for 
 
 In a full application, I would use a database to hold the data. I think that in this case I'll read the file into an single in-memory structure. This would normally cause concurrency problems with multiple requests messing with the same instance in memory except that this is read-only data in the context of this exercise. We don't need to worry about multiple request threads clobbering the data.
 
-I always love dependency injection and unit tests. I'll try to fit them in here as well. In fact, I'd rather have a small amount of well-tested functionality than a large amount of poorly-tested functionality.
+I always love dependency injection and unit tests so I'll try to fit them in here as well. In fact, I'd rather have a small amount of well-tested functionality than a large amount of poorly-tested functionality.
 
 ## Implementation
 
@@ -105,4 +105,16 @@ My GetDailyStudentSummary tests will be fairly basic. I'm going to create test d
 
 That daily student summary tests took a lot more time than I had intended and I don't have a lot of time left. I don't think I'll implement tests for the controller methods. I'd prefer to spend the time elsewhere because I feel that has more value, like showing something on the web page.
 
+It looks like I'll just have enough time to put a quick grid on the page and that's about it.
 
+I went ahead and used the build-in dependency injection in .NET Core, since that was already set up in the generated web project. Normally, I use Ninject for dependency injection. I found that the .NET Core dependency injection had a lot of similarities, so it wasn't difficult to adjust.
+
+## Conclusion
+
+I had enough time to put a quick grid on the page with some minimal bootstrap styles to make it look less ugly. The grid is sorted by the overall average progress score, which is the average of all the subjects. The subjects displayed in the grid columns are not hardcoded, but reflect the data that was retrieved. It could get a bit crowded if there were a lot of subjects to display.
+
+I took some time to think about the problem, make some notes, and do some planning becore I began coding. I estimate the coding part took about 3.5 hours, most of it spent on unit tests. I do value automated testing, so I feel that was a good use of time. I ended up being able to get the grid displaying on the page quickly and didn't encounter any errors.
+
+I was a little disappointed that I wasn't able to get as far as I had hoped. I was hoping to use Javascript for client-side sorting, but I didn't think I could spend any more time on it without going against the terms of the assignment.
+
+Dat was een leuke opgave en het was leuk om een beetje Nederlands kunnen te oefenen.

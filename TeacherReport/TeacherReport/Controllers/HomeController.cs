@@ -40,6 +40,16 @@ namespace TeacherReport.Controllers
             //Retrieve the student daily summary from the repository
             summaryViewModel.StudentSummary = answerRepository.GetDailyStudentSummary(currentDateTime);
 
+            //Sort the subjects alphabetically
+            summaryViewModel.StudentSummary.Subjects = summaryViewModel.StudentSummary.Subjects
+                .OrderBy(subject => subject)
+                .ToList();
+
+            //Sort the student summary rows by the overall average progress score
+            summaryViewModel.StudentSummary.SummaryRows = summaryViewModel.StudentSummary.SummaryRows
+                .OrderBy(summaryRow => summaryRow.OverallAverageProgress)
+                .ToList();
+
             //Return the view with the view model
             return View(summaryViewModel);
         }

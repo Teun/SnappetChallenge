@@ -13,12 +13,16 @@ Due to the limited scope of this project, these will be development-level tasks.
 [x] Write the tests for the answer database
 [x] Implement the rest of the answer database code
 [x] Define the answer repository interface
-[] Implement the code that loads the answers from the data file and applies the default sorting
+[x] Implement the code that loads the answers from the data file 
 [x] Write the tests for the answer repository
 [x] Implement the answer repository
 [x] Modify the layout to get rid of all the generated stuff that we don't want
-[] Implement the main page view so that it displays the uglified student summary grid - completely unstyled
-[] Apply some quick bootstrap styling to make it prettify it a little
+[x] Implement the main page view so that it displays the uglified student summary grid - completely unstyled
+[x] Apply some quick bootstrap styling to make it prettify it a little
+[x] Apply default sorting to the view data
+
+-- Note: This is how far I actually got. As usual, I was too optimistic --
+
 [] Modify the view to render a Javascript data structure containing the data to be displayed
 [] Apply some Knockout with Javascript to construct the grid from the Javascript data structure
 [] Add functionality to dynamically sort the data by clicking on the column headers

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace DataRepositories.Data.DailySummary
 {
@@ -9,6 +9,12 @@ namespace DataRepositories.Data.DailySummary
     /// </summary>
     public class StudentSummaryRow
     {
+        /// <summary>
+        /// Gets or sets a dictionary where the key is the name of a subject and the value
+        /// is the student's average progress in that subject
+        /// </summary>
+        public Dictionary<string, decimal> AverageSubjectProgress { get; set; }
+
         /// <summary>
         /// Gets or sets the student's user ID
         /// </summary>
@@ -24,9 +30,14 @@ namespace DataRepositories.Data.DailySummary
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a dictionary where the key is the name of a subject and the value
-        /// is the student's average progress in that subject
+        /// Gets the average progress score for all subjects
         /// </summary>
-        public Dictionary<string, decimal> AverageSubjectProgress { get; set; }
+        public decimal OverallAverageProgress
+        {
+            get
+            {
+                return AverageSubjectProgress.Values.Average();
+            }
+        }
     }
 }
