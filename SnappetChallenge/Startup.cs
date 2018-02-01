@@ -52,6 +52,7 @@ namespace SnappetChallenge
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(name: "images", template: "image/{imageId}", defaults: new { controller = "Image", action = "GetImage" });
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             }).UseStaticFiles();
         }

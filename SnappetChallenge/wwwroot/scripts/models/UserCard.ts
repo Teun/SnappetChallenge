@@ -4,7 +4,7 @@
             public userId: number,
             public name: string,
             public progress: number,
-            public imageUri: string) {
+            public imageUrl: string) {
         }
     }
 }

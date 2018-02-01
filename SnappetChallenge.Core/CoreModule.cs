@@ -17,9 +17,12 @@ namespace SnappetChallenge.Core
             container.Register<IFlashMapperBuilder, SubmittedAnswerBuilder>(nameof(SubmittedAnswerBuilder));
             container.Register<IUserForSubmittedAnswerBuilder, UserForSubmittedAnswerBuilder>();
             container.Register<IFlashMapperBuilder, UserForSubmittedAnswerBuilder>(nameof(UserForSubmittedAnswerBuilder));
+            container.Register<IImageBuilder, ImageBuilder>();
+            container.Register<IFlashMapperBuilder, ImageBuilder>(nameof(ImageBuilder));
             container.Register<ISubmittedAnswersQueryFilterHandler, FromSubmittedAnswersQueryFilterHandler>(nameof(FromSubmittedAnswersQueryFilterHandler));
             container.Register<ISubmittedAnswersQueryFilterHandler, ToSubmittedAnswersQueryFilterHandler>(nameof(ToSubmittedAnswersQueryFilterHandler));
             container.Register<ISubmittedAnswersQueryFilterHandler, UserIdSubmittedAnswersQueryFilterHandler>(nameof(UserIdSubmittedAnswersQueryFilterHandler));
+            container.Register<IImageProvider, ImageProvider>();
         }
     }
 }

@@ -1,23 +1,16 @@
 var SnappetChallenge;
 (function (SnappetChallenge) {
-    var Route = /** @class */ (function () {
-        function Route(pattern, form) {
-            this.pattern = pattern;
-            this.form = form;
+    var FormManager = /** @class */ (function () {
+        function FormManager(mainFormHost) {
+            this.showMainForm = function (form) {
+                mainFormHost.form(form);
+            };
         }
-        return Route;
+        return FormManager;
     }());
-    SnappetChallenge.Route = Route;
-    var TemplateForm = /** @class */ (function () {
-        function TemplateForm(name, data) {
-            this.name = name;
-            this.data = data;
-        }
-        return TemplateForm;
-    }());
-    SnappetChallenge.TemplateForm = TemplateForm;
+    SnappetChallenge.FormManager = FormManager;
 })(SnappetChallenge || (SnappetChallenge = {}));
-//# sourceMappingURL=templateForm.js.map
+//# sourceMappingURL=formManager.js.map
 var SnappetChallenge;
 (function (SnappetChallenge) {
     var RootApp = /** @class */ (function () {
@@ -28,9 +21,10 @@ var SnappetChallenge;
             this.formManager = new SnappetChallenge.FormManager(this.mainViewModel);
             this.start = function () {
                 var routerConfig = Sammy("#site-content");
+                SnappetChallenge.KoExtensions.init();
                 SnappetChallenge.catalogRegistry.getCatalogs()
                     .forEach(function (c) {
-                    var catalogInfo = c.init(_this.services);
+                    var catalogInfo = c.init(_this.services, routerConfig);
                     catalogInfo.routes.forEach(function (r) {
                         _this.setupRoute(routerConfig, r.pattern, r.form, catalogInfo.catalogName);
                     });
@@ -73,14 +67,21 @@ $(function () {
 //# sourceMappingURL=rootApp.js.map
 var SnappetChallenge;
 (function (SnappetChallenge) {
-    var FormManager = /** @class */ (function () {
-        function FormManager(mainFormHost) {
-            this.showMainForm = function (form) {
-                mainFormHost.form(form);
-            };
+    var Route = /** @class */ (function () {
+        function Route(pattern, form) {
+            this.pattern = pattern;
+            this.form = form;
         }
-        return FormManager;
+        return Route;
     }());
-    SnappetChallenge.FormManager = FormManager;
+    SnappetChallenge.Route = Route;
+    var TemplateForm = /** @class */ (function () {
+        function TemplateForm(name, data) {
+            this.name = name;
+            this.data = data;
+        }
+        return TemplateForm;
+    }());
+    SnappetChallenge.TemplateForm = TemplateForm;
 })(SnappetChallenge || (SnappetChallenge = {}));
-//# sourceMappingURL=formManager.js.map
+//# sourceMappingURL=templateForm.js.map

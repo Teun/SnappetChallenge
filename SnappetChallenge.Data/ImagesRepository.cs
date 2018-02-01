@@ -12,7 +12,7 @@ namespace SnappetChallenge.Data
                 new ImageDb
                 {
                     ImageId = 1,
-                    ImageUrl = "/images/mockphoto.png"
+                    ImageUrl = "/content/mockphoto.png"
                 }
             }.AsQueryable();
         }

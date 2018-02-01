@@ -1,0 +1,91 @@
+﻿.snappet-challenge {
+    .learning-progress-bar {
+        width: 200px;
+        position: relative;
+        background: #ddd;
+        border: 1px solid black;
+        font-size: 14px;
+        height: 23px;
+
+        .learning-progress {
+            height: 100%;
+            left: 50%;
+            position: absolute;
+            background-color: #30dd50;
+        }
+
+        .caption {
+            position: absolute;
+            right: 55%;
+        }
+
+        &.negative {
+            .learning-progress {
+                left: auto;
+                right: 50%;
+                background-color: #daa;
+            }
+
+            .caption {
+                right: auto;
+                left: 55%;
+            }
+        }
+    }
+
+    .user-card {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #aaa;
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            float: left;
+            border-radius: 20px;
+        }
+
+        .info {
+            margin-left: 66px;
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+
+    .learning-objectives-list {
+        border: 1px solid #ccc;
+
+        .learning-objective {
+            border-bottom: 1px solid #ccc;
+
+            .header {
+                padding: 10px;
+                cursor: pointer;
+
+                &:hover {
+                    .title a {
+                        text-decoration: underline;
+                        color: #014c8c;
+                    }
+                }
+
+                .title {
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+                .progress-block {
+                    float: right;
+                }
+
+                .status-bar {
+                    font-size: 14px;
+                    color: #777;
+                }
+            }
+        }
+    }
+}

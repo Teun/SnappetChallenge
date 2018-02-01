@@ -1,5 +1,9 @@
 ﻿<script type="text/html" id="userCard">
-    <div data-bind="text: name">
-
+    <div class="user-card clearfix">
+        <div data-bind="style: {'background-image': 'url(' + imageUrl + ')'}" class="avatar"></div>
+        <div class="info">
+            <h5 class="name" data-bind="text: name"></h5>
+            <!--ko template: {name: 'progressComponent', data: progress}--><!--/ko-->
+        </div>
     </div>
 </script>

@@ -14,9 +14,10 @@
 
             this.start = () => {
                 const routerConfig = Sammy("#site-content");
+                KoExtensions.init();
                 catalogRegistry.getCatalogs()
                     .forEach(c => {
-                        const catalogInfo = c.init(this.services);
+                        const catalogInfo = c.init(this.services, routerConfig);
                         catalogInfo.routes.forEach(r => {
                             this.setupRoute(routerConfig, r.pattern, r.form, catalogInfo.catalogName);
                         });

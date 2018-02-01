@@ -8,9 +8,10 @@ var SnappetChallenge;
             this.formManager = new SnappetChallenge.FormManager(this.mainViewModel);
             this.start = function () {
                 var routerConfig = Sammy("#site-content");
+                SnappetChallenge.KoExtensions.init();
                 SnappetChallenge.catalogRegistry.getCatalogs()
                     .forEach(function (c) {
-                    var catalogInfo = c.init(_this.services);
+                    var catalogInfo = c.init(_this.services, routerConfig);
                     catalogInfo.routes.forEach(function (r) {
                         _this.setupRoute(routerConfig, r.pattern, r.form, catalogInfo.catalogName);
                     });

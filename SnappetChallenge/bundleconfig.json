@@ -3,7 +3,8 @@
     "outputFileName": "wwwroot/bundles/bootstrap.min.js",
     "inputFiles": [
       "wwwroot/lib/tether/dist/js/tether.js",
-      "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "wwwroot/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"
     ]
   },
   {
@@ -21,22 +22,20 @@
       "wwwroot/lib/tether/dist/css/tether-theme-basic.css",
       "wwwroot/lib/tether/dist/css/tether-theme-arrows-dark.css",
       "wwwroot/lib/tether/dist/css/tether-theme-arrows.css",
-      "wwwroot/lib/tether/dist/css/tether.css"
+      "wwwroot/lib/tether/dist/css/tether.css",
+      "wwwroot/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"
     ]
   },
   {
     "outputFileName": "wwwroot/bundles/catalogs.js",
     "inputFiles": [
-      "wwwroot/scripts/catalogs/catalog.js",
-      "wwwroot/scripts/catalogs/catalogInitResponse.js",
-      "wwwroot/scripts/catalogs/CatalogRegistry.js"
+      "wwwroot/scripts/catalogs/*.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/bundles/learningObjectives.js",
+    "outputFileName": "wwwroot/bundles/classWork.js",
     "inputFiles": [
-      "wwwroot/scripts/learningObjectives/learningObjectivesVM.js",
-      "wwwroot/scripts/learningObjectives/learningObjectivesCatalog.js"
+      "wwwroot/scripts/classWork/*.js"
     ]
   },
   {
@@ -48,20 +47,13 @@
   {
     "outputFileName": "wwwroot/bundles/root.js",
     "inputFiles": [
-      "wwwroot/scripts/root/templateForm.js",
-      "wwwroot/scripts/root/rootApp.js",
-      "wwwroot/scripts/root/FormManager.js"
+      "wwwroot/scripts/root/*.js"
     ]
   },
   {
     "outputFileName": "wwwroot/bundles/services.js",
     "inputFiles": [
-      "wwwroot/scripts/services/httpClient.js",
-      "wwwroot/scripts/services/dialogManager.js",
-      "wwwroot/scripts/services/dateTimeProvider.js",
-      "wwwroot/scripts/services/ApiUriConfig.js",
-      "wwwroot/scripts/services/apiClient.js",
-      "wwwroot/scripts/services/services.js"
+      "wwwroot/scripts/services/*.js"
     ]
   },
   {
@@ -71,6 +63,12 @@
       "wwwroot/lib/sammy/lib/sammy.js",
       "wwwroot/lib/moment/moment.js",
       "wwwroot/lib/moment-timezone/moment-timezone.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/common.js",
+    "inputFiles": [
+      "wwwroot/scripts/common/*.js"
     ]
   }
 ]
