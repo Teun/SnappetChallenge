@@ -1,7 +1,7 @@
 # SnappetChallenge
 
 ## Update by Abhishek Tripathi on 01-February-18
-Created a *ASP.NET Core 2.0* solution. It is a simple application to demonstrate skills of partitioning and filtering data and rending it in the UI.
+Created a *ASP.NET Core 2.0* solution. It is a simple application to demonstrate dotnet core skills and simple partitioning and filtering data and rendering it in an interactive graph.
 The view shows the number of records in the dataset by subject. The inital view shows an aggregate of all subjects submissions by each day. Legend is clickable and hides or shows the line on click. 
 The datepicker restricts the data to a particular day and shows following details
  - Total Correct Answers by subject. (Correct > 0)
