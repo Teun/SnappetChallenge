@@ -10,9 +10,9 @@ The datepicker restricts the data to a particular day and shows following detail
  - Total distinct submissions. (Total distinct user submissions by subject)
 
  # Screenshots
-![alt "AllData"](\screenshot\AllData.jpg "All Data")
+![alt "AllData"](/screenshot/AllData.jpg "All Data")
 
-![alt](\screenshot\filtereddata.jpg "Filtered Data")
+![alt "FilteredData"](/screenshot/filtereddata.jpg "Filtered Data")
 
 
 ---------------------
