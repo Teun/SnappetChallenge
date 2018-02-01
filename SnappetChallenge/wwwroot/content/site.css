@@ -29,6 +29,7 @@
   width: 300px;
   padding: 10px;
   border: 1px solid #aaa;
+  background-color: white;
 }
 .snappet-challenge .user-card .avatar {
   width: 48px;
@@ -67,4 +68,7 @@
 .snappet-challenge .learning-objectives-list .learning-objective .header .status-bar {
   font-size: 14px;
   color: #777;
+}
+.snappet-challenge .learning-objectives-list .learning-objective .users {
+  background-color: #f8f8f8;
 }
