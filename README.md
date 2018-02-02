@@ -1,8 +1,11 @@
 # SnappetChallenge
 
 ## Update by Abhishek Tripathi on 01-February-18
-Created a *ASP.NET Core 2.0* solution. It is a simple application to demonstrate dotnet core skills and simple partitioning and filtering data and rendering it in an interactive graph.
-The view shows the number of records in the dataset by subject. The inital view shows an aggregate of all subjects submissions by each day. Legend is clickable and hides or shows the line on click. 
+It was nice to have me invited to the Utrecht office of Snappet. I enjoyed the conversation and understood how the company wants to evolve technically in future. The discussion influenced my solution to opt for the stack which allows easy containerization and easy elastic scaling on demand on AWS using either EC2 scaling or docker scaling. This would reduce the overall operational cost and give a very high throughput. There would be no need of switching the VMs on or off anymore.
+
+I have created a **ASP.NET Core 2.0** solution. The application is simple with decoupled architecture using dependency injection. This allows for a swappable datalayer which at the moment reads from the provided csv file. The time values in the provided dataset are read in the UTC format and rendered in the local format in the graph.
+
+The view shows the number of records in the dataset by subject. The inital view shows an aggregate of all subject submissions by each day. Legend is clickable and toggles the visibility of the line in graph. 
 The datepicker restricts the data to a particular day and shows following details
  - Total Correct Answers by subject. (Correct > 0)
  - Total Real Progress. (Progress > 0)
