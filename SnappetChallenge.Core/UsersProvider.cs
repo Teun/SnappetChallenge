@@ -10,7 +10,8 @@ namespace SnappetChallenge.Core
         private readonly ISubmittedAnswersProvider submittedAnswersProvider;
         private readonly IUsersRepository usersRepository;
 
-        public UsersProvider(ISubmittedAnswersProvider submittedAnswersProvider, IUsersRepository usersRepository)
+        public UsersProvider(ISubmittedAnswersProvider submittedAnswersProvider, 
+            IUsersRepository usersRepository)
         {
             this.submittedAnswersProvider = submittedAnswersProvider;
             this.usersRepository = usersRepository;
