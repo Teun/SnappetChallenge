@@ -1,4 +1,24 @@
 # SnappetChallenge
+
+## Update by Abhishek Tripathi on 01-February-18
+It was nice to have me invited to the Utrecht office of Snappet. I enjoyed the conversation and understood how the company wants to evolve technically in future. The discussion influenced my solution to opt for the stack which allows easy containerization and easy elastic scaling on demand on AWS using either EC2 scaling or docker scaling. This would reduce the overall operational cost and give a very high throughput. There would be no need of switching the VMs on or off anymore.
+
+I have created a **ASP.NET Core 2.0** solution. The application is simple with decoupled architecture using dependency injection. This allows for a swappable datalayer which at the moment reads from the provided csv file. The time values in the provided dataset are read in the UTC format and rendered in the local format in the graph.
+
+The view shows the number of records in the dataset by subject. The inital view shows an aggregate of all subject submissions by each day. Legend is clickable and toggles the visibility of the line in graph. 
+The datepicker restricts the data to a particular day and shows following details
+ - Total Correct Answers by subject. (Correct > 0)
+ - Total Real Progress. (Progress > 0)
+ - Total NonZero Difficulty (Difficulty > 0)
+ - Total distinct submissions. (Total distinct user submissions by subject)
+
+ # Screenshots
+![alt "AllData"](/screenshot/AllData.jpg "All Data")
+
+![alt "FilteredData"](/screenshot/filtereddata.jpg "Filtered Data")
+
+
+---------------------
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
 ### Language
