@@ -1,0 +1,38 @@
+﻿@model object
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="display-4">Snappet Challenge</h1>
+
+<div class="main-menu">
+    <ul class="nav">
+        <!--ko foreach: registredCatalogs-->
+        <li class="nav-item" data-bind="css: {active: catalogName === $parent.activeCatalogName()}">
+            <a class="nav-link" data-bind="attr: {href: defaultRoute}, text: title"></a>
+        </li>
+        <!--/ko-->
+    </ul>
+</div>
+<!--ko if: form-->
+<!--ko template: form--><!--/ko-->
+<!--/ko-->
+
+@Html.Partial("../Common/Progress")
+@Html.Partial("../Common/UserCard")
+@Html.Partial("../Common/AnswerCard")
+@Html.Partial("../ClassWork/LearningObjectives")
+@Html.Partial("../Pupils/List")
+@Html.Partial("../Pupils/Details")
+
+@section scripts
+{
+    <script src="~/bundles/catalogs.js"></script>
+    <script src="~/bundles/models.js"></script>
+    <script src="~/bundles/services.js"></script>
+    <script src="~/bundles/common.js"></script>
+    <script src="~/bundles/classWork.js"></script>
+    <script src="~/bundles/pupils.js"></script>
+    <script src="~/bundles/root.js"></script>
+}

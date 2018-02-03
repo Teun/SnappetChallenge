@@ -1,0 +1,146 @@
+﻿.snappet-challenge .learning-progress-bar {
+  width: 200px;
+  position: relative;
+  background: #ddd;
+  border: 1px solid black;
+  font-size: 14px;
+  height: 23px;
+}
+.snappet-challenge .learning-progress-bar .learning-progress {
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  background-color: #30dd50;
+}
+.snappet-challenge .learning-progress-bar .caption {
+  position: absolute;
+  right: 55%;
+}
+.snappet-challenge .learning-progress-bar.negative .learning-progress {
+  left: auto;
+  right: 50%;
+  background-color: #daa;
+}
+.snappet-challenge .learning-progress-bar.negative .caption {
+  right: auto;
+  left: 55%;
+}
+.snappet-challenge .answer-card {
+  width: 270px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  background-color: white;
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+.snappet-challenge .answer-card .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.snappet-challenge .answer-card .status-bar {
+  font-size: 12px;
+  color: #777;
+}
+.snappet-challenge .answer-card .learning-progress-bar {
+  width: 150px;
+  height: 20px;
+  font-size: 12px;
+}
+.snappet-challenge .user-card {
+  width: 270px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  background-color: white;
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+.snappet-challenge .user-card:hover {
+  border-color: #0275d8;
+  color: #0275d8;
+}
+.snappet-challenge .user-card .avatar {
+  width: 48px;
+  height: 48px;
+  float: left;
+  border-radius: 20px;
+  background-size: cover;
+}
+.snappet-challenge .user-card .info {
+  margin-left: 66px;
+}
+.snappet-challenge .user-card .name {
+  font-size: 16px;
+  font-weight: bold;
+}
+.snappet-challenge .user-card .learning-progress-bar {
+  width: 150px;
+  height: 20px;
+  font-size: 12px;
+}
+.snappet-challenge .learning-objectives-list {
+  border: 1px solid #ccc;
+}
+.snappet-challenge .learning-objectives-list .learning-objective {
+  border-bottom: 1px solid #ccc;
+}
+.snappet-challenge .learning-objectives-list .learning-objective .header {
+  padding: 10px;
+  cursor: pointer;
+}
+.snappet-challenge .learning-objectives-list .learning-objective .header:hover .title a {
+  text-decoration: underline;
+  color: #014c8c;
+}
+.snappet-challenge .learning-objectives-list .learning-objective .header .title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.snappet-challenge .learning-objectives-list .learning-objective .header .progress-block {
+  float: right;
+}
+.snappet-challenge .learning-objectives-list .learning-objective .header .status-bar {
+  font-size: 14px;
+  color: #777;
+}
+.snappet-challenge .learning-objectives-list .learning-objective .users,
+.snappet-challenge .learning-objectives-list .learning-objective .answers {
+  background-color: #f8f8f8;
+}
+.snappet-challenge .pupil-details .pupil-card {
+  margin-bottom: 40px;
+}
+.snappet-challenge .pupil-details .pupil-card .avatar {
+  width: 86px;
+  height: 86px;
+  float: left;
+  border-radius: 43px;
+  background-size: cover;
+  border: 1px solid #ccc;
+}
+.snappet-challenge .pupil-details .pupil-card .user-info {
+  margin-left: 100px;
+}
+.snappet-challenge .main-menu {
+  margin-bottom: 20px;
+}
+.snappet-challenge .main-menu .nav .nav-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.snappet-challenge .main-menu .nav .nav-item:first-child {
+  padding-left: 0;
+}
+.snappet-challenge .main-menu .nav .nav-item.active .nav-link {
+  border-bottom: 2px solid black;
+}
+.snappet-challenge .main-menu .nav .nav-item .nav-link {
+  padding-left: 0;
+  padding-right: 0;
+  color: black;
+}
+.snappet-challenge .pupils-list {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+}

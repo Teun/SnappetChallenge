@@ -1,0 +1,8 @@
+﻿<script type="text/html" id="progressComponent">
+    <!--ko with: new SnappetChallenge.ProgressVM($data)-->
+    <div class="learning-progress-bar" data-bind="css: {negative: isNegative}">
+        <div class="learning-progress" data-bind="style: {width: (progressBarWidth/2) + '%'}"></div>
+        <div class="caption" data-bind="text: formattedValue"></div>
+    </div>
+    <!--/ko-->
+</script>

@@ -1,0 +1,52 @@
+﻿<script type="text/html" id="pupilDetails">
+    <div class="row pupil-details">
+        <div class="col-10">
+            <div class="pupil-card clearfix">
+                <!--ko if: imageUrl-->
+                <div class="avatar" data-bind="style: {'background-image': 'url(' + imageUrl() + ')'}"></div>
+                <!--/ko-->
+                <div class="user-info">
+                    <h3><!--ko text: name()--><!--/ko-->'s progress on <!--ko text: calendar.formattedDate--><!--/ko--></h3>
+                    <div>
+                        Average daily progress:
+                    </div>
+                    <!--ko template: {name: 'progressComponent', data: averageProgress}--><!--/ko-->
+                </div>
+            </div>
+            <div class="learning-objectives-list">
+                <!--ko foreach: learningObjectives-->
+                <div class="learning-objective">
+                    <div class="header" data-bind="click: toggle">
+                        <div class="progress-block">
+                            <div>daily progress</div>
+                            <!--ko template: {name: 'progressComponent', data: overallProgress}--><!--/ko-->
+                        </div>
+                        <div class="title">
+                            <a href="#" data-bind="text: name"></a>
+                        </div>
+                        <div class="status-bar">
+                            <!--ko text: domain--><!--/ko--> |
+                            <!--ko text: subject--><!--/ko--> |
+                            Correct answers: <!--ko text: correctAnswersCount--><!--/ko--> |
+                            Incorrect answers: <!--ko text: incorrectAnswersCount--><!--/ko-->
+                        </div>
+                    </div>
+                    <div class="collapse" data-bind="css: {show: expanded}">
+                        <div class="answers">
+                            <!--ko foreach: answers-->
+                            <div class="float-left m-3">
+                                <!--ko template: {name: 'answerCard', data: $data}--><!--/ko-->
+                            </div>
+                            <!--/ko-->
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ko-->
+            </div>
+        </div>
+        <div class="col-2">
+            <div data-bind="attr: {'data-date-end-date': calendar.maxSelectableDate}, inlineDatepicker: calendar.date"></div>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,9 @@
+﻿<script type="text/html" id="userCard">
+    <a class="user-card clearfix" data-bind="attr: { href: '#/pupils/' + userId + '/' + dateAlias}">
+        <div data-bind="style: {'background-image': 'url(' + imageUrl + ')'}" class="avatar"></div>
+        <div class="info">
+            <h5 class="name" data-bind="text: name"></h5>
+            <!--ko template: {name: 'progressComponent', data: progress}--><!--/ko-->
+        </div>
+    </a>
+</script>

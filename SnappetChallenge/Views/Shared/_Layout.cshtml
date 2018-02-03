@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/bundles/bootstrap-bundle.min.css" />
+    <link rel="stylesheet" href="~/bundles/bootstrap-bundle.min.css" />
+    <link rel="stylesheet" href="~/content/site.css" />
+    <title>Snappet Challenge</title>
+</head>
+<body class="snappet-challenge">
+    <div class="container" id="site-content">
+        @RenderBody()
+    </div>
+    <script src="~/bundles/jquery.min.js"></script>
+    <script src="~/bundles/bootstrap.min.js"></script>
+    <script src="~/bundles/libs.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

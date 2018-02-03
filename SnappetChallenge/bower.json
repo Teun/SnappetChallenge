@@ -1,0 +1,12 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "knockout": "v3.4.2",
+    "bootstrap": "v4.0.0-alpha.6",
+    "dt-jquery": "v2.0.0",
+    "moment-timezone": "0.5.14",
+    "sammy": "v0.7.6",
+    "bootstrap-datepicker": "v1.7.1"
+  }
+}

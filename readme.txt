@@ -1,0 +1,3 @@
+How to run
+To run this project you need to have .net core 2.0 installed on your machine. Then you can just execute **dotnet run** command in SnappetChallenge project's folder.
+Or you can just execute it from visual studio 2017. I intentionally included all script packages and compiled js in git so you could just run the project. No need to install any databases, appllication reads the data from files you provided.

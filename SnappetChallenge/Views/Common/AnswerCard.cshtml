@@ -1,0 +1,18 @@
+﻿<script type="text/html" id="answerCard">
+    <div class="answer-card">
+        <h5 class="title">
+            Exercise
+            #<!--ko text: exerciseId--><!--/ko-->
+            <!--ko if: correct-->
+            ✔️
+            <!--/ko-->
+            <!--ko ifnot: correct-->
+            ❌
+            <!--/ko-->
+        </h5>
+        <!--ko template: {name: 'progressComponent', data: progress}--><!--/ko-->
+        <div class="status-bar">
+            Difficulty <!--ko text: difficulty--><!--/ko-->
+        </div>
+    </div>
+</script>

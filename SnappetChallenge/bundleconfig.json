@@ -1,0 +1,80 @@
+[
+  {
+    "outputFileName": "wwwroot/bundles/bootstrap.min.js",
+    "inputFiles": [
+      "wwwroot/lib/tether/dist/js/tether.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "wwwroot/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/bootstrap-bundle.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "wwwroot/lib/tether/dist/css/tether-theme-basic.css",
+      "wwwroot/lib/tether/dist/css/tether-theme-arrows-dark.css",
+      "wwwroot/lib/tether/dist/css/tether-theme-arrows.css",
+      "wwwroot/lib/tether/dist/css/tether.css",
+      "wwwroot/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/catalogs.js",
+    "inputFiles": [
+      "wwwroot/scripts/catalogs/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/classWork.js",
+    "inputFiles": [
+      "wwwroot/scripts/classWork/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/models.js",
+    "inputFiles": [
+      "wwwroot/scripts/models/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/root.js",
+    "inputFiles": [
+      "wwwroot/scripts/root/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/services.js",
+    "inputFiles": [
+      "wwwroot/scripts/services/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/libs.js",
+    "inputFiles": [
+      "wwwroot/lib/knockout/dist/knockout.js",
+      "wwwroot/lib/sammy/lib/sammy.js",
+      "wwwroot/lib/moment/moment.js",
+      "wwwroot/lib/moment-timezone/moment-timezone.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/common.js",
+    "inputFiles": [
+      "wwwroot/scripts/common/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/pupils.js",
+    "inputFiles": [
+      "wwwroot/scripts/pupils/pupilsListVM.js",
+      "wwwroot/scripts/pupils/pupilsCatalog.js",
+      "wwwroot/scripts/pupils/pupilDetailsVM.js"
+    ]
+  }
+]

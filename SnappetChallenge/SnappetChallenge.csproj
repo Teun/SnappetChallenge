@@ -1,0 +1,104 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-bundle.min.css" />
+    <Content Remove="wwwroot\lib\moment\moment.d.ts" />
+    <Content Remove="wwwroot\scripts\catalogs\catalogInitResponse.ts" />
+    <Content Remove="wwwroot\scripts\catalogs\CatalogRegistry.ts" />
+    <Content Remove="wwwroot\scripts\classWork\ClassWorkCatalog.ts" />
+    <Content Remove="wwwroot\scripts\classWork\classWorkVM.ts" />
+    <Content Remove="wwwroot\scripts\common\calendarVM.ts" />
+    <Content Remove="wwwroot\scripts\common\KoExtensions.ts" />
+    <Content Remove="wwwroot\scripts\common\progressVM.ts" />
+    <Content Remove="wwwroot\scripts\models\dateRangeFilter.ts" />
+    <Content Remove="wwwroot\scripts\models\learningObjective.ts" />
+    <Content Remove="wwwroot\scripts\models\User.ts" />
+    <Content Remove="wwwroot\scripts\models\UserCard.ts" />
+    <Content Remove="wwwroot\scripts\models\userDetails.ts" />
+    <Content Remove="wwwroot\scripts\pupils\pupilDetailsVM.ts" />
+    <Content Remove="wwwroot\scripts\pupils\pupilsCatalog.ts" />
+    <Content Remove="wwwroot\scripts\pupils\pupilsListVM.ts" />
+    <Content Remove="wwwroot\scripts\root\catalog.ts" />
+    <Content Remove="wwwroot\scripts\root\FormManager.ts" />
+    <Content Remove="wwwroot\scripts\root\rootApp.ts" />
+    <Content Remove="wwwroot\scripts\root\Services.ts" />
+    <Content Remove="wwwroot\scripts\root\TemplateForm.ts" />
+    <Content Remove="wwwroot\scripts\services\apiClient.ts" />
+    <Content Remove="wwwroot\scripts\services\ApiUrlConfig.ts" />
+    <Content Remove="wwwroot\scripts\services\dateAliasConverter.ts" />
+    <Content Remove="wwwroot\scripts\services\dateRangeFilterBuilder.ts" />
+    <Content Remove="wwwroot\scripts\services\dateTimeProvider.ts" />
+    <Content Remove="wwwroot\scripts\services\dialogManager.ts" />
+    <Content Remove="wwwroot\scripts\services\httpClient.ts" />
+    <Content Remove="wwwroot\typings\knockout\knockout.d.ts" />
+    <Content Remove="wwwroot\typings\moment\moment.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
+    <PackageReference Include="FlashMapper.DependencyInjection" Version="1.0.4" />
+    <PackageReference Include="LightInject" Version="5.1.2" />
+    <PackageReference Include="LightInject.Microsoft.DependencyInjection" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SnappetChallenge.Core\SnappetChallenge.Core.csproj" />
+    <ProjectReference Include="..\SnappetChallenge.Infrastructure\SnappetChallenge.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\lib\moment\moment.d.ts">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="wwwroot\scripts\catalogs\catalogInitResponse.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\catalogs\catalogRegistry.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\classWork\classWorkCatalog.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\classWork\classWorkVM.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\common\calendarVM.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\common\koExtensions.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\common\progressVM.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\models\dateRangeFilter.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\models\learningObjective.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\models\user.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\models\userCard.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\models\userDetails.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\pupils\pupilDetailsVM.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\pupils\pupilsCatalog.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\pupils\pupilsListVM.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\root\formManager.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\dateAliasConverter.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\dateTimeProvider.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\dateRangeFilterBuilder.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\services.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\catalogs\catalog.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\root\rootApp.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\root\templateForm.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\apiClient.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\ApiUrlConfig.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\httpClient.ts" />
+    <TypeScriptCompile Include="wwwroot\scripts\services\dialogManager.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\knockout.mapping\knockout.mapping.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\knockout.validation\knockout.validation.d.ts" />
+    <TypeScriptCompile Include="wwwroot\typings\knockout\knockout.d.ts">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="wwwroot\typings\moment\moment.d.ts">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="wwwroot\typings\sammy\sammy.d.ts" />
+  </ItemGroup>
+
+</Project>

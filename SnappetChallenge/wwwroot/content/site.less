@@ -1,0 +1,188 @@
+﻿.snappet-challenge {
+    .learning-progress-bar {
+        width: 200px;
+        position: relative;
+        background: #ddd;
+        border: 1px solid black;
+        font-size: 14px;
+        height: 23px;
+
+        .learning-progress {
+            height: 100%;
+            left: 50%;
+            position: absolute;
+            background-color: #30dd50;
+        }
+
+        .caption {
+            position: absolute;
+            right: 55%;
+        }
+
+        &.negative {
+            .learning-progress {
+                left: auto;
+                right: 50%;
+                background-color: #daa;
+            }
+
+            .caption {
+                right: auto;
+                left: 55%;
+            }
+        }
+    }
+
+    .answer-card {
+        width: 270px;
+        padding: 10px;
+        border: 1px solid #aaa;
+        background-color: white;
+        display: block;
+        text-decoration: none;
+        color: black;
+
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .status-bar {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .learning-progress-bar {
+            width: 150px;
+            height: 20px;
+            font-size: 12px;
+        }
+    }
+
+    .user-card {
+        width: 270px;
+        padding: 10px;
+        border: 1px solid #aaa;
+        background-color: white;
+        display: block;
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            border-color: #0275d8;
+            color: #0275d8;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            float: left;
+            border-radius: 20px;
+            background-size: cover;
+        }
+
+        .info {
+            margin-left: 66px;
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .learning-progress-bar {
+            width: 150px;
+            height: 20px;
+            font-size: 12px;
+        }
+    }
+
+    .learning-objectives-list {
+        border: 1px solid #ccc;
+
+        .learning-objective {
+            border-bottom: 1px solid #ccc;
+
+            .header {
+                padding: 10px;
+                cursor: pointer;
+
+                &:hover {
+                    .title a {
+                        text-decoration: underline;
+                        color: #014c8c;
+                    }
+                }
+
+                .title {
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+                .progress-block {
+                    float: right;
+                }
+
+                .status-bar {
+                    font-size: 14px;
+                    color: #777;
+                }
+            }
+
+            .users, .answers {
+                background-color: #f8f8f8;
+            }
+        }
+    }
+
+    .pupil-details {
+        .pupil-card {
+            margin-bottom: 40px;
+
+            .avatar {
+                width: 86px;
+                height: 86px;
+                float: left;
+                border-radius: 43px;
+                background-size: cover;
+                border: 1px solid #ccc;
+            }
+
+            .user-info {
+                margin-left: 100px;
+            }
+        }
+    }
+
+    .main-menu {
+        margin-bottom: 20px;
+
+        .nav {
+            .nav-item {
+                padding-left: 1rem;
+                padding-right: 1rem;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &.active {
+                    .nav-link {
+                        border-bottom: 2px solid black;
+                    }
+                }
+
+                .nav-link {
+                    padding-left: 0;
+                    padding-right: 0;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    .pupils-list {
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+    }
+}
