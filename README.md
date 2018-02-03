@@ -1,4 +1,9 @@
 # SnappetChallenge
+
+### How to run
+To run this project you need to have .net core 2.0 installed on your machine. Then you can just execute **dotnet run** command in SnappetChallenge project's folder.
+Or you can just execute it from visual studio 2017. I intentionally included all script packages and compiled js in git so you could just run the project. No need to install any databases, appllication reads the data from files you provided.
+
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
 ### Language
