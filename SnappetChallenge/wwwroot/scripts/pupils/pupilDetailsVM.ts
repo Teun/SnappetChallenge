@@ -44,12 +44,17 @@
             }
 
             this.init = (params: { userId: number, date: string }) => {
+                console.log("init starts");
                 this.initialized(false);
                 const date = dateAliasConverter.getDateFromAlias(params.date);
+                console.log("setting date");
                 this.calendar.date(date);
+                console.log("clearing data");
                 this.clear();
+                console.log("loading data for", params.userId, date);
                 this.loadData(params.userId, date);
                 this.initialized(true);
+                console.log("init completes");
             }
 
             this.clear = () => {
@@ -65,14 +70,19 @@
                 this.loading(true);
                 apiClient.getUserDetails(userId, filter,
                     (data) => {
-                        if (date.getTime() === this.calendar.date().getTime())
+                        console.log("data loaded");
+                        if (date.getTime() === this.calendar.date().getTime()) {
+                            console.log("setting up the data");
                             this.setData(data);
+                        }
                     }).always(() => this.loading(false));
             }
 
             this.calendar.date.subscribe((newValue: Date) => {
+                console.log("date updated", newValue);
                 if (this.initialized() && this.userId()) {
                     var dateAlias = dateAliasConverter.getDateAlias(newValue);
+                    console.log("reloading page");
                     router.setLocation(`#/pupils/${this.userId()}/${dateAlias}`);
                 }
             });

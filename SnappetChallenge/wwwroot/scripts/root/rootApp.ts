@@ -32,8 +32,8 @@
 
             this.setupRoute = (router: SammyInst, routePattern: string, form: TemplateForm, catalogName: string) => {
                 router.get(routePattern, (context) => {
-                    this.mainViewModel.form(form);
                     form.data.init(context.params);
+                    this.mainViewModel.form(form);
                     this.mainViewModel.activeCatalogName(catalogName);
                 });
             };

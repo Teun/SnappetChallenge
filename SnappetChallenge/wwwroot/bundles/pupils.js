@@ -100,12 +100,17 @@ var SnappetChallenge;
                         .map(function (lo) { return new LearningObjectiveForUserDetailsVM(lo); }));
                 };
                 this.init = function (params) {
+                    console.log("init starts");
                     _this.initialized(false);
                     var date = dateAliasConverter.getDateFromAlias(params.date);
+                    console.log("setting date");
                     _this.calendar.date(date);
+                    console.log("clearing data");
                     _this.clear();
+                    console.log("loading data for", params.userId, date);
                     _this.loadData(params.userId, date);
                     _this.initialized(true);
+                    console.log("init completes");
                 };
                 this.clear = function () {
                     _this.userId(null);
@@ -118,13 +123,18 @@ var SnappetChallenge;
                     var filter = dateRangeFilterBuilder.getFilterForDate(date);
                     _this.loading(true);
                     apiClient.getUserDetails(userId, filter, function (data) {
-                        if (date.getTime() === _this.calendar.date().getTime())
+                        console.log("data loaded");
+                        if (date.getTime() === _this.calendar.date().getTime()) {
+                            console.log("setting up the data");
                             _this.setData(data);
+                        }
                     }).always(function () { return _this.loading(false); });
                 };
                 this.calendar.date.subscribe(function (newValue) {
+                    console.log("date updated", newValue);
                     if (_this.initialized() && _this.userId()) {
                         var dateAlias = dateAliasConverter.getDateAlias(newValue);
+                        console.log("reloading page");
                         router.setLocation("#/pupils/" + _this.userId() + "/" + dateAlias);
                     }
                 });

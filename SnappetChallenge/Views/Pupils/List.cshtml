@@ -1,6 +1,6 @@
 ﻿<script type="text/html" id="pupilsList">
     <div class="row">
-        <div class="col-11">
+        <div class="col-10">
             <h3>Class progress on <!--ko text: calendar.formattedDate--><!--/ko--></h3>
             <div class="pupils-list clearfix">
                 <!--ko foreach: pupils-->
@@ -10,7 +10,7 @@
                 <!--/ko-->
             </div>
         </div>
-        <div class="col-1">
+        <div class="col-2">
             <div data-bind="attr: {'data-date-end-date': calendar.maxSelectableDate}, inlineDatepicker: calendar.date"></div>
         </div>
     </div>

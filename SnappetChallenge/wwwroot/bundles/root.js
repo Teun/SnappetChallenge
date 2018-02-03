@@ -37,8 +37,8 @@ var SnappetChallenge;
             };
             this.setupRoute = function (router, routePattern, form, catalogName) {
                 router.get(routePattern, function (context) {
-                    _this.mainViewModel.form(form);
                     form.data.init(context.params);
+                    _this.mainViewModel.form(form);
                     _this.mainViewModel.activeCatalogName(catalogName);
                 });
             };

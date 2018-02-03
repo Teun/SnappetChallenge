@@ -5,7 +5,9 @@ var SnappetChallenge;
             var _this = this;
             this.date = ko.observable();
             this.formattedDate = ko.computed(function () {
-                return moment(_this.date()).format("MMMM Do");
+                if (_this.date())
+                    return moment(_this.date()).format("MMMM Do");
+                return "";
             });
             this.maxSelectableDate = moment(dateTimeProvider.getTodaysDate()).format("YYYY-MM-DD");
         }
