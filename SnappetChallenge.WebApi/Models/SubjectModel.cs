@@ -13,14 +13,10 @@
             if (groupedList != null)
             {
                 this.Answers = groupedList.Select(item => new ExerciseResultModel(item));
-
-                this.LearningObjective = groupedList.FirstOrDefault()?.LearningObjective;
             }
         }
 
         public string Name { get; set; }
-
-        public string LearningObjective { get; set; }
 
         public IEnumerable<ExerciseResultModel> Answers { get; set; }
     }

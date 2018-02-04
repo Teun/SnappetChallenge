@@ -6,8 +6,6 @@
     {
         public string Name { get; set; }
 
-        public string LearningObjective { get; set; }
-
         public IEnumerable<ExerciseResultModel> Answers { get; set; }
     }
 }

@@ -14,7 +14,6 @@
             if (subject != null)
             {
                 this.Name = subject.Name;
-                this.LearningObjective = subject.LearningObjective;
                 this.Answers = subject.Answers.Select(item => new ExerciseResultViewModel(item));
                 this.AnswerCount = this.Answers.Count();
                 this.CorrectAnswerCount = this.Answers.Count(x => x.IsCorrect);
@@ -23,8 +22,6 @@
         }
 
         public string Name { get; set; }
-
-        public string LearningObjective { get; set; }
 
         public int AnswerCount { get; set; }
 
