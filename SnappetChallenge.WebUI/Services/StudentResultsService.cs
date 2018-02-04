@@ -9,7 +9,7 @@
 
     using SnappetChallenge.WebUI.Models;
 
-    public class DataService : IDataService
+    public class StudentResultsService : IDataService
     {
         private HttpClient client;
 
@@ -17,7 +17,7 @@
 
         private string studentsResultEndpoint = "api/StudentsWorkingResult/from/{0}/to/{1}";
 
-        public DataService(IConfiguration configuration)
+        public StudentResultsService(IConfiguration configuration)
         {
             this.client = new HttpClient { BaseAddress = new Uri(configuration[this.configEndpointGetter]) };
         }
