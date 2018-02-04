@@ -12,6 +12,7 @@
     public class StudentsWorkingResultController : Controller
     {
         private readonly IFileRepository<ExerciseResultJsonDeserializeModel> repository;
+
         public StudentsWorkingResultController(IFileRepository<ExerciseResultJsonDeserializeModel> repository)
         {
             this.repository = repository;
@@ -21,9 +22,15 @@
         [Route("from/{from}/to/{to}")]
         public IActionResult Get([FromRoute] DateTime from, [FromRoute] DateTime to)
         {
-            IEnumerable<StudentResultModel> result = this.repository.GetGroupedListByData(from, to);
-
-            return this.Ok(result);
+            try
+            {
+                IEnumerable<StudentResultModel> result = this.repository.GetGroupedListByData(from, to);
+                return this.Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(500, ex);
+            }
         }
     }
 }

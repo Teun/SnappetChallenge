@@ -4,8 +4,6 @@ namespace SnappetChallenge.IntegrationTests
     using System.Net.Http;
     using System.Threading.Tasks;
 
-    using SnappetChallenge.WebApi.Models;
-
     using Xunit;
 
     public class StudentsWorkingResultControllerTests : WebApiTests
