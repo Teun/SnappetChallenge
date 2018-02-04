@@ -1,5 +1,7 @@
 ﻿namespace SnappetChallenge.WebApi
 {
+    using System.IO;
+
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
 
@@ -13,6 +15,7 @@
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .Build();
     }
 }

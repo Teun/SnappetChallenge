@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SnappetChallenge.WebApi.Helpers
+﻿namespace SnappetChallenge.WebApi.Helpers
 {
-    public interface IFileRepository<T> where T : class
+    using System;
+    using System.Collections.Generic;
+
+    using SnappetChallenge.WebApi.Models;
+
+    public interface IFileRepository<T>
+        where T : class
     {
         IList<T> GetByData(DateTime from, DateTime to);
+
+        IEnumerable<StudentModel> GetGroupedListByData(DateTime from, DateTime to);
     }
 }

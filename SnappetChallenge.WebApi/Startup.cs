@@ -21,9 +21,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
-            services.AddSingleton(this.Configuration);
-            services.AddScoped<IFileRepository<ExerciseResultModel>, FileRepository>();
+            services.AddScoped<IFileRepository<ExerciseResultJsonDeserializeModel>, FileRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

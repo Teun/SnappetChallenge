@@ -1,29 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SnappetChallenge.WebApi.Helpers
+﻿namespace SnappetChallenge.WebApi.Helpers
 {
+    using System;
+    using System.Collections.Generic;
     using System.IO;
-
-    using Microsoft.Extensions.Configuration;
+    using System.Linq;
+    using System.Reflection;
 
     using Newtonsoft.Json;
 
     using SnappetChallenge.WebApi.Models;
-    public class FileRepository : IFileRepository<ExerciseResultModel>, IFileOpener
+
+    public class FileRepository : IFileRepository<ExerciseResultJsonDeserializeModel>, IFileOpener
     {
+        private string rootFolderName = "SnappetChallenge";
+
+        private string dataFolderName = "Data";
+
+        private string fileName = "work.json";
+
         private string fullFilePath;
 
-        public FileRepository(IConfiguration configuration)
+        public FileRepository() 
         {
-            this.InitializeDataFileFullPath(configuration);
+            this.InitializeDataFileFullPath();
         }
 
-        public IList<ExerciseResultModel> GetByData(DateTime @from, DateTime to)
+        public IList<ExerciseResultJsonDeserializeModel> GetByData(DateTime @from, DateTime to)
         {
-            var result = new List<ExerciseResultModel>();
+            var result = new List<ExerciseResultJsonDeserializeModel>();
 
             var serializer = new JsonSerializer();
             using (var stream = this.OpenJsonData())
@@ -34,7 +38,7 @@ namespace SnappetChallenge.WebApi.Helpers
                 {
                     if (reader.TokenType != JsonToken.StartObject) continue;
 
-                    ExerciseResultModel item = serializer.Deserialize<ExerciseResultModel>(reader);
+                    ExerciseResultJsonDeserializeModel item = serializer.Deserialize<ExerciseResultJsonDeserializeModel>(reader);
 
                     if (item.SubmitDateTime >= @from && item.SubmitDateTime <= to)
                     {
@@ -46,28 +50,47 @@ namespace SnappetChallenge.WebApi.Helpers
             return result;
         }
 
+        public IEnumerable<StudentModel> GetGroupedListByData(DateTime @from, DateTime to)
+        {
+            IList<ExerciseResultJsonDeserializeModel> ungroupedData = this.GetByData(from, to);
+
+            IEnumerable<StudentModel> students = 
+                ungroupedData?.GroupBy(x => x.UserId, (key, group) => new StudentModel(key, group));
+
+            return students;
+        }
+
         public Stream OpenJsonData()
         {
             return File.Open(this.fullFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
         }
 
-        private void InitializeDataFileFullPath(IConfiguration configuration)
+        private void InitializeDataFileFullPath()
         {
-            var root = Directory.GetCurrentDirectory();
+            var projectName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            var folderName = configuration["Data:FolderName"];
-            if (folderName == null)
+            DirectoryInfo currentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
+
+            var rootFolder = this.GetRoot(currentDirectory);
+
+            fullFilePath = Path.Combine(rootFolder.FullName, projectName, this.dataFolderName, this.fileName);
+        }
+
+        private DirectoryInfo GetRoot(DirectoryInfo directory)
+        {
+            var parent = directory.Parent;
+
+            if (parent == null)
             {
-                throw new NullReferenceException("Folder name with data files isn't specified in appsettings.json");
+                throw new NullReferenceException($"Unable to find root directory \"{this.rootFolderName}\"");
             }
 
-            var jsonFile = configuration["Data:Files:Json"];
-            if (jsonFile == null)
+            if (parent.Name == this.rootFolderName)
             {
-                throw new NullReferenceException("File with .json extension isn't specified in appsettings.json");
+                return parent;
             }
 
-            fullFilePath = Path.Combine(root, folderName, jsonFile);
+            return this.GetRoot(parent);
         }
     }
 }

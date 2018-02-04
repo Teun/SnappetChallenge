@@ -1,16 +1,23 @@
 ﻿namespace SnappetChallenge.IntegrationTests
 {
-    using SnappetChallenge.IntegrationTests.Fixtures;
+    using System.Net.Http;
 
-    using Xunit;
-    using Xunit.AspNetCore.Integration;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.TestHost;
 
-    [Collection(nameof(WebApiFixtureCollection))]
-    public class WebApiTests : AbstractTest<WebApiIntegrationTestFixture>
-    {
-        public WebApiTests(WebApiIntegrationTestFixture configuration)
-            : base(configuration)
+    using SnappetChallenge.WebApi;
+
+    public class WebApiTests
+    { 
+        private readonly TestServer server;
+        protected readonly HttpClient client;
+
+        public WebApiTests()
         {
+            this.server = new TestServer(new WebHostBuilder()
+                .UseStartup<Startup>());
+            this.client = this.server.CreateClient();
         }
+
     }
 }

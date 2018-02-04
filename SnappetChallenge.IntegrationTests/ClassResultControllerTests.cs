@@ -1,31 +1,25 @@
-using System;
-using Xunit;
-
 namespace SnappetChallenge.IntegrationTests
 {
-    using System.Collections.Generic;
+    using System;
     using System.Threading.Tasks;
 
-    using FluentAssertions;
+    using SnappetChallenge.WebApi.Models;
 
-    using Microsoft.AspNetCore.Mvc;
-
-    using SnappetChallenge.IntegrationTests.Fixtures;
-    using SnappetChallenge.WebApi.Controllers;
+    using Xunit;
 
     public class ClassResultControllerTests : WebApiTests
     {
-        //public ClassResultControllerTests() : base() { }
+        private readonly string routeTemplate = "api/classresult/from/{0}/to/{1}";
 
-        public ClassResultControllerTests(WebApiIntegrationTestFixture configuration)
-            : base(configuration)
-        {
-        }
+        private readonly DateTime utmostDateFrom = DateTime.SpecifyKind(new DateTime(2015, 03, 24), DateTimeKind.Utc);
+        private readonly DateTime utmostDateTo = DateTime.SpecifyKind(new DateTime(2015, 03, 24, 11, 30, 00), DateTimeKind.Utc);
 
         [Fact]
-        public async Task Test1()
+        public async Task SimpleGettingData()
         {
-            IActionResult x = await this.Fixture.SingleAsync<ClassResultController, IActionResult>(controller => controller.Get());
+            var route = string.Format(this.routeTemplate, this.utmostDateFrom.ToString("O"), this.utmostDateTo.ToString("O"));
+
+            var response = await this.client.GetAsync(route);
         }
     }
 }

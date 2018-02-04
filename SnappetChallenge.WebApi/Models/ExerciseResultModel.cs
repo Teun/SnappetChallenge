@@ -2,38 +2,27 @@
 {
     using System;
 
-    using Newtonsoft.Json;
-
-    public class ExerciseResultModel
+    public class ExerciseResultModel : ExerciseModel
     {
-        [JsonProperty("SubmittedAnswerId")]
+        public ExerciseResultModel() : base() { }
+
+        public ExerciseResultModel(ExerciseResultJsonDeserializeModel exerciseResult) : base(exerciseResult)
+        {
+            if (exerciseResult != null)
+            {
+                this.SubmittedAnswerId = exerciseResult.SubmittedAnswerId;
+                this.IsCorrect = exerciseResult.Correct;
+                this.Progress = exerciseResult.Progress;
+                this.SubmittedDateTime = exerciseResult.SubmitDateTime;
+            }
+        }
+
+        public DateTime SubmittedDateTime { get; set; }
+
         public int SubmittedAnswerId { get; set; }
 
-        [JsonProperty("SubmitDateTime")]
-        public DateTime SubmitDateTime { get; set; }
+        public bool IsCorrect { get; set; }
 
-        [JsonProperty("Correct")]
-        public bool Correct { get; set; }
-
-        [JsonProperty("Progress")]
-        public sbyte Progress { get; set; }
-
-        [JsonProperty("UserId")]
-        public int UserId { get; set; }
-
-        [JsonProperty("ExerciseId")]
-        public int ExerciseId { get; set; }
-
-        [JsonProperty("Difficulty")]
-        public float Difficulty { get; set; }
-
-        [JsonProperty("Subject")]
-        public string Subject { get; set; }
-
-        [JsonProperty("Domain")]
-        public string Domain { get; set; }
-
-        [JsonProperty("LearningObjective")]
-        public string LearningObjective { get; set; }
+        public int Progress { get; set; }
     }
 }
