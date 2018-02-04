@@ -1,0 +1,82 @@
+﻿@using Shared.Definitions
+@model IEnumerable<StudyResultsAnalysis.Models.StudyDataEntity>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.PageTitle</h2>
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmittedAnswerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Progress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExerciseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Domain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LearningObjective)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr @{if (item.Correct == 0) {<text>class="warning"</text>} } >
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmittedAnswerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitDateTime)
+        </td>
+        <td>
+            @{ var correctness = item.Correct == 0 ? "No" : "Yes"; }
+            @Html.DisplayFor(modelItem => correctness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Progress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExerciseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Difficulty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LearningObjective)
+        </td>
+    </tr>
+}
+
+</table>
