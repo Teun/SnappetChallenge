@@ -14,6 +14,7 @@
     public class HomeController : Controller
     {
         private readonly IDataService dataService;
+
         public HomeController(IDataService dataService)
         {
             this.dataService = dataService;
@@ -21,12 +22,14 @@
 
         public async Task<IActionResult> Index()
         {
-            this.ViewData["Message"] = "Students result";
+            DateTime dateTimeFrom = DateTime.SpecifyKind(new DateTime(2015, 03, 24), DateTimeKind.Utc);
+            DateTime dateTimeTo = DateTime.SpecifyKind(new DateTime(2015, 03, 24, 11, 30, 00), DateTimeKind.Utc);
+
+            this.ViewData["DateTime"] = dateTimeFrom.ToString("d");
+            this.ViewData["TimeTo"] = dateTimeTo.ToString("T");
 
             IEnumerable<StudentResultModel> data = 
-                await this.dataService.GetByDate(
-                    DateTime.SpecifyKind(new DateTime(2015, 03, 24), DateTimeKind.Utc),
-                    DateTime.SpecifyKind(new DateTime(2015, 03, 24, 11, 30, 00), DateTimeKind.Utc));
+                await this.dataService.GetByDate(dateTimeFrom, dateTimeTo);
 
             IEnumerable<StudentResultViewModel> result = null;
             if (data != null)
