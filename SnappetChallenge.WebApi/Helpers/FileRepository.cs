@@ -18,11 +18,17 @@
 
         private string fileName = "work.json";
 
-        private string fullFilePath;
+        private readonly string fullFilePath;
 
-        public FileRepository() 
+        public FileRepository()
         {
-            this.InitializeDataFileFullPath();
+            var projectName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+            DirectoryInfo currentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
+
+            var rootFolder = this.GetRoot(currentDirectory);
+
+            this.fullFilePath = Path.Combine(rootFolder.FullName, projectName, this.dataFolderName, this.fileName);
         }
 
         public IList<ExerciseResultJsonDeserializeModel> GetByData(DateTime @from, DateTime to)
@@ -50,12 +56,12 @@
             return result;
         }
 
-        public IEnumerable<StudentModel> GetGroupedListByData(DateTime @from, DateTime to)
+        public IEnumerable<StudentResultModel> GetGroupedListByData(DateTime @from, DateTime to)
         {
             IList<ExerciseResultJsonDeserializeModel> ungroupedData = this.GetByData(from, to);
 
-            IEnumerable<StudentModel> students = 
-                ungroupedData?.GroupBy(x => x.UserId, (key, group) => new StudentModel(key, group));
+            IEnumerable<StudentResultModel> students = 
+                ungroupedData?.GroupBy(x => x.UserId, (key, group) => new StudentResultModel(key, group));
 
             return students;
         }
@@ -63,17 +69,6 @@
         public Stream OpenJsonData()
         {
             return File.Open(this.fullFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-        }
-
-        private void InitializeDataFileFullPath()
-        {
-            var projectName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
-            DirectoryInfo currentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
-
-            var rootFolder = this.GetRoot(currentDirectory);
-
-            fullFilePath = Path.Combine(rootFolder.FullName, projectName, this.dataFolderName, this.fileName);
         }
 
         private DirectoryInfo GetRoot(DirectoryInfo directory)

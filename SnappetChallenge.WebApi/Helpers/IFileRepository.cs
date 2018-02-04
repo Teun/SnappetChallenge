@@ -10,6 +10,6 @@
     {
         IList<T> GetByData(DateTime from, DateTime to);
 
-        IEnumerable<StudentModel> GetGroupedListByData(DateTime from, DateTime to);
+        IEnumerable<StudentResultModel> GetGroupedListByData(DateTime from, DateTime to);
     }
 }

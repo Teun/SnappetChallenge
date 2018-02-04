@@ -3,11 +3,11 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class StudentModel
+    public class StudentResultModel
     {
-        public StudentModel() { }
+        public StudentResultModel() { }
 
-        public StudentModel(int userId, IEnumerable<ExerciseResultJsonDeserializeModel> groupedList)
+        public StudentResultModel(int userId, IEnumerable<ExerciseResultJsonDeserializeModel> groupedList)
         {
             this.Id = userId;
 

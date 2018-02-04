@@ -9,10 +9,10 @@
     using SnappetChallenge.WebApi.Models;
 
     [Route("api/[controller]")]
-    public class StudentsResultController : Controller
+    public class StudentsWorkingResultController : Controller
     {
         private readonly IFileRepository<ExerciseResultJsonDeserializeModel> repository;
-        public StudentsResultController(IFileRepository<ExerciseResultJsonDeserializeModel> repository)
+        public StudentsWorkingResultController(IFileRepository<ExerciseResultJsonDeserializeModel> repository)
         {
             this.repository = repository;
         }
@@ -21,7 +21,7 @@
         [Route("from/{from}/to/{to}")]
         public IActionResult Get([FromRoute] DateTime from, [FromRoute] DateTime to)
         {
-            IEnumerable<StudentModel> result = this.repository.GetGroupedListByData(from, to);
+            IEnumerable<StudentResultModel> result = this.repository.GetGroupedListByData(from, to);
 
             return this.Ok(result);
         }
