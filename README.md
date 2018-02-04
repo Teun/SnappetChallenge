@@ -19,3 +19,5 @@ P.S. I used such definitions of default folders and file names to open such as
         private readonly string fullFilePath;
 ```
 instead of saving it in `appsettings.json`, because of the [problem of getting values from config file](https://stackoverflow.com/questions/48600901/getting-the-data-from-appsettings-json-doesnt-contain-values-during-integration/48610304#48610304)  in new .net core framework during integration testing.
+
+P.S.S. I added `launchSettings.json` under source control to avoid changing of port in `WebUI` to `WebApi`. If this settings breaks your build or something - delete it, reopen and rebuild the project and set new port from `WebApi` service to `WebUI` `appsettings.json` file.
