@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StudyResultsAnalysis.Models.StudyDataEntity>
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetAll</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmittedAnswerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Progress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExerciseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Domain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LearningObjective)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmittedAnswerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Progress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExerciseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Difficulty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LearningObjective)
+        </td>
+       
+    </tr>
+}
+
+</table>

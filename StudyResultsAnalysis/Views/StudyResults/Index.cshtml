@@ -1,0 +1,51 @@
+﻿@model StudyResultsAnalysis.Models.StudyDataEntity
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Select an option</h1>
+
+
+<div class="form-group">
+    
+    <div class="row">
+        @using (Html.BeginForm("GetByDate", "StudyResults", FormMethod.Get))
+        {
+            @Html.LabelFor(model => model.SubmitDateTime, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.SubmitDateTime, new {@class = "form-control"})
+                </div>
+                <div class="col-md-10">
+                    <input type="submit" value="Check" class="btn btn-primary"/>
+                </div>
+            </div>
+        }
+        
+    </div>
+    
+    <div class="row">
+        @using (Html.BeginForm("GetByUserId", "StudyResults", FormMethod.Get))
+        {
+            @Html.LabelFor(model => model.UserId, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.UserId, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.UserId)
+                </div>
+                <div class="col-md-10">
+                    <input type="submit" value="Check" class="btn btn-primary bottom-right"/>
+                </div>
+            </div>
+        }
+    </div>
+    <p> <h2>OR</h2></p>
+    <div class="row">
+            @Html.ActionLink("Click here for complete study data", "GetAll", "StudyResults", null, new {@class = "btn btn-primary"})
+    </div>
+    </div>
+
+
+
+
