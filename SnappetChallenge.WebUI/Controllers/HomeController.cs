@@ -23,9 +23,10 @@
         {
             this.ViewData["Message"] = "Students result";
 
-            IEnumerable<StudentResultModel> data = await this.dataService.GetByDate(
-                new DateTime(2015, 03, 24), 
-                new DateTime(2015, 03, 24, 11, 30, 00));
+            IEnumerable<StudentResultModel> data = 
+                await this.dataService.GetByDate(
+                    DateTime.SpecifyKind(new DateTime(2015, 03, 24), DateTimeKind.Utc),
+                    DateTime.SpecifyKind(new DateTime(2015, 03, 24, 11, 30, 00), DateTimeKind.Utc));
 
             IEnumerable<StudentResultViewModel> result = null;
             if (data != null)

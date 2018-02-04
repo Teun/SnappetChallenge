@@ -42,7 +42,10 @@
             {
                 while (reader.Read())
                 {
-                    if (reader.TokenType != JsonToken.StartObject) continue;
+                    if (reader.TokenType != JsonToken.StartObject)
+                    {
+                        continue;
+                    }
 
                     ExerciseResultJsonDeserializeModel item = serializer.Deserialize<ExerciseResultJsonDeserializeModel>(reader);
 
