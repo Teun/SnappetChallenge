@@ -1,6 +1,5 @@
 ﻿namespace SnappetChallenge.WebUI.ViewModels
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 

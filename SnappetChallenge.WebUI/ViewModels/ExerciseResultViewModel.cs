@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SnappetChallenge.WebUI.ViewModels
+﻿namespace SnappetChallenge.WebUI.ViewModels
 {
     using SnappetChallenge.WebUI.Models;
 

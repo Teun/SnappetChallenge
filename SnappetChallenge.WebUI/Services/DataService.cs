@@ -23,7 +23,7 @@
             this.client.BaseAddress = new Uri(configuration[this.configEndpointGetter]);
         }
 
-        public async Task<IEnumerable<StudentResultModel>> Get(DateTime @from, DateTime to)
+        public async Task<IEnumerable<StudentResultModel>> GetByDate(DateTime @from, DateTime to)
         {
             IEnumerable<StudentResultModel> result = null;
             var utcFrom = DateTime.SpecifyKind(@from, DateTimeKind.Utc);

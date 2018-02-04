@@ -23,7 +23,7 @@
         {
             this.ViewData["Message"] = "Students result";
 
-            IEnumerable<StudentResultModel> data = await this.dataService.Get(
+            IEnumerable<StudentResultModel> data = await this.dataService.GetByDate(
                 new DateTime(2015, 03, 24), 
                 new DateTime(2015, 03, 24, 11, 30, 00));
 

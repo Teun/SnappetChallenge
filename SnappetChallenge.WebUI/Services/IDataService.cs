@@ -8,6 +8,6 @@
 
     public interface IDataService
     {
-        Task<IEnumerable<StudentResultModel>> Get(DateTime from, DateTime to);
+        Task<IEnumerable<StudentResultModel>> GetByDate(DateTime from, DateTime to);
     }
 }
