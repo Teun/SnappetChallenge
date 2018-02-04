@@ -1,0 +1,48 @@
+﻿@using SnappetChallenge.WebUI.ViewModels
+@model IEnumerable<StudentResultViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h1>Students results on @ViewData["DateTime"] till @ViewData["TimeTo"]</h1>
+    </div>
+    
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Exercise</th>
+                    <th>Total passed answers</th>
+                    <th>Correct answers</th>
+                    <th>Correct percent</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model != null)
+            {
+                foreach (StudentResultViewModel student in @Model)
+                 {
+                     bool isStudentAdded = false;
+                     foreach (var subject in student.Subjects)
+                     {
+                         <tr>
+                             @if (!isStudentAdded)
+                             {
+                                 <td rowspan="@student.Subjects.Count()">@student.Id</td>
+                                 isStudentAdded = true;
+                             }
+                             <td>@subject.Name</td>
+                             <td>@subject.AnswerCount</td>
+                             <td>@subject.CorrectAnswerCount</td>
+                             <td>@subject.CorrectnessPercent%</td>
+                         </tr>
+                     }
+                 }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
