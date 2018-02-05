@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Difficulty" Type="float" />
+          <Property Name="LearningObjectiveID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LearningObjectives">
+          <Key>
+            <PropertyRef Name="LearningObjectiveID" />
+          </Key>
+          <Property Name="LearningObjectiveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LearningObjective" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SubmittedAnswers">
+          <Key>
+            <PropertyRef Name="SubmittedAnswerID" />
+          </Key>
+          <Property Name="SubmittedAnswerID" Type="int" Nullable="false" />
+          <Property Name="Correct" Type="bit" Nullable="false" />
+          <Property Name="SubmittedAnswerDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Progress" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ExerciseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Exercise_LearningObjectives">
+          <End Role="LearningObjectives" Type="Self.LearningObjectives" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningObjectives">
+              <PropertyRef Name="LearningObjectiveID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="LearningObjectiveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubmittedAnswers_Exercise">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="SubmittedAnswers" Type="Self.SubmittedAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubmittedAnswers">
+              <PropertyRef Name="ExerciseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubmittedAnswers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SubmittedAnswers" Type="Self.SubmittedAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SubmittedAnswers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Exercise" EntityType="Self.Exercise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LearningObjectives" EntityType="Self.LearningObjectives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubmittedAnswers" EntityType="Self.SubmittedAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Exercise_LearningObjectives" Association="Self.FK_Exercise_LearningObjectives">
+            <End Role="LearningObjectives" EntitySet="LearningObjectives" />
+            <End Role="Exercise" EntitySet="Exercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubmittedAnswers_Exercise" Association="Self.FK_SubmittedAnswers_Exercise">
+            <End Role="Exercise" EntitySet="Exercise" />
+            <End Role="SubmittedAnswers" EntitySet="SubmittedAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubmittedAnswers_Users" Association="Self.FK_SubmittedAnswers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SubmittedAnswers" EntitySet="SubmittedAnswers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Difficulty" Type="Double" />
+          <Property Name="LearningObjectiveID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LearningObjective" Relationship="Self.FK_Exercise_LearningObjectives" FromRole="Exercise" ToRole="LearningObjectives" />
+          <NavigationProperty Name="SubmittedAnswers" Relationship="Self.FK_SubmittedAnswers_Exercise" FromRole="Exercise" ToRole="SubmittedAnswers" />
+        </EntityType>
+        <EntityType Name="LearningObjective">
+          <Key>
+            <PropertyRef Name="LearningObjectiveID" />
+          </Key>
+          <Property Name="LearningObjectiveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LearningObjective1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Exercises" Relationship="Self.FK_Exercise_LearningObjectives" FromRole="LearningObjectives" ToRole="Exercise" />
+        </EntityType>
+        <EntityType Name="SubmittedAnswer">
+          <Key>
+            <PropertyRef Name="SubmittedAnswerID" />
+          </Key>
+          <Property Name="SubmittedAnswerID" Type="Int32" Nullable="false" />
+          <Property Name="Correct" Type="Boolean" Nullable="false" />
+          <Property Name="SubmittedAnswerDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Progress" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ExerciseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise" Relationship="Self.FK_SubmittedAnswers_Exercise" FromRole="SubmittedAnswers" ToRole="Exercise" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SubmittedAnswers_Users" FromRole="SubmittedAnswers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SubmittedAnswers" Relationship="Self.FK_SubmittedAnswers_Users" FromRole="Users" ToRole="SubmittedAnswers" />
+        </EntityType>
+        <Association Name="FK_Exercise_LearningObjectives">
+          <End Role="LearningObjectives" Type="Self.LearningObjective" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningObjectives">
+              <PropertyRef Name="LearningObjectiveID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="LearningObjectiveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubmittedAnswers_Exercise">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="SubmittedAnswers" Type="Self.SubmittedAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubmittedAnswers">
+              <PropertyRef Name="ExerciseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubmittedAnswers_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="SubmittedAnswers" Type="Self.SubmittedAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SubmittedAnswers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SnappetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Exercises" EntityType="Self.Exercise" />
+          <EntitySet Name="LearningObjectives" EntityType="Self.LearningObjective" />
+          <EntitySet Name="SubmittedAnswers" EntityType="Self.SubmittedAnswer" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Exercise_LearningObjectives" Association="Self.FK_Exercise_LearningObjectives">
+            <End Role="LearningObjectives" EntitySet="LearningObjectives" />
+            <End Role="Exercise" EntitySet="Exercises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubmittedAnswers_Exercise" Association="Self.FK_SubmittedAnswers_Exercise">
+            <End Role="Exercise" EntitySet="Exercises" />
+            <End Role="SubmittedAnswers" EntitySet="SubmittedAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubmittedAnswers_Users" Association="Self.FK_SubmittedAnswers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SubmittedAnswers" EntitySet="SubmittedAnswers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SnappetEntities">
+          <EntitySetMapping Name="Exercises">
+            <EntityTypeMapping TypeName="Model.Exercise">
+              <MappingFragment StoreEntitySet="Exercise">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="LearningObjectiveID" ColumnName="LearningObjectiveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LearningObjectives">
+            <EntityTypeMapping TypeName="Model.LearningObjective">
+              <MappingFragment StoreEntitySet="LearningObjectives">
+                <ScalarProperty Name="LearningObjectiveID" ColumnName="LearningObjectiveID" />
+                <ScalarProperty Name="LearningObjective1" ColumnName="LearningObjective" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubmittedAnswers">
+            <EntityTypeMapping TypeName="Model.SubmittedAnswer">
+              <MappingFragment StoreEntitySet="SubmittedAnswers">
+                <ScalarProperty Name="SubmittedAnswerID" ColumnName="SubmittedAnswerID" />
+                <ScalarProperty Name="Correct" ColumnName="Correct" />
+                <ScalarProperty Name="SubmittedAnswerDateTime" ColumnName="SubmittedAnswerDateTime" />
+                <ScalarProperty Name="Progress" ColumnName="Progress" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ExerciseID" ColumnName="ExerciseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

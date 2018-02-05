@@ -1,0 +1,37 @@
+
+<div class="page-content">
+  <div class="topMargin">
+    <div class="container">
+      <h2 class="page-title">List of students, select a student to view his/her profile</h2>
+      <ul data-bind="foreach: data" class="actionItem">
+        <li>
+        <span data-bind="text: UserID, click: loadUser.bind($data, UserID)"> </span>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var baseURL = "http://localhost:62058/api";
+
+
+  function PageModel() {
+    var self = this;
+    self.data = ko.observable([]);
+    loadUser = function (userID) {
+      window.location = "#/Students/" + userID;
+    }
+  };
+
+  window.vm = new PageModel();
+  ko.applyBindings(vm);
+
+  $.getJSON(baseURL + "/users/getallusers", function (result) {
+    console.log(result);
+    window.vm.data(result);
+    //for (var i = 0; i < result.length; i++) {
+    //  viewModel.data.push(result[i]);
+    //}
+    //ko.applyBindings(viewModel);
+  });
+</script>
