@@ -18,7 +18,7 @@ Due to the limited scope of this project, these will be development-level tasks.
 - [x] Implement the answer repository
 - [x] Modify the layout to get rid of all the generated stuff that we don't want
 - [x] Implement the main page view so that it displays the uglified student summary grid - completely unstyled
-- [x] Apply some quick bootstrap styling to make it prettify it a little
+- [x] Apply some quick bootstrap styling to prettify it a little
 - [x] Apply default sorting to the view data
 
 -- Note: This is how far I actually got. As usual, I was too optimistic --
@@ -39,5 +39,4 @@ Due to the limited scope of this project, these will be development-level tasks.
 - [ ] Connect the student names on the main page to the student view page
 - [ ] Implement the subject pie chart on the main page
 - [ ] Implement the history graph showing progress over time
-- [ ] Implement the student lesson view on its own page
-- [ ] Connect the lessons on the student view to the lesson view
+

@@ -12,7 +12,7 @@ In dit geval, het is ook een mogelijkheid Nederlands te oefenen. Ik zie weinig m
 
 Ik was verheugd te zien dat de opdracht in Nederlands wordt geschreven. Dat was onverwacht maar heel interessant. Ik kon veel ervan verstaan maar niet alles. Door het lezen heb ik enige nieuwe woorden geleerd: "inschatting", "tijdstip", en "bestand" bijvoorbeeld.
 
-De opdracht is ruim, en er zijn vele mogelijkheden hier. I must resist the temptation to spend to much time on this: it's only supposed to take a few hours.
+De opdracht is ruim, en er zijn vele mogelijkheden hier. I must resist the temptation to spend too much time on this: it's only supposed to take a few hours.
 
 ## The Analysis
 
@@ -102,7 +102,7 @@ I'm going for a TDD approach where I write the tests before I implement the meth
 
 My GetDailyStudentSummary tests will be fairly basic. I'm going to create test data, some of which will appear and some of which will not, containing multiple students, multiple subjects, and multiple answers for each subject, and verify that the test data that does appear in the daily student summary is calculated correctly. I don't see a need to delve into other scenarios in this exercise, since the real data will be static.
 
-That daily student summary tests took a lot more time than I had intended and I don't have a lot of time left. I don't think I'll implement tests for the controller methods. I'd prefer to spend the time elsewhere because I feel that has more value, like showing something on the web page.
+The daily student summary tests took a lot more time than I had intended and I don't have a lot of time left. I don't think I'll implement tests for the controller methods. I'd prefer to spend the time elsewhere because I feel that has more value, like showing something on the web page.
 
 It looks like I'll just have enough time to put a quick grid on the page and that's about it.
 
