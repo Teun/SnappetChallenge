@@ -10,6 +10,6 @@ namespace Snappet.Assignment.Entities.DomainObjects
 
         public string Name { get; set; }
 
-       
+        public ICollection<Work> Works { get; set; }
     }
 }

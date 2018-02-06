@@ -27,8 +27,9 @@ namespace Snappet.Assignment.Entities.DomainObjects
 
         public string LearningObjective { get; set; }
 
-
+        public Exercise Exercise { get; set; }
        
+        public User User { get; set; }
 
     }
 }

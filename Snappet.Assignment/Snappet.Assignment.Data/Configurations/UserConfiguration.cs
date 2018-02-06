@@ -16,7 +16,11 @@ namespace Snappet.Assignment.Data.Configurations
                 HasMaxLength(50).
                 HasColumnType("nvarchar(50)").
                 IsRequired();
-           
+
+            entity.HasMany(m => m.Works)
+               .WithOne(o => o.User)
+               .HasForeignKey(k => k.UserId);
+
         }
     }
 }
