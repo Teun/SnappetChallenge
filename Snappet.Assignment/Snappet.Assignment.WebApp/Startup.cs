@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Snappet.Assignment.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Snappet.Assignment.WebApp
 {
@@ -21,6 +23,11 @@ namespace Snappet.Assignment.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            // Add framework services.
+            services.AddDbContext<SchoolDbContext>(options =>
+                options.UseSqlServer(connectionString, x => x.MigrationsAssembly("Snappet.Assignment.WebApp")));
+
             services.AddMvc();
         }
 
