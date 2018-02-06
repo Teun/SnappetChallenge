@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Business", "Snappet.Assignment.Business\Snappet.Assignment.Business.csproj", "{FB9FA7FB-2EFE-450A-B45B-5BF5271F92BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Data", "Snappet.Assignment.Data\Snappet.Assignment.Data.csproj", "{4F55E057-8424-4998-80E3-16074BED5173}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FB9FA7FB-2EFE-450A-B45B-5BF5271F92BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB9FA7FB-2EFE-450A-B45B-5BF5271F92BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB9FA7FB-2EFE-450A-B45B-5BF5271F92BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F55E057-8424-4998-80E3-16074BED5173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F55E057-8424-4998-80E3-16074BED5173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F55E057-8424-4998-80E3-16074BED5173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F55E057-8424-4998-80E3-16074BED5173}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
