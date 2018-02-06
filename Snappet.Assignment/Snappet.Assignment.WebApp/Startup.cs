@@ -8,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Snappet.Assignment.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using Snappet.Assignment.Entities.Mapping;
+using Snappet.Assignment.Entities.Interfaces;
+using Snappet.Assignment.Business.Interfaces;
+using Snappet.Assignment.Business.UnitOfWork;
 
 namespace Snappet.Assignment.WebApp
 {
@@ -28,9 +32,13 @@ namespace Snappet.Assignment.WebApp
             services.AddDbContext<SchoolDbContext>(options =>
                 options.UseSqlServer(connectionString, x => x.MigrationsAssembly("Snappet.Assignment.WebApp")));
 
-            services.AddMvc();
-        }
+            services.AddMvc()
+                    .AddJsonOptions(
+                    options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+            services.AddSingleton<IMapper, Mapper>();
+            services.AddScoped<IUnitOfWork>(c => new UnitOfWork(connectionString));
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -46,11 +54,18 @@ namespace Snappet.Assignment.WebApp
 
             app.UseStaticFiles();
 
+
+
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapSpaFallbackRoute(
+                  name: "spa-fallback",
+                  defaults: new { controller = "Home", action = "Index" });
             });
         }
     }
