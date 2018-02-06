@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Snappet.Assignment.Entities\Snappet.Assignment.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
