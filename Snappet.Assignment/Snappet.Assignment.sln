@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Assignment.Entities
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.WebApp", "Snappet.Assignment.WebApp\Snappet.Assignment.WebApp.csproj", "{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Tests", "Snappet.Assignment.Tests\Snappet.Assignment.Tests.csproj", "{16A54D56-8D59-4A1F-9815-1EC987C79FDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16A54D56-8D59-4A1F-9815-1EC987C79FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16A54D56-8D59-4A1F-9815-1EC987C79FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16A54D56-8D59-4A1F-9815-1EC987C79FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16A54D56-8D59-4A1F-9815-1EC987C79FDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
