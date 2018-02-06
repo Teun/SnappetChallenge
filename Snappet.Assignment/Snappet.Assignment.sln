@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Business
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Data", "Snappet.Assignment.Data\Snappet.Assignment.Data.csproj", "{4F55E057-8424-4998-80E3-16074BED5173}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Entities", "Snappet.Assignment.Entities\Snappet.Assignment.Entities.csproj", "{49C4D682-E917-45D3-97FE-F6705909CDCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4F55E057-8424-4998-80E3-16074BED5173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F55E057-8424-4998-80E3-16074BED5173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F55E057-8424-4998-80E3-16074BED5173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C4D682-E917-45D3-97FE-F6705909CDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C4D682-E917-45D3-97FE-F6705909CDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C4D682-E917-45D3-97FE-F6705909CDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C4D682-E917-45D3-97FE-F6705909CDCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
