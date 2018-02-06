@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.WebApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Tests", "Snappet.Assignment.Tests\Snappet.Assignment.Tests.csproj", "{16A54D56-8D59-4A1F-9815-1EC987C79FDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.IntergrationTests", "Snappet.Assignment.IntergrationTests\Snappet.Assignment.IntergrationTests.csproj", "{D5BBC5F0-0DE9-4A7D-B5CE-6B8FFD9A5D8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{16A54D56-8D59-4A1F-9815-1EC987C79FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16A54D56-8D59-4A1F-9815-1EC987C79FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A54D56-8D59-4A1F-9815-1EC987C79FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5BBC5F0-0DE9-4A7D-B5CE-6B8FFD9A5D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5BBC5F0-0DE9-4A7D-B5CE-6B8FFD9A5D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5BBC5F0-0DE9-4A7D-B5CE-6B8FFD9A5D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5BBC5F0-0DE9-4A7D-B5CE-6B8FFD9A5D8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
