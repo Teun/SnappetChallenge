@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Snappet.Assignment.Business\Snappet.Assignment.Business.csproj" />
     <ProjectReference Include="..\Snappet.Assignment.Entities\Snappet.Assignment.Entities.csproj" />
+    <ProjectReference Include="..\Snappet.Assignment.WebApp\Snappet.Assignment.WebApp.csproj" />
   </ItemGroup>
 
 </Project>
