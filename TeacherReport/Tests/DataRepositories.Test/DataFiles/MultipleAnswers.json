@@ -1,0 +1,26 @@
+﻿[
+    {
+        "SubmittedAnswerId": 12345,
+        "SubmitDateTime": "2018-01-30T08:57:00.00",
+        "Correct": 1,
+        "Progress": 0,
+        "UserId": 56789,
+        "ExerciseId": 23,
+        "Difficulty": "5",
+        "Subject": "Geschiedenis",
+        "Domain": "-",
+        "LearningObjective": "Industrial Revolution"
+    },
+    {
+        "SubmittedAnswerId": 23456,
+        "SubmitDateTime": "2018-01-30T09:02:00.00",
+        "Correct": 0,
+        "Progress": -10,
+        "UserId": 65342,
+        "ExerciseId": 875,
+        "Difficulty": "-20",
+        "Subject": "Wiskunde",
+        "Domain": "Geometry",
+        "LearningObjective": "Calculating Area of a Triangle"
+    }
+]

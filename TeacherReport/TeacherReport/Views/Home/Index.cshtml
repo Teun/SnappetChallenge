@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Dagelijke Leerkrachtrapport";
+}
+
+@model TeacherReport.Models.SummaryPageViewModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Leerling</th>
+            @foreach (var subject in Model.StudentSummary.Subjects)
+            {
+                <th>@subject</th>
+            }
+            <th>Gemiddelde Waarde</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var studentRow in Model.StudentSummary.SummaryRows)
+        {
+            <tr>
+                <td>@studentRow.Name</td>
+                @foreach(var subject in Model.StudentSummary.Subjects)
+                {
+                    if(studentRow.AverageSubjectProgress.ContainsKey(subject))
+                    {
+                        //If the student has a score for this subject, display it rounded to two decimal places
+                        <td>@Math.Round(studentRow.AverageSubjectProgress[subject], 2)</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                }
+                <td>@Math.Round(studentRow.OverallAverageProgress, 2)</td>
+            </tr>
+        }
+    </tbody>
+</table>
