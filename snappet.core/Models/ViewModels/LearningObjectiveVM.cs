@@ -9,6 +9,8 @@ namespace snappet.core.Models.ViewModels
     public class LearningObjectiveVM
     {
         public int LearningObjectiveID { get; set; }
+        public string Subject { get; set; }
+        public string Domain { get; set; }
         public string LearningObjective { get; set; }
         public List<ExerciseVM> Exercises { get; set; }
     }

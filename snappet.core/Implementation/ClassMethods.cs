@@ -18,24 +18,91 @@ namespace snappet.core.Implementation
             db = new SnappetEntities();
         }
 
+        public List<SubjectVM> GetAvailableSubjects()
+        {
+            return db.Subjects.Select(dbSubject => new SubjectVM()
+            {
+                SubjectID = dbSubject.SubjectID,
+                Subject = dbSubject.Subject1
+            }).ToList();
+        }
+
         /// <summary>
         /// Returns a list of DateTime object with the available dates
         /// </summary>
         /// <returns>List of DateTime objects</returns>
-        public List<DateTime> GetAvailableDates()
+        public List<string> GetAvailableDates()
         {
             var end = Convert.ToDateTime("2015-03-24 11:30:00");
             var start = Convert.ToDateTime("2015-02-24 11:30:00");
-            List<DateTime> list = Enumerable.Range(0, 1 + end.Subtract(start).Days).Select(offset => start.AddDays(offset)).ToList();
+
+           
+            List<DateTime> dates = Enumerable.Range(0, 1 + end.Subtract(start).Days).Select(offset => start.AddDays(offset)).ToList();
+            List<string> list = new List<string>();
+            foreach (var dateTime in dates)
+            {
+                list.Add(dateTime.ToString("F"));
+            }
             return list;
         }
+
+        public List<SubmittedAnswerVM> GetDayReportBySubject(int SubjectID, DateTime date, DateTime? startDate)
+        {
+            try
+            {
+                IQueryable<SubmittedAnswer> dbData;
+                List<SubmittedAnswerVM> result = new List<SubmittedAnswerVM>();
+
+                if (startDate.HasValue && startDate.Value > DateTime.MinValue)
+                {
+                    DateTime endDate = Convert.ToDateTime("2015-03-24 11:30:00");
+
+                    dbData = db.SubmittedAnswers.Where(x => DbFunctions.TruncateTime(x.SubmittedAnswerDateTime) >= startDate.Value &&
+                                                            DbFunctions.TruncateTime(x.SubmittedAnswerDateTime) <= endDate && x.Exercise.LearningObjective.SubjectID == SubjectID);
+                }
+                else
+                {
+                    dbData = db.SubmittedAnswers.Where(x =>
+                        DbFunctions.TruncateTime(x.SubmittedAnswerDateTime) == date.Date &&
+                        x.Exercise.LearningObjective.SubjectID == SubjectID);
+                }
+
+                foreach (var submittedAnswer in dbData)
+                {
+                    result.Add(new SubmittedAnswerVM()
+                    {
+                        SubmittedAnswerID = submittedAnswer.SubmittedAnswerID,
+                        Progress = submittedAnswer.Progress,
+                        Correct = submittedAnswer.Correct,
+                        DateAnswered = submittedAnswer.SubmittedAnswerDateTime.Date
+                    });
+                }
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public List<SubmittedAnswerVM> GetWeekReportBySubject(int SubjectID, int Weeks)
+        {
+            DateTime endDate = Convert.ToDateTime("2015-03-24 11:30:00");
+            DateTime startDate = endDate.AddDays((Weeks * -1 * 7));
+
+            return GetDayReportBySubject(SubjectID, endDate, startDate);
+        }
+
+
 
         /// <summary>
         /// Gets a list of LearningObjectives containing all the data for a specific date
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public List<LearningObjectiveVM> GetClassReport(DateTime date, DateTime? startDate)
+        public List<LearningObjectiveVM> GetDayReportByLO(DateTime date, DateTime? startDate)
         {
             try
             {
@@ -45,7 +112,7 @@ namespace snappet.core.Implementation
 
                 IQueryable<SubmittedAnswer> dbData;
 
-                if (startDate.HasValue)
+                if (startDate.HasValue && startDate.Value > DateTime.MinValue)
                 {
                     DateTime endDate = Convert.ToDateTime("2015-03-24 11:30:00");
 
@@ -113,12 +180,12 @@ namespace snappet.core.Implementation
         /// </summary>
         /// <param name="Weeks"></param>
         /// <returns></returns>
-        public List<LearningObjectiveVM> GetWeekReport(int Weeks)
+        public List<LearningObjectiveVM> GetWeekReportByLO(int Weeks)
         {
             DateTime endDate = Convert.ToDateTime("2015-03-24 11:30:00");
             DateTime startDate = endDate.AddDays((Weeks * -1 * 7));
 
-            return GetClassReport(endDate, startDate);
+            return GetDayReportByLO(endDate, startDate);
         }
     }
 }

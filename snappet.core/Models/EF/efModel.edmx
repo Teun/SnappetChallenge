@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="DomainID" />
+          </Key>
+          <Property Name="DomainID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Exercise">
           <Key>
             <PropertyRef Name="ID" />
@@ -19,8 +26,23 @@
           </Key>
           <Property Name="LearningObjectiveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LearningObjective" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Domain" Type="nvarchar(max)" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="DomainID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectID" />
+          </Key>
+          <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectDomainLink">
+          <Key>
+            <PropertyRef Name="SD_LinkID" />
+          </Key>
+          <Property Name="SD_LinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="DomainID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SubmittedAnswers">
           <Key>
@@ -51,6 +73,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LearningObjectives_Domain">
+          <End Role="Domain" Type="Self.Domain" Multiplicity="1" />
+          <End Role="LearningObjectives" Type="Self.LearningObjectives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="DomainID" />
+            </Principal>
+            <Dependent Role="LearningObjectives">
+              <PropertyRef Name="DomainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LearningObjectives_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="LearningObjectives" Type="Self.LearningObjectives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="LearningObjectives">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubjectDomainLink_Domain">
+          <End Role="Domain" Type="Self.Domain" Multiplicity="1" />
+          <End Role="SubjectDomainLink" Type="Self.SubjectDomainLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="DomainID" />
+            </Principal>
+            <Dependent Role="SubjectDomainLink">
+              <PropertyRef Name="DomainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubjectDomainLink_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="SubjectDomainLink" Type="Self.SubjectDomainLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="SubjectDomainLink">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SubmittedAnswers_Exercise">
           <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
           <End Role="SubmittedAnswers" Type="Self.SubmittedAnswers" Multiplicity="*" />
@@ -76,13 +146,32 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exercise" EntityType="Self.Exercise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LearningObjectives" EntityType="Self.LearningObjectives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectDomainLink" EntityType="Self.SubjectDomainLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubmittedAnswers" EntityType="Self.SubmittedAnswers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Exercise_LearningObjectives" Association="Self.FK_Exercise_LearningObjectives">
             <End Role="LearningObjectives" EntitySet="LearningObjectives" />
             <End Role="Exercise" EntitySet="Exercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningObjectives_Domain" Association="Self.FK_LearningObjectives_Domain">
+            <End Role="Domain" EntitySet="Domain" />
+            <End Role="LearningObjectives" EntitySet="LearningObjectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningObjectives_Subject" Association="Self.FK_LearningObjectives_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="LearningObjectives" EntitySet="LearningObjectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectDomainLink_Domain" Association="Self.FK_SubjectDomainLink_Domain">
+            <End Role="Domain" EntitySet="Domain" />
+            <End Role="SubjectDomainLink" EntitySet="SubjectDomainLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectDomainLink_Subject" Association="Self.FK_SubjectDomainLink_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="SubjectDomainLink" EntitySet="SubjectDomainLink" />
           </AssociationSet>
           <AssociationSet Name="FK_SubmittedAnswers_Exercise" Association="Self.FK_SubmittedAnswers_Exercise">
             <End Role="Exercise" EntitySet="Exercise" />
@@ -93,11 +182,56 @@
             <End Role="SubmittedAnswers" EntitySet="SubmittedAnswers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SnappetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Domains" EntityType="Model.Domain" />
+          <EntitySet Name="Exercises" EntityType="Model.Exercise" />
+          <EntitySet Name="LearningObjectives" EntityType="Model.LearningObjective" />
+          <EntitySet Name="Subjects" EntityType="Model.Subject" />
+          <EntitySet Name="SubjectDomainLinks" EntityType="Model.SubjectDomainLink" />
+          <EntitySet Name="SubmittedAnswers" EntityType="Model.SubmittedAnswer" />
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <AssociationSet Name="FK_SubjectDomainLink_Domain" Association="Model.FK_SubjectDomainLink_Domain">
+            <End Role="Domain" EntitySet="Domains" />
+            <End Role="SubjectDomainLink" EntitySet="SubjectDomainLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exercise_LearningObjectives" Association="Model.FK_Exercise_LearningObjectives">
+            <End Role="LearningObjective" EntitySet="LearningObjectives" />
+            <End Role="Exercise" EntitySet="Exercises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubmittedAnswers_Exercise" Association="Model.FK_SubmittedAnswers_Exercise">
+            <End Role="Exercise" EntitySet="Exercises" />
+            <End Role="SubmittedAnswer" EntitySet="SubmittedAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningObjectives_Subject" Association="Model.FK_LearningObjectives_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="LearningObjective" EntitySet="LearningObjectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectDomainLink_Subject" Association="Model.FK_SubjectDomainLink_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="SubjectDomainLink" EntitySet="SubjectDomainLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubmittedAnswers_Users" Association="Model.FK_SubmittedAnswers_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SubmittedAnswer" EntitySet="SubmittedAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningObjectives_Domain" Association="Model.FK_LearningObjectives_Domain">
+            <End Role="Domain" EntitySet="Domains" />
+            <End Role="LearningObjective" EntitySet="LearningObjectives" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="DomainID" />
+          </Key>
+          <Property Name="DomainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Domain1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SubjectDomainLinks" Relationship="Model.FK_SubjectDomainLink_Domain" FromRole="Domain" ToRole="SubjectDomainLink" />
+          <NavigationProperty Name="LearningObjectives" Relationship="Model.FK_LearningObjectives_Domain" FromRole="Domain" ToRole="LearningObjective" />
+        </EntityType>
         <EntityType Name="Exercise">
           <Key>
             <PropertyRef Name="ID" />
@@ -105,18 +239,39 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Difficulty" Type="Double" />
           <Property Name="LearningObjectiveID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="LearningObjective" Relationship="Self.FK_Exercise_LearningObjectives" FromRole="Exercise" ToRole="LearningObjectives" />
-          <NavigationProperty Name="SubmittedAnswers" Relationship="Self.FK_SubmittedAnswers_Exercise" FromRole="Exercise" ToRole="SubmittedAnswers" />
+          <NavigationProperty Name="LearningObjective" Relationship="Model.FK_Exercise_LearningObjectives" FromRole="Exercise" ToRole="LearningObjective" />
+          <NavigationProperty Name="SubmittedAnswers" Relationship="Model.FK_SubmittedAnswers_Exercise" FromRole="Exercise" ToRole="SubmittedAnswer" />
         </EntityType>
         <EntityType Name="LearningObjective">
           <Key>
             <PropertyRef Name="LearningObjectiveID" />
           </Key>
           <Property Name="LearningObjectiveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LearningObjective1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Domain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Exercises" Relationship="Self.FK_Exercise_LearningObjectives" FromRole="LearningObjectives" ToRole="Exercise" />
+          <Property Name="LearningObjective1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercises" Relationship="Model.FK_Exercise_LearningObjectives" FromRole="LearningObjective" ToRole="Exercise" />
+          <NavigationProperty Name="Subject" Relationship="Model.FK_LearningObjectives_Subject" FromRole="LearningObjective" ToRole="Subject" />
+          <Property Name="DomainID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Domain" Relationship="Model.FK_LearningObjectives_Domain" FromRole="LearningObjective" ToRole="Domain" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectID" />
+          </Key>
+          <Property Name="SubjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LearningObjectives" Relationship="Model.FK_LearningObjectives_Subject" FromRole="Subject" ToRole="LearningObjective" />
+          <NavigationProperty Name="SubjectDomainLinks" Relationship="Model.FK_SubjectDomainLink_Subject" FromRole="Subject" ToRole="SubjectDomainLink" />
+        </EntityType>
+        <EntityType Name="SubjectDomainLink">
+          <Key>
+            <PropertyRef Name="SD_LinkID" />
+          </Key>
+          <Property Name="SD_LinkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <Property Name="DomainID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Domain" Relationship="Model.FK_SubjectDomainLink_Domain" FromRole="SubjectDomainLink" ToRole="Domain" />
+          <NavigationProperty Name="Subject" Relationship="Model.FK_SubjectDomainLink_Subject" FromRole="SubjectDomainLink" ToRole="Subject" />
         </EntityType>
         <EntityType Name="SubmittedAnswer">
           <Key>
@@ -128,21 +283,33 @@
           <Property Name="Progress" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="ExerciseID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Exercise" Relationship="Self.FK_SubmittedAnswers_Exercise" FromRole="SubmittedAnswers" ToRole="Exercise" />
-          <NavigationProperty Name="User" Relationship="Self.FK_SubmittedAnswers_Users" FromRole="SubmittedAnswers" ToRole="Users" />
+          <NavigationProperty Name="Exercise" Relationship="Model.FK_SubmittedAnswers_Exercise" FromRole="SubmittedAnswer" ToRole="Exercise" />
+          <NavigationProperty Name="User" Relationship="Model.FK_SubmittedAnswers_Users" FromRole="SubmittedAnswer" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SubmittedAnswers" Relationship="Self.FK_SubmittedAnswers_Users" FromRole="Users" ToRole="SubmittedAnswers" />
+          <NavigationProperty Name="SubmittedAnswers" Relationship="Model.FK_SubmittedAnswers_Users" FromRole="User" ToRole="SubmittedAnswer" />
         </EntityType>
-        <Association Name="FK_Exercise_LearningObjectives">
-          <End Role="LearningObjectives" Type="Self.LearningObjective" Multiplicity="1" />
-          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+        <Association Name="FK_SubjectDomainLink_Domain">
+          <End Type="Model.Domain" Role="Domain" Multiplicity="1" />
+          <End Type="Model.SubjectDomainLink" Role="SubjectDomainLink" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LearningObjectives">
+            <Principal Role="Domain">
+              <PropertyRef Name="DomainID" />
+            </Principal>
+            <Dependent Role="SubjectDomainLink">
+              <PropertyRef Name="DomainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exercise_LearningObjectives">
+          <End Type="Model.LearningObjective" Role="LearningObjective" Multiplicity="1" />
+          <End Type="Model.Exercise" Role="Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningObjective">
               <PropertyRef Name="LearningObjectiveID" />
             </Principal>
             <Dependent Role="Exercise">
@@ -151,81 +318,124 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubmittedAnswers_Exercise">
-          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
-          <End Role="SubmittedAnswers" Type="Self.SubmittedAnswer" Multiplicity="*" />
+          <End Type="Model.Exercise" Role="Exercise" Multiplicity="1" />
+          <End Type="Model.SubmittedAnswer" Role="SubmittedAnswer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Exercise">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SubmittedAnswers">
+            <Dependent Role="SubmittedAnswer">
               <PropertyRef Name="ExerciseID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SubmittedAnswers_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="SubmittedAnswers" Type="Self.SubmittedAnswer" Multiplicity="*" />
+        <Association Name="FK_LearningObjectives_Subject">
+          <End Type="Model.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="Model.LearningObjective" Role="LearningObjective" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="LearningObjective">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubjectDomainLink_Subject">
+          <End Type="Model.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="Model.SubjectDomainLink" Role="SubjectDomainLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="SubjectDomainLink">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubmittedAnswers_Users">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.SubmittedAnswer" Role="SubmittedAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
               <PropertyRef Name="UserID" />
             </Principal>
-            <Dependent Role="SubmittedAnswers">
+            <Dependent Role="SubmittedAnswer">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SnappetEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Exercises" EntityType="Self.Exercise" />
-          <EntitySet Name="LearningObjectives" EntityType="Self.LearningObjective" />
-          <EntitySet Name="SubmittedAnswers" EntityType="Self.SubmittedAnswer" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_Exercise_LearningObjectives" Association="Self.FK_Exercise_LearningObjectives">
-            <End Role="LearningObjectives" EntitySet="LearningObjectives" />
-            <End Role="Exercise" EntitySet="Exercises" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubmittedAnswers_Exercise" Association="Self.FK_SubmittedAnswers_Exercise">
-            <End Role="Exercise" EntitySet="Exercises" />
-            <End Role="SubmittedAnswers" EntitySet="SubmittedAnswers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubmittedAnswers_Users" Association="Self.FK_SubmittedAnswers_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="SubmittedAnswers" EntitySet="SubmittedAnswers" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <Association Name="FK_LearningObjectives_Domain">
+          <End Type="Model.Domain" Role="Domain" Multiplicity="1" />
+          <End Type="Model.LearningObjective" Role="LearningObjective" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="DomainID" />
+            </Principal>
+            <Dependent Role="LearningObjective">
+              <PropertyRef Name="DomainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SnappetEntities">
+          <EntitySetMapping Name="Domains">
+            <EntityTypeMapping TypeName="Model.Domain">
+              <MappingFragment StoreEntitySet="Domain">
+                <ScalarProperty Name="Domain1" ColumnName="Domain" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Exercises">
             <EntityTypeMapping TypeName="Model.Exercise">
               <MappingFragment StoreEntitySet="Exercise">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
                 <ScalarProperty Name="LearningObjectiveID" ColumnName="LearningObjectiveID" />
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LearningObjectives">
             <EntityTypeMapping TypeName="Model.LearningObjective">
               <MappingFragment StoreEntitySet="LearningObjectives">
-                <ScalarProperty Name="LearningObjectiveID" ColumnName="LearningObjectiveID" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
                 <ScalarProperty Name="LearningObjective1" ColumnName="LearningObjective" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="LearningObjectiveID" ColumnName="LearningObjectiveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="Model.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="Subject1" ColumnName="Subject" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectDomainLinks">
+            <EntityTypeMapping TypeName="Model.SubjectDomainLink">
+              <MappingFragment StoreEntitySet="SubjectDomainLink">
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SD_LinkID" ColumnName="SD_LinkID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SubmittedAnswers">
             <EntityTypeMapping TypeName="Model.SubmittedAnswer">
               <MappingFragment StoreEntitySet="SubmittedAnswers">
-                <ScalarProperty Name="SubmittedAnswerID" ColumnName="SubmittedAnswerID" />
-                <ScalarProperty Name="Correct" ColumnName="Correct" />
-                <ScalarProperty Name="SubmittedAnswerDateTime" ColumnName="SubmittedAnswerDateTime" />
-                <ScalarProperty Name="Progress" ColumnName="Progress" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ExerciseID" ColumnName="ExerciseID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Progress" ColumnName="Progress" />
+                <ScalarProperty Name="SubmittedAnswerDateTime" ColumnName="SubmittedAnswerDateTime" />
+                <ScalarProperty Name="Correct" ColumnName="Correct" />
+                <ScalarProperty Name="SubmittedAnswerID" ColumnName="SubmittedAnswerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

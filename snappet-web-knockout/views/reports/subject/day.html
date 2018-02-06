@@ -1,0 +1,117 @@
+
+
+<div class="left-menu">
+
+
+  <select class="form-control" data-bind="options: subjects, optionsText: 'Subject', optionsValue: 'SubjectID'" onchange="getData();" id="subjectSelector"></select>
+  <br />
+  <select class="form-control" data-bind="options: dates" onchange="getData();" id="dateSelector"></select>
+
+</div>
+<div class="page-content">
+  <div class="topMargin">
+    <h3 class="page-title" data-bind="text: subjectTitle"></h3>
+    <h4 class="page-title" data-bind="text: subjectPercentage"></h4>
+    <div class="row">
+      <div class="col-md-12">
+        <canvas id="graphView"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  var tempL;
+  function PageModel() {
+    var self = this;
+
+    self.dates = ko.observable([]);
+    self.subjects = ko.observable([]);
+    self.subjectTitle = ko.observable("");
+    self.subjectPercentage = ko.observable("");
+  }
+
+
+  window.vm = new PageModel();
+  ko.applyBindings(vm);
+
+  $.getJSON(baseURL + "/reports/GetAvailableSubjects",
+    function (result) {
+      window.vm.subjects(result);
+
+      $.getJSON(baseURL + "/reports/GetAvailableDates",
+        function (result) {
+          window.vm.dates(result);
+          getData();
+        });
+    });
+
+  
+
+  
+
+  function getData() {
+    window.vm.subjectTitle($("#subjectSelector option:selected").text());
+    $.getJSON(baseURL + "/reports/DayReportBySubject?subjectID=" + $("#subjectSelector").val() + "&date=" + $("#dateSelector").val(),
+      function (result) {
+
+        console.log(result);
+
+        var gData = {
+          Correct: 0,
+          Incorrect: 0
+        }
+
+        for (var i = 0; i < result.length; i++) {
+          if (result[i]["Correct"]) {
+            gData.Correct++;
+          } else {
+            gData.Incorrect++;
+          }
+        }
+
+        var percentage = (gData.Correct / result.length) * 100;
+        if (Number.isNaN(percentage)) {
+          percentage = 0;
+        }
+        window.vm.subjectPercentage("Correct rate: " + percentage.toFixed(2));
+        makeGraph(gData);
+      });
+  }
+  var ctx = document.getElementById("graphView").getContext('2d');
+  var myChart = new Chart(ctx, null);
+  function makeGraph(_data) {
+    myChart.destroy();
+    myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Correct", "Incorrect"],
+        datasets: [{
+          label: '# of Correct Answers',
+          data: [_data.Correct, _data.Incorrect],
+          backgroundColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255,99,132,1)'
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 99, 132, 0.2)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+
+
+</script>

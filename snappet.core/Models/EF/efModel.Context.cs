@@ -25,8 +25,11 @@ namespace snappet.core.Models.EF
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Domain> Domains { get; set; }
         public virtual DbSet<Exercise> Exercises { get; set; }
         public virtual DbSet<LearningObjective> LearningObjectives { get; set; }
+        public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<SubjectDomainLink> SubjectDomainLinks { get; set; }
         public virtual DbSet<SubmittedAnswer> SubmittedAnswers { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

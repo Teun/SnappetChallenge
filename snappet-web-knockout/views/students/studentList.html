@@ -12,8 +12,6 @@
 </div>
 
 <script type="text/javascript">
-  var baseURL = "http://localhost:62058/api";
-
 
   function PageModel() {
     var self = this;
@@ -27,11 +25,6 @@
   ko.applyBindings(vm);
 
   $.getJSON(baseURL + "/users/getallusers", function (result) {
-    console.log(result);
     window.vm.data(result);
-    //for (var i = 0; i < result.length; i++) {
-    //  viewModel.data.push(result[i]);
-    //}
-    //ko.applyBindings(viewModel);
   });
 </script>

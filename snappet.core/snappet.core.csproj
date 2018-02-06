@@ -73,6 +73,9 @@
     <Compile Include="Helpers\Initializer.cs" />
     <Compile Include="Implementation\ClassMethods.cs" />
     <Compile Include="Implementation\UserMethods.cs" />
+    <Compile Include="Models\EF\Domain.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EF\efModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +97,12 @@
     <Compile Include="Models\EF\LearningObjective.cs">
       <DependentUpon>efModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EF\Subject.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\SubjectDomainLink.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EF\SubmittedAnswer.cs">
       <DependentUpon>efModel.tt</DependentUpon>
     </Compile>
@@ -102,6 +111,7 @@
     </Compile>
     <Compile Include="Models\ViewModels\ExerciseVM.cs" />
     <Compile Include="Models\ViewModels\LearningObjectiveVM.cs" />
+    <Compile Include="Models\ViewModels\SubjectVM.cs" />
     <Compile Include="Models\ViewModels\SubmittedAnswerVM.cs" />
     <Compile Include="Models\ViewModels\UserHistoryVM.cs" />
     <Compile Include="Models\ViewModels\UserLearningObjectiveProgVM.cs" />

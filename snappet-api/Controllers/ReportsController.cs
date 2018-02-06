@@ -20,25 +20,48 @@ namespace snappet_api.Controllers
         }
 
         [HttpGet]
-        public List<DateTime> GetAvailableDates()
+        public List<SubjectVM> GetAvailableSubjects()
+        {
+            return _classMethods.GetAvailableSubjects();
+        }
+
+        [HttpGet]
+        public List<string> GetAvailableDates()
         {
             return _classMethods.GetAvailableDates();
         }
 
         [HttpGet]
-        public List<LearningObjectiveVM> ClassReport(string date)
+        public List<SubmittedAnswerVM> DayReportBySubject(int SubjectID, string date)
+        {
+            if (date == "null")
+            {
+                return new List<SubmittedAnswerVM>();
+            }
+            return _classMethods.GetDayReportBySubject(SubjectID, Convert.ToDateTime(date), null);
+        }
+
+        [HttpGet]
+        public List<SubmittedAnswerVM> WeekReportBySubject(int SubjectID, int Weeks = 1)
+        {
+            return _classMethods.GetWeekReportBySubject(SubjectID, Weeks);
+        }
+
+
+        [HttpGet]
+        public List<LearningObjectiveVM> DayReportByLO(string date)
         {
             if (date == "null")
             {
                 return new List<LearningObjectiveVM>();
             }
-            return _classMethods.GetClassReport(Convert.ToDateTime(date), null);
+            return _classMethods.GetDayReportByLO(Convert.ToDateTime(date), null);
         }
 
         [HttpGet]
-        public List<LearningObjectiveVM> WeekReport(int Weeks = 1)
+        public List<LearningObjectiveVM> WeekReportByLO(int Weeks = 1)
         {
-            return _classMethods.GetWeekReport(Weeks);
+            return _classMethods.GetWeekReportByLO(Weeks);
         }
     }
 }

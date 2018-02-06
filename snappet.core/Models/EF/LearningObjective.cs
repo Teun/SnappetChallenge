@@ -22,10 +22,12 @@ namespace snappet.core.Models.EF
     
         public int LearningObjectiveID { get; set; }
         public string LearningObjective1 { get; set; }
-        public string Subject { get; set; }
-        public string Domain { get; set; }
+        public int SubjectID { get; set; }
+        public int DomainID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exercise> Exercises { get; set; }
+        public virtual Subject Subject { get; set; }
+        public virtual Domain Domain { get; set; }
     }
 }

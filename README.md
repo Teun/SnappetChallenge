@@ -8,10 +8,11 @@
  - Considerations/Notes
 	 - Security
 	 - Typescript
+     - API Endpoints
 
 # 1. Starting the Project
 
-The app is set up to run from within Visual Studio (developed using Visual Studio 2017 Pro). You should pretty much be able to just hit run and it will import the work.json data file into a local instance of the database. 
+The app is set up to run from within Visual Studio (developed using Visual Studio 2017 Pro). You should pretty much be able to just hit run and it will import the work.json data file into a local instance of the database. If for some reason the API port chnages then the url in the index.html would have to be updated as well (search for "baseURL" in the index.html file of the frontend). 
 
 # 2. Project Structure
 
@@ -31,3 +32,6 @@ The API isn't secured for this sample project, though a token based authenticati
 
 ## 3.2 Typescript
 The frontend project isn't strongly typed - mainly to save time, for maintainability (and testing purposes) it would be best to use a combination of Knockout + Typescript or Angular +2 (personal preference at the moment)
+
+## 3.3 API Endpoints
+For this sample project the endpoints bunch up some of the returned datea, this would definitely be optimized in a production setting to return the "correct" amount of data required
