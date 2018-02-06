@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Snappet.Assignment.Data\Snappet.Assignment.Data.csproj" />
+    <ProjectReference Include="..\Snappet.Assignment.Entities\Snappet.Assignment.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

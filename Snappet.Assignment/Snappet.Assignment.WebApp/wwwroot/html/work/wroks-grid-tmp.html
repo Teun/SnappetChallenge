@@ -1,0 +1,78 @@
+﻿
+
+<table class="table table-hover table-striped table-bordered" >
+    <thead>
+        <tr>
+            <th ng-click="sorting('submitDateTime',works)">
+                <a href="" ng-style="sort.sortingOrder=='submitDateTime'?{'color':'#c32451'}:{'color':'#000'}">  Submit Time</a>
+            </th>
+            <th ng-click="sorting('correct',works)">
+                <a href="" ng-style="sort.sortingOrder=='correct'?{'color':'#c32451'}:{'color':'#000'}">Correct </a>
+            </th>
+
+            <th ng-click="sorting('progress',works)">
+                <a href="" ng-style="sort.sortingOrder=='progress'?{'color':'#c32451'}:{'color':'#000'}"> Progress</a>
+            </th>
+            <th ng-click="sorting('user.name',works)">
+                <a href="" ng-style="sort.sortingOrder=='user.name'?{'color':'#c32451'}:{'color':'#000'}"> User</a>
+            </th>
+            <th ng-click="sorting('exercise.name',works)">
+                <a href="" ng-style="sort.sortingOrder=='exercise.name'?{'color':'#c32451'}:{'color':'#000'}"> Exercise</a>
+            <th ng-click="sorting('difficulty',works)">
+                <a href="" ng-style="sort.sortingOrder=='difficulty'?{'color':'#c32451'}:{'color':'#000'}">Difficulty </a>
+            </th>
+            <th ng-click="sorting('subject',works)">
+                <a href="" ng-style="sort.sortingOrder=='subject'?{'color':'#c32451'}:{'color':'#000'}">Subject </a>
+            </th>
+            <th ng-click="sorting('domain',works)">
+                <a href="" ng-style="sort.sortingOrder=='domain'?{'color':'#c32451'}:{'color':'#000'}">Domain </a>
+            </th>
+
+            <th ng-click="sorting('learningObjective',works)">
+                <a href="" ng-style="sort.sortingOrder=='learningObjective'?{'color':'#c32451'}:{'color':'#000'}">Learning Objective </a>
+            </th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse">
+
+            <td>{{item.submitDateTime | date : 'yyyy-MM-dd HH:MM'}}</td>
+            <td>{{item.correct}}</td>
+            <td>{{item.progress}}</td>
+            <td>{{item.user.name}}</td>
+            <td>{{item.exercise.name}}</td>
+            <td>{{item.difficulty}}</td>
+            <td>{{item.subject}}</td>
+            <td>{{item.domain}}</td>
+            <td>{{item.learningObjective}}</td>
+
+        </tr>
+    </tbody>
+</table>
+<div>
+    <h3>Count : {{works.length}}</h3>
+</div>
+<div class="page-center">
+
+    <div class="pagination-container">
+        <ul class="pagination">
+            <li ng-class=" {disabled: currentPage == 0}"><a href="" ng-click="firstPage()">««</a></li>
+
+            <li ng-class=" {disabled: currentPage == 0}"><a href="" ng-click="prevPage()">«</a></li>
+            <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) "
+                ng-class="{active: n == currentPage}"
+                ng-click="setPage()">
+                <a href="" ng-bind="n + 1">1</a>
+            </li>
+
+
+            <li ng-class=" {disabled: currentPage ==( pagedItems.length - 1)}"><a href="" ng-click="nextPage()" rel="next">»</a></li>
+            <li ng-class=" {disabled: currentPage ==( pagedItems.length - 1)}"><a href="" ng-click="lastPage()">»»</a></li>
+        </ul>
+    </div>
+   
+</div>
