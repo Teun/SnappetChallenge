@@ -1,0 +1,103 @@
+﻿
+body {
+  overflow-x: hidden;
+}
+
+
+
+.navbar-default {
+  position: fixed;
+  width: 100%;
+  background: #EF6926;
+}
+
+  .navbar-default .navbar-nav > li > a {
+    color: white;
+  }
+
+.left-menu {
+  position: fixed;
+  margin-top: 62px;
+  width: 300px;
+  background: #2DA5D5;
+  color: white;
+  height: 100%;
+}
+
+.topMargin {
+  margin-top: 90px;
+  display: inline-block;
+  width: 100%;
+}
+
+tab-content > .tab-pane {
+  display: none !important;
+}
+
+.show {
+  display: none !important;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.actionItem, ul.actionItem {
+  cursor: pointer;
+}
+
+.active {
+  color: blue;
+}
+
+.graph-row {
+  margin-bottom: 50px;
+}
+
+.answered-users li {
+  display: inline-block;
+  background: #C12C59;
+  padding: 20px;
+  border-radius: 3px;
+  width: 160px;
+  color: white;
+  text-align: center;
+}
+
+.page-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.nav-item {
+  background: #D63E67;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 20px;
+  color: white;
+}
+
+  .nav-item > a:hover, .nav-item > a:focus {
+    color: #23527c;
+  }
+
+.nav-tabs {
+  border: none;
+  margin-bottom: 20px;
+}
+
+.left-menu ul, .exercise-list {
+  height: 80%;
+  overflow: auto;
+}
+
+.page-content {
+  margin-left: 300px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 85%;
+    margin: 30px auto;
+  }
+}

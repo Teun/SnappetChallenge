@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snappet Challenge</title>
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+
+
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Snappet Challenge</a>
+      </div>
+      <ul class="nav navbar-nav" style="margin-left: 150px;">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Subject Reports
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#/reports/subjects/week">Week</a></li>
+            <li><a href="#/reports/subjects/day">Day</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Learning Objective Reports
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#/reports/learning-o/week">Week</a></li>
+            <li><a href="#/reports/learning-o/day">Day</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#/Students">Student List</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="content"></div>
+
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/knockout.js"></script>
+  <script src="scripts/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+  <script src="scripts/chart.js"></script>
+  <script src="scripts/sammy-latest.min.js"></script>
+  <script>
+    var baseURL = "http://localhost:62058/api";
+
+    var app = $.sammy(function () {
+      this.element_selector = '#content';
+
+      this.get("#/reports/subjects/day", function (context) {
+        context.app.swap('');
+        context.render('views/reports/subject/day.html').appendTo(context.$element());
+      });
+
+      this.get("#/reports/subjects/week", function (context) {
+        context.app.swap('');
+        context.render('views/reports/subject/week.html').appendTo(context.$element());
+      });
+
+
+      this.get("#/reports/learning-o/day", function (context) {
+        context.app.swap('');
+        context.render('views/reports/learningO/day.html').appendTo(context.$element());
+      });
+
+      this.get("#/reports/learning-o/week", function (context) {
+        context.app.swap('');
+        context.render('views/reports/learningO/week.html').appendTo(context.$element());
+      });
+
+      this.get("#/Students", function (context) {
+        context.app.swap('');
+        context.render('views/students/studentList.html').appendTo(context.$element());
+      });
+
+      this.get("#/Students/:studentID", function (context) {
+        context.app.swap('');
+        context.render('views/students/studentData.html').appendTo(context.$element());
+      });
+
+      $(function () {
+        app.run('#/reports/subjects/week');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+
+<div class="left-menu">
+  <select class="form-control" onchange="changeSelectedWeek();" id="weekSelector">
+    <option value="1">Past Week</option>
+    <option value="2">Past 2 Weeks</option>
+    <option value="3">Past 3 Weeks</option>
+    <option value="4">Past 4 Weeks</option>
+    <option value="5">Past 5 Weeks</option>
+  </select>
+  <br />
+  <p>Learning Objectives taken:</p>
+  <ul data-bind="foreach: data().LearningObjectives">
+    <li class="actionItem">
+      <p data-bind="text: LearningObjective, click: loadLearningObjective.bind($data, LearningObjectiveID)"></p>
+    </li>
+  </ul>
+</div>
+<div class="page-content">
+  <div class="topMargin">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-radar-tab" data-toggle="tab" href="#nav-radar" role="tab">Answers Radar</a>
+        <a class="nav-item nav-link" id="nav-obj-progress-tab" data-toggle="tab" href="#nav-obj-progress" role="tab">Learning Objectives Progress</a>
+        <a class="nav-item nav-link" id="nav-progress-tab" data-toggle="tab" href="#nav-progress" role="tab">User Progress Chart</a>
+        <a class="nav-item nav-link" id="nav-preference-tab" data-toggle="tab" href="#nav-preference" role="tab">Learning Objectives Preference</a>
+        <a class="nav-item nav-link" id="nav-history-tab" data-toggle="tab" href="#nav-history" role="tab">Activity History</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade active show" id="nav" role="tabpanel" aria-labelledby="nav-radar-tab">
+
+      </div>
+      <div class="tab-pane fade active " id="nav-radar" role="tabpanel" aria-labelledby="nav-radar-tab">
+        <div class="col-md-12">
+          <h2>User's Answers Radar</h2>
+          <canvas id="answersRadarChart"></canvas>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-progress" role="tabpanel" aria-labelledby="nav-progress-tab">
+        <div class="col-md-12">
+          <h2>User Progress Chart</h2>
+          <canvas id="userProgressChart"></canvas>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-obj-progress" role="tabpanel" aria-labelledby="nav-obj-progress-tab">
+        <div class="col-md-12">
+          <h2>User's Learning Objectives Progress (overall)</h2>
+          <canvas id="userLearningObjectiveProgress"></canvas>
+        </div>
+      </div>
+      <div class="tab-pane fade " id="nav-preference" role="tabpanel" aria-labelledby="nav-preference-tab">
+        <div class="col-md-12">
+          <h2>User's Learning Objective Preference (overall)</h2>
+          <canvas id="userLearningObjPreference"></canvas>
+          <canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
+        <div class="col-md-12">
+          <h2>User's Activity History (overall)</h2>
+          <canvas id="userActivityHistory"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var UserID = $(location).attr("href").split('/').pop();
+
+  var userActivityHistoryCtx = document.getElementById("userActivityHistory").getContext('2d');
+  var userActivityGraph = new Chart(userActivityHistoryCtx);
+
+  var userLearningObjPreferenceCtx = document.getElementById("userLearningObjPreference").getContext('2d');
+  var userLearningObjectivePreferenceGraph = new Chart(userLearningObjPreferenceCtx);
+
+  var userLearningObjectiveProgressCtx = document.getElementById("userLearningObjectiveProgress").getContext('2d');
+  var userLearningObjectiveProgressGraph = new Chart(userLearningObjectiveProgressCtx);
+
+  var answersRadarChartCtx = document.getElementById("answersRadarChart").getContext('2d');
+  var answersGraph = new Chart(answersRadarChartCtx);
+
+  var userProgressChartCtx = document.getElementById("userProgressChart").getContext('2d');
+  var progressGraph = new Chart(userProgressChartCtx);
+
+  function PageModel() {
+    var self = this;
+
+    self.data = ko.observable([]);
+    loadLearningObjective = function (learningObjectiveID) {
+      var full = window.vm.data();
+      var res = $.grep(full.LearningObjectives, function (e) { return e.LearningObjectiveID == learningObjectiveID; })[0];
+
+      drawRadarChart(res);
+      drawUserProgressChart(res);
+    }
+  }
+
+  window.vm = new PageModel();
+  ko.applyBindings(vm);
+
+  //load initial data
+  getWeekData(1);
+
+  function changeSelectedWeek() {
+    getWeekData($("#weekSelector").val());
+  }
+
+  function getWeekData(number) {
+    $.getJSON(baseURL + "/users/getSpecificUser?UserID=" + UserID + "&Weeks=" + number, function (result) {
+      window.vm.data(result);
+      drawUserHistoryGraph(result.UserHistory);
+      drawUserLearningObjPrefGraph(result.UserLearningObjData);
+      drawUserLearningObjectiveProgressGraph(result.UserLearningObjData);
+      drawRadarChart(result.LearningObjectives[0]);
+      drawUserProgressChart(result.LearningObjectives[0]);
+    });
+  }
+
+
+
+
+  function drawUserHistoryGraph(data) {
+    userActivityGraph.destroy();
+    var dateLabel = [];
+    var plotData = [];
+
+
+    for (var i = 0; i < data.length; i++) {
+      dateLabel.push(data[i].Date);
+      plotData.push(data[i].QuestionsAnsweredCount);
+    }
+
+    userActivityGraph = new Chart(userActivityHistoryCtx, {
+      type: 'line',
+      data: {
+        labels: dateLabel,
+        datasets: [
+          {
+            data: plotData,
+            label: "# of Questions answered",
+            borderColor: "#3e95cd",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Number of questions answered from ' + dateLabel[0] + ' to ' + dateLabel[dateLabel.length - 1]
+        }
+      }
+    });
+  }
+  function drawUserLearningObjPrefGraph(data) {
+    userLearningObjectivePreferenceGraph.destroy();
+    var chartLabel = [];
+    var chartData = [];
+    var chartColours = [];
+
+    for (var i = 0; i < data.length; i++) {
+      chartLabel.push(data[i].LearningObjective);
+      chartData.push(data[i].NumberOfTimesAnswered);
+      chartColours.push(generateRandomColour());
+    }
+
+
+    userLearningObjectivePreferenceGraph = new Chart(userLearningObjPreferenceCtx, {
+      type: 'horizontalBar',
+      data: {
+        labels: chartLabel,
+        datasets: [
+          {
+            label: "Number of times answered",
+            backgroundColor: chartColours,
+            data: chartData
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: "User's learning objectives preferences"
+        }
+      }
+    });
+  }
+  function drawUserLearningObjectiveProgressGraph(data) {
+    userLearningObjectiveProgressGraph.destroy();
+    var chartLabel = [];
+    var chartData = [];
+    var chartColours = [];
+
+    for (var i = 0; i < data.length; i++) {
+      chartLabel.push(data[i].LearningObjective);
+      if (data[i].TotalProgress == undefined) {
+        chartData.push(0);
+      } else {
+        chartData.push(data[i].TotalProgress);
+      }
+
+      chartColours.push(generateRandomColour());
+    }
+
+
+    userLearningObjectiveProgressGraph = new Chart(userLearningObjectiveProgressCtx, {
+      type: 'horizontalBar',
+      data: {
+        labels: chartLabel,
+        datasets: [
+          {
+            label: "Total Progress",
+            backgroundColor: chartColours,
+            data: chartData
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Total Progress for Learning Objectives'
+        }
+      }
+    });
+  }
+  function drawRadarChart(data) {
+    answersGraph.destroy();
+    var radarLabels = [];
+    var radarDataSet1 = [];
+    var radarDataSet2 = [];
+
+    for (var i = 0; i < data.Exercises.length; i++) {
+      radarLabels.push(data.Exercises[i].ExerciseID + " Difficulty: " + data.Exercises[i].Difficulty);
+      var correct = 0;
+      var incorrect = 0;
+      for (var j = 0; j < data.Exercises[i].UserAnswers.length; j++) {
+
+        if (data.Exercises[i].UserAnswers[j]["Correct"]) {
+          correct++;
+        } else {
+          incorrect++;
+        }
+      }
+      radarDataSet1.push(correct);
+      radarDataSet2.push(incorrect);
+    }
+
+    answersGraph = new Chart(answersRadarChartCtx, {
+      type: 'radar',
+      data: {
+        labels: radarLabels,
+        datasets: [
+          {
+            label: "Correct",
+            fill: true,
+            backgroundColor: "rgba(120,255,129,0.2)",
+            borderColor: "rgba(120,255,129,1)",
+            pointBorderColor: "#fff",
+            pointBackgroundColor: "rgba(120,255,129,1)",
+            data: radarDataSet1
+          }, {
+            label: "Incorrect",
+            fill: true,
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            pointBorderColor: "#fff",
+            pointBackgroundColor: "rgba(255,99,132,1)",
+            data: radarDataSet2
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: data.LearningObjective + " - distribution of user's answers"
+        }
+      }
+    });
+  }
+  function drawUserProgressChart(data) {
+    progressGraph.destroy();
+    var chartLabels = [];
+    var chartDataSet = [];
+
+    for (var i = 0; i < data.Exercises.length; i++) {
+
+
+      var colour = generateRandomColour();
+      var dataSetItem = {
+        label: data.Exercises[i].ExerciseID + " (Difficulty " + data.Exercises[i].Difficulty + ")",
+        backgroundColor: colour,
+        borderColor: colour,
+        fill: false,
+        data: []
+      }
+
+      for (var j = 0; j < data.Exercises[i].UserAnswers.length; j++) {
+        chartLabels.push(new Date(data.Exercises[i].UserAnswers[j].DateAnswered));
+        if (data.Exercises[i].UserAnswers[j].Progress != undefined) {
+          dataSetItem.data.push(data.Exercises[i].UserAnswers[j].Progress);
+        } else {
+          dataSetItem.data.push(0);
+        }
+
+        chartDataSet.push(dataSetItem);
+      }
+    }
+
+    var timeFormat = 'MM/DD/YYYY HH:mm';
+
+    progressGraph = new Chart(userProgressChartCtx,
+      {
+        type: 'line',
+        data: {
+          labels: chartLabels,
+          datasets: chartDataSet
+        },
+        options: {
+          title: {
+            text: "User Progress"
+          },
+          scales: {
+            xAxes: [
+              {
+                type: "time",
+                time: {
+                  format: timeFormat,
+                  tooltipFormat: 'll HH:mm'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Date'
+                }
+              }
+            ],
+            yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: 'value'
+                }
+              }
+            ]
+          }
+        }
+      });
+  }
+
+  function generateRandomColour() {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return "rgb(" + r + "," + g + "," + b + ")";
+  }
+
+
+
+</script>

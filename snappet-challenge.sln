@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snappet-api", "snappet-api\snappet-api.csproj", "{375B148F-C46C-4ECC-AD4F-C3A329F37534}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{614EB64C-4139-4440-A17C-A0BCFB5E62CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{78E50713-28A9-46DA-8DCB-298D9A2F34A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{95E0B6EB-A074-4C0C-B253-89EADBFC1455}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snappet.core", "snappet.core\snappet.core.csproj", "{0E856BDD-341D-49CD-BA40-58FEEF98BFF1}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "snappet-web-knockout", "snappet-web-knockout\", "{51FEFF66-ADF3-4346-99A9-24CF220A869B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_63138"
+		Debug.AspNetCompiler.PhysicalPath = "snappet-web-knockout\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63138\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_63138"
+		Release.AspNetCompiler.PhysicalPath = "snappet-web-knockout\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63138\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "63138"
+		SlnRelativePath = "snappet-web-knockout\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21E9654C-B11B-4B33-9836-2A548EF4DD61}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{375B148F-C46C-4ECC-AD4F-C3A329F37534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{375B148F-C46C-4ECC-AD4F-C3A329F37534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{375B148F-C46C-4ECC-AD4F-C3A329F37534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{375B148F-C46C-4ECC-AD4F-C3A329F37534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E856BDD-341D-49CD-BA40-58FEEF98BFF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E856BDD-341D-49CD-BA40-58FEEF98BFF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E856BDD-341D-49CD-BA40-58FEEF98BFF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E856BDD-341D-49CD-BA40-58FEEF98BFF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FEFF66-ADF3-4346-99A9-24CF220A869B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FEFF66-ADF3-4346-99A9-24CF220A869B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FEFF66-ADF3-4346-99A9-24CF220A869B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FEFF66-ADF3-4346-99A9-24CF220A869B}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{375B148F-C46C-4ECC-AD4F-C3A329F37534} = {614EB64C-4139-4440-A17C-A0BCFB5E62CA}
+		{0E856BDD-341D-49CD-BA40-58FEEF98BFF1} = {95E0B6EB-A074-4C0C-B253-89EADBFC1455}
+		{51FEFF66-ADF3-4346-99A9-24CF220A869B} = {78E50713-28A9-46DA-8DCB-298D9A2F34A7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {FBD45036-6887-41F2-A673-86BF9C697628}
+	EndGlobalSection
+EndGlobal

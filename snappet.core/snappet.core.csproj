@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0E856BDD-341D-49CD-BA40-58FEEF98BFF1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>snappet.core</RootNamespace>
+    <AssemblyName>snappet.core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\IClassMethods.cs" />
+    <Compile Include="Contracts\IUserMethods.cs" />
+    <Compile Include="Helpers\Initializer.cs" />
+    <Compile Include="Implementation\ClassMethods.cs" />
+    <Compile Include="Implementation\UserMethods.cs" />
+    <Compile Include="Models\EF\Domain.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\efModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>efModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\efModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\efModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>efModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Exercise.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\LearningObjective.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Subject.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\SubjectDomainLink.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\SubmittedAnswer.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\User.cs">
+      <DependentUpon>efModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\ExerciseVM.cs" />
+    <Compile Include="Models\ViewModels\LearningObjectiveVM.cs" />
+    <Compile Include="Models\ViewModels\SubjectVM.cs" />
+    <Compile Include="Models\ViewModels\SubmittedAnswerVM.cs" />
+    <Compile Include="Models\ViewModels\UserHistoryVM.cs" />
+    <Compile Include="Models\ViewModels\UserLearningObjectiveProgVM.cs" />
+    <Compile Include="Models\ViewModels\UserLearningObjectDataItemVM.cs" />
+    <Compile Include="Models\ViewModels\UserVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\EF\efModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>efModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Models\EF\efModel.edmx.diagram">
+      <DependentUpon>efModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\EF\efModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>efModel.Context.cs</LastGenOutput>
+      <DependentUpon>efModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EF\efModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>efModel.edmx</DependentUpon>
+      <LastGenOutput>efModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

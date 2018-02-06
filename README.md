@@ -1,22 +1,37 @@
-# SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+﻿# Contents
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+ - Starting the Project
+ - Project Structure
+	 - API
+	 - Core
+	 - Frontend
+ - Considerations/Notes
+	 - Security
+	 - Typescript
+     - API Endpoints
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+# 1. Starting the Project
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+The app is set up to run from within Visual Studio (developed using Visual Studio 2017 Pro). You should pretty much be able to just hit run and it will import the work.json data file into a local instance of the database. If for some reason the API port chnages then the url in the index.html would have to be updated as well (search for "baseURL" in the index.html file of the frontend). 
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+# 2. Project Structure
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+## 2.1 API
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Javascript, JQuery en Knockout.JS. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+The API exposes all the necessary endpoints for the web facing clients (frontends) and/or any mobile apps that 
+
+## 2.2 Core
+The "core" project builds to a dll that contains all the necessary interfaces, models and methods that the API uses. This is a shared project that can be re-used for any other projects that might need these core functionality. 
+
+## 2.3 Frontend
+The frontend is built leanly using Knockout, Bootstrap (mainly for basic css), ChartJS (for the charts) and SammyJS (for routing). Typescript could also have been used (see 3.2)
+
+# 3. Considerations/Notes
+## 3.1 Security
+The API isn't secured for this sample project, though a token based authentication system would be best for this and can easily be added
+
+## 3.2 Typescript
+The frontend project isn't strongly typed - mainly to save time, for maintainability (and testing purposes) it would be best to use a combination of Knockout + Typescript or Angular +2 (personal preference at the moment)
+
+## 3.3 API Endpoints
+For this sample project the endpoints bunch up some of the returned datea, this would definitely be optimized in a production setting to return the "correct" amount of data required
