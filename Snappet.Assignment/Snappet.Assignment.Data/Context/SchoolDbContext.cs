@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Snappet.Assignment.Data.Configurations;
 using Snappet.Assignment.Entities.DomainObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Snappet.Assignment.Data.Context
 {
@@ -15,6 +13,14 @@ namespace Snappet.Assignment.Data.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.HasDefaultSchema("School");
+
+            builder.ApplyConfiguration(new WorkConfiguration());
+
+            builder.ApplyConfiguration(new UserConfiguration());
+
+            builder.ApplyConfiguration(new ExerciseConfiguration());
 
 
         }
