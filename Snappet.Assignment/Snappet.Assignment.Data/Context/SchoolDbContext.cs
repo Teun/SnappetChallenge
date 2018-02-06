@@ -10,6 +10,12 @@ namespace Snappet.Assignment.Data.Context
         public DbSet<Work> Works { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
 
+
+        public SchoolDbContext(DbContextOptions<SchoolDbContext> options) : base(options)
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
