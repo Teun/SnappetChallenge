@@ -4,7 +4,7 @@ namespace Snappet.Assignment.Entities.DTOs
 {
     public class WorkDto
     {
-       
+        public int SubmittedAnswerId { get; set; }
 
         public DateTime SubmitDateTime { get; set; }
 

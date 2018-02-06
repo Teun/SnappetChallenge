@@ -10,6 +10,7 @@ namespace Snappet.Assignment.Tests
         public const string WorkRepository = "Work Repository Tests";
         public const string PositiveCases = "Positive Cases";
         public const string NegativeCases = "Negative Cases";
-      
+        public const string Mapper = "Mapper Tests";
+        public const string WorkController = "Work Controller Tests";
     }
 }
