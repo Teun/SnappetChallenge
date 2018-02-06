@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Business", "Snappet.Assignment.Business\Snappet.Assignment.Business.csproj", "{FB9FA7FB-2EFE-450A-B45B-5BF5271F92BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Assignment.Business", "Snappet.Assignment.Business\Snappet.Assignment.Business.csproj", "{FB9FA7FB-2EFE-450A-B45B-5BF5271F92BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Data", "Snappet.Assignment.Data\Snappet.Assignment.Data.csproj", "{4F55E057-8424-4998-80E3-16074BED5173}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Assignment.Data", "Snappet.Assignment.Data\Snappet.Assignment.Data.csproj", "{4F55E057-8424-4998-80E3-16074BED5173}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.Entities", "Snappet.Assignment.Entities\Snappet.Assignment.Entities.csproj", "{49C4D682-E917-45D3-97FE-F6705909CDCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Assignment.Entities", "Snappet.Assignment.Entities\Snappet.Assignment.Entities.csproj", "{49C4D682-E917-45D3-97FE-F6705909CDCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Assignment.WebApp", "Snappet.Assignment.WebApp\Snappet.Assignment.WebApp.csproj", "{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{49C4D682-E917-45D3-97FE-F6705909CDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C4D682-E917-45D3-97FE-F6705909CDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49C4D682-E917-45D3-97FE-F6705909CDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB4FDE8-25C6-4797-AFBD-D69E450ACC2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
