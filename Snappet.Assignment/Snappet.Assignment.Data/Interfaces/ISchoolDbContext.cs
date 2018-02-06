@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Snappet.Assignment.Data.Interfaces
 {
-    public interface ISchoolDbContext
+    public interface ISchoolDbContext:IDisposable
     {
         DbSet<Work> Works { get; set; }
         DbSet<Exercise> Exercises { get; set; }
