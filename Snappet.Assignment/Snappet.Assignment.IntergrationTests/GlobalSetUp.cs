@@ -14,7 +14,7 @@ namespace Snappet.Assignment.IntergrationTests
     {
 
         private SchoolDbContext _context;
-        public static string ConnectionString = "Server=.\\SQLEXPRESS;Database=SnappetAssignment_Tests;Trusted_Connection=True;MultipleActiveResultSets=true";
+        public static string ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=SnappetAssignment_Tests;Trusted_Connection=True;MultipleActiveResultSets=true";
         private const string MigrationAssemply = "Snappet.Assignment.WebApp";
         private static ICollection<User> _users;
         private static ICollection<Exercise> _exercises;
