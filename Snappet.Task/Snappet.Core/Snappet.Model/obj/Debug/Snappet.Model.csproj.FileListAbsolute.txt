@@ -1,0 +1,10 @@
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Core\Snappet.Model\bin\Debug\Snappet.Model.dll
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Core\Snappet.Model\bin\Debug\Snappet.Model.pdb
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Core\Snappet.Model\obj\Debug\Snappet.Model.csproj.CoreCompileInputs.cache
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Core\Snappet.Model\obj\Debug\Snappet.Model.dll
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Core\Snappet.Model\obj\Debug\Snappet.Model.pdb
+D:\work\Snappet.Task\Snappet.Task\Snappet.Core\Snappet.Model\bin\Debug\Snappet.Model.dll
+D:\work\Snappet.Task\Snappet.Task\Snappet.Core\Snappet.Model\bin\Debug\Snappet.Model.pdb
+D:\work\Snappet.Task\Snappet.Task\Snappet.Core\Snappet.Model\obj\Debug\Snappet.Model.csproj.CoreCompileInputs.cache
+D:\work\Snappet.Task\Snappet.Task\Snappet.Core\Snappet.Model\obj\Debug\Snappet.Model.dll
+D:\work\Snappet.Task\Snappet.Task\Snappet.Core\Snappet.Model\obj\Debug\Snappet.Model.pdb

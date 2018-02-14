@@ -1,0 +1,10 @@
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Database\Snappet.Database\bin\Debug\Snappet.Database.dacpac
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Database\Snappet.Database\bin\Debug\Snappet.Database.dll
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Database\Snappet.Database\bin\Debug\Snappet.Database.pdb
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Database\Snappet.Database\obj\Debug\Snappet.Database.dll
+D:\work\Snappet.Task\Snappet.UI\Snappet.UI\Snappet.Database\Snappet.Database\obj\Debug\Snappet.Database.pdb
+D:\work\Snappet.Task\Snappet.Task\Snappet.Database\Snappet.Database\bin\Debug\Snappet.Database.dacpac
+D:\work\Snappet.Task\Snappet.Task\Snappet.Database\Snappet.Database\bin\Debug\Snappet.Database.dll
+D:\work\Snappet.Task\Snappet.Task\Snappet.Database\Snappet.Database\bin\Debug\Snappet.Database.pdb
+D:\work\Snappet.Task\Snappet.Task\Snappet.Database\Snappet.Database\obj\Debug\Snappet.Database.dll
+D:\work\Snappet.Task\Snappet.Task\Snappet.Database\Snappet.Database\obj\Debug\Snappet.Database.pdb

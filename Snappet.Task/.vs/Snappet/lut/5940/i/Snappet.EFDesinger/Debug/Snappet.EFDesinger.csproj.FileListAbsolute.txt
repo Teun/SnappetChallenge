@@ -1,0 +1,7 @@
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Core\Snappet.EFDesinger\bin\Debug\Snappet.EFDesinger.dll.config
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Core\Snappet.EFDesinger\bin\Debug\Snappet.EFDesinger.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Core\Snappet.EFDesinger\bin\Debug\Snappet.EFDesinger.pdb
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.EFDesinger\Debug\Snappet.EFDesinger.csprojResolveAssemblyReference.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.EFDesinger\Debug\Snappet.EFDesinger.csproj.CoreCompileInputs.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.EFDesinger\Debug\Snappet.EFDesinger.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.EFDesinger\Debug\Snappet.EFDesinger.pdb

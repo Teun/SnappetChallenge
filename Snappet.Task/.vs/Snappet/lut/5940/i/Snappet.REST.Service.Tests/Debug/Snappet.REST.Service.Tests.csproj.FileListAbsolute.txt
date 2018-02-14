@@ -1,0 +1,10 @@
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service.Tests\bin\Debug\Snappet.REST.Service.Tests.dll.config
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service.Tests\bin\Debug\Snappet.REST.Service.Tests.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service.Tests\bin\Debug\Snappet.REST.Service.Tests.pdb
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service.Tests\Debug\Snappet.REST.Service.Tests.csprojResolveAssemblyReference.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service.Tests\Debug\Snappet.REST.Service.Tests.csproj.CoreCompileInputs.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service.Tests\Debug\Snappet.REST.Service.Tests.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service.Tests\Debug\Snappet.REST.Service.Tests.pdb

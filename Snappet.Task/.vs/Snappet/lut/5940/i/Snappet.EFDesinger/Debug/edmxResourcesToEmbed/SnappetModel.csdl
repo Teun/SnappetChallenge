@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="snappetdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="work">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubmittedAnswerId" Type="Double" />
+    <Property Name="SubmitDateTime" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Correct" Type="Boolean" />
+    <Property Name="Progress" Type="Double" />
+    <Property Name="UserId" Type="Double" />
+    <Property Name="ExerciseId" Type="Double" />
+    <Property Name="Difficulty" Type="Double" />
+    <Property Name="Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Domain" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LearningObjective" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="snappetdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="works" EntityType="Self.work" />
+  </EntityContainer>
+</Schema>

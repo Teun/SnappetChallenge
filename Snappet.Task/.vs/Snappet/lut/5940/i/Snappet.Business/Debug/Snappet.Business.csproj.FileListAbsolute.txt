@@ -1,0 +1,6 @@
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Business\Snappet.Business\bin\Debug\Snappet.Business.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Business\Snappet.Business\bin\Debug\Snappet.Business.pdb
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.Business\Debug\Snappet.Business.csprojResolveAssemblyReference.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.Business\Debug\Snappet.Business.csproj.CoreCompileInputs.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.Business\Debug\Snappet.Business.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.Business\Debug\Snappet.Business.pdb

@@ -1,0 +1,7 @@
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service\bin\Snappet.REST.Service.dll.config
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service\bin\Snappet.REST.Service.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\b\Snappet.Service\Snappet.REST.Service\bin\Snappet.REST.Service.pdb
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service\Debug\Snappet.REST.Service.csprojResolveAssemblyReference.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service\Debug\Snappet.REST.Service.csproj.CoreCompileInputs.cache
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service\Debug\Snappet.REST.Service.dll
+D:\work\Snappet.Task\Snappet.Task\.vs\Snappet\lut\0\i\Snappet.REST.Service\Debug\Snappet.REST.Service.pdb
