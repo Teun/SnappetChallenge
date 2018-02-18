@@ -1,0 +1,74 @@
+<h2>Search</h2>
+<form #f="ngForm" (ngSubmit)="onSubmit()" (reset)="onReset()">
+    <div class="form-group">
+        <label for="dateSubmitted">Date:</label>
+        <select class="form-control" id="dateSubmitted" name="dateSubmitted" [(ngModel)]="query.dateSubmitted" (change)="onDateChange()" required>
+            <option [selected]="true" [ngValue]="null">--Select--</option>
+            <option *ngFor="let nextDate of dates" [ngValue]="nextDate">
+                {{nextDate | date:'MMM d, y'}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="domain">Domain:</label>
+        <select class="form-control" id="domain" name="domain" [(ngModel)]="query.domain" [disabled]="!isLoaded">
+            <option [selected]="true" [ngValue]="null">--All--</option>
+            <option *ngFor="let domain of workQueryLists.domains" value="{{domain}}">
+                {{domain}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="subject">Subject:</label>
+        <select class="form-control" id="subject" name="subject" [(ngModel)]="query.subject" [disabled]="!isLoaded">
+            <option [selected]="true" [ngValue]="null">--All--</option>
+            <option *ngFor="let subject of workQueryLists.subjects" value="{{subject}}">
+                {{subject}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="objective">Learning Objective:</label>
+        <select class="form-control" id="objective" name="objective" [(ngModel)]="query.learningObjective" [disabled]="!isLoaded">
+            <option [selected]="true" [ngValue]="null">--All--</option>
+            <option *ngFor="let objective of workQueryLists.learningObjectives" value="{{objective}}">
+                {{objective}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="correct">Correct Answer:</label>
+        <select class="form-control" id="correct" name="correct" [(ngModel)]="query.correct" [disabled]="!isLoaded">
+            <option [selected]="true" [ngValue]="null">--All--</option>
+            <option *ngFor="let value of workQueryLists.correct" value="{{value}}">
+                {{value}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="user">User ID:</label>
+        <select class="form-control" id="user" name="user" [(ngModel)]="query.user" [disabled]="!isLoaded">
+            <option [selected]="true" [ngValue]="null">--All--</option>
+            <option *ngFor="let user of workQueryLists.users" value="{{user}}">
+                {{user}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exercise">Exercise ID:</label>
+        <select class="form-control" id="exercise" name="exercise" [(ngModel)]="query.exercise" [disabled]="!isLoaded">
+            <option [selected]="true" [ngValue]="null">--All--</option>
+            <option *ngFor="let exercise of workQueryLists.exercises" value="{{exercise}}">
+                {{exercise}}
+            </option>
+        </select>
+    </div>
+    <div class="row">
+        <div class="col col-sm-6">
+            <button type="submit" class="form-control btn btn-primary" [disabled]="!f.valid || isLoading">Search</button>
+        </div>
+        <div class="col col-sm-6">
+            <button type="reset" class="form-control btn btn-default" [disabled]="isLoading">Clear</button>
+        </div>
+    </div>
+</form>  
