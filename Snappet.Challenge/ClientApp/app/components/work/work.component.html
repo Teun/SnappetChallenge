@@ -1,0 +1,20 @@
+﻿<div class='row'>
+    <div class="col-lg-1 col-sm-12" *ngIf="!isDateListLoaded">
+        Loading...
+    </div>
+    <div class='col-sm-3' *ngIf="isDateListLoaded">
+        <work-search
+            [dates]="dates"
+            [workQueryLists]="workQueryLists"
+            [isLoaded]="areWorkQueryListsLoaded"
+            (onDateChanged)="onDateChanged($event)"
+            (onQuery)="onQuery($event)">
+        </work-search>
+    </div>
+    <div class='col-sm-9 body-content' *ngIf="isDataLoading || isDataLoaded">
+        <work-search-results
+            [results]="results"
+            [isLoading]="isDataLoading">
+        </work-search-results>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿<h2>Results</h2>
+<div *ngIf="isLoading">
+    Loading...
+</div>
+<div *ngIf="!isLoading && results.workItems.length == 0">
+    No results found.
+</div>
+
+<div *ngIf="!isLoading && results.workItems.length != 0">
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Total results</th>
+                <th>Correct Rate</th>
+                <th>Avg Progress</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ results.totalCount }}</td>
+                <td>{{ results.correctRate }}%</td>
+                <td>{{ results.avgProgress }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Domain</th>
+                <th>Subject</th>
+                <th>Learning Objective</th>
+                <th>Submitted</th>
+                <th>Correct</th>
+                <th>Progress</th>
+                <th>UserID</th>
+                <th>ExerciseId</th>
+                <th>Difficulty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of results.workItems">
+                <td>{{ item.domain }}</td>
+                <td>{{ item.subject }}</td>
+                <td>{{ item.learningObjective }}</td>
+                <td>{{ item.submitDateTime | date:'shortTime' }}</td>
+                <td>{{ item.correct }}</td>
+                <td>{{ item.progress }}</td>
+                <td>{{ item.userId }}</td>
+                <td>{{ item.exerciseId }}</td>
+                <td>{{ item.difficulty }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <ul class="pagination">
+        <li class="page-item disabled" *ngIf="pageNumber != 0"><a class="page-link">Previous</a></li>
+        <li class="page-item disabled"><a class="page-link">Page {{pageNumber + 1}} of {{results.pagesCount}}</a></li>
+        <li class="page-item" *ngIf="pageNumber != results.pagesCount-1"><a class="page-link" data-toggle="modal" data-target="#myModal">Next</a></li>
+    </ul>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Need more? Let's discuss it :)</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Phone: +380672724930</p>
+                    <p>Skype: s_boyko</p>
+                    <p>Thank you,</p>
+                    <p>Serge</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+     
+</div>
