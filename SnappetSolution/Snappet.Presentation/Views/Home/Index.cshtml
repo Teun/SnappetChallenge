@@ -1,0 +1,142 @@
+﻿@model Snappet.Presentation.Models.SummaryReportViewModel
+
+@using Newtonsoft.Json.Converters
+@using Newtonsoft.Json
+@using Snappet.Presentation.Helpers
+@using Snappet.Infrastructure.DAL.Contract
+
+@{
+    ViewBag.Title = "Summary Report";
+}
+
+<div class="page-header">
+	<h1>Summary Report</h1>
+</div>
+<div class="alert alert-info">
+	<strong>Info!</strong>&nbsp;This is a simple report builder to analyse the data per day. Click columns button to manage report columns. Once a column is selected you can also specify a filter for it in the corresponding filter box. Please hit Refresh Report button if you change report configuration to apply the changes.
+</div>
+<div class="container">
+	<form>
+		<div class="form-group">
+			<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Columns
+				</button>
+				<ul class="dropdown-menu dropdown-menu-form">
+					<li><label class="checkbox">@Html.CheckBoxFor(m => m.CorrectColumn.IsActive, new { data_bind = "checked: CorrectColumn.IsActive" })Correct</label></li>
+					<li><label class="checkbox">@Html.CheckBoxFor(m => m.UserIdColumn.IsActive, new { data_bind = "checked: UserIdColumn.IsActive" })UserId</label></li>
+					<li><label class="checkbox">@Html.CheckBoxFor(m => m.ExerciseIdColumn.IsActive, new { data_bind = "checked: ExerciseIdColumn.IsActive" })ExerciseId</label></li>
+					<li><label class="checkbox">@Html.CheckBoxFor(m => m.SubjectColumn.IsActive, new { data_bind = "checked: SubjectColumn.IsActive" })Subject</label></li>
+					<li><label class="checkbox">@Html.CheckBoxFor(m => m.DomainColumn.IsActive, new { data_bind = "checked: DomainColumn.IsActive" })Domain</label></li>
+					<li><label class="checkbox">@Html.CheckBoxFor(m => m.LearningObjectiveColumn.IsActive, new { data_bind = "checked: LearningObjectiveColumn.IsActive" })Learning Objective</label></li>
+				</ul>
+			</div>
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(m => m.ReportDate)
+			@Html.TextBoxFor(m => m.ReportDate, new { @class = "form-control", type = "date", data_bind = "value: ReportDate" })
+		</div>
+		@Html.FilterBoxFor(m => m.CorrectColumn.Filter, Dimensions.Correct)
+		@Html.FilterBoxFor(m => m.UserIdColumn.Filter, Dimensions.UserId)
+		@Html.FilterBoxFor(m => m.ExerciseIdColumn.Filter, Dimensions.ExerciseId)
+		@Html.FilterBoxFor(m => m.SubjectColumn.Filter, Dimensions.Subject)
+		@Html.FilterBoxFor(m => m.DomainColumn.Filter, Dimensions.Domain)
+		@Html.FilterBoxFor(m => m.LearningObjectiveColumn.Filter, Dimensions.LearningObjective)
+		<div class="form-group">
+			<button type="button" class="btn btn-primary" data-bind="disable: processingReport(),text: processingReport() ? 'Processing...' : 'Refresh Report'"></button>
+		</div>
+	</form>
+</div>
+<div class="row">
+	<div class="alert alert-warning" data-bind="visible: configurationChanged()">
+		<strong>Warning!</strong>&nbsp;You have made changes to the report configuration, please hit Refresh Report button to apply the changes.
+	</div>
+	<div class="alert alert-danger" data-bind="visible: errorOccured()">
+		<strong>Error!</strong> An error occured. Please try again later.
+	</div>
+	<div>
+		<table class="table table-striped table-hover" data-bind="visible: !configurationChanged() && !errorOccured()">
+			<thead>
+				<tr>
+					<th data-bind="visible:SubjectColumn.IsActive">Subject</th>
+					<th data-bind="visible:DomainColumn.IsActive">Domain</th>
+					<th data-bind="visible:LearningObjectiveColumn.IsActive">Learning Objective</th>
+					<th data-bind="visible:CorrectColumn.IsActive">Correct</th>
+					<th data-bind="visible:UserIdColumn.IsActive">User Id</th>
+					<th data-bind="visible:ExerciseIdColumn.IsActive">Exercise Id</th>
+					<th>Difficulty Avg</th>
+					<th>Progress Total</th>
+					<th>Excercises Total</th>
+					<th>Correct Answer Rate</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: results">
+				<tr>
+					<td data-bind="visible:$parent.SubjectColumn.IsActive, text: Subject"></td>
+					<td data-bind="visible:$parent.DomainColumn.IsActive, text: Domain"></td>
+					<td data-bind="visible:$parent.LearningObjectiveColumn.IsActive, text: LearningObjective"></td>
+					<td data-bind="visible:$parent.CorrectColumn.IsActive, text: Correct"></td>
+					<td data-bind="visible:$parent.UserIdColumn.IsActive, text: UserId"></td>
+					<td data-bind="visible:$parent.ExerciseIdColumn.IsActive, text: ExerciseId"></td>
+					<td data-bind="text: DifficultyAvg ? DifficultyAvg.toFixed(2) : ''"></td>
+					<td data-bind="text: ProgressSum, style: {color : ProgressSum < 0 ? 'red' : '#333333'}"></td>
+					<td data-bind="text: ExcercisesTotal"></td>
+					<td data-bind="text: CorrectRate.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+@section scripts {
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.dropdown-menu').on('click', function (e) { e.stopPropagation(); });
+			$('.btn-primary').on('click', function () {
+				reloadReport();
+			});
+			$('form input,form select').on('change', function () {
+				viewModel.configurationChanged(true);
+				viewModel.errorOccured(false);
+			});
+
+			$('.filter-box').select2({
+				ajax: {
+					placeholder: "Select filter",
+					multiple: true,
+					url: '@Url.Action("GetDimensionValues")',
+                    data: function (params) {
+                    	return {
+                    		dimensionType: $(this).data('dimension'),
+                    		term: params.term,
+                    	};
+                    }
+				}
+			});
+
+			var viewModel = ko.mapping.fromJS(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.None, new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd" })));
+			viewModel.results = ko.observableArray();
+			viewModel.configurationChanged = ko.observable(false);
+			viewModel.processingReport = ko.observable(false);
+			viewModel.errorOccured = ko.observable(false);
+			ko.applyBindings(viewModel);
+
+			var reloadReport = function () {
+				viewModel.processingReport(true);
+				$.get('@Url.Action("GetReportData")?' + $('form').serialize(), function (data) {
+					viewModel.results(data);
+					viewModel.errorOccured(false);
+				})
+				.fail(function () {
+					viewModel.errorOccured(true);
+				})
+				.always(function () {
+					viewModel.configurationChanged(false);
+					viewModel.processingReport(false);
+				});
+			};
+
+			reloadReport();
+		});
+	</script>
+}
