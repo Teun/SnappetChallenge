@@ -1,0 +1,11 @@
+C:\Code\SnappetChallenge\Snappet.Infrastructure\Snappet.Infrastructure\bin\Debug\Snappet.Infrastructure.dll
+C:\Code\SnappetChallenge\Snappet.Infrastructure\Snappet.Infrastructure\bin\Debug\Snappet.Infrastructure.pdb
+C:\Code\SnappetChallenge\Snappet.Infrastructure\Snappet.Infrastructure\obj\Debug\Snappet.Infrastructure.dll
+C:\Code\SnappetChallenge\Snappet.Infrastructure\Snappet.Infrastructure\obj\Debug\Snappet.Infrastructure.pdb
+C:\Code\SnappetChallenge\SnappetSolution\Snappet.Infrastructure\bin\Debug\Snappet.Infrastructure.dll
+C:\Code\SnappetChallenge\SnappetSolution\Snappet.Infrastructure\bin\Debug\Snappet.Infrastructure.pdb
+C:\Code\SnappetChallenge\SnappetSolution\Snappet.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Code\SnappetChallenge\SnappetSolution\Snappet.Infrastructure\bin\Debug\Newtonsoft.Json.xml
+C:\Code\SnappetChallenge\SnappetSolution\Snappet.Infrastructure\obj\Debug\Snappet.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Code\SnappetChallenge\SnappetSolution\Snappet.Infrastructure\obj\Debug\Snappet.Infrastructure.dll
+C:\Code\SnappetChallenge\SnappetSolution\Snappet.Infrastructure\obj\Debug\Snappet.Infrastructure.pdb
