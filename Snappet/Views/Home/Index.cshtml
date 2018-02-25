@@ -29,51 +29,56 @@
 
 
     <div class="ibox-content m-b-sm border-bottom">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" for="student_id">Student ID</label>
-                    <input type="text" id="student_id" name="student_id" value="" placeholder="Student ID" class="form-control">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="studentId">Student ID</label>
+                        <input type="number" id="studentId" name="studentId" value="" placeholder="Student ID" class="form-control">
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" for="exercise_id">Exercise ID</label>
-                    <input type="text" id="exercise_id" name="exercise_id" value="" placeholder="Exercise ID" class="form-control">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="exerciseId">Exercise ID</label>
+                        <input type="number" id="exerciseId" name="exerciseId" value="" placeholder="Exercise ID" class="form-control">
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" for="difficulty">Difficulty</label>
-                    <input type="text" id="difficulty" name="difficulty" value="" placeholder="Difficulty" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" for="date_from">Submit Date From</label>
-                    <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_from" type="text" class="form-control" value="03/25/2015">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="difficulty">Difficulty</label>
+                        <input type="text" id="difficulty" name="difficulty" value="" placeholder="Difficulty" class="form-control">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" for="date_to">Submit Date To </label>
-                    <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_to" type="text" class="form-control" value="03/25/2015">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="dateFrom">Submit Date From</label>
+                        <div class="input-group date">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="dateFrom" type="text" class="form-control" value="03/25/2015">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="dateTo">Submit Date To </label>
+                        <div class="input-group date">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="dateTo" type="text" class="form-control" value="03/25/2015">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" value="" placeholder="Subject" class="form-control">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" value="" placeholder="Subject" class="form-control">
-                </div>
+            <div class="row">
+                <button type="submit" class="btn btn-block btn-outline btn-primary">Search</button>
             </div>
-        </div>
-
+        }
     </div>
 
     <div class="row">
@@ -109,28 +114,36 @@
                                 <tr class="footable-odd" style="">
                                     <td class="footable-visible footable-first-column">
                                         <span class="footable-toggle"></span>
-                                        642
+                                        @workItem.UserId
                                     </td>
                                     <td class="footable-visible" style="">
-                                        Customer example
+                                        @workItem.ExerciseId
                                     </td>
                                     <td class="footable-visible" style="">
-                                        $6843.00
+                                        @workItem.SubmittedAnswerId
                                     </td>
                                     <td class="footable-visible" style="">
-                                        10/04/2015
+                                        @workItem.Progress
                                     </td>
                                     <td class="footable-visible" style="">
-                                        13/07/2015
+                                        @workItem.Difficulty
                                     </td>
                                     <td class="footable-visible" style="">
-                                        <span class="label label-success">Shipped</span>
+                                        @if (@workItem.Correct == 0)
+                                        {
+                                            <span class="label label-success">correct</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="label label-warning">wrong</span>
+                                        }
+
                                     </td>
                                     <td class="text-right footable-visible footable-last-column">
                                         <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">View</button>
-                                            <button class="btn-white btn btn-xs">Edit</button>
-                                            <button class="btn-white btn btn-xs">Delete</button>
+                                            <a href="#" class="btn-white btn btn-xs">View</a>
+                                            <a href="#" class="btn-white btn btn-xs">Edit</a>
+                                            <a href="#" class="btn-danger btn btn-xs">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

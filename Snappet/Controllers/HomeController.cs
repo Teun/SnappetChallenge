@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using System.Web.UI;
 using Snappet.Repository.Dao;
 using Snappet.Repository.Interfaces;
 using Snappet.Repository.Helpers;
@@ -12,8 +10,8 @@ namespace Snappet.Controllers
     {
         readonly IWorkRepository _workRepository;
         readonly IAppLogRepository _appLogRepository;
-        private static  QueryResult<string> SubjectList { get; set; }
-   
+        private static QueryResult<string> SubjectList { get; set; }
+
 
         public HomeController()
         {
@@ -21,8 +19,8 @@ namespace Snappet.Controllers
             _appLogRepository = new AppLogRepository();
         }
 
-       // [OutputCache(Duration = 60,Location = OutputCacheLocation.Any)]
-        public ActionResult Index()
+        // [OutputCache(Duration = 60,Location = OutputCacheLocation.Any)]
+        public ActionResult Index(DateTime ? dateFrom, DateTime ? dateTo , int studentId = 0, int exerciseId = 0, string difficulty = "", string subject="")
         {
             try
             {
@@ -52,7 +50,8 @@ namespace Snappet.Controllers
             return View();
         }
 
-        private  QueryResult<string> GetSubjects()
+     
+        private QueryResult<string> GetSubjects()
         {
             return SubjectList ?? _workRepository.GetAllSubject();
         }
