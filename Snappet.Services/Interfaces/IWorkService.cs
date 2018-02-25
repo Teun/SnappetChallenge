@@ -1,7 +1,12 @@
-﻿namespace Snappet.Services.Interfaces
+﻿using System.Data;
+using Snappet.Core.Utils;
+
+namespace Snappet.Services.Interfaces
 {
-    interface IWorkService
+    public interface IWorkService
     {
+        DataTable LoadAndDataFile(string filePath = ApplicationConstants.WorkFilePath,
+            char delimiter = ApplicationConstants.FileDelimiter);
 
     }
 }

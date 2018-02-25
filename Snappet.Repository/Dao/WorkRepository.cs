@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using Dapper;
 using Snappet.Core.Dtos;
 using Snappet.Core.Utils;
@@ -79,29 +80,89 @@ namespace Snappet.Repository.Dao
 
         }
 
-        public void Log(Exception exception)
-        {
-            throw new NotImplementedException();
-        }
 
-        public WorkItem Find(long id)
+        public WorkItem Find(long submittedAnswerId)
         {
-            throw new NotImplementedException();
+
+            using (var conn = SqldaoFactory.GetConnection())
+            {
+                var payments = conn.Query<WorkItem>("work_item_findbysubmitted_answerId",
+                    new { submittedAnswerId }, commandType: CommandType.StoredProcedure);
+
+                return payments.SingleOrDefault();
+            }
         }
 
         public QueryResult<WorkItem> FindAll(int pageIndex = 1, int pageSize = 10)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = SqldaoFactory.GetConnection())
+                {
+                    var pagingInfo = QueryHelper.GetPagingRowNumber(pageIndex, pageSize);
+                    var result = conn.QueryMultiple("work_item_findall",
+                        new
+                        {
+                            pagingInfo.RowStart,
+                            pagingInfo.RowEnd
+                        },
+                        commandType: CommandType.StoredProcedure);
+
+                    var workItems = result.Read<WorkItem>();
+
+
+                    return new QueryResult<WorkItem>(workItems, result.Read<int>().First());
+                }
+            }
+            catch (Exception exception)
+            {
+                _appLogRepository.Log(exception);
+            }
+            return null;
         }
 
         public QueryResult<WorkItem> FindByUser(long userId, int pageIndex = 1, int pageSize = 10)
         {
-            throw new NotImplementedException();
+
+            using (var conn = SqldaoFactory.GetConnection())
+            {
+                var pagingInfo = QueryHelper.GetPagingRowNumber(pageIndex, pageSize);
+                var result = conn.QueryMultiple("work_item_findbyuser",
+                    new
+                    {
+                        pagingInfo.RowStart,
+                        pagingInfo.RowEnd,
+                        userId
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                var workItems = result.Read<WorkItem>();
+
+
+                return new QueryResult<WorkItem>(workItems, result.Read<int>().First());
+            }
         }
 
-        public QueryResult<WorkItem> FindBySubject(long subjectId, int pageIndex = 1, int pageSize = 10)
+        public QueryResult<WorkItem> FindBySubject(string subject, int pageIndex = 1, int pageSize = 10)
         {
-            throw new NotImplementedException();
+            using (var conn = SqldaoFactory.GetConnection())
+            {
+                var pagingInfo = QueryHelper.GetPagingRowNumber(pageIndex, pageSize);
+                var result = conn.QueryMultiple("work_item_findbysubject",
+                    new
+                    {
+                        pagingInfo.RowStart,
+                        pagingInfo.RowEnd,
+                        subject
+
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                var workItems = result.Read<WorkItem>();
+
+
+                return new QueryResult<WorkItem>(workItems, result.Read<int>().First());
+            }
         }
 
         public void DeleteWorkItem(long logId = 0)

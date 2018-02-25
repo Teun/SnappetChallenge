@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileHelperTest\LoadFileTest.cs" />
+    <Compile Include="IntegrationTest\WorkItemTest.cs" />
     <Compile Include="IntegrationTest\BulkInsertTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -68,5 +68,9 @@
     <Build Include="procedures\work_item_insert.sql" />
     <Build Include="procedures\work_item_bulk_insert.sql" />
     <Build Include="tables\work_item.sql" />
+    <Build Include="procedures\work_item_findall.sql" />
+    <Build Include="procedures\work_item_findbysubject.sql" />
+    <Build Include="procedures\work_item_findbyuser.sql" />
+    <Build Include="procedures\work_item_findbysubmitted_answerId.sql" />
   </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace Snappet.Core.Dtos
         public int Progress { get; set; }
         public int UserId { get; set; }
         public long ExerciseId { get; set; }
-        public int Difficulty { get; set; }
+        public string Difficulty { get; set; }
         public string Subject { get; set; }
         public string Domain { get; set; }
         public string LearningObjective { get; set; }
