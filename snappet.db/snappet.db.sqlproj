@@ -66,11 +66,17 @@
     <Build Include="tables\application_logs.sql" />
     <Build Include="procedures\application_logs_insert.sql" />
     <Build Include="procedures\work_item_insert.sql" />
-    <Build Include="procedures\work_item_bulk_insert.sql" />
     <Build Include="tables\work_item.sql" />
     <Build Include="procedures\work_item_findall.sql" />
     <Build Include="procedures\work_item_findbysubject.sql" />
     <Build Include="procedures\work_item_findbyuser.sql" />
     <Build Include="procedures\work_item_findbysubmitted_answerId.sql" />
+    <Build Include="procedures\work_item_findbydate.sql" />
+    <Build Include="procedures\work_item_delete.sql" />
+    <Build Include="procedures\work_item_getallsubjects.sql" />
+    <Build Include="procedures\appsetting_insertupdate.sql" />
+    <Build Include="procedures\appsettings_findall.sql" />
+    <Build Include="procedures\appsettings_findallgroups.sql" />
+    <Build Include="tables\snap_appsettings.sql" />
   </ItemGroup>
 </Project>

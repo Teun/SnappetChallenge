@@ -22,7 +22,7 @@ namespace Snappet.Repository.Dao
             {
                 using (var conn = SqldaoFactory.GetConnection())
                 {
-                    conn.ExecuteAsync("", new
+                    conn.ExecuteAsync("work_item_insert", new
                                               {
                                                   workItem.Correct,
                                                   workItem.Difficulty,
@@ -78,8 +78,7 @@ namespace Snappet.Repository.Dao
                 }
             }
 
-        }
-
+        } 
 
         public WorkItem Find(long submittedAnswerId)
         {
@@ -165,9 +164,60 @@ namespace Snappet.Repository.Dao
             }
         }
 
-        public void DeleteWorkItem(long logId = 0)
+        public QueryResult<string> GetAllSubject()
         {
-            throw new NotImplementedException();
+            using (var conn = SqldaoFactory.GetConnection())
+            {
+                var result = conn.QueryMultiple("work_item_getallsubjects"
+                     , commandType: CommandType.StoredProcedure);
+
+                var subjects = result.Read<string>();
+
+
+                if (subjects != null) return new QueryResult<string>(subjects, subjects.Count());
+            }
+            return null;
+        }
+
+        public QueryResult<WorkItem> FindByDate(DateTime from, DateTime to, int pageIndex = 1, int pageSize = 10)
+        {
+            using (var conn = SqldaoFactory.GetConnection())
+            {
+                var pagingInfo = QueryHelper.GetPagingRowNumber(pageIndex, pageSize);
+                var result = conn.QueryMultiple("work_item_findbydate",
+                    new
+                    {
+                        pagingInfo.RowStart,
+                        pagingInfo.RowEnd,
+                        from,
+                        to
+
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                var workItems = result.Read<WorkItem>();
+
+
+                return new QueryResult<WorkItem>(workItems, result.Read<int>().First());
+            }
+        }
+
+        public void DeleteWorkItem(long id)
+        {
+            try
+            {
+                using (var conn = SqldaoFactory.GetConnection())
+                {
+                    conn.ExecuteAsync("work_item_delete", new
+                    {
+                        id
+                    });
+                }
+            }
+            catch (Exception exception)
+            {
+                _appLogRepository.Log(exception);
+            }
         }
     }
 }

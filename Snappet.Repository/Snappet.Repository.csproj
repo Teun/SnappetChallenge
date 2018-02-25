@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\AppSettingsRepository.cs" />
     <Compile Include="Dao\WorkRepository.cs" />
     <Compile Include="Dao\AppLogRepository.cs" />
     <Compile Include="Helpers\Config.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Helpers\QueryHelper.cs" />
     <Compile Include="Helpers\QueryResult.cs" />
     <Compile Include="Helpers\SqldaoFactory.cs" />
+    <Compile Include="Interfaces\IAppSettingsRepository.cs" />
     <Compile Include="Interfaces\IWorkRepository.cs" />
     <Compile Include="Interfaces\IAppLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

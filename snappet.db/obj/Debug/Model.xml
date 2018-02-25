@@ -1,0 +1,1821 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="2.4" DspName="Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+	<Header>
+		<CustomData Category="AnsiNulls">
+			<Metadata Name="AnsiNulls" Value="True" />
+		</CustomData>
+		<CustomData Category="QuotedIdentifier">
+			<Metadata Name="QuotedIdentifier" Value="True" />
+		</CustomData>
+		<CustomData Category="CompatibilityMode">
+			<Metadata Name="CompatibilityMode" Value="110" />
+		</CustomData>
+		<CustomData Category="Reference" Type="Assembly">
+			<Metadata Name="LogicalName" Value="snappet.db.dll" />
+			<Metadata Name="FileName" Value="C:\PROJECTS\SNAPPET\SNAPPET.DB\OBJ\DEBUG\SNAPPET.DB.DLL" />
+			<Metadata Name="AssemblyName" Value="snappet.db" />
+			<Metadata Name="PermissionSet" Value="SAFE" />
+			<Metadata Name="Owner" Value="" />
+			<Metadata Name="GenerateSqlClrDdl" Value="True" />
+			<Metadata Name="IsVisible" Value="True" />
+			<Metadata Name="IsModelAware" Value="True" />
+			<Metadata Name="SkipCreationIfEmpty" Value="True" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Projects\Snappet\snappet.db\obj\Debug\snappet.db.pdb" />
+		</CustomData>
+		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
+	</Header>
+	<Model>
+		<Element Type="SqlDatabaseOptions">
+			<Property Name="Collation" Value="SQL_Latin1_General_CP1_CI_AS" />
+			<Property Name="IsAnsiNullDefaultOn" Value="True" />
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="IsAnsiWarningsOn" Value="True" />
+			<Property Name="IsArithAbortOn" Value="True" />
+			<Property Name="IsConcatNullYieldsNullOn" Value="True" />
+			<Property Name="IsTornPageProtectionOn" Value="False" />
+			<Property Name="IsFullTextEnabled" Value="True" />
+			<Property Name="PageVerifyMode" Value="3" />
+			<Property Name="DefaultLanguage" Value="" />
+			<Property Name="DefaultFullTextLanguage" Value="" />
+			<Relationship Name="DefaultFilegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[application_logs].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[application_logs]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[application_logs]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[application_logs].[Id]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="3" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[application_logs].[LogMessage]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[application_logs].[StackTrace]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[application_logs].[LogDate]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[application_logs_findall]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+
+
+
+Select 
+	a.*
+From 
+	(Select 
+		ROW_NUMBER() OVER (ORDER BY Id) AS RowNum, 
+		* 
+     From application_logs
+	 ) as a 
+Where RowNum > @rowStart AND RowNum <= @rowEnd
+
+
+Select count(1) as TotalRecords from application_logs]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[application_logs]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs].[Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs_findall].[@rowStart]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs_findall].[@rowEnd]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[application_logs_findall].[@rowStart]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[application_logs_findall].[@rowEnd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="327" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;create procedure dbo.application_logs_findall&#xD;&#xA;(&#xD;&#xA;&#x9;@rowStart&#x9;int,&#xD;&#xA;&#x9;@rowEnd&#x9;&#x9;int&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[application_logs_findbyid]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select * 
+	From application_logs
+		where id = @Id]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[application_logs]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs].[Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs_findbyid].[@Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[application_logs_findbyid].[@Id]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="125" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;create procedure dbo.application_logs_findbyid&#xD;&#xA;( &#xD;&#xA;&#x9;@Id&#x9;int&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[application_logs_insert]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+INSERT INTO application_logs(	
+	logmessage, 
+	stacktrace, 
+	logdate)
+ VALUES(
+	 @message, 
+	 @stacktrace, 
+	 @logdate)]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[application_logs]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs].[LogMessage]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs].[StackTrace]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs].[LogDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs_insert].[@message]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs_insert].[@stacktrace]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[application_logs_insert].[@logdate]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[application_logs_insert].[@message]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="5000" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[application_logs_insert].[@stacktrace]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[application_logs_insert].[@logdate]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="3" />
+				<Property Name="Length" Value="263" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value=" &#xD;&#xA;create procedure dbo.application_logs_insert&#xD;&#xA;(&#xD;&#xA;&#x9; @message varchar(5000), &#xD;&#xA;&#x9; @stacktrace nvarchar(max),&#xD;&#xA;&#x9; @logdate datetime&#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[appsetting_insertupdate]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+
+IF EXISTS(SELECT [Id] FROM [dbo].[snap_appsettings] WHERE [Id] = @Id)
+	BEGIN
+		UPDATE [dbo].[snap_appsettings] SET
+			[Name] = @Name,
+			[Value] = @Value,
+			[Description] = @Description,
+			[GroupName] = @GroupName
+		WHERE
+			[Id] = @Id
+	END
+ELSE
+BEGIN
+
+	INSERT INTO [dbo].[snap_appsettings] (
+		[Name],
+		[Value],
+		[Description],
+		[GroupName]
+	) VALUES (
+		@Name,
+		@Value,
+		@Description,
+		@GroupName
+	)
+
+	SET @Id = SCOPE_IDENTITY()
+	SELECT @Id
+
+END
+
+--endregion]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[snap_appsettings]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[appsetting_insertupdate].[@Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[appsetting_insertupdate].[@Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[appsetting_insertupdate].[@Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[appsetting_insertupdate].[@Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[GroupName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[appsetting_insertupdate].[@GroupName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[appsetting_insertupdate].[@Id]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[smallint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[appsetting_insertupdate].[@Name]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[appsetting_insertupdate].[@Value]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[appsetting_insertupdate].[@Description]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[appsetting_insertupdate].[@GroupName]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA['appSettings']]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="713" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;CREATE PROCEDURE [dbo].[appsetting_insertupdate]&#xD;&#xA;&#x9;@Id smallint,&#xD;&#xA;&#x9;@Name nvarchar(255) = NULL,&#xD;&#xA;&#x9;@Value nvarchar(255) = NULL,&#xD;&#xA;&#x9;@Description nvarchar(255) = NULL,&#xD;&#xA;&#x9;@GroupName nvarchar(255) = 'appSettings'&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[appsettings_findall]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select 
+	a.*
+From 
+	(Select 
+		ROW_NUMBER() OVER (ORDER BY Id) AS RowNum, 
+		* 
+     From snap_appsettings
+	 ) as a 
+Where RowNum > @rowStart AND RowNum <= @rowEnd
+
+
+Select count(1) as TotalRecords from snap_appsettings]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[snap_appsettings]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[appsettings_findall].[@rowStart]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[appsettings_findall].[@rowEnd]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[appsettings_findall].[@rowStart]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[appsettings_findall].[@rowEnd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="319" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;create procedure dbo.appsettings_findall&#xD;&#xA;(&#xD;&#xA;&#x9;@rowStart&#x9;int,&#xD;&#xA;&#x9;@rowEnd&#x9;&#x9;int&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[appsettings_findallgroups]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select  DISTINCT GroupName
+     From snap_appsettings]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[snap_appsettings]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[GroupName]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="3" />
+				<Property Name="Length" Value="116" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value=" &#xD;&#xA;create procedure dbo.appsettings_findallgroups&#xD;&#xA;&#x9; &#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlDefaultConstraint" Name="[dbo].[DF__tbl_snap_appsettings__group__3BCADD1B]">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[('appSettings')]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[snap_appsettings]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[snap_appsettings].[GroupName]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK__tbl_snap_appsettings_id]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[snap_appsettings].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[snap_appsettings]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[snap_appsettings]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[snap_appsettings].[Id]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[smallint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[snap_appsettings].[Name]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[snap_appsettings].[Value]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[snap_appsettings].[Description]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[snap_appsettings].[GroupName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="4" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="5" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[work_item]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[SubmittedAnswerId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[SubmitDateTime]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[Correct]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[Progress]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[UserId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[ExerciseId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[Difficulty]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="500" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[Subject]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="500" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[Domain]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="200" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[work_item].[LearningObjective]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_delete]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+DELETE work_item
+WHERE SubmittedAnswerId = @id]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_delete].[@id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_delete].[@id]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="3" />
+				<Property Name="Length" Value="110" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value=" &#xD;&#xA;create procedure dbo.work_item_delete&#xD;&#xA;(&#xD;&#xA;&#x9; @id int&#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_findall]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select 
+	a.*
+From 
+	(Select 
+		ROW_NUMBER() OVER (ORDER BY SubmittedAnswerId) AS RowNum, 
+		* 
+     From work_item
+	 ) as a 
+Where RowNum > @rowStart AND RowNum <= @rowEnd
+
+
+Select count(1) as TotalRecords from work_item]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findall].[@rowStart]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findall].[@rowEnd]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findall].[@rowStart]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findall].[@rowEnd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="318" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;create procedure dbo.work_item_findall&#xD;&#xA;(&#xD;&#xA;&#x9;@rowStart&#x9;int,&#xD;&#xA;&#x9;@rowEnd&#x9;&#x9;int&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_findbydate]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select 
+	a.*
+From 
+	(Select 
+		ROW_NUMBER() OVER (ORDER BY SubmittedAnswerId) AS RowNum, 
+		* 
+     From work_item
+	 where SubmitDateTime >= @from and SubmitDateTime <= @to
+	 ) as a 
+Where RowNum > @rowStart AND RowNum <= @rowEnd
+
+
+Select count(1) as TotalRecords from work_item
+where SubmitDateTime >= @from and SubmitDateTime <= @to]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmitDateTime]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbydate].[@from]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbydate].[@to]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbydate].[@rowStart]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbydate].[@rowEnd]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmitDateTime]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbydate].[@rowStart]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbydate].[@rowEnd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbydate].[@from]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbydate].[@to]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="475" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="create procedure dbo.work_item_findbydate&#xD;&#xA;(&#xD;&#xA;&#x9;@rowStart&#x9;int,&#xD;&#xA;&#x9;@rowEnd&#x9;&#x9;int,&#xD;&#xA;&#x9;@from&#x9;&#x9;datetime,&#xD;&#xA;    @to&#x9;&#x9;&#x9;datetime&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_findbysubject]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select 
+	a.*
+From 
+	(Select 
+		ROW_NUMBER() OVER (ORDER BY SubmittedAnswerId) AS RowNum, 
+		* 
+     From work_item
+	 where [Subject] = @subject
+	 ) as a 
+Where RowNum > @rowStart AND RowNum <= @rowEnd
+
+
+Select count(1) as TotalRecords from work_item
+ where [Subject] = @subject]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Subject]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbysubject].[@subject]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbysubject].[@rowStart]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbysubject].[@rowEnd]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Subject]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbysubject].[@rowStart]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbysubject].[@rowEnd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbysubject].[@subject]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="500" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="407" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="create procedure dbo.work_item_findbysubject&#xD;&#xA;(&#xD;&#xA;&#x9;@rowStart&#x9;int,&#xD;&#xA;&#x9;@rowEnd&#x9;&#x9;int,&#xD;&#xA;&#x9;@subject&#x9;nvarchar(500)&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_findbysubmitted_answerId]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select 
+	a.*
+From 
+	(Select 
+		ROW_NUMBER() OVER (ORDER BY SubmittedAnswerId) AS RowNum, 
+		* 
+     From work_item
+	 Where SubmittedAnswerId = @submittedanswerId
+
+	 ) as a 
+Where RowNum > @rowStart AND RowNum <= @rowEnd
+
+
+Select count(1) as TotalRecords from work_item
+ where SubmittedAnswerId = @submittedanswerId]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbysubmitted_answerId].[@submittedanswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbysubmitted_answerId].[@rowStart]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbysubmitted_answerId].[@rowEnd]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbysubmitted_answerId].[@rowStart]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbysubmitted_answerId].[@rowEnd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbysubmitted_answerId].[@submittedanswerId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="456" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="create procedure dbo.work_item_findbysubmitted_answerId&#xD;&#xA;(&#xD;&#xA;&#x9;@rowStart&#x9;int,&#xD;&#xA;&#x9;@rowEnd&#x9;&#x9;int,&#xD;&#xA;&#x9;@submittedanswerId&#x9;int&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_findbyuser]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+Select 
+	a.*
+From 
+	(Select 
+		ROW_NUMBER() OVER (ORDER BY SubmittedAnswerId) AS RowNum, 
+		* 
+     From work_item
+	 Where UserId = @userId
+
+	 ) as a 
+Where RowNum > @rowStart AND RowNum <= @rowEnd
+
+
+Select count(1) as TotalRecords from work_item
+ where UserId = @userId]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[UserId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbyuser].[@userId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbyuser].[@rowStart]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_findbyuser].[@rowEnd]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[UserId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbyuser].[@rowStart]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbyuser].[@rowEnd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_findbyuser].[@userId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="387" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="create procedure dbo.work_item_findbyuser&#xD;&#xA;(&#xD;&#xA;&#x9;@rowStart&#x9;int,&#xD;&#xA;&#x9;@rowEnd&#x9;&#x9;int,&#xD;&#xA;&#x9;@userId&#x9;int&#xD;&#xA;)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_getallsubjects]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ 
+
+select distinct [Subject] from  work_item]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Subject]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="100" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;create procedure dbo.work_item_getallsubjects &#xD;&#xA;&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[work_item_insert]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+INSERT INTO work_item(	
+	SubmittedAnswerId,
+	SubmitDateTime,
+	Correct,
+	Progress,
+	UserId,
+	ExerciseId,
+	Difficulty,
+	[Subject],
+	[Domain],
+	[LearningObjective]
+	)
+ VALUES(
+	@SubmittedAnswerId,
+	@SubmitDateTime	,
+	@Correct,
+	@Progress,
+	@UserId,
+	@ExerciseId,
+	@Difficulty,
+	@Subject,
+	@Domain,
+	@LearningObjective 
+	)]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[work_item]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[SubmitDateTime]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Correct]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Progress]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[UserId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[ExerciseId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Difficulty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Subject]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[Domain]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item].[LearningObjective]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@SubmittedAnswerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@SubmitDateTime]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@Correct]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@Progress]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@UserId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@ExerciseId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@Difficulty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@Subject]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@Domain]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[work_item_insert].[@LearningObjective]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@SubmittedAnswerId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@SubmitDateTime]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@Correct]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@Progress]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@UserId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@ExerciseId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@Difficulty]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="500" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@Subject]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="500" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@Domain]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="200" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[work_item_insert].[@LearningObjective]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="3" />
+				<Property Name="Length" Value="639" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value=" &#xD;&#xA;create procedure dbo.work_item_insert&#xD;&#xA;(&#xD;&#xA;&#x9;@SubmittedAnswerId&#x9;int,&#xD;&#xA;&#x9;@SubmitDateTime&#x9;datetime,&#xD;&#xA;&#x9;@Correct&#x9;&#x9;&#x9;int,&#xD;&#xA;&#x9;@Progress&#x9;&#x9;int,&#xD;&#xA;&#x9;@UserId&#x9;&#x9;&#x9;int,&#xD;&#xA;&#x9;@ExerciseId&#x9;&#x9;int,&#xD;&#xA;&#x9;@Difficulty&#x9;&#x9;nvarchar(500),&#xD;&#xA;&#x9;@Subject&#x9;&#x9;nvarchar(500),&#xD;&#xA;&#x9;@Domain&#x9;&#x9;nvarchar(200),&#xD;&#xA;&#x9;@LearningObjective nvarchar(max) &#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+	</Model>
+</DataSchemaModel>

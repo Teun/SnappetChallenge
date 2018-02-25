@@ -11,7 +11,8 @@ namespace Snappet.Repository.Interfaces
         WorkItem Find(long submittedAnswerId);
         QueryResult<WorkItem> FindAll(int pageIndex = 1, int pageSize = 10);
         QueryResult<WorkItem> FindByUser(long userId, int pageIndex = 1, int pageSize = 10);
-        QueryResult<WorkItem> FindBySubject(string subject, int pageIndex = 1, int pageSize = 10);
-        void DeleteWorkItem(long logId = 0);
+        QueryResult<WorkItem> FindBySubject(string subject, int pageIndex = 1, int pageSize = 10); 
+        QueryResult<string> GetAllSubject();
+        void DeleteWorkItem(long id = 0);
     }
 }

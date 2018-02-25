@@ -5,13 +5,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Snappet.Core.Dtos;
 using Snappet.Repository.Dao;
 using Snappet.Repository.Helpers;
+using Snappet.Repository.Interfaces;
 
 namespace Snappet.Tests.IntegrationTest
 {
     [TestClass]
     public class WorkItemTest
     {
-        private WorkRepository _workRepository; 
+        private IWorkRepository _workRepository; 
 
         [TestInitialize]
         public void Init()
@@ -48,8 +49,7 @@ namespace Snappet.Tests.IntegrationTest
             #region--Assert --
             Assert.IsTrue(result != null && result.TotalRecords > 0 && result.Result.Count() == 10);
             #endregion
-        }
-
+        } 
 
         [TestMethod]
         public void FetchWorkItemsByUserTest()
@@ -82,7 +82,7 @@ namespace Snappet.Tests.IntegrationTest
         }
 
         [TestMethod]
-        public void FetchWorkItemsBySubject()
+        public void FetchWorkItemsBySubjectTest()
         {
             #region--Arrange --
 
@@ -95,6 +95,34 @@ namespace Snappet.Tests.IntegrationTest
             try
             {
                 result = _workRepository.FindBySubject(subject);
+                if (result != null)
+                {
+                    Trace.WriteLine(string.Format("Fetched Work Items By Subject: {0}", result.TotalRecords));
+                }
+            }
+            catch (Exception exception)
+            {
+                Trace.WriteLine(exception.Message);
+            }
+            #endregion
+
+            #region--Assert --
+            Assert.IsNotNull(result);
+            #endregion
+        }
+        [TestMethod]
+        public void FetchWorkItemsSubjectsTest()
+        {
+            #region--Arrange --
+
+            QueryResult<string> result = null; 
+            #endregion
+
+            #region--Act --
+
+            try
+            {
+                result = _workRepository.GetAllSubject();
                 if (result != null)
                 {
                     Trace.WriteLine(string.Format("Fetched Work Items By Subject: {0}", result.TotalRecords));

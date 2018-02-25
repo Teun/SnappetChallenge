@@ -1,19 +1,42 @@
 ﻿ 
 create procedure dbo.work_item_insert
 (
-	 @message varchar(5000), 
-	 @stacktrace nvarchar(max),
-	 @logdate datetime
+	@SubmittedAnswerId	int,
+	@SubmitDateTime	datetime,
+	@Correct			int,
+	@Progress		int,
+	@UserId			int,
+	@ExerciseId		int,
+	@Difficulty		nvarchar(500),
+	@Subject		nvarchar(500),
+	@Domain		nvarchar(200),
+	@LearningObjective nvarchar(max) 
 )
 AS
-INSERT INTO application_logs(	
-	logmessage, 
-	stacktrace, 
-	logdate)
+INSERT INTO work_item(	
+	SubmittedAnswerId,
+	SubmitDateTime,
+	Correct,
+	Progress,
+	UserId,
+	ExerciseId,
+	Difficulty,
+	[Subject],
+	[Domain],
+	[LearningObjective]
+	)
  VALUES(
-	 @message, 
-	 @stacktrace, 
-	 @logdate)
+	@SubmittedAnswerId,
+	@SubmitDateTime	,
+	@Correct,
+	@Progress,
+	@UserId,
+	@ExerciseId,
+	@Difficulty,
+	@Subject,
+	@Domain,
+	@LearningObjective 
+	)
 GO
 
 
