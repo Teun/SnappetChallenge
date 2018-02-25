@@ -1,0 +1,9 @@
+C:\Projects\Snappet\snappet.db\bin\Debug\snappet.db.dacpac
+C:\Projects\Snappet\snappet.db\bin\Debug\snappet.db.dll
+C:\Projects\Snappet\snappet.db\bin\Debug\snappet.db.pdb
+C:\Projects\Snappet\snappet.db\obj\Debug\snappet.db.dll
+C:\Projects\Snappet\snappet.db\obj\Debug\snappet.db.pdb
+C:\Projects\Snappet\snappet.db\obj\Debug\Model.xml
+C:\Projects\Snappet\snappet.db\obj\Debug\refactor.xml
+C:\Projects\Snappet\snappet.db\obj\Debug\postdeploy.sql
+C:\Projects\Snappet\snappet.db\obj\Debug\predeploy.sql
