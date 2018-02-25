@@ -1,63 +1,156 @@
-﻿@{
-    Layout = null;
-    Response.Headers["X-UA-Compatible"] = "IE=10";
+﻿@using Snappet.Core.Dtos
+@{
+    var workItems = (IEnumerable<WorkItem>)ViewBag.WorkItems;
+    var totalRecords = (int)ViewBag.TotalRecords;
+    var message = (string)ViewBag.Message;
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>My Snappet Application</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div data-bind="visible: loading">Loading...</div>
-    <div style="display: none" data-bind="visible: true" class="container body-content">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <p class="navbar-brand" data-bind="if: !loggedIn()">Snappet </p>
-                    <a href="#" class="navbar-brand" data-bind="if: loggedIn, click: navigateToHome">Snappet</a>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Snappet Work Report</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index")">Home</a>
+            </li>
+            <li>
+                <a>Report</a>
+            </li>
+            <li class="active">
+                <strong>Work</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+    <div class="ibox-content m-b-sm border-bottom">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="student_id">Student ID</label>
+                    <input type="text" id="student_id" name="student_id" value="" placeholder="Student ID" class="form-control">
                 </div>
-                <div data-bind="if: loggedIn" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" data-bind="click: navigateToHome">Home</a></li>
-                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" data-bind="with: user">
-                        <li>
-                            <span class="navbar-text nofloat">Hello, <a href="#" class="navbar-link" data-bind="text: name, click: manage"></a>!</span>
-                        </li>
-                        <li><a href="#" data-bind="click: logOff">Log off</a></li>
-                    </ul>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="exercise_id">Exercise ID</label>
+                    <input type="text" id="exercise_id" name="exercise_id" value="" placeholder="Exercise ID" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="difficulty">Difficulty</label>
+                    <input type="text" id="difficulty" name="difficulty" value="" placeholder="Difficulty" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="date_from">Submit Date From</label>
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_from" type="text" class="form-control" value="03/25/2015">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="date_to">Submit Date To </label>
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_to" type="text" class="form-control" value="03/25/2015">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" value="" placeholder="Subject" class="form-control">
                 </div>
             </div>
         </div>
 
-        <div data-bind="foreach: errors" class="padding-error">
-            <p class="text-danger" data-bind="text: $data"></p>
-        </div>
-        @Html.Partial("_Home")
-        @Html.Partial("_Login")
-        @Html.Partial("_Register")
-        @Html.Partial("_RegisterExternal")
-        @Html.Partial("_Manage")
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My Snappet Application</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/app")
-    @Scripts.Render("~/bundles/bootstrap")
-</body>
-</html>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert alert-danger alert-dismissable">
+                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                            @message
+                        </div>
+                    }
+
+
+                    <table class="footable table table-stripped toggle-arrow-tiny footable-loaded default" data-page-size="15">
+                        <thead>
+                            <tr>
+
+                                <th class="footable-visible footable-sortable footable-first-column">Student ID<span class="footable-sort-indicator"></span></th>
+                                <th data-hide="phone" class="footable-sortable footable-visible footable-sorted-desc" style="">Exercise Id<span class="footable-sort-indicator"></span></th>
+                                <th data-hide="phone" class="footable-sortable footable-visible" style="">Answer Id<span class="footable-sort-indicator"></span></th>
+                                <th data-hide="phone" class="footable-sortable footable-visible" style="">Progress<span class="footable-sort-indicator"></span></th>
+                                <th data-hide="phone,tablet" class="footable-sortable footable-visible" style="">Difficulty<span class="footable-sort-indicator"></span></th>
+                                <th data-hide="phone" class="footable-sortable footable-visible" style="">Correct<span class="footable-sort-indicator"></span></th>
+                                <th class="text-right footable-visible footable-sortable footable-last-column">Action<span class="footable-sort-indicator"></span></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var workItem in workItems)
+                            {
+                                <tr class="footable-odd" style="">
+                                    <td class="footable-visible footable-first-column">
+                                        <span class="footable-toggle"></span>
+                                        642
+                                    </td>
+                                    <td class="footable-visible" style="">
+                                        Customer example
+                                    </td>
+                                    <td class="footable-visible" style="">
+                                        $6843.00
+                                    </td>
+                                    <td class="footable-visible" style="">
+                                        10/04/2015
+                                    </td>
+                                    <td class="footable-visible" style="">
+                                        13/07/2015
+                                    </td>
+                                    <td class="footable-visible" style="">
+                                        <span class="label label-success">Shipped</span>
+                                    </td>
+                                    <td class="text-right footable-visible footable-last-column">
+                                        <div class="btn-group">
+                                            <button class="btn-white btn btn-xs">View</button>
+                                            <button class="btn-white btn btn-xs">Edit</button>
+                                            <button class="btn-white btn btn-xs">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="7" class="footable-visible">
+                                    <ul class="pagination pull-right"><li class="footable-page-arrow"><a data-page="first" href="#first">«</a></li><li class="footable-page-arrow"><a data-page="prev" href="#prev">‹</a></li><li class="footable-page"><a data-page="0" href="#">1</a></li><li class="footable-page active"><a data-page="1" href="#">2</a></li><li class="footable-page"><a data-page="2" href="#">3</a></li><li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li><li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

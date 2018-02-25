@@ -63,3 +63,10 @@ C:\Projects\Snappet\Snappet\obj\Debug\Snappet.pdb
 C:\Projects\Snappet\Snappet\bin\Newtonsoft.Json.xml
 C:\Projects\Snappet\Snappet\bin\FileHelpers.dll
 C:\Projects\Snappet\Snappet\bin\FileHelpers.xml
+C:\Projects\Snappet\Snappet\bin\Snappet.Core.dll
+C:\Projects\Snappet\Snappet\bin\Snappet.Repository.dll
+C:\Projects\Snappet\Snappet\bin\Snappet.Services.dll
+C:\Projects\Snappet\Snappet\bin\Dapper.dll
+C:\Projects\Snappet\Snappet\bin\Snappet.Core.pdb
+C:\Projects\Snappet\Snappet\bin\Snappet.Repository.pdb
+C:\Projects\Snappet\Snappet\bin\Snappet.Services.pdb

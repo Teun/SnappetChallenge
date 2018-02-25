@@ -61,7 +61,7 @@ namespace Snappet.Repository.Dao
             }
         }
 
-        public QueryResult<AppLog> FindAll(int pageIndex = 0, int pageSize = 0)
+        public QueryResult<AppLog> FindAll(int pageIndex = 0, int pageSize = 20)
         {
             using (var conn = SqldaoFactory.GetConnection())
             {

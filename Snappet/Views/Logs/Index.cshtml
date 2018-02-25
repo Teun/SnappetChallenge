@@ -1,0 +1,90 @@
+﻿@using Snappet.Core.Dtos
+
+@{
+    var totalRecords = (int)ViewBag.TotalRecords;
+    var appLogs = (IEnumerable<AppLog>)ViewBag.ApplicationLogs;
+    var message = (string)ViewBag.Message;
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Application Logs </h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a>Layouts</a>
+            </li>
+            <li class="active">
+                <strong>Application Logs</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Application Logs  </h5>
+                    <div class="ibox-tools">
+                        
+                        <a href="@Url.Action("Index", new { isRefresh = true})"><i class="fa fa-refresh"></i></a>
+
+                        <a href="@Url.Action("Delete", new { logId = 0 })"><i class="fa fa-trash"></i></a>
+                        
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+                    @if (totalRecords == 0)
+                    {
+                        <div class="alert alert-success alert-dismissable">
+                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                            A wonderful serenity has taken possession.
+                        </div>
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(message))
+                        {
+                            <div class="alert alert-success alert-dismissable">
+                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                @message
+                            </div>
+                        }
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Message</th>
+                                    <th>Trace</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in appLogs)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.LogMessage</td>
+                                        <td>@item.StackTrace</td>
+                                        <td>@item.LogDate</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
