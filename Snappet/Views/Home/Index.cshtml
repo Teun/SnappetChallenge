@@ -1,4 +1,5 @@
 ﻿@using Snappet.Core.Dtos
+@model WorkItem
 @{
     var workItems = (IEnumerable<WorkItem>)ViewBag.WorkItems;
     var totalRecords = (int)ViewBag.TotalRecords;
@@ -36,19 +37,19 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="userId">User ID</label>
-                        <input type="number" id="userId" name="userId" value="" placeholder="User ID" class="form-control">
+                        <input type="number" id="userId" name="userId" value="@Model.UserId" placeholder="User ID" class="form-control">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="exerciseId">Exercise ID</label>
-                        <input type="number" id="exerciseId" name="exerciseId" value="" placeholder="Exercise ID" class="form-control">
+                        <input type="number" id="exerciseId" name="exerciseId" value="@Model.ExerciseId" placeholder="Exercise ID" class="form-control">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="difficulty">Difficulty</label>
-                        <input type="text" id="difficulty" name="difficulty" value="" placeholder="Difficulty" class="form-control">
+                        <input type="text" id="difficulty" name="difficulty" value="@Model.Difficulty" placeholder="Difficulty" class="form-control">
                     </div>
                 </div>
             </div>
@@ -75,7 +76,7 @@
                         @if (subjects != null)
                         {
                             <label class="control-label" for="subject">Subject</label>
-                            @Html.DropDownList("subject", new SelectList(subjects, "value", "text"), "- All Subjects -", new { @class = "form-control" }) 
+                            @Html.DropDownList("subject", new SelectList(subjects, "value", "text"), "- All Subjects -", new { @class = "form-control" })
                         }
                     </div>
                 </div>
@@ -110,12 +111,13 @@
                             <thead>
                                 <tr>
 
-                                    <th class="footable-visible footable-sortable footable-first-column">Student ID<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-visible footable-sortable footable-first-column">User ID<span class="footable-sort-indicator"></span></th>
                                     <th data-hide="phone" class="footable-sortable footable-visible footable-sorted-desc" style="">Exercise Id<span class="footable-sort-indicator"></span></th>
                                     <th data-hide="phone" class="footable-sortable footable-visible" style="">Answer Id<span class="footable-sort-indicator"></span></th>
                                     <th data-hide="phone" class="footable-sortable footable-visible" style="">Progress<span class="footable-sort-indicator"></span></th>
                                     <th data-hide="phone,tablet" class="footable-sortable footable-visible" style="">Difficulty<span class="footable-sort-indicator"></span></th>
                                     <th data-hide="phone" class="footable-sortable footable-visible" style="">Correct<span class="footable-sort-indicator"></span></th>
+                                    <th data-hide="phone" class="footable-sortable footable-visible" style="">Submition Date<span class="footable-sort-indicator"></span></th>
                                     <th class="text-right footable-visible footable-sortable footable-last-column">Action<span class="footable-sort-indicator"></span></th>
 
                                 </tr>
@@ -151,6 +153,10 @@
                                             }
 
                                         </td>
+                                        <td class="footable-visible" style="">
+
+                                            @workItem.SubmitDateTime.ToString("g")
+                                        </td>
                                         <td class="text-right footable-visible footable-last-column">
                                             <div class="btn-group">
                                                 <a href="#" class="btn-white btn btn-xs">View</a>
@@ -161,12 +167,18 @@
                                     </tr>
 
                                 }
+
                             </tbody>
                             <tfoot>
+
                                 <tr>
+                                    <td>
+                                        Showing 1 to 10 of @totalRecords
+                                    </td>
                                     <td colspan="7" class="footable-visible">
                                         <ul class="pagination pull-right"><li class="footable-page-arrow"><a data-page="first" href="#first">«</a></li><li class="footable-page-arrow"><a data-page="prev" href="#prev">‹</a></li><li class="footable-page"><a data-page="0" href="#">1</a></li><li class="footable-page active"><a data-page="1" href="#">2</a></li><li class="footable-page"><a data-page="2" href="#">3</a></li><li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li><li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li></ul>
                                     </td>
+
                                 </tr>
                             </tfoot>
                         </table>

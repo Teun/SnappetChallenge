@@ -228,6 +228,7 @@
     <Content Include="Content\daterangepicker-bs3.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Dependencies\Dapper.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

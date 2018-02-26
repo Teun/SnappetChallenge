@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI;
+using Snappet.Core.Dtos;
 using Snappet.Repository.Dao;
 using Snappet.Repository.Interfaces;
 using Snappet.Repository.Helpers;
@@ -35,14 +36,14 @@ namespace Snappet.Controllers
         /// <returns></returns>
         [OutputCache(Duration = 60, Location = OutputCacheLocation.Any, VaryByParam = "*", VaryByHeader = "X-Requested-With")]
         public ActionResult Index(DateTime? dateFrom, DateTime? dateTo, int userId = 0, int exerciseId = 0,
-            string difficulty = "", string subject = "", int pageIndex = 1, int pageSize = 10)
+            string difficulty = null, string subject = null, int pageIndex = 1, int pageSize = 10)
         {
             try
             {
                 #region -- Get WorkItems --
-
-                var to = dateTo == null ? new DateTime(2015, 03, 24, 11, 30, 00).Date.AddDays(1).AddMilliseconds(-1) : dateTo.Value.AddDays(1).AddMilliseconds(-1);
-                var from = dateFrom == null ? new DateTime(2015, 03, 24, 11, 30, 00) : dateFrom.Value.AddDays(1).AddMilliseconds(-1);
+                //Requirement: It is now Tuesday 2015-03-24 11:30:00 UTC
+                var to = dateTo == null ? new DateTime(2015, 03, 24, 11, 30, 00) : dateTo.Value.AddDays(1).AddMilliseconds(-1);
+                var from = dateFrom == null ? new DateTime(2015, 03, 24, 11, 30, 00).Date : dateFrom.Value.AddDays(1).AddMilliseconds(-1);
 
                 var result = _workRepository.WorkItemsReport(from, to, userId, exerciseId, difficulty, subject, pageIndex, pageSize);
                 ViewBag.WorkItems = result.Result;
@@ -72,8 +73,15 @@ namespace Snappet.Controllers
                 ViewBag.TotalRecords = 0;
                 _appLogRepository.Log(exception);
             }
+            var model = new WorkItem
+            {
+                Difficulty = difficulty,
+                UserId = userId,
+                ExerciseId = exerciseId,
+                Subject = subject
+            };
 
-            return View();
+            return View(model);
         }
 
         private QueryResult<string> GetSubjects()

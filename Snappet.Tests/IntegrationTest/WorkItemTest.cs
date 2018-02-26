@@ -12,7 +12,7 @@ namespace Snappet.Tests.IntegrationTest
     [TestClass]
     public class WorkItemTest
     {
-        private IWorkRepository _workRepository; 
+        private IWorkRepository _workRepository;
 
         [TestInitialize]
         public void Init()
@@ -49,7 +49,7 @@ namespace Snappet.Tests.IntegrationTest
             #region--Assert --
             Assert.IsTrue(result != null && result.TotalRecords > 0 && result.Result.Count() == 10);
             #endregion
-        } 
+        }
 
         [TestMethod]
         public void FetchWorkItemsByUserTest()
@@ -110,12 +110,13 @@ namespace Snappet.Tests.IntegrationTest
             Assert.IsNotNull(result);
             #endregion
         }
+
         [TestMethod]
         public void FetchWorkItemsSubjectsTest()
         {
             #region--Arrange --
 
-            QueryResult<string> result = null; 
+            QueryResult<string> result = null;
             #endregion
 
             #region--Act --
@@ -126,6 +127,40 @@ namespace Snappet.Tests.IntegrationTest
                 if (result != null)
                 {
                     Trace.WriteLine(string.Format("Fetched Work Items By Subject: {0}", result.TotalRecords));
+                }
+            }
+            catch (Exception exception)
+            {
+                Trace.WriteLine(exception.Message);
+            }
+            #endregion
+
+            #region--Assert --
+            Assert.IsNotNull(result);
+            #endregion
+        }
+
+
+        [TestMethod]
+        public void FetchWorkItemsReportTest()
+        {
+            #region--Arrange --
+
+            var dateTo = new DateTime(2015, 03, 24, 11, 30, 00).Date.AddDays(1).AddMilliseconds(-1);
+            var dateFrom = new DateTime(2015, 03, 24, 11, 30, 00);
+            const int userId = 40282;
+
+            QueryResult<WorkItem> result = null;
+            #endregion
+
+            #region--Act --
+
+            try
+            {
+                result = _workRepository.WorkItemsReport(dateFrom, dateTo, userId);
+                if (result != null)
+                {
+                    Trace.WriteLine(string.Format("Fetched Work Items By Report: {0}", result.TotalRecords));
                 }
             }
             catch (Exception exception)

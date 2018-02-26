@@ -15,7 +15,7 @@ namespace Snappet.Repository.Interfaces
         QueryResult<WorkItem> FindBySubject(string subject, int pageIndex = 1, int pageSize = 10);
 
         QueryResult<WorkItem> WorkItemsReport(DateTime dateFrom, DateTime dateTo, int userId = 0,
-            int exerciseId = 0, string difficulty = "", string subject = "", int pageIndex = 1, int pageSize = 10);
+            int exerciseId = 0, string difficulty = null, string subject = null, int pageIndex = 1, int pageSize = 10);
 
         QueryResult<string> GetAllSubject();
         void DeleteWorkItem(long id = 0);

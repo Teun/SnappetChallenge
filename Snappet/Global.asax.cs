@@ -23,7 +23,7 @@ namespace Snappet
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //CheckBulkUploadStatus(); // I dont think  I have sufficient time to proof this auto upload implementation
+            //CheckBulkUploadStatus(); // I dont have sufficient time to proof this auto upload implementation
 
         }
 
