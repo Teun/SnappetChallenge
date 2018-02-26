@@ -29,7 +29,13 @@ namespace Snappet.Repository.Dao
 
         public AppSettings GetByName(string settingsName)
         {
-            return new AppSettings();
+            using (var conn = SqldaoFactory.GetConnection())
+            {
+                var appSettings = conn.Query<AppSettings>("appsettings_findbyname",
+                    new { settingsName }, commandType: CommandType.StoredProcedure);
+
+                return appSettings.SingleOrDefault();
+            }
         }
 
         public IEnumerable<string> FindAllGroups()

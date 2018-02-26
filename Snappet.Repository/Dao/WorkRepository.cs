@@ -164,6 +164,37 @@ namespace Snappet.Repository.Dao
             }
         }
 
+        public QueryResult<WorkItem> WorkItemsReport(DateTime dateFrom, DateTime dateTo, int userId = 0, int exerciseId = 0,
+            string difficulty = "", string subject = "", int pageIndex = 1, int pageSize = 10)
+        {
+
+            using (var conn = SqldaoFactory.GetConnection())
+            {
+                var pagingInfo = QueryHelper.GetPagingRowNumber(pageIndex, pageSize);
+                var result = conn.QueryMultiple("work_item_report",
+                    new
+                    {
+                        dateFrom, 
+                        dateTo,
+                        
+                        subject,
+                        exerciseId,
+                        userId,
+                        difficulty,
+
+                        pagingInfo.RowStart,
+                        pagingInfo.RowEnd
+
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                var workItems = result.Read<WorkItem>();
+
+
+                return new QueryResult<WorkItem>(workItems, result.Read<int>().First());
+            }
+        }
+
         public QueryResult<string> GetAllSubject()
         {
             using (var conn = SqldaoFactory.GetConnection())

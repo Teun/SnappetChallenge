@@ -1,22 +1,68 @@
-# SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+# SnappetChallenge Overview
+Dependencies
+FileHelpers.. used for processing large files 
+Dapper .. Data mapper used for efficient database insertion and selection.
+Bootstrap -- Responsive UI design
+Fontawesome -- Icons and Fonts
+File Format Processed - Work.csv
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+## Solution Poject Structure
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+Web Project
+### Snappet.Core
+Entities that will be used accross the entire solution are kept here.
+they are also home to Utils, Enums and Constants. To avoid cyclic redundacy, I ensure this project doesnt depend on any sub project
+in the solution stack but may depend on external libaries.
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+### Snappet.Services
+This layer focuses on Business logic, Crypto Services, File Parsing, API calls and generally Data Checks.
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+### Snappet.Repository
+This layer focuses on data manipulation, from and to the Data storage which in this case is SQL Server.
+its very good to have this kind of arrangement because if there is a need to switch Datasource to say a non-sql or an Oracle.
+the entire soltion will not be affected save for the this layer.
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+### Snappet.Test
+this is very expenditent especially if one is using SOLID principle because it is expected that methods and services possess 
+single responsibility alongside been potentially testable.
+ 
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Javascript, JQuery en Knockout.JS. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+### DB Project
+Most often times, custom stored procedures, functions, tables and generally DB object can poise alittle challenge during deployment
+not as one isnt too sure if something wasnt checked or hasnt been deployed.
+This is the reason I prefer to use this to manage all db resources and even more, all that is required to create all the db resources for a given
+project is to publish selecting various profiles. ie. Test, Sandbox or Production including detachable dbs!
+This project the is also very helpful as it scans for dependencies and alerts should something be missing before deployment.
+
+
+### Data ETL 
+Importation: Currently used SqlBulk Insert making the path to the stored file configurable should the
+solution be shipped to a different server or OS all together.
+Was intiially going to use Sql Server Integration Service(SSIS) to import the data using File Task and possibly C# script but 
+discovered that the data was in pure form and will not require any transformation before insertion into the database.
+Dapper is been used as it helps cut the time spent on parameter mapping, either during data insertion or retrieval.
+
+### How to start the roject and Import the Data..
+You are required to first run the schema migrations in the db project or better still publish the db project first.
+Once you are done, you will have successfully deployed the db scripts and tables respectively.
+
+I have created a Bulk Upload Integration Test in the Test Project.. 
+This test is able to load and dump the data into the database using SqlBulk Insert.
+Although the path to the file is configurable for this project, I have kept a copy in the App_Data folder (Main Web Flow),
+and Another in a resource folder in the Test Project's Bin folder.
+
+The file used is the work.csv version, I differ to this because it was lighter, and it woulnt require additional dressing especially
+seen that I could get a library that could parse it nicely and very fast.
+ 
+- You can now deploy it on IIS using the integrated pipeline application pool. 
+
+### Some Extras:
+Application Logs
+Application Settings
+Caching
+Integration Test
+ 
+### Few Constants
+ I didnt use knockout as earlier intend because its been a while I used it and seen that I didnt have enough time to revisit
+ so I just used ASP MVC Razor views instead
+  

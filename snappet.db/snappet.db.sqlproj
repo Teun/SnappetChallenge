@@ -78,5 +78,7 @@
     <Build Include="procedures\appsettings_findall.sql" />
     <Build Include="procedures\appsettings_findallgroups.sql" />
     <Build Include="tables\snap_appsettings.sql" />
+    <Build Include="procedures\work_item_report.sql" />
+    <Build Include="procedures\appsettings_findbyname.sql" />
   </ItemGroup>
 </Project>

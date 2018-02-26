@@ -11,9 +11,15 @@
 
         #region -- Application Logs --
         public const string SuccessfullyDeleted = "Log(s) has been successfully deleted.";
-        public const string LogRefresh = "Log(s) has been successfully refreshed."; 
+        public const string LogRefresh = "Log(s) has been successfully refreshed.";
         public const string SuccessfullySaved = " record was successfully updated";
-        public const string UnableToSave = "Unable to save record "; 
+        public const string UnableToSave = "Unable to save record ";
+
+        #endregion
+
+        #region -- Application Settings --
+
+        public const string HasFileBeenUploaded = "HasFileBeenUploaded";
 
         #endregion
     }
