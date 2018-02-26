@@ -1,0 +1,5 @@
+C:\Projects\Snappet\snappet.db\bin\Debug\snappet.db.dacpac
+C:\Projects\Snappet\snappet.db\bin\Debug\snappet.db.dll
+C:\Projects\Snappet\snappet.db\bin\Debug\snappet.db.pdb
+C:\Projects\Snappet\snappet.db\obj\Debug\snappet.db.dll
+C:\Projects\Snappet\snappet.db\obj\Debug\snappet.db.pdb

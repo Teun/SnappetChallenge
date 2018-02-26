@@ -1,0 +1,4 @@
+C:\Projects\Snappet\Snappet.Core\bin\Debug\Snappet.Core.dll
+C:\Projects\Snappet\Snappet.Core\bin\Debug\Snappet.Core.pdb
+C:\Projects\Snappet\Snappet.Core\obj\Debug\Snappet.Core.dll
+C:\Projects\Snappet\Snappet.Core\obj\Debug\Snappet.Core.pdb

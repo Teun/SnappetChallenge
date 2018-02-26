@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet", "Snappet\Snappet.csproj", "{3CC2E432-9DCC-4CE2-89F5-7914482C86B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Tests", "Snappet.Tests\Snappet.Tests.csproj", "{ECFBD7BD-4FC6-4EEF-974C-53CC68061EB4}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "snappet.db", "snappet.db\snappet.db.sqlproj", "{6A38C16E-FB0A-4F0D-A858-A06A3C2335D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Core", "Snappet.Core\Snappet.Core.csproj", "{23F7C5F5-3926-4388-9918-43E42FC1CACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Repository", "Snappet.Repository\Snappet.Repository.csproj", "{2F3415B0-DF43-4AB7-9C4C-A4DE99CBA915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Services", "Snappet.Services\Snappet.Services.csproj", "{EC7514C3-740A-498B-A4F0-0C414692E6C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CC2E432-9DCC-4CE2-89F5-7914482C86B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC2E432-9DCC-4CE2-89F5-7914482C86B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC2E432-9DCC-4CE2-89F5-7914482C86B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC2E432-9DCC-4CE2-89F5-7914482C86B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFBD7BD-4FC6-4EEF-974C-53CC68061EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFBD7BD-4FC6-4EEF-974C-53CC68061EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFBD7BD-4FC6-4EEF-974C-53CC68061EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFBD7BD-4FC6-4EEF-974C-53CC68061EB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A38C16E-FB0A-4F0D-A858-A06A3C2335D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A38C16E-FB0A-4F0D-A858-A06A3C2335D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A38C16E-FB0A-4F0D-A858-A06A3C2335D3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6A38C16E-FB0A-4F0D-A858-A06A3C2335D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A38C16E-FB0A-4F0D-A858-A06A3C2335D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A38C16E-FB0A-4F0D-A858-A06A3C2335D3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{23F7C5F5-3926-4388-9918-43E42FC1CACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F7C5F5-3926-4388-9918-43E42FC1CACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F7C5F5-3926-4388-9918-43E42FC1CACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F7C5F5-3926-4388-9918-43E42FC1CACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3415B0-DF43-4AB7-9C4C-A4DE99CBA915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3415B0-DF43-4AB7-9C4C-A4DE99CBA915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3415B0-DF43-4AB7-9C4C-A4DE99CBA915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3415B0-DF43-4AB7-9C4C-A4DE99CBA915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7514C3-740A-498B-A4F0-0C414692E6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7514C3-740A-498B-A4F0-0C414692E6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7514C3-740A-498B-A4F0-0C414692E6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7514C3-740A-498B-A4F0-0C414692E6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

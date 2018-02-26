@@ -1,0 +1,12 @@
+C:\Projects\Snappet\Snappet.Services\bin\Debug\Snappet.Services.dll
+C:\Projects\Snappet\Snappet.Services\bin\Debug\Snappet.Services.pdb
+C:\Projects\Snappet\Snappet.Services\obj\Debug\Snappet.Services.csprojResolveAssemblyReference.cache
+C:\Projects\Snappet\Snappet.Services\obj\Debug\Snappet.Services.dll
+C:\Projects\Snappet\Snappet.Services\obj\Debug\Snappet.Services.pdb
+C:\Projects\Snappet\Snappet.Services\bin\Debug\Snappet.Core.dll
+C:\Projects\Snappet\Snappet.Services\bin\Debug\Snappet.Core.pdb
+C:\Projects\Snappet\Snappet.Services\bin\Debug\FileHelpers.dll
+C:\Projects\Snappet\Snappet.Services\bin\Debug\Snappet.Repository.dll
+C:\Projects\Snappet\Snappet.Services\bin\Debug\Dapper.dll
+C:\Projects\Snappet\Snappet.Services\bin\Debug\Snappet.Repository.pdb
+C:\Projects\Snappet\Snappet.Services\bin\Debug\FileHelpers.xml

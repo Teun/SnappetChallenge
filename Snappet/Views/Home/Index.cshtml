@@ -1,0 +1,195 @@
+﻿@using Snappet.Core.Dtos
+@model WorkItem
+@{
+    var workItems = (IEnumerable<WorkItem>)ViewBag.WorkItems;
+    var totalRecords = (int)ViewBag.TotalRecords;
+    var message = (string)ViewBag.Message;
+    var subjects = (List<SelectListItem>)ViewBag.Subjects;
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Snappet Work Report</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index")">Home</a>
+            </li>
+            <li>
+                <a>Report</a>
+            </li>
+            <li class="active">
+                <strong>Work</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+    <div class="ibox-content m-b-sm border-bottom">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="userId">User ID</label>
+                        <input type="number" id="userId" name="userId" value="@Model.UserId" placeholder="User ID" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="exerciseId">Exercise ID</label>
+                        <input type="number" id="exerciseId" name="exerciseId" value="@Model.ExerciseId" placeholder="Exercise ID" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="difficulty">Difficulty</label>
+                        <input type="text" id="difficulty" name="difficulty" value="@Model.Difficulty" placeholder="Difficulty" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="dateFrom">Submit Date From</label>
+                        <div class="input-group date">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="dateFrom" type="text" class="form-control" value="25/03/2015">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="dateTo">Submit Date To </label>
+                        <div class="input-group date">
+                            `
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="dateTo" type="text" class="form-control" value="25/03/2015">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @if (subjects != null)
+                        {
+                            <label class="control-label" for="subject">Subject</label>
+                            @Html.DropDownList("subject", new SelectList(subjects, "value", "text"), "- All Subjects -", new { @class = "form-control" })
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-block btn-outline btn-primary">Search</button>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert alert-danger alert-dismissable">
+                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                            @message
+                        </div>
+                    }
+                    else if (totalRecords == 0)
+                    {
+                        <div class="alert alert-success alert-dismissable">
+                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                            A wonderful serenity has taken possession. We cant seem to find any record
+                        </div>
+                    }
+                    else
+                    {
+                        <table class="footable table table-stripped toggle-arrow-tiny footable-loaded default" data-page-size="15">
+                            <thead>
+                                <tr>
+
+                                    <th class="footable-visible footable-sortable footable-first-column">User ID<span class="footable-sort-indicator"></span></th>
+                                    <th data-hide="phone" class="footable-sortable footable-visible footable-sorted-desc" style="">Exercise Id<span class="footable-sort-indicator"></span></th>
+                                    <th data-hide="phone" class="footable-sortable footable-visible" style="">Answer Id<span class="footable-sort-indicator"></span></th>
+                                    <th data-hide="phone" class="footable-sortable footable-visible" style="">Progress<span class="footable-sort-indicator"></span></th>
+                                    <th data-hide="phone,tablet" class="footable-sortable footable-visible" style="">Difficulty<span class="footable-sort-indicator"></span></th>
+                                    <th data-hide="phone" class="footable-sortable footable-visible" style="">Correct<span class="footable-sort-indicator"></span></th>
+                                    <th data-hide="phone" class="footable-sortable footable-visible" style="">Submition Date<span class="footable-sort-indicator"></span></th>
+                                    <th class="text-right footable-visible footable-sortable footable-last-column">Action<span class="footable-sort-indicator"></span></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var workItem in workItems)
+                                {
+                                    <tr class="footable-odd" style="">
+                                        <td class="footable-visible footable-first-column">
+                                            <span class="footable-toggle"></span>
+                                            @workItem.UserId
+                                        </td>
+                                        <td class="footable-visible" style="">
+                                            @workItem.ExerciseId
+                                        </td>
+                                        <td class="footable-visible" style="">
+                                            @workItem.SubmittedAnswerId
+                                        </td>
+                                        <td class="footable-visible" style="">
+                                            @workItem.Progress
+                                        </td>
+                                        <td class="footable-visible" style="">
+                                            @workItem.Difficulty
+                                        </td>
+                                        <td class="footable-visible" style="">
+                                            @if (@workItem.Correct == 0)
+                                            {
+                                                <span class="label label-success">correct</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-warning">wrong</span>
+                                            }
+
+                                        </td>
+                                        <td class="footable-visible" style="">
+
+                                            @workItem.SubmitDateTime.ToString("g")
+                                        </td>
+                                        <td class="text-right footable-visible footable-last-column">
+                                            <div class="btn-group">
+                                                <a href="#" class="btn-white btn btn-xs">View</a>
+                                                <a href="#" class="btn-white btn btn-xs">Edit</a>
+                                                <a href="#" class="btn-danger btn btn-xs">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                            <tfoot>
+
+                                <tr>
+                                    <td>
+                                        Showing 1 to 10 of @totalRecords
+                                    </td>
+                                    <td colspan="7" class="footable-visible">
+                                        <ul class="pagination pull-right"><li class="footable-page-arrow"><a data-page="first" href="#first">«</a></li><li class="footable-page-arrow"><a data-page="prev" href="#prev">‹</a></li><li class="footable-page"><a data-page="0" href="#">1</a></li><li class="footable-page active"><a data-page="1" href="#">2</a></li><li class="footable-page"><a data-page="2" href="#">3</a></li><li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li><li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li></ul>
+                                    </td>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
