@@ -6,7 +6,7 @@ Bootstrap -- Responsive UI design
 Fontawesome -- Icons and Fonts
 File Format Processed - Work.csv
 
-## Solution Poject Structure
+## Solution Project Structure
 
 Web Project
 ### Snappet.Core
@@ -62,7 +62,7 @@ Application Settings
 Caching
 Integration Test
  
-### Few Constants
+### Few Constraints
  I didnt use knockout as earlier intend because its been a while I used it and seen that I didnt have enough time to revisit
  so I just used ASP MVC Razor views instead
   
