@@ -1,0 +1,50 @@
+<div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="pull-left">
+                  <h1 class="text-muted">Student Report</h1> <p> class worked on today i.e 2015-03-24 11:30:00 UTC </p>
+            </div>
+                    
+           
+           <br />
+            <table class="table table-hover table-striped.table-condensed">
+                <thead>
+                    <tr>
+                        <th>User Id</th>
+                      
+                        <th>Progress</th>
+                       
+                        <th>Correctness</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="student in studentsReport">
+                    <td ng-bind="student.UserId"></td>                   
+                    <td ng-bind="student.AvgProgress"></td>
+                    <td ng-bind="student.AvgCorrectness"></td>                  
+                  
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                   
+                    <td class="text-right"><strong>Class Progress :</strong></td>
+                    <td  ng-bind="classProgress"></td>
+                    <td></td>
+                   
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    
+    </div>
+
+</div>   
+<footer class="footer">
+   
+   
+  
+</footer>
+</div> 
