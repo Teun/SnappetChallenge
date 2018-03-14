@@ -1,0 +1,17 @@
+<div class="login-page">
+  <div class="form">
+    <div *ngIf="!(IsBusy | async); else elseTemplate">
+      <div *ngIf="!(sent| async); else elseTemplate2">
+        <h1>Please confirm your email first.</h1><br>
+        <h4>Didn't received an confirmation email? <a href="javascript:void" (click)="resendEmail();">Click here to send again</a></h4>
+      </div>
+      <ng-template #elseTemplate2>
+         <h1>We sent an new email for you!</h1><br>
+        <h4><a [routerLink]="[ '/login']">Click here to go back</a></h4>
+      </ng-template>
+    </div>
+  </div>
+  <ng-template #elseTemplate>
+    <md-spinner class="text-center" style="width: 100%; height: 100px;"></md-spinner>
+  </ng-template>
+</div>

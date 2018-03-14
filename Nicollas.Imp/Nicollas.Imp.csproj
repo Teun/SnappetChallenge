@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Factory\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nicollas.Core\Nicollas.Core.csproj" />
+    <ProjectReference Include="..\Nicollas.Dto\Nicollas.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

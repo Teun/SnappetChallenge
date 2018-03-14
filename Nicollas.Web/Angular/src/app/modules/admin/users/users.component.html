@@ -1,0 +1,116 @@
+<md-card>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Users</h4>
+    </div>
+    <div class="col-md-4">
+      <md-slide-toggle class="pull-right inline-toggle" (change)='filterChange()'>
+        Show disabled Users
+      </md-slide-toggle>
+    </div>
+    <div class="col-md-4">
+      <button md-raised-button class="btn-success pull-right" (click)="openModal(null)">New User</button>
+    </div>
+  </div>
+</md-card>
+<hr>
+
+<md-card>
+  <div class="row">
+    <div *ngIf="IsBusy | async; else elseTemplate">
+      <md-spinner class="text-center" style="width: inherit;"></md-spinner>
+    </div>
+    <ng-template #elseTemplate>
+
+      <div>
+        <md-table #table [dataSource]="dataSource">
+          <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+          <!-- ID Column -->
+          <ng-container cdkColumnDef="id">
+            <md-header-cell *cdkHeaderCellDef [ngClass]="'mat-cell-3'"> Action </md-header-cell>
+            <md-cell *cdkCellDef="let row" [ngClass]="'mat-cell-3'">
+              <button mdTooltip="Edit" md-raised-button class="btn mat-small-button" (click)="openModal(row)">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+              <button mdTooltip="{{row.disabled? 'Enable': 'Disable'}}" md-raised-button class="btn mat-small-button" (click)="enableOrDisable(row)">
+                <span *ngIf="row.disabled; else buttonDisable">
+                  <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                </span>
+                <ng-template #buttonDisable>
+                  <i class="fa fa-pause-circle-o" aria-hidden="true"></i>
+                </ng-template>
+              </button>
+            </md-cell>
+          </ng-container>
+          <!-- Name Column -->
+          <ng-container cdkColumnDef="name">
+            <md-header-cell *cdkHeaderCellDef [ngClass]="'mat-cell-5'"> Name </md-header-cell>
+            <md-cell *cdkCellDef="let row" [ngClass]="'mat-cell-5'"> {{row.firstName}} {{row.lastName}}</md-cell>
+          </ng-container>
+          <!-- Username Column -->
+          <ng-container cdkColumnDef="userName">
+            <md-header-cell *cdkHeaderCellDef [ngClass]="'mat-cell-4'"> Login </md-header-cell>
+            <md-cell *cdkCellDef="let row" [ngClass]="'mat-cell-4'"> {{row.userName}}</md-cell>
+          </ng-container>
+
+          <md-header-row *cdkHeaderRowDef="['id', 'name', 'userName']"></md-header-row>
+          <md-row *cdkRowDef="let row; columns: ['id', 'name', 'userName'];"></md-row>
+        </md-table>
+      </div>
+
+    </ng-template>
+  </div>
+</md-card>
+
+<bs-modal (onDismiss)="dismissed()" #modal>
+  <bs-modal-header [showDismiss]="true">
+    <h4 class="modal-title">
+      {{Entity.id? 'Edit user!': 'New user!'}}
+    </h4>
+  </bs-modal-header>
+  <bs-modal-body>
+    <div class="row">
+      <div *ngIf="IsBusy | async; else elseTemplateModal" class="col-md-8">
+        <md-spinner class="text-center" style="width: inherit;"></md-spinner>
+      </div>
+      <ng-template #elseTemplateModal>
+
+        <div class="col-md-6 form-group">
+          <md-input-container class="full">
+            <input mdInput type="text" placeholder="First Name" [(ngModel)]="Entity.firstName">
+          </md-input-container>
+        </div>
+        <div class="col-md-6 form-group">
+          <md-input-container class="full">
+            <input mdInput type="text" placeholder="Last Name" [(ngModel)]="Entity.lastName">
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container class="full">
+            <input mdInput type="text" placeholder="Login" [(ngModel)]="Entity.userName">
+          </md-input-container>
+        </div>
+        <div class="col-md-6">
+          <ng-container *ngIf="Entity.id; else elseResetPassword">
+            <button md-raised-button class="btn-danger full" (click)="resetPassword();">Reset Password</button>
+          </ng-container>
+          <ng-template #elseResetPassword>
+            <md-input-container class="full">
+              <input mdInput type="text" placeholder="Password" [(ngModel)]="Entity.password">
+            </md-input-container>
+          </ng-template>
+        </div>
+        
+      </ng-template>
+    </div>
+  </bs-modal-body>
+  <bs-modal-footer>
+    <button md-raised-button class="btn btn-default pull-right" [disabled]="(IsBusy | async)" data-dismiss="modal" (click)="modal.dismiss()">Close</button>
+    <button md-raised-button class="btn btn-primary pull-left" [disabled]="(IsBusy | async) || !(Entity.roles?.length > 0)" data-dismiss="modal"
+      (click)="create(false)">Execute and close (Disabled for test propuse) </button>
+    <button *ngIf="!Entity.id" md-raised-button class="btn btn-primary pull-left" [disabled]="(IsBusy | async) || !(Entity.roles?.length > 0)"
+      data-dismiss="modal" (click)="create(true)">Execute and continue (Disabled for test propuse)</button>
+  </bs-modal-footer>
+</bs-modal>
