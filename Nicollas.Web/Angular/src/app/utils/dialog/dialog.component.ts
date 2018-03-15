@@ -10,10 +10,10 @@ export class DialogComponent implements OnInit {
   private default = {
     response: true,
     customResponse: false,
-    title: 'Atenção',
-    okText: 'Sim',
-    noText: 'Cancelar',
-    question: 'Confirma a ação?',
+    title: 'Waring',
+    okText: 'Yes',
+    noText: 'Cancel',
+    question: 'Confirm the action?',
     timeout: 0,
   } as Utils.DialogData;
 

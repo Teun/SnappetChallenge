@@ -6,13 +6,17 @@ namespace Nicollas.Ng.Api
     using System;
     using System.Collections.Generic;
     using AutoMapper;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Nicollas.Core.Entities;
+    using Nicollas.Dto;
     using Nicollas.Ng.Extensions;
     using Nicollas.Ng.Filters;
 
     /// <summary>
     /// Sample Api Controller. Needs to be removed.
     /// </summary>
+    [AllowAnonymous]
     public class SampleApiController : Controller
     {
         // private DbCondext context;
@@ -32,63 +36,23 @@ namespace Nicollas.Ng.Api
         }
 
         /// <summary>
-        /// The Post Op
+        /// Test propouse Method
         /// </summary>
-        /// <param name="cand">An object from http</param>
-        /// <returns>The object recived as json</returns>
-        [HttpPost]
-        public IActionResult PostOp([FromBody]object cand)
+        /// <param name="evalDto">The DTO</param>
+        /// <returns>The Entity</returns>
+        public IActionResult MapToEntity([FromBody] EvaluationDto evalDto)
         {
-            return cand.ToJsonResult(); // new HttpStatusContentResult(cand, System.Net.HttpStatusCode.OK, "Testes post");  need to convert to asp.net core
+            return this.Ok(this.mapper.Map<Evaluation>(evalDto));
         }
 
         /// <summary>
-        /// The Put Op
+        /// Test propouse Method
         /// </summary>
-        /// <param name="cand">An object from http</param>
-        /// <returns>The object recived as json</returns>
-        [HttpPut]
-        public IActionResult PutOp([FromBody]object cand)
+        /// <param name="evalEntity">The Entity</param>
+        /// <returns>The Dto</returns>
+        public IActionResult MapToDto([FromBody] Evaluation evalEntity)
         {
-            return cand.ToJsonResult(); // new HttpStatusContentResult(cand, System.Net.HttpStatusCode.OK, "Testes put");  need to convert to asp.net core
-        }
-
-        /// <summary>
-        /// The Del Op
-        /// </summary>
-        /// <param name="candidatoId">An integer from http</param>
-        /// <returns>An http status OK</returns>
-        [HttpDelete]
-        public IActionResult DelOp(int candidatoId)
-        {
-            return this.Ok();
-        }
-
-        /// <summary>
-        /// Test the NLog
-        /// </summary>
-        /// <returns>Throws an exception</returns>
-        public IActionResult Throw()
-        {
-            throw new Exception("Testing nlog");
-        }
-
-        /// <summary>
-        /// Get the sample Angular 2 materials grid
-        /// </summary>
-        /// <returns>The sample Angular2 materials grid</returns>
-        [HttpPost]
-        [AntiForgeryToken]
-        public IActionResult GetGrid()
-        {
-            var list = new List<dynamic>
-            {
-                new { text = "One", cols = 3, rows = 1, color = "lightblue" },
-                new { text = "Two", cols = 1, rows = 2, color = "lightgreen" },
-                new { text = "Three", cols = 1, rows = 1, color = "lightpink" },
-                new { text = "Four", cols = 2, rows = 1, color = "#DDBDF1" }
-            };
-            return list.ToJsonResult();
+            return this.Ok(this.mapper.Map<EvaluationDto>(evalEntity));
         }
     }
 }

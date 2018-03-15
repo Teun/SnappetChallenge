@@ -8,6 +8,9 @@
     <None Update="GeneratedTs\BaseEntityDto.ts">
       <CustomToolNamespace>BaseEntityDto.cs</CustomToolNamespace>
     </None>
+    <None Update="GeneratedTs\EvaluationDto.ts">
+      <CustomToolNamespace>EvaluationDto.cs</CustomToolNamespace>
+    </None>
     <None Update="GeneratedTs\RealtimeDto.ts">
       <CustomToolNamespace>Realtime\RealtimeDto.cs</CustomToolNamespace>
     </None>

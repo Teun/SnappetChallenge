@@ -19,6 +19,7 @@ namespace Nicollas.SqlServer
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using Microsoft.EntityFrameworkCore.Storage;
+    using Nicollas.Core.Entities;
 
     /// <summary>
     /// This class implement the interface <see cref="IDbContext" />
@@ -86,6 +87,23 @@ namespace Nicollas.SqlServer
         /// </summary>
         public virtual DbSet<UserToken> UserToken { get; set; }
 
+        #endregion
+
+        #region Evaluation
+        /// <summary>
+        /// Gets or sets the <see cref="User" /> <see cref="DbSet{Domain}" />
+        /// </summary>
+        public virtual DbSet<Domain> Domain { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="User" /> <see cref="DbSet{Subject}" />
+        /// </summary>
+        public virtual DbSet<Subject> Subject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="User" /> <see cref="DbSet{Evaluation}" />
+        /// </summary>
+        public virtual DbSet<Evaluation> Evaluation { get; set; }
         #endregion
 
         #endregion
