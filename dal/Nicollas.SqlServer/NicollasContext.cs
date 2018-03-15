@@ -90,6 +90,7 @@ namespace Nicollas.SqlServer
         #endregion
 
         #region Evaluation
+
         /// <summary>
         /// Gets or sets the <see cref="User" /> <see cref="DbSet{Domain}" />
         /// </summary>

@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Factory\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Nicollas.Core\Nicollas.Core.csproj" />
     <ProjectReference Include="..\Nicollas.Dto\Nicollas.Dto.csproj" />
   </ItemGroup>

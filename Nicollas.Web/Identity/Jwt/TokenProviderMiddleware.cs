@@ -96,6 +96,8 @@ namespace Nicollas.Ng.Identity.Jwt
             {
                 identity = await this.options.IdentityResolver(username, password);
             }
+
+            // only to validade if any error at debug time
             catch (Exception ex)
             {
                 throw;
