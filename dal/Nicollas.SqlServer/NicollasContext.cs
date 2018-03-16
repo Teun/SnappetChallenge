@@ -254,28 +254,28 @@ namespace Nicollas.SqlServer
         /// </summary>
         /// <param name="disabled">Include in the search disabled entities</param>
         /// <param name="trash">Include in the search trashed entities</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <typeparam name="TEntity">The Entity</typeparam>
         /// <typeparam name="TKey">The type of the key</typeparam>
         /// <returns>Return <see cref="IDbContext.ToListAsync{TEntity, TKey}"/></returns>
-        public Task<List<TEntity>> ToListAsync<TEntity, TKey>(bool? disabled, bool? trash)
+        public Task<List<TEntity>> ToListAsync<TEntity, TKey>(bool? disabled, bool? trash, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>
         {
+            var query = this.Set<TEntity, TKey>().AsQueryable();
             if (disabled.HasValue && trash.HasValue)
             {
-                return this.Set<TEntity, TKey>().Where(row => row.Disabled == disabled && row.Trash == trash).ToListAsync();
+                query = query.Where(row => row.Disabled == disabled && row.Trash == trash);
             }
-
-            if (disabled.HasValue)
+            else if (disabled.HasValue)
             {
-                return this.Set<TEntity, TKey>().Where(row => row.Disabled == disabled).ToListAsync();
+                return query.Where(row => row.Disabled == disabled).ToListAsync();
             }
-
-            if (trash.HasValue)
+            else if (trash.HasValue)
             {
-                return this.Set<TEntity, TKey>().Where(row => row.Trash == trash).ToListAsync();
+                return query.Where(row => row.Trash == trash).ToListAsync();
             }
 
-            return this.Set<TEntity, TKey>().ToListAsync();
+            return asNoTracking? query.AsNoTracking().ToListAsync() : query.ToListAsync();
         }
 
         /// <summary>
@@ -284,11 +284,13 @@ namespace Nicollas.SqlServer
         /// <typeparam name="TEntity">The Entity</typeparam>
         /// <typeparam name="TKey">The type of the key</typeparam>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IDbContext.ToListByCriteriaAsync{TEntity, TKey}"/></returns>
-        public Task<List<TEntity>> ToListByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate)
+        public Task<List<TEntity>> ToListByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>
         {
-            return this.Set<TEntity, TKey>().Where(predicate).ToListAsync<TEntity>();
+            var query = this.Set<TEntity, TKey>().Where(predicate);
+            return asNoTracking ? query.AsNoTracking().ToListAsync<TEntity>() : query.ToListAsync<TEntity>();
         }
 
         /// <summary>
@@ -296,11 +298,12 @@ namespace Nicollas.SqlServer
         /// </summary>
         /// <typeparam name="TEntity">The Entity</typeparam>
         /// <typeparam name="TKey">The type of the key</typeparam>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IDbContext.ToQueryableAsync{TEntity, TKey}"/></returns>
-        public IQueryable<TEntity> ToQueryable<TEntity, TKey>()
+        public IQueryable<TEntity> ToQueryable<TEntity, TKey>(bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>
         {
-            return this.Set<TEntity, TKey>().AsQueryable();
+            return asNoTracking ? this.Set<TEntity, TKey>().AsQueryable().AsNoTracking() : this.Set<TEntity, TKey>().AsQueryable();
         }
 
         /// <summary>
@@ -308,11 +311,12 @@ namespace Nicollas.SqlServer
         /// </summary>
         /// <typeparam name="TEntity">The Entity</typeparam>
         /// <typeparam name="TKey">The type of the key</typeparam>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IDbContext.ToQueryableAsync{TEntity, TKey}"/></returns>
-        public Task<IQueryable<TEntity>> ToQueryableAsync<TEntity, TKey>()
+        public Task<IQueryable<TEntity>> ToQueryableAsync<TEntity, TKey>(bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>
         {
-            return Task.FromResult(this.Set<TEntity, TKey>().AsQueryable());
+            return Task.FromResult(asNoTracking ? this.Set<TEntity, TKey>().AsQueryable().AsNoTracking() : this.Set<TEntity, TKey>().AsQueryable());
         }
 
         /// <summary>
@@ -321,24 +325,27 @@ namespace Nicollas.SqlServer
         /// <typeparam name="TEntity">The Entity</typeparam>
         /// <typeparam name="TKey">The type of the key</typeparam>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IDbContext.ToQueryableByCriteriaAsync{TEntity, TKey}"/></returns>
-        public Task<IQueryable<TEntity>> ToQueryableByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate)
+        public Task<IQueryable<TEntity>> ToQueryableByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>
         {
-            return Task.FromResult(this.Set<TEntity, TKey>().Where(predicate).AsQueryable());
+            var query = this.Set<TEntity, TKey>().Where(predicate).AsQueryable();
+            return Task.FromResult( asNoTracking ? query.AsNoTracking() : query);
         }
 
         /// <summary>
-        /// <see cref="IDbContext.FirstOrDefaultAsync{TEntity, TKey}(Expression{Func{TEntity, bool}})"/>
+        /// <see cref="IDbContext.FirstOrDefaultAsync{TEntity, TKey}(Expression{Func{TEntity, bool}}, bool)"/>
         /// </summary>
         /// <typeparam name="TEntity">The Entity</typeparam>
         /// <typeparam name="TKey">The type of the key</typeparam>
-        /// <param name="predicate">Parameter <see cref="IDbContext.FirstOrDefaultAsync{TEntity, TKey}(Expression{Func{TEntity, bool}})"/></param>
-        /// <returns>Return <see cref="IDbContext.FirstOrDefaultAsync{TEntity, TKey}(Expression{Func{TEntity, bool}})"/></returns>
-        public Task<TEntity> FirstOrDefaultAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate)
+        /// <param name="predicate">Parameter <see cref="IDbContext.FirstOrDefaultAsync{TEntity, TKey}(Expression{Func{TEntity, bool}}, bool)"/></param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
+        /// <returns>Return <see cref="IDbContext.FirstOrDefaultAsync{TEntity, TKey}(Expression{Func{TEntity, bool}}, bool)"/></returns>
+        public Task<TEntity> FirstOrDefaultAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>
         {
-            return this.Set<TEntity, TKey>().FirstOrDefaultAsync(predicate);
+            return asNoTracking ? this.Set<TEntity, TKey>().AsNoTracking().FirstOrDefaultAsync(predicate) : this.Set<TEntity, TKey>().FirstOrDefaultAsync(predicate);
         }
 
         /// <summary>

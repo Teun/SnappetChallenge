@@ -61,49 +61,54 @@ namespace Nicollas
         /// </summary>
         /// <param name="disabled">Parameter disabled <see cref="IService{TEntity, TKey}.GetAllAsync(bool?,bool?)"/></param>
         /// <param name="trash">Parameter trash <see cref="IService{TEntity, TKey}.GetAllAsync(bool?,bool?)"/></param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IService{TEntity, TKey}.GetAllAsync"/></returns>
-        public virtual Task<List<TEntity>> GetAllAsync(bool? disabled = null, bool? trash = null)
+        public virtual Task<List<TEntity>> GetAllAsync(bool? disabled = null, bool? trash = null, bool asNoTracking = true)
         {
-            return this.repository.GetAllAsync(disabled, trash);
+            return this.repository.GetAllAsync(disabled, trash, asNoTracking);
         }
 
         /// <summary>
         /// <see cref="IService{TEntity, TKey}.GetAllQueryableAsync"/>
         /// </summary>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IService{TEntity, TKey}.GetAllQueryableAsync"/></returns>
-        public virtual Task<IQueryable<TEntity>> GetAllQueryableAsync()
+        public virtual Task<IQueryable<TEntity>> GetAllQueryableAsync(bool asNoTracking = true)
         {
-            return this.repository.GetAllQueryableAsync();
+            return this.repository.GetAllQueryableAsync(asNoTracking);
         }
 
         /// <summary>
         /// <see cref="IService{TEntity, TKey}.GetAllByCriteriaAsync"/>
         /// </summary>
         /// <param name="predicate">Parameter <see cref="IService{TEntity, TKey}.GetAllByCriteriaAsync(Expression{Func{TEntity, bool}})"/></param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IService{TEntity, TKey}.GetAllByCriteriaAsync"/></returns>
-        public virtual Task<List<TEntity>> GetAllByCriteriaAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual Task<List<TEntity>> GetAllByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
         {
-            return this.repository.GetAllByCriteriaAsync(predicate);
+            return this.repository.GetAllByCriteriaAsync(predicate, asNoTracking);
         }
 
         /// <summary>
         /// <see cref="IService{TEntity, TKey}.GetAllQueryableByCriteriaAsync"/>
         /// </summary>
         /// <param name="predicate">Parameter <see cref="IService{TEntity, TKey}.GetAllQueryableByCriteriaAsync(Expression{Func{TEntity, bool}})"/></param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IService{TEntity, TKey}.GetAllQueryableByCriteriaAsync"/></returns>
-        public virtual Task<IQueryable<TEntity>> GetAllQueryableByCriteriaAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual Task<IQueryable<TEntity>> GetAllQueryableByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
         {
-            return this.repository.GetAllQueryableByCriteriaAsync(predicate);
+            return this.repository.GetAllQueryableByCriteriaAsync(predicate, asNoTracking);
         }
 
         /// <summary>
         /// <see cref="IService{TEntity, TKey}.GetByCriteriaAsync(Expression{Func{TEntity, bool}})"/>
         /// </summary>
         /// <param name="predicate">Parameter <see cref="IService{TEntity, TKey}.GetByCriteriaAsync(Expression{Func{TEntity, bool}})"/></param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Return <see cref="IService{TEntity, TKey}.GetByCriteriaAsync(Expression{Func{TEntity, bool}})"/></returns>
-        public virtual Task<TEntity> GetByCriteriaAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual Task<TEntity> GetByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
         {
-            return this.repository.GetByCriteriaAsync(predicate);
+            return this.repository.GetByCriteriaAsync(predicate, asNoTracking);
         }
 
         /// <summary>

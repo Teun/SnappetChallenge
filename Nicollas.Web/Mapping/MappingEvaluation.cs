@@ -24,13 +24,23 @@ namespace Nicollas.Ng
                 .ForMember(entity => entity.Id, opt => opt.MapFrom(dto => dto.SubmittedAnswerId))
                 .ForMember(entity => entity.CreatedAt, opt => opt.MapFrom(dto => dto.SubmitDateTime))
                 .ForMember(entity => entity.IsCorrect, opt => opt.MapFrom(dto => dto.Correct))
-                .ForMember(entity => entity.Difficulty, opt => opt.MapFrom(dto => float.Parse(dto.Difficulty, System.Globalization.CultureInfo.GetCultureInfo("EN-US"))))
+                .ForMember(entity => entity.Difficulty, opt => opt.MapFrom(dto => this.CustomMap(dto.Difficulty)))
                 .ForMember(entity => entity.Subject, opt => opt.MapFrom(dto => new Subject { Description = dto.Subject }))
                 .ForMember(entity => entity.Domain, opt => opt.MapFrom(dto => new Domain { Description = dto.Domain }))
                 .ReverseMap()
                 .ForMember(dto => dto.Difficulty, opt => opt.MapFrom(entity => entity.Difficulty.ToString(System.Globalization.CultureInfo.GetCultureInfo("EN-US"))))
                 .ForMember(dto => dto.Subject, opt => opt.MapFrom(entity => entity.Subject.Description))
                 .ForMember(dto => dto.Domain, opt => opt.MapFrom(entity => entity.Domain.Description));
+        }
+
+        private float CustomMap(string floatValue)
+        {
+            if (!float.TryParse(floatValue, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.GetCultureInfo("EN-US"), out var result))
+            {
+                return 0;
+            }
+
+            return result;
         }
     }
 }

@@ -4,6 +4,7 @@ using Nicollas.Core.Factories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Nicollas.Imp.Factory
 {
@@ -12,6 +13,19 @@ namespace Nicollas.Imp.Factory
         public SubjectFactory(IUnitOfWork unitOfWork) 
             : base(unitOfWork)
         {
+        }
+
+        public async Task<int> GetSubjectId(Subject subject)
+        {
+            var entity = this.Repository.FindByCriteria(row => row.Description.Equals(subject.Description));
+            if(entity == null)
+            {
+                this.Repository.Add(subject);
+                await this.UnitOfWork.CommitAsync();
+                return subject.Id;
+            }
+
+            return entity.Id;
         }
     }
 }

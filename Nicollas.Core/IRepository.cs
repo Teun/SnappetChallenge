@@ -44,36 +44,41 @@ namespace Nicollas.Core
         /// </summary>
         /// <param name="disabled">Include in the search disabled entities</param>
         /// <param name="trash">Include in the search trashed entities</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Async list of Entities</returns>
-        Task<List<TEntity>> GetAllAsync(bool? disabled = null, bool? trash = null);
+        Task<List<TEntity>> GetAllAsync(bool? disabled = null, bool? trash = null, bool asNoTracking = true);
 
         /// <summary>
         /// Obtain the async list of Entities Queryable
         /// </summary>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Async list of Entities Queryable</returns>
-        Task<IQueryable<TEntity>> GetAllQueryableAsync();
+        Task<IQueryable<TEntity>> GetAllQueryableAsync(bool asNoTracking = true);
 
         /// <summary>
         /// Obtain the async list of Entities by Criteria
         /// </summary>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Async list of Entities by criteria</returns>
-        Task<List<TEntity>> GetAllByCriteriaAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<List<TEntity>> GetAllByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true);
 
 
         /// <summary>
         /// Obtain the async list of Entities Queryableby Criteria
         /// </summary>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Async list of Entities Queryableby by criteria</returns>
-        Task<IQueryable<TEntity>> GetAllQueryableByCriteriaAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<IQueryable<TEntity>> GetAllQueryableByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true);
 
         /// <summary>
         /// Obtain the async Entity by criteria
         /// </summary>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>Async Entity by criteria</returns>
-        Task<TEntity> GetByCriteriaAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<TEntity> GetByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true);
 
         /// <summary>
         /// Obtain the Entity by id looking on cache first

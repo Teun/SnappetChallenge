@@ -78,6 +78,7 @@ namespace Nicollas
                     .AddJsonFile($"Settings/appsettings.jwt.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                     .AddJsonFile($"Settings/appsettings.providers.{env.EnvironmentName}.json", optional: true);
                 })
+                .UseKestrel(o => { o.Limits.KeepAliveTimeout = System.TimeSpan.FromMinutes(40); })
                 .Build();
     }
 }

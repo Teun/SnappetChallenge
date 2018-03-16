@@ -77,7 +77,7 @@ namespace Nicollas.Service.Services.Identity
             return result;
         }
 
-        public override Task<List<Role>> GetAllAsync(bool? disabled = null, bool? trash = null)
+        public override Task<List<Role>> GetAllAsync(bool? disabled = null, bool? trash = null, bool asNotTracking = false)
         {
             return this.Entries.Include(r => r.Claims).ThenInclude(c => c.Role).AsNoTracking().ToListAsync();
         }

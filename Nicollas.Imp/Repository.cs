@@ -75,18 +75,18 @@ namespace Nicollas
         /// <param name="disabled">Parameter disabled <see cref="IService{TEntity, TKey}.GetAllAsync(bool?,bool?)"/></param>
         /// <param name="trash">Parameter trash <see cref="IService{TEntity, TKey}.GetAllAsync(bool?,bool?)"/></param>
         /// <returns>Return <see cref="IRepository{TEntity, TKey}.GetAllAsync"/></returns>
-        public Task<List<TEntity>> GetAllAsync(bool? disabled, bool? trash)
+        public Task<List<TEntity>> GetAllAsync(bool? disabled, bool? trash, bool asNoTracking = true)
         {
-            return this.context.ToListAsync<TEntity, TKey>(disabled, trash);
+            return this.context.ToListAsync<TEntity, TKey>(disabled, trash, asNoTracking);
         }
 
         /// <summary>
         /// <see cref="IRepository{TEntity,TKey}.GetAllQueryableAsync"/>
         /// </summary>
         /// <returns>Return <see cref="IRepository{TEntity, TKey}.GetAllQueryableAsync"/></returns>
-        public Task<IQueryable<TEntity>> GetAllQueryableAsync()
+        public Task<IQueryable<TEntity>> GetAllQueryableAsync(bool asNoTracking = true)
         {
-            return this.context.ToQueryableAsync<TEntity, TKey>();
+            return this.context.ToQueryableAsync<TEntity, TKey>(asNoTracking);
         }
 
         /// <summary>
@@ -94,9 +94,9 @@ namespace Nicollas
         /// </summary>
         /// <param name="predicate">A criteria</param>
         /// <returns>Return <see cref="IRepository{TEntity, TKey}.GetAllByCriteriaAsync"/></returns>
-        public Task<List<TEntity>> GetAllByCriteriaAsync(Expression<Func<TEntity, bool>> predicate)
+        public Task<List<TEntity>> GetAllByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
         {
-            return this.context.ToListByCriteriaAsync<TEntity, TKey>(predicate);
+            return this.context.ToListByCriteriaAsync<TEntity, TKey>(predicate, asNoTracking);
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace Nicollas
         /// </summary>
         /// <param name="predicate">A criteria</param>
         /// <returns>Return <see cref="IRepository{TEntity, TKey}.GetAllQueryableByCriteriaAsync"/></returns>
-        public Task<IQueryable<TEntity>> GetAllQueryableByCriteriaAsync(Expression<Func<TEntity, bool>> predicate)
+        public Task<IQueryable<TEntity>> GetAllQueryableByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
         {
-            return this.context.ToQueryableByCriteriaAsync<TEntity, TKey>(predicate);
+            return this.context.ToQueryableByCriteriaAsync<TEntity, TKey>(predicate, asNoTracking);
         }
 
         /// <summary>
@@ -114,9 +114,9 @@ namespace Nicollas
         /// </summary>
         /// <param name="predicate">Parameter <see cref="IRepository{TEntity, TKey}.GetByCriteriaAsync(Expression{Func{TEntity, bool}})"/></param>
         /// <returns>Return <see cref="IRepository{TEntity, TKey}.GetByCriteriaAsync(Expression{Func{TEntity, bool}})"/></returns>
-        public Task<TEntity> GetByCriteriaAsync(Expression<Func<TEntity, bool>> predicate)
+        public Task<TEntity> GetByCriteriaAsync(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
         {
-            return this.context.FirstOrDefaultAsync<TEntity, TKey>(predicate);
+            return this.context.FirstOrDefaultAsync<TEntity, TKey>(predicate, asNoTracking);
         }
 
         /// <summary>

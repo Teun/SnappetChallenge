@@ -29,12 +29,15 @@ namespace Nicollas
         public Factory(IUnitOfWork unitOfWork)
         {
             this.UnitOfWork = unitOfWork;
+            this.Repository = unitOfWork.Repository<TEntity, TKey>();
         }
 
         /// <summary>
         /// Gets or Sets the Unit Of Work pattern <see cref="IUnitOfWork" />
         /// </summary>
         public IUnitOfWork UnitOfWork { get; private set; }
+
+        protected IRepository<TEntity,TKey> Repository { get; private set; }
 
         /// <summary>
         ///  <see cref="IService{TEntity, TKey}.Dispose(bool)"/>

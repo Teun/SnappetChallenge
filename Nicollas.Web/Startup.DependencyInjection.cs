@@ -10,9 +10,12 @@ namespace Nicollas
     using Microsoft.Extensions.DependencyInjection;
     using Nicollas.Core;
     using Nicollas.Core.Entities.Identity;
+    using Nicollas.Core.Factories;
     using Nicollas.Core.Services;
     using Nicollas.Core.Services.Identity;
     using Nicollas.Identity;
+    using Nicollas.Imp.Factory;
+    using Nicollas.Imp.Services;
     using Nicollas.Ng;
     using Nicollas.Ng.Extensions;
     using Nicollas.Ng.Filters.Adwords;
@@ -41,6 +44,11 @@ namespace Nicollas
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IUserRoleService, UserRoleService>();
+
+            services.AddTransient<IDomainFactory, DomainFactory>();
+            services.AddTransient<ISubjectFactory, SubjectFactory>();
+
+            services.AddTransient<IEvaluationService, EvaluationService>();
 
             services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddTransient<ILookupNormalizer, LookupNormalizer>();

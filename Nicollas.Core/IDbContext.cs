@@ -112,10 +112,11 @@ namespace Nicollas.Core
         /// </summary>
         /// <param name="disabled">Include in the search disabled entities</param>
         /// <param name="trash">Include in the search trashed entities</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <typeparam name="TEntity">The generic Entity</typeparam>
         /// <typeparam name="TKey">The typo of the key</typeparam>
         /// <returns>A list of async generic Entities</returns>
-        Task<List<TEntity>> ToListAsync<TEntity, TKey>(bool? disabled = null, bool? trash = null)
+        Task<List<TEntity>> ToListAsync<TEntity, TKey>(bool? disabled = null, bool? trash = null, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>;
 
         /// <summary>
@@ -124,8 +125,9 @@ namespace Nicollas.Core
         /// <typeparam name="TEntity">The generic Entity</typeparam>
         /// <typeparam name="TKey">The typo of the key</typeparam>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>A list of async generic Entities</returns>
-        Task<List<TEntity>> ToListByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate)
+        Task<List<TEntity>> ToListByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>;
 
         /// <summary>
@@ -133,8 +135,9 @@ namespace Nicollas.Core
         /// </summary>
         /// <typeparam name="TEntity">The generic Entity</typeparam>
         /// <typeparam name="TKey">The typo of the key</typeparam>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>A list query of generic Entities</returns>
-        IQueryable<TEntity> ToQueryable<TEntity, TKey>()
+        IQueryable<TEntity> ToQueryable<TEntity, TKey>(bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>;
 
         /// <summary>
@@ -142,8 +145,9 @@ namespace Nicollas.Core
         /// </summary>
         /// <typeparam name="TEntity">The generic Entity</typeparam>
         /// <typeparam name="TKey">The typo of the key</typeparam>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>A list query of async generic Entities</returns>
-        Task<IQueryable<TEntity>> ToQueryableAsync<TEntity, TKey>()
+        Task<IQueryable<TEntity>> ToQueryableAsync<TEntity, TKey>(bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>;
 
         /// <summary>
@@ -152,8 +156,9 @@ namespace Nicollas.Core
         /// <typeparam name="TEntity">The generic Entity</typeparam>
         /// <typeparam name="TKey">The typo of the key</typeparam>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>A list query of async generic Entities</returns>
-        Task<IQueryable<TEntity>> ToQueryableByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate)
+        Task<IQueryable<TEntity>> ToQueryableByCriteriaAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>;
 
         /// <summary>
@@ -162,8 +167,9 @@ namespace Nicollas.Core
         /// <typeparam name="TEntity">The generic Entity</typeparam>
         /// <typeparam name="TKey">The typo of the key</typeparam>
         /// <param name="predicate">A criteria</param>
+        /// <param name="asNoTracking">If True do not track the changes</param>
         /// <returns>An Entity or default</returns>
-        Task<TEntity> FirstOrDefaultAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate)
+        Task<TEntity> FirstOrDefaultAsync<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, bool asNoTracking = true)
             where TEntity : class, IEntity<TKey>;
 
 
