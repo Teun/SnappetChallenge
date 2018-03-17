@@ -11,7 +11,7 @@
             <a href="#" routerLink="/"><i class="fa fa-television"></i><span>Wellcome</span></a>
         </li>
         <li routerLinkActive="active" *ngIf="guard.HasClaim(['Order','Bill'])">
-            <a href="#" routerLink="/Orders"><i class="fa fa-eye"></i><span>Report</span></a>
+            <a href="#" routerLink="/Admin/Charts"><i class="fa fa-eye"></i><span>Report</span></a>
         <li routerLinkActive="active" *ngIf="guard.HasClaim(['User'])">
             <a href="#" routerLink="/Admin/Users"><i class="fa fa-user"></i><span>Users</span></a>
         </li>                 

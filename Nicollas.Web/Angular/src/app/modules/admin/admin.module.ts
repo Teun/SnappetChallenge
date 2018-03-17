@@ -20,6 +20,9 @@ import { UserEffects } from 'app/store/effects/identity/user.effect';
 import { RoleEffects } from 'app/store/effects/identity/role.effect';
 import { UserService } from 'app/services/identity/user.service';
 import { RoleService } from 'app/services/identity/role.service';
+import { ReportsComponent } from './reports/reports.component';
+
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
@@ -30,6 +33,8 @@ import { RoleService } from 'app/services/identity/role.service';
     AdminRoutingModule,
     BsModalModule,
     TextMaskModule,
+
+    NgxChartsModule,
 
     FileUploadModule,
     EffectsModule.forFeature([
@@ -43,6 +48,7 @@ import { RoleService } from 'app/services/identity/role.service';
   ],
   declarations: [
     UsersComponent,
+    ReportsComponent,
   ]
 })
 export class AdminModule { }

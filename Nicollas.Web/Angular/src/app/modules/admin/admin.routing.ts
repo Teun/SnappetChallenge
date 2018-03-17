@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseComponent } from 'app/modules/shared/layout/base.component';
 import { UsersComponent } from 'app/modules/admin/users/users.component';
 import { AuthGuard } from 'app/auth/auth.guard';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'Tables', pathMatch: 'full', data: {'claims': ['Table'] }},
       { path: 'Users', component: UsersComponent, data: {'claims': ['User'] } },
+      { path: 'Charts', component: ReportsComponent },
       // { path: 'Table/:id', component: TablesComponent },
       // { path: 'User/:id', component: UsersComponent },
       // { path: 'role/:id', component: RolesComponent },
