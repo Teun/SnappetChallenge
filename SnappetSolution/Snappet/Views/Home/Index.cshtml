@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div id="app">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Total exercises completed by subject</h2>            
+            <column-chart v-bind:data="subjectChartData" stacked="true"></column-chart>
+        </div>
+        <div class="col-md-6">
+            <h2>Total exercises completed by domain</h2>
+            <column-chart v-bind:data="domainChartData" stacked="true"></column-chart>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Total exercises correctly completed by user ID (comapred with data of last day)</h2>
+            <column-chart v-bind:data="correctnessCompChartData" v-bind:colors="['#FC6665', '#44B98C']"></column-chart>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/site.js"></script>
