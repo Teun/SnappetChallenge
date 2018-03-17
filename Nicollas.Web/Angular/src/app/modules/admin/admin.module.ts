@@ -23,6 +23,8 @@ import { RoleService } from 'app/services/identity/role.service';
 import { ReportsComponent } from './reports/reports.component';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ReportEffects } from '../../store/effects/reports/report.effect';
+import { ReportService } from '../../services/reports/report.service';
 
 @NgModule({
   imports: [
@@ -39,12 +41,14 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FileUploadModule,
     EffectsModule.forFeature([
       UserEffects,
-      RoleEffects
+      RoleEffects,
+      ReportEffects
     ]),
   ],
   providers: [
     UserService,
     RoleService,
+    ReportService
   ],
   declarations: [
     UsersComponent,

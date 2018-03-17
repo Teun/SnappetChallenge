@@ -1,6 +1,7 @@
 ﻿
 namespace Nicollas.Imp.Services
 {
+    using Microsoft.EntityFrameworkCore;
     using Nicollas.Core;
     using Nicollas.Core.Entities;
     using Nicollas.Core.Factories;
@@ -28,12 +29,12 @@ namespace Nicollas.Imp.Services
             var alreadyPersisted = (await this.GetAllQueryableByCriteriaAsync(row => evalData.Any(evl => evl.Id == row.Id))).Select(r => r.Id);
             var toPersist = evalData.Where(row => !alreadyPersisted.Any(id => row.Id == id));
 
+            int commitCountdown = 1000;
+            int count = 0;
+            
             foreach (var item in toPersist)
             {
-                if(await this.GetByCriteriaAsync(row => row.Id == item.Id) != null)
-                {
-                    continue;
-                }
+                count++;
 
                 item.SubjectId = await this.subjectFactory.GetSubjectId(item.Subject);
                 item.Subject = null;
@@ -42,6 +43,13 @@ namespace Nicollas.Imp.Services
                 item.Domain = null;
 
                 this.Repository.Add(item);
+
+                if (commitCountdown == count)
+                {
+                    count = 0;
+                    await this.UnitOfWork.CommitAsync();
+                }
+
             }
             await this.UnitOfWork.CommitAsync();
         }

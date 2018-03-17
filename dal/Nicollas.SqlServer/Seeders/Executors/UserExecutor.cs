@@ -21,7 +21,7 @@ namespace Nicollas.SqlServer.Seeders.Executors
             this.CheckDependencies(extraDependencies);
 
             var roleRep = worker.Repository<Role, Guid>();
-            Role role = roleRep.GetAllQueryableAsync().Result.FirstOrDefault();
+            Role role = roleRep.GetAllQueryableAsync(false).Result.FirstOrDefault();
             if (role == null)
             {
                 role = new Role
@@ -46,7 +46,7 @@ namespace Nicollas.SqlServer.Seeders.Executors
 
             var userRepo = worker.Repository<User, Guid>();
             var userManager = extraDependencies.First(row => row is UserManager<User>) as UserManager<User>;
-            User user = userRepo.GetAllQueryableAsync().Result.FirstOrDefault();
+            User user = userRepo.GetAllQueryableAsync(false).Result.FirstOrDefault();
 
             if (user == null)
             {
@@ -61,7 +61,7 @@ namespace Nicollas.SqlServer.Seeders.Executors
 
                 worker.BeginTransaction();
 
-                var userResult = userManager.CreateAsync(user, "@Senha123").Result;
+                var userResult = userManager.CreateAsync(user, "$naPPe1").Result;
                 userResult = userManager.AddToRoleAsync(user, "Admin").Result;
 
                 worker.Commit();

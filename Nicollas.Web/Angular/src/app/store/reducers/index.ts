@@ -9,6 +9,8 @@ import * as fromSign from './signs/sign.reducer';
 import * as fromRole from './identity/role.reducer';
 import * as fromUser from './identity/user.reducer';
 
+import * as fromReport from './reports/report.reducer';
+
 
 import { environment } from 'environments/environment';
 
@@ -37,6 +39,7 @@ export interface State {
   sign: fromSign.State;
   role: fromRole.State;
   user: fromUser.State;
+  report: fromReport.State;
 }
 
 /**
@@ -50,4 +53,5 @@ export const reducers: ActionReducerMap<State> = {
   sign: fromSign.reducer,
   role: fromRole.reducer,
   user: fromUser.reducer,
+  report: fromReport.reducer
 };

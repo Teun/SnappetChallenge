@@ -47,6 +47,7 @@ namespace Nicollas
 
             services.AddTransient<IDomainFactory, DomainFactory>();
             services.AddTransient<ISubjectFactory, SubjectFactory>();
+            services.AddTransient<IChartFactory, ChartFactory>();
 
             services.AddTransient<IEvaluationService, EvaluationService>();
 

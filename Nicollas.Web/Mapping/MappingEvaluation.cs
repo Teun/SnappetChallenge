@@ -22,7 +22,7 @@ namespace Nicollas.Ng
         {
             this.CreateMap<EvaluationDto, Evaluation>()
                 .ForMember(entity => entity.Id, opt => opt.MapFrom(dto => dto.SubmittedAnswerId))
-                .ForMember(entity => entity.CreatedAt, opt => opt.MapFrom(dto => dto.SubmitDateTime))
+                .ForMember(entity => entity.ApliedAt, opt => opt.MapFrom(dto => dto.SubmitDateTime))
                 .ForMember(entity => entity.IsCorrect, opt => opt.MapFrom(dto => dto.Correct))
                 .ForMember(entity => entity.Difficulty, opt => opt.MapFrom(dto => this.CustomMap(dto.Difficulty)))
                 .ForMember(entity => entity.Subject, opt => opt.MapFrom(dto => new Subject { Description = dto.Subject }))

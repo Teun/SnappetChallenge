@@ -1,14 +1,46 @@
-<ngx-charts-bar-vertical
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="single"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)">
-</ngx-charts-bar-vertical>
+<md-card>
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Reports</h4>
+      </div>
+    </div>
+  </md-card>
+  <hr>
+  
+  <md-card>
+    <div *ngIf="(IsBusy | async) != 0; else elseTemplate">
+      <md-spinner class="text-center" style="width: inherit;"></md-spinner>
+    </div>
+    <ng-template #elseTemplate>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Amount of applies in March by Domains</h2>
+          <ngx-charts-bar-vertical  [view]="view" [scheme]="colorScheme" [results]="applyMonth | async" [gradient]="gradient" [xAxis]="false"
+            [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+          </ngx-charts-bar-vertical>
+        </div>
+        <div class="col-md-6">
+          <h2>Amount of applies in March weeks by Domains</h2>
+          <ngx-charts-bar-vertical-2d [view]="view" [scheme]="colorScheme" [results]="applyWeek | async" [gradient]="gradient" [xAxis]="showXAxis"
+            [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="''"
+            [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+          </ngx-charts-bar-vertical-2d>
+        </div>
+        <div class="col-md-6">
+          <h2>Difficulty</h2>
+          <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="dificultyByDay | async" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="''" [yAxisLabel]="'Dificulty value'" (select)="onSelect($event)">
+          </ngx-charts-line-chart>
+        </div>
+        <div class="col-md-6">
+          <h2>Progress</h2>
+          <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="progressByDay | async" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="''" [yAxisLabel]="'Progress'" (select)="onSelect($event)">
+          </ngx-charts-line-chart>
+        </div> 
+      </div>
+    </ng-template>
+  </md-card>

@@ -6,6 +6,8 @@ namespace Nicollas.Core.Entities
 {
     public class Evaluation: BaseEntity<int>
     {
+        public DateTime ApliedAt { get; set; }
+
         public bool IsCorrect { get; set; }
         public int Progress { get; set; }
         

@@ -21,7 +21,7 @@ namespace Nicollas.SqlServer.Identity
         /// <inheritdoc/>
         public async Task AddToRoleAsync(User user, string roleName, CancellationToken cancellationToken)
         {
-            Role role = await this.unitOfWork.Repository<Role, Guid>().GetByCriteriaAsync(r => r.Name == roleName);
+            Role role = await this.unitOfWork.Repository<Role, Guid>().GetByCriteriaAsync(r => r.Name == roleName, false);
             if (role == null)
             {
                 role = new Role()
@@ -82,13 +82,13 @@ namespace Nicollas.SqlServer.Identity
         /// <inheritdoc/>
         public async Task RemoveFromRoleAsync(User user, string roleName, CancellationToken cancellationToken)
         {
-            Role role = await this.unitOfWork.Repository<Role, Guid>().GetByCriteriaAsync(r => r.Name == roleName);
+            Role role = await this.unitOfWork.Repository<Role, Guid>().GetByCriteriaAsync(r => r.Name == roleName, false);
 
             this.Logger($"RemoveFromRoleAsync(User user, string roleName) -> Remove the user role {user.UserName} {roleName}");
 
             if (role != null)
             {
-                UserRole userRole = await this.unitOfWork.Repository<UserRole, Guid>().GetByCriteriaAsync(r => r.RoleId == role.Id);
+                UserRole userRole = await this.unitOfWork.Repository<UserRole, Guid>().GetByCriteriaAsync(r => r.RoleId == role.Id, false);
 
                 if (userRole != null)
                 {

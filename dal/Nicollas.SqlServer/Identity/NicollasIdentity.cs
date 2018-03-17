@@ -49,7 +49,7 @@ namespace Nicollas.SqlServer.Identity
             {
                 this.Logger("IQueryable<Role> Roles -> Obtain all the roles");
 
-                return this.unitOfWork.Repository<Role, Guid>().GetAllQueryableAsync().Result;
+                return this.unitOfWork.Repository<Role, Guid>().GetAllQueryableAsync(false).Result;
             }
         }
 
@@ -61,7 +61,7 @@ namespace Nicollas.SqlServer.Identity
             get
             {
                 this.Logger("IQueryable<User> Users -> Obtain all the users");
-                return this.unitOfWork.Repository<User, Guid>().GetAllQueryableAsync().Result;
+                return this.unitOfWork.Repository<User, Guid>().GetAllQueryableAsync(false).Result;
             }
         }
 

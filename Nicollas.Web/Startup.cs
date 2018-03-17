@@ -69,7 +69,7 @@ namespace Nicollas
             {
                 // jsonOptions.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-                jsonOptions.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
+                jsonOptions.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Include;
                 jsonOptions.SerializerSettings.Culture = CultureInfo.GetCultureInfo("EN-US");
             });
 

@@ -11,9 +11,10 @@ using System;
 namespace Nicollas.SqlServer.Migrations
 {
     [DbContext(typeof(NicollasContext))]
-    partial class NicollasContextModelSnapshot : ModelSnapshot
+    [Migration("20180317130337_addApliedData")]
+    partial class addApliedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
