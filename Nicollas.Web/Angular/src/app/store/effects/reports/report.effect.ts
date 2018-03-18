@@ -14,6 +14,7 @@ import { of } from 'rxjs/observable/of';
 import * as action from 'app/store/actions/reports/report.action';
 import { Filter } from 'app/store/reducers/BaseReducer';
 import { ReportService } from 'app/services/reports/report.service';
+import { SendJsonAction } from 'app/store/actions/reports/report.action';
 
 
 /**
@@ -34,6 +35,20 @@ import { ReportService } from 'app/services/reports/report.service';
  */
 @Injectable()
 export class ReportEffects {
+  @Effect()
+  SendJson$: Observable<Action> = this.actions$
+    .ofType(action.SEND_JSON) // the action type that will hit this
+    .map((action: action.SendJsonAction) => action.payload)
+    .switchMap(jsonString => {
+
+      const next$ = this.actions$.ofType(action.SEND_JSON).skip(1);
+
+      return this.service.SendJsonString(jsonString)
+        .takeUntil(next$)
+        .map(result => new action.SendJsonActionComplete())
+        .catch((err) => of(new action.FaliedAction(err)));
+    });
+
 
   @Effect()
   loadAplyMonth$: Observable<Action> = this.actions$

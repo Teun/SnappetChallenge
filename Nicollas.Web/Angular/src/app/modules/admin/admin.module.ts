@@ -15,7 +15,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 
 import { FileUploadModule } from 'ng2-file-upload';
-import { UsersComponent } from './users/users.component';
 import { UserEffects } from 'app/store/effects/identity/user.effect';
 import { RoleEffects } from 'app/store/effects/identity/role.effect';
 import { UserService } from 'app/services/identity/user.service';
@@ -25,6 +24,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ReportEffects } from '../../store/effects/reports/report.effect';
 import { ReportService } from '../../services/reports/report.service';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   imports: [
@@ -51,8 +51,8 @@ import { ReportService } from '../../services/reports/report.service';
     ReportService
   ],
   declarations: [
-    UsersComponent,
     ReportsComponent,
+    WelcomeComponent,
   ]
 })
 export class AdminModule { }

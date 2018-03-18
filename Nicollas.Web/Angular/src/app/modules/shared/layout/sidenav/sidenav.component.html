@@ -1,19 +1,17 @@
 <span>
     <div class="user-panel">
-        <div class="pull-left image"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image" class="img-circle"></div>
+        <div class="pull-left image"><img src="assets/IMG-20171127-WA0005-2.jpg" alt="User Image" class="img-circle"></div>
         <div class="pull-left info">
-            <p>{{(authInformation | async)?.user_name}}</p>
-            <p class="designation">Admin</p>
+            <p>Nicollas Braga</p>
+            <p class="designation">Challenge</p>
         </div>
     </div>
     <ul class="sidebar-menu">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            <a href="#" routerLink="/"><i class="fa fa-television"></i><span>Wellcome</span></a>
+            <a href="#" routerLink="/"><i class="fa fa-television"></i><span>Welcome</span></a>
         </li>
         <li routerLinkActive="active" *ngIf="guard.HasClaim(['Order','Bill'])">
             <a href="#" routerLink="/Admin/Charts"><i class="fa fa-eye"></i><span>Report</span></a>
-        <li routerLinkActive="active" *ngIf="guard.HasClaim(['User'])">
-            <a href="#" routerLink="/Admin/Users"><i class="fa fa-user"></i><span>Users</span></a>
         </li>                 
     </ul>
 

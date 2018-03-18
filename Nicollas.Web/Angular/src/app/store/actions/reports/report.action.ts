@@ -13,9 +13,21 @@ export const LOAD_DIFICULTY_WEEK_COMPLETE = '[Reports] LOAD_DIFICULTY_WEEK_COMPL
 export const LOAD_PROGRESS_WEEK = '[Reports] LOAD_PROGRESS_WEEK';
 export const LOAD_PROGRESS_WEEK_COMPLETE = '[Reports] LOAD_PROGRESS_WEEK_COMPLETE';
 
+export const SEND_JSON = '[Reports] SEND_JSON';
+export const SEND_JSON_COMPLETE = '[Reports] SEND_JSON_COMPLETE';
+
+
 
 export const ACTION_FAILED = '[Reports] ACTION_FAILED';
 
+export class SendJsonAction implements Action {
+  readonly type = SEND_JSON;
+  constructor(public payload: string) { }
+}
+export class SendJsonActionComplete implements Action {
+  readonly type = SEND_JSON_COMPLETE;
+  constructor() { }
+}
 
 export class LoadAplyMonthAction implements Action {
   readonly type = LOAD_APLY_MONTH;
@@ -70,3 +82,4 @@ export type Actions = FaliedAction
   | LoadAplyWeekAction | LoadAplyWeekCompleteAction
   | LoadDificultyWeekAction | LoadDificultyWeekCompleteAction
   | LoadProgressWeekAction | LoadProgressWeekCompleteAction
+  | SendJsonAction | SendJsonActionComplete

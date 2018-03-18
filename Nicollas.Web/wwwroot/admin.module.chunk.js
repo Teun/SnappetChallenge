@@ -19,16 +19,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngrx_effects__ = __webpack_require__("../../../../@ngrx/effects/@ngrx/effects.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng2_file_upload__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__users_users_component__ = __webpack_require__("../../../../../src/app/modules/admin/users/users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_app_store_effects_identity_user_effect__ = __webpack_require__("../../../../../src/app/store/effects/identity/user.effect.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_app_store_effects_identity_role_effect__ = __webpack_require__("../../../../../src/app/store/effects/identity/role.effect.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_app_services_identity_user_service__ = __webpack_require__("../../../../../src/app/services/identity/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_app_services_identity_role_service__ = __webpack_require__("../../../../../src/app/services/identity/role.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__reports_reports_component__ = __webpack_require__("../../../../../src/app/modules/admin/reports/reports.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__ = __webpack_require__("../../../../@swimlane/ngx-charts/release/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__store_effects_reports_report_effect__ = __webpack_require__("../../../../../src/app/store/effects/reports/report.effect.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_reports_report_service__ = __webpack_require__("../../../../../src/app/services/reports/report.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_app_store_effects_identity_user_effect__ = __webpack_require__("../../../../../src/app/store/effects/identity/user.effect.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_app_store_effects_identity_role_effect__ = __webpack_require__("../../../../../src/app/store/effects/identity/role.effect.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_app_services_identity_user_service__ = __webpack_require__("../../../../../src/app/services/identity/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_app_services_identity_role_service__ = __webpack_require__("../../../../../src/app/services/identity/role.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__reports_reports_component__ = __webpack_require__("../../../../../src/app/modules/admin/reports/reports.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__swimlane_ngx_charts__ = __webpack_require__("../../../../@swimlane/ngx-charts/release/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__swimlane_ngx_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__store_effects_reports_report_effect__ = __webpack_require__("../../../../../src/app/store/effects/reports/report.effect.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_reports_report_service__ = __webpack_require__("../../../../../src/app/services/reports/report.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__welcome_welcome_component__ = __webpack_require__("../../../../../src/app/modules/admin/welcome/welcome.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,22 +67,22 @@ var AdminModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__admin_routing__["a" /* AdminRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_7_Ng2_bs3_modal__["BsModalModule"],
                 __WEBPACK_IMPORTED_MODULE_5_angular2_text_mask__["TextMaskModule"],
-                __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__["NgxChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_15__swimlane_ngx_charts__["NgxChartsModule"],
                 __WEBPACK_IMPORTED_MODULE_9_ng2_file_upload__["FileUploadModule"],
                 __WEBPACK_IMPORTED_MODULE_8__ngrx_effects__["c" /* EffectsModule */].forFeature([
-                    __WEBPACK_IMPORTED_MODULE_11_app_store_effects_identity_user_effect__["a" /* UserEffects */],
-                    __WEBPACK_IMPORTED_MODULE_12_app_store_effects_identity_role_effect__["a" /* RoleEffects */],
-                    __WEBPACK_IMPORTED_MODULE_17__store_effects_reports_report_effect__["a" /* ReportEffects */]
+                    __WEBPACK_IMPORTED_MODULE_10_app_store_effects_identity_user_effect__["a" /* UserEffects */],
+                    __WEBPACK_IMPORTED_MODULE_11_app_store_effects_identity_role_effect__["a" /* RoleEffects */],
+                    __WEBPACK_IMPORTED_MODULE_16__store_effects_reports_report_effect__["a" /* ReportEffects */]
                 ]),
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_13_app_services_identity_user_service__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_14_app_services_identity_role_service__["a" /* RoleService */],
-                __WEBPACK_IMPORTED_MODULE_18__services_reports_report_service__["a" /* ReportService */]
+                __WEBPACK_IMPORTED_MODULE_12_app_services_identity_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_13_app_services_identity_role_service__["a" /* RoleService */],
+                __WEBPACK_IMPORTED_MODULE_17__services_reports_report_service__["a" /* ReportService */]
             ],
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_10__users_users_component__["a" /* UsersComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__reports_reports_component__["a" /* ReportsComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__reports_reports_component__["a" /* ReportsComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__welcome_welcome_component__["a" /* WelcomeComponent */],
             ]
         })
     ], AdminModule);
@@ -101,9 +101,9 @@ var AdminModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_modules_shared_layout_base_component__ = __webpack_require__("../../../../../src/app/modules/shared/layout/base.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_modules_admin_users_users_component__ = __webpack_require__("../../../../../src/app/modules/admin/users/users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_auth_auth_guard__ = __webpack_require__("../../../../../src/app/auth/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reports_reports_component__ = __webpack_require__("../../../../../src/app/modules/admin/reports/reports.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_auth_auth_guard__ = __webpack_require__("../../../../../src/app/auth/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_reports_component__ = __webpack_require__("../../../../../src/app/modules/admin/reports/reports.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__welcome_welcome_component__ = __webpack_require__("../../../../../src/app/modules/admin/welcome/welcome.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -118,11 +118,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     {
-        path: '', component: __WEBPACK_IMPORTED_MODULE_2_app_modules_shared_layout_base_component__["a" /* BaseComponent */], canActivateChild: [__WEBPACK_IMPORTED_MODULE_4_app_auth_auth_guard__["a" /* AuthGuard */]],
+        path: '', component: __WEBPACK_IMPORTED_MODULE_2_app_modules_shared_layout_base_component__["a" /* BaseComponent */], canActivateChild: [__WEBPACK_IMPORTED_MODULE_3_app_auth_auth_guard__["a" /* AuthGuard */]],
         children: [
-            { path: '', redirectTo: 'Tables', pathMatch: 'full', data: { 'claims': ['Table'] } },
-            { path: 'Users', component: __WEBPACK_IMPORTED_MODULE_3_app_modules_admin_users_users_component__["a" /* UsersComponent */], data: { 'claims': ['User'] } },
-            { path: 'Charts', component: __WEBPACK_IMPORTED_MODULE_5__reports_reports_component__["a" /* ReportsComponent */] },
+            { path: '', component: __WEBPACK_IMPORTED_MODULE_5__welcome_welcome_component__["a" /* WelcomeComponent */], pathMatch: 'full' },
+            { path: 'Charts', component: __WEBPACK_IMPORTED_MODULE_4__reports_reports_component__["a" /* ReportsComponent */] }
         ],
     }
 ];
@@ -237,14 +236,14 @@ var ReportsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/modules/admin/users/users.component.html":
+/***/ "../../../../../src/app/modules/admin/welcome/welcome.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-card>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <h4>Users</h4>\r\n    </div>\r\n    <div class=\"col-md-4\">\r\n      <md-slide-toggle class=\"pull-right inline-toggle\" (change)='filterChange()'>\r\n        Show disabled Users\r\n      </md-slide-toggle>\r\n    </div>\r\n    <div class=\"col-md-4\">\r\n      <button md-raised-button class=\"btn-success pull-right\" (click)=\"openModal(null)\">New User</button>\r\n    </div>\r\n  </div>\r\n</md-card>\r\n<hr>\r\n\r\n<md-card>\r\n  <div class=\"row\">\r\n    <div *ngIf=\"IsBusy | async; else elseTemplate\">\r\n      <md-spinner class=\"text-center\" style=\"width: inherit;\"></md-spinner>\r\n    </div>\r\n    <ng-template #elseTemplate>\r\n\r\n      <div>\r\n        <md-table #table [dataSource]=\"dataSource\">\r\n          <!--- Note that these columns can be defined in any order.\r\n          The actual rendered columns are set as a property on the row definition\" -->\r\n          <!-- ID Column -->\r\n          <ng-container cdkColumnDef=\"id\">\r\n            <md-header-cell *cdkHeaderCellDef [ngClass]=\"'mat-cell-3'\"> Action </md-header-cell>\r\n            <md-cell *cdkCellDef=\"let row\" [ngClass]=\"'mat-cell-3'\">\r\n              <button mdTooltip=\"Edit\" md-raised-button class=\"btn mat-small-button\" (click)=\"openModal(row)\">\r\n                <i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>\r\n              </button>\r\n              <button mdTooltip=\"{{row.disabled? 'Enable': 'Disable'}}\" md-raised-button class=\"btn mat-small-button\" (click)=\"enableOrDisable(row)\">\r\n                <span *ngIf=\"row.disabled; else buttonDisable\">\r\n                  <i class=\"fa fa-play-circle-o\" aria-hidden=\"true\"></i>\r\n                </span>\r\n                <ng-template #buttonDisable>\r\n                  <i class=\"fa fa-pause-circle-o\" aria-hidden=\"true\"></i>\r\n                </ng-template>\r\n              </button>\r\n            </md-cell>\r\n          </ng-container>\r\n          <!-- Name Column -->\r\n          <ng-container cdkColumnDef=\"name\">\r\n            <md-header-cell *cdkHeaderCellDef [ngClass]=\"'mat-cell-5'\"> Name </md-header-cell>\r\n            <md-cell *cdkCellDef=\"let row\" [ngClass]=\"'mat-cell-5'\"> {{row.firstName}} {{row.lastName}}</md-cell>\r\n          </ng-container>\r\n          <!-- Username Column -->\r\n          <ng-container cdkColumnDef=\"userName\">\r\n            <md-header-cell *cdkHeaderCellDef [ngClass]=\"'mat-cell-4'\"> Login </md-header-cell>\r\n            <md-cell *cdkCellDef=\"let row\" [ngClass]=\"'mat-cell-4'\"> {{row.userName}}</md-cell>\r\n          </ng-container>\r\n\r\n          <md-header-row *cdkHeaderRowDef=\"['id', 'name', 'userName']\"></md-header-row>\r\n          <md-row *cdkRowDef=\"let row; columns: ['id', 'name', 'userName'];\"></md-row>\r\n        </md-table>\r\n      </div>\r\n\r\n    </ng-template>\r\n  </div>\r\n</md-card>\r\n\r\n<bs-modal (onDismiss)=\"dismissed()\" #modal>\r\n  <bs-modal-header [showDismiss]=\"true\">\r\n    <h4 class=\"modal-title\">\r\n      {{Entity.id? 'Edit user!': 'New user!'}}\r\n    </h4>\r\n  </bs-modal-header>\r\n  <bs-modal-body>\r\n    <div class=\"row\">\r\n      <div *ngIf=\"IsBusy | async; else elseTemplateModal\" class=\"col-md-8\">\r\n        <md-spinner class=\"text-center\" style=\"width: inherit;\"></md-spinner>\r\n      </div>\r\n      <ng-template #elseTemplateModal>\r\n\r\n        <div class=\"col-md-6 form-group\">\r\n          <md-input-container class=\"full\">\r\n            <input mdInput type=\"text\" placeholder=\"First Name\" [(ngModel)]=\"Entity.firstName\">\r\n          </md-input-container>\r\n        </div>\r\n        <div class=\"col-md-6 form-group\">\r\n          <md-input-container class=\"full\">\r\n            <input mdInput type=\"text\" placeholder=\"Last Name\" [(ngModel)]=\"Entity.lastName\">\r\n          </md-input-container>\r\n        </div>\r\n\r\n        <div class=\"col-md-6\">\r\n          <md-input-container class=\"full\">\r\n            <input mdInput type=\"text\" placeholder=\"Login\" [(ngModel)]=\"Entity.userName\">\r\n          </md-input-container>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <ng-container *ngIf=\"Entity.id; else elseResetPassword\">\r\n            <button md-raised-button class=\"btn-danger full\" (click)=\"resetPassword();\">Reset Password</button>\r\n          </ng-container>\r\n          <ng-template #elseResetPassword>\r\n            <md-input-container class=\"full\">\r\n              <input mdInput type=\"text\" placeholder=\"Password\" [(ngModel)]=\"Entity.password\">\r\n            </md-input-container>\r\n          </ng-template>\r\n        </div>\r\n        \r\n      </ng-template>\r\n    </div>\r\n  </bs-modal-body>\r\n  <bs-modal-footer>\r\n    <button md-raised-button class=\"btn btn-default pull-right\" [disabled]=\"(IsBusy | async)\" data-dismiss=\"modal\" (click)=\"modal.dismiss()\">Close</button>\r\n    <button md-raised-button class=\"btn btn-primary pull-left\" [disabled]=\"(IsBusy | async) || !(Entity.roles?.length > 0)\" data-dismiss=\"modal\"\r\n      (click)=\"create(false)\">Execute and close (Disabled for test propuse) </button>\r\n    <button *ngIf=\"!Entity.id\" md-raised-button class=\"btn btn-primary pull-left\" [disabled]=\"(IsBusy | async) || !(Entity.roles?.length > 0)\"\r\n      data-dismiss=\"modal\" (click)=\"create(true)\">Execute and continue (Disabled for test propuse)</button>\r\n  </bs-modal-footer>\r\n</bs-modal>"
+module.exports = "<md-card>\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <h4>BE WELCOME TO MY PRESENTATION</h4>\n    </div>\n  </div>\n</md-card>\n<hr>\n\n<md-card>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <h2>About the project</h2>\n      <p style=\"text-align: justify\">\n        This project was made using:\n        <b>Asp.net CORE 2</b> with\n        <b>Entity Framework Core 2</b> for the\n        <b>Backend</b> Rest API.\n        <br>\n      </p>\n      <p style=\"text-align: justify\">\n        For the frontend, I used\n        <b>Angular 4</b> with\n        <b>Redux</b>.\n        <br>\n      </p>\n      <p>Do you want more explanation? I did this\n        <a href=\"http://youtube.com\" target=\"_blank\">video</a>\n        to help ;D\n      </p>\n      <hr>\n      <p>Place the Json here and submit to see the reports in action on the\n        <a href=\"#\" routerLink=\"/Admin/Charts\">report section</a>\n      </p>\n\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button md-raised-button class=\"btn-success\" (click)=\"submitJson()\" [disabled]=\"IsBusy !== 0\">Submit</button>\n          <b>(this will take between 20 minutes to proccess)</b>\n        </div>\n        <div class=\"col-md-12\">\n          <div *ngIf=\"IsBusy !== 0; else elseTemplate\">\n            <md-spinner class=\"text-center\" style=\"width: inherit;\"></md-spinner>\n          </div>\n          <ng-template #elseTemplate>\n            <textarea [(ngModel)]=\"jsonData\" cols=\"70\" rows=\"10\"></textarea>\n          </ng-template>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-md-6\">\n      <h2>About me</h2>\n      <b>Nicollas Braga Gomes Panhoca </b>\n      <br> From Brazil\n      <br> Date of birth: 22 March 1994\n      <br> Email:\n      <a href=\"mailto:nicollaas@hotmail.com?Subject=Hello%20again\" target=\"_top\">Nicollaas@hotmail.com</a>\n      <br> Whatsapp: +55 35 991 641 704\n      <br> Skype: Nicollaas94\n      <br> Graduated in Computer Sciences with excelence in december 2015 by PUC-Minas Brazil.\n      <br>\n    </div>\n  </div>\n</md-card>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/modules/admin/users/users.component.scss":
+/***/ "../../../../../src/app/modules/admin/welcome/welcome.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -252,7 +251,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".roles {\n  position: relative;\n  min-height: 1px;\n  float: left;\n  width: 100%; }\n\n.btn-role-select {\n  position: inherit;\n  top: 20px; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -262,21 +261,15 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/modules/admin/users/users.component.ts":
+/***/ "../../../../../src/app/modules/admin/welcome/welcome.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WelcomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_store_reducers_identity__ = __webpack_require__("../../../../../src/app/store/reducers/identity/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__ = __webpack_require__("../../../../../src/app/store/actions/identity/user.action.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_store_actions_identity_role_action__ = __webpack_require__("../../../../../src/app/store/actions/identity/role.action.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Ng2_bs3_modal___ = __webpack_require__("../../../../Ng2-bs3-modal/bundles/ng2-bs3-modal.umd.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Ng2_bs3_modal____default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Ng2_bs3_modal___);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_utils_cdk_data_source__ = __webpack_require__("../../../../../src/app/utils/cdk-data-source.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_utils_dialog_dialog_component__ = __webpack_require__("../../../../../src/app/utils/dialog/dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_store_actions_reports_report_action__ = __webpack_require__("../../../../../src/app/store/actions/reports/report.action.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -286,195 +279,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 
 
 
 
-
-
-
-
-
-var UsersComponent = /** @class */ (function () {
-    function UsersComponent(store, dialog) {
+var WelcomeComponent = /** @class */ (function () {
+    function WelcomeComponent(store, dialog) {
         var _this = this;
         this.store = store;
         this.dialog = dialog;
-        this.Entity = {};
-        this.getDisabled = false;
-        this.subscriptions = [];
-        this.addRoleToUserFilter = function (row) {
-            if (_this.Entity.roles && _this.Entity.roles.length > 0) {
-                return !_this.Entity.roles.some(function (role) { return role.roleId === row.id; });
-            }
-            return true;
-        };
-        this.userRolefilter = function (row) {
-            if (_this.Entity.roles && _this.Entity.roles.length > 0) {
-                return _this.Entity.roles.some(function (role) { return role.roleId === row.id; });
-            }
-            return false;
-        };
+        this.store.select(function (_) { return _.report.loading; }).subscribe(function (busy) { return _this.IsBusy = busy; });
     }
-    UsersComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        // For principal
-        this.IsBusy = this.store.select(function (_) { return _.user.loading; });
-        this.dataSource = new __WEBPACK_IMPORTED_MODULE_6_app_utils_cdk_data_source__["a" /* CdkDataSource */](this.store.select(__WEBPACK_IMPORTED_MODULE_2_app_store_reducers_identity__["b" /* getUsers */]));
-        this.dataSource.filter = function (data) { return data.disabled !== true || _this.getDisabled; };
-        this.subscriptions.push(this.store.select(function (_) { return _.user.lastActionOnReducer; }).distinctUntilChanged().subscribe(function (data) {
-            switch (data) {
-                case __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["a" /* ACTION_FAILED */]:
-                case __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["c" /* CREATE */]:
-                case __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["n" /* READ */]:
-                case __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["g" /* DELETE */]:
-                case __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["s" /* UPDATE */]:
-                    break;
-                default:
-                    if (!_this.keepOpen) {
-                        _this.modal.close();
-                    }
-                    _this.Entity = {};
-            }
-        }));
-        this.subscriptions.push(this.store.select(function (_) { return _.user.error; }).subscribe(function (data) { return __awaiter(_this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (!data) return [3 /*break*/, 2];
-                        _a = this;
-                        return [4 /*yield*/, data.text()];
-                    case 1:
-                        _a.error = _b.sent();
-                        _b.label = 2;
-                    case 2: return [2 /*return*/];
-                }
-            });
-        }); }));
-        this.store.select(__WEBPACK_IMPORTED_MODULE_2_app_store_reducers_identity__["b" /* getUsers */]).take(1).subscribe(function (data) {
-            if (data.length === 0) {
-                _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["q" /* ReadAction */]());
-            }
-        });
-        // For principal
-        // For Roles
-        this.rolesSourceSelect = new __WEBPACK_IMPORTED_MODULE_6_app_utils_cdk_data_source__["a" /* CdkDataSource */](this.store.select(__WEBPACK_IMPORTED_MODULE_2_app_store_reducers_identity__["a" /* getRoles */]));
-        this.rolesSource = new __WEBPACK_IMPORTED_MODULE_6_app_utils_cdk_data_source__["a" /* CdkDataSource */](this.store.select(__WEBPACK_IMPORTED_MODULE_2_app_store_reducers_identity__["a" /* getRoles */]));
-        this.store.select(__WEBPACK_IMPORTED_MODULE_2_app_store_reducers_identity__["a" /* getRoles */]).take(1).subscribe(function (data) {
-            if (data.length === 0) {
-                _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_4_app_store_actions_identity_role_action__["k" /* ReadAction */]());
-            }
-        });
+    WelcomeComponent.prototype.ngOnInit = function () {
     };
-    UsersComponent.prototype.ngOnDestroy = function () {
-        this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
-    };
-    UsersComponent.prototype.dismissed = function () {
-        this.Entity = {};
-    };
-    UsersComponent.prototype.openModal = function (entity) {
-        this.Entity = Object.assign({}, entity);
-        this.rolesSource.filter = this.userRolefilter;
-        this.rolesSourceSelect.filter = this.addRoleToUserFilter;
-        this.modal.open('lg');
-    };
-    UsersComponent.prototype.enableOrDisable = function (entity) {
-        this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["j" /* DisableAction */](entity));
-    };
-    UsersComponent.prototype.create = function (keep) {
-        this.keepOpen = keep;
-        if (this.Entity.id) {
-            this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["u" /* UpdateAction */](Object.assign({}, this.Entity)));
-        }
-        else {
-            this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_3_app_store_actions_identity_user_action__["e" /* CreateAction */](Object.assign({}, this.Entity)));
+    WelcomeComponent.prototype.submitJson = function () {
+        if (this.IsBusy === 0) {
+            this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_2_app_store_actions_reports_report_action__["u" /* SendJsonAction */](this.jsonData));
         }
     };
-    UsersComponent.prototype.filterChange = function () {
-        var _this = this;
-        this.getDisabled = !this.getDisabled;
-        this.dataSource.filter = function (data) { return data.disabled !== true || _this.getDisabled; };
-    };
-    UsersComponent.prototype.removeRole = function (row) {
-        this.Entity.roles = this.Entity.roles.filter(function (role) { return role.roleId !== row.id; }).slice();
-        this.rolesSource.filter = this.userRolefilter;
-        this.rolesSourceSelect.filter = this.addRoleToUserFilter;
-    };
-    UsersComponent.prototype.resetPassword = function () {
-        var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_8_app_utils_dialog_dialog_component__["a" /* DialogComponent */], {
-            width: '250px', disableClose: true,
-            data: { timeout: 30, question: 'For application propuse, This function was disabled.' }
-        });
-        dialogRef.afterClosed().subscribe(function (result) {
-            // if (result) {
-            //   this.store.dispatch(new userAction.ResetPasswordAction(Object.assign({}, this.Entity)));
-            // }
-        });
-    };
-    UsersComponent.prototype.addRole = function () {
-        if (this.Entity.roles) {
-            this.Entity.roles.push({ roleId: this.roleToAdd });
-        }
-        else {
-            this.Entity.roles = [{ roleId: this.roleToAdd }];
-        }
-        this.roleToAdd = null;
-        this.rolesSource.filter = this.userRolefilter;
-        this.rolesSourceSelect.filter = this.addRoleToUserFilter;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('modal'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_Ng2_bs3_modal___["BsModalComponent"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_Ng2_bs3_modal___["BsModalComponent"]) === "function" && _a || Object)
-    ], UsersComponent.prototype, "modal", void 0);
-    UsersComponent = __decorate([
+    WelcomeComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-users',
-            template: __webpack_require__("../../../../../src/app/modules/admin/users/users.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/modules/admin/users/users.component.scss")]
+            selector: 'app-welcome',
+            template: __webpack_require__("../../../../../src/app/modules/admin/welcome/welcome.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/modules/admin/welcome/welcome.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["b" /* Store */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["b" /* Store */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7__angular_material__["c" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_material__["c" /* MdDialog */]) === "function" && _c || Object])
-    ], UsersComponent);
-    return UsersComponent;
-    var _a, _b, _c;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__ngrx_store__["b" /* Store */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngrx_store__["b" /* Store */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MdDialog */]) === "function" && _b || Object])
+    ], WelcomeComponent);
+    return WelcomeComponent;
+    var _a, _b;
 }());
 
-//# sourceMappingURL=C:/Users/nicol/source/repos/SnappetChallenge/Nicollas.Web/Angular/src/users.component.js.map
+//# sourceMappingURL=C:/Users/nicol/source/repos/SnappetChallenge/Nicollas.Web/Angular/src/welcome.component.js.map
 
 /***/ }),
 
@@ -602,6 +437,9 @@ var ReportService = /** @class */ (function () {
     function ReportService(api) {
         this.api = api;
     }
+    ReportService.prototype.SendJsonString = function (jsonString) {
+        return this.api.post('Evaluation/ProccessInitialData', JSON.parse(jsonString)).publishLast().refCount();
+    };
     ReportService.prototype.ReadApplyMonth = function () {
         return this.api.get('Reports/GetAplyMonth').publishLast().refCount();
     };
@@ -702,7 +540,7 @@ var RoleEffects = /** @class */ (function () {
             var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["i" /* READ */]).skip(1);
             return _this.service.Read()
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["l" /* ReadCompleteAction */](new __WEBPACK_IMPORTED_MODULE_11_app_store_reducers_BaseReducer__["a" /* Filter */](result)); })
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["k" /* ReadCompleteAction */](new __WEBPACK_IMPORTED_MODULE_11_app_store_reducers_BaseReducer__["a" /* Filter */](result)); })
                 .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["h" /* FaliedAction */](err)); });
         });
         this.Create$ = this.actions$
@@ -716,13 +554,13 @@ var RoleEffects = /** @class */ (function () {
                 .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["h" /* FaliedAction */](err)); });
         });
         this.Update$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["m" /* UPDATE */]) // the action type that will hit this
+            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["l" /* UPDATE */]) // the action type that will hit this
             .map(function (action) { return action.payload; })
             .switchMap(function (entity) {
-            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["m" /* UPDATE */]).skip(1);
+            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["l" /* UPDATE */]).skip(1);
             return _this.service.Update(entity)
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["o" /* UpdateCompleteAction */]((entity)); })
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["n" /* UpdateCompleteAction */]((entity)); })
                 .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["h" /* FaliedAction */](err)); });
         });
         this.Disable$ = this.actions$
@@ -732,7 +570,7 @@ var RoleEffects = /** @class */ (function () {
             var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["g" /* DISABLE */]).skip(1);
             return _this.service.DisableOrEnable(entity)
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["o" /* UpdateCompleteAction */]((Object.assign({}, entity, { disabled: !entity.disabled }))); })
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["n" /* UpdateCompleteAction */]((Object.assign({}, entity, { disabled: !entity.disabled }))); })
                 .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_role_action__["h" /* FaliedAction */](err)); });
         });
     }
@@ -834,14 +672,14 @@ var UserEffects = /** @class */ (function () {
         this.actions$ = actions$;
         this.service = service;
         this.load$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["n" /* READ */]) // the action type that will hit this
+            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["l" /* READ */]) // the action type that will hit this
             .map(function (action) { return null; })
             .switchMap(function (_) {
-            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["n" /* READ */]).skip(1);
+            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["l" /* READ */]).skip(1);
             return _this.service.Read()
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["r" /* ReadCompleteAction */](new __WEBPACK_IMPORTED_MODULE_11_app_store_reducers_BaseReducer__["a" /* Filter */](result)); })
-                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* FaliedAction */](err)); });
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["o" /* ReadCompleteAction */](new __WEBPACK_IMPORTED_MODULE_11_app_store_reducers_BaseReducer__["a" /* Filter */](result)); })
+                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* FaliedAction */](err)); });
         });
         this.Create$ = this.actions$
             .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["c" /* CREATE */]) // the action type that will hit this
@@ -850,48 +688,48 @@ var UserEffects = /** @class */ (function () {
             var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["c" /* CREATE */]).skip(1);
             return _this.service.Create(entity, entity.roles[0].roleId)
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["f" /* CreateCompleteAction */]((Object.assign({}, entity, { id: result }))); })
-                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* FaliedAction */](err)); });
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["e" /* CreateCompleteAction */]((Object.assign({}, entity, { id: result }))); })
+                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* FaliedAction */](err)); });
         });
         this.Update$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["s" /* UPDATE */]) // the action type that will hit this
+            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["p" /* UPDATE */]) // the action type that will hit this
             .map(function (action) { return action.payload; })
             .switchMap(function (entity) {
-            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["s" /* UPDATE */]).skip(1);
+            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["p" /* UPDATE */]).skip(1);
             return _this.service.Update(entity)
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["v" /* UpdateCompleteAction */]((entity)); })
-                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* FaliedAction */](err)); });
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["r" /* UpdateCompleteAction */]((entity)); })
+                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* FaliedAction */](err)); });
         });
         this.Disable$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* DISABLE */]) // the action type that will hit this
+            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["h" /* DISABLE */]) // the action type that will hit this
             .map(function (action) { return action.payload; })
             .switchMap(function (entity) {
-            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* DISABLE */]).skip(1);
+            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["h" /* DISABLE */]).skip(1);
             return _this.service.DisableOrEnable(entity)
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["v" /* UpdateCompleteAction */]((Object.assign({}, entity, { disabled: !entity.disabled }))); })
-                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* FaliedAction */](err)); });
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["r" /* UpdateCompleteAction */]((Object.assign({}, entity, { disabled: !entity.disabled }))); })
+                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* FaliedAction */](err)); });
         });
         this.ResetPassword$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["p" /* RESET_PASSWORD */]) // the action type that will hit this
+            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["n" /* RESET_PASSWORD */]) // the action type that will hit this
             .map(function (action) { return action.payload; })
             .switchMap(function (entity) {
-            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["p" /* RESET_PASSWORD */]).skip(1);
+            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["n" /* RESET_PASSWORD */]).skip(1);
             return _this.service.ResetPassword(entity)
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["m" /* PasswordCompleteAction */](); })
-                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* FaliedAction */](err)); });
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* PasswordCompleteAction */](); })
+                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* FaliedAction */](err)); });
         });
         this.ChangePassword$ = this.actions$
             .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["b" /* CHANGE_PASSWORD */]) // the action type that will hit this
             .map(function (action) { return action.payload; })
             .switchMap(function (data) {
-            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["p" /* RESET_PASSWORD */]).skip(1);
+            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["n" /* RESET_PASSWORD */]).skip(1);
             return _this.service.ChangePassword(data.entity, data.newPassword, data.current)
                 .takeUntil(next$)
-                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["m" /* PasswordCompleteAction */](); })
-                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* FaliedAction */](err)); });
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["k" /* PasswordCompleteAction */](); })
+                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_identity_user_action__["i" /* FaliedAction */](err)); });
         });
     }
     __decorate([
@@ -997,6 +835,16 @@ var ReportEffects = /** @class */ (function () {
         var _this = this;
         this.actions$ = actions$;
         this.service = service;
+        this.SendJson$ = this.actions$
+            .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_reports_report_action__["s" /* SEND_JSON */]) // the action type that will hit this
+            .map(function (action) { return action.payload; })
+            .switchMap(function (jsonString) {
+            var next$ = _this.actions$.ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_reports_report_action__["s" /* SEND_JSON */]).skip(1);
+            return _this.service.SendJsonString(jsonString)
+                .takeUntil(next$)
+                .map(function (result) { return new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_reports_report_action__["v" /* SendJsonActionComplete */](); })
+                .catch(function (err) { return Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_10_app_store_actions_reports_report_action__["b" /* FaliedAction */](err)); });
+        });
         this.loadAplyMonth$ = this.actions$
             .ofType(__WEBPACK_IMPORTED_MODULE_10_app_store_actions_reports_report_action__["c" /* LOAD_APLY_MONTH */]) // the action type that will hit this
             .map(function (action) { return null; })
@@ -1041,76 +889,32 @@ var ReportEffects = /** @class */ (function () {
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["b" /* Effect */])(),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"]) === "function" && _a || Object)
-    ], ReportEffects.prototype, "loadAplyMonth$", void 0);
+    ], ReportEffects.prototype, "SendJson$", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["b" /* Effect */])(),
         __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"]) === "function" && _b || Object)
-    ], ReportEffects.prototype, "loadAplyWeek$", void 0);
+    ], ReportEffects.prototype, "loadAplyMonth$", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["b" /* Effect */])(),
         __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"]) === "function" && _c || Object)
-    ], ReportEffects.prototype, "loadDificultyWeek$", void 0);
+    ], ReportEffects.prototype, "loadAplyWeek$", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["b" /* Effect */])(),
         __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"]) === "function" && _d || Object)
+    ], ReportEffects.prototype, "loadDificultyWeek$", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["b" /* Effect */])(),
+        __metadata("design:type", typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"]) === "function" && _e || Object)
     ], ReportEffects.prototype, "loadDificultyMonth$", void 0);
     ReportEffects = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_6__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["a" /* Actions */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["a" /* Actions */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_11_app_services_reports_report_service__["a" /* ReportService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_11_app_services_reports_report_service__["a" /* ReportService */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["a" /* Actions */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ngrx_effects__["a" /* Actions */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_11_app_services_reports_report_service__["a" /* ReportService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_11_app_services_reports_report_service__["a" /* ReportService */]) === "function" && _g || Object])
     ], ReportEffects);
     return ReportEffects;
-    var _a, _b, _c, _d, _e, _f;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=C:/Users/nicol/source/repos/SnappetChallenge/Nicollas.Web/Angular/src/report.effect.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/store/reducers/identity/index.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export getRoleState */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getRoles; });
-/* unused harmony export getUserState */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getUsers; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__role_reducer__ = __webpack_require__("../../../../../src/app/store/reducers/identity/role.reducer.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_reducer__ = __webpack_require__("../../../../../src/app/store/reducers/identity/user.reducer.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_reselect_lib__ = __webpack_require__("../../../../reselect/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_reselect_lib___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_reselect_lib__);
-/**
- * Every reducer module exports selector functions, however child reducers
- * have no knowledge of the overall state tree. To make them useable, we
- * need to make new selectors that wrap them.
- *
- * The createSelector function from the reselect library creates
- * very efficient selectors that are memoized and only recompute when arguments change.
- * The created selectors can also be composed together to select different
- * pieces of state.
- */
-
-
-
-/**
- * A selector function is a map function factory. We pass it parameters and it
- * returns a function that maps from the larger state tree into a smaller
- * piece of state. This selector simply selects the `books` state.
- *
- * Selectors are used with the `select` operator.
- *
- * ```ts
- * class MyComponent {
- * 	constructor(state$: Observable<State>) {
- * 	  this.state$ = state$.select(getAdwordsAccount);
- * 	}
- * }
- * ```
- */
-var getRoleState = function (state) { return state.role; };
-var getRoles = Object(__WEBPACK_IMPORTED_MODULE_2_reselect_lib__["createSelector"])(getRoleState, __WEBPACK_IMPORTED_MODULE_0__role_reducer__["a" /* get */]);
-var getUserState = function (state) { return state.user; };
-var getUsers = Object(__WEBPACK_IMPORTED_MODULE_2_reselect_lib__["createSelector"])(getUserState, __WEBPACK_IMPORTED_MODULE_1__user_reducer__["a" /* get */]);
-//# sourceMappingURL=C:/Users/nicol/source/repos/SnappetChallenge/Nicollas.Web/Angular/src/index.js.map
 
 /***/ }),
 
@@ -1159,92 +963,6 @@ var getAplyWeek = Object(__WEBPACK_IMPORTED_MODULE_1_reselect_lib__["createSelec
 var getDificultyWeek = Object(__WEBPACK_IMPORTED_MODULE_1_reselect_lib__["createSelector"])(getState, __WEBPACK_IMPORTED_MODULE_0__report_reducer__["c" /* getDificultyWeek */]);
 var getProgressWeek = Object(__WEBPACK_IMPORTED_MODULE_1_reselect_lib__["createSelector"])(getState, __WEBPACK_IMPORTED_MODULE_0__report_reducer__["d" /* getProgressWeek */]);
 //# sourceMappingURL=C:/Users/nicol/source/repos/SnappetChallenge/Nicollas.Web/Angular/src/index.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/utils/cdk-data-source.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CdkDataSource; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk__ = __webpack_require__("../../../cdk/@angular/cdk.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_startWith__ = __webpack_require__("../../../../rxjs/add/operator/startWith.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_startWith__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge__ = __webpack_require__("../../../../rxjs/add/observable/merge.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__ = __webpack_require__("../../../../rxjs/add/operator/debounceTime.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("../../../../rxjs/add/operator/distinctUntilChanged.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_fromEvent__ = __webpack_require__("../../../../rxjs/add/observable/fromEvent.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_fromEvent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_fromEvent__);
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-
-
-
-
-
-
-/**
- * Data source to provide what data should be rendered in the table. Note that the data source
- * can retrieve its data in any way. In this case, the data source is provided a reference
- * to a common data base, ExampleDatabase. It is not the data source's responsibility to manage
- * the underlying data. Instead, it only needs to take the data and send the table exactly what
- * should be rendered.
- */
-var CdkDataSource = /** @class */ (function (_super) {
-    __extends(CdkDataSource, _super);
-    function CdkDataSource(paramRec) {
-        var _this = _super.call(this) || this;
-        _this.paramRec = paramRec;
-        _this._filterChange = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"](_this.defaultFilterFunction);
-        _this.data = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"]([]);
-        _this.subscribed = paramRec.subscribe(function (data) {
-            _this.data.next(data);
-        });
-        return _this;
-    }
-    Object.defineProperty(CdkDataSource.prototype, "filter", {
-        get: function () { return this._filterChange.value; },
-        set: function (filter) { this._filterChange.next(filter); },
-        enumerable: true,
-        configurable: true
-    });
-    /** Connect function called by the table to retrieve one stream containing the data to render. */
-    CdkDataSource.prototype.connect = function () {
-        var _this = this;
-        var displayDataChanges = [
-            this.data,
-            this._filterChange,
-        ];
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].merge.apply(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"], displayDataChanges).map(function () {
-            return _this.data.value.slice().filter(_this._filterChange.value);
-        });
-    };
-    CdkDataSource.prototype.disconnect = function () { };
-    CdkDataSource.prototype.defaultFilterFunction = function (row) { return true; };
-    return CdkDataSource;
-}(__WEBPACK_IMPORTED_MODULE_0__angular_cdk__["o" /* DataSource */]));
-
-//# sourceMappingURL=C:/Users/nicol/source/repos/SnappetChallenge/Nicollas.Web/Angular/src/cdk-data-source.js.map
 
 /***/ }),
 

@@ -37,7 +37,14 @@ export const initialState: State = {
  * @param action the action to create the new state Object
  */
 export function reducer(state: State = initialState, action: typeActions.Actions): State {
-    switch (action.type) {
+    switch (action.type) { 
+        case typeActions.SEND_JSON_COMPLETE: {
+        return Object.assign({}, state,
+            {
+                lastActionOnReducer: action.type,
+                loading: state.loading - 1
+            });
+    }
         case typeActions.LOAD_APLY_MONTH_COMPLETE: {
             return Object.assign({}, state,
                 {
@@ -70,6 +77,7 @@ export function reducer(state: State = initialState, action: typeActions.Actions
                     progressWeek: action.payload
                 });
         }
+        case typeActions.SEND_JSON:
         case typeActions.LOAD_DIFICULTY_WEEK:
         case typeActions.LOAD_PROGRESS_WEEK:
         case typeActions.LOAD_APLY_WEEK:

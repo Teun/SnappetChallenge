@@ -730,7 +730,7 @@ var AppHeaderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/modules/shared/layout/sidenav/sidenav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<span>\r\n    <div class=\"user-panel\">\r\n        <div class=\"pull-left image\"><img src=\"https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg\" alt=\"User Image\" class=\"img-circle\"></div>\r\n        <div class=\"pull-left info\">\r\n            <p>{{(authInformation | async)?.user_name}}</p>\r\n            <p class=\"designation\">Admin</p>\r\n        </div>\r\n    </div>\r\n    <ul class=\"sidebar-menu\">\r\n        <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\">\r\n            <a href=\"#\" routerLink=\"/\"><i class=\"fa fa-television\"></i><span>Wellcome</span></a>\r\n        </li>\r\n        <li routerLinkActive=\"active\" *ngIf=\"guard.HasClaim(['Order','Bill'])\">\r\n            <a href=\"#\" routerLink=\"/Admin/Charts\"><i class=\"fa fa-eye\"></i><span>Report</span></a>\r\n        <li routerLinkActive=\"active\" *ngIf=\"guard.HasClaim(['User'])\">\r\n            <a href=\"#\" routerLink=\"/Admin/Users\"><i class=\"fa fa-user\"></i><span>Users</span></a>\r\n        </li>                 \r\n    </ul>\r\n\r\n    <div class=\"panel-botton\">\r\n        <button md-icon-button mdTooltip=\"Logout\" [mdTooltipPosition]=\"'above'\" (click)=\"logout()\">\r\n            <md-icon class=\"md-24\">lock</md-icon>\r\n          </button>\r\n          <button md-icon-button mdTooltip=\"Help/about\" [mdTooltipPosition]=\"'above'\">\r\n            <md-icon class=\"md-24\">help</md-icon>\r\n          </button>\r\n          <button md-icon-button mdTooltip=\"Full screen\" [mdTooltipPosition]=\"'above'\" (click)=\"setFullScreen();\">\r\n            <md-icon class=\"md-24\"*ngIf=\"!layoutConfig.isScreenFull\">zoom_out_map</md-icon>\r\n            <md-icon class=\"md-24\"*ngIf=\"layoutConfig.isScreenFull\">fullscreen_exit</md-icon>\r\n          </button>\r\n          <!-- <button md-icon-button color=\"warn\" [hidden]=\"true\">\r\n            <md-icon class=\"md-24\">fullscreen_exit</md-icon>\r\n          </button> -->\r\n          <button md-icon-button mdTooltip=\"Opinion and suggestions\" [mdTooltipPosition]=\"'above'\">\r\n            <md-icon class=\"md-24\">insert_emoticon</md-icon>\r\n          </button>\r\n    </div>\r\n</span>\r\n\r\n<!--<md-sidenav #sidenav mode=\"side\" class=\"app-sidenav\" opened=\"true\">-->\r\n<!--<div class=\"user-panel\">\r\n        <div class=\"pull-left image\"><img src=\"https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg\" alt=\"User Image\" class=\"img-circle\"></div>\r\n        <div class=\"pull-left info\">\r\n            <p>Nicollas Braga {{layoutConfig.navbarOpened}}</p>\r\n            <p class=\"designation\">Administrador</p>\r\n        </div>\r\n    </div>-->\r\n\r\n\r\n<!-- Sidebar Menu-->\r\n<!--<ul class=\"sidebar-menu\">\r\n        <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\"><a href=\"#\" routerLink=\"/\"><i class=\"fa fa-television\"></i><span>Inicio</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/mesa/criar\"><i class=\"fa fa-table\"></i><span>Criar Mesa</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produtos/novo\"><i class=\"fa fa-dashboard\"></i><span>Novo Produto</span></a></li>\r\n        <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\"><a href=\"#\" routerLink=\"/produtos\"><i class=\"fa fa-dashboard\"></i><span>Produtos</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/colaboradores\"><i class=\"fa fa-dashboard\"></i><span>Colaboradores</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/permissoes\"><i class=\"fa fa-dashboard\"></i><span>Grupos de Permissoes</span></a></li>-->\r\n\r\n<!--<li class=\"treeview\">\r\n                    <a href=\"#\"><i class=\"fa fa-laptop\"></i><span>UI Elements</span><i class=\"fa fa-angle-right\"></i></a>\r\n                    <ul class=\"treeview-menu\" style=\"display: none;\">\r\n                        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produto/novo\"><i class=\"fa fa-dashboard\"></i><span>Novo Produto</span></a></li>\r\n                        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produtos\"><i class=\"fa fa-dashboard\"></i><span>Produtos</span></a></li>\r\n                        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produto/editar/2\"><i class=\"fa fa-dashboard\"></i><span>Categorias</span></a></li>\r\n                    </ul>\r\n                </li>-->\r\n<!--</ul>-->\r\n<!--</md-sidenav>-->"
+module.exports = "<span>\r\n    <div class=\"user-panel\">\r\n        <div class=\"pull-left image\"><img src=\"assets/IMG-20171127-WA0005-2.jpg\" alt=\"User Image\" class=\"img-circle\"></div>\r\n        <div class=\"pull-left info\">\r\n            <p>Nicollas Braga</p>\r\n            <p class=\"designation\">Challenge</p>\r\n        </div>\r\n    </div>\r\n    <ul class=\"sidebar-menu\">\r\n        <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\">\r\n            <a href=\"#\" routerLink=\"/\"><i class=\"fa fa-television\"></i><span>Welcome</span></a>\r\n        </li>\r\n        <li routerLinkActive=\"active\" *ngIf=\"guard.HasClaim(['Order','Bill'])\">\r\n            <a href=\"#\" routerLink=\"/Admin/Charts\"><i class=\"fa fa-eye\"></i><span>Report</span></a>\r\n        </li>                 \r\n    </ul>\r\n\r\n    <div class=\"panel-botton\">\r\n        <button md-icon-button mdTooltip=\"Logout\" [mdTooltipPosition]=\"'above'\" (click)=\"logout()\">\r\n            <md-icon class=\"md-24\">lock</md-icon>\r\n          </button>\r\n          <button md-icon-button mdTooltip=\"Help/about\" [mdTooltipPosition]=\"'above'\">\r\n            <md-icon class=\"md-24\">help</md-icon>\r\n          </button>\r\n          <button md-icon-button mdTooltip=\"Full screen\" [mdTooltipPosition]=\"'above'\" (click)=\"setFullScreen();\">\r\n            <md-icon class=\"md-24\"*ngIf=\"!layoutConfig.isScreenFull\">zoom_out_map</md-icon>\r\n            <md-icon class=\"md-24\"*ngIf=\"layoutConfig.isScreenFull\">fullscreen_exit</md-icon>\r\n          </button>\r\n          <!-- <button md-icon-button color=\"warn\" [hidden]=\"true\">\r\n            <md-icon class=\"md-24\">fullscreen_exit</md-icon>\r\n          </button> -->\r\n          <button md-icon-button mdTooltip=\"Opinion and suggestions\" [mdTooltipPosition]=\"'above'\">\r\n            <md-icon class=\"md-24\">insert_emoticon</md-icon>\r\n          </button>\r\n    </div>\r\n</span>\r\n\r\n<!--<md-sidenav #sidenav mode=\"side\" class=\"app-sidenav\" opened=\"true\">-->\r\n<!--<div class=\"user-panel\">\r\n        <div class=\"pull-left image\"><img src=\"https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg\" alt=\"User Image\" class=\"img-circle\"></div>\r\n        <div class=\"pull-left info\">\r\n            <p>Nicollas Braga {{layoutConfig.navbarOpened}}</p>\r\n            <p class=\"designation\">Administrador</p>\r\n        </div>\r\n    </div>-->\r\n\r\n\r\n<!-- Sidebar Menu-->\r\n<!--<ul class=\"sidebar-menu\">\r\n        <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\"><a href=\"#\" routerLink=\"/\"><i class=\"fa fa-television\"></i><span>Inicio</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/mesa/criar\"><i class=\"fa fa-table\"></i><span>Criar Mesa</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produtos/novo\"><i class=\"fa fa-dashboard\"></i><span>Novo Produto</span></a></li>\r\n        <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\"><a href=\"#\" routerLink=\"/produtos\"><i class=\"fa fa-dashboard\"></i><span>Produtos</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/colaboradores\"><i class=\"fa fa-dashboard\"></i><span>Colaboradores</span></a></li>\r\n        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/permissoes\"><i class=\"fa fa-dashboard\"></i><span>Grupos de Permissoes</span></a></li>-->\r\n\r\n<!--<li class=\"treeview\">\r\n                    <a href=\"#\"><i class=\"fa fa-laptop\"></i><span>UI Elements</span><i class=\"fa fa-angle-right\"></i></a>\r\n                    <ul class=\"treeview-menu\" style=\"display: none;\">\r\n                        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produto/novo\"><i class=\"fa fa-dashboard\"></i><span>Novo Produto</span></a></li>\r\n                        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produtos\"><i class=\"fa fa-dashboard\"></i><span>Produtos</span></a></li>\r\n                        <li routerLinkActive=\"active\"><a href=\"#\" routerLink=\"/produto/editar/2\"><i class=\"fa fa-dashboard\"></i><span>Categorias</span></a></li>\r\n                    </ul>\r\n                </li>-->\r\n<!--</ul>-->\r\n<!--</md-sidenav>-->"
 
 /***/ }),
 
@@ -1751,8 +1751,8 @@ var SignService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CREATE_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return READ; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return READ_COMPLETE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return UPDATE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return UPDATE_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return UPDATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return UPDATE_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return DELETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return DELETE_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DISABLE; });
@@ -1760,10 +1760,10 @@ var SignService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ACTION_FAILED; });
 /* unused harmony export CreateAction */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return CreateCompleteAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return ReadAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return ReadCompleteAction; });
+/* unused harmony export ReadAction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return ReadCompleteAction; });
 /* unused harmony export UpdateAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return UpdateCompleteAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return UpdateCompleteAction; });
 /* unused harmony export DeleteAction */
 /* unused harmony export DeleteCompleteAction */
 /* unused harmony export DisableAction */
@@ -1877,32 +1877,32 @@ var FaliedAction = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CREATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return CREATE_COMPLETE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return READ; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return READ_COMPLETE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return UPDATE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return UPDATE_COMPLETE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DELETE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return DELETE_COMPLETE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return DISABLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return READ; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return READ_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return UPDATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return UPDATE_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return DELETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DELETE_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return DISABLE; });
 /* unused harmony export DISABLE_COMPLETE */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return RESET_PASSWORD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return RESET_PASSWORD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CHANGE_PASSWORD; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return PASSWORD_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return PASSWORD_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ACTION_FAILED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return CreateAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return CreateCompleteAction; });
+/* unused harmony export CreateAction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return CreateCompleteAction; });
 /* unused harmony export ResetPasswordAction */
 /* unused harmony export ChangePasswordAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return PasswordCompleteAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return ReadAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return ReadCompleteAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return UpdateAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return UpdateCompleteAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return PasswordCompleteAction; });
+/* unused harmony export ReadAction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return ReadCompleteAction; });
+/* unused harmony export UpdateAction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return UpdateCompleteAction; });
 /* unused harmony export DeleteAction */
 /* unused harmony export DeleteCompleteAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return DisableAction; });
+/* unused harmony export DisableAction */
 /* unused harmony export DisableCompleteAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return FaliedAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return FaliedAction; });
 var CREATE = '[User] Create';
 var CREATE_COMPLETE = '[User] CreateComplete';
 var READ = '[User] Read';
@@ -2043,7 +2043,11 @@ var FaliedAction = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return LOAD_DIFICULTY_WEEK_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LOAD_PROGRESS_WEEK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LOAD_PROGRESS_WEEK_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return SEND_JSON; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return SEND_JSON_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ACTION_FAILED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return SendJsonAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return SendJsonActionComplete; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LoadAplyMonthAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return LoadAplyMonthCompleteAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return LoadAplyWeekAction; });
@@ -2061,7 +2065,24 @@ var LOAD_DIFICULTY_WEEK = '[Reports] LOAD_DIFICULTY_WEEK';
 var LOAD_DIFICULTY_WEEK_COMPLETE = '[Reports] LOAD_DIFICULTY_WEEK_COMPLETE';
 var LOAD_PROGRESS_WEEK = '[Reports] LOAD_PROGRESS_WEEK';
 var LOAD_PROGRESS_WEEK_COMPLETE = '[Reports] LOAD_PROGRESS_WEEK_COMPLETE';
+var SEND_JSON = '[Reports] SEND_JSON';
+var SEND_JSON_COMPLETE = '[Reports] SEND_JSON_COMPLETE';
 var ACTION_FAILED = '[Reports] ACTION_FAILED';
+var SendJsonAction = /** @class */ (function () {
+    function SendJsonAction(payload) {
+        this.payload = payload;
+        this.type = SEND_JSON;
+    }
+    return SendJsonAction;
+}());
+
+var SendJsonActionComplete = /** @class */ (function () {
+    function SendJsonActionComplete() {
+        this.type = SEND_JSON_COMPLETE;
+    }
+    return SendJsonActionComplete;
+}());
+
 var LoadAplyMonthAction = /** @class */ (function () {
     function LoadAplyMonthAction() {
         this.type = LOAD_APLY_MONTH;
@@ -2671,8 +2692,8 @@ function PureInsert(array, filter) {
 
 "use strict";
 /* unused harmony export initialState */
-/* harmony export (immutable) */ __webpack_exports__["b"] = reducer;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return get; });
+/* harmony export (immutable) */ __webpack_exports__["a"] = reducer;
+/* unused harmony export get */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__ = __webpack_require__("../../../../../src/app/store/actions/identity/role.action.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_store_reducers_BaseReducer__ = __webpack_require__("../../../../../src/app/store/reducers/BaseReducer.ts");
 
@@ -2713,7 +2734,7 @@ function reducer(state, action) {
                 container: __WEBPACK_IMPORTED_MODULE_1_app_store_reducers_BaseReducer__["b" /* PureInsertOrUpdate */](state.container, state.container[0].remove(action.payload))
             });
         }
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__["n" /* UPDATE_COMPLETE */]: {
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__["m" /* UPDATE_COMPLETE */]: {
             return Object.assign({}, state, {
                 lastActionOnReducer: action.type,
                 loading: false,
@@ -2729,7 +2750,7 @@ function reducer(state, action) {
         }
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__["b" /* CREATE */]:
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__["i" /* READ */]:
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__["m" /* UPDATE */]:
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__["l" /* UPDATE */]:
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_role_action__["e" /* DELETE */]: {
             return Object.assign({}, state, { lastActionOnReducer: action.type, loading: true, error: null });
         }
@@ -2751,8 +2772,8 @@ var get = function (state) { return state.container.length !== 0 ? state.contain
 
 "use strict";
 /* unused harmony export initialState */
-/* harmony export (immutable) */ __webpack_exports__["b"] = reducer;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return get; });
+/* harmony export (immutable) */ __webpack_exports__["a"] = reducer;
+/* unused harmony export get */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__ = __webpack_require__("../../../../../src/app/store/actions/identity/user.action.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_store_reducers_BaseReducer__ = __webpack_require__("../../../../../src/app/store/reducers/BaseReducer.ts");
 
@@ -2786,35 +2807,35 @@ function reducer(state, action) {
                 container: __WEBPACK_IMPORTED_MODULE_1_app_store_reducers_BaseReducer__["b" /* PureInsertOrUpdate */](state.container, state.container[0].insert(action.payload))
             });
         }
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["h" /* DELETE_COMPLETE */]: {
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["g" /* DELETE_COMPLETE */]: {
             return Object.assign({}, state, {
                 lastActionOnReducer: action.type,
                 loading: false,
                 container: __WEBPACK_IMPORTED_MODULE_1_app_store_reducers_BaseReducer__["b" /* PureInsertOrUpdate */](state.container, state.container[0].remove(action.payload))
             });
         }
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["t" /* UPDATE_COMPLETE */]: {
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["q" /* UPDATE_COMPLETE */]: {
             return Object.assign({}, state, {
                 lastActionOnReducer: action.type,
                 loading: false,
                 container: __WEBPACK_IMPORTED_MODULE_1_app_store_reducers_BaseReducer__["c" /* PureReplaceEntity */](state.container, action.payload)
             });
         }
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["o" /* READ_COMPLETE */]: {
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["m" /* READ_COMPLETE */]: {
             return Object.assign({}, state, {
                 lastActionOnReducer: action.type,
                 loading: false,
                 container: __WEBPACK_IMPORTED_MODULE_1_app_store_reducers_BaseReducer__["b" /* PureInsertOrUpdate */](state.container, action.payload)
             });
         }
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["l" /* PASSWORD_COMPLETE */]: {
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["j" /* PASSWORD_COMPLETE */]: {
             return Object.assign({}, state, { lastActionOnReducer: action.type, loading: false });
         }
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["p" /* RESET_PASSWORD */]:
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["n" /* RESET_PASSWORD */]:
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["c" /* CREATE */]:
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["n" /* READ */]:
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["s" /* UPDATE */]:
-        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["g" /* DELETE */]: {
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["l" /* READ */]:
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["p" /* UPDATE */]:
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["f" /* DELETE */]: {
             return Object.assign({}, state, { lastActionOnReducer: action.type, loading: true, error: null });
         }
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_identity_user_action__["a" /* ACTION_FAILED */]: {
@@ -2858,8 +2879,8 @@ var get = function (state) { return state.container.length !== 0 ? state.contain
  */
 var reducers = {
     sign: __WEBPACK_IMPORTED_MODULE_0__signs_sign_reducer__["a" /* reducer */],
-    role: __WEBPACK_IMPORTED_MODULE_1__identity_role_reducer__["b" /* reducer */],
-    user: __WEBPACK_IMPORTED_MODULE_2__identity_user_reducer__["b" /* reducer */],
+    role: __WEBPACK_IMPORTED_MODULE_1__identity_role_reducer__["a" /* reducer */],
+    user: __WEBPACK_IMPORTED_MODULE_2__identity_user_reducer__["a" /* reducer */],
     report: __WEBPACK_IMPORTED_MODULE_3__reports_report_reducer__["e" /* reducer */]
 };
 //# sourceMappingURL=C:/Users/nicol/source/repos/SnappetChallenge/Nicollas.Web/Angular/src/index.js.map
@@ -2903,6 +2924,12 @@ var initialState = {
 function reducer(state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_reports_report_action__["t" /* SEND_JSON_COMPLETE */]: {
+            return Object.assign({}, state, {
+                lastActionOnReducer: action.type,
+                loading: state.loading - 1
+            });
+        }
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_reports_report_action__["d" /* LOAD_APLY_MONTH_COMPLETE */]: {
             return Object.assign({}, state, {
                 lastActionOnReducer: action.type,
@@ -2931,6 +2958,7 @@ function reducer(state, action) {
                 progressWeek: action.payload
             });
         }
+        case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_reports_report_action__["s" /* SEND_JSON */]:
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_reports_report_action__["g" /* LOAD_DIFICULTY_WEEK */]:
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_reports_report_action__["i" /* LOAD_PROGRESS_WEEK */]:
         case __WEBPACK_IMPORTED_MODULE_0_app_store_actions_reports_report_action__["e" /* LOAD_APLY_WEEK */]:

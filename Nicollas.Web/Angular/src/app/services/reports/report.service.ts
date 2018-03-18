@@ -6,6 +6,13 @@ import { Observable } from 'rxjs/Observable';
 export class ReportService {
   constructor(private api: Api) { }
 
+  SendJsonString(jsonString: string): Observable<boolean> {
+    return this.api.post<boolean>('Evaluation/ProccessInitialData',
+    JSON.parse(jsonString) as Nicollas.Dto.evaluationDto[]
+    ).publishLast().refCount();
+  }
+
+
   ReadApplyMonth(): Observable<Ngx.Charts.Single[]> {
     return this.api.get<Ngx.Charts.Single[]>('Reports/GetAplyMonth').publishLast().refCount();
   }
