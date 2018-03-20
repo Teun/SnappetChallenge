@@ -37,10 +37,10 @@ namespace Nicollas
                 try
                 {
                     var environment = services.GetRequiredService<IHostingEnvironment>();
-                    if (!environment.IsDevelopment())
-                    {
+                    //if (!environment.IsDevelopment())
+                    //{
                         NicollasDbInitializer.Initialize(services.GetRequiredService<IDbContext>());
-                    }
+                    //}
 
                     var worker = services.GetRequiredService<IUnitOfWork>();
                     NicollasDbInitializer.Seed(
