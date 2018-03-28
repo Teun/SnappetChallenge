@@ -104,7 +104,7 @@ namespace Nicollas
             IUserRoleService roleService = (IUserRoleService)provider.GetService(typeof(IUserRoleService));
             var uow = (IUnitOfWork)provider.GetService(typeof(IUnitOfWork));
 
-            var user = userManager.Users.FirstOrDefault(row => row.UserName == username);  // await userManager.FindByNameAsync(username); // -- getting from cache is not safe
+            var user = userManager.Users.FirstOrDefault(row => row.UserName.ToLower() == username.ToLower());  // await userManager.FindByNameAsync(username); // -- getting from cache is not safe
             if (user == null)
             {
                 return null;

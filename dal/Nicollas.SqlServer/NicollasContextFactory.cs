@@ -17,9 +17,9 @@ namespace Nicollas.SqlServer
         /// Connection string
         /// </summary>
 #if DEBUG
-        private const string CONNECTIONSTRING = "server=localhost;user id=snappetChallenge;password=Pa$$word;database=snappet";
+        private const string CONNECTIONSTRING = "Data Source=snappet.db;";
 #else
-        private const string CONNECTIONSTRING = "server=localhost;user id=snappetChallenge;password=Pa$$word;database=snappet";
+        private const string CONNECTIONSTRING = "Data Source=snappet.db;";
 #endif
 
         /// <summary>

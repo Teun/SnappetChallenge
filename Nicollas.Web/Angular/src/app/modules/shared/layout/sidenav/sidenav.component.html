@@ -10,7 +10,7 @@
         <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a href="#" routerLink="/"><i class="fa fa-television"></i><span>Welcome</span></a>
         </li>
-        <li routerLinkActive="active" *ngIf="guard.HasClaim(['Order','Bill'])">
+        <li routerLinkActive="active">
             <a href="#" routerLink="/Admin/Charts"><i class="fa fa-eye"></i><span>Report</span></a>
         </li>                 
     </ul>

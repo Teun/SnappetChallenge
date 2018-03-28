@@ -16,6 +16,7 @@ namespace Nicollas.SqlServer
     using Configurations;
     using Core;
     using Core.Entities.Identity;
+    using Microsoft.Data.Sqlite;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using Microsoft.EntityFrameworkCore.Storage;
@@ -479,8 +480,7 @@ namespace Nicollas.SqlServer
         /// <inheritdoc/>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // optionsBuilder.UseMySQL(this.connectionString); // OFICIAL MYSQL THAT IS ACTUALLY BROKEN
-            optionsBuilder.UseMySql(this.connectionString); // POMELO ADDAPTER TO WORKARROUNT
+            optionsBuilder.UseSqlite(new SqliteConnection(this.connectionString));
         }
 
         /// <summary>
