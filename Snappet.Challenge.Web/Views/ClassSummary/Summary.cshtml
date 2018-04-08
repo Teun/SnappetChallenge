@@ -1,0 +1,13 @@
+﻿@using Snappet.Challenge.Web.Core.Models
+@model Snappet.Challenge.Web.Core.ViewModel.ClassSummaryViewModel
+
+<div class="row">
+    <div class="thumbnail col-md-6">
+        <h1>Class Average</h1>
+        <h3 class="display-4">@Model.ClassSummary.Ratio%</h3>
+    </div>
+    <div class="thumbnail col-md-6">
+        <h1>Top Student</h1>
+        <h3 class="display-4">@Model.TopStudent.Ratio%</h3>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@using Snappet.Challenge.Web.Core.ViewModel
+@model Dictionary<DateTime, List<LearningObjectiveSummaryViewModel>>
+
+@{
+    ViewBag.Title = "Student History";
+    Layout = "_Layout";
+}
+
+<h2>Student History</h2>
+
+<table class="table table-striped summary">
+    <thead>
+    <tr>
+        <th scope="col">Learning Objective</th>
+        <th scope="col">Student Ratio</th>
+    </tr>
+    </thead>
+
+    @foreach (var entry in Model)
+    {
+        <tbody>
+        <tr>
+            <th colspan="2" class="info">@string.Format("{0:d}", entry.Key)</th>
+        </tr>
+        @foreach (var learningSummary in entry.Value)
+        {
+            <tr>
+                <td>@learningSummary.LearningObjective</td>
+                <td>@learningSummary.StudentRatio%</td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        </tbody>
+    }
+</table>

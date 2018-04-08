@@ -1,0 +1,48 @@
+﻿@using Snappet.Challenge.Web.Core.ViewModel
+@model DetailsViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">@Html.DisplayNameFor(w => w.WorkList.First().ExerciseId)</th>
+        <th scope="col">@Html.DisplayNameFor(w => w.WorkList.First().SubmitDateTime)</th>
+        <th scope="col">@Html.DisplayNameFor(w => w.WorkList.First().Difficulty)</th>
+        <th scope="col">@Html.DisplayNameFor(w => w.WorkList.First().Progress)</th>
+        <th scope="col">@Html.DisplayNameFor(w => w.WorkList.First().LearningObjective)</th>
+        <th scope="col">@Html.DisplayNameFor(w => w.WorkList.First().Domain)</th>
+        <th scope="col">@Html.DisplayNameFor(w => w.WorkList.First().Correct)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var work in Model.WorkList)
+    {
+        <tr>
+            <td>@work.ExerciseId</td>
+            <td>@work.SubmitDateTime</td>
+            <td>@string.Format("{0:N2}", work.Difficulty)</td>
+            <td>@work.Progress</td>
+            <td>@work.LearningObjective</td>
+            <td>@work.Domain</td>
+            <td>@work.Correct</td>
+        </tr>   
+    }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-route-pageIndex="@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-route-pageIndex="@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled">
+    Next
+</a>
