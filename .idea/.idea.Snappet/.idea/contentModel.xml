@@ -67,8 +67,6 @@
         </e>
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">
-            <e p="colormind-material-dashboard.css" t="Include" />
-            <e p="colormind-paper-dashboard.css" t="Include" />
             <e p="site.css" t="Include" />
             <e p="site.min.css" t="Include" />
           </e>
