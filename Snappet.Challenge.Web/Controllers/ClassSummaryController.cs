@@ -13,7 +13,7 @@ namespace Snappet.Challenge.Web.Controllers
     public class ClassSummaryController : Controller
     {
         private readonly IClassRepository _classRepository;
-        private const int PageSize = 5;
+        private const int PageSize = 20;
         
         public ClassSummaryController(IClassRepository classRepository)
         {
@@ -23,7 +23,7 @@ namespace Snappet.Challenge.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return Index((DateTime?)null);
+            return Index(new DateTime().NowAtSnappet());
         }
 
         [HttpPost]
@@ -32,12 +32,13 @@ namespace Snappet.Challenge.Web.Controllers
             return Index(classSummaryViewModel.SearchDate);
         }
         
-        private IActionResult Index(DateTime? date)
+        private IActionResult Index(DateTime date)
         {
-            var result = GetUserWorkSummarizedByDate(date ?? new DateTime().NowAtSnappet());
+            var result = GetUserWorkSummarizedByDate(date);
             if (result == null)
                 return RedirectToAction("NoData");
-            
+
+            result.SearchDate = date;
             return View(result);
         }
 

@@ -77,7 +77,6 @@ namespace Snappet.Challenge.Web.Repositories
 
             return workList
                 .GroupBy(w => new  { w.SubmitDateTime.Date, w.LearningObjective })
-                //.GroupBy(w => w.SubmitDateTime.Date)
                 .Select(g => new Summary
                 {
                     UserId = userId,

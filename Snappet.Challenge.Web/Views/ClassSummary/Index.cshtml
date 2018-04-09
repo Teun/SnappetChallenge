@@ -5,33 +5,31 @@
 @{
     ViewBag.Title = string.Format("Class results overview on {0:d}", Model.SearchDate);
     Layout = "_Layout";
+    var htmlAttributes = new { @class = "form-control" };
 }
 
-<h2>@ViewBag.Title</h2>
+<h2 class="text-primary">@ViewBag.Title</h2>
 @using (Html.BeginForm("Index", "ClassSummary", FormMethod.Post))
 {
-    <div class="row">
-        <div class="input-group col-md-4">
-            @Html.EditorFor(cs => cs.SearchDate, new { @name="searchDate", @class="form-control"})
-        </div>
-        <div class="input-group col-md-4">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit">Filter</button>
-            </span>
+    <div class="row spacing">
+        <div class="form-group col-md-6">
+            <label for="searchDate">Please, select the date you want to see your class summary</label>
+            <div class="input-group">
+                @Html.EditorFor(cs => cs.SearchDate, new { @name="searchDate", @htmlAttributes })
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Filter</button>
+                </span>
+            </div>
         </div>
     </div>
-    
-@*    <div class="form-group">*@
-@*        <label for="searchDate">Date:</label>*@
-@*        @Html.EditorFor(cs => cs.SearchDate, new {@name = "searchDate", @class = "form-control"})*@
-@*        <button type="submit" class="btn btn-primary">Filter</button>*@
-@*    </div>*@
 }
-
+<div class="row spacing">
 @{
-    Html.RenderPartial("Summary", Model);
+        Html.RenderPartial("Summary", Model);    
 }
+</div>
 
+<div class="row spacing">
 <table class="table table-striped">
     <thead>
     <tr>
@@ -57,3 +55,4 @@
     }
     </tbody>
 </table>
+</div>

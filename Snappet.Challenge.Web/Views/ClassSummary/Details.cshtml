@@ -23,14 +23,14 @@
     <tbody>
     @foreach (var work in Model.WorkList)
     {
-        <tr>
+        <tr class="text-@(work.Correct ? "success" : "danger")">
             <td>@work.ExerciseId</td>
             <td>@work.SubmitDateTime</td>
             <td>@string.Format("{0:N2}", work.Difficulty)</td>
             <td>@work.Progress</td>
             <td>@work.LearningObjective</td>
             <td>@work.Domain</td>
-            <td>@work.Correct</td>
+            <td><span class="glyphicon glyphicon-@(work.Correct ? "ok" : "remove")"></span></td>
         </tr>   
     }
     </tbody>
