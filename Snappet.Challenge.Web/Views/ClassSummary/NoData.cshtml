@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Search returned no results";
+    Layout = "_Layout";
+    var htmlAttributes = new { @class="btn btn-primary" };
+}
+
+<h2>No data found for your search criteria</h2>
+<p>
+    <span>You can try to search another date</span>
+</p>
+<p>
+    @Html.ActionLink("Go back", "Index", "ClassSummary")
+</p>

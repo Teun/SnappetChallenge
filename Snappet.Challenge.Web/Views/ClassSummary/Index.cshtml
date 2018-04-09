@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal
+@using Snappet.Challenge.Web.Core.ViewModel
+@model ClassSummaryViewModel
+
+@{
+    ViewBag.Title = string.Format("Class results overview on {0:d}", Model.SearchDate);
+    Layout = "_Layout";
+    var htmlAttributes = new { @class = "form-control" };
+}
+
+<h2 class="text-primary">@ViewBag.Title</h2>
+@using (Html.BeginForm("Index", "ClassSummary", FormMethod.Post))
+{
+    <div class="row spacing">
+        <div class="form-group col-md-6">
+            <label for="searchDate">Please, select the date you want to see your class summary</label>
+            <div class="input-group">
+                @Html.EditorFor(cs => cs.SearchDate, new { @name="searchDate", @htmlAttributes })
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Filter</button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
+<div class="row spacing">
+@{
+        Html.RenderPartial("Summary", Model);    
+}
+</div>
+
+<div class="row spacing">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(cs => cs.ClassSummary.UserId)</th>
+        <th>@Html.DisplayNameFor(cs => cs.ClassSummary.Correct)</th>
+        <th>@Html.DisplayNameFor(cs => cs.ClassSummary.Wrong)</th>
+        <th>@Html.DisplayNameFor(cs => cs.ClassSummary.Ratio)</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var summary in Model.ClassResults)
+    {
+        <tr>
+            <td>@summary.UserId</td>
+            <td>@summary.Correct</td>
+            <td>@summary.Wrong</td>
+            <td>@summary.Ratio%</td>
+            <td>@Html.ActionLink("Details", "Details", "ClassSummary", new {id = @summary.UserId})</td>
+            <td>@Html.ActionLink("History", "History", "Student", new {id = @summary.UserId})</td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>
