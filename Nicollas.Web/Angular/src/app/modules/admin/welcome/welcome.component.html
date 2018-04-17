@@ -1,0 +1,65 @@
+<md-card>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>BE WELCOME TO MY PRESENTATION</h4>
+    </div>
+  </div>
+</md-card>
+<hr>
+
+<md-card>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>About the project</h2>
+      <p style="text-align: justify">
+        This project was made using:
+        <b>Asp.net CORE 2</b> with
+        <b>Entity Framework Core 2</b> for the
+        <b>Backend</b> Rest API.
+        <br>
+      </p>
+      <p style="text-align: justify">
+        For the frontend, I used
+        <b>Angular 4</b> with
+        <b>Redux</b>.
+        <br>
+      </p>
+      <p>Do you want more explanation? I did this
+        <a href="https://youtu.be/Tve9RwECQBA" target="_blank">video</a>
+        to help ;D
+      </p>
+      <hr>
+      <p>Place the Json here and submit to see the reports in action on the
+        <a href="#" routerLink="/Admin/Charts">report section</a>
+      </p>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button md-raised-button class="btn-success" (click)="submitJson()" [disabled]="IsBusy !== 0">Submit</button>
+          <b>(this will take between 20 minutes to proccess)</b>
+        </div>
+        <div class="col-md-12">
+          <div *ngIf="IsBusy !== 0; else elseTemplate">
+            <md-spinner class="text-center" style="width: inherit;"></md-spinner>
+          </div>
+          <ng-template #elseTemplate>
+            <textarea [(ngModel)]="jsonData" cols="70" rows="10"></textarea>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h2>About me</h2>
+      <b>Nicollas Braga Gomes Panhoca </b>
+      <br> From Brazil
+      <br> Date of birth: 22 March 1994
+      <br> Email:
+      <a href="mailto:nicollaas@hotmail.com?Subject=Hello%20again" target="_top">Nicollaas@hotmail.com</a>
+      <br> Whatsapp: +55 35 991 641 704
+      <br> Skype: Nicollaas94
+      <br> Graduated in Computer Sciences with excelence in december 2015 by PUC-Minas Brazil.
+      <br>
+    </div>
+  </div>
+</md-card>

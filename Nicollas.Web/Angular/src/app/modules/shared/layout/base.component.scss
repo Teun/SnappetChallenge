@@ -1,0 +1,16 @@
+.main-nav {
+    // height: 100vh;
+    min-width: 200px;
+}
+.app-content {
+    margin: 10px;
+    width: calc(100% - 25px);
+}
+.app-container {
+    height: calc(100vh - 64px);
+    // position: fixed;
+    top: 64px;
+    overflow: hidden;
+    background: #e0e0e0
+    // width: 100%;
+}

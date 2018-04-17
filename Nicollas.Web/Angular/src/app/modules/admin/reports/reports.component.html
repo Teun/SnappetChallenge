@@ -1,0 +1,78 @@
+<md-card>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Reports</h4>
+    </div>
+  </div>
+</md-card>
+<hr>
+
+<md-card>
+  <div *ngIf="(IsBusy | async) != 0; else elseTemplate">
+    <md-spinner class="text-center" style="width: inherit;"></md-spinner>
+  </div>
+  <ng-template #elseTemplate>
+    <div class="row">
+      <div class="col-md-12 col-lg-6">
+        <h2>Amount of applies in March by Domains</h2>
+        <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="applyMonth | async" [gradient]="gradient" [xAxis]="false"
+          [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+        </ngx-charts-bar-vertical>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <h2>Amount of applies in March weeks by Domains</h2>
+        <ngx-charts-bar-vertical-2d [view]="view" [scheme]="colorScheme" [results]="applyWeek | async" [gradient]="gradient" [xAxis]="showXAxis"
+          [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="''"
+          [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+        </ngx-charts-bar-vertical-2d>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <h2>Difficulty</h2>
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="dificultyByDay | async" [gradient]="gradient" [xAxis]="showXAxis"
+          [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="''"
+          [yAxisLabel]="'Dificulty value'" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <h2>Progress</h2>
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="progressByDay | async" [gradient]="gradient" [xAxis]="showXAxis"
+          [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="''"
+          [yAxisLabel]="'Progress'" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- <md-input-container class="full">
+            <input mdInput type="text" placeholder="Studant Id" name="StudantId" [(ngModel)]="studantId">
+          </md-input-container> -->
+          <md-select class="full col-md-4" placeholder="Select a studant" [(ngModel)]="studantId">
+            <md-option *ngFor="let row of studantList" [value]="row">
+                {{row}}
+            </md-option>
+        </md-select>
+        </div>
+        <div class="col-md-8">
+          <button [disabled]="!studantId" class="full btn btn-primary" (click)="GetReports();">
+            Get by studant
+          </button>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <h2>Difficulty by studant</h2>
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="dificultyByStudantByDay | async" [gradient]="gradient"
+          [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="''" [yAxisLabel]="'Dificulty value'" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <h2>Progress by studant</h2>
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="progressByStudantByDay | async" [gradient]="gradient"
+          [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="''" [yAxisLabel]="'Progress'" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </div>
+    </div>
+  </ng-template>
+</md-card>

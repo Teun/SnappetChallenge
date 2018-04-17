@@ -1,0 +1,32 @@
+﻿<div class="login-page">
+    <div class="form">
+        <form class="login-form" name="form" (ngSubmit)="f.form.valid && signIn()" #f="ngForm" novalidate>
+            <!-- <a [routerLink]="['/AccountRecovery']" class="btn btn-link pull-right">Lost account?</a> -->
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !userName.valid }">
+                <md-input-container class="full">
+                    <input mdInput placeholder="Usuário" name="userName" [(ngModel)]="model.userName" #userName="ngModel" required>
+                </md-input-container>
+                <div *ngIf="f.submitted && !userName.valid" class="help-block">Usuário é obrigatório</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <md-input-container class="full">
+                    <input mdInput type="password" placeholder="Senha" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+                </md-input-container>
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Senha é obrigatório</div>
+            </div>
+            <p class="text-alert">{{statusError | async}}</p>
+            <div class="form-group">
+                <!--<button (click)="throwBackendException()" class=" btn btn-danger"> Throw backend exception </button>-->
+                <button [disabled]="(loading| async)" class="btn btn-primary">
+                    <ng-container *ngIf="!(loading | async)">
+                        Entrar
+                    </ng-container>
+                    <ng-container *ngIf="(loading | async)">
+                        <md-spinner class="text-center spinner-white" style="width: inherit; height: 30px;"></md-spinner>
+                    </ng-container>
+                </button>
+                <!-- <a [routerLink]="['/signup']" class="btn btn-link">Sign up</a> -->
+            </div>
+        </form>
+    </div>
+</div>

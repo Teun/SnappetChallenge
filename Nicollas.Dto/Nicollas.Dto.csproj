@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="GeneratedTs\BaseEntityDto.ts">
+      <CustomToolNamespace>BaseEntityDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\EvaluationDto.ts">
+      <CustomToolNamespace>EvaluationDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\RealtimeDto.ts">
+      <CustomToolNamespace>Realtime\RealtimeDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\RoleClaimDto.ts">
+      <CustomToolNamespace>Identity\RoleClaimDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\RoleDto.ts">
+      <CustomToolNamespace>Identity\RoleDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\UserClaimDto.ts">
+      <CustomToolNamespace>Identity\UserClaimDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\UserDto.ts">
+      <CustomToolNamespace>Identity\UserDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\UserLoginDto.ts">
+      <CustomToolNamespace>Identity\UserLoginDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\UserRoleDto.ts">
+      <CustomToolNamespace>Identity\UserRoleDto.cs</CustomToolNamespace>
+    </None>
+    <None Update="GeneratedTs\UserTokenDto.ts">
+      <CustomToolNamespace>Identity\UserTokenDto.cs</CustomToolNamespace>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,87 @@
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" name="form" (ngSubmit)="f.form.valid && signup()" #f="ngForm">
+            <div class="row">
+                <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !UserName.valid }">
+                    <md-input-container class="full">
+                        <input mdInput placeholder="UserName" name="UserName" [(ngModel)]="model.userName" #UserName="ngModel" required>
+                    </md-input-container>
+                    <div *ngIf="f.submitted && !UserName.valid" class="help-block">UserName is required</div>
+                </div>
+                <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !FirstName.valid }">
+                    <md-input-container class="full">
+                        <input mdInput placeholder="First Name" name="FirstName" [(ngModel)]="model.firstName" #FirstName="ngModel" required>
+                    </md-input-container>
+                    <div *ngIf="f.submitted && !FirstName.valid" class="help-block">First name is required</div>
+                </div>
+                <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !LastName.valid }">
+                    <md-input-container class="full">
+                        <input mdInput placeholder="Last Name" name="LastName" [(ngModel)]="model.lastName" #LastName="ngModel" required>
+                    </md-input-container>
+                    <div *ngIf="f.submitted && !LastName.valid" class="help-block">Last name is required</div>
+                </div>
+
+                <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !Email.valid }">
+                    <div class="row">
+                        <md-input-container class="full col-md-8">
+                            <input type="email" mdInput placeholder="Email" name="Email" [(ngModel)]="model.email" #Email="ngModel" required>
+                        </md-input-container>
+                        <div *ngIf="f.submitted && !Email.valid" class="help-block">Email is required</div>
+
+                        <div *ngIf="IsBusy | async; else elseTemplate">
+                            <md-spinner class="text-center" style="width: inherit; height: 42px;"></md-spinner>
+                        </div>
+                        <ng-template #elseTemplate>
+                            <md-select class="full col-md-4" *ngIf="(domains| async)?.length > 0" placeholder="Domain" [(ngModel)]="emailDomain" name="food">
+                                <md-option *ngFor="let row of (domains| async)" [value]="row">
+                                    {{row}}
+                                </md-option>
+                            </md-select>
+                            <md-input-container class="full col-md-4" *ngIf="!((domains| async)?.length > 0)">
+                                <input tabindex="-1" type="email" mdInput placeholder="Domain" value="No domain restriction" readonly>
+                            </md-input-container>
+                        </ng-template>
+                    </div>
+
+                </div>
+
+                <div class="form-group col-md-4">
+                    <md-input-container class="full">
+                        <input type="text" mdInput placeholder="Phone" [textMask]="{mask: phoneMask, guide: false}" name="Phone" [(ngModel)]="model.phone"
+                            #Phone="ngModel">
+                    </md-input-container>
+                </div>
+
+                <!--password-->
+                <div class="form-group col-md-4" [ngClass]="{ 'has-error': f.submitted && !Password.valid || ( password_confirmation != model.password) }">
+                    <md-input-container class="full">
+                        <input mdInput type="password" placeholder="Password" name="Password" [(ngModel)]="model.password" #Password="ngModel" required>
+                    </md-input-container>
+
+                    <div *ngIf="f.submitted && !Password.valid" class="help-block">Password is required</div>
+                    <div *ngIf="f.submitted && password_confirmation != model.password" class="help-block">Password doesn't match</div>
+                </div>
+                <div class="form-group col-md-4" [ngClass]="{ 'has-error': f.submitted && !confirm.valid || ( password_confirmation != model.password) }">
+                    <md-input-container class="full">
+                        <input mdInput placeholder="Confirm Password" name="confirm" type="password" [(ngModel)]="password_confirmation" #confirm="ngModel"
+                            required validateEqual="Password">
+                    </md-input-container>
+                    <div *ngIf="f.submitted && !confirm.valid" class="help-block">Please confirm the password</div>
+                    <div *ngIf="f.submitted && password_confirmation != model.password" class="help-block">Password doesn't match</div>
+                </div>
+                <!--password-->
+            </div>
+
+            <div class="form-group">
+                <p *ngIf="error| async">{{(error| async).errors}}</p>
+                <div *ngIf="(IsBusy | async); else elsetemplate">
+                    <md-spinner class="text-center" style="width: inherit; height: 42px;"></md-spinner>
+                </div>
+                <ng-template #elsetemplate>
+                    <button [disabled]="(IsBusy | async)" class="btn btn-primary">Register</button>
+                </ng-template>
+                <a [routerLink]="['/login']" class="btn btn-link">Sign in</a>
+            </div>
+        </form>
+    </div>
+</div>

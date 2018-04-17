@@ -1,0 +1,44 @@
+.inline-toggle{
+    position: inherit;
+    top: 12px;
+}
+
+.mat-card {
+    margin-bottom: 20px
+}
+
+.mat-row {
+    height: 100% !important;
+    min-height: 48px;
+}
+
+.spinner-white svg path { stroke: white; }
+
+.full{
+  width: 100%;
+  // margin: 0 0 15px;
+  //padding: 15px;
+}
+
+.mat-small-button {
+    min-width: 55px !important;
+    line-height: 30px !important;
+}
+
+.cdk-overlay-container { // this fix md-options to not show on modals
+    z-index:1127;
+}
+
+@for $i from 1 through 12
+{
+    .mat-cell-#{$i} {
+        flex: 0 0 percentage($i / 12) !important;
+    }
+}
+
+.mat-select {
+    display: inline-block;
+    outline: 0;    
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
