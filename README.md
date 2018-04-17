@@ -5,7 +5,7 @@ First you need to create database on your local computer.
 
 1 Configure connection string. By default it's (local) ms sql database.
 
-2 Execute command 'Update-DataBase' in Package Manager Console. It will create new DB and one table.
+2 Execute command `Update-DataBase` in Package Manager Console. It will create new DB and one table.
 
 3 Start migration tool console application. It will migrate data from json to your application.
 
