@@ -1,0 +1,8 @@
+{
+    "code":200,
+    "reportItems":[
+        {"sumProgress":18,"correctAnswers":65.0,"subject":"Begrijpend Lezen"},{"sumProgress":-200,"correctAnswers":463.0,"subject":"Rekenen"}],
+    "itemsCount":2,
+    "lessonDate":"2015-03-02T00:00:00",
+    "errorMsg":null
+}

@@ -1,0 +1,9 @@
+SnappetChallenge/SnappetChallenge.Web/obj/
+SnappetChallenge/SnappetChallenge.Tests/obj/
+SnappetChallenge/SnappetChallenge.Core/obj/
+SnappetChallenge/SnappetChallenge.Web/bin/
+SnappetChallenge/SnappetChallenge.Tests/bin/
+SnappetChallenge/SnappetChallenge.Core/bin/
+SnappetChallenge/.vs/
+SnappetChallenge/MigrationTool/obj/
+SnappetChallenge/MigrationTool/bin/
