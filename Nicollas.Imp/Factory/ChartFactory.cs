@@ -62,9 +62,41 @@
             });
         }
 
+        public async Task<IQueryable<Multiple>> GetDificultyByStudantWeek(int studantId)
+        {
+            var query = await this.Repository.GetAllQueryableByCriteriaAsync(row => row.UserId == studantId);
+            query.Include(r => r.Domain);
+
+            return query.GroupBy(eval => eval.Domain).Select(grp => new Ngx.Charts.Multiple
+            {
+                Name = grp.Key.Description,
+                Series = grp.GroupBy(eval => eval.ApliedAt.Day % 4).Select(serie => new Ngx.Charts.Single
+                {
+                    Name = $"Week {serie.Key + 1}",
+                    Value = serie.Sum(row => row.Difficulty) / serie.Count()
+                }).OrderBy(row => row.Name)
+            });
+        }
+
         public async Task<IQueryable<Multiple>> GetProgressWeek()
         {
             var query = await this.Repository.GetAllQueryableAsync();
+            query.Include(r => r.Domain);
+
+            return query.GroupBy(eval => eval.Domain).Select(grp => new Ngx.Charts.Multiple
+            {
+                Name = grp.Key.Description,
+                Series = grp.GroupBy(eval => eval.ApliedAt.Day % 4).Select(serie => new Ngx.Charts.Single
+                {
+                    Name = $"Week {serie.Key + 1}",
+                    Value = serie.Sum(row => row.Progress) / serie.Count()
+                }).OrderBy(row => row.Name)
+            });
+        }
+
+        public async Task<IQueryable<Multiple>> GetProgressByStudantWeek(int studantId)
+        {
+            var query = await this.Repository.GetAllQueryableByCriteriaAsync(row => row.UserId == studantId);
             query.Include(r => r.Domain);
 
             return query.GroupBy(eval => eval.Domain).Select(grp => new Ngx.Charts.Multiple

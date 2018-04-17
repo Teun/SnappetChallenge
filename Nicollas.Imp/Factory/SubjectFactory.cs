@@ -15,17 +15,17 @@ namespace Nicollas.Imp.Factory
         {
         }
 
-        public async Task<int> GetSubjectId(Subject subject)
+        public async Task<Subject> GetSubject(string description)
         {
-            var entity = this.Repository.FindByCriteria(row => row.Description.Equals(subject.Description));
+            var entity = this.Repository.FindByCriteria(row => row.Description.Equals(description));
             if(entity == null)
             {
-                this.Repository.Add(subject);
+                entity = new Subject { Description = description };
+                this.Repository.Add(entity);
                 await this.UnitOfWork.CommitAsync();
-                return subject.Id;
             }
 
-            return entity.Id;
+            return entity;
         }
     }
 }

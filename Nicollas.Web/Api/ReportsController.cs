@@ -113,6 +113,40 @@ namespace Nicollas.Ng.Api
         }
 
         /// <summary>
+        /// </summary>
+        /// <returns>The Entity</returns>
+        public async Task<IActionResult> GetProgressByStudantWeek(int studantId)
+        {
+            try
+            {
+                var query = await this.chartFactory.GetProgressByStudantWeek(studantId);
+                return this.Ok(query);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error = ex.ToString();
+                return this.StatusCode(500, "Contact the support");
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <returns>The Entity</returns>
+        public async Task<IActionResult> GetDificultyByStudantWeek(int studantId)
+        {
+            try
+            {
+                var query = await this.chartFactory.GetDificultyByStudantWeek(studantId);
+                return this.Ok(query);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error = ex.ToString();
+                return this.StatusCode(500, "Contact the support");
+            }
+        }
+
+        /// <summary>
         /// Test propouse Method
         /// </summary>
         /// <param name="evalEntity">The Entity</param>

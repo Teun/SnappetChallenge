@@ -10,6 +10,8 @@ export interface State {
     aplyWeek: Ngx.Charts.Multiple[];
     dificultyWeek: Ngx.Charts.Multiple[];
     progressWeek: Ngx.Charts.Multiple[];
+    dificultyByStudantWeek: Ngx.Charts.Multiple[];
+    progressByStudantWeek: Ngx.Charts.Multiple[];
     error: Response;
     lastActionOnReducer: string
 };
@@ -23,6 +25,8 @@ export const initialState: State = {
     aplyWeek: [],
     dificultyWeek: [],
     progressWeek: [],
+    dificultyByStudantWeek: [],
+    progressByStudantWeek: [],
     error: null,
     lastActionOnReducer: null
 };
@@ -37,14 +41,14 @@ export const initialState: State = {
  * @param action the action to create the new state Object
  */
 export function reducer(state: State = initialState, action: typeActions.Actions): State {
-    switch (action.type) { 
+    switch (action.type) {
         case typeActions.SEND_JSON_COMPLETE: {
-        return Object.assign({}, state,
-            {
-                lastActionOnReducer: action.type,
-                loading: state.loading - 1
-            });
-    }
+            return Object.assign({}, state,
+                {
+                    lastActionOnReducer: action.type,
+                    loading: state.loading - 1
+                });
+        }
         case typeActions.LOAD_APLY_MONTH_COMPLETE: {
             return Object.assign({}, state,
                 {
@@ -77,13 +81,35 @@ export function reducer(state: State = initialState, action: typeActions.Actions
                     progressWeek: action.payload
                 });
         }
+
+        case typeActions.LOAD_PROGRESS_STUDANT_WEEK_COMPLETE: {
+            return Object.assign({}, state,
+                {
+                    lastActionOnReducer: action.type,
+                    loading: state.loading - 1,
+                    progressByStudantWeek: action.payload
+                });
+        }
+
+        case typeActions.LOAD_DIFICULTY_STUDANT_WEEK_COMPLETE: {
+            return Object.assign({}, state,
+                {
+                    lastActionOnReducer: action.type,
+                    loading: state.loading - 1,
+                    dificultyByStudantWeek: action.payload
+                });
+        }
+
         case typeActions.SEND_JSON:
         case typeActions.LOAD_DIFICULTY_WEEK:
         case typeActions.LOAD_PROGRESS_WEEK:
         case typeActions.LOAD_APLY_WEEK:
-        case typeActions.LOAD_APLY_MONTH: {
-            return Object.assign({}, state, { lastActionOnReducer: action.type, loading: state.loading + 1, error: null });
-        }
+        case typeActions.LOAD_APLY_MONTH:
+        case typeActions.LOAD_PROGRESS_STUDANT_WEEK:
+        case typeActions.LOAD_DIFICULTY_STUDANT_WEEK:
+            {
+                return Object.assign({}, state, { lastActionOnReducer: action.type, loading: state.loading + 1, error: null });
+            }
         case typeActions.ACTION_FAILED: {
             return Object.assign({}, state, { lastActionOnReducer: action.type, loading: state.loading - 1, error: action.payload });
         }
@@ -97,3 +123,5 @@ export const getAplyMonth = (state: State) => { return state.aplyMonth; }
 export const getAplyWeek = (state: State) => { return state.aplyWeek; }
 export const getDificultyWeek = (state: State) => { return state.dificultyWeek; }
 export const getProgressWeek = (state: State) => { return state.progressWeek; }
+export const getdificultyByStudantWeek = (state: State) => { return state.dificultyByStudantWeek; }
+export const getprogressByStudantWeek = (state: State) => { return state.progressByStudantWeek; }

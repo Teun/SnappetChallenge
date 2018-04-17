@@ -82,7 +82,7 @@ export class ReportEffects {
   @Effect()
   loadDificultyWeek$: Observable<Action> = this.actions$
     .ofType(action.LOAD_DIFICULTY_WEEK) // the action type that will hit this
-    .map((action: action.LoadAplyWeekAction) => null)
+    .map((action: action.LoadDificultyWeekAction) => null)
     .switchMap(_ => {
 
       const next$ = this.actions$.ofType(action.LOAD_DIFICULTY_WEEK).skip(1);
@@ -95,9 +95,9 @@ export class ReportEffects {
 
 
   @Effect()
-  loadDificultyMonth$: Observable<Action> = this.actions$
+  loadProgressWeek$: Observable<Action> = this.actions$
     .ofType(action.LOAD_PROGRESS_WEEK) // the action type that will hit this
-    .map((action: action.LoadAplyWeekAction) => null)
+    .map((action: action.LoadProgressWeekAction) => null)
     .switchMap(_ => {
 
       const next$ = this.actions$.ofType(action.LOAD_PROGRESS_WEEK).skip(1);
@@ -107,6 +107,35 @@ export class ReportEffects {
         .map(result => new action.LoadProgressWeekCompleteAction(result))
         .catch((err) => of(new action.FaliedAction(err)));
     });
+
+  @Effect()
+  loadProgressByStudantWeek$: Observable<Action> = this.actions$
+    .ofType(action.LOAD_PROGRESS_STUDANT_WEEK) // the action type that will hit this
+    .map((action: action.LoadProgressByStudantWWeekAction) => action.payload)
+    .switchMap(studantId => {
+
+      const next$ = this.actions$.ofType(action.LOAD_PROGRESS_STUDANT_WEEK).skip(1);
+
+      return this.service.ReadProgressByStudantWeek(studantId)
+        .takeUntil(next$)
+        .map(result => new action.LoadProgressByStudantWWeekCompleteAction(result))
+        .catch((err) => of(new action.FaliedAction(err)));
+    });
+
+  @Effect()
+  loadDificultByStudantWeek$: Observable<Action> = this.actions$
+    .ofType(action.LOAD_DIFICULTY_STUDANT_WEEK) // the action type that will hit this
+    .map((action: action.LoadDificultyByStudantWeekAction) => action.payload)
+    .switchMap(studantId => {
+
+      const next$ = this.actions$.ofType(action.LOAD_DIFICULTY_STUDANT_WEEK).skip(1);
+
+      return this.service.ReadDificultyByStudantWeek(studantId)
+        .takeUntil(next$)
+        .map(result => new action.LoadDificultyByStudantWWeekCompleteAction(result))
+        .catch((err) => of(new action.FaliedAction(err)));
+    });
+
 
 
   constructor(private actions$: Actions, private service: ReportService) { }

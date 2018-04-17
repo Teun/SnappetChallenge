@@ -11,5 +11,7 @@ namespace Nicollas.Core.Factories
         Task<IQueryable<Ngx.Charts.Multiple>> GetAplyWeek();
         Task<IQueryable<Ngx.Charts.Multiple>> GetDificultyWeek();
         Task<IQueryable<Ngx.Charts.Multiple>> GetProgressWeek();
+        Task<IQueryable<Ngx.Charts.Multiple>> GetDificultyByStudantWeek(int studantId);
+        Task<IQueryable<Ngx.Charts.Multiple>> GetProgressByStudantWeek(int studantId);
     }
 }

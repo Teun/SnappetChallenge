@@ -8,6 +8,6 @@ namespace Nicollas.Core.Factories
 {
     public interface IDomainFactory : IFactory<Domain, int>
     {
-        Task<int> GetDomainId(Domain domain);
+        Task<Domain> GetDomain(string description);
     }
 }

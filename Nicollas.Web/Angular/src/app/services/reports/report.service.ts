@@ -12,6 +12,12 @@ export class ReportService {
     ).publishLast().refCount();
   }
 
+  ReadDificultyByStudantWeek(studantId: number): Observable<Ngx.Charts.Multiple[]> {
+    return this.api.get<Ngx.Charts.Multiple[]>('Reports/GetDificultyByStudantWeek', {studantId: studantId}).publishLast().refCount();
+  }
+  ReadProgressByStudantWeek(studantId: number): Observable<Ngx.Charts.Multiple[]> {
+    return this.api.get<Ngx.Charts.Multiple[]>('Reports/GetProgressByStudantWeek', {studantId: studantId}).publishLast().refCount();
+  }
 
   ReadApplyMonth(): Observable<Ngx.Charts.Single[]> {
     return this.api.get<Ngx.Charts.Single[]>('Reports/GetAplyMonth').publishLast().refCount();

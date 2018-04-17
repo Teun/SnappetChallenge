@@ -13,6 +13,12 @@ export const LOAD_DIFICULTY_WEEK_COMPLETE = '[Reports] LOAD_DIFICULTY_WEEK_COMPL
 export const LOAD_PROGRESS_WEEK = '[Reports] LOAD_PROGRESS_WEEK';
 export const LOAD_PROGRESS_WEEK_COMPLETE = '[Reports] LOAD_PROGRESS_WEEK_COMPLETE';
 
+export const LOAD_DIFICULTY_STUDANT_WEEK = '[Reports] LOAD_DIFICULTY_STUDANT_WEEK';
+export const LOAD_DIFICULTY_STUDANT_WEEK_COMPLETE = '[Reports] LOAD_DIFICULTY_STUDANT_WEEK_COMPLETE';
+
+export const LOAD_PROGRESS_STUDANT_WEEK = '[Reports] LOAD_PROGRESS_STUDANT_WEEK';
+export const LOAD_PROGRESS_STUDANT_WEEK_COMPLETE = '[Reports] LOAD_PROGRESS_STUDANT_WEEK_COMPLETE';
+
 export const SEND_JSON = '[Reports] SEND_JSON';
 export const SEND_JSON_COMPLETE = '[Reports] SEND_JSON_COMPLETE';
 
@@ -66,6 +72,24 @@ export class LoadProgressWeekCompleteAction implements Action {
   constructor(public payload: Ngx.Charts.Multiple[]) { }
 }
 
+export class LoadDificultyByStudantWeekAction implements Action {
+  readonly type = LOAD_DIFICULTY_STUDANT_WEEK;
+  constructor(public payload: number) { }
+}
+export class LoadDificultyByStudantWWeekCompleteAction implements Action {
+  readonly type = LOAD_DIFICULTY_STUDANT_WEEK_COMPLETE;
+  constructor(public payload: Ngx.Charts.Multiple[]) { }
+}
+
+export class LoadProgressByStudantWWeekAction implements Action {
+  readonly type = LOAD_PROGRESS_STUDANT_WEEK;
+  constructor(public payload: number) { }
+}
+export class LoadProgressByStudantWWeekCompleteAction implements Action {
+  readonly type = LOAD_PROGRESS_STUDANT_WEEK_COMPLETE;
+  constructor(public payload: Ngx.Charts.Multiple[]) { }
+}
+
 export class FaliedAction implements Action {
   readonly type = ACTION_FAILED;
   constructor(public payload: Response) { }
@@ -82,4 +106,6 @@ export type Actions = FaliedAction
   | LoadAplyWeekAction | LoadAplyWeekCompleteAction
   | LoadDificultyWeekAction | LoadDificultyWeekCompleteAction
   | LoadProgressWeekAction | LoadProgressWeekCompleteAction
+  | LoadDificultyByStudantWeekAction | LoadDificultyByStudantWWeekCompleteAction
+  | LoadProgressByStudantWWeekAction | LoadProgressByStudantWWeekCompleteAction
   | SendJsonAction | SendJsonActionComplete

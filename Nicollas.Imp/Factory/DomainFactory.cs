@@ -15,17 +15,17 @@ namespace Nicollas.Imp.Factory
         {
         }
 
-        public async Task<int> GetDomainId(Domain domain)
+        public async Task<Domain> GetDomain(string description)
         {
-            var entity = this.Repository.FindByCriteria(row => row.Description.Equals(domain.Description));
+            var entity = this.Repository.FindByCriteria(row => row.Description.Equals(description));
             if (entity == null)
             {
-                this.Repository.Add(domain);
+                entity = new Domain { Description = description };
+                this.Repository.Add(entity);
                 await this.UnitOfWork.CommitAsync();
-                return domain.Id;
             }
 
-            return entity.Id;
+            return entity;
         }
     }
 }

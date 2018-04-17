@@ -35,3 +35,6 @@ export const getAplyWeek = createSelector(getState, fromReport.getAplyWeek);
 
 export const getDificultyWeek = createSelector(getState, fromReport.getDificultyWeek);
 export const getProgressWeek = createSelector(getState, fromReport.getProgressWeek);
+
+export const getDificultyByStudantWeek = createSelector(getState, fromReport.getdificultyByStudantWeek);
+export const getProgressByStudantWeek = createSelector(getState, fromReport.getprogressByStudantWeek);

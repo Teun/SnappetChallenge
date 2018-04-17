@@ -13,7 +13,6 @@ import { AdminRoutingModule } from './admin.routing';
 import { BsModalModule } from 'Ng2-bs3-modal';
 import { EffectsModule } from '@ngrx/effects';
 
-
 import { FileUploadModule } from 'ng2-file-upload';
 import { UserEffects } from 'app/store/effects/identity/user.effect';
 import { RoleEffects } from 'app/store/effects/identity/role.effect';
@@ -25,6 +24,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ReportEffects } from '../../store/effects/reports/report.effect';
 import { ReportService } from '../../services/reports/report.service';
 import { WelcomeComponent } from './welcome/welcome.component';
+
 
 @NgModule({
   imports: [

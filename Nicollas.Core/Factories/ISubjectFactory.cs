@@ -8,6 +8,6 @@ namespace Nicollas.Core.Factories
 {
     public interface ISubjectFactory : IFactory<Subject, int>
     {
-        Task<int> GetSubjectId(Subject subject);
+        Task<Subject> GetSubject(string description);
     }
 }

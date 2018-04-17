@@ -35,11 +35,12 @@ namespace Nicollas.Imp.Services
             foreach (var item in toPersist)
             {
                 count++;
-
-                item.SubjectId = await this.subjectFactory.GetSubjectId(item.Subject);
+                item.Subject = await this.subjectFactory.GetSubject(item.Subject.Description);
+                item.SubjectId = item.Subject.Id;
                 item.Subject = null;
 
-                item.DomainId = await this.domainFactory.GetDomainId(item.Domain);
+                item.Domain = await this.domainFactory.GetDomain(item.Domain.Description);
+                item.DomainId = item.Domain.Id;
                 item.Domain = null;
 
                 this.Repository.Add(item);
