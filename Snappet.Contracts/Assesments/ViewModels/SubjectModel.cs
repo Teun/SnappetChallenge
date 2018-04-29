@@ -7,6 +7,13 @@ namespace Snappet.Contracts.Assesments.ViewModels
     public class SubjectModel
     {
         public string Subject { get; set; }
-        public List<StudentModel> Users { get; set; }
+
+        public double Result { get; set; }
+
+        public SubjectModel(string subject, double result)
+        {
+            Subject = subject;
+            Result = result;
+        }
     }
 }
