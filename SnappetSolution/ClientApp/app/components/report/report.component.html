@@ -1,49 +1,7 @@
 ﻿<div class="container">           
     <div *ngIf="!classModel">Loading</div>
     <div class="row" *ngIf="classModel">
-        <h3>Progress {{classModel.currentDate | date: 'short'}} compared to {{classModel.previousResultType}}</h3>
-
-        <!--<div data-toggle="collapse" href="#individually" class="mt-4 mb-4">
-            <h4><span class="glyphicon custom-link" 
-                      [ngClass]="{'glyphicon-menu-down': IndivExpanded, 'glyphicon-menu-right': !IndivExpanded}"
-                      (click)="indivExpand()">Individually:</span></h4>
-        </div>
-        <div class="mt-4 mb-4" data-toggle="collapse" href="#total">
-            <h4><span class="glyphicon custom-link"
-                      [ngClass]="{'glyphicon-menu-down': TotalExpanded, 'glyphicon-menu-right': !TotalExpanded}"
-                      (click)="totalExpand()">Class progress:</span></h4>
-        </div>-->
-
-        <!--<div id="individually" class="collapse">
-            <ul class="list-group" *ngFor="let studentSubjectModel of classModel.resultsPerSubjects">
-                <li><h4>{{studentSubjectModel.subject}}</h4></li>
-                <li class="list-group-item" *ngFor="let subjectStudent of studentSubjectModel.users">
-                    Student - {{subjectStudent.id}}
-                    <span class="badge">{{subjectStudent.result}}%</span>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-success progress-content" [ngClass]="{'progress-bar-danger': isNegativeProgress(subjectStudent.result)}" role="progressbar"
-                             [style.width]="convertToPercent(getPositiveValue(subjectStudent.result))"
-                             [attr.aria-valuenow]="getPositiveValue(subjectStudent.result)" aria-valuemin="0" aria-valuemax="100">
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>-->
-
-        <!--<div id="total" class="collapse in">
-            <ul class="list-group" *ngFor="let subjectTotalProgress of classModel.totalProgress">
-                <li><h4>{{subjectTotalProgress.subject}}</h4></li>
-                <li class="list-group-item">                    
-                    <span class="badge">{{subjectTotalProgress.result}}%</span>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-success progress-content" [ngClass]="{'progress-bar-danger': isNegativeProgress(subjectTotalProgress.result)}"
-                             role="progressbar" [style.width]="convertToPercent(getPositiveValue(subjectTotalProgress.result))"
-                             [attr.aria-valuenow]="getPositiveValue(subjectTotalProgress.result)" aria-valuemin="0" aria-valuemax="100">
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>-->       
+        <h3>Progress {{classModel.currentDate | date: 'short'}} compared to {{classModel.previousResultType}}</h3>             
 
         <table class="table">
             <thead class="thead-dark">
@@ -56,7 +14,16 @@
             </thead>
             <tbody>
                 <tr *ngFor="let student of classModel.studentsModel">
-
+                    <td>{{student.id}}</td>
+                    <td *ngFor="let subject of student.subjects">                     
+                        <span class="badge">{{subject.result}}%</span>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-content" [ngClass]="{'progress-bar-danger': isNegativeProgress(subjectStudent.result)}" role="progressbar"
+                                    [style.width]="convertToPercent(getPositiveValue(subjectStudent.result))"
+                                    [attr.aria-valuenow]="getPositiveValue(subjectStudent.result)" aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>                     
+                    </td>
                 </tr>
             </tbody>
         </table>

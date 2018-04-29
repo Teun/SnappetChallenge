@@ -20,9 +20,8 @@ namespace Snappet.Services.Assesments
             var currentResults = workResults.ExcercisesResults.Where(wr => wr.SubmitDateTime.DayOfYear == dateTime.DayOfYear
                                                                      && wr.SubmitDateTime <= dateTime);
 
-            var todaysSubjects = currentResults.GroupBy(pr => pr.Subject);
-
-            classModel.Subjects = todaysSubjects.Select(ts => ts.Key);            
+            classModel.Subjects = currentResults.GroupBy(pr => pr.Subject)
+                                                .Select(ts => ts.Key);             
 
             foreach (var subject in classModel.Subjects)
             {
@@ -31,15 +30,16 @@ namespace Snappet.Services.Assesments
                                           .GroupBy(s => s.UserId).Select(group => 
                                               new { UserId = group.Key, AverageResult = group.Average(el => el.Progress * el.Difficulty.ConvertToDouble())})
                                           .ToList();
+
                 foreach (var userResult in currentSubjectResult)
                 {
                     var existingUser = classModel.StudentsModel.FirstOrDefault(sm => sm.Id == userResult.UserId);
                     if (existingUser == null)
                     {
-                        existingUser = new StudentModel(userResult.UserId);
+                        existingUser = new StudentModel(userResult.UserId) { Subjects = classModel.Subjects.Select(s => new SubjectModel(s,0.0)).ToList() };
                         classModel.StudentsModel.Add(existingUser);
                     }
-                    existingUser.Subjects.Add(new SubjectModel(subject, userResult.AverageResult));
+                    existingUser.Subjects.First(s => s.Subject == subject).Result = userResult.AverageResult;
                 }
             }
 
@@ -60,7 +60,7 @@ namespace Snappet.Services.Assesments
                                                         && wr.UserId == student.Id)
                                                         .OrderByDescending(wr => wr.SubmitDateTime).Select(wr => wr.SubmitDateTime)
                                                         .FirstOrDefault();
-
+                    
                     var previousSubjectUserResult = workResults.ExcercisesResults
                             .Where(wr => wr.SubmitDateTime.DayOfYear == previousSubjectUserDay.DayOfYear
                             && wr.Subject == subject.Subject && wr.UserId == student.Id);
