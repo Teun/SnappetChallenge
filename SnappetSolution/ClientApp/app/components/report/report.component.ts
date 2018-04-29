@@ -11,9 +11,7 @@ import { StudentModel } from '../../models/StudentModel';
 export class ReportComponent {
 
     public classModel: ClassModel;
-    public IndivExpanded: boolean;
-    public TotalExpanded: boolean = true;
-
+    
     constructor(private _workResultService: WorkResultService) { }
 
     ngOnInit() {
@@ -37,13 +35,5 @@ export class ReportComponent {
 
     getPositiveValue(value: number): number {
         return Math.abs(value);
-    }
-
-    indivExpand() {
-        this.IndivExpanded = !this.IndivExpanded;        
-    }
-
-    totalExpand() {
-        this.TotalExpanded = !this.TotalExpanded;
     }
 }

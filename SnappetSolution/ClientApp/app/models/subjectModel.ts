@@ -2,5 +2,5 @@
 
 export class SubjectModel {
     public Subject: string;
-    public Users: StudentModel[]=[];
+    public Result: number;
 }

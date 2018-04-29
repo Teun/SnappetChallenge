@@ -1,5 +1,7 @@
-﻿export class StudentModel {
+﻿import { SubjectModel } from "./subjectModel";
+
+export class StudentModel {
     public Id: number;
     public Name: string;
-    public Result: number; 
+    public Subjects: Array<SubjectModel> = []; 
 }  

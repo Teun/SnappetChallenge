@@ -11,7 +11,8 @@ namespace Snappet.Contracts.Assesments.ViewModels
         public List<SubjectModel> Subjects { get; set; }
         public StudentModel(int id)
         {
-            Id = id;                       
+            Id = id;
+            Subjects = new List<SubjectModel>();
         }
     }
 }

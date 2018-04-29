@@ -3,7 +3,7 @@
     <div class="row" *ngIf="classModel">
         <h3>Progress {{classModel.currentDate | date: 'short'}} compared to {{classModel.previousResultType}}</h3>
 
-        <div data-toggle="collapse" href="#individually" class="mt-4 mb-4">
+        <!--<div data-toggle="collapse" href="#individually" class="mt-4 mb-4">
             <h4><span class="glyphicon custom-link" 
                       [ngClass]="{'glyphicon-menu-down': IndivExpanded, 'glyphicon-menu-right': !IndivExpanded}"
                       (click)="indivExpand()">Individually:</span></h4>
@@ -12,9 +12,9 @@
             <h4><span class="glyphicon custom-link"
                       [ngClass]="{'glyphicon-menu-down': TotalExpanded, 'glyphicon-menu-right': !TotalExpanded}"
                       (click)="totalExpand()">Class progress:</span></h4>
-        </div>
+        </div>-->
 
-        <div id="individually" class="collapse">
+        <!--<div id="individually" class="collapse">
             <ul class="list-group" *ngFor="let studentSubjectModel of classModel.resultsPerSubjects">
                 <li><h4>{{studentSubjectModel.subject}}</h4></li>
                 <li class="list-group-item" *ngFor="let subjectStudent of studentSubjectModel.users">
@@ -28,9 +28,9 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div>-->
 
-        <div id="total" class="collapse in">
+        <!--<div id="total" class="collapse in">
             <ul class="list-group" *ngFor="let subjectTotalProgress of classModel.totalProgress">
                 <li><h4>{{subjectTotalProgress.subject}}</h4></li>
                 <li class="list-group-item">                    
@@ -43,7 +43,23 @@
                     </div>
                 </li>
             </ul>
-        </div>       
+        </div>-->       
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Student Id</th>
+                    <th *ngFor="let subject of classModel.subjects">
+                        {{subject}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of classModel.studentsModel">
+
+                </tr>
+            </tbody>
+        </table>
     </div>                                         
 </div>
 

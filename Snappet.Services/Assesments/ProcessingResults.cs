@@ -34,9 +34,11 @@ namespace Snappet.Services.Assesments
                 foreach (var userResult in currentSubjectResult)
                 {
                     var existingUser = classModel.StudentsModel.FirstOrDefault(sm => sm.Id == userResult.UserId);
-                    if(existingUser == null)
+                    if (existingUser == null)
+                    {
                         existingUser = new StudentModel(userResult.UserId);
-
+                        classModel.StudentsModel.Add(existingUser);
+                    }
                     existingUser.Subjects.Add(new SubjectModel(subject, userResult.AverageResult));
                 }
             }
