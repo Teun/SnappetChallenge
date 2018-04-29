@@ -12,8 +12,7 @@ export class WorkResultService {
         
     }
 
-    getWorkResult(): Observable<Response> {
-        console.log("test");
+    getWorkResult(): Observable<Response> {        
         return this.http.get(this.baseUrl + 'api/assesments/work-results');
     }
 }

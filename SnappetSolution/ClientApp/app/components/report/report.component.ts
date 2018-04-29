@@ -16,8 +16,7 @@ export class ReportComponent {
 
     ngOnInit() {
         this._workResultService.getWorkResult().subscribe(result => {
-            this.classModel = result.json() as ClassModel;
-            console.log(this.classModel);
+            this.classModel = result.json() as ClassModel;            
         }, error => console.error(error));
     }
 

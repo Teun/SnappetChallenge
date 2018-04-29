@@ -65,6 +65,7 @@ namespace Snappet.Services.Assesments
                             .Where(wr => wr.SubmitDateTime.DayOfYear == previousSubjectUserDay.DayOfYear
                             && wr.Subject == subject.Subject && wr.UserId == student.Id);
 
+                    //TODO: Nan problem
                     var averagePreviousSubjectUserResult = 0.0;
                     if(previousSubjectUserResult.Count() > 0)
                         averagePreviousSubjectUserResult = previousSubjectUserResult.Average(cr => cr.Progress * cr.Difficulty.ConvertToDouble());
