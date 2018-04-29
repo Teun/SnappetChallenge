@@ -15,12 +15,12 @@
             <tbody>
                 <tr *ngFor="let student of classModel.studentsModel">
                     <td>{{student.id}}</td>
-                    <td *ngFor="let subject of student.subjects">                     
-                        <span class="badge">{{subject.result}}%</span>
+                    <td *ngFor="let studentSubject of student.subjects">                     
+                        <span class="badge badge-secondary">{{studentSubject.result}}%</span>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success progress-content" [ngClass]="{'progress-bar-danger': isNegativeProgress(subjectStudent.result)}" role="progressbar"
-                                    [style.width]="convertToPercent(getPositiveValue(subjectStudent.result))"
-                                    [attr.aria-valuenow]="getPositiveValue(subjectStudent.result)" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar-success progress-content" [ngClass]="{'progress-bar-danger': isNegativeProgress(studentSubject.result)}" role="progressbar"
+                                    [style.width]="convertToPercent(getPositiveValue(studentSubject.result))"
+                                    [attr.aria-valuenow]="getPositiveValue(studentSubject.result)" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>                     
                     </td>
