@@ -8,7 +8,7 @@ Results of the program is progress of each student in each subject, which he has
 
 To see result of the program you should:
 1. have .net core 2.0;
-2. run command: dotnet SnappetSolution.dll in SnappetSolution/publish folder (you can see address, the application is listening on, by default localhost:5000);
+2. run command: dotnet SnappetSolution.dll in SnappetDeploy.zip (you can see address, the application is listening on, by default localhost:5000);
 3. open a browser and enter the url you can see from the point above.
 
 Enjoy it! :)
