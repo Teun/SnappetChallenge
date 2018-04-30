@@ -2,5 +2,5 @@
 
 export class SubjectModel {
     public Subject: string;
-    public Result: number;
+    public Result: number = 0;
 }
