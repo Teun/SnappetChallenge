@@ -1,0 +1,117 @@
+﻿<div>
+    <div ng-show="loaded">
+        <form class="form-inline" style="margin-top:50px;">
+            <div class="form-group">
+                <label for="subjects">Subjects</label>
+                <select id="subjects" ng-model="selectedSubject" class="form-control dropdowns">
+                    <option></option>
+                    <option ng-repeat="subject in exerciseSubjects">{{subject}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="domains">Domains</label>
+                <select id="domains" class="form-control dropdowns" ng-model="selectedDomain" ng-change="domainSelected()">
+                    <option></option>
+                    <option ng-repeat="domain in domains">{{domain}}</option>
+                </select>
+            </div>
+            <div class="form-group" style="max-width:260px;">
+                <label for="learningObjectives">Learning Objectives</label>
+                <select id="learningObjectives" ng-model="selectedLearningObjective" class="form-control dropdowns">
+                    <option></option>
+                    <option ng-repeat="learningObjective in learningObjectives">{{learningObjective | limitTo:20}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exerciseIDs">Exercise IDs</label>
+                <select id="exerciseIDs" ng-model="selectedExerciseID" class="form-control dropdowns">
+                    <option></option>
+                    <option ng-repeat="exercise in exerciseIDs | limitTo:10">{{exercise}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="users">Users</label>
+                <select id="users" ng-model="selectedUser" class="form-control dropdowns">
+                    <option></option>
+                    <option ng-repeat="user in exerciseUsers">{{user}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-12" style="margin-top:20px;">
+                <button class="btn btn-primary" ng-click="getFilteredExercises()">Submit</button>
+            </div>
+            <hr />
+        </form>
+        <nav aria-label="" class="form-inline">
+            <ul class="pagination">
+                <li class="page-item" ng-hide="pageNumber<2 &&(exercises.length==0 || !exercises)" ng-show="pageNumber>1"><button class="btn btn-default" ng-click="previousPage()">Previous</button></li>
+                <li class="page-item"><button class="btn btn-default" ng-click="nextPage()" type="button" ng-hide="exercises.length==0 || !exercises">Next</button></li>
+            </ul>
+            <div class="form-group" style="padding-bottom:25px; margin-right:-120px;">
+                <label for="exercisesPerPage">Exercises Per Page</label>
+                <select id="exercisesPerPages" ng-model="exercisesPerPage" class="form-control dropdowns" style="max-width:75px;" ng-change="exercisesPerPageChanged()"
+                        ng-options="number for number in exercisesPerPageOptions">
+                    <!--<option ng-repeat="number in exercisesPerPageOptions" id="exercisesPerPageOption{{number}}" value="{{number}}">{{number}}</option>-->
+                </select>
+            </div>
+            <span class="pull-right" style="padding-top:25px;" ng-hide="pageNumber<2 && (exercises.length==0 || !exercises)">Page {{pageNumber}}</span>
+        </nav>
+        <div id="exercises" ng-repeat="exercise in exercises" ng-if="dataLoaded && exercises.length>0">
+            <div ng-class="exercise.Progress<0?'panel-danger':'panel-primary'" class="panel">
+                <div class="panel-heading">User:  {{exercise.UserId}}</div>
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <label for="LearningObjective{{$index}}" class="card-title">Learning Objective</label>
+                        <p id="LearningObjective{{$index}}" class="card-text">{{exercise.LearningObjective}}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="Domain{{$index}}" class="card-title">Domain</label>
+                        <p id="Domain{{$index}}" class="card-text">{{exercise.Domain}}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="Subject{{$index}}" class="card-title">Subject</label>
+                        <p id="Subject{{$index}}" class="card-text">{{exercise.Subject}}</p>
+                    </div>
+                    <hr />
+                    <div class="col-md-4">
+                        <label for="ExerciseId{{$index}}" class="card-title">Exercise ID</label>
+                        <p id="ExerciseId{{$index}}" class="card-text">{{exercise.ExerciseId}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Difficulty{{$index}}" class="card-title">Difficulty</label>
+                        <p id="Difficulty{{$index}}" class="card-text">{{exercise.Difficulty}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Progress{{$index}}" class="card-title">Progress</label>
+                        <p id="Progress{{$index}}" class="card-text">{{exercise.Progress}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Correct{{$index}}" class="card-title">Correct</label>
+                        <p id="Correct{{$index}}" class="card-text">{{exercise.Correct}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="SubmitDateTime{{$index}}" class="card-title">Date</label>
+                        <p id="SubmitDateTime{{$index}}" class="card-text">{{parseJSONDate(exercise.SubmitDateTime) | date:'medium'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="dataLoaded && exercises && exercises.length==0">
+            <p>No results</p>
+        </div>
+        <div ng-if="dataLoaded && exercises.length>0">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" ng-show="pageNumber>1"><button class="btn btn-default" ng-click="previousPage()">Previous</button></li>
+                    <li class="page-item"><button class="btn btn-default" ng-click="nextPage()" type="button">Next</button></li>
+                </ul>
+                <span class="pull-right">Page {{pageNumber}}</span>
+            </nav>
+        </div>
+    </div>
+    <div ng-hide="loaded" class="text-center" style="padding:50px;">
+        <button class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+    </div>
+    <div ng-hide="dataLoaded" class="text-center" style="padding:50px;">
+        <button class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+    </div>
+</div>

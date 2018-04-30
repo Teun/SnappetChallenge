@@ -1,0 +1,43 @@
+﻿<form class="form-inline" style="margin-top:50px;">
+    <div class="form-group" style="margin-right:-80px;">
+        <label for="SummaryDatePicker">Select the date for the summary</label>
+        <input id="SummaryDatePicker" class="form-control" ng-model="summaryDate" />
+    </div>
+    <button class="btn btn-primary" ng-click="getSummaryByDate()" style="margin-top:30px;">Submit</button>
+</form>
+<div ng-show="loaded">
+    <div class="panel panel-primary" style="margin-top:50px;">
+        <div class="panel-heading">Summary</div>
+        <div class="panel-body" style="min-height:500px;">
+            <div class="col-md-12" ng-show="data.StudentCount">
+                <label for="studentCount" class="card-title">Number of Students</label>
+                <p id="studentCount" class="card-text">{{data.StudentCount | number}}</p>
+            </div>
+            <div class="col-md-12" ng-show="data.ExerciseCount">
+                <label for="exerciseCount" class="card-title">Exercises</label>
+                <p id="exerciseCount" class="card-text">{{data.ExerciseCount | number}}</p>
+            </div>
+            <div class="col-md-12" ng-show="data.CorrectCount">
+                <label for="correctCount" class="card-title">Correct</label>
+                <p id="correctCount" class="card-text">{{data.CorrectCount | number}}</p>
+            </div>
+            <div id="subjectpiechart" class="col-md-6" style="z-index:1;" ng-show="subjectsPieValues && subjectsPieValues.length>1"></div>
+
+            <div id="domainpiechart" class="col-md-6" style="z-index:1;" ng-show="domainPieValues && domainPieValues.length>1"></div>
+
+            <div id="learningobjectivesbarchart" class="col-md-8" style="z-index:0;" 
+                 ng-show="learningObjectivesPieValues && learningObjectivesPieValues.length>1"></div>
+
+            <div id="submittedtimebarchart" class="col-md-8" style="z-index:1;" 
+                 ng-show="submittedTimesLineChartValues && submittedTimesLineChartValues.length>1"></div>
+
+            <div ng-show="data.ExerciseCount==0" class="col-md-12">
+                <p>No exercises on this date.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div ng-show="dataLoading" class="text-center" style="padding:50px;">
+    <button class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+</div>
