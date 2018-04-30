@@ -64,13 +64,18 @@ namespace Snappet.Services.Assesments
                     var previousSubjectUserResult = workResults.ExcercisesResults
                             .Where(wr => wr.SubmitDateTime.DayOfYear == previousSubjectUserDay.DayOfYear
                             && wr.Subject == subject.Subject && wr.UserId == student.Id);
-
-                    //TODO: Nan problem
-                    var averagePreviousSubjectUserResult = 0.0;
-                    if(previousSubjectUserResult.Count() > 0)
-                        averagePreviousSubjectUserResult = previousSubjectUserResult.Average(cr => cr.Progress * cr.Difficulty.ConvertToDouble());
                     
-                    subject.Result = Math.Round(subject.Result - averagePreviousSubjectUserResult/ Math.Abs(averagePreviousSubjectUserResult), 0);
+                    var averagePreviousSubjectUserResult = 0.0;
+                    if (previousSubjectUserResult.Count() > 0)
+                    {
+                        averagePreviousSubjectUserResult = previousSubjectUserResult.Average(cr => cr.Progress * cr.Difficulty.ConvertToDouble());
+                        if(averagePreviousSubjectUserResult != 0)
+                            subject.Result = Math.Round((subject.Result - averagePreviousSubjectUserResult) / Math.Abs(averagePreviousSubjectUserResult), 0);
+                        else
+                            subject.Result = Math.Round(subject.Result, 0);
+                    }
+                    else
+                        subject.Result = Math.Round(subject.Result, 0);
                 }
             }     
         }
