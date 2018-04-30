@@ -1,0 +1,32 @@
+﻿<div class="container">           
+    <div *ngIf="!classModel">Loading</div>
+    <div class="row" *ngIf="classModel">
+        <h3>Progress {{classModel.currentDate | date: 'short'}} compared to {{classModel.previousResultType}}</h3>             
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Student Id</th>
+                    <th *ngFor="let subject of classModel.subjects">
+                        {{subject}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of classModel.studentsModel">
+                    <td>{{student.id}}</td>
+                    <td *ngFor="let studentSubject of student.subjects">                     
+                        <span class="badge badge-secondary">{{studentSubject.result}}%</span>
+                        <div class="progress">
+                            <div class="progress-bar bg-success progress-content" [ngClass]="{'bg-danger': isNegativeProgress(studentSubject.result)}" role="progressbar"
+                                    [style.width]="convertToPercent(getPositiveValue(studentSubject.result))"
+                                    [attr.aria-valuenow]="getPositiveValue(studentSubject.result)" aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>                     
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>                                         
+</div>
+
