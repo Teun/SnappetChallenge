@@ -1,0 +1,41 @@
+.filter-container{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  align-items: flex-start;
+}
+
+h2{
+  color: #000000;
+  font-size: 30px;
+}
+body {
+  background: #2f3d4c33
+}
+.filter-label{
+  font-weight: bolder;
+  font-size: 27px;
+  color: #107fd0;
+}
+
+.table-outcome
+{
+  margin-top:1%;
+}
+
+table, th, td
+{
+  border: 1px solid black;
+    border-collapse: collapse;
+}
+
+button{
+  background:#e1e8fd;
+  padding:10px;
+}
+
+.filters-actions{
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+}

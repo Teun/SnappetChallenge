@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<!-- I Could have done with ReactJs and bootstrap, though due the short time and the screen simplety,
+   I prioritized the Minimum Viable Product, using the JQuery -->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Snappet Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
+</head>
+
+<body>
+  <h2 id="something">Work done at school in March </h2>
+  <div class=filter-container>
+    <span class="filter-label">Filter:</span>
+    <div class=filters-actions>
+      <div>
+        <div>From</div>
+        <input type="datetime-local" value="2015-03-03T07:30" id="fromdate" />
+      </div>
+      <div>
+        <div>To</div>
+        <input type="datetime-local" value="2015-03-03T11:42" id="todate" />
+      </div>
+      <div>
+        <div>Child Code</div>
+        <select id="child-ids"></select>
+      </div>
+      <button class="btn-filter" id="filter" type="submit">Apply Filter</button>
+    </div>
+  </div>
+
+  <table  class="table-outcome" id="work-outcome">
+    <thead>
+      <tr>
+        <th>Performance according with Filter</th>
+      </tr>
+      <tr>
+        <td>
+          Submited Answer Code
+        </td>
+        <td>
+          Submitted Date
+        </td>
+        <td>
+          Correct?
+        </td>
+        <td>
+          Student Code
+        </td>
+        <td>
+          Exercise Code
+        </td>
+        <td>
+          Difficulty
+        </td>
+        <td>
+          Subject
+        </td>
+        <td>
+          Domain
+        </td>
+        <td>
+          Learning Objective
+        </td>
+      </tr>
+    </thead>
+    <tbody id="work-content">
+    </tbody>
+  </table>
+  <button class="btn-load" id="load-more">Load More</button>
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>

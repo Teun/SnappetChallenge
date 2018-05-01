@@ -1,0 +1,8 @@
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\bin\Debug\SnappetChallenge.Contracts.dll
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\bin\Debug\SnappetChallenge.Contracts.pdb
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\obj\Debug\SnappetChallenge.Contracts.csproj.CoreCompileInputs.cache
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\obj\Debug\SnappetChallenge.Contracts.dll
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\obj\Debug\SnappetChallenge.Contracts.pdb
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\bin\Debug\SnappetChallenge.Domain.dll
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\bin\Debug\SnappetChallenge.Domain.pdb
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Contracts\obj\Debug\SnappetChallenge.Contracts.csprojResolveAssemblyReference.cache
