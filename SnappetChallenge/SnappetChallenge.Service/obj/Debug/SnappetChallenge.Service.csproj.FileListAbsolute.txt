@@ -1,0 +1,10 @@
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\obj\Debug\SnappetChallenge.Service.csprojResolveAssemblyReference.cache
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\obj\Debug\SnappetChallenge.Service.csproj.CoreCompileInputs.cache
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\bin\Debug\SnappetChallenge.Service.dll
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\bin\Debug\SnappetChallenge.Service.pdb
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\bin\Debug\Newtonsoft.Json.dll
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\bin\Debug\SnappetChallenge.Domain.dll
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\bin\Debug\SnappetChallenge.Domain.pdb
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\bin\Debug\Newtonsoft.Json.xml
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\obj\Debug\SnappetChallenge.Service.dll
+D:\Tests\SnappetChallenge-master\SnappetChallenge\SnappetChallenge.Service\obj\Debug\SnappetChallenge.Service.pdb
