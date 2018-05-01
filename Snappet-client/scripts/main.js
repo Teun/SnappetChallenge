@@ -23,11 +23,11 @@
     }
 
     function setFilterClick() {
-      $('#filter').click(function () { loadStudentWork($('#child-ids').val(), true) });
+      $('#filter').on('click', function () { loadStudentWork($('#child-ids').val(), true) });
     }
 
     function setLoadMoreClick() {
-      $('#load-more').click(function () { loadStudentWork(0) });
+      $('#load-more').on('click',function () { loadStudentWork(0) });
     }
 
     function loadStudentWork(studentId, resetTable) {
