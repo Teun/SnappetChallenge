@@ -8,9 +8,9 @@ namespace SnappetChallenge.Infrastructure.Models
     {
         public IEnumerable<StudentDTO> Students { get; set; }
 
-        public int TotalCorrect => Students.Sum(x => x.Exercises.TotalCorrect);
-        public int TotalIncorrect => Students.Sum(x => x.Exercises.TotalIncorrect);
-        public decimal CorrectnessAverage => Students.Average(x => x.Exercises.CorrectnessAverage);
+        public int TotalCorrect { get; set; }
+        public int TotalIncorrect { get; set; }
+        public decimal CorrectnessAverage { get; set; }
 
         public SubjectsDTO Subjects { get; set; }
     }
@@ -42,9 +42,11 @@ namespace SnappetChallenge.Infrastructure.Models
     {
         public IEnumerable<ExerciseDTO> All { get; set; }
 
-        public int TotalCorrect => All.Sum(x => x.Answers.TotalCorrect);
-        public int TotalIncorrect => All.Sum(x => x.Answers.TotalIncorrect);
-        public decimal CorrectnessAverage => All.Average(x => x.Answers.CorrectnessAverage);
+        public int TotalCorrect { get; set; }
+        public int TotalIncorrect { get; set; }
+        public decimal CorrectnessAverage { get; set; }
+        public decimal AverageDifficulty { get; set; }
+        public double AverageProgress { get; set; }
 
         public SubjectsDTO Subjects { get; set; }
     }
@@ -54,7 +56,7 @@ namespace SnappetChallenge.Infrastructure.Models
         public int Id { get; set; }
         public AnswersDTO Answers { get; set; }
 
-        public string Difficulty { get; set; }
+        public decimal Difficulty { get; set; }
         public string Subject { get; set; }
         public string Domain { get; set; }
         public string LearningObjective { get; set; }
@@ -70,10 +72,11 @@ namespace SnappetChallenge.Infrastructure.Models
     {
         public IEnumerable<AnswerDTO> All { get; set; }
 
-        public int Total => All.Count();
-        public int TotalCorrect => All.Count(x => x.IsCorrect);
-        public int TotalIncorrect => Total - TotalCorrect;
-        public decimal CorrectnessAverage => (100 * TotalCorrect) / Total;
+        public int Total { get; set; }
+        public int TotalCorrect { get; set; }
+        public int TotalIncorrect { get; set; }
+        public decimal CorrectnessAverage { get; set; }
+        public double AverageProgress { get; set; }
     }
 
     public class AnswerDTO

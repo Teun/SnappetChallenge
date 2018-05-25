@@ -26,4 +26,8 @@
     <ProjectReference Include="..\SnappetChallenge.Infrastructure\SnappetChallenge.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

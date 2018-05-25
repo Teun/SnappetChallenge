@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SnappetChallenge.Application.Models;
 using SnappetChallenge.Application.Requests;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace SnappetChallenge.Application.Controllers
 {
@@ -20,23 +18,9 @@ namespace SnappetChallenge.Application.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var a = await _mediator.Send(new GetWorksForDateRequest { InitialDate = new DateTime(2015, 3, 23, 0, 0, 0), FinalDate = new DateTime(2015, 3, 23, 23,59, 59) });
-
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            var result = await _mediator.Send(new GetWorksForDateRequest { InitialDate = new DateTime(2015, 3, 23, 0, 0, 0), FinalDate = new DateTime(2015, 3, 23, 23,59, 59) });
+            
+            return View(result);
         }
 
         public IActionResult Error()

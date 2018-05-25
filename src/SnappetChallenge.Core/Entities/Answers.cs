@@ -17,6 +17,7 @@ namespace SnappetChallenge.Core.Entities
         public int TotalCorrect => All.Count(x => x.IsCorrect);
         public int TotalIncorrect => Total - TotalCorrect;
         public decimal CorrectnessAverage => (100 * TotalCorrect) / Total;
+        public double AverageProgress => All.Average(x => x.Progress);
     }
 
     public class Answer
