@@ -1,6 +1,6 @@
 ﻿# Design Consideration
 
- * I tightly restricted the application to not show any data after the current time (`2015-03-24 11:30:00 UTC`) which is mentioned in the challenge.
+ * I tightly restricted the application to not show any data after the current time (`2015-03-24 11:30:00 UTC`) which was mentioned in the challenge.
  * There was no lucid explanation regarding Difficulty field in the challenge, so I decided to exclude NULL values, but including the negative values, even they were somehow strange.
  * I used a DbContext only to demonstrate how a repository may need a data access provider.
 Every services or providers dependency has been wired up, So there is no direct instantiation or dependencies on a concrete class.
