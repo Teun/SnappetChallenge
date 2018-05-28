@@ -18,8 +18,8 @@ namespace SnappetChallenge.Application.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _mediator.Send(new GetWorksForDateRequest { InitialDate = new DateTime(2015, 3, 23, 0, 0, 0), FinalDate = new DateTime(2015, 3, 23, 23,59, 59) });
-            
+            var result = await _mediator.Send(new GetWorksForDateRequest { InitialDate = new DateTime(2015, 3, 24, 0, 0, 0), FinalDate = new DateTime(2015, 3, 24, 11, 30, 00) });
+
             return View(result);
         }
 
