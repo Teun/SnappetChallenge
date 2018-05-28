@@ -169,7 +169,6 @@ else
                                         <table class="table table-borderless">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
                                                     <th scope="col">Correct?</th>
                                                     <th scope="col">Submitted Date</th>
                                                     <th scope="col">Progress</th>
@@ -179,8 +178,7 @@ else
                                                 @foreach (var answer in exercise.Answers.All)
                                                 {
                                                     <tr>
-                                                        <th scope="row">@answer.Id</th>
-                                                        <th>@(answer.IsCorrect ? "Yes" : "No")</th>
+                                                        <th scope="row">@(answer.IsCorrect ? "Yes" : "No")</th>
                                                         <th>@answer.Submitted.ToString()</th>
                                                         <th>@answer.Progress</th>
                                                     </tr>
