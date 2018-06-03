@@ -1,0 +1,83 @@
+<div class="text-center">
+  <h2>Dashboard</h2>
+  <p class="lead">Waar heeft mijn klas aan gewerkt</p>
+</div>
+
+<div class="row py-3">
+  <div class="offset-sm-9 col-sm-3">
+    <input id="period"
+      type="text"
+      placement="left"
+      class="form-control"
+      [(bsValue)]="period"
+      (bsValueChange)="loadData($event)"
+      bsDaterangepicker>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-6">    
+    <ngx-charts-advanced-pie-chart
+      scheme="picnic"
+      label="Total Exercises"
+      [results]="subjects | plot: 'totalExercises'">
+    </ngx-charts-advanced-pie-chart>
+  </div>
+
+  <div class="col-sm-6">
+    <ngx-charts-number-card
+      [view]="[565,250]"
+      cardColor="#232837"
+      emptyColor="#1e222e"
+      scheme="picnic"
+      [results]="cards">
+    </ngx-charts-number-card>
+  </div>
+</div>
+
+<div class="row subject-row" *ngFor="let subject of subjects">
+
+  <div class="col-sm-12">
+      <h5>{{ subject.name }}</h5>
+  </div>
+
+  <div class="col-sm-6">
+    <!-- Can't prevent Learning Objectives from getting cut off atm :( -->
+    <!-- https://github.com/swimlane/ngx-charts/issues/814 -->
+    <ngx-charts-bar-horizontal
+      labels="true"
+      scheme="picnic"
+      [view]="[500,250]"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showGridLines]="true"
+      [showDataLabel]="true"
+      [showXAxisLabel]="true"
+      [roundDomains]="true"
+      xAxisLabel="# Exercises"
+      [results]="subject.children | plot: 'totalExercises'">
+    </ngx-charts-bar-horizontal>
+  </div>
+
+  <div class="col-sm-6">
+    <ngx-charts-gauge
+      scheme="picnic"
+      [view]="[500,250]"
+      units="Progress"
+      [results]="[subject] | plot: 'totalProgress'">
+    </ngx-charts-gauge>
+  </div>
+
+</div>
+
+
+<div *ngIf="hasError" class="row justify-content-center">
+  <div class="col-sm-5">
+      <div class="alert alert-warning text-center" role="alert">
+        Oops, something unexpected happened :/
+      </div>
+  </div>
+</div>
+  
+  
+  
