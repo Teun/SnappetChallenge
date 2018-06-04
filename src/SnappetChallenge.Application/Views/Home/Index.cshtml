@@ -1,0 +1,197 @@
+﻿@model SnappetChallenge.CrossCutting.Models.Envelope<SnappetChallenge.Application.Responses.GetWorksForDateResponse>
+
+@{
+    ViewData["Title"] = "Today Forecast";
+}
+
+@if (!Model.IsSuccess)
+{
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Ooopss...</h1>
+        <p class="lead">There was an error processing your request:</p>
+
+        <ul class="list-group list-group-flush text-danger">
+            @foreach (var error in Model.Errors)
+            {
+                <li class="list-group-item">@error</li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Results</h1>
+        <p class="lead">Here are the reports about your class today (@(new DateTime(2015, 3, 23).ToShortDateString()))</p>
+    </div>
+
+    <hr />
+
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">For the entire class</h1>
+    </div>
+
+    <div class="card-deck mb-3 text-center">
+        <div class="col-sm-4 offset-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Total Students</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">@Model.Content.Works.Students.Count()</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Total Correct Answers</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">@Model.Content.Works.TotalCorrect</h1>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Total Incorrect Answers</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">@Model.Content.Works.TotalIncorrect</h1>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Correctness Average</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">@(Model.Content.Works.CorrectnessAverage.ToString("F"))%</h1>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">By Student</h1>
+    </div>
+
+    <hr />
+
+    @foreach (var student in Model.Content.Works.Students)
+    {
+        <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#@student.Id" aria-expanded="false" aria-controls="@student.Id">
+                @student.Id
+            </button>
+        </div>
+
+        <div class="collapse" id="@student.Id">
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Total exercises done</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">@student.Exercises.All.Count()</h1>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Average Difficulty</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">@student.Exercises.AverageDifficulty.ToString("F")</h1>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Average Progress</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">@student.Exercises.AverageProgress.ToString("F")</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Total Correct Answers</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">@student.Exercises.TotalCorrect</h1>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Total Incorrect Answers</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">@student.Exercises.TotalIncorrect</h1>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Correctness Average</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">@(student.Exercises.CorrectnessAverage.ToString("F"))%</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Total (Total/Correct/Incorrect)</th>
+                                <th scope="col">Difficulty</th>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Domain</th>
+                                <th scope="col">Learning Objective</th>
+                                <th scope="col">Answers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var exercise in student.Exercises.All)
+                            {
+                                <tr>
+                                    <th scope="row">@exercise.Id</th>
+                                    <th>@($"{exercise.Answers.Total}/{exercise.Answers.TotalCorrect}/{exercise.Answers.TotalIncorrect}")</th>
+                                    <th>@exercise.Difficulty.ToString("F")</th>
+                                    <th>@exercise.Subject</th>
+                                    <th>@exercise.Domain</th>
+                                    <th>@exercise.LearningObjective</th>
+                                    <th>
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Correct?</th>
+                                                    <th scope="col">Submitted Date</th>
+                                                    <th scope="col">Progress</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var answer in exercise.Answers.All)
+                                                {
+                                                    <tr>
+                                                        <th scope="row">@(answer.IsCorrect ? "Yes" : "No")</th>
+                                                        <th>@answer.Submitted.ToString()</th>
+                                                        <th>@answer.Progress</th>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </th>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+}
