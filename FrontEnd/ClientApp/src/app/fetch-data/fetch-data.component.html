@@ -1,0 +1,53 @@
+<h1>Results</h1>
+
+<p>Watch today's results.</p>
+
+<p *ngIf="!subjects"><em>Loading...</em></p>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date" value="2015-03-24T11:30:00" (dateChange)="dateChange($event)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<table class='table' *ngIf="subjects">
+  <thead>
+    <tr>
+      <th>Subject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let subject of subjects">
+      <td><a (click)="loadWorkItems(subject)">{{ subject }}</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>{{ subjectChosen }}</h3>
+
+<table class='table' *ngIf="workItems">
+  <thead>
+    <tr>
+      <th>Answer Id</th>
+      <th>Domain</th>
+      <th>Learning Objective</th>
+      <th>Difficulty</th>
+      <th>Correct</th>
+      <th>Progress</th>
+      <th>User Id</th>
+      <th>Exercise Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let workItem of workItems">
+      <td>{{ workItem.submittedAnswerId }}</td>
+      <td>{{ workItem.domain }}</td>
+      <td>{{ workItem.learningObjective }}</td>
+      <td>{{ workItem.difficulty }}</td>
+      <td>{{ workItem.correct }}</td>
+      <td>{{ workItem.progress }}</td>
+      <td>{{ workItem.userId }}</td>
+      <td>{{ workItem.exerciseId }}</td>
+    </tr>
+  </tbody>
+</table>
