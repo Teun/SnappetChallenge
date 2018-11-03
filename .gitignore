@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SnappedChallengeApi/.vs
+/SnappedChallengeApi/SnappedChallengeApi/obj
+/SnappedChallengeApi/SnappedChallengeApi/bin/Debug/netcoreapp2.0
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
+/.vs/ProjectSettings.json
+/.vs/OtherChallanges/v15

@@ -1,0 +1,32 @@
+-The assignment
+
+In this repository you will find a folder Data containing work.csv and work.json. 
+Both contain the same data, you only need to use one (which you find useful). 
+This file contains the work results of the children in one class over a month.
+
+Make a report or screen or whatever a teacher gives an overview of how his class worked today and what. It is now Tuesday 2015-03-24 11:30:00 UTC. 
+The answers from after that time are not yet shown.
+
+Create a pull request in which you at least have included a readme that explains what you need to do to view the result.
+
+-Background information
+
+All times are in UTC
+There is an attribute Progress. 
+This gives the change in the assessment of the student's skill on a learning goal. 
+There are psychometric models behind that take into account the difficulty of the assignment, whether the assignment was made earlier by this student, etc. 
+There are several situations where the Progress is 0. For example if we do not yet have a proper calibration of the difficulty of the assignment. 
+Or if the student has made too few assignments in a learning goal to make a good estimate of the skill.
+Since this dataset only shows changes and is not an absolute value, you can not see from this dataset what the skill of each student is. That does not have to come back in the results either.
+
+-Freedom
+
+This assignment is deliberately formulated broadly. 
+You may use the techniques and tools that you prefer to use. 
+You can spend your time on the aspects that you consider most important. 
+There is no time to do everything: make a choice. At Snappet we work with C #, .NET, Javascript, JQuery and Knockout.JS. 
+But we think that a good programmer on another platform is familiar with that quickly enough. 
+You can use frameworks and libraries. You may convert the data into another format or import it into databases. 
+Then explain in the readme how someone else can get it working. The minimum requirement in the assignment is "what has my class worked on today". 
+This can be done in a list, in a graphic form, it can be used as numbers or colors. You can compare it with last week or an average score. 
+Try to think about what is most important to a teacher in the classroom.
