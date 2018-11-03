@@ -195,7 +195,7 @@ namespace SnappedChallengeApi._Corelib.Extensions
         {
             if (queryParams.IsNotNullAndEmpty())
             {
-                if (queryParams.ValidationErrors.IsNullAndEmpty())
+                if (queryParams.ValidationErrors.IsNullOrEmpty())
                 {
                     queryParams.ValidationErrors = new List<string>();
                 }

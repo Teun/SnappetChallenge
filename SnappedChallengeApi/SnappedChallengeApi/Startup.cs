@@ -1,41 +1,85 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SnappedChallengeApi.Services.Implementations;
+using SnappedChallengeApi.Services.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SnappedChallengeApi
 {
+    /// <summary>
+    /// Startup class for service 
+    /// </summary>
     public class Startup
     {
-        private const string ServiceName = "SnappedChallengeService";
+        /// <summary>
+        /// Service name
+        /// </summary>
+        private const string ServiceName = "Snapped Challenge API";
+        private const string ServiceTitle = "My snapped challange, let's see what i can do...";
+        /// <summary>
+        /// Service api version
+        /// </summary>
         private const string ApiVersion = "v1";
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //mvc registeration
             services.AddMvc();
 
+            //Swagger registeration
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = ServiceName, Version = ApiVersion });
+                c.SwaggerDoc(ApiVersion, new Info
+                {
+                    Version = ApiVersion,
+                    Title = ServiceName,
+                    Description = ServiceTitle,
+                    TermsOfService = "None",
+                    Contact = new Contact
+                    {
+                        Name = "Emre Ergüden",
+                        Email = "emreerguden@gmail.com"
+                    },
+                    License = new License()
+                });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddSingleton<IClassworkService>(new ClassworkService());
+            services.AddSingleton<ICommonService>(new CommonService());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            #region Standard REgisterations
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -54,7 +98,9 @@ namespace SnappedChallengeApi
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            #endregion
 
+            #region Swagger Initialization
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -64,8 +110,7 @@ namespace SnappedChallengeApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", ServiceName);
             });
-
-            app.UseMvc();
+            #endregion
         }
     }
 }

@@ -7,12 +7,12 @@ namespace SnappedChallengeApi._Corelib.Extensions
     /// </summary>
     public static class Utilities
     {
-        public static bool IsNotNullAndEmpty(this Guid source)
+        public static bool IsNotNullOrEmpty(this Guid source)
         {
             return !Guid.Empty.Equals(source);
         }
 
-        public static bool IsNotNullAndEmpty(this string source)
+        public static bool IsNotNullOrEmpty(this string source)
         {
             return !String.IsNullOrEmpty(source);
         }
@@ -36,29 +36,29 @@ namespace SnappedChallengeApi._Corelib.Extensions
             else return ((source != null) && (source != DBNull.Value));
         }
 
-        public static bool IsNullAndEmpty(this Guid source)
+        public static bool IsNullOrEmpty(this Guid source)
         {
             return !IsNotNullAndEmpty(source);
         }
 
-        public static bool IsNullAndEmpty(this object source)
+        public static bool IsNullOrEmpty(this object source)
         {
-            return !IsNullAndEmpty(source);
+            return !IsNotNullAndEmpty(source);
         }
 
-        public static bool IsNullAndEmpty(this string source)
+        public static bool IsNullOrEmpty(this string source)
         {
-            return !IsNullAndEmpty(source);
+            return !IsNotNullAndEmpty(source);
         }
 
-        public static bool IsNullAndEmpty(this DateTime source)
+        public static bool IsNullOrEmpty(this DateTime source)
         {
-            return !IsNullAndEmpty(source);
+            return !IsNotNullAndEmpty(source);
         }
 
-        public static bool IsNullAndEmpty(this Double source)
+        public static bool IsNullOrEmpty(this Double source)
         {
-            return !IsNullAndEmpty(source);
+            return !IsNotNullAndEmpty(source);
         }
     }
 }
