@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SnappedChallengeApi.DAL;
+using SnappedChallengeApi.Models.Commons;
 using SnappedChallengeApi.Services.Implementations;
 using SnappedChallengeApi.Services.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
@@ -46,6 +48,7 @@ namespace SnappedChallengeApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            DatabaseContext.InitializeDbContext(new ServiceSettings());
             //mvc registeration
             services.AddMvc();
 
@@ -74,6 +77,8 @@ namespace SnappedChallengeApi
 
             services.AddSingleton<IClassworkService>(new ClassworkService());
             services.AddSingleton<ICommonService>(new CommonService());
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
