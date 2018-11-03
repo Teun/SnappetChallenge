@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SnappedChallengeApi.Models;
 
-namespace SnappedChallengeApi.Controllers
+namespace SnappedChallengeApi.Controllers.UI
 {
     public class HomeController : Controller
     {
