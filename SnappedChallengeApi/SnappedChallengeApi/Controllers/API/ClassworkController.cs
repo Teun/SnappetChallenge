@@ -4,7 +4,6 @@ using SnappedChallengeApi._Corelib.Extensions;
 using SnappedChallengeApi.Controllers.API.Base;
 using SnappedChallengeApi.DAL.Models;
 using SnappedChallengeApi.Models.Bussiness;
-using SnappedChallengeApi.Models.Commons;
 using SnappedChallengeApi.Models.Commons.ApiCommons;
 using SnappedChallengeApi.Services.Implementations;
 using SnappedChallengeApi.Services.Interfaces;
@@ -15,10 +14,20 @@ using System.Net;
 
 namespace SnappedChallengeApi.Controllers.API
 {
+    /// <summary>
+    /// Classworks Controller Main Data Controller for this exercise inherits base controller
+    /// </summary>
     public class ClassworkController : BaseController
     {
+        /// <summary>
+        /// Classwork service instance
+        /// </summary>
         private ClassworkService _service = null;
 
+        /// <summary>
+        /// constructor classworkService is being injected
+        /// </summary>
+        /// <param name="classworkService"></param>
         public ClassworkController(IClassworkService classworkService)
         {
             if (classworkService.IsNullOrEmpty())
@@ -27,6 +36,10 @@ namespace SnappedChallengeApi.Controllers.API
             _service = (ClassworkService)classworkService;
         }
 
+        /// <summary>
+        /// Basic get api for classwork exercise data
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("classworks")]
         [SwaggerResponse((int)HttpStatusCode.OK, type: typeof(List<ExerciseResult>))]
@@ -39,6 +52,11 @@ namespace SnappedChallengeApi.Controllers.API
             return Ok(records);
         }
 
+        /// <summary>
+        /// Exercise's Main api for date interval queries for the UI
+        /// </summary>
+        /// <param name="filterParam"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("classworks/summary")]
         [SwaggerResponse((int)HttpStatusCode.OK, type: typeof(List<ClassworkSummary>))]

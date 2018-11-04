@@ -6,7 +6,6 @@
     using SnappedChallengeApi.Models.Constants;
     using Swashbuckle.AspNetCore.SwaggerGen;
     using System;
-    using System.Collections.Generic;
     using System.Net;
 
     /// <summary>
@@ -21,31 +20,11 @@
     [Produces(ServiceConstants.ApplicationJsonContent)]
     public abstract class BaseController : Controller
     {
-        //internal Dictionary<string, string> ParseQueryString()
-        //{
-        //    try
-        //    {
-        //        Dictionary<string, string> parameters = new Dictionary<string, string>();
-        //        foreach (var key in HttpContext.Request.Query.Keys)
-        //        {
-        //            if (!parameters.ContainsKey(key))
-        //            {
-        //                parameters.Add(key, HttpContext.Request.Query[key].ToString().Trim());
-        //            }
-        //        }
-        //        return parameters;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //TODO log
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        //TODO log
-        //    }
-        //}
-
+        /// <summary>
+        /// Query string parser method required when restful client calls with query string
+        /// </summary>
+        /// <param name="defaultRecordCount"></param>
+        /// <returns></returns>
         internal QueryParameter ParseQueryString(int? defaultRecordCount = 25)
         {
             try

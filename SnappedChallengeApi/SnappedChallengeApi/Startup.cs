@@ -24,15 +24,21 @@ namespace SnappedChallengeApi
     public class Startup
     {
         /// <summary>
-        /// Service name
+        /// Service Name For Swagger Docs
         /// </summary>
-        private const string ServiceName = "Snapped Challenge API";
-        private const string ServiceTitle = "My snapped challange, let's see what i can do...";
-        private ServiceSettings ServiceSettings = null;
+        public const string ServiceName = "Snapped Challenge API";
+        /// <summary>
+        /// Service Title For Swagger Docs
+        /// </summary>
+        public const string ServiceTitle = "My snapped challange, let's see what i can do...";
+        /// <summary>
+        /// Service Settings Instance for launch configs
+        /// </summary>
+        public ServiceSettings ServiceSettings = null;
         /// <summary>
         /// Service api version
         /// </summary>
-        private const string ApiVersion = "v1";
+        public const string ApiVersion = "v1";
 
         /// <summary>
         /// Constructor
@@ -91,7 +97,7 @@ namespace SnappedChallengeApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            #region Standard REgisterations
+            #region Standard Registerations
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();

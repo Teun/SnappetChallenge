@@ -7,10 +7,22 @@ using System.Threading.Tasks;
 
 namespace SnappedChallengeApi._Corelib.RestClient
 {
+    /// <summary>
+    /// Wrapper facade for rest request, this client model encapsulates rest request instance
+    /// </summary>
     public class RestServiceClient
     {
+        /// <summary>
+        /// inner rest request main instance
+        /// </summary>
         private RestRequest _restRequest = null;
 
+        /// <summary>
+        /// Generic http rest call method with all parameters supplied
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="restRequestParameter"></param>
+        /// <returns></returns>
         public async Task<RestServiceCallResponse> CallRestServiceAsync<T>(RestRequestParameter restRequestParameter)
         {
             RestServiceCallResponse result = null;
@@ -57,6 +69,11 @@ namespace SnappedChallengeApi._Corelib.RestClient
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="response"></param>
+        /// <returns></returns>
         private async Task<Exception> ParseResponseErrorMessageContent(HttpResponseMessage response)
         {
             Exception exceptionResult;
@@ -75,9 +92,6 @@ namespace SnappedChallengeApi._Corelib.RestClient
             return exceptionResult;
         }
 
-        public Task CallRestServiceAsync<T>(HttpResponseMessage parameters)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

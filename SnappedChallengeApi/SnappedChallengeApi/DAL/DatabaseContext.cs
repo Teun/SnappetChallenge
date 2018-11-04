@@ -10,23 +10,45 @@ using System.Threading.Tasks;
 
 namespace SnappedChallengeApi.DAL
 {
+    /// <summary>
+    /// Database Context simulation model class for the exercise
+    /// usually this kind of data is stored a relational db like sql server or no sql like mongo etc.
+    /// if releational db is being used it is a good idea to code provider model for the support of multiple dbs etc.
+    /// But for keeping short i just coded a clean easy apporach with in memory json parse fetch.
+    /// </summary>
     public class DatabaseContext
     {
-        private static bool IsInitialized = false;
+        /// <summary>
+        /// Initialization fetch flag
+        /// </summary>
+        private static bool _isInitialized = false;
+        /// <summary>
+        /// In memory data storage for the exercise for preventing constant io read
+        /// </summary>
         private static List<ExerciseResult> _database;
+        /// <summary>
+        /// lock object for first initialization
+        /// </summary>
         private object _lockObject = new object();
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public DatabaseContext()
         {
             lock (_lockObject)
             {
-                if (!IsInitialized)
+                if (!_isInitialized)
                 {
                     InitializeDbContext();
-                    IsInitialized = true;
+                    _isInitialized = true;
                 }
             }
         }
+
+        /// <summary>
+        /// Exercise data fetch method
+        /// </summary>
         private void InitializeDbContext()
         {
             try
@@ -47,6 +69,12 @@ namespace SnappedChallengeApi.DAL
             }
         }
 
+        /// <summary>
+        /// DAL method for classwork summary
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
         internal List<ClassworkSummary> GetClassworkSummary(DateTime startDate, DateTime endDate)
         {
             List<ClassworkSummary> classworkSummary = null;
@@ -78,6 +106,13 @@ namespace SnappedChallengeApi.DAL
             return classworkSummary;
         }
 
+        /// <summary>
+        /// Another DAL method for exercise result usually odata or similar custom implementation through the dal layer methods 
+        /// are widely used. I just implemented a basic ones to show the idea
+        /// </summary>
+        /// <param name="offset"></param>
+        /// <param name="limit"></param>
+        /// <returns></returns>
         public List<ExerciseResult> GetExerciseResults(int offset, int limit)
         {
             return _database.Skip(offset).Take(limit).ToList();

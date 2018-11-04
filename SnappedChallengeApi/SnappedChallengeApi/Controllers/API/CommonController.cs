@@ -9,11 +9,21 @@ using System.Net;
 
 namespace SnappedChallengeApi.Controllers.API
 {
+    /// <summary>
+    /// Common controller that is used for the common operations like health check etc.
+    /// </summary>
     public class CommonController : BaseController
     {
+        /// <summary>
+        /// Common service instance
+        /// </summary>
 
         private CommonService _service = null;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="commonService"></param>
         public CommonController(ICommonService commonService)
         {
             if (commonService.IsNullOrEmpty())
@@ -23,10 +33,9 @@ namespace SnappedChallengeApi.Controllers.API
         }
 
         /// <summary>
-        /// Service health check api
+        /// Service health ping check api
         /// </summary>
         /// <returns></returns>
-        //[SwaggerGroup("Others")]
         [HttpPost]
         [Route("ping")]
         [SwaggerResponse((int)HttpStatusCode.OK, type: typeof(bool))]

@@ -10,8 +10,16 @@ using System.Threading.Tasks;
 
 namespace SnappedChallengeApi._Corelib.RestClient.Request
 {
+    /// <summary>
+    /// Rest request model class
+    /// </summary>
     public class RestRequest
     {
+        /// <summary>
+        /// Rest http request is made by this method with parameters supplied
+        /// </summary>
+        /// <param name="restRequestParameter"></param>
+        /// <returns></returns>
         public async Task<HttpResponseMessage> SendRequestAsync(RestRequestParameter restRequestParameter)
         {
             HttpResponseMessage response;
@@ -59,6 +67,12 @@ namespace SnappedChallengeApi._Corelib.RestClient.Request
             return response;
         }
 
+        /// <summary>
+        /// Simple httpClient creator if certificates occures or request timeout needed different than default this method can be used
+        /// </summary>
+        /// <param name="requestTimeOut"></param>
+        /// <param name="clientCertificates"></param>
+        /// <returns></returns>
         private HttpClient CreateHttpClient(TimeSpan requestTimeOut, List<X509Certificate> clientCertificates = null)
         {
             HttpClientHandler handler = new HttpClientHandler();

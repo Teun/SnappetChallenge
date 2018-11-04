@@ -7,15 +7,28 @@ using System.Linq;
 
 namespace SnappedChallengeApi._Corelib.Extensions
 {
+    /// <summary>
+    /// Simple extensions for exercise practical functionalty need
+    /// </summary>
     public static class HttpExtensions
     {
-        public static string JsonContent = "application/json; charset=UTF-8";
-
+        /// <summary>
+        /// Http request url builder
+        /// </summary>
+        /// <param name="serviceUrl"></param>
+        /// <param name="route"></param>
+        /// <returns></returns>
         public static string GetRequestUrl(this string serviceUrl, string route)
         {
             return $"{serviceUrl}{route}";
         }
 
+        /// <summary>
+        /// Query string parser from the http context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="defaultRecordCount"></param>
+        /// <returns></returns>
         public static QueryParameter ParseQueryString(this HttpContext context, int? defaultRecordCount = null)
         {
             try
@@ -58,9 +71,6 @@ namespace SnappedChallengeApi._Corelib.Extensions
                             case "withcount":
                                 ParseWithCountParameter(ref parameters, pairItem);
                                 break;
-                            case "value":
-                                parameters.Value = pairItem.Value;
-                                break;
                             default:
                                 ParseOtherQueryParameter(ref parameters, pairItem);
                                 break;
@@ -77,6 +87,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
         }
 
         #region Other internal helpers
+        /// <summary>
+        /// Other Query Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseOtherQueryParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             try
@@ -99,7 +114,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 //TODO log
             }
         }
-
+        /// <summary>
+        /// WithCount Query Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseWithCountParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             bool withCountBool = false;
@@ -112,7 +131,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 AddValidationError(ref parameters, "withCount parameter has invalid value (true/false expected)");
             }
         }
-
+        /// <summary>
+        /// Count Query Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseCountParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             bool countBool = false;
@@ -125,7 +148,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 AddValidationError(ref parameters, "count parameter has invalid value (true/false expected)");
             }
         }
-
+        /// <summary>
+        /// Lang Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseLangParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             parameters.Language = pairItem.Value;
@@ -135,7 +162,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 parameters.Language = ServiceConstants.DefaultLanguageCode;
             }
         }
-
+        /// <summary>
+        /// Limit Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseLimitParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             int limitValue = 0;
@@ -148,7 +179,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 AddValidationError(ref parameters, "limit parameter must be an integer");
             }
         }
-
+        /// <summary>
+        /// First Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseFirstParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             bool firstBool = false;
@@ -161,7 +196,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 AddValidationError(ref parameters, "first parameter has invalid value (true/false expected)");
             }
         }
-
+        /// <summary>
+        /// Last Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseLastParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             bool lastBool = false;
@@ -174,7 +213,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 AddValidationError(ref parameters, "last parameter has invalid value (true/false expected)");
             }
         }
-
+        /// <summary>
+        /// Offset Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseOffsetParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             int offsetValue = 0;
@@ -187,7 +230,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 AddValidationError(ref parameters, "offset parameter value must be integer");
             }
         }
-
+        /// <summary>
+        /// Sort Parameter internal parser
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="pairItem"></param>
         private static void ParseSortParameter(ref QueryParameter parameters, KeyValuePair<string, string> pairItem)
         {
             if (!string.IsNullOrEmpty(pairItem.Value))
@@ -195,7 +242,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
                 parameters.SortExpression = pairItem.Value;
             }
         }
-
+        /// <summary>
+        /// Validation Error Parameter internal parser
+        /// </summary>
+        /// <param name="queryParams"></param>
+        /// <param name="errorDesc"></param>
         private static void AddValidationError(ref QueryParameter queryParams, string errorDesc)
         {
             if (queryParams.IsNotNullAndEmpty())

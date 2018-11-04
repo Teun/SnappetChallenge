@@ -16,10 +16,24 @@ using System.Threading.Tasks;
 
 namespace SnappedChallengeApi.RestClients
 {
+    /// <summary>
+    /// Singleton applied Classwork Rest Client for Rest Calls
+    /// Mostly swagger apis are not manually coded like this, auto rest etc structores provides automatic client code generation
+    /// for swagger expose service apis. For this simple example i manually coded the client code for fun
+    /// </summary>
     public class ClassworkRestClient : Singleton<ClassworkRestClient>
     {
-        private string _endpointName = "classworks";
+        /// <summary>
+        /// EndPoint Path
+        /// </summary>
+        private const string _endpointName = "classworks";
 
+        /// <summary>
+        /// classworkd/summary POST Api Client Method
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
         public async Task<List<ClassworkSummary>> GetClassworkSummary(DateTime startDate, DateTime endDate)
         {
             FilterParameter param = new FilterParameter()

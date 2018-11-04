@@ -49,7 +49,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">Status Of Your Class - @ViewData["Title"]</a>
+                        <a class="navbar-brand" href="#pablo">Status Of Your Class - @ViewData["Title"] (Current Date:  @ViewData["CurrentDate"])</a>
                     </div>
                     <button type="button" onclick="refresh()" class="btn btn-primary pull-right">Refresh</button>
                 </div>
@@ -67,9 +67,7 @@
     <script src="../assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
     <script src="../assets/demo/demo.js"></script>
     <script>
-        $(document).ready(function () {
-            md.initDashboardPageCharts();
-        });
+       
 
         $("#@ViewData["ActiveTab"]").toggleClass('nav-item active');
 

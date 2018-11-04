@@ -1,13 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SnappedChallengeApi.Models.Commons.ApiCommons
 {
+    /// <summary>
+    /// Post data body parameter
+    /// </summary>
     public class FilterParameter
     {
+        /// <summary>
+        /// Start Date
+        /// </summary>
         public DateTime StartDate { get; set; }
+        /// <summary>
+        /// End Date
+        /// </summary>
         public DateTime EndDate { get; set; }
     }
 }
