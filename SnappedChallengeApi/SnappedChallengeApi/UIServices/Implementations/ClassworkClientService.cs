@@ -12,34 +12,25 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using SnappedChallengeApi._Corelib.Extensions;
+using SnappedChallengeApi.RestClients;
 
 namespace SnappedChallengeApi.UIServices.Implementations
 {
     public class ClassworkClientService : IClassworkClientService
     {
-        private string _endpointName = "classworks";
-
-        public async Task<List<ClassworkSummary>> GetClassworkSummary(DateTime startDate, DateTime endDate)
+        public async Task<List<ClassworkSummary>> GetClassworkSummaryRecords(DateTime startDate, DateTime endDate)
         {
-            FilterParameter param = new FilterParameter()
+            List<ClassworkSummary> records = null;
+            try
             {
-                StartDate = startDate,
-                EndDate = endDate
-            };
-            StringContent postContent = new StringContent(JsonConvert.SerializeObject(param), Encoding.UTF8, "application/json");
-            RestRequestParameter parameters = new RestRequestParameter(
-                ServiceSettings.ServiceAddress.GetRequestUrl($"/api/{_endpointName}/summary"), 
-                HttpMethod.Post, 
-                contentParameter: postContent) { IgnoreCertificateErrors = true };
+                records = await ClassworkRestClient.Instance().GetClassworkSummary(startDate, endDate);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-            RestServiceClient client = new RestServiceClient();
-            RestServiceCallResponse result = await client.CallRestServiceAsync<String>(parameters);
-
-            var resultObject = JsonConvert.DeserializeObject<List<ClassworkSummary>>(result.ResultObject.ToString());
-
-            return resultObject;
+            return records;
         }
-
-        
     }
 }

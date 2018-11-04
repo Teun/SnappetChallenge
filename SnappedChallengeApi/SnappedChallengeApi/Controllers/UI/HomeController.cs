@@ -14,7 +14,7 @@ namespace SnappedChallengeApi.Controllers.UI
     public class HomeController : Controller
     {
         private DateTime _currentDate = DateTime.Parse("2015-03-24");
-        private ClassworkClientService _client = null;
+        private ClassworkClientService _clientService = null;
 
         /// <summary>
         /// 
@@ -25,27 +25,27 @@ namespace SnappedChallengeApi.Controllers.UI
             if (classworkClient.IsNullOrEmpty())
                 throw new Exception(nameof(classworkClient));
 
-            _client = (ClassworkClientService)classworkClient;
+            _clientService = (ClassworkClientService)classworkClient;
         }
 
         public async Task<IActionResult> Index()
         {
             var endDate = _currentDate;
             var startDate = _currentDate;
-            //var record = await _client.GetClassworkSummary(startDate, endDate);
+            var records = await _clientService.GetClassworkSummaryRecords(startDate, endDate);
 
             ViewData["ActiveTab"] = "todayTab";
-            return View();
+            return View(records);
         }
 
         public async Task<IActionResult> ThisWeek()
         {
             var endDate = _currentDate;
             var startDate = _currentDate.GetStartOfWeek();
-            //var record = await _client.GetClassworkSummary(startDate, endDate);
+            var records = await _clientService.GetClassworkSummaryRecords(startDate, endDate);
 
             ViewData["ActiveTab"] = "weekTab";
-            return View();
+            return View(records);
         }
 
         public async Task<IActionResult> ThisMonth()
@@ -53,10 +53,10 @@ namespace SnappedChallengeApi.Controllers.UI
             var endDate = _currentDate;
             var startDate = _currentDate.GetStartOfMonth();
 
-            //var record = await _client.GetClassworkSummary(startDate, endDate);
+            var records = await _clientService.GetClassworkSummaryRecords(startDate, endDate);
 
             ViewData["ActiveTab"] = "monthTab";
-            return View();
+            return View(records);
         }
 
 
