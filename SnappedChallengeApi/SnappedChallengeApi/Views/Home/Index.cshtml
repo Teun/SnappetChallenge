@@ -5,39 +5,20 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
-                        </div>
-                        <p class="card-category">Used Space</p>
-                        <h3 class="card-title">
-                            49/50
-                            <small>GB</small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-danger">warning</i>
-                            <a href="#pablo">Get More Space...</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">store</i>
+                            <i class="material-icons">check</i>
                         </div>
-                        <p class="card-category">Revenue</p>
-                        <h3 class="card-title">$34,245</h3>
+                        <p class="card-category">Correct Answer Count</p>
+                        <h3 class="card-title">@Model.Sum(f => f.CorrectAnswerCount)</h3>
                     </div>
                     <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
-                        </div>
+                        @*<div class="stats">
+                            <i class="material-icons"></i>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -45,14 +26,34 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">cancel</i>
                         </div>
-                        <p class="card-category">Fixed Issues</p>
-                        <h3 class="card-title">75</h3>
+                        <p class="card-category">Wrong Answer Count</p>
+                        <h3 class="card-title">@Model.Sum(f => f.WrongAnswerCount)</h3>
+                    </div>
+                    <div class="card-footer">
+                        @*<div class="stats">
+                        <i class="material-icons"></i>
+                    </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">content_copy</i>
+                        </div>
+                        <p class="card-category">Total Progress</p>
+                        <h3 class="card-title">
+                            @Model.Sum(f => f.TotalProgress)
+                            <small>points</small>
+                        </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">local_offer</i> Tracked from Github
+                            @*<i class="material-icons text-danger"></i>
+                        <a href="#pablo"></a>*@
                         </div>
                     </div>
                 </div>
@@ -61,15 +62,19 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="material-icons">timeline</i>
                         </div>
-                        <p class="card-category">Followers</p>
-                        <h3 class="card-title">+245</h3>
+                        <p class="card-category">Max/Min Progress Per Student</p>
+                        <h3 class="card-title">
+                            @String.Format("{0:0.00}", Model.Max(f => f.TotalProgressPerStudent)) /
+                            @String.Format("{0:0.00}", Model.Min(f => f.TotalProgressPerStudent))
+                            <small>points</small>
+                        </h3>
                     </div>
                     <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
-                        </div>
+                        @*<div class="stats">
+                        <i class="material-icons">update</i> Just Updated
+                    </div>*@
                     </div>
                 </div>
             </div>
@@ -131,7 +136,7 @@
                 <div class="card">
                     <div class="card-header card-header-warning">
                         <h4 class="card-title">Classwork Exercise Results</h4>
-                        <p class="card-category">New employees on 15th September, 2016</p>
+                        <p class="card-category">Consolided Exercise Summary is listed below</p>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover">
