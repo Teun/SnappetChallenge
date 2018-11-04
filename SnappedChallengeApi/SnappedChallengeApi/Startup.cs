@@ -85,7 +85,7 @@ namespace SnappedChallengeApi
             services.AddSingleton<ICommonService>(new CommonService());
 
             //Simualation of client services that consumes apis
-            services.AddSingleton<IClassworkClient>(new ClassworkClient());
+            services.AddSingleton<IClassworkClientService>(new ClassworkClientService());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

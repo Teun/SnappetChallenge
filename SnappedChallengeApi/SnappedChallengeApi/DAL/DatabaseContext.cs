@@ -14,13 +14,17 @@ namespace SnappedChallengeApi.DAL
     {
         private static bool IsInitialized = false;
         private static List<ExerciseResult> _database;
+        private object _lockObject = new object();
 
         public DatabaseContext()
         {
-            if (!IsInitialized)
+            lock (_lockObject)
             {
-                InitializeDbContext();
-                IsInitialized = true;
+                if (!IsInitialized)
+                {
+                    InitializeDbContext();
+                    IsInitialized = true;
+                }
             }
         }
         private void InitializeDbContext()

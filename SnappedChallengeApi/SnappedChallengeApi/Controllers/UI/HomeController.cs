@@ -13,42 +13,52 @@ namespace SnappedChallengeApi.Controllers.UI
 {
     public class HomeController : Controller
     {
-        private ClassworkClient _client = null;
+        private DateTime _currentDate = DateTime.Parse("2015-03-24");
+        private ClassworkClientService _client = null;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="classworkClient"></param>
-        public HomeController(IClassworkClient classworkClient)
+        public HomeController(IClassworkClientService classworkClient)
         {
             if (classworkClient.IsNullOrEmpty())
                 throw new Exception(nameof(classworkClient));
 
-            _client = (ClassworkClient)classworkClient;
+            _client = (ClassworkClientService)classworkClient;
         }
 
         public async Task<IActionResult> Index()
         {
-            var endDate = DateTime.Parse("2015-03-24");
-            var startDate = DateTime.Parse("2015-03-24");
-            var record = await _client.GetClassworkSummary(startDate, endDate);
+            var endDate = _currentDate;
+            var startDate = _currentDate;
+            //var record = await _client.GetClassworkSummary(startDate, endDate);
 
+            ViewData["ActiveTab"] = "todayTab";
             return View();
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> ThisWeek()
         {
-            ViewData["Message"] = "Your application description page.";
+            var endDate = _currentDate;
+            var startDate = _currentDate.GetStartOfWeek();
+            //var record = await _client.GetClassworkSummary(startDate, endDate);
 
+            ViewData["ActiveTab"] = "weekTab";
             return View();
         }
 
-        public IActionResult Contact()
+        public async Task<IActionResult> ThisMonth()
         {
-            ViewData["Message"] = "Your contact page.";
+            var endDate = _currentDate;
+            var startDate = _currentDate.GetStartOfMonth();
 
+            //var record = await _client.GetClassworkSummary(startDate, endDate);
+
+            ViewData["ActiveTab"] = "monthTab";
             return View();
         }
+
 
         public IActionResult Error()
         {
