@@ -11,6 +11,11 @@ namespace SnappedChallengeApi._Corelib.Extensions
     {
         public static string JsonContent = "application/json; charset=UTF-8";
 
+        public static string GetRequestUrl(this string serviceUrl, string route)
+        {
+            return $"{serviceUrl}{route}";
+        }
+
         public static QueryParameter ParseQueryString(this HttpContext context, int? defaultRecordCount = null)
         {
             try

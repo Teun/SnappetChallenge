@@ -11,6 +11,7 @@ namespace SnappedChallengeApi.Models.Constants
     /// </summary>
     public class ServiceConstants
     {
+        public const string SettingTemplate = "ServiceSettings:{0}";
         /// <summary>
         /// DEfault api return content type constants
         /// </summary>

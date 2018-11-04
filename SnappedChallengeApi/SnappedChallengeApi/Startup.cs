@@ -12,6 +12,8 @@ using SnappedChallengeApi.DAL;
 using SnappedChallengeApi.Models.Commons;
 using SnappedChallengeApi.Services.Implementations;
 using SnappedChallengeApi.Services.Interfaces;
+using SnappedChallengeApi.UIServices.Implementations;
+using SnappedChallengeApi.UIServices.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SnappedChallengeApi
@@ -78,10 +80,12 @@ namespace SnappedChallengeApi
                 c.IncludeXmlComments(xmlPath);
             });
 
+            //controllers' services
             services.AddSingleton<IClassworkService>(new ClassworkService());
             services.AddSingleton<ICommonService>(new CommonService());
 
-            
+            //Simualation of client services that consumes apis
+            services.AddSingleton<IClassworkClient>(new ClassworkClient());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
