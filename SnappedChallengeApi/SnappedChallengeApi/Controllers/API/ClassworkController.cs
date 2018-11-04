@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using SnappedChallengeApi._Corelib.Extensions;
 using SnappedChallengeApi.Controllers.API.Base;
+using SnappedChallengeApi.DAL.Models;
 using SnappedChallengeApi.Models.Bussiness;
 using SnappedChallengeApi.Models.Commons;
 using SnappedChallengeApi.Models.Commons.ApiCommons;
@@ -35,6 +36,18 @@ namespace SnappedChallengeApi.Controllers.API
         {
             QueryParameter qp = ParseQueryString();
             var records = _service.GetExerciseRecords(qp);
+            return Ok(records);
+        }
+
+        [HttpPost]
+        [Route("classworks/summary")]
+        [SwaggerResponse((int)HttpStatusCode.OK, type: typeof(List<ClassworkSummary>))]
+        [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, description: "no response")]
+        public IActionResult GetClassworkResults([FromBody]FilterParameter filterParam)
+        {
+            QueryParameter qp = ParseQueryString();
+            var records = _service.GetClassworkSummary(filterParam.StartDate, filterParam.EndDate);
             return Ok(records);
         }
     }

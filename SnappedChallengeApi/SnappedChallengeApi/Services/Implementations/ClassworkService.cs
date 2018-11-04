@@ -1,4 +1,5 @@
 ﻿using SnappedChallengeApi.DAL;
+using SnappedChallengeApi.DAL.Models;
 using SnappedChallengeApi.Models.Bussiness;
 using SnappedChallengeApi.Models.Commons.ApiCommons;
 using SnappedChallengeApi.Services.Interfaces;
@@ -25,6 +26,21 @@ namespace SnappedChallengeApi.Services.Implementations
                 records = _dbContext.GetExerciseResults(qp.Offset, qp.Limit);
             }
             catch(Exception ex)
+            {
+                throw;
+            }
+
+            return records;
+        }
+
+        public List<ClassworkSummary> GetClassworkSummary(DateTime startDate, DateTime endDate)
+        {
+            List<ClassworkSummary> records = null;
+            try
+            {
+                records = _dbContext.GetClassworkSummary(startDate, endDate);
+            }
+            catch (Exception ex)
             {
                 throw;
             }

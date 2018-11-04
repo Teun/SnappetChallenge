@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SnappedChallengeApi.Models.Bussiness
+namespace SnappedChallengeApi.DAL.Models
 {
     /// <summary>
     /// Main data model class for work.json parse TODO summary
@@ -13,7 +13,7 @@ namespace SnappedChallengeApi.Models.Bussiness
         public int SubmittedAnswerId { get; set; }
         public DateTime SubmitDateTime { get; set; }
         public int Correct { get; set; }
-        public int Progress { get; set; }
+        public decimal Progress { get; set; }
         public int UserId { get; set; }
         public int ExerciseId { get; set; }
 

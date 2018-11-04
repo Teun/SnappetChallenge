@@ -11,6 +11,7 @@ namespace SnappedChallengeApi._Corelib.Extensions
     {
 
         #region Utils Extensions
+
         public static bool IsNotNullOrEmpty(this Guid source)
         {
             return !Guid.Empty.Equals(source);
