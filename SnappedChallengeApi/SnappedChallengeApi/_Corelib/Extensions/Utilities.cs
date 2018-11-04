@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 
 namespace SnappedChallengeApi._Corelib.Extensions
 {
@@ -7,6 +9,8 @@ namespace SnappedChallengeApi._Corelib.Extensions
     /// </summary>
     public static class Utilities
     {
+
+        #region Utils Extensions
         public static bool IsNotNullOrEmpty(this Guid source)
         {
             return !Guid.Empty.Equals(source);
@@ -60,5 +64,6 @@ namespace SnappedChallengeApi._Corelib.Extensions
         {
             return !IsNotNullAndEmpty(source);
         }
+        #endregion
     }
 }

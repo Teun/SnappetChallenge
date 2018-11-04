@@ -26,6 +26,7 @@ namespace SnappedChallengeApi
         /// </summary>
         private const string ServiceName = "Snapped Challenge API";
         private const string ServiceTitle = "My snapped challange, let's see what i can do...";
+        private ServiceSettings ServiceSettings = null;
         /// <summary>
         /// Service api version
         /// </summary>
@@ -48,9 +49,11 @@ namespace SnappedChallengeApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            DatabaseContext.InitializeDbContext(new ServiceSettings());
             //mvc registeration
             services.AddMvc();
+
+            ServiceSettings.InitializeSettings(Configuration); 
+            
 
             //Swagger registeration
             services.AddSwaggerGen(c =>

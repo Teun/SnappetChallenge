@@ -11,20 +11,29 @@ namespace SnappedChallengeApi.DAL
 {
     public class DatabaseContext
     {
+        private static bool IsInitialized = false;
         private static List<ExerciseResult> _database;
 
-        public static void InitializeDbContext(ServiceSettings settings)
+        public DatabaseContext()
+        {
+            if (!IsInitialized)
+            {
+                InitializeDbContext();
+                IsInitialized = true;
+            }
+        }
+        private void InitializeDbContext()
         {
             try
             {
-                if (File.Exists(settings.DataPath))
+                if (File.Exists(ServiceSettings.DataPath))
                 {
-                    var fileContent = File.ReadAllText(settings.DataPath);
+                    var fileContent = File.ReadAllText(ServiceSettings.DataPath);
                     _database = JsonConvert.DeserializeObject<List<ExerciseResult>>(fileContent);
                 }
                 else
                 {
-                    throw new Exception(string.Format("DataFile is not found at {0}", settings.DataPath));
+                    throw new Exception(string.Format("DataFile is not found at {0}", ServiceSettings.DataPath));
                 }
             }
             catch(Exception ex)
