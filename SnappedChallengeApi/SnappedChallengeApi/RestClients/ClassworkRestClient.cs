@@ -45,6 +45,7 @@ namespace SnappedChallengeApi.RestClients
             RestRequestParameter parameters = new RestRequestParameter(
                 ServiceSettings.ServiceAddress.GetRequestUrl($"/api/{_endpointName}/summary"),
                 HttpMethod.Post,
+                headerParameters: GetAccessTokenHeader(),
                 contentParameter: postContent)
             { IgnoreCertificateErrors = true };
 
@@ -54,6 +55,20 @@ namespace SnappedChallengeApi.RestClients
             var resultObject = JsonConvert.DeserializeObject<List<ClassworkSummary>>(result.ResultObject.ToString());
 
             return resultObject;
+        }
+
+        /// <summary>
+        /// Dummy auth access token for oauth standard usage
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<string, List<string>> GetAccessTokenHeader()
+        {
+            string accessToken = "herthrth65hj56j5j7j57j57j7jtyutj7";
+            Dictionary<string, List<string>> authenticationHeaderParams = new Dictionary<string, List<string>>();
+            var headerParams = new List<string>();
+            headerParams.Add("Bearer " + accessToken);
+            authenticationHeaderParams.Add("Authorization", headerParams);
+            return authenticationHeaderParams;
         }
 
 

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using SnappedChallengeApi._Corelib.Extensions;
 using SnappedChallengeApi.Controllers.API.Base;
 using SnappedChallengeApi.DAL.Models;
+using SnappedChallengeApi.Filters;
 using SnappedChallengeApi.Models.Bussiness;
 using SnappedChallengeApi.Models.Commons.ApiCommons;
 using SnappedChallengeApi.Services.Implementations;
@@ -45,6 +46,7 @@ namespace SnappedChallengeApi.Controllers.API
         [SwaggerResponse((int)HttpStatusCode.OK, type: typeof(List<ExerciseResult>))]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, description: "no response")]
+        [ClientAuthorize()]
         public IActionResult GetClassworkResults()
         {
             QueryParameter qp = ParseQueryString();
@@ -62,6 +64,7 @@ namespace SnappedChallengeApi.Controllers.API
         [SwaggerResponse((int)HttpStatusCode.OK, type: typeof(List<ClassworkSummary>))]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, description: "no response")]
+        [ClientAuthorize()]
         public IActionResult GetClassworkResults([FromBody]FilterParameter filterParam)
         {
             QueryParameter qp = ParseQueryString();

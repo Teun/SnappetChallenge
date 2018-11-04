@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using SnappedChallengeApi.Models.Commons.ApiCommons;
 using SnappedChallengeApi.Models.Constants;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,21 @@ namespace SnappedChallengeApi._Corelib.Extensions
     /// </summary>
     public static class HttpExtensions
     {
+        /// <summary>
+        /// Swagger Attribute parse extension
+        /// </summary>
+        /// <typeparam name="TAttr"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static IEnumerable<TAttr> GetAllAttrs<TAttr>(this OperationFilterContext context)
+            where TAttr : Attribute
+        {
+            var controllerAttrs = context.ApiDescription.ControllerAttributes().OfType<TAttr>();
+            var actionAttrs = context.ApiDescription.ActionAttributes().OfType<TAttr>();
+            var result = controllerAttrs.Union(actionAttrs).Distinct();
+            return result;
+        }
+
         /// <summary>
         /// Http request url builder
         /// </summary>

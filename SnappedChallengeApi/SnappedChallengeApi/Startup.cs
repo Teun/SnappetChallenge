@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SnappedChallengeApi.DAL;
+using SnappedChallengeApi.Filters;
 using SnappedChallengeApi.Models.Commons;
 using SnappedChallengeApi.Services.Implementations;
 using SnappedChallengeApi.Services.Interfaces;
@@ -84,6 +85,7 @@ namespace SnappedChallengeApi
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+                c.OperationFilter<AuthorizationHeaderFilter>();
             });
 
             //controllers' services
