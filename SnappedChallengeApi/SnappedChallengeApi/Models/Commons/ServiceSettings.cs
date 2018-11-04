@@ -33,6 +33,9 @@ namespace SnappedChallengeApi.Models.Commons
             catch (Exception ex)
             {
                 //ignored
+                throw new Exception(
+                    string.Format(
+                    "ServiceSettings InitializeSettings Exception! Please check appsettings.json for ServiceAddress and DataPath parameters. Parameter initialization failed! Exception Detail: {0}", ex.Message));
             }
         }
     }

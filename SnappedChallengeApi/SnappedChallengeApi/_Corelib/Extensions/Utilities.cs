@@ -3,8 +3,8 @@
 namespace SnappedChallengeApi._Corelib.Extensions
 {
     /// <summary>
-    /// Utilities extensions about date & referance check
-    /// </summary
+    /// Utilities extensions about date and referance check
+    /// </summary>
     public static class Utilities
     {
         #region Datetime Extensions

@@ -33,7 +33,7 @@ namespace SnappedChallengeApi.UIServices.Implementations
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
             return records;

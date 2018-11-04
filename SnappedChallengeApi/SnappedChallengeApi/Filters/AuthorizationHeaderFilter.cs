@@ -14,6 +14,11 @@ namespace SnappedChallengeApi.Filters
     /// </summary>
     public class AuthorizationHeaderFilter : IOperationFilter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <param name="context"></param>
         public void Apply(Operation operation, OperationFilterContext context)
         {
             IEnumerable<ClientAuthorizeAttribute> attrs = context.GetAllAttrs<ClientAuthorizeAttribute>();

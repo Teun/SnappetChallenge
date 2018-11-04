@@ -11,9 +11,12 @@ namespace SnappedChallengeApi.Models.Constants
     /// </summary>
     public class ServiceConstants
     {
+        /// <summary>
+        /// Setting tag template
+        /// </summary>
         public const string SettingTemplate = "ServiceSettings:{0}";
         /// <summary>
-        /// DEfault api return content type constants
+        /// Default api return content type constants
         /// </summary>
         public const string ApplicationJsonContent = "application/json";
 

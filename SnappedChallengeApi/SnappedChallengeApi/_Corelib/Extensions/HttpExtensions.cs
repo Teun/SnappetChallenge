@@ -98,7 +98,7 @@ namespace SnappedChallengeApi._Corelib.Extensions
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -128,6 +128,7 @@ namespace SnappedChallengeApi._Corelib.Extensions
             catch (Exception ex)
             {
                 //TODO log
+                throw ex;
             }
         }
         /// <summary>

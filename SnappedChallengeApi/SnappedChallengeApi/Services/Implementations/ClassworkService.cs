@@ -40,7 +40,7 @@ namespace SnappedChallengeApi.Services.Implementations
             }
             catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
 
             return records;
@@ -61,7 +61,7 @@ namespace SnappedChallengeApi.Services.Implementations
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
             return records;

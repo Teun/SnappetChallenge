@@ -31,11 +31,12 @@
             {
                 return HttpContext.ParseQueryString(defaultRecordCount);
             }
-            catch (Exception ex)
+            catch 
             {
                 //TODO log
-                throw ex;
+                //ignored
             }
+            return new QueryParameter();
         }
     }
 }
