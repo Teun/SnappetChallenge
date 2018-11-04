@@ -24,19 +24,19 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item" id="todayTab">
-                        <a asp-controller="Home" asp-action="Index" class="nav-link">
+                        <a asp-controller="Home" asp-action="Index" asp-route-activeTab="todayTab" class="nav-link">
                             <i class="material-icons">dashboard</i>
                             <p>Today</p>
                         </a>
                     </li>
                     <li class="nav-item" id="weekTab">
-                        <a asp-controller="Home" asp-action="ThisWeek" class="nav-link">
+                        <a asp-controller="Home" asp-action="Index" asp-route-activeTab="weekTab" class="nav-link">
                             <i class="material-icons">dashboard</i>
                             <p>This Week</p>
                         </a>
                     </li>
                     <li class="nav-item" id="monthTab">
-                        <a asp-controller="Home" asp-action="ThisMonth" class="nav-link">
+                        <a asp-controller="Home" asp-action="Index" asp-route-activeTab="monthTab" class="nav-link">
                             <i class="material-icons">dashboard</i>
                             <p>This Month</p>
                         </a>
@@ -51,6 +51,7 @@
                     <div class="navbar-wrapper">
                         <a class="navbar-brand" href="#pablo">Status Of Your Class - @ViewData["Title"]</a>
                     </div>
+                    <button type="button" onclick="refresh()" class="btn btn-primary pull-right">Refresh</button>
                 </div>
             </nav>
             <!-- End Navbar -->
@@ -71,6 +72,10 @@
         });
 
         $("#@ViewData["ActiveTab"]").toggleClass('nav-item active');
+
+        function refresh() {
+            location.reload();
+        }
     </script>
 </body>
 </html>

@@ -28,37 +28,31 @@ namespace SnappedChallengeApi.Controllers.UI
             _clientService = (ClassworkClientService)classworkClient;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string activeTab = "todayTab")
         {
             var endDate = _currentDate;
             var startDate = _currentDate;
-            var records = await _clientService.GetClassworkSummaryRecords(startDate, endDate);
 
-            ViewData["ActiveTab"] = "todayTab";
-            return View(records);
-        }
+            switch (activeTab)
+            {
+                case "weekTab":
+                    startDate = _currentDate.GetStartOfWeek();
+                    break;
+                case "monthTab":
+                    startDate = _currentDate.GetStartOfMonth();
+                    break;
+                default:
+                    startDate = _currentDate;
+                    break;
+            }
+            
 
-        public async Task<IActionResult> ThisWeek()
-        {
-            var endDate = _currentDate;
-            var startDate = _currentDate.GetStartOfWeek();
-            var records = await _clientService.GetClassworkSummaryRecords(startDate, endDate);
-
-            ViewData["ActiveTab"] = "weekTab";
-            return View(records);
-        }
-
-        public async Task<IActionResult> ThisMonth()
-        {
-            var endDate = _currentDate;
-            var startDate = _currentDate.GetStartOfMonth();
 
             var records = await _clientService.GetClassworkSummaryRecords(startDate, endDate);
 
-            ViewData["ActiveTab"] = "monthTab";
+            ViewData["ActiveTab"] = activeTab;
             return View(records);
         }
-
 
         public IActionResult Error()
         {
