@@ -58,6 +58,27 @@ namespace SnappedChallengeApi.RestClients
         }
 
         /// <summary>
+        /// classworks POST Api Client Method
+        /// </summary>
+        /// <param name="qp"></param>
+        /// <returns></returns>
+        public async Task<List<ClassworkSummary>> GetClassworkSummary(QueryParameter qp)
+        {
+            RestRequestParameter parameters = new RestRequestParameter(
+                ServiceSettings.ServiceAddress.GetRequestUrl($"/api/{_endpointName}?offset={qp.Offset}&limit={qp.Limit}"),
+                HttpMethod.Get,
+                headerParameters: GetAccessTokenHeader())
+            { IgnoreCertificateErrors = true };
+
+            RestServiceClient client = new RestServiceClient();
+            RestServiceCallResponse result = await client.CallRestServiceAsync<String>(parameters);
+
+            var resultObject = JsonConvert.DeserializeObject<List<ClassworkSummary>>(result.ResultObject.ToString());
+
+            return resultObject;
+        }
+
+        /// <summary>
         /// Dummy auth access token for oauth standard usage
         /// </summary>
         /// <returns></returns>

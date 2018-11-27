@@ -9,3 +9,5 @@
 /.vs/slnx.sqlite
 /.vs/ProjectSettings.json
 /.vs/OtherChallanges/v15
+/SnappedChallengeApi/SnappedChallengeTests/obj
+/SnappedChallengeApi/SnappedChallengeTests/bin/Debug/netcoreapp2.0

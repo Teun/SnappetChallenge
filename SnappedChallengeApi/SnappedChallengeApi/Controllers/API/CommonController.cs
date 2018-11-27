@@ -36,7 +36,7 @@ namespace SnappedChallengeApi.Controllers.API
         /// Service health ping check api
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("ping")]
         [SwaggerResponse((int)HttpStatusCode.OK, type: typeof(bool))]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
