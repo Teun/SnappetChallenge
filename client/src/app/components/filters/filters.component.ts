@@ -59,7 +59,6 @@ export class FiltersComponent implements OnInit {
 
   addEvent(event) {
     this.date = event.value.toString();
-    console.log(this.date);
     this.date = this.convertDate(this.date) + 'T00:00:00';
     this.onDateChanged.emit(this.date);
   }

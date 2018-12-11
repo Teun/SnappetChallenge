@@ -16,6 +16,7 @@ export class DashboardComponent {
   currentViewType: ViewEnum;
   title: string;
   displayNoStudentMessage: boolean;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private dataService: DataService,
@@ -67,12 +68,12 @@ export class DashboardComponent {
     }
   }
 
-  setCards(result) {
+  setCards(response) {
     this.setTitle();
     this.cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
       map(({ matches }) => {
         const cards = [];
-        result.forEach(element => {
+        response.forEach(element => {
           cards.push({
             id: element.Key,
             title: element.Key,

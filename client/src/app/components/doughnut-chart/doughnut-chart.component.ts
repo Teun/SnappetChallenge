@@ -33,7 +33,6 @@ export class DoughnutChartComponent implements OnInit {
   }
 
   public chartClicked(e: any): void {
-    console.log(e);
     this.onchartClicked.emit({ key: this.data.Key, type: this.type });
   }
 
