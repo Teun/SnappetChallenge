@@ -5,7 +5,7 @@
   <ng-container
     *ngIf="currentViewType == 3 && studentList && studentList.length"
   >
-    <app-main-table [rowData]="studentList"></app-main-table>
+    <app-data-table [rowData]="studentList"></app-data-table>
   </ng-container>
   <ng-container *ngIf="displayNoStudentMessage">
     <br/>

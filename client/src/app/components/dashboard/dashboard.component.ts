@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { DataService } from '../services/data.service';
-import { AppContextService, ViewEnum } from '../services/appcontext.service';
+import { DataService } from '../../services/data.service';
+import { AppContextService, ViewEnum } from '../../services/appcontext.service';
 
 @Component({
-  selector: 'app-main-dashboard',
-  templateUrl: './main-dashboard.component.html',
-  styleUrls: ['./main-dashboard.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class MainDashboardComponent {
+export class DashboardComponent {
 
   cards: any;
   studentList: [];

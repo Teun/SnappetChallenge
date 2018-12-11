@@ -12,7 +12,7 @@
 <mat-form-field class="example-chip-list">
     <mat-chip-list #chipList>
       <mat-chip *ngFor="let crumb of crumbs" [selectable]="selectable"
-               [removable]="removable" (removed)="remove(crumb)">
+               [removable]="removable">
         {{crumb.name}}
         <mat-icon matChipRemove *ngIf="false">cancel</mat-icon>
       </mat-chip>

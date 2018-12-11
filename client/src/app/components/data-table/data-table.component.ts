@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { MainTableDataSource } from './main-table-datasource';
+import { MainTableDataSource } from './data-table-datasource';
 
 @Component({
-  selector: 'app-main-table',
-  templateUrl: './main-table.component.html',
-  styleUrls: ['./main-table.component.scss']
+  selector: 'app-data-table',
+  templateUrl: './data-table.component.html',
+  styleUrls: ['./data-table.component.scss']
 })
-export class MainTableComponent implements OnInit {
+export class DataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MainTableDataSource;

@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AppContextService, Selection, ViewEnum } from '../services/appcontext.service';
-import { MatChipInputEvent } from '@angular/material';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { AppContextService, Selection, ViewEnum } from '../../services/appcontext.service';
+
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
