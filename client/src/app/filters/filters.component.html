@@ -1,0 +1,20 @@
+<mat-form-field>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    placeholder="Choose a date"
+    (dateChange)="addEvent($event)"
+    [(value)]="date"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<mat-form-field class="example-chip-list">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let crumb of crumbs" [selectable]="selectable"
+               [removable]="removable" (removed)="remove(crumb)">
+        {{crumb.name}}
+        <mat-icon matChipRemove *ngIf="false">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </mat-form-field>

@@ -1,0 +1,38 @@
+<div class="grid-container">
+  <app-filters (onDateChanged)="onDateChanged($event)"></app-filters>
+  <div>{{ title }}</div>
+
+  <ng-container
+    *ngIf="currentViewType == 3 && studentList && studentList.length"
+  >
+    <app-main-table [rowData]="studentList"></app-main-table>
+  </ng-container>
+  <ng-container *ngIf="displayNoStudentMessage">
+    <br/>
+    No Students Found
+  </ng-container>
+  <div class="grid-sub-container" *ngIf="currentViewType !== 3">
+    <mat-grid-list cols="4">
+      <mat-grid-tile
+        *ngFor="let card of (cards | async)"
+        [colspan]="card.cols"
+        [rowspan]="card.rows"
+      >
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title> {{ card.title }} </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <ng-container>
+              <app-doughnut-chart
+                [data]="card.data"
+                [type]="card.type"
+                (onchartClicked)="onchartClicked($event)"
+              ></app-doughnut-chart>
+            </ng-container>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

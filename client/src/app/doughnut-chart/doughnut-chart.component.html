@@ -1,0 +1,17 @@
+
+<div style="display: block">
+  <canvas
+    baseChart
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  ></canvas>
+</div>
+<br />
+Total Exercises : {{data.NoOfExercises}}
+<br />
+Total Student Attempted : {{data.NoOfStudents}}
+<br />
