@@ -43,3 +43,21 @@ Run `npm install` to download the dependencies.
 
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## How it Works
+
+At first page you can see the `Subjects` for selected date.
+
+To focus on one specific `Subject`, click on any subject card and you will be prompted to Domain view.
+
+Domain view will display `Domains` related to seleted Subject and Date.
+
+To focus on one specific `Domain`, click on any Domain card and you will be prompted to LearningObjective view.
+
+LearningObjective view will display `LearningObjectives` related to seleted Subject, Domain and Date.
+
+Each card has details like Total number of student attempted, Total number of exercises.
+
+To focus on one specific `LearningObjective`, click on any LearningObjective card and you will see Student Details who worked on selected LearningObjective.
+
+At any time, you can change the date and can compare the progress by Subject, Domain and LearningObjective.
