@@ -1,31 +1,31 @@
 ﻿using Snappet.Model;
-using Snappet.Repository.DataProvider;
+using Snappet.Repository.Provider;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SnappetRepository.Repository
 {
-    public interface IClassRepository
+    public interface IReportRepository
     {
         IEnumerable<Report> GetReport(string date, string subject, string domain, string viewtype);
 
         IEnumerable<Student> GetStudentDetails(string date, string subject, string domain, string objective);
     }
 
-    public class ClassRepository:IClassRepository
+    public class ReportRepository:IReportRepository
     {
 
-        private IDataProvider _dataProvider;
+        private IReportProvider _reportProvider;
 
-        public ClassRepository(IDataProviderFactory dataProviderFactory)
+        public ReportRepository(IReportProviderFactory reportProviderFactory)
         {
-            _dataProvider = dataProviderFactory.GetDataProvider();
+            _reportProvider = reportProviderFactory.GetReportProvider();
         }
 
         public IEnumerable<Report> GetReport(string date, string subject, string domain, string viewtype)
         {
-            var workData = _dataProvider.getAllData();
+            var workData = _reportProvider.getAllReports();
             var dateToSearch = DateTime.Parse(date);
             var reports = new List<Report>();
 
@@ -62,7 +62,7 @@ namespace SnappetRepository.Repository
 
         public IEnumerable<Student> GetStudentDetails(string date, string subject, string domain, string objective)
         {
-            var workData = _dataProvider.getAllData();
+            var workData = _reportProvider.getAllReports();
             var dateToSearch = DateTime.Parse(date);
             var reports = new List<Student>();
 

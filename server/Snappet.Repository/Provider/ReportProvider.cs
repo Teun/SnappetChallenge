@@ -4,23 +4,23 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Script.Serialization;
 
-namespace Snappet.Repository.DataProvider
+namespace Snappet.Repository.Provider
 {
-    public interface IDataProvider
+    public interface IReportProvider
     {
-        IEnumerable<Work> getAllData();
+        IEnumerable<Work> getAllReports();
     }
 
-    public class DataProvider : IDataProvider
+    public class ReportProvider : IReportProvider
     {
         private string _filePath;
 
-        public DataProvider(string filePath)
+        public ReportProvider(string filePath)
         {
             _filePath = filePath;
         }
 
-        public virtual IEnumerable<Work> getAllData()
+        public virtual IEnumerable<Work> getAllReports()
         {
             string file = HttpContext.Current.Server.MapPath(_filePath);
             string Json = System.IO.File.ReadAllText(file);

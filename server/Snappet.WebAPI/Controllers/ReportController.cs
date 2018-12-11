@@ -5,20 +5,20 @@ using SnappetRepository.Repository;
 
 namespace SnappetWebAPI.Controllers
 {
-    public class ClassController : ApiController
+    public class ReportController : ApiController
     {
-        private IClassRepository _classRepository;
+        private IReportRepository _reportRepository;
 
-        public ClassController(IClassRepository classRepository)
+        public ReportController(IReportRepository reportRepository)
         {
-            _classRepository = classRepository;
+            _reportRepository = reportRepository;
         }
 
         [HttpGet]
         [Route("GetReport")]
         public IEnumerable<Report> GetReport(string date,string subject, string domain,string viewtype)
         {
-            var reports = _classRepository.GetReport(date, subject, domain, viewtype);
+            var reports = _reportRepository.GetReport(date, subject, domain, viewtype);
             return reports;
         }
 
@@ -27,7 +27,7 @@ namespace SnappetWebAPI.Controllers
         [Route("GetStudentDetails")]
         public IEnumerable<Student> GetStudentDetails(string date, string subject, string domain,string objective)
         {
-            var reports = _classRepository.GetStudentDetails(date, subject, domain, objective);
+            var reports = _reportRepository.GetStudentDetails(date, subject, domain, objective);
             return reports;
         }
        

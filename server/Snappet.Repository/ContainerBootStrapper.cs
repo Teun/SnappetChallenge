@@ -1,4 +1,4 @@
-﻿using Snappet.Repository.DataProvider;
+﻿using Snappet.Repository.Provider;
 using SnappetRepository.Repository;
 using System;
 using System.Collections.Generic;
@@ -14,9 +14,9 @@ namespace Snappet.Repository
     {
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IDataProviderFactory, DataProviderFactory>(new HierarchicalLifetimeManager());
-            container.RegisterType<IDataProvider, Snappet.Repository.DataProvider.DataProvider>(new HierarchicalLifetimeManager());
-            container.RegisterType<IClassRepository, ClassRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IReportProviderFactory, ReportProviderFactory>(new HierarchicalLifetimeManager());
+            container.RegisterType<IReportProvider, Snappet.Repository.Provider.ReportProvider>(new HierarchicalLifetimeManager());
+            container.RegisterType<IReportRepository, ReportRepository>(new HierarchicalLifetimeManager());
         }
     }
 }
