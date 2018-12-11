@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/server/Snappet.Model/bin/Debug
+/server/Snappet.Model/obj/Debug
+/server/Snappet.Repository/bin/Debug
+/server/Snappet.Repository/obj/Debug
+/server/Snappet.WebAPI/bin/roslyn
+/server/Snappet.WebAPI/obj/Debug
+server/Snappet.WebAPI/bin/
