@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Server/.vs
+/Server/Contract/obj/Debug
+/Server/Contract/bin/Debug
+/Server/Facade/obj/Debug
+/Server/Facade/bin/Debug
+/Server/packages
+/Server/ParentMEF/obj/Debug
+/Server/ParentMEF/bin/Debug
+/Server/WebAPI/bin
+/Server/WebAPI/obj/Debug
