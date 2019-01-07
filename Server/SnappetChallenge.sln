@@ -3,11 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{57AA7380-21CB-4A93-8299-9326B628BAB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Model", "Snappet.Model\Snappet.Model.csproj", "{57AA7380-21CB-4A93-8299-9326B628BAB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "Facade\Facade.csproj", "{5EFBAA7D-C5B8-4DD3-8496-28791BE90047}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.BusinessLogic", "Snappet.BusinessLogic\Snappet.BusinessLogic.csproj", "{5EFBAA7D-C5B8-4DD3-8496-28791BE90047}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3F1E7362-1669-4709-A99E-3A56AF188955} = {3F1E7362-1669-4709-A99E-3A56AF188955}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{3F1E7362-1669-4709-A99E-3A56AF188955}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.WebAPI", "Snappet.WebAPI\Snappet.WebAPI.csproj", "{3F1E7362-1669-4709-A99E-3A56AF188955}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4D35E69-3204-40C3-B7D7-BA4F08189D28} = {F4D35E69-3204-40C3-B7D7-BA4F08189D28}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Common.BusinessLogic", "Snappet.Common.BusinessLogic\Snappet.Common.BusinessLogic.csproj", "{F4D35E69-3204-40C3-B7D7-BA4F08189D28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.DataProvider", "Snappet.DataProvider\Snappet.DataProvider.csproj", "{C4391AAF-65F7-4455-9CEA-0BFF381F0B3F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4D35E69-3204-40C3-B7D7-BA4F08189D28} = {F4D35E69-3204-40C3-B7D7-BA4F08189D28}
+		{57AA7380-21CB-4A93-8299-9326B628BAB0} = {57AA7380-21CB-4A93-8299-9326B628BAB0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +41,14 @@ Global
 		{3F1E7362-1669-4709-A99E-3A56AF188955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F1E7362-1669-4709-A99E-3A56AF188955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F1E7362-1669-4709-A99E-3A56AF188955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D35E69-3204-40C3-B7D7-BA4F08189D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D35E69-3204-40C3-B7D7-BA4F08189D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D35E69-3204-40C3-B7D7-BA4F08189D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D35E69-3204-40C3-B7D7-BA4F08189D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4391AAF-65F7-4455-9CEA-0BFF381F0B3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4391AAF-65F7-4455-9CEA-0BFF381F0B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4391AAF-65F7-4455-9CEA-0BFF381F0B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4391AAF-65F7-4455-9CEA-0BFF381F0B3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

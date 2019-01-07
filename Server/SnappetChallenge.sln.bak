@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{57AA7380-21CB-4A93-8299-9326B628BAB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Model", "Contract\Snappet.Model.csproj", "{57AA7380-21CB-4A93-8299-9326B628BAB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "ChildMEF\Facade.csproj", "{5EFBAA7D-C5B8-4DD3-8496-28791BE90047}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.BusinessLogic", "Facade\Snappet.BusinessLogic.csproj", "{5EFBAA7D-C5B8-4DD3-8496-28791BE90047}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{3F1E7362-1669-4709-A99E-3A56AF188955}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.WebAPI", "WebAPI\Snappet.WebAPI.csproj", "{3F1E7362-1669-4709-A99E-3A56AF188955}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

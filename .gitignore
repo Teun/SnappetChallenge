@@ -12,3 +12,14 @@
 /Server/ParentMEF/bin/Debug
 /Server/WebAPI/bin
 /Server/WebAPI/obj/Debug
+/Server/obj/Debug
+/Server/Snappet.BusinessLogic/bin/Debug
+/Server/Snappet.BusinessLogic/obj
+/Server/Snappet.Model/obj
+/Server/Snappet.Model/bin/Debug
+/Server/Snappet.BusinessLogic/Properties/AssemblyInfo.cs
+/Server/Snappet.WebAPI/obj
+/Server/Snappet.WebAPI/bin
+/.vs
+/Server/Snappet.Common.BusinessLogic/obj/Debug
+/Server/Snappet.DataProvider/obj/Debug
