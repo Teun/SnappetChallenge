@@ -78,6 +78,7 @@
     <ProjectReference Include="..\Snappet.Model\Snappet.Model.csproj">
       <Project>{57aa7380-21cb-4a93-8299-9326b628bab0}</Project>
       <Name>Snappet.Model</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

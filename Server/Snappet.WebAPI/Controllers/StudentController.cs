@@ -6,6 +6,7 @@ using WebAPI.Models;
 
 namespace Snappet.WebAPI.Controllers
 {
+    [RoutePrefix("api/Student")]
     public class StudentController : ApiController
     {
         Student[] students = new Student[]
@@ -21,6 +22,7 @@ namespace Snappet.WebAPI.Controllers
             this.StudentService = StudentService;
         }
         [HttpGet]
+       [Route("Get")]
         public IEnumerable<Student> get()
         {
             
@@ -29,7 +31,8 @@ namespace Snappet.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult get(int id)
+        [Route("Get/{id}")]
+        public IHttpActionResult get([FromUri]int id)
         {
             var product = students.FirstOrDefault((p) => p.Id == id);
             if (product == null)

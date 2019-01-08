@@ -1,4 +1,6 @@
-﻿using Snappet.Model;
+﻿using Snappet.BusinessLogic.Component;
+using Snappet.Model;
+using Snappet.Model.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -15,6 +17,7 @@ namespace Snappet.BusinessLogic
         public void RegisterType(IUnityContainer container)
         {
             container.RegisterType<IStudentFacade, StudentFacade>();
+            container.RegisterType<IWorkReportComponent, WorkReportComponent>();
         }
     }
 }

@@ -33,11 +33,6 @@
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.8.13\lib\net46\CommonServiceLocator.dll</HintPath>
     </Reference>
-    <Reference Include="Snappet.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Snappet.WebAPI\bin\Snappet.Model.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -73,10 +68,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\IWorkReportController.cs" />
     <Compile Include="Common\IBusinessComponent.cs" />
     <Compile Include="BusinessLogic\IStudentFacade.cs" />
     <Compile Include="Common\IComponentConfiguration.cs" />
+    <Compile Include="DataProvider\IDataProvider.cs" />
     <Compile Include="DataProvider\IStudentJSONDataProvider.cs" />
+    <Compile Include="DataProvider\IWorkReportJSONDataProvider.cs" />
+    <Compile Include="Domain\ExerciseDetails.cs" />
+    <Compile Include="Domain\Work.cs" />
+    <Compile Include="Domain\WorkReport.cs" />
+    <Compile Include="Filters\FilterDateSubject.cs" />
+    <Compile Include="Filters\FilterSubjectDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
