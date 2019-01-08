@@ -10,5 +10,6 @@ namespace Snappet.Model.BusinessLogic
     public interface IWorkReportComponent
     {
         IEnumerable<FilterDateSubject> GetFilterDetails();
+        IEnumerable<FilterDateSubject> GetFilterDetailsByDate(string dateTime);
     }
 }

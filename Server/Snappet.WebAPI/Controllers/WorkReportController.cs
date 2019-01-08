@@ -25,5 +25,13 @@ namespace WebAPI.Controllers
             var filters = WorkReportComponent.GetFilterDetails();
             return filters;
         }
+
+        [HttpGet]
+        [Route("Get/{dateTime}")]
+        public IEnumerable<FilterDateSubject> GetAllFiltersByDate(string dateTime)
+        {
+            var filters = WorkReportComponent.GetFilterDetailsByDate(dateTime);
+            return filters;
+        }
     }
 }

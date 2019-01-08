@@ -59,5 +59,20 @@ namespace Snappet.DataProvider.Component
                 dateSubjectDomains.Add(filterDateSubject);
             }
         }
+
+        public IEnumerable<FilterDateSubject> GetFilterDetailsByDate(string dateTime)
+        {
+            var works = GetAllWorks();
+            List<FilterDateSubject> dateSubjectDomains = new List<FilterDateSubject>();
+            if (works != null && works.Any())
+            {
+                var dates = works.Where(p => p.SubmitDate == DateTime.Parse(dateTime)).GroupBy(p => p.SubmitDate);
+
+                GetFilter(dates, dateSubjectDomains);
+            }
+
+            return dateSubjectDomains;
+        }
+
     }
 }

@@ -10,5 +10,6 @@ namespace Snappet.Model.DataProvider
    public interface IWorkReportJSONDataProvider
     {
         IEnumerable<FilterDateSubject> GetFilterDetails();
+        IEnumerable<FilterDateSubject> GetFilterDetailsByDate(string dateTime);
     }
 }
