@@ -10,16 +10,21 @@ namespace Snappet.DataProvider.DataProvider
 {
     public class JsonDataProvider : IDataProvider
     {
-        private string _filePath;
-
         public JsonDataProvider()
         {
-            _filePath = HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings["filePath"]); ;
+        }
+        string _filePath = null;
+        internal string FilePath
+        {
+            get
+            {
+                return _filePath = _filePath ?? HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings["filePath"]);
+            }
         }
         public virtual IEnumerable<Work> GetWorkDetails()
         {
             IEnumerable<Work> items = null;
-            using (StreamReader r = new StreamReader(_filePath))
+            using (StreamReader r = new StreamReader(FilePath))
             {
                 string json = r.ReadToEnd();
                 items = JsonConvert.DeserializeObject<List<Work>>(json);

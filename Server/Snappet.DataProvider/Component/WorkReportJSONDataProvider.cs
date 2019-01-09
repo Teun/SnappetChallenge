@@ -15,16 +15,22 @@ namespace Snappet.DataProvider.Component
 {
     public class WorkReportJSONDataProvider : BusinessComponent, IWorkReportJSONDataProvider
     {
-        string fileProvider = null;
+        
         public WorkReportJSONDataProvider(IUnityContainer container) : base(container)
         {
-            fileProvider = ConfigurationManager.AppSettings["fileprovider"].ToString();
+        }
+        string fileProvider = null;
+        internal string FileProvider { 
+            get
+            {
+                return fileProvider = fileProvider  ?? ConfigurationManager.AppSettings["fileprovider"].ToString();
+            }
         }
 
         private IDataProvider dataProvider;
         public IDataProvider DataProvider
         {
-            get { return dataProvider = dataProvider ?? GetRepository<IDataProvider>(fileProvider); }
+            get { return dataProvider = dataProvider ?? GetRepository<IDataProvider>(FileProvider); }
         }
         
         public IEnumerable<FilterDateSubject> GetFilterDetails()

@@ -15,16 +15,23 @@ namespace Snappet.BusinessLogic.Component
 {
     public class WorkReportComponent : BusinessComponent, IWorkReportComponent
     {
-        string fileProvider = null;
         public WorkReportComponent(IUnityContainer container) : base(container)
         {
-            fileProvider =  ConfigurationManager.AppSettings["fileprovider"].ToString();
         }
 
+        string fileProvider = null;
+        internal string FileProvider
+        {
+            get
+            {
+                return fileProvider = fileProvider ?? ConfigurationManager.AppSettings["fileprovider"].ToString();
+            }
+        }
         private IWorkReportJSONDataProvider workReportJSONDataProvider;
         internal IWorkReportJSONDataProvider WorkReportJSONDataProvider
         {
-            get { return workReportJSONDataProvider = workReportJSONDataProvider ?? GetBusinessComponent<IWorkReportJSONDataProvider>(fileProvider); }
+            get
+            { return workReportJSONDataProvider = workReportJSONDataProvider ?? GetBusinessComponent<IWorkReportJSONDataProvider>(FileProvider); }
         }
 
         public IEnumerable<FilterDateSubject> GetFilterDetails()
