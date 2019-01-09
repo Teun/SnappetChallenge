@@ -3,7 +3,7 @@ using Snappet.Model.Domain;
 
 namespace Snappet.Model.DataProvider
 {
-    public interface IWorkDataProvider
+    public interface IDataProvider
     {
         IEnumerable<Work> GetWorkDetails();
     }

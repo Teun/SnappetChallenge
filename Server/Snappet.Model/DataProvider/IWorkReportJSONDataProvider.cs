@@ -1,4 +1,5 @@
-﻿using Snappet.Model.Filters;
+﻿using Snappet.Model.Domain;
+using Snappet.Model.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Snappet.Model.DataProvider
     {
         IEnumerable<FilterDateSubject> GetFilterDetails();
         IEnumerable<FilterDateSubject> GetFilterDetailsByDate(string dateTime);
+        IEnumerable<WorkReport> GetWorkReport(DateTime date, string subject, string domain);
     }
 }

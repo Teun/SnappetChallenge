@@ -1,4 +1,5 @@
 ﻿using Snappet.Model.BusinessLogic;
+using Snappet.Model.Domain;
 using Snappet.Model.Filters;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,14 @@ namespace WebAPI.Controllers
         {
             var filters = WorkReportComponent.GetFilterDetailsByDate(dateTime);
             return filters;
+        }
+
+        [HttpGet]
+        [Route("Get/{dateTime}/{domain}/{subject}")]
+        public IEnumerable<WorkReport> GetWorkReportByDateSubjectDomain(string dateTime, string domain, string subject)
+        {
+            var workReport = WorkReportComponent.GetWorkReport(DateTime.Parse(dateTime), subject, domain);
+            return workReport;
         }
     }
 }

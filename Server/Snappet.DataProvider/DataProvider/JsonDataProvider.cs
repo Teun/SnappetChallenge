@@ -8,13 +8,13 @@ using Newtonsoft.Json;
 
 namespace Snappet.DataProvider.DataProvider
 {
-    public class JsonDataProvider : IWorkDataProvider
+    public class JsonDataProvider : IDataProvider
     {
         private string _filePath;
 
-        public JsonDataProvider(string filePath)
+        public JsonDataProvider()
         {
-            _filePath = filePath;
+            _filePath = HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings["filePath"]); ;
         }
         public virtual IEnumerable<Work> GetWorkDetails()
         {

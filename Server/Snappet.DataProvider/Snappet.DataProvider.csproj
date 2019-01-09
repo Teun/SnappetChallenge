@@ -85,7 +85,6 @@
     <Compile Include="Component\StudentJSONDataProvider.cs" />
     <Compile Include="Component\WorkReportJSONDataProvider.cs" />
     <Compile Include="Configurations\DataProviderConfigurations.cs" />
-    <Compile Include="DataProvider\DataProviderFactory.cs" />
     <Compile Include="DataProvider\JsonDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

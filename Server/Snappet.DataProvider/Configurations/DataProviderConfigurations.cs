@@ -1,4 +1,5 @@
 ﻿using Snappet.DataProvider.Component;
+using Snappet.DataProvider.DataProvider;
 using Snappet.Model;
 using Snappet.Model.DataProvider;
 using System;
@@ -16,8 +17,9 @@ namespace Snappet.DataProvider.Configurations
     {
         public void RegisterType(IUnityContainer container)
         {
-            container.RegisterType<IStudentJSONDataProvider, StudentJSONDataProvider>("json");
-            container.RegisterType<IWorkReportJSONDataProvider, WorkReportJSONDataProvider>("json");
+            container.RegisterType<IStudentJSONDataProvider, StudentJSONDataProvider>("JSON");
+            container.RegisterType<IWorkReportJSONDataProvider, WorkReportJSONDataProvider>("JSON");
+            container.RegisterType<IDataProvider, JsonDataProvider>("JSON");
         }
     }
 }
