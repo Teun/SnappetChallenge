@@ -1,0 +1,69 @@
+<div class="example-container mat-elevation-z8" style="padding: 15px">
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" (dateChange)="onDateSelected($event.target.value)" [(ngModel)]="selectedDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Subject" [(ngModel)]="selectedSubject" (selectionChange)="onSubjectChanged($event)">
+      <mat-option *ngFor="let subject of subjectArray" [value]="subject">
+        {{ subject }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Domain" [(ngModel)]="selectedDomain" (selectionChange)="onDomainChanged($event)">
+      <mat-option *ngFor="let domain of domainArray" [value]="domain">
+        {{ domain}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="LearningObjective">
+      <mat-header-cell *matHeaderCellDef [ngClass]="'customWidthClass'"> Learning Objective </mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'"> {{element.LearningObjective}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="TotalExerices">
+      <mat-header-cell *matHeaderCellDef [ngClass]="'customWidthClass1'"> Total Exercise </mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass1'"> {{element.TotalExerices}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="TotalStudents">
+      <mat-header-cell *matHeaderCellDef [ngClass]="'customWidthClass1'"> Total Students </mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass1'"> {{element.TotalStudents}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="performance">
+      <mat-header-cell *matHeaderCellDef [ngClass]="'customWidthClass1'"> Performance </mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass1'">
+        <div class="progress" style="margin-top: 8px; width: 200px">
+          <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="element.performance" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{width: element.performance+'%'}">
+            <span>{{element.performance}}%</span>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="StudentDetails">
+      <mat-header-cell *matHeaderCellDef [ngClass]="'customWidthClass1'"> Students </mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass1'">
+        <button mat-button (click)="setStudent(element.StudentDetails)">Details</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+
+  <app-students [studentDetails]="selectedStudentDetails"></app-students>
+
+</div>

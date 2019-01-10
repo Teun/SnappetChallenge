@@ -1,0 +1,41 @@
+<mat-table #table [dataSource]="datasource">
+
+  <ng-container matColumnDef="UserId">
+    <mat-header-cell *matHeaderCellDef>UserId </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.UserId}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="TotalExercise">
+    <mat-header-cell *matHeaderCellDef> Total Exercise </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.TotalExercise}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="TotalAttempts">
+    <mat-header-cell *matHeaderCellDef> Total Attempts </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.TotalAttempts}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="TotalAttemptsRight">
+    <mat-header-cell *matHeaderCellDef> Total Attempts Right </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.TotalAttemptsRight}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Progress">
+    <mat-header-cell *matHeaderCellDef>Performance </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <div class="progress" style="margin-top: 8px; width: 200px">
+        <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="element.percentage" aria-valuemin="0" aria-valuemax="100"
+          [ngStyle]="{width: element.percentage+'%'}">
+          <span>{{element.percentage}}%</span>
+        </div>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>

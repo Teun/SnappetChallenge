@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Get")]
+        [Route("GetAllFilters")]
         public IEnumerable<FilterDateSubject> GetAllFilters()
         {
             var filters = WorkReportComponent.GetFilterDetails();
@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Get/{dateTime}")]
+        [Route("GetAllFiltersByDate")]
         public IEnumerable<FilterDateSubject> GetAllFiltersByDate(string dateTime)
         {
             var filters = WorkReportComponent.GetFilterDetailsByDate(dateTime);
@@ -36,7 +36,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Get/{dateTime}/{domain}/{subject}")]
+        
+        [Route("GetReportByDateSubjectDomain")]
         public IEnumerable<WorkReport> GetWorkReportByDateSubjectDomain(string dateTime, string domain, string subject)
         {
             var workReport = WorkReportComponent.GetWorkReport(DateTime.Parse(dateTime), subject, domain);
