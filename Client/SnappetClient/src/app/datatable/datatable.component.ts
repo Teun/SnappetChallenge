@@ -117,15 +117,7 @@ export class DatatableComponent implements AfterViewInit {
       });
   }
 
-  setStudent(student: any) {
-    // student.forEach(element => {
-    //   element.percentage = parseFloat(
-    //     Math.round(
-    //       element.TotalAttemptsRight / element.TotalAttempts * 100
-    //     ).toString()
-    //   ).toFixed(0);
-    // });
-
+  setStudent(student: any) {   
     this.selectedStudentDetails = student;
   }
   convert(str) {

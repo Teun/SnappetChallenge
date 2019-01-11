@@ -70,12 +70,10 @@
   <ItemGroup>
     <Compile Include="BusinessLogic\IWorkReportController.cs" />
     <Compile Include="Common\IBusinessComponent.cs" />
-    <Compile Include="BusinessLogic\IStudentFacade.cs" />
     <Compile Include="Common\IComponentConfiguration.cs" />
     <Compile Include="DataProvider\IDataProvider.cs" />
-    <Compile Include="DataProvider\IStudentJSONDataProvider.cs" />
     <Compile Include="DataProvider\IWorkReportJSONDataProvider.cs" />
-    <Compile Include="Domain\ExerciseDetails.cs" />
+    <Compile Include="Domain\StudentDetail.cs" />
     <Compile Include="Domain\Work.cs" />
     <Compile Include="Domain\WorkReport.cs" />
     <Compile Include="Filters\FilterDateSubject.cs" />

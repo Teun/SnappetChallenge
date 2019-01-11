@@ -19,19 +19,19 @@ namespace Snappet.BusinessLogic.Component
         {
         }
 
-        string fileProvider = null;
-        internal string FileProvider
+        string dataType = null;
+        public string DataType
         {
             get
             {
-                return fileProvider = fileProvider ?? ConfigurationManager.AppSettings["fileprovider"].ToString();
+                return dataType = dataType ?? ConfigurationManager.AppSettings["dataType"].ToString();
             }
         }
         private IWorkReportJSONDataProvider workReportJSONDataProvider;
-        internal IWorkReportJSONDataProvider WorkReportJSONDataProvider
+        public IWorkReportJSONDataProvider WorkReportJSONDataProvider
         {
             get
-            { return workReportJSONDataProvider = workReportJSONDataProvider ?? GetBusinessComponent<IWorkReportJSONDataProvider>(FileProvider); }
+            { return workReportJSONDataProvider = workReportJSONDataProvider ?? GetBusinessComponent<IWorkReportJSONDataProvider>(DataType); }
         }
 
         public IEnumerable<FilterDateSubject> GetFilterDetails()

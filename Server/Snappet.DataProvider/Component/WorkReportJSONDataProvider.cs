@@ -1,5 +1,4 @@
 ﻿using Snappet.Common.BusinessLogic;
-using Snappet.DataProvider.DataProvider;
 using Snappet.Model.DataProvider;
 using Snappet.Model.Domain;
 using Snappet.Model.Filters;
@@ -7,8 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity;
 
 namespace Snappet.DataProvider.Component
@@ -19,20 +16,20 @@ namespace Snappet.DataProvider.Component
         public WorkReportJSONDataProvider(IUnityContainer container) : base(container)
         {
         }
-        string fileProvider = null;
-        internal string FileProvider { 
+        string dataType = null;
+        public string DataType { 
             get
             {
-                return fileProvider = fileProvider  ?? ConfigurationManager.AppSettings["fileprovider"].ToString();
+                return dataType = dataType  ?? ConfigurationManager.AppSettings["dataType"].ToString();
             }
         }
 
         private IDataProvider dataProvider;
         public IDataProvider DataProvider
         {
-            get { return dataProvider = dataProvider ?? GetRepository<IDataProvider>(FileProvider); }
+            get { return dataProvider = dataProvider ?? GetRepository<IDataProvider>(DataType); }
         }
-        
+        #region Public function
         public IEnumerable<FilterDateSubject> GetFilterDetails()
         {
             var works = GetAllWorks();
@@ -68,12 +65,12 @@ namespace Snappet.DataProvider.Component
 
         public IEnumerable<WorkReport> GetWorkReport(DateTime date, string subject, string domain)
         {
-            var workDetails = DataProvider.GetWorkDetails();
-            var workReport = new List<WorkReport>();
+            IEnumerable<Work> workDetails = DataProvider.GetWorkDetails();
+            List<WorkReport> workReport = new List<WorkReport>();
 
             if (workDetails != null && workDetails.Any())
             {
-                var getSpecificDate = DataProvider.GetWorkDetails().Where(p => p.SubmitDate == date);
+                var getSpecificDate = workDetails.Where(p => p.SubmitDate == date);
 
                 if (!string.IsNullOrWhiteSpace(subject))
                 {
@@ -91,7 +88,7 @@ namespace Snappet.DataProvider.Component
                 foreach (var item in workReports)
                 {
                     var users = item.GroupBy(p => p.UserId);
-                    var report = new WorkReport
+                    WorkReport report = new WorkReport
                     {
                         LearningObjective = item.Key,
                         TotalExerices = item.GroupBy(p => p.ExerciseId).Count(),
@@ -119,6 +116,10 @@ namespace Snappet.DataProvider.Component
             }
             return workReport;
         }
+
+        #endregion
+
+        #region Private function
         private static void GetFilter(IEnumerable<IGrouping<DateTime, Work>> dates, List<FilterDateSubject> dateSubjectDomains)
         {
             foreach (var date in dates)
@@ -150,5 +151,6 @@ namespace Snappet.DataProvider.Component
             exerciseDetails.TotalAttemptsWrong = exerciseDetails.TotalAttempts - exerciseDetails.TotalAttemptsRight;
             return exerciseDetails;
         }
+        #endregion
     }
 }

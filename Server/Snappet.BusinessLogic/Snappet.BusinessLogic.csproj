@@ -76,7 +76,6 @@
   <ItemGroup>
     <Compile Include="Component\WorkReportComponent.cs" />
     <Compile Include="Configurations\ComponentConfiguration.cs" />
-    <Compile Include="Component\StudentFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,7 @@ namespace Snappet.DataProvider.DataProvider
         {
         }
         string _filePath = null;
-        internal string FilePath
+        public string FilePath
         {
             get
             {

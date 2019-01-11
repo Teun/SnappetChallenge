@@ -1,7 +1,7 @@
 ﻿using System;
 using Unity;
 
-namespace Snappet.Model
+namespace Snappet.Model.Common
 {
     public interface IComponentConfiguration
     {

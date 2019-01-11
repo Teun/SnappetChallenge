@@ -15,7 +15,7 @@ namespace Snappet.WebApi.UnityWebApiActivator
     public static class UnityWebApiActivator
     {
         /// <summary>
-        /// Integrates Unity when the application starts.
+        /// Integrates Unity when the application starts. I have used MEF and Unity feature to resolve type depedency.
         /// </summary>
         public static void Start() 
         {

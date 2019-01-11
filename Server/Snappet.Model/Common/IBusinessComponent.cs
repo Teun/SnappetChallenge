@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snappet.Model
+namespace Snappet.Model.Common
 {
     public interface IBusinessComponent
     {

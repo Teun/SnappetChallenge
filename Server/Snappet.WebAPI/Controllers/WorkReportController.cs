@@ -38,7 +38,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         
         [Route("GetReportByDateSubjectDomain")]
-        public IEnumerable<WorkReport> GetWorkReportByDateSubjectDomain(string dateTime, string domain, string subject)
+        public IEnumerable<WorkReport> GetReportByDateSubjectDomain(string dateTime, string domain, string subject)
         {
             var workReport = WorkReportComponent.GetWorkReport(DateTime.Parse(dateTime), subject, domain);
             return workReport;

@@ -1,5 +1,4 @@
-﻿//using Microsoft.Extensions.Configuration;
-using Snappet.Model;
+﻿using Snappet.Model.Common;
 using Unity;
 
 namespace Snappet.Common.BusinessLogic
@@ -11,12 +10,6 @@ namespace Snappet.Common.BusinessLogic
         {
             _container = container;
         }
-        //private IConfiguration appSettings = null;
-        //protected IConfiguration AppSettings
-        //{
-        //    get => appSettings = appSettings ?? (IConfiguration) _container.Resolve(typeof(IConfiguration));
-        //    set => appSettings = value;
-        //}
         public T GetBusinessComponent<T>()
         {
             return _container.Resolve<T>();

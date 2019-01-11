@@ -1,13 +1,8 @@
 ﻿using Snappet.DataProvider.Component;
 using Snappet.DataProvider.DataProvider;
-using Snappet.Model;
+using Snappet.Model.Common;
 using Snappet.Model.DataProvider;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity;
 
 namespace Snappet.DataProvider.Configurations
@@ -17,9 +12,10 @@ namespace Snappet.DataProvider.Configurations
     {
         public void RegisterType(IUnityContainer container)
         {
-            container.RegisterType<IStudentJSONDataProvider, StudentJSONDataProvider>("JSON");
             container.RegisterType<IWorkReportJSONDataProvider, WorkReportJSONDataProvider>("JSON");
             container.RegisterType<IDataProvider, JsonDataProvider>("JSON");
+
+            //NOTE: You can register type for CSV or other type also(With Alias Name).
         }
     }
 }
