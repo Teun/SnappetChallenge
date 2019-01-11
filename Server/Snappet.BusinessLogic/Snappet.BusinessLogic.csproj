@@ -38,6 +38,11 @@
       <HintPath>..\Snappet.WebAPI\bin\Snappet.Common.BusinessLogic.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Snappet.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Snappet.WebAPI\bin\Snappet.Model.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
@@ -77,13 +82,6 @@
     <Compile Include="Component\WorkReportComponent.cs" />
     <Compile Include="Configurations\ComponentConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Snappet.Model\Snappet.Model.csproj">
-      <Project>{57aa7380-21cb-4a93-8299-9326b628bab0}</Project>
-      <Name>Snappet.Model</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

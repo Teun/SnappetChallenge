@@ -17,7 +17,6 @@
 /Server/Snappet.BusinessLogic/obj
 /Server/Snappet.Model/obj
 /Server/Snappet.Model/bin/Debug
-/Server/Snappet.BusinessLogic/Properties/AssemblyInfo.cs
 /Server/Snappet.WebAPI/obj
 /Server/Snappet.WebAPI/bin
 /.vs
