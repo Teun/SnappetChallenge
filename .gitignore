@@ -22,3 +22,5 @@
 /.vs
 /Server/Snappet.Common.BusinessLogic/obj/Debug
 /Server/Snappet.DataProvider/obj/Debug
+/Server/Snappet.DataProvider/obj/Release
+/Server/Snappet.Common.BusinessLogic/obj/Release
