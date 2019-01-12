@@ -20,3 +20,25 @@ Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die
 Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Javascript, JQuery en Knockout.JS. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
 Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
 De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+
+#####################################################################################################################################################################
+#####################################################################################################################################################################
+#####################################################################################################################################################################
+
+# Snappet
+
+This project was generated with Angular 6 and ASP.NET Web API.
+
+## Server :- Belows steps need to perform to run Server Application.
+
+1. Restore Nuget Packages (Right Click on solution--> Restore Nuget packages)(optional)
+2. build solution.
+3. Set Snappet.WepAPI as start up project and run in IIS express.--> And server is ready.
+
+4. To run UnitTest case -> I have used NUnit. -> Go in Test Explorer and run tests.
+
+
+## Client -> Below steps need tp perform to run client app.
+
+1. open command prompt -> run "npm install" .
+2. Run "npm run start" -> Navigate to "http://localhost:4200/"
