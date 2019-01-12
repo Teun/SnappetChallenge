@@ -22,14 +22,12 @@ namespace Snappet.DataProvider.Component
             {
                 return dataType = dataType  ?? ConfigurationManager.AppSettings["dataType"].ToString();
             }
-            set { dataType = value; }
         }
 
         private IDataProvider dataProvider;
         public IDataProvider DataProvider
         {
             get { return dataProvider = dataProvider ?? GetRepository<IDataProvider>(DataType); }
-            set { dataProvider = value; }
         }
         #region Public function
         public IEnumerable<FilterDateSubject> GetFilterDetails()

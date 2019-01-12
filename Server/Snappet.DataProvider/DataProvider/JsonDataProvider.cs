@@ -20,18 +20,14 @@ namespace Snappet.DataProvider.DataProvider
             {
                 return _filePath = _filePath ?? HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings["filePath"]);
             }
-            set { _filePath = value; }
         }
         public virtual IEnumerable<Work> GetWorkDetails()
         {
             IEnumerable<Work> items = null;
-            if (!string.IsNullOrEmpty(FilePath))
+            using (StreamReader r = new StreamReader(FilePath))
             {
-                using (StreamReader r = new StreamReader(FilePath))
-                {
-                    string json = r.ReadToEnd();
-                    items = JsonConvert.DeserializeObject<List<Work>>(json);
-                }
+                string json = r.ReadToEnd();
+                items = JsonConvert.DeserializeObject<List<Work>>(json);
             }
 
             return items;
