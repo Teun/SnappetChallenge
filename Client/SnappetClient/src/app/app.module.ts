@@ -39,7 +39,6 @@ import {
   MAT_DATE_FORMATS
 } from "@angular/material";
 import { FormsModule } from "@angular/forms";
-// import { FlexLayoutModule } from "@angular/flex-layout";
 import { DatatableComponent } from "./datatable/datatable.component";
 import { ChartModule } from "angular-highcharts";
 import { DatatableService } from "./datatable/datatable.service";
@@ -103,7 +102,6 @@ const MY_DATE_FORMATS = {
     MatStepperModule,
     MatFormFieldModule,
     ChartModule,
-    // FlexLayoutModule,
     HttpClientModule
   ],
   providers: [DatatableService],

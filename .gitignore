@@ -24,3 +24,6 @@
 /Server/Snappet.DataProvider/obj/Debug
 /Server/Snappet.DataProvider/obj/Release
 /Server/Snappet.Common.BusinessLogic/obj/Release
+/Client/SnappetClient/package.json.bak
+/Server/Snappet.DataProvider.Test/bin/Debug
+/Server/Snappet.DataProvider.Test/obj/Debug
