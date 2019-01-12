@@ -32,6 +32,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.DataProvider", "Sna
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.DataProvider.Test", "Snappet.DataProvider.Test\Snappet.DataProvider.Test.csproj", "{FA01FA7D-6011-48A1-92A6-5FF89A19CE0E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4D35E69-3204-40C3-B7D7-BA4F08189D28} = {F4D35E69-3204-40C3-B7D7-BA4F08189D28}
+		{C4391AAF-65F7-4455-9CEA-0BFF381F0B3F} = {C4391AAF-65F7-4455-9CEA-0BFF381F0B3F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
