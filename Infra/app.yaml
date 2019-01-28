@@ -1,0 +1,288 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "Creates Application resources for Teachers portal"
+
+Parameters:
+  LambdaCodeBucket:
+    Description: "S3 Object Key that specifies the location of the Lambda packages"
+    Type: "String"
+    Default: "lambda-functions-snappet"
+
+Resources:
+    
+  ImportReportDataFunction:
+    Type: "AWS::Lambda::Function"
+    Properties:
+        Description: "Import report data function"
+        Handler: "Snappet.TeachersPortal.DataImporter::Snappet.TeachersPortal.DataImporter.Function::FunctionHandler"
+        Role: !GetAtt ImportReportDataIamRole.Arn
+        Code: 
+          S3Bucket: !Ref LambdaCodeBucket
+          S3Key: !Sub "Snappet.TeachersPortal.DataImporter.zip"
+        Runtime: "dotnetcore2.1"
+        Timeout: "60"
+        Environment:
+          Variables:
+            DbTablePrefix: !Ref "AWS::StackName"
+  
+  ImportReportDataIamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+        - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+        - "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+
+  ReportUploadBucket:
+    Type: "AWS::S3::Bucket"
+    DependsOn: BucketPermission
+    Properties:
+      BucketName: !Sub "${AWS::StackName}-report-upload-${AWS::AccountId}-${AWS::Region}"
+      AccessControl: "Private"
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Function: !GetAtt ImportReportDataFunction.Arn
+            Event: "s3:ObjectCreated:*"
+            Filter:
+                  S3Key:
+                    Rules:
+                      - Name: suffix
+                        Value: json
+  BucketPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !Ref ImportReportDataFunction
+      Principal: s3.amazonaws.com
+      SourceAccount: !Ref "AWS::AccountId"
+      SourceArn: !Sub "arn:aws:s3:::${AWS::StackName}-report-upload-${AWS::AccountId}-${AWS::Region}"
+      
+  WorkItemsDynamoDbTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        -
+          AttributeName: "AnswerId"
+          AttributeType: "S"
+        -
+          AttributeName: "ItemDate"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "AnswerId"
+          KeyType: "HASH"
+        -
+          AttributeName: "ItemDate"
+          KeyType: "RANGE"
+      GlobalSecondaryIndexes:
+        -
+          IndexName: "ItemDate-index"
+          KeySchema:
+            -
+              AttributeName: "ItemDate"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: "ALL"
+          ProvisionedThroughput:
+            ReadCapacityUnits: "5"
+            WriteCapacityUnits: "5"
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+      TableName: !Sub "${AWS::StackName}-work-item"
+
+  WorkSummaryDynamoDbTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        -
+          AttributeName: "SummaryDate"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "SummaryDate"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+      TableName: !Sub "${AWS::StackName}-work-summary"
+  
+  RestApi:
+    Type: "AWS::ApiGateway::RestApi"
+    Properties:
+      Name: !Sub "${AWS::StackName} api"
+      Description: Teachers portal API
+      FailOnWarnings: true
+      Body:
+        swagger: "2.0"
+        info:
+          version: "2019-01-28T21:33:33Z"
+          title: "snappet api"
+        host: "ttvfgtyyif.execute-api.eu-west-1.amazonaws.com"
+        basePath: "/test"
+        schemes:
+        - "https"
+        paths:
+          /work-items:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              parameters:
+              - name: "date"
+                in: "query"
+                required: false
+                type: "string"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+              x-amazon-apigateway-integration:
+                credentials: !GetAtt RestApiIamRole.Arn
+                uri: !Sub "arn:aws:apigateway:${AWS::Region}:dynamodb:action/Query"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseTemplates:
+                      application/json: "[#foreach($elem in $input.path('$').Items)\n\n  \
+                        \  {\n    \"AnswerId\":$elem.AnswerId.S,\n    \"UserId\": $elem.UserId.N,\n\
+                        \    \"Date\": $elem.ItemDate.S,\n    \"Difficulty\": $elem.Difficulty.N,\n\
+                        \    \"Domain\": \"$elem.Domain.S\",\n    \"Correct\": $elem.Correct.N,\n\
+                        \    \"LearningObjective\": \"$elem.LearningObjective.S\",\n    \"\
+                        Subject\": \"$elem.Subject.S\"\n    }#if($foreach.hasNext),#end \n\
+                        #end]"
+                requestTemplates:
+                  application/json: "{\r\n    \"TableName\": \"snappet-work-item\",\r\n  \
+                    \  \"IndexName\": \"ItemDate-index\",\r\n    \"KeyConditionExpression\"\
+                    : \"ItemDate = :v1\",\r\n    \"ExpressionAttributeValues\": {\r\n    \
+                    \    \":v1\": {\r\n            \"S\": \"$input.params('date')\"\r\n  \
+                    \      }\r\n    }\r\n}"
+                passthroughBehavior: "when_no_match"
+                httpMethod: "POST"
+                type: "aws"
+          /work-items/{id}:
+            get:
+
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              parameters:
+              - name: "id"
+                in: "path"
+                required: true
+                type: "string"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+              x-amazon-apigateway-integration:
+                credentials: !GetAtt RestApiIamRole.Arn
+                uri: !Sub "arn:aws:apigateway:${AWS::Region}:dynamodb:action/Query"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseTemplates:
+                      application/json: "#set($elem = $input.path('$').Items[0])\n{\n    \"\
+                        AnswerId\":$elem.AnswerId.S,\n    \"UserId\": $elem.UserId.N,\n  \
+                        \  \"Date\": $elem.ItemDate.S,\n    \"Difficulty\": $elem.Difficulty.N,\n\
+                        \    \"Domain\": \"$elem.Domain.S\",\n    \"Correct\": $elem.Correct.N,\n\
+                        \    \"LearningObjective\": \"$elem.LearningObjective.S\",\n    \"\
+                        Subject\": \"$elem.Subject.S\"\n}\n"
+                requestTemplates:
+                  application/json: "{\r\n    \"TableName\": \"snappet-work-item\",\r\n  \
+                    \  \"KeyConditionExpression\": \"AnswerId = :v1\",\r\n    \"ExpressionAttributeValues\"\
+                    : {\r\n        \":v1\": {\r\n            \"S\": \"$input.params('id')\"\
+                    \r\n        }\r\n    }\r\n}"
+                passthroughBehavior: "when_no_match"
+                httpMethod: "POST"
+                type: "aws"
+        
+          /work-summaries/{date}:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              parameters:
+              - name: "date"
+                in: "path"
+                required: true
+                type: "string"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+              x-amazon-apigateway-integration:
+                credentials: !GetAtt RestApiIamRole.Arn
+                uri: !Sub "arn:aws:apigateway:${AWS::Region}:dynamodb:action/Query"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseTemplates:
+                      application/json: "{\n    \"AverageDifficulty\": $input.path('$').Items[0].AverageDifficulty.N,\n\
+                        \    \"AverageCorrectness\": $input.path('$').Items[0].AverageCorrectness.N,\n\
+                        \    \"StudentsNumber\": $input.path('$').Items[0].StudentsNumber.N,\n\
+                        \    \"Domains\": [#foreach($elem in $input.path('$').Items[0].Domains.L)\n\
+                        \        {\n        \"Domain\":\"$elem.M.Domain.S\",\n\
+                        \        {\n        \"StudentsNumber\":$elem.M.StudentsNumber.N,\n\
+                        \        \"AverageCorrectness\": $elem.M.AverageCorrectness.N,\n \
+                        \       \"AverageDifficulty\": $elem.M.AverageDifficulty.N\n     \
+                        \   }#if($foreach.hasNext),#end \n    #end]\n}\n"
+                requestTemplates:
+                  application/json: "{\r\n    \"TableName\": \"snappet-work-summary\",\r\n\
+                    \    \"KeyConditionExpression\": \"SummaryDate = :v1\",\r\n    \"ExpressionAttributeValues\"\
+                    : {\r\n        \":v1\": {\r\n            \"S\": \"$input.params('date')\"\
+                    \r\n        }\r\n    }\r\n}"
+                passthroughBehavior: "when_no_match"
+                httpMethod: "POST"
+                type: "aws"
+        
+        
+        definitions:
+          Empty:
+            type: "object"
+            title: "Empty Schema"
+
+  
+  RestApiIamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - apigateway.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess"
+
+  RestApiDeployment:
+    Type: "AWS::ApiGateway::Deployment"
+    Properties:
+      RestApiId: !Ref RestApi
+      Description: "api deployment"
+
+  RestApiStage:
+    Type: "AWS::ApiGateway::Stage"
+    Properties:
+      StageName: "api"
+      RestApiId: !Ref RestApi
+      DeploymentId: !Ref RestApiDeployment

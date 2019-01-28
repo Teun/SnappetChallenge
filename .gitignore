@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Src/.vs/Snappet.TeachersPortal/v15
+/Src/Snappet.TeachersPortal.DataAccess/bin
+/Src/Snappet.TeachersPortal.DataAccess/obj
+/Src/Snappet.TeachersPortal.DataImporter/Properties/launchSettings.json
+/Src/Snappet.TeachersPortal.DataImporter/obj
+/Src/Snappet.TeachersPortal.DataImporter/bin
+/Src/Snappet.TeachersPortal.Model/obj
+/Src/Snappet.TeachersPortal.Model/bin
