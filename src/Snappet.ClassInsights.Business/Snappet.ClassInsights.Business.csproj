@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Snappet.ClassInsights.Model\Snappet.ClassInsights.Model.csproj" />
+    <ProjectReference Include="..\Snappet.ClassInsights.Orm\Snappet.ClassInsights.Orm.csproj" />
+  </ItemGroup>
+
+</Project>

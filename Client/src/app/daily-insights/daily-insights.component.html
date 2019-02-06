@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <form>
+        <div class="form-group">
+          <mat-form-field style="width:50%">
+            <input matInput   [matDatepicker]="picker1"  placeholder="insights Day "  [formControl]="date" />
+            <mat-datepicker-toggle   matSuffix   [for]="picker1" ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+          <button  class="btn btn-primary" (click)="getInsights()">Load Insights</button>
+        </div>
+     
+      </form>
+    </div>
+    <div class="col2"></div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-12">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+      <div class="mat-elevation-z8"> 
+       
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="pubilId">
+              <th mat-header-cell *matHeaderCellDef> pubil Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.pubilId}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="subject">
+              <th mat-header-cell *matHeaderCellDef> subject </th>
+              <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="domain">
+              <th mat-header-cell *matHeaderCellDef> domain </th>
+              <td mat-cell *matCellDef="let element"> {{element.domain}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="countOfSubmittedAnswers">
+              <th mat-header-cell *matHeaderCellDef> # Of Submitted Answers </th>
+              <td mat-cell *matCellDef="let element"> {{element.countOfSubmittedAnswers}} </td>
+            </ng-container>
+
+           <!-- Symbol Column -->
+           <ng-container matColumnDef="numberOfCorrectAnswers">
+              <th mat-header-cell *matHeaderCellDef> correct Answers % </th>
+              <td mat-cell *matCellDef="let element"> {{(element.numberOfCorrectAnswers/element.countOfSubmittedAnswers)| percent:'1.0-2'}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+          <br>
+          <tfoot></tfoot>
+    </div>
+  </div>
+</div>
