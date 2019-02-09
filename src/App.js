@@ -140,9 +140,9 @@ class App extends Component {
         </header>
         <div className="App-body">
           <div id='summary-panel'>
-            <p className='title'>Class Summary</p>
+            <p className='title'>Daily Summary</p>
 
-            <p className='summary-subheader'>Progress by student</p>
+            <p className='summary-subheader'>Progress</p>
             <div className='summary-item'>
               <Boxplot
                 width={200}
@@ -154,7 +154,19 @@ class App extends Component {
               />
             </div>
 
-            <p className='summary-subheader'>Correct answers by student</p>
+            <p className='summary-subheader'>Questions answered</p>
+            <div className='summary-item'>
+              <Boxplot
+                width={200}
+                height={20}
+                orientation="horizontal"
+                min={Math.min(...qnsAttemptedBoxPlotStats)}
+                max={Math.max(...qnsAttemptedBoxPlotStats)}
+                stats={computeBoxplotStats(qnsAttemptedBoxPlotStats)}
+              />
+            </div>
+
+            <p className='summary-subheader'>Correct answers</p>
             <div className='summary-item'>
               <Boxplot
                 width={200}
@@ -167,7 +179,7 @@ class App extends Component {
             </div>
 
 
-            <p className='summary-subheader'>Wrong answers by student</p>
+            <p className='summary-subheader'>Wrong answers</p>
             <div className='summary-item'>
               <Boxplot
                 width={200}
@@ -176,18 +188,6 @@ class App extends Component {
                 min={Math.min(...qnsWrongBoxPlotStats)}
                 max={Math.max(...qnsWrongBoxPlotStats)}
                 stats={computeBoxplotStats(qnsWrongBoxPlotStats)}
-              />
-            </div>
-
-            <p className='summary-subheader'>Total questions answered by each student</p>
-            <div className='summary-item'>
-              <Boxplot
-                width={200}
-                height={20}
-                orientation="horizontal"
-                min={Math.min(...qnsAttemptedBoxPlotStats)}
-                max={Math.max(...qnsAttemptedBoxPlotStats)}
-                stats={computeBoxplotStats(qnsAttemptedBoxPlotStats)}
               />
             </div>
 
