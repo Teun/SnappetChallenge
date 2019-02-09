@@ -26,6 +26,7 @@ Project was time-boxed to 4 hours.
 
 # Future extensions
 
+- Refactor Components into their own files
 - Summary boxplots should have accompanying min/max/mean/median values
 - Toggling by Subject, LearningObjective
-- [ ] Add question mark tooltips to describe how each graph can be interpreted by the teachers
+- Add question mark tooltips to describe how each graph can be interpreted by the teachers
