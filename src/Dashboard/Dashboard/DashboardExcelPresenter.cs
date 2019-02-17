@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using Dashboard.Dashboard.Models;
 using OfficeOpenXml;
 
@@ -20,7 +21,7 @@ namespace Dashboard.Dashboard
             headerStyle.Style.Font.Bold = true;
             headerStyle.Style.Font.Size = 16;
 
-            var row = new Row(worksheet, 1);
+            var row = new CurrentRow(worksheet, 1);
             row.Cell(1).Value = "Class activity report";
             row.Cell(1).StyleName = headerStyle.Name;
             row.Next();
@@ -57,6 +58,18 @@ namespace Dashboard.Dashboard
 
             row.Next();
 
+            // highlight low rate of correct answers
+            var correctnessRateColumn = new ExcelAddress(row.Row, 3, 65000, 3);
+            var lowCorrectRateRule = worksheet.ConditionalFormatting.AddLessThan(correctnessRateColumn);
+            lowCorrectRateRule.Formula = "0.7";
+            lowCorrectRateRule.Style.Font.Color.Color = Color.Red;
+
+            // highlight low rate of students who did the task
+            var studentsRateColumn = new ExcelAddress(row.Row, 4, 65000, 4);
+            var lowRateRule = worksheet.ConditionalFormatting.AddLessThan(studentsRateColumn);
+            lowRateRule.Formula = "0.5";
+            lowRateRule.Style.Font.Color.Color = Color.Red;
+
             ShowSliceStatisticsRecursive(dashboard.SlicedStatistics, dashboard.StudentsPresent, row, 16);
 
             worksheet.Cells.AutoFitColumns();
@@ -64,49 +77,49 @@ namespace Dashboard.Dashboard
             return excelPackage;
         }
 
-        private void ShowSliceStatisticsRecursive(AnswersSlice slice, int totalStudentsCount, Row row, int headerFontSize)
+        private void ShowSliceStatisticsRecursive(AnswersSlice slice, int totalStudentsCount, CurrentRow currentRow, int headerFontSize)
         {
             var stats = slice.GetStatistics();
 
-            row.Cell(1).Value = slice.Name;
-            row.Cell(1).Style.Font.Size = headerFontSize;
+            currentRow.Cell(1).Value = slice.Name;
+            currentRow.Cell(1).Style.Font.Size = headerFontSize;
 
-            row.Cell(2).Value = stats.ExerciseCount;
+            currentRow.Cell(2).Value = stats.ExerciseCount;
 
-            row.Cell(3).Value = stats.CorrectAnswersShare;
-            row.Cell(3).Style.Numberformat.Format = "0%";
+            currentRow.Cell(3).Value = stats.CorrectAnswersShare;
+            currentRow.Cell(3).Style.Numberformat.Format = "0%";
 
-            row.Cell(4).Value = (float)stats.StudentsCount / totalStudentsCount;
-            row.Cell(4).Style.Numberformat.Format = "0%";
-
-            row.Next();
+            currentRow.Cell(4).Value = (float)stats.StudentsCount / totalStudentsCount;
+            currentRow.Cell(4).Style.Numberformat.Format = "0%";
+            
+            currentRow.Next();
 
             foreach (AnswersSlice subslice in slice.Subslices)
             {
-                ShowSliceStatisticsRecursive(subslice, totalStudentsCount, row, headerFontSize - 2);
+                ShowSliceStatisticsRecursive(subslice, totalStudentsCount, currentRow, headerFontSize - 2);
             }
         }
 
-        private class Row
+        private class CurrentRow
         {
-            private readonly ExcelWorksheet _worksheet;
+            private ExcelWorksheet Worksheet { get; }
 
-            private int _row;
+            public int Row { get; private set; }
 
-            public Row(ExcelWorksheet worksheet, int row)
+            public CurrentRow(ExcelWorksheet worksheet, int row)
             {
-                _worksheet = worksheet;
-                _row = row;
+                Worksheet = worksheet;
+                Row = row;
             }
 
             public ExcelRange Cell(int column)
             {
-                return _worksheet.Cells[_row, column];
+                return Worksheet.Cells[Row, column];
             }
 
             public void Next()
             {
-                ++_row;
+                ++Row;
             }
         }
     }
