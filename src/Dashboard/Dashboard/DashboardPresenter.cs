@@ -20,7 +20,7 @@ namespace Dashboard.Dashboard
             OutputField("End date", dashboard.End);
             AddSpacing();
 
-            OutputField("Pupils present", dashboard.PupilsPresent);
+            OutputField("Students present", dashboard.StudentsPresent);
             AddSpacing();
 
             PresentLearningResults(dashboard.OverallLearningResults);

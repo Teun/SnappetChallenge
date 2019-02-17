@@ -24,7 +24,7 @@ namespace Dashboard.Dashboard
             dashboard.Start = from;
             dashboard.End = to;
 
-            dashboard.PupilsPresent = periodAnswers.GroupBy(answer => answer.UserId).Count();
+            dashboard.StudentsPresent = periodAnswers.GroupBy(answer => answer.UserId).Count();
 
             dashboard.OverallLearningResults = BuildLearningResults(periodAnswers);
 

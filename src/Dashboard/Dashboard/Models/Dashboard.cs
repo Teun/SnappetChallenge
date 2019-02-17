@@ -9,7 +9,7 @@ namespace Dashboard.Dashboard.Models
 
         public DateTimeOffset End { get; set; }
 
-        public int PupilsPresent { get; set; }
+        public int StudentsPresent { get; set; }
 
         public LearningResults OverallLearningResults { get; set; }
     }
