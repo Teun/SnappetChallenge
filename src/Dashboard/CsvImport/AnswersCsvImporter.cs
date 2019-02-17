@@ -1,54 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using CsvHelper;
 using Dashboard.Domain;
 
 namespace Dashboard.CsvImport
 {
     public class AnswersCsvImporter
     {
-        public IEnumerable<Answer> Import(string fileName)
+        public IReadOnlyCollection<Answer> Import(string fileName)
         {
-            var fieldMap = new AnswerCsvFieldMap();
-
             using (var streamReader = new StreamReader(fileName))
+            using (var csv = new CsvReader(streamReader))
             {
-                // skip headers
-                streamReader.ReadLine();
+                var rows = csv.GetRecords<AnswerCsvRow>();
 
-                for (; ;)
-                {
-                    string line = streamReader.ReadLine();
-                    if (line == null)
-                    {
-                        break;
-                    }
+                var answers = rows.Select(row => new Answer(
+                    submittedAnswerId: row.SubmittedAnswerId,
+                    submitDateTime: row.SubmitDateTime,
+                    isCorrect: row.Correct,
+                    progress: row.Progress,
+                    userId: row.UserId,
+                    exerciseId: row.ExerciseId,
+                    difficulty: row.Difficulty,
+                    subject: row.Subject,
+                    domain: row.Domain,
+                    learningObjective: row.LearningObjective
+                    )
+                );
 
-                    if (line[0] == '%')
-                    {
-                        continue;
-                    }
-
-                    string[] fields = line.Split(',');
-
-                    var answer = new Answer();
-
-                    answer.SubmittedAnswerId = int.Parse(fields[fieldMap.SubmittedAnswerId]);
-                    answer.SubmitDateTime = DateTimeOffset.Parse(fields[fieldMap.SubmitDateTime], null, DateTimeStyles.AssumeUniversal);
-                    answer.IsCorrect = int.Parse(fields[fieldMap.IsCorrect]) == 1;
-                    answer.Progress = int.Parse(fields[fieldMap.Progress]);
-                    answer.UserId = int.Parse(fields[fieldMap.UserId]);
-                    answer.ExerciseId = int.Parse(fields[fieldMap.ExerciseId]);
-                    answer.Difficulty = (fields[fieldMap.Difficulty] != "NULL") ?
-                        float.Parse(fields[fieldMap.Difficulty])
-                        : (float?)null;
-                    answer.Subject = fields[fieldMap.Subject];
-                    answer.Domain = fields[fieldMap.Domain];
-                    answer.LearningObjective = fields[fieldMap.LearningObjective];
-
-                    yield return answer;
-                }
+                return answers.ToList();
             }
         }
     }
