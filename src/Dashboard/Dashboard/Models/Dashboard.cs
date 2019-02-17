@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace Dashboard.Dashboard
+namespace Dashboard.Dashboard.Models
 {
     public class Dashboard
     {
@@ -10,5 +10,7 @@ namespace Dashboard.Dashboard
         public DateTimeOffset End { get; set; }
 
         public int PupilsPresent { get; set; }
+
+        public LearningResults OverallLearningResults { get; set; }
     }
 }
