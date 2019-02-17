@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using Dashboard.CsvImport;
 using Dashboard.Dashboard;
 
@@ -8,29 +10,39 @@ namespace Dashboard
     {
         static void Main(string[] args)
         {
-            if (args.Length != 2)
+            if (args.Length != 3)
             {
-                Console.WriteLine("Supply file and datetime");
+                Console.WriteLine("Supply input file, datetime, and output file");
                 Environment.Exit(1);
                 return;
             }
 
+            string inputFileName = args[0];
+            string inputDate = args[1];
+            string outputFileName = args[2];
+
             var csvImporter = new AnswersCsvImporter();
             var dashboardBuilder = new DashboardBuilder();
-            var dashboardPresenter = new DashboardPresenter();
+            var dashboardPresenter = new DashboardExcelPresenter();
 
-            var answers = csvImporter.Import(args[0]);
+            var answers = csvImporter.Import(inputFileName);
 
-            DateTimeOffset end = DateTimeOffset.Parse(args[1]);
+            DateTimeOffset end = DateTimeOffset.Parse(inputDate);
             DateTimeOffset start = new DateTimeOffset(end.Date, TimeSpan.Zero);
 
             var dashboard = dashboardBuilder.Build(answers, start, end);
 
-            dashboardPresenter.Present(dashboard);
+            using (var excelPackage = dashboardPresenter.Present(dashboard))
+            {
+                excelPackage.SaveAs(new FileInfo(outputFileName));
+            }
 
-#if DEBUG
-            Console.ReadKey();
-#endif
+            var excel = new Process();
+            excel.StartInfo = new ProcessStartInfo(outputFileName)
+            {
+                UseShellExecute = true
+            };
+            excel.Start();
         }
     }
 }

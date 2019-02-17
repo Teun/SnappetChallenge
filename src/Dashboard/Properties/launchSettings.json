@@ -2,7 +2,7 @@
   "profiles": {
     "Dashboard": {
       "commandName": "Project",
-      "commandLineArgs": "c:\\development\\SnappetChallenge\\Data\\work.csv \"2015-03-24 11:30:00Z\""
+      "commandLineArgs": "c:\\development\\SnappetChallenge\\Data\\work.csv \"2015-03-24 11:30:00Z\" ClassActivity.xlsx"
     }
   }
 }

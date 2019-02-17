@@ -34,12 +34,12 @@ namespace Dashboard.Dashboard.Models
         {
             int exerciseCount = Answers.GroupBy(answer => answer.ExerciseId).Count();
 
-            float correctPercentage = (float)100 * Answers.Count(answer => answer.IsCorrect) / Answers.Count;
+            float correctAnswersShare = (float) Answers.Count(answer => answer.IsCorrect) / Answers.Count;
 
             return new SliceStatistics
             {
                 ExerciseCount = exerciseCount,
-                CorrectPercentage = correctPercentage
+                CorrectAnswersShare = correctAnswersShare
             };
         }
     }

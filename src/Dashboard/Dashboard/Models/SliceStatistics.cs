@@ -4,6 +4,6 @@
     {
         public int ExerciseCount { get; set; }
 
-        public float CorrectPercentage { get; set; }
+        public float CorrectAnswersShare { get; set; }
     }
 }
