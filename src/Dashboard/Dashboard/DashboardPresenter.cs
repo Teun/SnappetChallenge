@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Dashboard.Dashboard.Models;
 
 namespace Dashboard.Dashboard
@@ -14,38 +13,40 @@ namespace Dashboard.Dashboard
             }
 
             AddHeader("Class activity report");
-            AddSpacing();
+            AddNewLine();
 
             OutputField("Start date", dashboard.Start);
+            AddNewLine();
             OutputField("End date", dashboard.End);
-            AddSpacing();
+            AddNewLine();
+            AddNewLine();
 
             OutputField("Students present", dashboard.StudentsPresent);
-            AddSpacing();
+            AddNewLine();
 
-            PresentLearningResults(dashboard.OverallLearningResults);
+            Console.WriteLine("Subject Exercises Correct answers, %");
+            AddNewLine();
+
+            ShowSliceStatisticsRecursive(dashboard.SlicedStatistics);
         }
 
-        private void PresentLearningResults(LearningResults results)
+        private void ShowSliceStatisticsRecursive(AnswersSlice slice)
         {
-            OutputField("Exercises", results.ExerciseCount);
-            OutputField("Correct percentage", results.CorrectPercentage.ToString("N0"), 2);
-            AddSpacing();
+            var stats = slice.GetStatistics();
 
-            if (results.Detalization != null)
+            Console.WriteLine($"{slice.Name, -50} {stats.ExerciseCount, 10} {stats.CorrectPercentage,10:N0}");
+            AddNewLine();
+
+            foreach (AnswersSlice subslice in slice.Subslices)
             {
-                foreach (KeyValuePair<string, LearningResults> details in results.Detalization)
-                {
-                    Console.WriteLine(details.Key);
-                    PresentLearningResults(details.Value);
-                }
+                ShowSliceStatisticsRecursive(subslice);
             }
         }
 
         private void OutputField(string label, object value, int padding = 3)
         {
             string paddingString = new string('\t', padding);
-            Console.WriteLine($"{label}:{paddingString}{value}");
+            Console.Write($"{label}:{paddingString}{value}");
         }
 
         private void AddHeader(string label)
@@ -53,7 +54,7 @@ namespace Dashboard.Dashboard
             Console.WriteLine(label);
         }
 
-        private void AddSpacing()
+        private void AddNewLine()
         {
             Console.WriteLine();
         }

@@ -11,6 +11,6 @@ namespace Dashboard.Dashboard.Models
 
         public int StudentsPresent { get; set; }
 
-        public LearningResults OverallLearningResults { get; set; }
+        public AnswersSlice SlicedStatistics { get; set; }
     }
 }

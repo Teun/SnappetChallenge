@@ -15,7 +15,7 @@ namespace Dashboard.Dashboard
                 throw new ArgumentNullException(nameof(answers));
             }
 
-            IEnumerable<Answer> periodAnswers = answers
+            IReadOnlyCollection<Answer> periodAnswers = answers
                 .Where(answer => answer.SubmitDateTime >= from && answer.SubmitDateTime <= to)
                 .ToList();
 
@@ -26,26 +26,35 @@ namespace Dashboard.Dashboard
 
             dashboard.StudentsPresent = periodAnswers.GroupBy(answer => answer.UserId).Count();
 
-            dashboard.OverallLearningResults = BuildLearningResults(periodAnswers);
-
-            dashboard.OverallLearningResults.Detalization = periodAnswers
-                .GroupBy(it => it.Subject)
-                .ToDictionary(group => group.Key, BuildLearningResults);
+            dashboard.SlicedStatistics = BuildHierarchicalSlices(periodAnswers);
 
             return dashboard;
         }
 
-        private LearningResults BuildLearningResults(IEnumerable<Answer> answers)
+        private AnswersSlice BuildHierarchicalSlices(IReadOnlyCollection<Answer> answers)
         {
-            var result = new LearningResults();
+            return new AnswersSlice("Overall", answers, GroupBySubject(answers));
+        }
 
-            answers = answers.ToList();
+        private IReadOnlyCollection<AnswersSlice> GroupBySubject(IEnumerable<Answer> answers)
+        {
+            return answers.GroupBy(answer => answer.Subject)
+                .Select(group => new AnswersSlice(group.Key, group.ToList(), GroupByDomain(group)))
+                .ToList();
+        }
 
-            result.ExerciseCount = answers.GroupBy(answer => answer.ExerciseId).Count();
+        private IReadOnlyCollection<AnswersSlice> GroupByDomain(IEnumerable<Answer> answers)
+        {
+            return answers.GroupBy(answer => answer.Domain)
+                .Select(group => new AnswersSlice(group.Key, group.ToList(), GroupByLearningObjective(group)))
+                .ToList();
+        }
 
-            result.CorrectPercentage = (float)100 * answers.Count(answer => answer.IsCorrect) / answers.Count();
-            
-            return result;
+        private IReadOnlyCollection<AnswersSlice> GroupByLearningObjective(IEnumerable<Answer> answers)
+        {
+            return answers.GroupBy(answer => answer.LearningObjective)
+                .Select(group => new AnswersSlice(group.Key, group.ToList(), new List<AnswersSlice>(0)))
+                .ToList();
         }
     }
 }
