@@ -5,5 +5,7 @@
         public int ExerciseCount { get; set; }
 
         public float CorrectAnswersShare { get; set; }
+
+        public int StudentsCount { get; set; }
     }
 }

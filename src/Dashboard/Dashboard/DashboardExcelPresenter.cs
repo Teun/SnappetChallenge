@@ -41,7 +41,7 @@ namespace Dashboard.Dashboard
 
             var tableHeaderStyle = worksheet.Workbook.Styles.CreateNamedStyle("Table header");
             tableHeaderStyle.Style.Font.Bold = true;
-            tableHeaderStyle.Style.Font.Size = 16;
+            tableHeaderStyle.Style.Font.Size = 14;
 
             row.Cell(1).Value = "Section";
             row.Cell(1).StyleName = tableHeaderStyle.Name;
@@ -52,16 +52,19 @@ namespace Dashboard.Dashboard
             row.Cell(3).Value = "Correct answers, %";
             row.Cell(3).StyleName = tableHeaderStyle.Name;
 
+            row.Cell(4).Value = "Students participated, %";
+            row.Cell(4).StyleName = tableHeaderStyle.Name;
+
             row.Next();
 
-            ShowSliceStatisticsRecursive(dashboard.SlicedStatistics, row, 16);
+            ShowSliceStatisticsRecursive(dashboard.SlicedStatistics, dashboard.StudentsPresent, row, 16);
 
             worksheet.Cells.AutoFitColumns();
 
             return excelPackage;
         }
 
-        private void ShowSliceStatisticsRecursive(AnswersSlice slice, Row row, int headerFontSize)
+        private void ShowSliceStatisticsRecursive(AnswersSlice slice, int totalStudentsCount, Row row, int headerFontSize)
         {
             var stats = slice.GetStatistics();
 
@@ -73,11 +76,14 @@ namespace Dashboard.Dashboard
             row.Cell(3).Value = stats.CorrectAnswersShare;
             row.Cell(3).Style.Numberformat.Format = "0%";
 
+            row.Cell(4).Value = (float)stats.StudentsCount / totalStudentsCount;
+            row.Cell(4).Style.Numberformat.Format = "0%";
+
             row.Next();
 
             foreach (AnswersSlice subslice in slice.Subslices)
             {
-                ShowSliceStatisticsRecursive(subslice, row, headerFontSize - 2);
+                ShowSliceStatisticsRecursive(subslice, totalStudentsCount, row, headerFontSize - 2);
             }
         }
 

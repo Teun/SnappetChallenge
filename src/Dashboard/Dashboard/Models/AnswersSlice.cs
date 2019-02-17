@@ -36,10 +36,13 @@ namespace Dashboard.Dashboard.Models
 
             float correctAnswersShare = (float) Answers.Count(answer => answer.IsCorrect) / Answers.Count;
 
+            int studentsCount = Answers.GroupBy(answer => answer.UserId).Count();
+
             return new SliceStatistics
             {
                 ExerciseCount = exerciseCount,
-                CorrectAnswersShare = correctAnswersShare
+                CorrectAnswersShare = correctAnswersShare,
+                StudentsCount = studentsCount
             };
         }
     }
