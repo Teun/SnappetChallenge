@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CsvHelper;
 using Dashboard.Domain;
 
@@ -10,7 +11,7 @@ namespace Dashboard.CsvImport
     {
         public IReadOnlyCollection<Answer> Import(string fileName)
         {
-            using (var streamReader = new StreamReader(fileName))
+            using (var streamReader = new StreamReader(fileName, new UTF7Encoding()))
             using (var csv = new CsvReader(streamReader))
             {
                 var rows = csv.GetRecords<AnswerCsvRow>();
