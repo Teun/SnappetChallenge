@@ -26,34 +26,60 @@ namespace Dashboard.Dashboard
 
             dashboard.StudentsPresent = periodAnswers.GroupBy(answer => answer.UserId).Count();
 
-            dashboard.SlicedStatistics = BuildHierarchicalSlices(periodAnswers);
+            var rootTopic = BuildTopicHierarchy(periodAnswers);
+
+            dashboard.TopicStatistics = GatherTopicStats(rootTopic, 0, dashboard.StudentsPresent).ToList();
 
             return dashboard;
         }
 
-        private AnswersSlice BuildHierarchicalSlices(IReadOnlyCollection<Answer> answers)
+        private IEnumerable<TopicDashboardModel> GatherTopicStats(Topic topic, int level, int overallStudentsCount)
         {
-            return new AnswersSlice("Overall", answers, GroupBySubject(answers));
+            var topicStats = topic.GetStatistics();
+
+            var topicModel = new TopicDashboardModel(
+                topic.Name,
+                level,
+                topicStats.ExerciseCount,
+                topicStats.CorrectAnswersRate,
+                (float)topicStats.StudentsCount / overallStudentsCount
+            );
+
+
+            yield return topicModel;
+
+            foreach (Topic subtopic in topic.Subtopics)
+            {
+                foreach (var subtopicDashboardModel in GatherTopicStats(subtopic, level + 1, overallStudentsCount))
+                {
+                    yield return subtopicDashboardModel;
+                }
+            }
         }
 
-        private IReadOnlyCollection<AnswersSlice> GroupBySubject(IEnumerable<Answer> answers)
+        private Topic BuildTopicHierarchy(IReadOnlyCollection<Answer> answers)
+        {
+            return new Topic("Overall", answers, GroupBySubject(answers));
+        }
+
+        private IReadOnlyCollection<Topic> GroupBySubject(IEnumerable<Answer> answers)
         {
             return answers.GroupBy(answer => answer.Subject)
-                .Select(group => new AnswersSlice(group.Key, group.ToList(), GroupByDomain(group)))
+                .Select(group => new Topic(group.Key, group.ToList(), GroupByDomain(group)))
                 .ToList();
         }
 
-        private IReadOnlyCollection<AnswersSlice> GroupByDomain(IEnumerable<Answer> answers)
+        private IReadOnlyCollection<Topic> GroupByDomain(IEnumerable<Answer> answers)
         {
             return answers.GroupBy(answer => answer.Domain)
-                .Select(group => new AnswersSlice(group.Key, group.ToList(), GroupByLearningObjective(group)))
+                .Select(group => new Topic(group.Key, group.ToList(), GroupByLearningObjective(group)))
                 .ToList();
         }
 
-        private IReadOnlyCollection<AnswersSlice> GroupByLearningObjective(IEnumerable<Answer> answers)
+        private IReadOnlyCollection<Topic> GroupByLearningObjective(IEnumerable<Answer> answers)
         {
             return answers.GroupBy(answer => answer.LearningObjective)
-                .Select(group => new AnswersSlice(group.Key, group.ToList(), new List<AnswersSlice>(0)))
+                .Select(group => new Topic(group.Key, group.ToList(), new List<Topic>(0)))
                 .ToList();
         }
     }

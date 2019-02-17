@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace Dashboard.Dashboard.Models
 {
@@ -11,6 +12,6 @@ namespace Dashboard.Dashboard.Models
 
         public int StudentsPresent { get; set; }
 
-        public AnswersSlice SlicedStatistics { get; set; }
+        public IReadOnlyCollection<TopicDashboardModel> TopicStatistics { get; set; }
     }
 }
