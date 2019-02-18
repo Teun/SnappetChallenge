@@ -74,8 +74,7 @@ namespace Dashboard.Dashboard
 
         private Topic BuildTopicHierarchy(IReadOnlyCollection<Answer> answers)
         {
-            // NOTE: root level should be localized here or in the presenter, hardcode for simplicity
-            return new Topic("Overall", answers, GroupBySubject(answers));
+            return new Topic("", answers, GroupBySubject(answers));
         }
 
         private IReadOnlyCollection<Topic> GroupBySubject(IEnumerable<Answer> answers)

@@ -79,7 +79,8 @@ namespace Dashboard.Dashboard
 
             foreach (var topic in topics)
             {
-                row.Cell(1).Value = topic.TopicName;
+                string name = topic.Level == 0 ? "Overall" : topic.TopicName;
+                row.Cell(1).Value = name;
                 row.Cell(1).Style.Font.Size = 16 - 2 * topic.Level;
 
                 row.Cell(2).Value = topic.ExerciseCount;

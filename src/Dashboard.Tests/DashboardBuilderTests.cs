@@ -75,7 +75,7 @@ namespace Dashboard.Tests
             var topics = dashboard.Topics.ToList();
 
             Assert.That(topics.Count, Is.EqualTo(10));
-            Assert.That(topics[0].TopicName, Is.EqualTo("Overall"));
+            Assert.That(topics[0].TopicName, Is.EqualTo(""));
             Assert.That(topics[1].TopicName, Is.EqualTo("Maths"));
             Assert.That(topics[2].TopicName, Is.EqualTo("Arithmetic"));
             Assert.That(topics[3].TopicName, Is.EqualTo("Add"));
