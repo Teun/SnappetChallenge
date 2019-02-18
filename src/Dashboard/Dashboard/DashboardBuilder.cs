@@ -29,7 +29,11 @@ namespace Dashboard.Dashboard
 
                     int exerciseCount = group.GroupBy(it => it.ExerciseId).Count();
 
-                    return new StudentModel(name, exerciseCount);
+                    int correctAnswersCount = group.Count(it => it.IsCorrect);
+                    int answersCount = group.Count();
+                    float correctnessRatio = (float) correctAnswersCount / answersCount;
+
+                    return new StudentModel(name, exerciseCount, correctnessRatio);
                 })
                 .OrderBy(student => student.Name)
                 .ToList();

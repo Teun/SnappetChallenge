@@ -10,10 +10,11 @@
 
         public float FinishedExerciseShare { get; }
 
-        public StudentModel(string name, int exerciseCount)
+        public StudentModel(string name, int exerciseCount, float correctAnswersRatio)
         {
             Name = name;
             ExerciseCount = exerciseCount;
+            CorrectAnswersRatio = correctAnswersRatio;
         }
     }
 }

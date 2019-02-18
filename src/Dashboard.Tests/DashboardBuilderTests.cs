@@ -255,6 +255,27 @@ namespace Dashboard.Tests
         }
 
         [Test]
+        public void ReturnsCorrectAnswersRatioPerStudent()
+        {
+            // arrange
+            var answers = new List<Answer>
+            {
+                BuildAnswer(userId: 1, isCorrect: true),
+                BuildAnswer(userId: 1, isCorrect: false),
+                BuildAnswer(userId: 2, isCorrect: true)
+            };
+
+            // act
+            var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
+
+            // assert
+            var students = dashboard.Students.ToList();
+            Assert.That(students.Count, Is.EqualTo(2));
+            Assert.That(students[0].CorrectAnswersRatio, Is.EqualTo(0.5f).Within(0.1));
+            Assert.That(students[1].CorrectAnswersRatio, Is.EqualTo(1.0f).Within(0.1));
+        }
+
+        [Test]
         public void IgnoresAnswersOutsideOfDatePeriod()
         {
             DateTimeOffset past = DateTimeOffset.Now.AddDays(-10); 
