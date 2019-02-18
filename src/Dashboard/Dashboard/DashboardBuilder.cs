@@ -8,7 +8,7 @@ namespace Dashboard.Dashboard
 {
     public class DashboardBuilder
     {
-        public Models.Dashboard Build(IEnumerable<Answer> answers, DateTimeOffset from, DateTimeOffset to)
+        public Models.DashboardModel Build(IEnumerable<Answer> answers, DateTimeOffset from, DateTimeOffset to)
         {
             if (answers == null)
             {
@@ -19,7 +19,7 @@ namespace Dashboard.Dashboard
                 .Where(answer => answer.SubmitDateTime >= from && answer.SubmitDateTime <= to)
                 .ToList();
 
-            var dashboard = new Models.Dashboard();
+            var dashboard = new DashboardModel();
 
             dashboard.Start = from;
             dashboard.End = to;
@@ -59,6 +59,7 @@ namespace Dashboard.Dashboard
 
         private Topic BuildTopicHierarchy(IReadOnlyCollection<Answer> answers)
         {
+            // NOTE: root level should be localized here or in the presenter, hardcode for simplicity
             return new Topic("Overall", answers, GroupBySubject(answers));
         }
 

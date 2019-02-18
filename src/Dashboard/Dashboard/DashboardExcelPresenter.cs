@@ -8,7 +8,7 @@ namespace Dashboard.Dashboard
 {
     public class DashboardExcelPresenter
     {
-        public ExcelPackage Present(Models.Dashboard dashboard)
+        public ExcelPackage Present(Models.DashboardModel dashboard)
         {
             if (dashboard == null)
             {
@@ -28,7 +28,7 @@ namespace Dashboard.Dashboard
             return excelPackage;
         }
 
-        private void AddReportHeader(Models.Dashboard dashboard, ExcelWorksheet worksheet, CurrentRow row)
+        private void AddReportHeader(Models.DashboardModel dashboard, ExcelWorksheet worksheet, CurrentRow row)
         {
             var headerStyle = worksheet.Workbook.Styles.CreateNamedStyle("Header");
             headerStyle.Style.Font.Bold = true;

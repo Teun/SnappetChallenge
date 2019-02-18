@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dashboard.Dashboard.Models
 {
-    public class Dashboard
+    public class DashboardModel
     {
         public DateTimeOffset Start { get; set;  }
 
