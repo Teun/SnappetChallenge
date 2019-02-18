@@ -77,18 +77,6 @@ namespace Dashboard.Dashboard
 
             row.Next();
 
-            // highlight the low rate of correct answers
-            var correctnessRateColumn = new ExcelAddress(row.Row, 3, row.Row + topics.Count, 3);
-            var lowCorrectRateRule = worksheet.ConditionalFormatting.AddLessThan(correctnessRateColumn);
-            lowCorrectRateRule.Formula = "0.7";
-            lowCorrectRateRule.Style.Font.Color.Color = Color.Red;
-
-            // highlight low rate of students who did the task
-            var studentsRateColumn = new ExcelAddress(row.Row, 4, row.Row + topics.Count, 4);
-            var lowRateRule = worksheet.ConditionalFormatting.AddLessThan(studentsRateColumn);
-            lowRateRule.Formula = "0.5";
-            lowRateRule.Style.Font.Color.Color = Color.Red;
-
             foreach (var topic in topics)
             {
                 row.Cell(1).Value = topic.TopicName;
@@ -104,6 +92,18 @@ namespace Dashboard.Dashboard
 
                 row.Next();
             }
+
+            // highlight the low rate of correct answers
+            var correctnessRateColumn = new ExcelAddress(row.Row - topics.Count, 3, row.Row, 3);
+            var lowCorrectRateRule = worksheet.ConditionalFormatting.AddLessThan(correctnessRateColumn);
+            lowCorrectRateRule.Formula = "0.7";
+            lowCorrectRateRule.Style.Font.Color.Color = Color.Red;
+
+            // highlight low rate of students who did the task
+            var studentsRateColumn = new ExcelAddress(row.Row - topics.Count, 4, row.Row, 4);
+            var lowRateRule = worksheet.ConditionalFormatting.AddLessThan(studentsRateColumn);
+            lowRateRule.Formula = "0.5";
+            lowRateRule.Style.Font.Color.Color = Color.Red;
         }
 
         private void AddStudentsStatistics(IReadOnlyCollection<StudentModel> students, ExcelWorksheet worksheet, CurrentRow row)
@@ -144,6 +144,18 @@ namespace Dashboard.Dashboard
 
                 row.Next();
             }
+
+            // highlight the low rate of correct answers
+            var correctnessRateColumn = new ExcelAddress(row.Row - students.Count, 3, row.Row, 3);
+            var lowCorrectRateRule = worksheet.ConditionalFormatting.AddLessThan(correctnessRateColumn);
+            lowCorrectRateRule.Formula = "0.7";
+            lowCorrectRateRule.Style.Font.Color.Color = Color.Red;
+
+            // highlight the low rate of exercises covered (logical, but the data suggest maybe not)
+            var exerciseRateColumn = new ExcelAddress(row.Row - students.Count, 4, row.Row, 4);
+            var lowExerciseRateRule = worksheet.ConditionalFormatting.AddLessThan(exerciseRateColumn);
+            lowExerciseRateRule.Formula = "0.4";
+            lowExerciseRateRule.Style.Font.Color.Color = Color.Red;
         }
 
         private class CurrentRow
