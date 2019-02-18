@@ -79,7 +79,7 @@ namespace Dashboard.Dashboard
 
             foreach (var topic in topics)
             {
-                string name = topic.Level == 0 ? "Overall" : topic.TopicName;
+                string name = topic.Level == DashboardModel.ROOT_TOPIC_LEVEL ? "Overall" : topic.TopicName;
                 row.Cell(1).Value = name;
                 row.Cell(1).Style.Font.Size = 16 - 2 * topic.Level;
 

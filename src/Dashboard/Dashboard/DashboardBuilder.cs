@@ -28,7 +28,7 @@ namespace Dashboard.Dashboard
 
             var rootTopic = BuildTopicHierarchy(periodAnswers);
 
-            var topics = GatherTopicStats(rootTopic, 0, students.Count).ToList();
+            var topics = GatherTopicStatsRecursive(rootTopic, DashboardModel.ROOT_TOPIC_LEVEL, students.Count).ToList();
 
             return new DashboardModel(from, to, topics, students);
         }
@@ -48,7 +48,7 @@ namespace Dashboard.Dashboard
             return new StudentModel(name, studentExerciseCount, correctnessRatio, finishedExerciseShare);
         }
 
-        private IEnumerable<TopicModel> GatherTopicStats(Topic topic, int level, int overallStudentsCount)
+        private IEnumerable<TopicModel> GatherTopicStatsRecursive(Topic topic, int level, int overallStudentsCount)
         {
             var topicStats = topic.GetStatistics();
 
@@ -60,12 +60,11 @@ namespace Dashboard.Dashboard
                 (float)topicStats.StudentsCount / overallStudentsCount
             );
 
-
             yield return topicModel;
 
             foreach (Topic subtopic in topic.Subtopics)
             {
-                foreach (var subtopicDashboardModel in GatherTopicStats(subtopic, level + 1, overallStudentsCount))
+                foreach (var subtopicDashboardModel in GatherTopicStatsRecursive(subtopic, level + 1, overallStudentsCount))
                 {
                     yield return subtopicDashboardModel;
                 }

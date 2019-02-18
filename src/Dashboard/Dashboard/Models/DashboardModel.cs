@@ -6,6 +6,8 @@ namespace Dashboard.Dashboard.Models
 {
     public class DashboardModel
     {
+        public const int ROOT_TOPIC_LEVEL = 0;
+
         public DateTimeOffset Start { get; }
 
         public DateTimeOffset End { get; }
