@@ -234,6 +234,27 @@ namespace Dashboard.Tests
         }
 
         [Test]
+        public void ReturnsFinishedExercisesPerStudent()
+        {
+            // arrange
+            var answers = new List<Answer>
+            {
+                BuildAnswer(userId: 1, exerciseId: 1),
+                BuildAnswer(userId: 1, exerciseId: 2),
+                BuildAnswer(userId: 2, exerciseId: 1)
+            };
+
+            // act
+            var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
+
+            // assert
+            var students = dashboard.Students.ToList();
+            Assert.That(students.Count, Is.EqualTo(2));
+            Assert.That(students[0].ExerciseCount, Is.EqualTo(2));
+            Assert.That(students[1].ExerciseCount, Is.EqualTo(1));
+        }
+
+        [Test]
         public void IgnoresAnswersOutsideOfDatePeriod()
         {
             DateTimeOffset past = DateTimeOffset.Now.AddDays(-10); 

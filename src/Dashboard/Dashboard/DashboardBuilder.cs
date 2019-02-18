@@ -22,7 +22,15 @@ namespace Dashboard.Dashboard
             var rootTopic = BuildTopicHierarchy(periodAnswers);
 
             var students = periodAnswers.GroupBy(answer => answer.UserId)
-                .Select(group => new StudentModel("Student " + group.Key)) // fake a nice student name, as we don't have it
+                .Select(group =>
+                {
+                    // fake a nice student name, as we don't have it
+                    string name = "Student " + group.Key;
+
+                    int exerciseCount = group.GroupBy(it => it.ExerciseId).Count();
+
+                    return new StudentModel(name, exerciseCount);
+                })
                 .OrderBy(student => student.Name)
                 .ToList();
 

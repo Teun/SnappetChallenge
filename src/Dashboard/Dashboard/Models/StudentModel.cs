@@ -4,9 +4,16 @@
     {
         public string Name { get; }
 
-        public StudentModel(string name)
+        public int ExerciseCount { get; }
+
+        public float CorrectAnswersRatio { get; }
+
+        public float FinishedExerciseShare { get; }
+
+        public StudentModel(string name, int exerciseCount)
         {
             Name = name;
+            ExerciseCount = exerciseCount;
         }
     }
 }
