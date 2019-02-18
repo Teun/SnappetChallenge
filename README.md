@@ -1,4 +1,64 @@
 # SnappetChallenge
+
+## Prerequisites
+You will need .NET Core 2.1 and something to display Excel files.
+
+## Running
+It should be sufficient to execute run.cmd file from the root of the repository: 
+```
+run
+```
+It shall open the resulting Excel file automatically. If that doesn't happen, please try to open ClassActivity.xlsx manually.
+
+If you want to play with other dates or input files, use the full syntax:
+```
+dotnet run --project src\Dashboard\Dashboard.csproj <input csv> <date in ISO8601> <output>
+```
+for example:
+```
+dotnet run --project src\Dashboard\Dashboard.csproj Data\work.csv "2015-03-24 11:30:00Z" ClassActivity.xlsx"
+```
+I've included the sample output (ClassActivity.xlsx) at the root of the repository, so you can look at its structure without running.
+
+## What does it show
+The report shows the class activity from the start of the day until the supplied date and time.
+
+The included data is:
+* Report period (from / to).
+* Number of students participated in the lesson.
+* Statistics by studied topic:
+  * Number of exercises
+  * Correct answers percentage
+  * Percentage of students who did that topic.
+* Statistics by student:
+  * Number of finished exercises
+  * Correct answers percentage
+  * Exercises covered (to total exercises in the period).
+
+The conditional formatting shows in red low correct answers ratio and low student per topic and exercises per student ratios.
+
+The idea is to give an overview and highlight difficult topics and underperforming students.
+
+The topic/students overlap is lower than expected, maybe the class is divided into several groups doing different tasks? Guessing without a domain expert is hard.
+
+## Decisions
+C#/.NET because I've worked in it the most.
+
+.NET Core because it's newer stuff and cross-platform as well.
+
+CSV over JSON because CSV is very common in data processing and can be naturally processed line by line.
+
+No database because it would complicate the matters and time is precious. Looking at the slice and dice I've done, it might be a good idea to do it in memory anyway, using the database only to narrow the data to the specific day and class. Maybe.
+
+No GUI because there are too many options to choose and generally the time effort would be much higher.
+
+Excel output is a good fit in my opinion, because it supports tables and color highlighting, and they can edit the results to add/modify some data or do their own aggregation. The downside is that it should be available to the user, but it's quite common in my experience.
+
+I didn't touch Difficulty and Progress fields because they are hard to interpret without a domain expert.
+
+I didn't do any comparisons to the previous periods because it's too wide and out of the scope of "what my class worked on today", in my opinion.
+
+## Original description
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
 ### Language
