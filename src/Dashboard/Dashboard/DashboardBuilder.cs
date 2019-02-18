@@ -19,6 +19,11 @@ namespace Dashboard.Dashboard
                 .Where(answer => answer.SubmitDateTime >= from && answer.SubmitDateTime <= to)
                 .ToList();
 
+            if (periodAnswers.Count == 0)
+            {
+                throw new InvalidOperationException($"No answers found in period {from} - {to}");
+            }
+
             int totalExerciseCount = periodAnswers.GroupBy(it => it.ExerciseId).Count();
 
             var students = periodAnswers.GroupBy(answer => answer.UserId)
