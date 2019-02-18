@@ -8,7 +8,7 @@ namespace Dashboard.Dashboard
 {
     public class DashboardBuilder
     {
-        public Models.DashboardModel Build(IEnumerable<Answer> answers, DateTimeOffset from, DateTimeOffset to)
+        public DashboardModel Build(IEnumerable<Answer> answers, DateTimeOffset from, DateTimeOffset to)
         {
             if (answers == null)
             {
@@ -19,18 +19,16 @@ namespace Dashboard.Dashboard
                 .Where(answer => answer.SubmitDateTime >= from && answer.SubmitDateTime <= to)
                 .ToList();
 
-            var dashboard = new DashboardModel();
-
-            dashboard.Start = from;
-            dashboard.End = to;
-
-            dashboard.StudentsPresent = periodAnswers.GroupBy(answer => answer.UserId).Count();
-
             var rootTopic = BuildTopicHierarchy(periodAnswers);
 
-            dashboard.TopicStatistics = GatherTopicStats(rootTopic, 0, dashboard.StudentsPresent).ToList();
+            var students = periodAnswers.GroupBy(answer => answer.UserId)
+                .Select(group => new StudentModel("Student " + group.Key)) // fake a nice student name, as we don't have it
+                .OrderBy(student => student.Name)
+                .ToList();
 
-            return dashboard;
+            var topics = GatherTopicStats(rootTopic, 0, students.Count).ToList();
+
+            return new DashboardModel(from, to, topics, students);
         }
 
         private IEnumerable<TopicDashboardModel> GatherTopicStats(Topic topic, int level, int overallStudentsCount)

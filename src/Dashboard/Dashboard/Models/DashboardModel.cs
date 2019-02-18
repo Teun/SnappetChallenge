@@ -6,12 +6,27 @@ namespace Dashboard.Dashboard.Models
 {
     public class DashboardModel
     {
-        public DateTimeOffset Start { get; set;  }
+        public DateTimeOffset Start { get; }
 
-        public DateTimeOffset End { get; set; }
+        public DateTimeOffset End { get; }
 
-        public int StudentsPresent { get; set; }
+        public int StudentsPresent => Students.Count;
 
-        public IReadOnlyCollection<TopicDashboardModel> TopicStatistics { get; set; }
+        public IReadOnlyCollection<TopicDashboardModel> Topics { get; }
+
+        public IReadOnlyCollection<StudentModel> Students { get; }
+
+        public DashboardModel(
+            DateTimeOffset start,
+            DateTimeOffset end,
+            IReadOnlyCollection<TopicDashboardModel> topics,
+            IReadOnlyCollection<StudentModel> students
+        )
+        {
+            Start = start;
+            End = end;
+            Topics = topics ?? throw new ArgumentNullException(nameof(topics));
+            Students = students ?? throw new ArgumentNullException(nameof(students));
+        }
     }
 }

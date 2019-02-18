@@ -72,7 +72,7 @@ namespace Dashboard.Tests
             var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
 
             // assert
-            var topics = dashboard.TopicStatistics.ToList();
+            var topics = dashboard.Topics.ToList();
 
             Assert.That(topics.Count, Is.EqualTo(10));
             Assert.That(topics[0].TopicName, Is.EqualTo("Overall"));
@@ -101,7 +101,7 @@ namespace Dashboard.Tests
             var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
 
             // assert
-            var topics = dashboard.TopicStatistics.ToList();
+            var topics = dashboard.Topics.ToList();
 
             Assert.That(topics.Count, Is.EqualTo(6));
             Assert.That(topics[0].Level, Is.EqualTo(0));
@@ -131,7 +131,7 @@ namespace Dashboard.Tests
             var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
 
             // assert
-            var topics = dashboard.TopicStatistics.ToList();
+            var topics = dashboard.Topics.ToList();
 
             Assert.That(topics[0].ExerciseCount, Is.EqualTo(5)); // overall
             Assert.That(topics[1].ExerciseCount, Is.EqualTo(4)); // maths
@@ -164,7 +164,7 @@ namespace Dashboard.Tests
             var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
 
             // assert
-            var topics = dashboard.TopicStatistics.ToList();
+            var topics = dashboard.Topics.ToList();
 
             Assert.That(topics[0].CorrectAnswersRate, Is.EqualTo(0.43).Within(0.01));      // overall 4/7
             Assert.That(topics[1].CorrectAnswersRate, Is.EqualTo(0.33).Within(0.01));      // maths 2/6
@@ -197,7 +197,7 @@ namespace Dashboard.Tests
             var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
 
             // assert
-            var topics = dashboard.TopicStatistics.ToList();
+            var topics = dashboard.Topics.ToList();
 
             Assert.That(topics[0].StudentsShare, Is.EqualTo(1.00).Within(0.01));      // overall 3/3
             Assert.That(topics[1].StudentsShare, Is.EqualTo(0.66).Within(0.01));      // maths 2/3
@@ -209,6 +209,28 @@ namespace Dashboard.Tests
             Assert.That(topics[7].StudentsShare, Is.EqualTo(0.33).Within(0.01));      // reading 1/3
             Assert.That(topics[8].StudentsShare, Is.EqualTo(0.33).Within(0.01));      // letters 1/3
             Assert.That(topics[9].StudentsShare, Is.EqualTo(0.33).Within(0.01));      // letter A 1/3
+        }
+
+
+        [Test]
+        public void ReturnsStudentsListInAlphabeticalOrder()
+        {
+            // arrange
+            var answers = new List<Answer>
+            {
+                BuildAnswer(userId: 2),
+                BuildAnswer(userId: 1),
+                BuildAnswer(userId: 1)
+            };
+
+            // act
+            var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
+
+            // assert
+            var students = dashboard.Students.ToList();
+            Assert.That(students.Count, Is.EqualTo(2));
+            Assert.That(students[0].Name, Is.EqualTo("Student 1"));
+            Assert.That(students[1].Name, Is.EqualTo("Student 2"));
         }
 
         private Answer BuildAnswer(int userId,

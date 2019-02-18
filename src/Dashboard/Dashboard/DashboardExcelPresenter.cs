@@ -21,7 +21,7 @@ namespace Dashboard.Dashboard
 
             AddReportHeader(dashboard, worksheet, row);
 
-            AddSliceStatistics(dashboard.TopicStatistics, worksheet, row);
+            AddSliceStatistics(dashboard.Topics, worksheet, row);
 
             worksheet.Cells.AutoFitColumns();
 
