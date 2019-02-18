@@ -57,7 +57,7 @@ namespace Dashboard.Dashboard
             row.Next();
         }
 
-        private void AddTopicStatistics(IReadOnlyCollection<TopicModel> sliceStatistics, ExcelWorksheet worksheet, CurrentRow row)
+        private void AddTopicStatistics(IReadOnlyCollection<TopicModel> topics, ExcelWorksheet worksheet, CurrentRow row)
         {
             var tableHeaderStyle = worksheet.Workbook.Styles.CreateNamedStyle("Table header");
             tableHeaderStyle.Style.Font.Bold = true;
@@ -78,28 +78,28 @@ namespace Dashboard.Dashboard
             row.Next();
 
             // highlight the low rate of correct answers
-            var correctnessRateColumn = new ExcelAddress(row.Row, 3, row.Row + sliceStatistics.Count, 3);
+            var correctnessRateColumn = new ExcelAddress(row.Row, 3, row.Row + topics.Count, 3);
             var lowCorrectRateRule = worksheet.ConditionalFormatting.AddLessThan(correctnessRateColumn);
             lowCorrectRateRule.Formula = "0.7";
             lowCorrectRateRule.Style.Font.Color.Color = Color.Red;
 
             // highlight low rate of students who did the task
-            var studentsRateColumn = new ExcelAddress(row.Row, 4, row.Row + sliceStatistics.Count, 4);
+            var studentsRateColumn = new ExcelAddress(row.Row, 4, row.Row + topics.Count, 4);
             var lowRateRule = worksheet.ConditionalFormatting.AddLessThan(studentsRateColumn);
             lowRateRule.Formula = "0.5";
             lowRateRule.Style.Font.Color.Color = Color.Red;
 
-            foreach (var sliceStats in sliceStatistics)
+            foreach (var topic in topics)
             {
-                row.Cell(1).Value = sliceStats.TopicName;
-                row.Cell(1).Style.Font.Size = 16 - 2 * sliceStats.Level;
+                row.Cell(1).Value = topic.TopicName;
+                row.Cell(1).Style.Font.Size = 16 - 2 * topic.Level;
 
-                row.Cell(2).Value = sliceStats.ExerciseCount;
+                row.Cell(2).Value = topic.ExerciseCount;
 
-                row.Cell(3).Value = sliceStats.CorrectAnswersRate;
+                row.Cell(3).Value = topic.CorrectAnswersRate;
                 row.Cell(3).Style.Numberformat.Format = "0%";
 
-                row.Cell(4).Value = sliceStats.StudentsShare;
+                row.Cell(4).Value = topic.StudentsShare;
                 row.Cell(4).Style.Numberformat.Format = "0%";
 
                 row.Next();
