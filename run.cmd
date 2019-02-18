@@ -1,0 +1,1 @@
+dotnet run --project src\Dashboard\Dashboard.csproj Data\work.csv "2015-03-24 11:30:00Z" ClassActivity.xlsx"
