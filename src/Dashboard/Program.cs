@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using Dashboard.CsvImport;
 using Dashboard.Dashboard;
+using Dashboard.Dashboard.Models;
 
 namespace Dashboard
 {
@@ -21,18 +22,27 @@ namespace Dashboard
             string inputDate = args[1];
             string outputFileName = args[2];
 
-            var csvImporter = new AnswersCsvImporter();
+            if (!DateTimeOffset.TryParse(inputDate, out DateTimeOffset end))
+            {
+                Console.WriteLine("Invalid datetime format, please try ISO8601");
+                Environment.Exit(2);
+                return;
+            }
+            DateTimeOffset start = new DateTimeOffset(end.Date, TimeSpan.Zero);
+
             var dashboardBuilder = new DashboardBuilder();
             var dashboardExcelExporter = new DashboardExcelExporter();
 
             Console.WriteLine($"Starting CSV import from {inputFileName}...");
-            var answers = csvImporter.Import(inputFileName);
 
-            DateTimeOffset end = DateTimeOffset.Parse(inputDate);
-            DateTimeOffset start = new DateTimeOffset(end.Date, TimeSpan.Zero);
+            DashboardModel dashboard;
+            using (var csvImporter = new AnswersCsvImporter(inputFileName))
+            {
+                var answers = csvImporter.Import();
 
-            Console.WriteLine("Building dashboard...");
-            var dashboard = dashboardBuilder.Build(answers, start, end);
+                Console.WriteLine("Building dashboard...");
+                dashboard = dashboardBuilder.Build(answers, start, end);
+            }
 
             Console.WriteLine("Building Excel file...");
             using (var excelPackage = dashboardExcelExporter.Export(dashboard))
