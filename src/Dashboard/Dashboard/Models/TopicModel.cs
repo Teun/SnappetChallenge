@@ -1,6 +1,6 @@
 ﻿namespace Dashboard.Dashboard.Models
 {
-    public class TopicDashboardModel
+    public class TopicModel
     {
         public string TopicName { get; }
 
@@ -12,7 +12,7 @@
 
         public float StudentsShare { get; }
 
-        public TopicDashboardModel(string topicName, int level, int exerciseCount, float correctAnswersRate, float studentsShare)
+        public TopicModel(string topicName, int level, int exerciseCount, float correctAnswersRate, float studentsShare)
         {
             TopicName = topicName;
             Level = level;

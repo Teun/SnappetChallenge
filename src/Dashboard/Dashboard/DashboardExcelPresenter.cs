@@ -71,7 +71,7 @@ namespace Dashboard.Dashboard
             row.Next();
         }
 
-        private void AddSliceStatistics(IReadOnlyCollection<TopicDashboardModel> sliceStatistics, ExcelWorksheet worksheet, CurrentRow row)
+        private void AddSliceStatistics(IReadOnlyCollection<TopicModel> sliceStatistics, ExcelWorksheet worksheet, CurrentRow row)
         {
             // highlight low rate of correct answers
             var correctnessRateColumn = new ExcelAddress(row.Row, 3, row.Row + sliceStatistics.Count, 3);

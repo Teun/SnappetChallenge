@@ -19,35 +19,40 @@ namespace Dashboard.Dashboard
                 .Where(answer => answer.SubmitDateTime >= from && answer.SubmitDateTime <= to)
                 .ToList();
 
-            var rootTopic = BuildTopicHierarchy(periodAnswers);
+            int totalExerciseCount = periodAnswers.GroupBy(it => it.ExerciseId).Count();
 
             var students = periodAnswers.GroupBy(answer => answer.UserId)
-                .Select(group =>
-                {
-                    // fake a nice student name, as we don't have it
-                    string name = "Student " + group.Key;
-
-                    int exerciseCount = group.GroupBy(it => it.ExerciseId).Count();
-
-                    int correctAnswersCount = group.Count(it => it.IsCorrect);
-                    int answersCount = group.Count();
-                    float correctnessRatio = (float) correctAnswersCount / answersCount;
-
-                    return new StudentModel(name, exerciseCount, correctnessRatio);
-                })
+                .Select(group => GetStudentStats(group.Key, group.ToList(), totalExerciseCount))
                 .OrderBy(student => student.Name)
                 .ToList();
+
+            var rootTopic = BuildTopicHierarchy(periodAnswers);
 
             var topics = GatherTopicStats(rootTopic, 0, students.Count).ToList();
 
             return new DashboardModel(from, to, topics, students);
         }
 
-        private IEnumerable<TopicDashboardModel> GatherTopicStats(Topic topic, int level, int overallStudentsCount)
+        private StudentModel GetStudentStats(int userId, IReadOnlyCollection<Answer> group, int totalExerciseCount)
+        {
+            // fake a nice student name, as we don't have it
+            string name = "Student " + userId;
+
+            int studentExerciseCount = group.GroupBy(it => it.ExerciseId).Count();
+            float finishedExerciseShare = (float)studentExerciseCount / totalExerciseCount;
+
+            int correctAnswersCount = group.Count(it => it.IsCorrect);
+            int answersCount = group.Count();
+            float correctnessRatio = (float)correctAnswersCount / answersCount;
+
+            return new StudentModel(name, studentExerciseCount, correctnessRatio, finishedExerciseShare);
+        }
+
+        private IEnumerable<TopicModel> GatherTopicStats(Topic topic, int level, int overallStudentsCount)
         {
             var topicStats = topic.GetStatistics();
 
-            var topicModel = new TopicDashboardModel(
+            var topicModel = new TopicModel(
                 topic.Name,
                 level,
                 topicStats.ExerciseCount,

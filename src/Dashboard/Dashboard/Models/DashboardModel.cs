@@ -12,14 +12,14 @@ namespace Dashboard.Dashboard.Models
 
         public int StudentsPresent => Students.Count;
 
-        public IReadOnlyCollection<TopicDashboardModel> Topics { get; }
+        public IReadOnlyCollection<TopicModel> Topics { get; }
 
         public IReadOnlyCollection<StudentModel> Students { get; }
 
         public DashboardModel(
             DateTimeOffset start,
             DateTimeOffset end,
-            IReadOnlyCollection<TopicDashboardModel> topics,
+            IReadOnlyCollection<TopicModel> topics,
             IReadOnlyCollection<StudentModel> students
         )
         {

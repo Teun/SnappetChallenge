@@ -249,7 +249,6 @@ namespace Dashboard.Tests
 
             // assert
             var students = dashboard.Students.ToList();
-            Assert.That(students.Count, Is.EqualTo(2));
             Assert.That(students[0].ExerciseCount, Is.EqualTo(2));
             Assert.That(students[1].ExerciseCount, Is.EqualTo(1));
         }
@@ -270,9 +269,32 @@ namespace Dashboard.Tests
 
             // assert
             var students = dashboard.Students.ToList();
-            Assert.That(students.Count, Is.EqualTo(2));
             Assert.That(students[0].CorrectAnswersRatio, Is.EqualTo(0.5f).Within(0.1));
             Assert.That(students[1].CorrectAnswersRatio, Is.EqualTo(1.0f).Within(0.1));
+        }
+
+        [Test]
+        public void ReturnsExerciseSharePerStudent()
+        {
+            // arrange
+            var answers = new List<Answer>
+            {
+                BuildAnswer(userId: 1, exerciseId: 1),
+                BuildAnswer(userId: 1, exerciseId: 2),
+                BuildAnswer(userId: 1, exerciseId: 3),
+                BuildAnswer(userId: 2, exerciseId: 1),
+                BuildAnswer(userId: 2, exerciseId: 2),
+                BuildAnswer(userId: 3, exerciseId: 1),
+            };
+
+            // act
+            var dashboard = _dashboardBuilder.Build(answers, DateTimeOffset.Now.AddHours(-1), DateTimeOffset.Now);
+
+            // assert
+            var students = dashboard.Students.ToList();
+            Assert.That(students[0].FinishedExerciseShare, Is.EqualTo(1.0f).Within(0.01));  // 3/3
+            Assert.That(students[1].FinishedExerciseShare, Is.EqualTo(0.66f).Within(0.01)); // 2/3
+            Assert.That(students[2].FinishedExerciseShare, Is.EqualTo(0.33f).Within(0.01)); // 1/3
         }
 
         [Test]
