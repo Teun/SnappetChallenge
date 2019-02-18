@@ -23,7 +23,7 @@ namespace Dashboard
 
             var csvImporter = new AnswersCsvImporter();
             var dashboardBuilder = new DashboardBuilder();
-            var dashboardPresenter = new DashboardExcelPresenter();
+            var dashboardExcelExporter = new DashboardExcelExporter();
 
             var answers = csvImporter.Import(inputFileName);
 
@@ -32,7 +32,7 @@ namespace Dashboard
 
             var dashboard = dashboardBuilder.Build(answers, start, end);
 
-            using (var excelPackage = dashboardPresenter.Present(dashboard))
+            using (var excelPackage = dashboardExcelExporter.Export(dashboard))
             {
                 excelPackage.SaveAs(new FileInfo(outputFileName));
             }

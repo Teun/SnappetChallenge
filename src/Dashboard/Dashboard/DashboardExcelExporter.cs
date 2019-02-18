@@ -6,9 +6,9 @@ using OfficeOpenXml;
 
 namespace Dashboard.Dashboard
 {
-    public class DashboardExcelPresenter
+    public class DashboardExcelExporter
     {
-        public ExcelPackage Present(Models.DashboardModel dashboard)
+        public ExcelPackage Export(DashboardModel dashboard)
         {
             if (dashboard == null)
             {
@@ -21,14 +21,18 @@ namespace Dashboard.Dashboard
 
             AddReportHeader(dashboard, worksheet, row);
 
-            AddSliceStatistics(dashboard.Topics, worksheet, row);
+            AddTopicStatistics(dashboard.Topics, worksheet, row);
+
+            row.Next();
+
+            AddStudentsStatistics(dashboard.Students, worksheet, row);
 
             worksheet.Cells.AutoFitColumns();
 
             return excelPackage;
         }
 
-        private void AddReportHeader(Models.DashboardModel dashboard, ExcelWorksheet worksheet, CurrentRow row)
+        private void AddReportHeader(DashboardModel dashboard, ExcelWorksheet worksheet, CurrentRow row)
         {
             var headerStyle = worksheet.Workbook.Styles.CreateNamedStyle("Header");
             headerStyle.Style.Font.Bold = true;
@@ -51,7 +55,10 @@ namespace Dashboard.Dashboard
             row.Cell(2).Value = dashboard.StudentsPresent;
             row.Next();
             row.Next();
+        }
 
+        private void AddTopicStatistics(IReadOnlyCollection<TopicModel> sliceStatistics, ExcelWorksheet worksheet, CurrentRow row)
+        {
             var tableHeaderStyle = worksheet.Workbook.Styles.CreateNamedStyle("Table header");
             tableHeaderStyle.Style.Font.Bold = true;
             tableHeaderStyle.Style.Font.Size = 14;
@@ -69,11 +76,8 @@ namespace Dashboard.Dashboard
             row.Cell(4).StyleName = tableHeaderStyle.Name;
 
             row.Next();
-        }
 
-        private void AddSliceStatistics(IReadOnlyCollection<TopicModel> sliceStatistics, ExcelWorksheet worksheet, CurrentRow row)
-        {
-            // highlight low rate of correct answers
+            // highlight the low rate of correct answers
             var correctnessRateColumn = new ExcelAddress(row.Row, 3, row.Row + sliceStatistics.Count, 3);
             var lowCorrectRateRule = worksheet.ConditionalFormatting.AddLessThan(correctnessRateColumn);
             lowCorrectRateRule.Formula = "0.7";
@@ -102,21 +106,61 @@ namespace Dashboard.Dashboard
             }
         }
 
+        private void AddStudentsStatistics(IReadOnlyCollection<StudentModel> students, ExcelWorksheet worksheet, CurrentRow row)
+        {
+            var tableHeaderStyle = worksheet.Workbook.Styles.CreateNamedStyle("Students table header");
+            tableHeaderStyle.Style.Font.Bold = true;
+            tableHeaderStyle.Style.Font.Size = 14;
+
+            row.Cell(1).Value = "Students";
+            row.Cell(1).StyleName = tableHeaderStyle.Name;
+            row.Next();
+
+            row.Cell(1).Value = "Name";
+            row.Cell(1).StyleName = tableHeaderStyle.Name;
+
+            row.Cell(2).Value = "Exercise count";
+            row.Cell(2).StyleName = tableHeaderStyle.Name;
+
+            row.Cell(3).Value = "Correct answers, %";
+            row.Cell(3).StyleName = tableHeaderStyle.Name;
+
+            row.Cell(4).Value = "Exercises covered, %";
+            row.Cell(4).StyleName = tableHeaderStyle.Name;
+
+            row.Next();
+
+            foreach (StudentModel student in students)
+            {
+                row.Cell(1).Value = student.Name;
+
+                row.Cell(2).Value = student.ExerciseCount;
+
+                row.Cell(3).Value = student.CorrectAnswersRatio;
+                row.Cell(3).Style.Numberformat.Format = "0%";
+
+                row.Cell(4).Value = student.FinishedExerciseShare;
+                row.Cell(4).Style.Numberformat.Format = "0%";
+
+                row.Next();
+            }
+        }
+
         private class CurrentRow
         {
-            private ExcelWorksheet Worksheet { get; }
+            private readonly ExcelWorksheet _worksheet;
 
             public int Row { get; private set; }
 
             public CurrentRow(ExcelWorksheet worksheet, int row)
             {
-                Worksheet = worksheet;
+                _worksheet = worksheet;
                 Row = row;
             }
 
             public ExcelRange Cell(int column)
             {
-                return Worksheet.Cells[Row, column];
+                return _worksheet.Cells[Row, column];
             }
 
             public void Next()
