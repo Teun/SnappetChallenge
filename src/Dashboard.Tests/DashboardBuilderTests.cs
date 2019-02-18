@@ -233,16 +233,45 @@ namespace Dashboard.Tests
             Assert.That(students[1].Name, Is.EqualTo("Student 2"));
         }
 
+        [Test]
+        public void IgnoresAnswersOutsideOfDatePeriod()
+        {
+            DateTimeOffset past = DateTimeOffset.Now.AddDays(-10); 
+            DateTimeOffset start = DateTimeOffset.Now.AddHours(-1);
+            DateTimeOffset inBetween = DateTimeOffset.Now;
+            DateTimeOffset end = DateTimeOffset.Now.AddHours(+1);
+            DateTimeOffset future = DateTimeOffset.Now.AddDays(+10);
+
+            // arrange
+            var answers = new List<Answer>
+            {
+                BuildAnswer(1, "Maths", "Arithmetic", "Add", submitDate: inBetween),
+                BuildAnswer(2, "Maths", "Arithmetic", "Add", submitDate: inBetween),
+                BuildAnswer(3, "Maths", "Shapes", "Triangle", submitDate: past),
+                BuildAnswer(4, "Reading", "Letters", "Letter A", submitDate: future)
+            };
+
+            // act
+            var dashboard = _dashboardBuilder.Build(answers, start, end);
+
+            // assert
+            Assert.That(dashboard.Topics.Any(it => it.TopicName == "Reading"), Is.False);
+            Assert.That(dashboard.Topics.Any(it => it.TopicName == "Shapes"), Is.False);
+            Assert.That(dashboard.Students.Any(it => it.Name == "Student 3"), Is.False);
+            Assert.That(dashboard.Students.Any(it => it.Name == "Student 4"), Is.False);
+        }
+
         private Answer BuildAnswer(int userId,
             string subject = "subject",
             string domain = "domain",
             string objective = "objective",
             int exerciseId = 1,
-            bool isCorrect = true)
+            bool isCorrect = true,
+            DateTimeOffset? submitDate = null)
         {
             return new Answer(
                 1,
-                DateTimeOffset.Now,
+                submitDate ?? DateTimeOffset.Now,
                 isCorrect,
                 0,
                 userId,
