@@ -25,7 +25,9 @@ namespace Dashboard.Tests
         public void OutputsDates()
         {
             // arrange
-            var answers = new List<Answer> {};
+            var answers = new List<Answer> {
+                BuildAnswer(1)
+            };
             var startDate = DateTimeOffset.Now.AddHours(-1);
             var endDate = DateTimeOffset.Now;
 
