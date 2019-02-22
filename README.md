@@ -11,13 +11,23 @@ Then, I created a lean and fast WebAPI using dotnet core 2.2 to query the databa
 
 ## Querying the API
 - Go to [api_url]/swagger
-- There is currently only 1 available endpoint: workitems (GET)
+- There is currently only 2 available endpoint: workitems and progress
+
+### workitems endpoint
+- Retrieves raw items from the database matching specific criteria
+- url: [api_url]/workitems (GET)
 - Multiple filters are supported: UserId, Domain, SubmittedDateTime. You can pass zero or more filters
 - Paging is also supported. Page size is 100 items.
+- Note: to get workitems related to the domain "-", use the word Dash on the querystring param
+
+### progress endpoint
+- Retrieves progress for a specific user in a specific month
+- url: [api_url]/users/{userid}/progress (GET)
+- Required parameters: UserId (route), Year (query), Month (query)
+- Optional parameter: Domain (query)
+- Note: to get progress related to the domain "-", use the word Dash on the querystring param
 
 ## Future improvements
-- Provide a second endpoint called /progress which will show how much progress a student has made in a weekly basis
-- Also add a POST operation to /workitems endpoint allowing posting new work items
 - Write proper API documentation to be available on both the codebase and Swagger
 - Add Unit tests / Integration tests
-- Authentication/Authorization
+- Add Authentication/Authorization
