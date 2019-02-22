@@ -22,14 +22,18 @@ namespace StudentsAPI.WebApi
             services.Configure<MongoDbConfiguration>(Configuration.GetSection("MongoDb"));
 
             services.AddTransient<IWorkItemRepository, WorkItemRepository>();
-            services.AddTransient<IWorkItemService, WorkItemService>();
             services.AddTransient<IWorkItemContext, WorkItemContext>();
+            services.AddTransient<IWorkItemService, WorkItemService>();
+            services.AddTransient<IProgressService, ProgressService>();
             services.AddMvc();
+            services.AddMvcCore().AddDataAnnotations();
+
 
             //Configure swagger generator
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Students API", Version = "v1" });
+                c.DescribeAllEnumsAsStrings();
             });
 
         }

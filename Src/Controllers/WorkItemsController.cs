@@ -24,6 +24,9 @@ namespace StudentsAPI.WebApi.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return StatusCode((int)HttpStatusCode.BadRequest);
+
                 var items = await _service.GetWorkItemsAsync(dto);
                 return Ok(items);
             }

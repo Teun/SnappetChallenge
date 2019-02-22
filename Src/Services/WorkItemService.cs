@@ -31,8 +31,7 @@ namespace StudentsAPI.WebApi.Services
             try
             {
                 var filter = BuildFilter(dto);
-                var x =  await _workItemRepository.GetWorkItemsAsync(filter, dto.PageNumber);
-                return x;
+                return await _workItemRepository.GetWorkItemsAsync(filter, dto.PageNumber);
             }
             catch (Exception ex)
             {
@@ -54,8 +53,8 @@ namespace StudentsAPI.WebApi.Services
                 filter &= builder.Lt(i => i.SubmitDateTime, dto.SubmitDateTime.Value.AddDays(1));
             }
                 
-            if (!string.IsNullOrEmpty(dto.Domain))
-                filter &= builder.Eq(i => i.Domain, dto.Domain);
+            if (dto.Domain.HasValue)
+                filter &= builder.Eq(i => i.Domain, dto.Domain.ToString().Replace("Dash", "-"));
 
             return filter;
         }
