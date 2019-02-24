@@ -1,0 +1,4 @@
+<ul class="flex-container">
+  <li class="flex-item" *ngFor="let subject of learningSubjects" [routerLink]="['/learningResultDetail', subject.name]">{{subject.name}}</li>
+</ul>
+

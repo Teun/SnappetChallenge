@@ -1,0 +1,27 @@
+<div>
+  <h1>Statistics for {{name}} {{activeDomain?.name.length <= 1 ? '' : activeDomain?.name}}</h1>
+  <button type="button" class="button" (click)="showNextDomain()" [disabled]="learningSubject.domains.length === 1">Next domain</button>
+  <button type="button" class="nav-item nav-link-edit button" [routerLink]="['/learningResult']">Back</button>
+</div>
+
+
+<table *ngIf="activeDomain" >
+  <thead>
+    <tr>
+      <th scope="col">Objective</th>
+      <th scope="col">Number of exercises</th>
+      <th scope="col">Number of pupils</th>
+      <th scope="col">Average progress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let objective of activeDomain.objectives; index as i">
+      <td>{{ objective.name }}</td>
+      <td>{{ objective.numberOfExercises  }}</td>
+      <td>{{ objective.numberOfPupils }}</td>
+      <td>{{ objective.averageProgress }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
