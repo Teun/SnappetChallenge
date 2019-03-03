@@ -81,7 +81,7 @@ I think the code is pretty readable, but I'll give some insight into the structu
 * `Data` folder contains repository interfaces and implementations to read the CSV, keep an in-memory representation of ratings and write the results to CSV. The results that are written to a CSV file are then analyzed using a Jupyter Notebook.
 * `Domain` folder contains domain-specific models
 * `Science` folder includes the actual TrueSkill calculators (replaying previous matches, and predicting performance on test set)
-* `Program.cs` kicks off the program and acts as one big integration tests because I didn't spent time on separate unit/integration tests.
+* `Program.cs` kicks off the program and acts as one big integration tests because I didn't spend time on separate unit/integration tests.
 
 The Jupyter Notebook includes some nice visualizations on the approach.
 
