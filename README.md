@@ -63,8 +63,8 @@ In this case, we estimate the skill of user 40267 to be lowest of their class, w
 
 A property of the TrueSkill algorithm is that it can estimate the win probability of a matchup.
 In this case, this can be used to estimate whether a student will correctly complete an exercise.
-After computing the results on a test set (which the algorithm had not yet seen before), we could predict with 90.2% accuracy whether an exercise would be completed successfully.
-That sounds high, but predicting every single interaction as being correct already gives us a 89.9% accuracy so the predictive power of the TrueSkill algorithm is not very high in this case.
+After computing the results on a test set (which the algorithm had not yet seen before), we could predict with 81.1% accuracy whether an exercise would be completed successfully.
+That sounds high, but predicting every single interaction as being correct already gives us a 80.8% accuracy so the predictive power of the TrueSkill algorithm is not very high in this case.
 
 This could be caused by several things:
 * Data set far too small (especially: not enough samples per exercise)
@@ -92,7 +92,7 @@ Netflix, for example, uses matrix factorization to recommend movies and tv shows
 In this case, we can train a matrix factorization algorithm on the `user,exercise,correct` triples to estimate student's performance on exercises they haven't done yet.
 
 This algorithm was implemented in Python using the `surprise` library.
-Unfortunately, as with the TrueSkill approach, results were not yet very predictive as test scores were unable to beat the baseline of 89.9% accuracy.
+Unfortunately, as with the TrueSkill approach, results were not yet very predictive as test scores were unable to beat the baseline of 80.8% accuracy.
 
 ----
 
