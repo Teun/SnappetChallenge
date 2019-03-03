@@ -2,6 +2,7 @@
 using SnappetTrueskill.Data;
 using SnappetTrueskill.Domain;
 using System;
+using System.Collections.Generic;
 
 namespace SnappetTrueskill.Science
 {
@@ -13,14 +14,16 @@ namespace SnappetTrueskill.Science
         private readonly IUserRepository _userRepository;
         private readonly IExerciseRepository _exerciseRepository;
         private readonly IExerciseInteractionRepository _exerciseInteractionRepository;
+        private readonly ITrueskillEventRepository _eventRepository;
 
         private readonly GameInfo _gameInfo;
 
-        public InteractionReplayer(IUserRepository userRepository, IExerciseRepository exerciseRepository, IExerciseInteractionRepository exerciseInteractionRepository, GameInfo gameInfo)
+        public InteractionReplayer(IUserRepository userRepository, IExerciseRepository exerciseRepository, IExerciseInteractionRepository exerciseInteractionRepository, ITrueskillEventRepository eventRepository, GameInfo gameInfo)
         {
             _userRepository = userRepository;
             _exerciseRepository = exerciseRepository;
             _exerciseInteractionRepository = exerciseInteractionRepository;
+            _eventRepository = eventRepository;
 
             _gameInfo = gameInfo;
         }
@@ -41,9 +44,13 @@ namespace SnappetTrueskill.Science
                 if (!_userRepository.Contains(interaction.UserId))
                     _userRepository.Insert(
                         new User {
-                            Id = interaction.UserId,
-                            Rating = _gameInfo.DefaultRating
+                            Id = interaction.UserId
                         });
+
+                // Insert default subject rating if it does not yet exist
+                var user = _userRepository.Get(interaction.UserId);
+                if (!user.Ratings.ContainsKey(interaction.Subject))
+                    _userRepository.UpdateRating(user.Id, interaction.Subject, _gameInfo.DefaultRating);
 
                 // Insert exercise if it doesn't exist in database
                 if (!_exerciseRepository.Contains(interaction.ExerciseId))
@@ -61,17 +68,20 @@ namespace SnappetTrueskill.Science
                         {
                             Id = interaction.ExerciseId,
                             Rating = new Rating(difficulty, _gameInfo.DefaultRating.StandardDeviation),
-                            OriginalDifficulty = interaction.Difficulty
+                            OriginalDifficulty = interaction.Difficulty,
+                            Subject = interaction.Subject
                         });
                 }
 
                 UpdateRating(interaction);
             }
+
+            _eventRepository.Save();
         }
 
         private void UpdateRating(ExerciseInteraction interaction)
         {
-            var currentUserRating = _userRepository.Get(interaction.UserId).Rating;
+            var currentUserRating = _userRepository.Get(interaction.UserId).Ratings[interaction.Subject];
             var currentExerciseRating = _exerciseRepository.Get(interaction.ExerciseId).Rating;
 
             var user = new Player(interaction.UserId);
@@ -92,8 +102,12 @@ namespace SnappetTrueskill.Science
             var newExerciseRating = newRatings[exercise];
 
             // Update ratings
-            _userRepository.UpdateRating(interaction.UserId, newUserRating);
+            _userRepository.UpdateRating(interaction.UserId, interaction.Subject, newUserRating);
             _exerciseRepository.UpdateRating(interaction.ExerciseId, newExerciseRating);
+
+            // Add to event repo
+            var predObject = new TrueskillEvent { ExerciseInteraction = interaction, MeanDelta = newUserRating.Mean - currentUserRating.Mean, StdDelta = newUserRating.StandardDeviation - currentUserRating.StandardDeviation, ExerciseRating = currentExerciseRating.Mean };
+            _eventRepository.Add(predObject);
         }
 
         /// <summary>
@@ -103,7 +117,7 @@ namespace SnappetTrueskill.Science
         /// <returns>The normalized difficulty rating.</returns>
         private double NormalizeDifficulty(double difficulty)
         {
-            return (difficulty - 259) / 105 * _gameInfo.DefaultRating.StandardDeviation + _gameInfo.DefaultRating.Mean;
+            return (difficulty - 260) / 105 * _gameInfo.DefaultRating.StandardDeviation + _gameInfo.DefaultRating.Mean;
         }
     }
 }

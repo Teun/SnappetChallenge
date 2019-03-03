@@ -10,6 +10,6 @@ namespace SnappetTrueskill.Data
         User Get(int id);
         void Insert(User user);
         bool Contains(int id);
-        void UpdateRating(int id, Rating newRating);
+        void UpdateRating(int id, string subject, Rating newRating);
     }
 }

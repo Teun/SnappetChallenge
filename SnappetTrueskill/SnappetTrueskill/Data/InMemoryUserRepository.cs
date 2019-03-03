@@ -28,9 +28,12 @@ namespace SnappetTrueskill.Data
             _users.Add(user.Id, user);
         }
 
-        public void UpdateRating(int id, Rating newRating)
+        public void UpdateRating(int id, string subject, Rating newRating)
         {
-            _users[id].Rating = newRating;
+            if (!_users[id].Ratings.ContainsKey(subject))
+                _users[id].Ratings.Add(subject, newRating);
+            else
+                _users[id].Ratings[subject] = newRating;
         }
     }
 }

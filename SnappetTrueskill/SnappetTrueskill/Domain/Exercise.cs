@@ -7,5 +7,6 @@ namespace SnappetTrueskill.Domain
         public int Id { get; set; }
         public Rating Rating { get; set; }
         public double? OriginalDifficulty { get; set; }
+        public string Subject { get; set; }
     }
 }
