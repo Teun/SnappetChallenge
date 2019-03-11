@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SnappetServices</name>
+    </assembly>
+    <members>
+        <member name="M:SnappetServices.Controllers.ResultsV1Controller.Get(System.String)">
+            <summary>
+            Gets all the results.
+            </summary>
+            <param name="date">Pass in the date for filter</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

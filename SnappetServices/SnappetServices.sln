@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetServices", "SnappetServices\SnappetServices.csproj", "{CF135FC3-AFE0-426E-8693-777A4413D1DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetServices.Tests", "SnappetServices.Tests\SnappetServices.Tests.csproj", "{DA87F16E-2670-49F3-B4E5-503AB9F3C030}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF135FC3-AFE0-426E-8693-777A4413D1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF135FC3-AFE0-426E-8693-777A4413D1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF135FC3-AFE0-426E-8693-777A4413D1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF135FC3-AFE0-426E-8693-777A4413D1DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA87F16E-2670-49F3-B4E5-503AB9F3C030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA87F16E-2670-49F3-B4E5-503AB9F3C030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA87F16E-2670-49F3-B4E5-503AB9F3C030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA87F16E-2670-49F3-B4E5-503AB9F3C030}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFB006E3-408A-4A09-942A-EC69C7BAD414}
+	EndGlobalSection
+EndGlobal
