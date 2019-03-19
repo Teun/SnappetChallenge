@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Waar heeft mijn klas aan gewerkt?</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <style>          
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="well">
+      <h4>Waar heeft mijn klas vandaag aan gewerkt?</h4>
+    </div>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb" id ="breadcrumbs">
+      </ol>
+    </nav>
+
+    <div id='progressChart' class="col-sm-12" style="height:70vh;display:none;">
+        <div class="well" style = "margin:10px;">
+          <h4>Vooruitgang</h4>
+          <canvas id="progress-chart" width="800" height="259"></canvas>
+          <div style="text-align:right;">
+            <div class="form-group col-lg-3">
+              <label>leerling</label>
+              <select class="form-control" id="studentSelector">
+              </select>
+            </div>
+            <button type="button" id="switch_time" class="btn btn-primary">Toon tijdsbesteding</button>
+            <button type="button" data-toggle="modal" data-target="#helpProgress" class="btn btn-primary">Help</button>
+          </div>
+        </div>
+    </div>
+
+    <div id='timeChart' class="col-sm-12" style="height:70vh;display:block;">
+      <div class="row">
+        <div class="well" style = "margin:10px;">
+          <h4>Tijdsbesteding vandaag en deze maand</h4>
+          <canvas id="time-chart" width="800" height="259"></canvas>
+          <div style="text-align:right;">
+            <button type="button" id="switch_progress" class="btn btn-primary">Toon vooruitgang</button>
+            <button type="button" data-toggle="modal" data-target="#helpTimeSpent" class="btn btn-primary">Help</button>
+          <div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Info about time spent -->
+<div class="modal fade" id="helpTimeSpent" tabindex="-1" role="dialog" aria-labelledby="helpTimeSpentLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="helpTimeSpentLabel">Tijdsbesteding vandaag en deze maand</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        De grafiek laat het totaal aantal minuten zien dat de klas vandaag heeft besteed aan een onderwerp (buitenste cirkel). Het gaat hier om de optelsom van de werktijd van alle individuele leerlingen. De binnenste cirkel laat hetzelfde zien, maar dan voor de gehele (kalender)maand. 
+        Door te klikken op de segmenten in de cirkel kun je inzoomen op een bepaald onderwerp. 
+        Als je klikt op de knop met 'vooruitgang' zie je een grafiek met de vooruitgang op een bepaald onderwerp, zowel voor de hele groep, als voor een geselecteerde individuele leerling.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Info about progress -->
+<div class="modal fade" id="helpProgress" tabindex="-1" role="dialog" aria-labelledby="helpProgressLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="helpProgressLabel">Vooruitgang op een bepaald onderwerp</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        De grafiek toont het niveau van de klas op een bepaald onderwerp. Dat niveau is gedefinieerd als de mediaan van de moeilikkheidsgraad van de goed beantwoorde antwoorden, per leerling. Zowel het gemiddelde van die waarden wordt getoont als de bandbreedte (+1 en -1 standaarddeviatie) waarbinnen ruwweg tweederde van de leerlingen zich bevindt. Met de selector onder in beeld kun je de voortgang van individuele leerlingen vergelijken met de voortgang van de hele groep.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+var SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+var Time
+var Progress
+var currentFilter = 'Overall'
+
+// Draw the charts when the document is ready
+$( document ).ready(function() {
+    Progress = new Chart($("#progress-chart"), {
+      type: 'line',
+      data: {
+        datasets: [{ 
+            label: "+ 1 std",
+            borderColor: "#C0C0C0",
+            borderDash: [10,5],
+            fill: false
+          },
+          { 
+            borderColor: "#C0C0C0",
+            label: "- 1 std",
+            borderDash: [10,5],
+            fill: false
+          },
+          { 
+            borderColor: "#000000",
+            label: "Gemiddeld",
+            borderDash: [10,5],
+            fill: false
+          },
+          { 
+            borderColor: "#0000FF",
+            label: "Leerling",
+            fill: false
+          }
+        ]
+      }
+    });
+
+    Time = new Chart($("#time-chart"), {
+        type: 'doughnut',
+        data: {
+          datasets: [
+            {
+              label: "Minuten (vandaag)",
+              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+            },
+              {
+              label: "Minuten (maand)",
+              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+            }
+          ]
+        },
+        options: {
+          tooltips: {
+          callbacks: {
+            label: function(item, data) {
+            console.log(data.labels, item);
+                return data.datasets[item.datasetIndex].label+ ": "+ data.labels[item.index]+ ": "+ data.datasets[item.datasetIndex].data[item.index];
+              }
+            }
+          }
+        }
+    });
+
+  // Add the first breadcrumb
+  $bc = $('<li class="breadcrumb-item" onclick="handleBreadcrumb(this)"><a href="#">Overall<a></li>');
+  $("#breadcrumbs").append($bc); 
+  //Fill the select box with students
+  updateStudentSelector();
+  // And initialize the charts
+  updateCharts('Overall', 40268);
+
+});
+
+// Function to populate the student selector
+function updateStudentSelector() {
+    $.getJSON(SCRIPT_ROOT + "/students", function(data) {
+      $.each( data, function( key, value ) {
+        $("#studentSelector").append('<option value="' + key + '">'+ value +' ('+ key + ')</option>');
+      });
+    });
+}
+
+// Event handlers for the buttons to switch between the 'time spent' and 'progress' views
+$( "#switch_progress" ).click(function() {
+  $("#timeChart").hide();
+  $("#progressChart").show();  
+});
+
+$( "#switch_time" ).click(function() {
+  $("#timeChart").show();
+  $("#progressChart").hide();  
+});
+
+// Event handler for the student select box
+$( "#studentSelector" ).change(function() {
+  updateCharts(currentFilter, $(this).val());
+});
+
+// Event handler for the breadcrumbs
+function handleBreadcrumb(id) {
+  $(id).nextAll('li').remove();
+  updateCharts($(id).text(), $("#studentSelector").val());
+}
+
+// Event handler for the doughnut (time) chart -> Drills down in the hierarchy
+$("#time-chart").click( 
+    function(evt){
+        var activePoints = Time.getElementsAtEvent(evt);           
+        if (activePoints[0]) {
+          var chartData = activePoints[0]['_chart'].config.data;
+          var idx = activePoints[0]['_index'];
+
+          var label = chartData.labels[idx];
+          var value = chartData.datasets[0].data[idx];
+
+          updateCharts(label, $("#studentSelector").val());
+          // Add breadcrumb
+          $bc = $('<li class="breadcrumb-item" onclick="handleBreadcrumb(this)"><a href="#">' + label + '<a></li>');
+          $("#breadcrumbs").append($bc); 
+        }
+    }
+);
+
+// Update function for the doughnut (time spent) chart
+function updateCharts(filterValue, user) {
+    currentFilter = filterValue;
+    $.getJSON(SCRIPT_ROOT + "/time_spent/" + filterValue, function(data) {
+      Time.data.labels = data.labels;
+      Time.data.datasets[0].data = data.time_today
+      Time.data.datasets[1].data = data.time_month
+      Time.update();
+    });
+    $.getJSON(SCRIPT_ROOT + "/progress/" + filterValue + '/' + user, function(data) {
+      Progress.data.labels = data.labels;
+      Progress.data.datasets[0].data = data.ubound
+      Progress.data.datasets[1].data = data.lbound
+      Progress.data.datasets[2].data = data.mean
+      Progress.data.datasets[3].data = data.user
+      Progress.update();
+    });
+}
+
+</script>
+
+</body>
+</html>
+
+
+
