@@ -1,0 +1,13 @@
+version: '3'
+services:
+  notebook:
+    build: .
+    container_name: notebook
+    ports:
+      - "8888:8888"
+      - "6006:6006"
+    volumes:
+      - ".:/home/jovyan/local"
+    environment: 
+      - PASSWORD=pass
+    tty: true
