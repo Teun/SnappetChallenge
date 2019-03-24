@@ -20,7 +20,7 @@ namespace SnappetServices.Services
             this.mapper = mapper;
         }
 
-        public List<ResultV1Dto> GetAllResults(string date)
+        public IEnumerable<ResultV1Dto> GetAllResults(DateTime date)
         {
             return this.resultsRepository.GetAllResults(date).Select(p => this.mapper.Map<Result, ResultV1Dto>(p)).ToList();
         }

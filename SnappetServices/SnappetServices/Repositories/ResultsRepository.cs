@@ -9,10 +9,23 @@ namespace SnappetServices.Repositories
 {
     public class ResultsRepository: IResultsRepository
     {
-        public List<Result> GetAllResults(string date = null)
+        public IEnumerable<Result> GetAllResults(DateTime dateTime = default(DateTime))
         {
-            var results = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Result>>(File.ReadAllText("data/work.json"));
-            return results;
+            try
+            {
+                var results = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Result>>(File.ReadAllText("data/work.json"));
+                if (dateTime != default(DateTime))
+                {
+                    return results.Where(p => p.SubmitDateTime.Date == dateTime.Date);
+                }
+                return results;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }            
         }
     }
 }

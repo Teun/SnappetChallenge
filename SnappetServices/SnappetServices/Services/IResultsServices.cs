@@ -9,6 +9,6 @@ namespace SnappetServices.Services
 {
     public interface IResultsServices
     {
-        List<ResultV1Dto> GetAllResults(string date);
+        IEnumerable<ResultV1Dto> GetAllResults(DateTime date);
     }
 }

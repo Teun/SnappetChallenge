@@ -8,6 +8,6 @@ namespace SnappetServices.Repositories
 {
     public interface IResultsRepository
     {
-        List<Result> GetAllResults(string date = null);
+        IEnumerable<Result> GetAllResults(DateTime date = default(DateTime));
     }
 }

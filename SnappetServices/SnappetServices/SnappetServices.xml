@@ -4,11 +4,11 @@
         <name>SnappetServices</name>
     </assembly>
     <members>
-        <member name="M:SnappetServices.Controllers.ResultsV1Controller.Get(System.String)">
+        <member name="M:SnappetServices.Controllers.ResultsV1Controller.Get(System.DateTime)">
             <summary>
             Gets all the results.
             </summary>
-            <param name="date">Pass in the date for filter</param>
+            <param name="dateTime">Pass in the date for filter</param>
             <returns></returns>
         </member>
     </members>

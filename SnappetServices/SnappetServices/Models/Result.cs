@@ -19,12 +19,6 @@ namespace SnappetServices.Models
 
         public int ExerciseId { get; set; }
 
-        public string Difficulty { get; set; }
-
         public string Subject { get; set; }
-
-        public string Domain { get; set; }
-
-        public string LearningObjective { get; set; }
     }
 }

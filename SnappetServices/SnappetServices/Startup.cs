@@ -55,6 +55,13 @@ namespace SnappetServices
             }
 
             app.UseMvc();
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+            });
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

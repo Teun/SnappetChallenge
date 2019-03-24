@@ -21,12 +21,12 @@ namespace SnappetServices.Controllers
         /// <summary>
         /// Gets all the results.
         /// </summary>
-        /// <param name="date">Pass in the date for filter</param>
+        /// <param name="dateTime">Pass in the date for filter</param>
         /// <returns></returns>
         [HttpGet]        
-        public ActionResult<IEnumerable<string>> Get([FromQuery]string date)
+        public ActionResult<IEnumerable<string>> Get([FromQuery]DateTime dateTime)
         {
-            return this.Ok(this.resultsServices.GetAllResults(date));
+            return this.Ok(this.resultsServices.GetAllResults(dateTime));
         }        
     }
 }
