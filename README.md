@@ -28,7 +28,7 @@ De grafieken zijn interactief zodat in het menu verschillende opties, zoals datu
 
 Het uiteindelijke dashboard heb ik 'gedeployed' m.b.v. Heroku. Het resultaat kun je vinden op:<br><a href = 'https://snappet-challenge.herokuapp.com/' target = "_blank">https://snappet-challenge.herokuapp.com/</a>
 
-Het kan voorkomen dat de app niet werkt, vaak wordt dat door een aantal maal refreshen verholpen. Mocht dat het probleem echter niet verhelpen, dan kun je het dashboard op de volgende manier draaien m.b.v. Anaconda:
+Het kan voorkomen dat de app niet werkt, vaak wordt dat door een aantal maal refreshen verholpen. Mocht dat het probleem echter niet verhelpen, dan kun je het dashboard op de volgende manier draaien m.b.v. Anaconda (incl. Python 3.7):
 
 1. clone of download deze repository
 2. cre&#235;er een virtual environment: conda create --name snappet-challenge
