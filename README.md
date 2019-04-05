@@ -1,22 +1,39 @@
-# SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+# Snappet Challenge
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+<p align = 'right'>
+  <img src = 'assets/Snappet_logo.png'>
+</p>
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+### Doel
 
 Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+### Aanpak
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+Ik heb besloten om een dashboard te maken in Python met behulp van de Dash library. Daarbij heb ik twee tabbladen gemaakt, &#233;&#233;n met een overzicht van de activiteiten van de leerlingen en &#233;&#233;n met een overzicht van de progressie van de leerlingen.
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Typescript en Angular. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+Hiervoor heb ik de onderwerpen en domeinen waar de leerlingen aan kunnen werken gecombineerd tot een nieuwe kolom. De onderwerpen 'Begrijpend Lezen' en 'Spelling' bestaan namelijk uit slechts één domein (op een aantal uitzonderingen na) terwijl 'Rekenen' is onderverdeeld in 4 domeinen. Zodoende heb ik 'Rekenen' vervangen door de domeinen om tot zes categorie&#235;n te komen.
+
+Voor het overzicht van de activiteiten, heb ik per leerling het aantal opdrachten per categorie geteld voor iedere dag. Per dag heb ik vervolgens de percentages van iedere categorie uitgerekend. Behalve dat ik dit voor iedere leerling afzonderlijk heb gedaan, heb ik dit ook voor de leerlingen gezamenlijk gedaan. Door een balk te selecteren, kun je in de grafiek eronder zien hoe de verdeling is van de activiteiten naar leerdoel voor de betreffende leerling (of alle leerlingen gezamenlijk).
+
+Voor het overzicht van de progressie, heb ik de progressie gesommeerd per categorie en per uur voor zowel de leerlingen individueel als voor alle leerlingen gezamenlijk. Door een bepaalde combinatie van categorie en tijdstip te selecteren, kun je de progressie zien per leerdoel binnen de geselecteerde categorie en op het geselecteerde tijdstip.
+
+### Aandachtspunten
+
+De datum en het tijdstip zijn geconverteerd van UTC naar lokale tijd (Amsterdam).
+
+De grafieken zijn interactief zodat in het menu verschillende opties, zoals datum en leerling, kunnen worden geselecteerd. Daarnaast is de onderste grafiek op ieder tabblad afhankelijk van de selectie die wordt gemaakt in de bovenste grafiek. Op het eerste tabblad kun je zodoende de activiteit per leerdoel zien voor een betreffende leerling (of alle leerlingen gezamenlijk) en op het tweede tabblad kun je zodoende de progressie zien per leerdoel binnen een bepaalde categorie op een zeker tijdstip.
+
+### De app
+
+Het uiteindelijke dashboard heb ik 'gedeployed' m.b.v. Heroku. Het resultaat kun je vinden op:<br><a href = 'https://snappet-challenge.herokuapp.com/' target = "_blank">https://snappet-challenge.herokuapp.com/</a>
+
+Het kan voorkomen dat de app niet werkt, vaak wordt dat door een aantal maal refreshen verholpen. Mocht dat het probleem echter niet verhelpen, dan kun je het dashboard op de volgende manier draaien m.b.v. Anaconda:
+
+1. clone of download deze repository
+2. cre&#235;er een virtual environment: conda create --name snappet-challenge
+3. activeer de virtual environment: conda activate snappet-challenge
+4. ga naar de folder met daarin de repository
+5. installeer de benodigde packages: pip install -r requirements.txt
+6. draai de app: python app.py
+7. ga naar de localhost, zie conda prompt (bijv. http://127.0.0.1:8050/)
