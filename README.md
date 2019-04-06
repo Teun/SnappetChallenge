@@ -28,7 +28,7 @@ Om de kans op een timeout in Heroku te minimaliseren, heb ik de databewerking in
 
 ### De app
 
-Het uiteindelijke dashboard heb ik 'gedeployed' m.b.v. Heroku. Het resultaat kun je vinden op:<br><a href = 'https://snappet-challenge.herokuapp.com/' target = "_blank">https://snappet-challenge.herokuapp.com/</a>
+Het uiteindelijke dashboard heb ik geproductionaliseerd (deployed) m.b.v. Heroku. Het resultaat kun je vinden op:<br><a href = 'https://snappet-challenge.herokuapp.com/' target = "_blank">https://snappet-challenge.herokuapp.com/</a>
 
 Het kan voorkomen dat de app niet werkt door een timeout, soms wordt dat door een aantal maal refreshen verholpen. Mocht dat het probleem echter niet verhelpen, dan kun je het dashboard op de volgende manier draaien m.b.v. Anaconda (incl. Python 3.7):
 
