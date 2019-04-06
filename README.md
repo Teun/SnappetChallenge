@@ -20,7 +20,7 @@ Voor het overzicht van de progressie, heb ik per dag de progressie gesommeerd pe
 
 ### Aandachtspunten
 
-De datum en het tijdstip zijn geconverteerd van UTC naar lokale tijd (Amsterdam).
+De datum en het tijdstip zijn geconverteerd van UTC naar lokale tijd (Amsterdam). Aangezien het nu dinsdag 2015-03-24 11:30:00 UTC is, is alleen de data tot dit moment meegenomen in de analyse.
 
 De grafieken zijn interactief zodat in het menu verschillende opties, zoals datum en leerling, kunnen worden geselecteerd. Daarnaast is de onderste grafiek op ieder tabblad afhankelijk van de selectie die wordt gemaakt in de bovenste grafiek. Op het eerste tabblad kun je zodoende de activiteit per leerdoel zien voor een betreffende leerling (of alle leerlingen gezamenlijk) en op het tweede tabblad kun je zodoende de progressie zien per leerdoel binnen een bepaalde categorie op een zeker tijdstip.
 
