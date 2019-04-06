@@ -46,4 +46,8 @@ def color_assignment(row):
 
 snappet_01['Color'] = snappet_01.apply(color_assignment, axis = 1)
 
+# only include data until 2015-03-24 11:30 UTC
+snappet_01 = snappet_01.loc[snappet_01['Datetime_UTC'] < '2015-03-24 11:30:00']
+
+# export data
 snappet_01[['Date', 'Hour_string', 'UserId', 'Group', 'LearningObjective', 'Correct', 'Progress', 'Color']].to_csv('data_bewerkt.txt', sep = '\t', index = False)
