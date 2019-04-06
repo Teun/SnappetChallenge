@@ -37,5 +37,6 @@ Het kan voorkomen dat de app niet werkt door een timeout, soms wordt dat door ee
 3. activeer de virtual environment: conda activate snappet-challenge
 4. ga naar de folder met daarin de repository
 5. installeer de benodigde packages: pip install -r requirements.txt
-6. draai de app: python app.py
-7. ga naar de localhost, zie conda prompt (bijv. http://127.0.0.1:8050/)
+6. voer de databewerkingen uit: python data_bewerken.py
+7. draai de app: python app.py
+8. ga naar de localhost, zie conda prompt (bijv. http://127.0.0.1:8050/)
