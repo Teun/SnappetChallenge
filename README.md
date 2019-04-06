@@ -16,7 +16,7 @@ Hiervoor heb ik de onderwerpen en domeinen waar de leerlingen aan kunnen werken 
 
 Voor het overzicht van de activiteiten, heb ik per leerling het aantal opdrachten per categorie geteld voor iedere dag. Per dag heb ik vervolgens de percentages van iedere categorie uitgerekend. Behalve dat ik dit voor iedere leerling afzonderlijk heb gedaan, heb ik dit ook voor de leerlingen gezamenlijk gedaan. Door een balk te selecteren, kun je in de grafiek eronder zien hoe de verdeling is van de activiteiten naar leerdoel voor de betreffende leerling (of alle leerlingen gezamenlijk).
 
-Voor het overzicht van de progressie, heb ik de progressie gesommeerd per categorie en per uur voor zowel de leerlingen individueel als voor alle leerlingen gezamenlijk. Door een bepaalde combinatie van categorie en tijdstip te selecteren, kun je de progressie zien per leerdoel binnen de geselecteerde categorie en op het geselecteerde tijdstip.
+Voor het overzicht van de progressie, heb ik per dag de progressie gesommeerd per categorie en per uur voor zowel de leerlingen individueel als voor alle leerlingen gezamenlijk. Door een bepaalde combinatie van categorie en tijdstip te selecteren, kun je de progressie zien per leerdoel binnen de geselecteerde categorie en op het geselecteerde tijdstip.
 
 ### Aandachtspunten
 
