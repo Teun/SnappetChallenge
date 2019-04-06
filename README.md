@@ -24,7 +24,7 @@ De datum en het tijdstip zijn geconverteerd van UTC naar lokale tijd (Amsterdam)
 
 De grafieken zijn interactief zodat in het menu verschillende opties, zoals datum en leerling, kunnen worden geselecteerd. Daarnaast is de onderste grafiek op ieder tabblad afhankelijk van de selectie die wordt gemaakt in de bovenste grafiek. Op het eerste tabblad kun je zodoende de activiteit per leerdoel zien voor een betreffende leerling (of alle leerlingen gezamenlijk) en op het tweede tabblad kun je zodoende de progressie zien per leerdoel binnen een bepaalde categorie op een zeker tijdstip.
 
-Om de kans op een timeout in Heroku te minimaliseren, heb ik de databewerking in een aparte Python-file gedaan. Denk hierbij aan het aanmaken van nieuwe kolommen zoals de categorie o.b.v. onderwerp en domein, een kolom met daarin een kleur voor iedere categorie en de lokale datetime. Met name het parsen van de datum is een relatief zware operatie. Door deze bewerkingen in een aparte file te doen, is het programma app.py zo 'licht' mogelijk.
+Om de kans op een timeout in Heroku te minimaliseren, heb ik de databewerking in een aparte Python-file gedaan. Denk hierbij aan het aanmaken van nieuwe kolommen zoals de categorie o.b.v. onderwerp en domein, een kolom met daarin een kleur voor iedere categorie en de lokale datetime. Door deze bewerkingen in een aparte file te doen, is het programma app.py zo 'licht' mogelijk.
 
 ### De app
 
