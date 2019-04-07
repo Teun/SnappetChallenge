@@ -1,0 +1,13 @@
+.titleText {
+    font-size: 150%;
+    font-family: sans-serif;
+    color: darkblue;
+    text-align: center;
+    margin-top: .5em;
+}
+
+.pupilName {
+    font-weight: bold;
+    color: darkred;
+    font-size: 120%;
+}
