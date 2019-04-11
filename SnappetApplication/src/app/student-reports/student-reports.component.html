@@ -1,0 +1,35 @@
+<h2>Top 10 Performers</h2>
+<!-- <div class="row">
+  <div class="col-sm-3" *ngFor="let student of top10">
+    <div class="card">
+      <div class="col-md-6">
+        <img src="..." default="../../assets/contact-fallback.png" height="75" width="75" alt="Card image cap">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">{{student.name}}</h5>
+          <p class="card-text">Hello World</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-sm-3" *ngFor="let student of top10">
+    <div class="card flex-sm-row mb-gutter">
+      <img class="card-img-top card-img-sm-left" src="..." default="../../assets/contact-fallback.png" height="90"
+        width="90" />
+      <div class="card-body">
+        <h4 class="card-title">{{student.name}}</h4>
+        <p class="card-text">Example text</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<h2>Bottom 10 Performers</h2>
+<div *ngFor="let student of bottom10">
+  <a>{{student.name}}</a>
+</div>

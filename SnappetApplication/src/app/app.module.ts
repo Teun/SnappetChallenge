@@ -11,20 +11,27 @@ import { AgGridModule } from 'ag-grid-angular';
 import { StudentsServices } from './services/students.services';
 import { StudentDetailsServices } from './student-details/student-details.services';
 import { StudentSummaryServices } from './student-summary/student-summary.service';
+import { StudentReportsComponent } from './student-reports/student-reports.component';
+import { StudentReportServices } from './student-reports/student-reports.services';
+import { ImagePreloadDirective } from './image-preload/image-preload.directive';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentSummaryComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    StudentReportsComponent,
+    ImagePreloadDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AgGridModule.withComponents(null)
+    AgGridModule.withComponents(null),
+    UiModule
   ],
-  providers: [ResultsServices, StudentsServices, StudentDetailsServices, StudentSummaryServices],
+  providers: [ResultsServices, StudentsServices, StudentDetailsServices, StudentSummaryServices, StudentReportServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -34,7 +34,9 @@
             "scripts": [
               "lib/canvasjs/canvasjs.min.js",
               "lib/canvasjs/canvasjs.react.js",
-              "lib/canvasjs/jquery.canvasjs.min.js"
+              "lib/canvasjs/jquery.canvasjs.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "es5BrowserSupport": true
           },
