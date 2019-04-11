@@ -44,6 +44,9 @@ namespace SnappetServices
 
             services.AddScoped<IResultsRepository, ResultsRepository>();
             services.AddScoped<IResultsServices, ResultsServices>();
+
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
+            services.AddScoped<IStudentsServices, StudentsServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

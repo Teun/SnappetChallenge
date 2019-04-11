@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SnappetServices.DTOs;
 using SnappetServices.Services;
 
 namespace SnappetServices.Controllers
@@ -24,7 +25,7 @@ namespace SnappetServices.Controllers
         /// <param name="dateTime">Pass in the date for filter</param>
         /// <returns></returns>
         [HttpGet]        
-        public ActionResult<IEnumerable<string>> Get([FromQuery]DateTime dateTime)
+        public ActionResult<IEnumerable<ResultV1Dto>> Get([FromQuery]DateTime dateTime)
         {
             return this.Ok(this.resultsServices.GetAllResults(dateTime));
         }        

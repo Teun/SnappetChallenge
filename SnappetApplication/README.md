@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Getting "No 'Access-Control-Allow-Origin' header is present"?
 This is not a fix for production or when application has to be shown to the client, this is only helpful when UI and Backend development are on different servers and in production they are actually on same server. For example: While developing UI for any application if there is a need to test it locally pointing it to backend server, in that scenario this is the perfect fix. For production fix, CORS headers has to be added to the backend server to allow cross origin access.

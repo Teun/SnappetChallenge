@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ClassDataServices } from '../services/class-data.services';
+import { ResultsServices } from '../services/results.services';
 import * as CanvasJS from '../../../lib/canvasjs/canvasjs.min';
 import * as _ from 'underscore';
 import { Router } from '@angular/router';
+import { StudentSummaryServices } from './student-summary.service';
 
 @Component({
   selector: 'app-class-summary',
@@ -12,10 +13,10 @@ import { Router } from '@angular/router';
 export class StudentSummaryComponent implements OnInit {
 
   classData: any;
-  constructor(private classDataServices: ClassDataServices, private router: Router) { }
+  constructor(private summaryServices: StudentSummaryServices, private router: Router) { }
 
   ngOnInit() {
-    this.classDataServices.getAllData()
+    this.summaryServices.getSummary()
       .subscribe(data => {
         this.classData = data;
 
@@ -30,7 +31,7 @@ export class StudentSummaryComponent implements OnInit {
           },
           data: [
             {
-              type: 'bar',
+              type: 'stackedColumn',
               name: 'Exercise Attempted',
               showInLegend: true,
               click: (event) => {
@@ -41,7 +42,7 @@ export class StudentSummaryComponent implements OnInit {
               })
             },
             {
-              type: 'bar',
+              type: 'stackedColumn',
               name: 'Correct Answers',
               showInLegend: true,
               click: (event) => {

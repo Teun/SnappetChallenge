@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ClassDataServices } from '../services/class-data.services';
+import { ResultsServices } from '../services/results.services';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { GridOptions } from 'ag-grid-community';
 import * as CanvasJS from '../../../lib/canvasjs/canvasjs.min';
 import * as _ from 'underscore';
-import { IDetailData } from '../services/IDetailData';
+import { IDetailData } from '../models/IDetailData';
 
 @Component({
   selector: 'app-student-details',
@@ -19,7 +19,7 @@ export class StudentDetailsComponent implements OnInit {
   studentResult: any;
   private rowData: any;
 
-  constructor(private classDataService: ClassDataServices, private route: ActivatedRoute, private router: Router) { }
+  constructor(private resultsService: ResultsServices, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.gridOptions.columnDefs = [
@@ -31,7 +31,7 @@ export class StudentDetailsComponent implements OnInit {
 
     this.route.paramMap.pipe(
       tap((params: ParamMap) => {
-        this.classDataService.getDetails(params.get('id')).subscribe(data => {
+        this.resultsService.getDetails(params.get('id')).subscribe(data => {
           this.gridOptions.rowData = data.fullData;
           this.rowData = data.fullData;
           this.renderChart(data.detailData);

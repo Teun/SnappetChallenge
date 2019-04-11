@@ -7,25 +7,26 @@ using System.Threading.Tasks;
 
 namespace SnappetServices.Repositories
 {
-    public class ResultsRepository: IResultsRepository
+    public class ResultsRepository : IResultsRepository
     {
         public IEnumerable<Result> GetAllResults(DateTime dateTime = default(DateTime))
         {
             try
             {
                 var results = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Result>>(File.ReadAllText("data/work.json"));
+
                 if (dateTime != default(DateTime))
                 {
                     return results.Where(p => p.SubmitDateTime.Date == dateTime.Date);
                 }
-                return results;
 
+                return results;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
-            }            
+            }
         }
     }
 }
