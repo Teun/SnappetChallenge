@@ -20,8 +20,6 @@ export class StudentSummaryComponent implements OnInit {
       .subscribe(data => {
         this.classData = data;
 
-        // console.log(this.classData);
-
         const chart = new CanvasJS.Chart('chartContainer', {
           zoomEnabled: true,
           animationEnabled: true,

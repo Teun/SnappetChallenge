@@ -21,8 +21,6 @@ export class StudentDetailsServices {
           const filterData = _.filter(data, (item) => {
             return item.userId == userId;
           });
-          console.log(data);
-          console.log(filterData);
 
           const detailDataFn = () => {
             const groupedData = _.groupBy(data, item => item.subject);

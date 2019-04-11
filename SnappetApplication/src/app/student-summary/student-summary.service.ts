@@ -18,7 +18,6 @@ export class StudentSummaryServices {
     return forkJoin(this.studentServices.getAllData(), this.resultServices.getAllData())
       .pipe(
         map(([students, results]) => {
-          console.log(students);
 
           const summaryData: ISummaryData[] = [];
           const groupedData = _.groupBy<IResultV1Dto>(results, item => item.userId);

@@ -34,7 +34,6 @@ export class StudentDetailsComponent implements OnInit {
       tap((params: ParamMap) => {
         this.studentDetailsServices.getDetails(params.get('id')).subscribe(data => {
           this.gridOptions.rowData = data.fullData;
-          console.log(data.fullData);
           this.rowData = data.fullData;
           this.renderChart(data.detailData);
         });

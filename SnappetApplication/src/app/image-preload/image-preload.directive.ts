@@ -20,7 +20,6 @@ export class ImagePreloadDirective {
     this.src = this.default;
   }
   load() {
-    console.log('load');
     this.className = 'image-loaded';
   }
 }
