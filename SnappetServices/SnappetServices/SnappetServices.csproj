@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\TFS\Git\GitHub\SnappetChallengeSelf\SnappetServices\SnappetServices\SnappetServices.xml</DocumentationFile>
+    <DocumentationFile>D:\TFS\Git\GitHub\snappet\SnappetChallengeSelf\SnappetServices\SnappetServices\SnappetServices.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
