@@ -3,10 +3,11 @@ import { ResultsServices } from '../services/results.services';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { GridOptions } from 'ag-grid-community';
-import * as CanvasJS from '../../../lib/canvasjs/canvasjs.min';
 import * as _ from 'underscore';
 import { IDetailData } from '../models/IDetailData';
 import { StudentDetailsServices } from './student-details.services';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-student-details',
@@ -19,6 +20,13 @@ export class StudentDetailsComponent implements OnInit {
 
   studentResult: any;
   private rowData: any;
+  chartData: {
+    datasets: ChartDataSets[]
+    labels: Label[]
+    options: ChartOptions
+    legend: boolean
+    chartType: ChartType
+  };
 
   constructor(private studentDetailsServices: StudentDetailsServices, private route: ActivatedRoute, private router: Router) { }
 
@@ -42,36 +50,31 @@ export class StudentDetailsComponent implements OnInit {
 
   renderChart(detailData: any) {
 
-    const chart = new CanvasJS.Chart('chartContainer', {
-      zoomEnabled: true,
-      animationEnabled: true,
-      exportEnabled: true,
-      height: 500,
-      width: 500,
-      title: {
-        text: 'Student Performance Detail'
-      },
-      data: [
-        {
-          type: 'column',
-          name: 'Exercise Attempted',
-          showInLegend: true,
+    const attempted = _.map(detailData, 'attempted');
+    const correct = _.pluck(detailData, 'correct');
 
-          dataPoints: _.map(detailData, item => {
-            return { y: item.attempted, label: item.subject };
-          })
+    this.chartData = {
+      chartType: 'bar',
+      labels: _.pluck(detailData, 'subject'),
+      datasets: [
+        { data: attempted, label: 'Exercise Attempted' },
+        { data: correct, label: 'Correct Answers' }
+      ],
+      legend: true,
+      options: {
+        responsive: true,
+        // We use these empty structures as placeholders for dynamic theming.
+        scales: { xAxes: [{}], yAxes: [{}] },
+        plugins: {
+          datalabels: { anchor: 'end', align: 'end', }
         },
-        {
-          type: 'column',
-          name: 'Correct Answers',
-          showInLegend: true,
+        events: ['click'],
+        onClick: this.chartClicked
+      }
+    };
+  }
 
-          dataPoints: _.map(detailData, item => {
-            return { y: item.correct, label: item.subject };
-          })
-        }]
-    });
-
-    chart.render();
+  public chartClicked( event: MouseEvent, active: {}[]): void {
+    console.log(event, active);
   }
 }

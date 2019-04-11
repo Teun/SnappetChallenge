@@ -16,6 +16,7 @@ import { StudentReportServices } from './student-reports/student-reports.service
 import { ImagePreloadDirective } from './image-preload/image-preload.directive';
 import { UiModule } from './ui/ui.module';
 import { StudentReportCardComponent } from './student-report-card/student-report-card.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { StudentReportCardComponent } from './student-report-card/student-report
     AppRoutingModule,
     HttpClientModule,
     AgGridModule.withComponents(null),
-    UiModule
+    UiModule,
+    ChartsModule
   ],
   providers: [ResultsServices, StudentsServices, StudentDetailsServices, StudentSummaryServices, StudentReportServices],
   bootstrap: [AppComponent]

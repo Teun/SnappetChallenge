@@ -1,2 +1,9 @@
-  <div id="chartContainer" style="margin-left:auto;margin-right:auto;">
-  </div>
+<div *ngIf="chartData != null">
+  <canvas baseChart
+          [datasets]="chartData.datasets"
+          [labels]="chartData.labels"
+          [options]="chartData.options"
+          [legend]="chartData.legend"
+          [chartType]="chartData.chartType">
+  </canvas>
+</div>

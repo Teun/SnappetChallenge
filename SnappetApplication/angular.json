@@ -32,9 +32,7 @@
               "node_modules/ag-grid-community/dist/styles/ag-theme-balham.css"
             ],
             "scripts": [
-              "lib/canvasjs/canvasjs.min.js",
-              "lib/canvasjs/canvasjs.react.js",
-              "lib/canvasjs/jquery.canvasjs.min.js",
+              "node_modules/chart.js/dist/chart.js",
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
