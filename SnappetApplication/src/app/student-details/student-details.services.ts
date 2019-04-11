@@ -6,21 +6,23 @@ import { ISummaryData, IResultV1Dto, IStudentV1Dto } from '../models/ISummaryDat
 import { IDetailData } from '../models/IDetailData';
 import { StudentsServices } from '../services/students.services';
 import { forkJoin, of } from 'rxjs';
+import { ResultsServices } from '../services/results.services';
 
 @Injectable()
 export class StudentDetailsServices {
 
-  constructor(private httpClient: HttpClient, private studentServices: StudentsServices) {
+  constructor(private httpClient: HttpClient, private resultsServices: ResultsServices) {
   }
 
   getDetails(userId: string) {
-    return this.studentServices.getAllData()
+    return this.resultsServices.getAllData()
       .pipe(
         map(data => {
-          const summaryData: ISummaryData[] = [];
           const filterData = _.filter(data, (item) => {
             return item.userId == userId;
           });
+          console.log(data);
+          console.log(filterData);
 
           const detailDataFn = () => {
             const groupedData = _.groupBy(data, item => item.subject);

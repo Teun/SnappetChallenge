@@ -6,6 +6,7 @@ import { GridOptions } from 'ag-grid-community';
 import * as CanvasJS from '../../../lib/canvasjs/canvasjs.min';
 import * as _ from 'underscore';
 import { IDetailData } from '../models/IDetailData';
+import { StudentDetailsServices } from './student-details.services';
 
 @Component({
   selector: 'app-student-details',
@@ -19,7 +20,7 @@ export class StudentDetailsComponent implements OnInit {
   studentResult: any;
   private rowData: any;
 
-  constructor(private resultsService: ResultsServices, private route: ActivatedRoute, private router: Router) { }
+  constructor(private studentDetailsServices: StudentDetailsServices, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.gridOptions.columnDefs = [
@@ -31,8 +32,9 @@ export class StudentDetailsComponent implements OnInit {
 
     this.route.paramMap.pipe(
       tap((params: ParamMap) => {
-        this.resultsService.getDetails(params.get('id')).subscribe(data => {
+        this.studentDetailsServices.getDetails(params.get('id')).subscribe(data => {
           this.gridOptions.rowData = data.fullData;
+          console.log(data.fullData);
           this.rowData = data.fullData;
           this.renderChart(data.detailData);
         });
@@ -45,6 +47,8 @@ export class StudentDetailsComponent implements OnInit {
       zoomEnabled: true,
       animationEnabled: true,
       exportEnabled: true,
+      height: 500,
+      width: 500,
       title: {
         text: 'Student Performance Detail'
       },

@@ -26,6 +26,7 @@ export class StudentSummaryComponent implements OnInit {
           zoomEnabled: true,
           animationEnabled: true,
           exportEnabled: true,
+          height : 600,
           title: {
             text: 'Student Performance Summary'
           },
@@ -35,10 +36,10 @@ export class StudentSummaryComponent implements OnInit {
               name: 'Exercise Attempted',
               showInLegend: true,
               click: (event) => {
-                this.gotoDetails(event.dataPoint.label);
+                this.gotoDetails(event.dataPoint.id);
               },
               dataPoints: _.map(this.classData, item => {
-                return { y: item.attempted, label: item.name };
+                return { y: item.attempted, label: item.name, id: item.id };
               })
             },
             {
@@ -49,7 +50,7 @@ export class StudentSummaryComponent implements OnInit {
                 this.gotoDetails(event.dataPoint.label);
               },
               dataPoints: _.map(this.classData, item => {
-                return { y: item.correct, label: item.name };
+                return { y: item.correct, label: item.name, id: item.id };
               })
             }]
         });

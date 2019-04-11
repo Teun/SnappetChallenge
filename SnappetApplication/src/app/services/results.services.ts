@@ -28,44 +28,4 @@ export class ResultsServices {
         );
     }
   }
-
-  getDetails(userId: string) {
-    return this.httpClient
-      .get<IResultV1Dto[]>(`${this.api}?dateTime=2015-03-24`)
-      .pipe(
-        map(data => {
-          this.fullData = data;
-          const summaryData: ISummaryData[] = [];
-          const filterData = _.filter(this.fullData, (item) => {
-            return item.userId == userId;
-          });
-
-          const detailDataFn = () => {
-            const groupedData = _.groupBy(data, item => item.subject);
-            const detailData: IDetailData[] = [];
-            _.each(groupedData, (value, key) => {
-              const attempted = value.length;
-              const correct = _.reduce(value, (sum, item) => {
-                return item.correct > 0 ? sum + 1 : sum;
-              }, 0);
-
-              const inCorrect = _.reduce(value, (sum, item) => {
-                return item.correct === 0 ? sum + 1 : sum;
-              }, 0);
-
-              detailData.push({ subject: key, attempted, correct, incorrect: inCorrect });
-            });
-
-            return detailData;
-          };
-
-          const studentDetailData = {
-            fullData: filterData,
-            detailData: detailDataFn()
-          };
-
-          return studentDetailData;
-        })
-      );
-  }
 }
