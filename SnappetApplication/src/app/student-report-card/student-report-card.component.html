@@ -1,4 +1,4 @@
-<div class="card flex-sm-row mb-gutter" (click)="gotoStudentDetail()">
+<div *ngIf="student != null" class="card flex-sm-row mb-gutter" (click)="gotoStudentDetail()">
   <img class="card-img-top card-img-sm-left" [src]="getImageSrc()" default="../../assets/contact-fallback.png"
     height="90" width="90" />
   <div class="card-body">
