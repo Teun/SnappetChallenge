@@ -45,7 +45,7 @@ export class StudentSummaryComponent implements OnInit {
               name: 'Correct Answers',
               showInLegend: true,
               click: (event) => {
-                this.gotoDetails(event.dataPoint.label);
+                this.gotoDetails(event.dataPoint.id);
               },
               dataPoints: _.map(this.classData, item => {
                 return { y: item.correct, label: item.name, id: item.id };
