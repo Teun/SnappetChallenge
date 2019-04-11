@@ -19,8 +19,9 @@ This project has two folders
 3. Navigation
 4. Bootstrap
 5. Chart.js
-6. Component, Service, Module, Directive
-7. Basic Unit Testing
+6. Angular Grids
+7. Component, Service, Module, Directive
+8. Basic Unit Testing
 
 ## Backend
 1. WebApi
