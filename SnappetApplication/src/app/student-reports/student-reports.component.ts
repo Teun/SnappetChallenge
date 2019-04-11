@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentReportServices } from './student-reports.services';
+import { IStudentV1Dto } from '../models/ISummaryData';
 
 @Component({
   selector: 'app-student-reports',
@@ -16,5 +17,4 @@ export class StudentReportsComponent implements OnInit {
     this.studentReportsService.getTop10().subscribe(data => this.top10 = data);
     this.studentReportsService.getBottom10().subscribe(data => this.bottom10 = data);
   }
-
 }

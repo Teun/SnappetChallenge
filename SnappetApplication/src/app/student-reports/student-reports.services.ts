@@ -17,7 +17,7 @@ export class StudentReportServices {
 
   getBottom10() {
     return this.studentSummaryServices.getSummary().pipe(
-      map(data => _.chain(data).sortBy(item => item.correct).reverse().last(10).value())
+      map(data => _.chain(data).sortBy(item => item.correct).reverse().first(10).value())
     );
   }
 }

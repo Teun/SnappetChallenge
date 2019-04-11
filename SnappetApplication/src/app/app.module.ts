@@ -15,6 +15,7 @@ import { StudentReportsComponent } from './student-reports/student-reports.compo
 import { StudentReportServices } from './student-reports/student-reports.services';
 import { ImagePreloadDirective } from './image-preload/image-preload.directive';
 import { UiModule } from './ui/ui.module';
+import { StudentReportCardComponent } from './student-report-card/student-report-card.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { UiModule } from './ui/ui.module';
     StudentDetailsComponent,
     StudentReportsComponent,
     ImagePreloadDirective,
+    StudentReportCardComponent,
   ],
   imports: [
     BrowserModule,
