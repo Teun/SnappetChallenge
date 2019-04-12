@@ -1,0 +1,480 @@
+---
+title: "Snappet Data Challenge Notebook"
+author: "Bram Zandbelt"
+output:
+  html_document:
+    toc: true
+    number_sections: true
+    df_print: paged
+    code_folding: hide
+    theme: readable
+    highlight: pygments
+---
+
+# Overview
+
+This notebook describes a set of data processing, analysis, and visualization steps of a Snappet dataset. The ultimate result of this analysis is a set of visualizations that provide an overview of a classroom's activity on March 24th 2015 at 11:30 AM, describing _what_ pupils have worked and _how_ they have worked. With these visualizations, I intended to provide (deep) insight without being overwhelming.
+
+# Preliminaries
+
+```{r setup, include=FALSE}
+# Define the project root directory and ensure inline output
+knitr::opts_knit$set(root.dir = rprojroot::find_root(rprojroot::has_file("Analysis.Rproj")))
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Load libraries}
+# Much of the data reading, cleaning, processing, and plotting is done with packages from the tidyverse package collection; loading this packacke is required to have access to the %>%-operator
+library(tidyverse)
+```
+
+# Read data
+```{r Define data file and read it}
+raw_data_dir <- file.path("../Data")
+raw_data_filename <- list.files(path = raw_data_dir,
+                                pattern = "^work.csv$")
+
+raw_data <- 
+  readr::read_csv(file = file.path(raw_data_dir, raw_data_filename),
+                  col_types = readr::cols()
+                  )
+```
+
+# Clean data
+
+## Inspect the data
+Let's look at first and last lines to get an idea of the dataset.
+
+First lines:
+```{r Show head and tail of raw data for inspection}
+head(raw_data, n = 10)
+```
+
+Last lines:
+```{r Show tail of raw data for inspection}
+tail(raw_data, n = 10)
+```
+
+Now, get some descriptive statistics on the raw data to identify potential problems. Note that the output of summarytools::dfSummary doesn't render well to HTML; it is best viewed by running the notebook interactively.
+```{r Descriptive stats of raw data, out.width="100%"}
+print(summarytools::dfSummary(raw_data, max.distinct.values = 100))
+```
+
+Things to clean:
+
+- Variable `Correct` contains a small proportion (0.5%) of records with value 3. It is unclear what these mean, so they will be discarded.
+- Variable `Difficulty` is encoded as character, this should be double. Also, it a small proportion (4.3%) of records with NULL values. They will not be removed, because I will not focus on Difficulty in the remaining analyses.
+- Several variables are encoded as character, including UserId, ExerciseId, Subject, Domain, and LearningObjective, but will converted to factor for plotting purposes.
+- Dataset contains data from multiple days in March 2015, but analysis will focus on the morning of March 24th 2015.
+
+## Clean the data
+```{r Tidy the data}
+tidy_data <- 
+  raw_data %>%
+  
+  # Unite Subject and Domain columns to reduce complexity
+  tidyr::unite(col = "SubjectDomain", Subject, Domain) %>%
+  dplyr::filter(Correct <= 1) %>%
+  dplyr::mutate(
+    # One LearningObjective level caused problems later in the analysis because of a non-recognized character  
+    LearningObjective = str_replace(string = LearningObjective, 
+                                    pattern = "Optellen en aftrekken tot \xb11000", 
+                                    replacement = "Optellen en aftrekken tot 10000" ),
+    # Identify missing data
+    Difficulty = readr::parse_double(Difficulty, na = c("NULL", "", "NA")),
+    # Convert several variables into factors for plotting purposes
+    UserId = factor(UserId, ordered = TRUE),
+    ExerciseId = factor(ExerciseId, ordered = TRUE),
+    SubjectDomain = factor(SubjectDomain, ordered = FALSE),
+    LearningObjective = factor(LearningObjective, ordered = FALSE)
+    ) 
+```
+
+Inspect the data again, to see if problems are solved
+```{r Descriptive statistics of the entire dataset, out.width="100%"}
+print(summarytools::dfSummary(tidy_data, max.distinct.values = 100))
+```
+
+Looking good now
+
+## Filter records, restricting analysis to today's data up to 11:30 UTC
+
+```{r Focus analysis on today}
+# Today's data
+today_data <- 
+  tidy_data %>%
+  # Restrict analysis to today's data until 11:30 UTC, in line with assignment
+  dplyr::filter(SubmitDateTime > "2015-03-24 00:00:00", 
+                SubmitDateTime <= "2015-03-24 11:30:00")  %>%
+  # Focus analysis on the learning objectives that have been most worked on, categorize remainder as "Other"
+  dplyr::mutate(LearningObjectiveFrequent = 
+                  forcats::fct_lump(f = .$LearningObjective, prop = .05) %>% 
+                  forcats::fct_infreq() %>%
+                  forcats::fct_rev()
+                )
+
+# Group and nest data according to SubjectDomain and LearningObjective for further processing
+today_data_nested <- 
+  today_data %>%
+  dplyr::group_by(SubjectDomain, LearningObjective) %>%
+  tidyr::nest() %>%
+  dplyr::mutate(n_exercise = purrr::pmap_int(.l = list(x = .$data), 
+                                             .f = function(x) {nrow(x)})
+                )
+```
+
+One more time some descriptive statistics, now of the dataset that is to be analyzed. This gives an impression of the number of data points in the analysis.
+```{r Descriptive statistics of data from today}
+print(summarytools::dfSummary(today_data))
+```
+
+# Analyze and visualize data
+
+## What did pupils do today?
+
+This visualization shows the learning objectives that pupils worked on. The left panel shows when (horizontal axis) exercises were performed by each pupil (vertical axis); each vertical marker is one exercise. The right panel shows the total number of exercises that were completed (horizontal axis) by each pupil (vertical axis). In both panels, pupils are ordered based on the total number of exercises they completed (most productive pupils on top). Color indicates the learning objective (only the most frequent learning objectives are shown, remaining objectives are categorized as "Other").
+
+```{r Function for analyzing and visualizing prodcutivity data}
+plot_productivity <- function(tibb) {
+  
+  # Filter and compute relevant the data =======================================
+  
+  # Compute the number of exercises performed per learning objective
+  summary_today_n_exercise_user_objective <- 
+    tibb %>%
+    tidyr::unnest() %>%
+    dplyr::group_by(UserId, LearningObjectiveFrequent) %>% 
+    dplyr::summarize(n_exercise = n())
+
+  # Compute the number of exercises performed across all learning objectives
+  summary_today_n_exercise_user <- 
+    tibb %>%
+      tidyr::unnest() %>%
+      dplyr::group_by(UserId) %>% 
+      dplyr::summarize(n_total = n())
+
+  # Join these summary datasets on UserId
+  summary_today_n_exercise <- 
+    dplyr::left_join(summary_today_n_exercise_user_objective, 
+                     summary_today_n_exercise_user,
+                     by = c("UserId"))
+
+  # Join summary datasets with input data
+  productivity_data <- 
+    tibb %>%
+      tidyr::unnest() %>%
+      dplyr::left_join(summary_today_n_exercise,
+                       by = c("UserId", "LearningObjectiveFrequent"))
+
+  # Plot productivity in terms of which exercises are performed when ===========
+  plt_left <- 
+    
+    # General design -----------------------------------------------------------
+    ggplot2::ggplot(data = productivity_data,
+                    mapping = ggplot2::aes(x = forcats::fct_reorder(UserId, n_total),
+                                           y = SubmitDateTime,
+                                           color = LearningObjectiveFrequent)) +
+      
+    # Geoms --------------------------------------------------------------------
+    # User vertical marker to get impression of density
+    ggplot2::geom_point(shape = 124) + 
+    
+    # Scales -------------------------------------------------------------------
+    ggplot2::scale_x_discrete(name = "User Id (ordered by number of exercises)") +
+    ggplot2::scale_y_datetime(name = "Clock Time (UTC)") +
+    ggplot2::coord_flip() + 
+    ggplot2::theme_minimal() 
+  
+  # Plot productivity in terms of total number of exercises completed ==========
+  plt_right <-
+    
+    # General design -----------------------------------------------------------
+    ggplot2::ggplot(data = summary_today_n_exercise,
+                  mapping = ggplot2::aes(x = forcats::fct_reorder(UserId, n_total),
+                                         y = n_exercise,
+                                         fill = LearningObjectiveFrequent)) +
+    # Geoms --------------------------------------------------------------------
+    ggplot2::geom_bar(stat = "identity") +
+    
+    # Scales -------------------------------------------------------------------
+    ggplot2::scale_x_discrete(name = "User Id") +
+    ggplot2::scale_y_continuous(name = "Number of exercises") +
+    ggplot2::coord_flip() +
+    
+    # Theme ---------------------------------------------------------------------
+    ggplot2::theme_minimal() +
+    # # User Id axis title and text are redundant
+    ggplot2::theme(axis.title.y = ggplot2::element_blank(),
+                   axis.text.y = ggplot2::element_blank())
+  
+  # Merge plt_left and plt_right and add common legend below ===================
+  lgnd <- cowplot::get_legend(plt_right + ggplot2::theme(legend.position = "bottom",
+                                                         legend.direction = "horizontal",
+                                                         legend.box = "vertical",
+                                                         legend.title = ggplot2::element_blank()))
+  
+  plt_top <- 
+    cowplot::plot_grid(plt_left + ggplot2::theme(legend.position = "none"), 
+                       plt_right + ggplot2::theme(legend.position = "none"),
+                       nrow = 1)
+  cowplot::plot_grid(plt_top,
+                       lgnd,
+                       nrow = 2,
+                       rel_heights = c(0.9,0.2))
+}
+
+```
+
+```{r Analyze and visualize pupil productivity, out.width="100%"}
+plot_productivity(tibb = today_data_nested)
+```
+
+
+_How could this visualization help teachers?_
+
+This visualization may help the teacher:
+
+- get an overview of what all pupils have worked on and when
+- identify pupils who are more and less productive
+
+## How did pupils perform?
+
+The following visualizations show an overview of performance for a given learning objective (here: "Vermenigvuldigen 8 x 32"; This can be changed by altering the `learning_objective` argument of the plot functions). I made two sets of visualizations, one providing an overview of performance based on accuracy (percentage correct), the other providing an overview of performance based on change in exercise difficulty.
+
+### How did pupils perform in terms of accuracy?
+
+This visualization provides an overview of pupil performance in terms of accuracy (i.e. percentage correct responses). The left panel shows the percentage of correct exercises (horizontal axis) for each pupil (vertical axis). The dashed line indicates the class's median performance. Bar color indicates whether the pupil performance above (green) or below (red) class's median performance. The right panel shows performance on each individual exercise corresponding to this learning goal (horizontal axis) for each pupil (vertical axis). Each pie chart is an exercise; color indicate the proportion of correct (blue) and incorrect (responses). In both panels, pupils are ordered based on their performance (best performance on top).
+
+```{r Function for analyzing and visualizing performance data in terms of accuracy}
+plot_performance_accuracy <- function(tibb, learning_objective) {
+  
+  learning_objective_data <- 
+    tibb %>% 
+    dplyr::filter(LearningObjective == learning_objective) %>%
+    dplyr::select(data) %>%
+    tidyr::unnest()
+  learning_objective_data <- 
+    learning_objective_data %>%
+    dplyr::mutate(UserId = forcats::fct_drop(learning_objective_data$UserId))
+    
+  # Compute performance wrt to peers (i.e. class median performance) ===========
+  performance_wrt_peers <- 
+    learning_objective_data %>%
+    dplyr::mutate(UserId = droplevels(UserId)) %>%
+    dplyr::group_by(UserId) %>%
+    dplyr::summarize(user_accuracy = mean(Correct)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(rel_accuracy = user_accuracy - median(user_accuracy),
+                  rel_accuracy_type = ifelse(rel_accuracy < 0, "below", "above")) %>%
+    dplyr::mutate(UserId = forcats::fct_reorder(UserId, user_accuracy)) %>%
+    dplyr::arrange(UserId)
+  
+  user_id_factor <- performance_wrt_peers$UserId
+  
+  # Compute performance wrt to ExerciseId ======================================
+  performance_wrt_exerciseid <- 
+    learning_objective_data %>%
+    # Only keep exercises that were performed today
+    dplyr::mutate(ExerciseId = droplevels(ExerciseId)) %>%
+    
+    # Compute accuracy per exercise per pupil
+    dplyr::group_by(UserId, ExerciseId) %>% 
+    dplyr::summarise(t_first_attempt = dplyr::first(SubmitDateTime),
+                     correct = mean(Correct),
+                     incorrect = 1 - correct) %>%
+    dplyr::ungroup() %>%
+    # Compute exercise index
+    dplyr::group_by(UserId) %>% 
+    dplyr::arrange(t_first_attempt) %>%
+    dplyr::mutate(ExerciseIx = 1:n()) %>%
+    dplyr::ungroup() %>%
+    
+    # Re-order pupils based on accuracy
+    dplyr::mutate(UserId = forcats::fct_relevel(UserId, levels(user_id_factor)))  %>%
+    dplyr::mutate(UserIdInt = as.integer(UserId)) %>%
+    dplyr::arrange(UserIdInt)
+    
+  # Plot performance wrt to peers ==============================================
+  
+  # Make y-axis labels (N.B. coords will be flipped)
+  plot_ylimits <- c(0,1) - median(performance_wrt_peers$user_accuracy)
+  plot_ybreaks <- seq(0.1, 0.9, 0.2) - median(performance_wrt_peers$user_accuracy)
+  plot_ylabels <- stringr::str_c(seq(0.1, 0.9, 0.2) * 100, "%")
+
+  plt_performance_wrt_peers <- 
+    
+    # General design -----------------------------------------------------------
+    ggplot(data = performance_wrt_peers, 
+           mapping = ggplot2::aes(x = forcats::fct_reorder(UserId, user_accuracy), 
+                                  y = rel_accuracy, 
+                                  label = rel_accuracy_type)
+           ) + 
+    
+    # Geoms ------------------------------------------------------------------
+    geom_bar(mapping = ggplot2::aes(fill = rel_accuracy_type),
+             stat = 'identity', 
+             width = .5)  +
+      
+    geom_hline(yintercept = 0,
+               color = "black",
+               linetype = "dashed") +
+    
+    # Scales -----------------------------------------------------------------
+    scale_x_discrete(name = "UserId (performance-ordered)") +
+    scale_y_continuous(name = "Percentage correct",
+                       limits = plot_ylimits,
+                       breaks = plot_ybreaks,
+                       labels = plot_ylabels) +
+    
+    scale_fill_manual(name = "Accuracy category", 
+                      labels = c("Above Class Median", 
+                                 "Below Class Median"), 
+                      values = c("above" = "#00ba38", 
+                                 "below" = "#f8766d")) + 
+    ggplot2::ggtitle(learning_objective) +
+  
+    ggplot2::coord_flip() +
+    
+    
+    # Themes -----------------------------------------------------------------        
+    ggplot2::theme_minimal() +
+    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+                   # legend.position = "none",
+                   legend.position = "bottom",
+                                         legend.direction = "horizontal",
+                                         legend.box = "vertical",
+                                         legend.title = ggplot2::element_blank())
+    
+  # Plot performance wrt to peers ==============================================
+  
+  plt_performance_wrt_exerciseid <-
+    
+    # General design -----------------------------------------------------------
+    ggplot2::ggplot() +
+    
+    # Geoms --------------------------------------------------------------------
+    scatterpie::geom_scatterpie(data = performance_wrt_exerciseid,
+                                mapping = ggplot2::aes(x = ExerciseIx,
+                                                       y = UserIdInt,
+                                                       group = interaction(ExerciseIx, UserIdInt)),
+                                cols = c("correct", "incorrect"),
+                                color = "black",
+                                size = 0) + 
+    # Scales --------------------------------------------------------------------
+    
+    ggplot2::scale_x_continuous(name = "Exercise Index") +
+    ggplot2::scale_y_continuous(name = "User Id") +
+    ggplot2::scale_fill_manual(values = c("blue", "lightgrey")) +
+    ggplot2::coord_equal() +
+    
+    
+    # Themes -------------------------------------------------------------------
+    ggplot2::theme_minimal() +
+    ggplot2::theme(aspect.ratio = 1/2,
+                   axis.text.y = ggplot2::element_blank(),
+                   axis.title.y = ggplot2::element_blank(),
+                   panel.grid = ggplot2::element_blank(),
+                   legend.position = "bottom",
+                   legend.direction = "horizontal",
+                   legend.box = "vertical",
+                   legend.title = ggplot2::element_blank()
+                   )
+    
+  # Merge two plots ============================================================
+  
+  cowplot::plot_grid(plt_performance_wrt_peers, 
+                     plt_performance_wrt_exerciseid,
+                     nrow = 1,
+                     rel_widths = c(.3,.7),
+                     axis = "bottom",
+                     align = "hv")
+}
+```
+
+
+```{r Visualize accuracy for Vermenigvuldigen 8 x 32, out.width="100%"}
+plot_performance_accuracy(tibb = today_data_nested,
+                 learning_objective = "Vermenigvuldigen 8 x 32")
+```
+
+_How could this help the teacher?_
+
+This visualization of performance accuracy may help the teacher:
+
+- see overall performance of the class on this learning goal (dashed line)
+- identify pupils who may need additional 
+- identify exercises that many pupils struggle with (e.g. the 2nd and 6th exercise of Vermenigvuldigingen 8 x 32)
+
+### How did pupils perform in terms of exercise difficulty?
+
+This visualization looks at performance in terms of how exercise difficulty changes during practice. This "small-multiples visualization"" shows exercise difficulty as a function of exercise index (i.e. position of the exercise in time, given learning objective), separately for each pupil. The plots are ordered based on the degree to which difficulty changed from the first to the last exercise in a pupil (top-left panel, largest increase; bottom-right, smallest increase (or even decrease)). Exercise difficulty is adjusted based on performance (making exercises easier after incorrect answers and more difficult after correct answers), meaning that this plot shows learning progress.
+
+```{r Function for analyzing and visualizing performance data in terms of difficulty}
+
+plot_performance_difficulty <- function(tibb, learning_objective) {
+  
+  # Prepare the data ===========================================================
+  difficulty_data_init <- 
+    tibb %>% 
+    dplyr::filter(LearningObjective == learning_objective) %>%
+    dplyr::select(data) %>%
+    tidyr::unnest() %>%
+    dplyr::group_by(UserId) %>% 
+    dplyr::arrange(UserId, SubmitDateTime) %>% 
+    # ExerciseIx tracks index of the exercise
+    dplyr::mutate(ExerciseIx = 1:n())
+  
+    difficulty_data_summary <- 
+      difficulty_data_init %>%
+      dplyr::summarize(gain = dplyr::last(Difficulty) - dplyr::first(Difficulty))
+    
+    difficulty_data <- 
+      dplyr::left_join(difficulty_data_init, difficulty_data_summary,
+                       by = c("UserId")) %>%
+      dplyr::ungroup() %>%
+      # Order pupils by gain in difficulty over exercises
+      dplyr::mutate(UserId = 
+                      forcats::fct_drop(
+                        forcats::fct_rev(
+                          forcats::fct_reorder(difficulty_data_init$UserId, gain)
+                          )
+                        )
+                    )
+    
+    # Plot the data ============================================================
+    
+    # General design -----------------------------------------------------------
+    ggplot2::ggplot(data = difficulty_data,
+                mapping = ggplot2::aes(x = ExerciseIx,
+                                       y = Difficulty)) +
+      ggplot2::facet_wrap("UserId") +
+      
+      # Geoms ------------------------------------------------------------------
+      ggplot2::geom_line() +
+      ggplot2::geom_smooth(method = "loess") +
+      
+      # Scales -----------------------------------------------------------------
+      ggplot2::scale_x_continuous(name = "Exercise index") +
+      ggplot2::scale_y_continuous(name = "Difficulty (a.u.)") +
+    
+      
+      ggplot2::labs(title = learning_objective,
+                    subtitle = "Change in exercise difficulty as a function practice, ordered by size of change") +
+      
+      # Themes -----------------------------------------------------------------
+      ggplot2::theme_minimal()
+}
+
+```
+
+```{r Visualize  difficulty for Vermenigvuldigen 8 x 32, out.width="100%"}
+plot_performance_difficulty(tibb = today_data_nested, 
+                            learning_objective = "Vermenigvuldigen 8 x 32")
+```
+
+_How could this help the teacher?_
+
+This visualization of change in exercise difficulty may help the teacher:
+
+- to identify pupils how learned well (increasing trend line) vs pupils who experienced difficulty in performing the exercises (flat or decreasing trend line);
+- to estimate whether a small change in difficulty could be related to number of exercises performed (e.g. UserId 40286 perhaps) or failure to understand (small absolute change in difficulty, despite many exercises performed, e.g. UserId 40267);
