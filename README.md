@@ -1,22 +1,37 @@
-# SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+# Technical test - Snappet
+Technical test made for Snappet as part of the hiring proces as a Fullstack Software Developer. This README, as well as the program itself, is written in English, since this is the language of choice for documentation at Snappet. However, the output of the program is written in Dutch, since Snappet operates in a Dutch-spoken environment.
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+The minimal requirement of the challenge states that the teacher want's to know what the class worked on today. The proposed solution creates a daily report for the teacher. The report includes the progress per pupil, per subject. Furthermore, the number of total exercises and the number of correct exercises has been included as well. The pupils have been ordered descendingly by the total progress that they made during the day.
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+This solution has been chosen because I think that it's important for a teacher to be able to see the progress of a class per student, and thus not per class. A teachers job is to teach and support all pupils individually after all. I believe that this report gives insight in the progress of the pupils, the teacher can quickly see which pupils are excelling and which are lacking behind. Besides, the teacher has insight in what kind of subjects the pupils are working most on. The 'domain' and 'learning objective' have not been included in the report, to keep the representation of the data clear and simple.
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+Lastly, the proposed solution is a prototype for what a real report could like look. In reality, a proper front-end should obviously be build to serve the data from the program.
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+---
+## Prerequisites 
+You will need only Python3 installed in your environment.
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+### Run
+    $ pyton snappet.py
+    
+### Test
+	$ python test_snappet.py
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Typescript en Angular. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+
+## Assumptions & design decicions
+### Python
+Besides the fact that Snappet works with  C#, .NET, Typescript and Angular; Python has been selected as my language of choice. Since python offers a quick, clean and simple solution to basic use-cases, it seemed to be the best fit for this project. I am a fan of language-agnostic programming, where the tools on chosen based on the job and not the other way around.
+
+### CSV as input file
+The work.csv file has been chosen as the input file for data, instead of the work.json. CSV has the advantage over JSON that it uses less bandwith (JSON is more verbose), processes faster (csv only has to be split, JSON has to be interpret) and can be parsed sequentially (JSON has to be parsed and loaded into memory all at once).
+
+### Data integrity
+Full data integrity of the work.csv file is expected, the program doesn't include extensive exception handling.
+
+### Chronologic order
+The supplied work.csv file seemed to be chronologically ordered. The assumptation has been made that this will always be the case. This characteristic has been used in our advantage; the program searches for the results of the desired day, processes them, and then stops reading new lines and exits.
+
+### No docstrings
+Code documentation in the form of docstrings aren't provided for the sake of time for a technical challenge.
+
+
