@@ -5,12 +5,15 @@
   "main": "config.js",
   "scripts": {
     "build": "webpack --mode production",
-    "client:start": "webpack-dev-server --hot"
+    "client:start": "webpack-dev-server --hot",
+    "server:start": "npm run start --prefix Server",
+    "start": "concurrently \"npm run server:start\" \"npm run client:start\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^5.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
