@@ -1,7 +1,11 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const luxon = require('luxon');
+
+const app = express();
 const port = 9000;
+const workJson = require('../Data/work.json');
+const now = '2015-03-24 11:30:00 UTC';
 
 app.use(cors());
 
