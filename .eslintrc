@@ -1,0 +1,11 @@
+{
+  "extends": ["warp/es6", "warp/jsx"],
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "overrides": [{
+      "files": ["webpack.config.js"],
+      "extends": ["warp/node"]
+    }]
+  }
