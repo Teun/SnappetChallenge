@@ -1,11 +1,22 @@
-import React from 'react';
-import {useDispatch} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import 'reset-css';
+import {groupBy, view} from 'ramda';
 
 import bobRoss from '../assets/img/bobRoss.jpg';
-import {setByDomain} from '../redux/actions/data';
+import {
+  setRawData,
+  setIsLoading,
+  setByUserId,
+  setByDomain,
+} from '../redux/actions/data';
+import {
+  isLoadingState,
+  byUserIdState,
+  byDomainState
+} from '../redux/reducers/data';
 
 const happyLittleTree = `Join me, as we produce coloured depictions of
 vertically challenged fauna with a positive mindset.`;
@@ -28,8 +39,27 @@ const BobRoss = styled.img`
 
 export const App = () => {
 
-  const dispatch = useDispatch();
+  const isLoading = useSelector(view(isLoadingState));
+  const byUserId = useSelector(view(byUserIdState));
+  const byDomain = useSelector(view(byDomainState));
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setIsLoading(true));
+    axios({
+      method: 'get',
+      url: 'http://localhost:9000/dataset',
+    })
+    .then(({data}) => dispatch(setRawData(data)))
+    .then(({payload}) => {
+      dispatch(setByUserId(groupBy(x => x.UserId, payload)));
+      dispatch(setByDomain(groupBy(x => x.Domain, payload)));
+    })
+    .then(dispatch(setIsLoading(false)));
+  }, []);
+  console.log(isLoading);
+  console.log(byUserId);
+  console.log(byDomain);
   return (
     <Container className="HappyLittleTree">
       <BobRoss
@@ -39,15 +69,6 @@ export const App = () => {
       <h1 style={{background: 'rgba(0,0,0,0)'}}>
         {happyLittleTree}
       </h1>
-      <button onClick={() =>
-        axios({
-          method: 'get',
-          url: 'http://localhost:9000/dataset',
-        })
-        .then(({data}) => dispatch(setByDomain(data)))}
-      >
-        Click me
-      </button>
     </Container>
   );
 };
