@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import bobRoss from '../assets/img/bobRoss.jpg';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -20,10 +20,10 @@ const Container = styled.div`
 const BobRoss = styled.img`
   margin: 16px;
   border-radius: 80px;
+  height: 70%;
 `;
 
 export const App = () => {
-  const [bobRossQuote, setBobRossQuote] = useState('');
 
   return (
     <Container className="HappyLittleTree">
@@ -32,15 +32,14 @@ export const App = () => {
         alt={happyLittleTree}
       />
       <h1 style={{background: 'rgba(0,0,0,0)'}}>
-        {bobRossQuote}
+        {happyLittleTree}
       </h1>
       <button onClick={() =>
         axios({
           method: 'get',
-          url: 'http://localhost:9000/bobRoss',
-          responseType: 'stream'
+          url: 'http://localhost:9000/dataset',
         })
-        .then(({data}) => setBobRossQuote(data))}
+        .then(({data}) => console.log(data))}
       >
         Click me
       </button>
