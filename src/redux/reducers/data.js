@@ -1,42 +1,33 @@
 import {compose, set, lensPath} from 'ramda';
 
+import {persistentLens, temporaryLens} from './_lenses';
 import {
-  setRawData,
-  setIsLoading,
+  setFocusedUser,
   setByUserId,
   setByDomain,
 } from '../actions/data';
 import {handleActions, defaultTo} from '../../utils/state';
 
-const baseLens = lensPath(['root']);
-
-export const rawDataState = compose(
-  baseLens,
-  lensPath(['rawData']),
+export const byUserIdState = compose(
+  persistentLens,
+  lensPath(['byUserId']),
   defaultTo([]),
 );
 
-export const isLoadingState = compose(
-  baseLens,
-  lensPath(['isLoading']),
-  defaultTo(false),
-);
-
-export const byUserIdState = compose(
-  baseLens,
-  lensPath(['byUserId']),
+export const byDomainState = compose(
+  persistentLens,
+  lensPath(['byDomain']),
   defaultTo({}),
 );
 
-export const byDomainState = compose(
-  baseLens,
+export const focusedUserState = compose(
+  temporaryLens,
   lensPath(['byDomain']),
   defaultTo({}),
 );
 
 export default handleActions({
-  [setRawData]: set(rawDataState),
-  [setIsLoading]: set(isLoadingState),
   [setByUserId]: set(byUserIdState),
   [setByDomain]: set(byDomainState),
+  [setFocusedUser]: set(focusedUserState),
 });
