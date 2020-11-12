@@ -18,8 +18,8 @@ export const App = () => {
       url: 'http://localhost:9000/todaysResults',
     })
     .then(({data}) => {
-      dispatch(setByUserId(data.userResultsPerDomain));
-      dispatch(setByDomain(data.classResultsPerDomain));
+      dispatch(setByUserId(data.DomainResultsPerUser));
+      dispatch(setByDomain(data.DomainResultsWholeClassroom));
     });
   }, []);
   return (

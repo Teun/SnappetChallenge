@@ -8,21 +8,23 @@ import {
 } from '../actions/data';
 import {handleActions, defaultTo} from '../../utils/state';
 
+const dataLens = compose(persistentLens, lensPath(['data']));
+
 export const byUserIdState = compose(
-  persistentLens,
+  dataLens,
   lensPath(['byUserId']),
   defaultTo([]),
 );
 
 export const byDomainState = compose(
-  persistentLens,
+  dataLens,
   lensPath(['byDomain']),
   defaultTo({}),
 );
 
 export const focusedUserState = compose(
   temporaryLens,
-  lensPath(['byDomain']),
+  lensPath(['focusedUser']),
   defaultTo({}),
 );
 

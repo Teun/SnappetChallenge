@@ -17,8 +17,8 @@ app.use(cors());
 
 app.get('/todaysResults', (req, res) => {
   res.send({
-    classResultsPerDomain: getDomainResults(todaysData),
-    userResultsPerDomain: groupByUserIdAndDomain(todaysData)
+    DomainResultsWholeClassroom: getDomainResults(todaysData),
+    DomainResultsPerUser: groupByUserIdAndDomain(todaysData)
   });
 });
 

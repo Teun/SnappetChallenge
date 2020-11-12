@@ -6,15 +6,15 @@ const getDomainResults = entries => entries.reduce((acc, cur) =>
   !acc[cur.Domain] ?
     {
       [cur.Domain]: {
-        aantal: 1,
-        progressie: cur.Progress
+        amount: 1,
+        progression: cur.Progress
       },
       ...acc
     } :
     {
       [cur.Domain]: {
-        aantal: acc[cur.Domain].aantal += 1,
-        progressie: acc[cur.Domain].progressie += cur.Progress,
+        amount: acc[cur.Domain].amount += 1,
+        progression: acc[cur.Domain].progression += cur.Progress,
       },
       ...acc
     }

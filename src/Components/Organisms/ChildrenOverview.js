@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import {SvgIcon, Tooltip} from '@material-ui/core';
 import {Person} from '@material-ui/icons';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {view} from 'ramda';
+
+import {
+  setFocusedUser,
+} from '../../redux/actions/data';
 import {byUserIdState} from '../../redux/reducers/data';
 
 const Container = styled.div`
@@ -11,8 +15,8 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const styles = {
-  color: 'red',
+const profileSvgStyles = {
+  color: '#ff6f00',
   height: '128px',
   width: '128px',
   padding: '-12px',
@@ -21,14 +25,18 @@ const styles = {
 };
 
 const ChildrenOverview = () => {
-
+  const dispatch = useDispatch();
   const byUserId = useSelector(view(byUserIdState));
 
   return (
     <Container>
-      {byUserId.map(({UserId}) =>
-        <Tooltip key={UserId} title={`ID = ${UserId}`}>
-          <SvgIcon component={Person} style={styles} onClick={() => console.log('joehoe')} />
+      {byUserId.map(user =>
+        <Tooltip key={user.UserId} title={`ID = ${user.UserId}`}>
+          <SvgIcon
+            component={Person}
+            style={profileSvgStyles}
+            onClick={() => dispatch(setFocusedUser(user))}
+          />
         </Tooltip>
       )}
     </Container>
