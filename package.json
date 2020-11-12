@@ -1,13 +1,15 @@
 {
   "name": "snappetchallenge",
   "version": "1.0.0",
-  "description": "## initialisation",
+  "description": "My take on the snappet challenge.",
   "main": "config.js",
   "scripts": {
     "build": "webpack --mode production",
     "client:start": "webpack-dev-server --hot",
     "server:start": "npm run start --prefix Server",
-    "start": "concurrently \"npm run server:start\" \"npm run client:start\""
+    "start": "concurrently \"npm run server:start\" \"npm run client:start\"",
+    "both:install": "npm install && npm install --prefix Server",
+    "GoGoGadgetSnappet": "npm run both:install && npm run start"
   },
   "keywords": [],
   "author": "",
