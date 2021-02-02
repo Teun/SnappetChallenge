@@ -1,0 +1,311 @@
+﻿
+@model Assignment.ViewModel.ClassDataViewModel
+<html>
+<head>
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script>
+        window.onload = function () {
+
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+
+            var chartProgress = new CanvasJS.Chart("chartContainerProgress", {
+                animationEnabled: true,
+                theme: "dark2",
+                title: {
+                    text: "Average Class Progress"
+                },
+                axisY: {
+                    title: "Progress Rate (in %)",
+                    suffix: "%"
+                },
+                axisX: {
+                    title: "Period"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.0#\"%\"",
+                    dataPoints: [
+                        { label: "Current Day", y: @Html.Raw(Json.Encode(Model.CurrentProgressAvg))* 100 },
+                        { label: "Current Week", y: @Html.Raw(Json.Encode(Model.WeeklyProgressAvg))* 100 },
+                        { label: "Current Month", y: @Html.Raw(Json.Encode(Model.MonthlyProgressAvg)) * 100},
+                       ]
+                }]
+            });
+
+            var chartStudent = new CanvasJS.Chart("chartContainerStudent", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "No of Students"
+                },
+                axisY: {
+                    title: "Count",
+                    suffix: ""
+                },
+                axisX: {
+                    title: "Period"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0#\"\"",
+                    dataPoints: [
+                        { label: "Current Day", y: @Html.Raw(Json.Encode(Model.CurrentUserIdCount))},
+                        { label: "Current Week", y: @Html.Raw(Json.Encode(Model.WeeklyUserIdCount)) },
+                        { label: "Current Month", y: @Html.Raw(Json.Encode(Model.MonthlyUserIdCount))},
+                    ]
+                }]
+            });
+
+            var chartExercise = new CanvasJS.Chart("chartContainerExercise", {
+                animationEnabled: true,
+                  theme: "dark2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "Total Execises Done"
+                },
+                axisY: {
+                    title: "Count",
+                    suffix: ""
+                },
+                axisX: {
+                    title: "Period"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0#\"\"",
+                    dataPoints: [
+                        { label: "Current Day", y: @Html.Raw(Json.Encode(Model.CurrentExerciseIdCount))},
+                        { label: "Current Week", y: @Html.Raw(Json.Encode(Model.WeeklyExerciseIdCount)) },
+                        { label: "Current Month", y: @Html.Raw(Json.Encode(Model.MonthlyExerciseIdCount))},
+                    ]
+                }]
+            });
+
+            chartProgress.render();
+            chartStudent.render();
+            chartExercise.render();
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .svcs-container {
+     /*       margin-top: 1px;*/
+            background-color: lightcyan;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin: 03px 0 15px;
+            font-weight: 800;
+            color: darkslateblue;
+            text-transform: uppercase;
+            align-content: center
+        }
+
+        .hoverServices:hover {
+            background-color: #f2f2f2;
+        }
+
+        .services-box.last {
+            border-right: 0;
+        }
+
+        .labelContainer {
+            color: #ff006e;
+        }
+
+        .collapsible {
+            background-color: lightcyan;
+            color: #ff006e;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+            .active, .collapsible:hover {
+                background-color: #ccc;
+            }
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div style="width:75%" class="container svcs-container">
+        <h3 class="services-subheading align">
+            Class Dashboard-@Html.Raw(Json.Encode(Model.CurrentDateTime))
+        </h3>
+        <div class="row">
+
+            <div class="col-sm-3 services-box hoverServices" style="background-color: lightcoral">
+
+                <div id="chartContainerProgress" style="height: 170px; width: 100%;"></div>
+                <div id="chartContainerStudent" style="height: 170px; width: 100%;"></div>
+                <div id="chartContainerExercise" style="height: 170px; width: 100%;"></div>
+            </div>
+
+            <div class="col-sm-3 services-box hoverServices">
+                <h3 class="services-subheading">
+                    Current Day
+                </h3>
+
+                <div class="labelContainer">Submitted Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.CurrentAnswerCount)) </li>
+                </ul>
+
+                <div class="labelContainer">Correct Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.CurrentCorrectCount)) </li>
+                </ul>
+                <div class="labelContainer">InCorrect Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.CurrentInCorrectCount)) </li>
+                </ul>
+                <div class="labelContainer">Subject</div>
+                <ul>
+                    @foreach (var item in Model.CurrentSubjectList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+
+                <button type="button" class="collapsible">Domain(Click to View)</button>
+                <ul class="content">
+                    @foreach (var item in Model.CurrentDomainList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+
+                <button type="button" class="collapsible">Learning Objective(Click to View)</button>
+                <ul class="content">
+                    @foreach (var item in Model.CurrentLearningObjectiveList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="col-sm-3 services-box hoverServices">
+                <h3 class="services-subheading">
+                    Current Week
+                </h3>
+
+                <div class="labelContainer">Submitted Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.WeeklyAnswerCount)) </li>
+                </ul>
+
+                <div class="labelContainer">Correct Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.WeeklyCorrectCount)) </li>
+                </ul>
+                <div class="labelContainer">InCorrect Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.WeeklyInCorrectCount)) </li>
+                </ul>
+
+                <div class="labelContainer">Subject</div>
+                <ul>
+                    @foreach (var item in Model.WeeklySubjectList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+
+                <button type="button" class="collapsible">Domain(Click to View)</button>
+                <ul class="content">
+                    @foreach (var item in Model.WeeklyDomainList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+
+                <button type="button" class="collapsible">Learning Objective(Click to View)</button>
+                <ul class="content">
+                    @foreach (var item in Model.WeeklyLearningObjectiveList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="col-sm-3 services-box hoverServices">
+                <h3 class="services-subheading">
+                    Current Month
+                </h3>
+
+                <div class="labelContainer">Submitted Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.MonthlyAnswerCount)) </li>
+                </ul>
+
+                <div class="labelContainer">Correct Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.MonthlyCorrectCount)) </li>
+                </ul>
+                <div class="labelContainer">InCorrect Answers</div>
+                <ul>
+                    <li> @Html.Raw(Json.Encode(Model.MonthlyInCorrectCount)) </li>
+                </ul>
+                <div class="labelContainer">Subject</div>
+                <ul>
+                    @foreach (var item in Model.MonthlySubjectList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+
+                <button type="button" class="collapsible">Domain(Click to View)</button>
+                <ul class="content">
+                    @foreach (var item in Model.MonthlyDomainList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+
+                <button type="button" class="collapsible">Learning Objective(Click to View)</button>
+                <ul class="content">
+                    @foreach (var item in Model.MonthlyLearningObjectiveList)
+                    {
+                        <li> @item </li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
