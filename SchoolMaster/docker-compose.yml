@@ -6,11 +6,16 @@ services:
     build:
       context: .
       dockerfile: SchoolMaster/Dockerfile
+    depends_on:
+        - db
   schoolmaster.frontend:
     image: ${DOCKER_REGISTRY-}schoolmaster
     build:
         context: .
         dockerfile: SchoolMaster.Frontend/Dockerfile
+    depends_on:
+        - schoolmaster
+        - db
   db:
     image: mcr.microsoft.com/mssql/server:2019-latest
   
