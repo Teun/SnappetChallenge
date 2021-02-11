@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  schoolmaster:
+    image: ${DOCKER_REGISTRY-}schoolmaster
+    build:
+      context: .
+      dockerfile: SchoolMaster/Dockerfile
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  

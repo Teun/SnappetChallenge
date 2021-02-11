@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  schoolmaster:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "81:80"
+      - "444:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  db:
+    environment:
+        SA_PASSWORD: "123456q!"
+        ACCEPT_EULA: "Y"
+    ports:
+        - 1433:1433
+    volumes: 
+        - ../data:/var/opt/mssql/data
