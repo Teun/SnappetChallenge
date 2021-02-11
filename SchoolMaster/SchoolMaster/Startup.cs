@@ -40,6 +40,8 @@ namespace SchoolMaster
             services.AddTransient<IWorkProgressReportService, WorkProgressReportService>();
             services.AddTransient<IDateTimeService, DateTimeService>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ISubmissionReportService, SubmissionReportService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
