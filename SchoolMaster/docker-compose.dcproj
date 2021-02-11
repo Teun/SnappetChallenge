@@ -5,7 +5,7 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>cd6dd448-8359-4dae-84ce-97ddc187f938</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
+    <DockerServiceUrl>http://localhost:8081</DockerServiceUrl>
     <DockerServiceName>schoolmaster</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
