@@ -1,28 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SchoolMaster.Database;
+﻿using SchoolMaster.Database;
 using SchoolMaster.Database.Repositories;
-using Xunit;
 
 namespace SchoolMaster.Tests.Fixtures
 {
     public class RepositoryFixtures
     {
         private WorkDbContext _workDbContext;
-        public IWorkRepository WorkRepository { get; private set; }
 
         public RepositoryFixtures()
         {
             Setup();
         }
 
+        public IWorkRepository WorkRepository { get; private set; }
+        public IUserRepository UserRepository { get; private set; }
+
         private void Setup()
         {
-            _workDbContext = (new WorkDbContextFixture()).DbContext;
+            _workDbContext = new WorkDbContextFixture().DbContext;
             WorkRepository = new WorkRepository(_workDbContext);
+            UserRepository = new UserRepository(_workDbContext);
         }
     }
 }

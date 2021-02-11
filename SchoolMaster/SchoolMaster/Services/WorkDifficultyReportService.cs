@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using SchoolMaster.Database;
 using SchoolMaster.Database.QueryModels;
 using SchoolMaster.Database.Repositories;
 
@@ -11,8 +9,8 @@ namespace SchoolMaster.Services
 {
     public class WorkDifficultyReportService : IWorkDifficultyReportService
     {
-        private readonly IWorkRepository _workRepository;
         private readonly IDateTimeService _dateTimeService;
+        private readonly IWorkRepository _workRepository;
 
         public WorkDifficultyReportService(IWorkRepository workRepository, IDateTimeService dateTimeService)
         {
@@ -20,7 +18,7 @@ namespace SchoolMaster.Services
             _dateTimeService = dateTimeService;
         }
 
-        public async Task<ICollection<AggregateResultSet<int, double>>> GetAverageDifficultyAsync(DateTime startDate
+        public async Task<ICollection<HourValuePair>> GetAverageDifficultyAsync(DateTime startDate
             , DateTime endDate
             , CancellationToken cancellationToken = default)
         {

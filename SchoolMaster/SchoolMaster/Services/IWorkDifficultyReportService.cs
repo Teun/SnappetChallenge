@@ -8,6 +8,7 @@ namespace SchoolMaster.Services
 {
     public interface IWorkDifficultyReportService
     {
-        Task<ICollection<AggregateResultSet<int, double>>> GetAverageDifficultyAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default);
+        Task<ICollection<HourValuePair>> GetAverageDifficultyAsync(DateTime startDate, DateTime endDate,
+            CancellationToken cancellationToken = default);
     }
 }

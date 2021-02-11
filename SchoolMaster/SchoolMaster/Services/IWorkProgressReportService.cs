@@ -7,6 +7,7 @@ namespace SchoolMaster.Services
 {
     public interface IWorkProgressReportService
     {
-        Task<ProgressReportDto> GetProgressReportAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default);
+        Task<ProgressReportDto> GetProgressReportAsync(DateTime startDate, DateTime endDate,
+            CancellationToken cancellationToken = default);
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+using SchoolMaster.Database.QueryModels;
+using SchoolMaster.Models;
+using SchoolMaster.Models.DataTransferObjects;
 
 namespace SchoolMaster.Configurations
 {
@@ -10,7 +9,10 @@ namespace SchoolMaster.Configurations
     {
         public MappingProfile()
         {
+            CreateMap<User, UserDto>()
+                .ForMember(u => u.FullName, opt => opt.MapFrom(m => $"{m.Firstname.Trim()} {m.LastName.Trim()}"));
 
+            CreateMap<SubmissionCount, SubmissionCountDto>();
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Data;
-using System.Data.SqlClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -36,11 +34,12 @@ namespace SchoolMaster
                 builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper(typeof(Startup));
-            
+
             services.AddTransient<IWorkRepository, WorkRepository>();
             services.AddTransient<IWorkDifficultyReportService, WorkDifficultyReportService>();
             services.AddTransient<IWorkProgressReportService, WorkProgressReportService>();
             services.AddTransient<IDateTimeService, DateTimeService>();
+            services.AddTransient<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

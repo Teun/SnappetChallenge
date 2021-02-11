@@ -9,6 +9,7 @@ namespace SchoolMaster.Tests.UnitTests.Services
     public class DataTimeServiceTests : IClassFixture<DateTimeServiceFixture>
     {
         private readonly IDateTimeService _dateTimeService;
+
         public DataTimeServiceTests(DateTimeServiceFixture dateTimeServiceFixture)
         {
             _dateTimeService = dateTimeServiceFixture.DateTimeService;

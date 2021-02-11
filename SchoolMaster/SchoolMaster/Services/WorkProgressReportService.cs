@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using SchoolMaster.Database.Repositories;
 using SchoolMaster.Models.DataTransferObjects;
 
@@ -11,14 +8,12 @@ namespace SchoolMaster.Services
 {
     public class WorkProgressReportService : IWorkProgressReportService
     {
-        private readonly IWorkRepository _repository;
-        private readonly IMapper _mapper;
         private readonly IDateTimeService _dateTimeService;
+        private readonly IWorkRepository _repository;
 
-        public WorkProgressReportService(IWorkRepository repository, IMapper mapper, IDateTimeService dateTimeService)
+        public WorkProgressReportService(IWorkRepository repository, IDateTimeService dateTimeService)
         {
             _repository = repository;
-            _mapper = mapper;
             _dateTimeService = dateTimeService;
         }
 

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentAssertions;
-using Moq.Language;
 using SchoolMaster.Database.Repositories;
 using SchoolMaster.Services;
 using SchoolMaster.Tests.Fixtures;
@@ -13,15 +10,15 @@ using Xunit;
 
 namespace SchoolMaster.Tests.UnitTests.Services
 {
-    public class ProgressReportService : IClassFixture<Fixtures.AutoMapperFixture>
-        , IClassFixture<Fixtures.RepositoryFixtures>
-        , IClassFixture<Fixtures.DateTimeServiceFixture>
+    public class ProgressReportServiceTests : IClassFixture<AutoMapperFixture>
+        , IClassFixture<RepositoryFixtures>
+        , IClassFixture<DateTimeServiceFixture>
     {
+        private readonly DateTimeServiceFixture _dateTimeFixture;
         private readonly IMapper _mapper;
         private readonly IWorkRepository _workRepository;
-        private readonly DateTimeServiceFixture _dateTimeFixture;
 
-        public ProgressReportService(AutoMapperFixture mapperFixture
+        public ProgressReportServiceTests(AutoMapperFixture mapperFixture
             , RepositoryFixtures repositoryFixtures
             , DateTimeServiceFixture dateTimeServiceFixture)
         {
@@ -34,7 +31,7 @@ namespace SchoolMaster.Tests.UnitTests.Services
         public async Task GetProgressReportAsync_Should_Return_Data()
         {
             // arrange
-            var service = new WorkProgressReportService(_workRepository, _mapper
+            var service = new WorkProgressReportService(_workRepository
                 , _dateTimeFixture.DateTimeService);
 
             // act
@@ -52,7 +49,7 @@ namespace SchoolMaster.Tests.UnitTests.Services
         public async Task GetProgressReportAsync_WhenDateGreaterThanNow_Should_ThrowException()
         {
             // arrange
-            var service = new WorkProgressReportService(_workRepository, _mapper
+            var service = new WorkProgressReportService(_workRepository
                 , _dateTimeFixture.DateTimeService);
 
             var dateGreaterThan2015 = DateTime.Now;

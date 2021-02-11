@@ -8,16 +8,20 @@ namespace SchoolMaster.Database.Repositories
 {
     public interface IWorkRepository
     {
-        Task<ICollection<AggregateResultSet<int, double>>> GetAverageProgress(DateTime from, DateTime end,
+        Task<ICollection<HourValuePair>> GetAverageProgress(DateTime from, DateTime end,
             CancellationToken cancellationToken = default);
 
-        Task<ICollection<AggregateResultSet<int, double>>> GetMinProgress(DateTime from, DateTime end,
+        Task<ICollection<HourValuePair>> GetMinProgress(DateTime from, DateTime end,
             CancellationToken cancellationToken = default);
 
-        Task<ICollection<AggregateResultSet<int, double>>> GetMaxProgress(DateTime from, DateTime end,
+        Task<ICollection<HourValuePair>> GetMaxProgress(DateTime from, DateTime end,
             CancellationToken cancellationToken = default);
 
-        Task<ICollection<AggregateResultSet<int, double>>> GetAverageDifficultyAsync(DateTime from, DateTime end,
+        Task<ICollection<HourValuePair>> GetAverageDifficultyAsync(DateTime from, DateTime end,
+            CancellationToken cancellationToken = default);
+
+        Task<ICollection<SubmissionCount>> GetSubmissionCountByUserIdAsync(DateTime from, DateTime end,
+            int userId = default,
             CancellationToken cancellationToken = default);
     }
 }
