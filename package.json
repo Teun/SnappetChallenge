@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "lint": "eslint .",
+    "test": "npm run lint",
+    "dev-server": "node -r esm src/server/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +18,19 @@
     "node": ">=14.15.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
     "eslint": "^7.20.0",
-    "eslint-config-warp": "^4.0.0"
+    "eslint-config-standard-react": "^11.0.1",
+    "eslint-config-warp": "^4.0.0",
+    "eslint-plugin-atomic-design": "^0.2.2",
+    "eslint-plugin-jest": "^24.1.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
   }
 }
