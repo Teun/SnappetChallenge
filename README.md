@@ -11,6 +11,7 @@ to a professer (user).
 - [Workflow](#Workflow)
 - [Development](#Development)
   - [Requirements](#Requirements)
+  - [Environment variables](#Environment%20variables)
   - [Running](#Running)
   - [Testing](#Testing)
   - [Deployment](#Deployment)
@@ -35,17 +36,30 @@ in this repository due its simplicity and velocity need for this kind of project
 ## Development
 
 The main technologies used in this project are: [NodeJs](https://nodejs.org/en/) for running the
-backend and all scripts tasks and [ReactJs](https://reactjs.org/) for the frontend application.
+backend and all scripts tasks, [ESM](https://www.npmjs.com/package/esm) for ECMAScript module loader
+and [ReactJs](https://reactjs.org/) for the frontend application.
 
 ### Requirements
 
 NodeJs >= 14.15.x
+MongoDB >= 4.4.x
+
+### Environment variables
+
+For running the app in development is necessary to create a `.env` file. You can use the sample
+located at the root path of this project or use the example bellow as input:
+
+```bash
+PORT=4000
+MONGODB_URI=mongodb://127.0.0.1:27017/snappet
+```
 
 ### Running
 
 ```bash
 npm install
-npm run dev # runs for development mode
+npm run populate-db # populate the mongo database with the work.json data
+npm run dev # run development mode
 ```
 
 ### Testing
@@ -53,10 +67,10 @@ npm run dev # runs for development mode
 This project contains linting and unit tests. Bellow you can find how to execute each of them:
 
 ```bash
-npm run lint # runs linting tests only
-npm run unit # runs unit tests only
+npm run lint # run linting tests only
+npm run unit # run unit tests only
 
-npm test # runs unit and linting tests
+npm test # run unit and linting tests
 ```
 
 ### Deployment

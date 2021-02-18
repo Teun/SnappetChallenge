@@ -5,3 +5,11 @@
 * Add initial code and folder structure
 * Add README.md
 * Add CHANGELOG.md
+
+# Day 1 [18 Feb 2021]
+
+* Add web server with expressjs and mongodb
+* Add healthcheck endpoint
+* Add exercises endpoint with pagination
+* Add populate-db script to load data into mongodb
+* Add environment variables strategy with .env

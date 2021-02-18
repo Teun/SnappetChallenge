@@ -29,7 +29,7 @@
               "components/atoms",
               "components/molecules",
               "=components/organisms",
-              "components/pages",
+              "components/pages"
             ]
           }
         ]
@@ -41,7 +41,10 @@
         "warp/es6"
       ],
       "files": [
-        "src/server/**/*.js"
+        "src/server/**/*.js",
+        "src/model/**/*.js",
+        "src/data/**/*.js",
+        "*.js"
       ],
       "globals": {
         "require": true
