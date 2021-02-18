@@ -1,0 +1,66 @@
+{
+  "root": true,
+  "parser": "@babel/eslint-parser",
+  "extends": [
+    "warp/es6",
+    "warp/node",
+    "plugin:react-hooks/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "src/client/**/*.js"
+      ],
+      "extends": [
+        "warp/jsx"
+      ],
+      "env": {
+        "browser": true
+      },
+      "plugins": [
+        "atomic-design",
+        "react-hooks"
+      ],
+      "rules": {
+        "atomic-design/hierarchical-import": [
+          2,
+          {
+            "levels": [
+              "components/atoms",
+              "components/molecules",
+              "=components/organisms",
+              "components/pages",
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "extends": [
+        "warp/module",
+        "warp/es6"
+      ],
+      "files": [
+        "src/server/**/*.js"
+      ],
+      "globals": {
+        "require": true
+      }
+    },
+    {
+      "files": [
+        "**/*.test.js"
+      ],
+      "plugins": [
+        "jest"
+      ],
+      "rules": {
+        "atomic-design/hierarchical-import": "off",
+        "max-nested-callbacks": "off"
+      },
+      "env": {
+        "jest/globals": true
+      }
+    }
+  ]
+}
