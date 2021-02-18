@@ -3,8 +3,8 @@
 This repository was originally forked from https://github.com/Snappet/SnappetChallenge and its
 purpose is to display in an user friendly interface the data provided in `./Data/work.{csv|json}`.
 
-The target user of this application are professors and the source of its data (csv/json) are the
-scores of the students of a speficic class.
+The goal of this application is to show in an interface the data from students of a specific class
+to a professer (user).
 
 ## Reference
 
@@ -29,22 +29,38 @@ For the purpose of this challenge I'm opening and closing my own PR inside the f
 This helps me to review my own code and helps me to organize the "features" and changes that I'm
 building.
 
+I used the [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+in this repository due its simplicity and velocity need for this kind of project.
+
 ## Development
 
 The main technologies used in this project are: [NodeJs](https://nodejs.org/en/) for running the
-backend and all scripts tasks and [ReactJs](https://reactjs.org/) for the creating of the frontend
-application.
+backend and all scripts tasks and [ReactJs](https://reactjs.org/) for the frontend application.
 
 ### Requirements
 
+NodeJs >= 14.15.x
 
 ### Running
 
+```bash
+npm install
+npm run dev # runs for development mode
+```
 
 ### Testing
 
+This project contains linting and unit tests. Bellow you can find how to execute each of them:
+
+```bash
+npm run lint # runs linting tests only
+npm run unit # runs unit tests only
+
+npm test # runs unit and linting tests
+```
 
 ### Deployment
+
 
 
 ## Copyright
