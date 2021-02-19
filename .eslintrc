@@ -43,7 +43,9 @@
     },
     {
       "files": [
-        "**/*.test.js"
+        "**/*.test.js",
+        "**/__tests__/*.js",
+        "**/__mocks__/*.js"
       ],
       "plugins": [
         "jest"
