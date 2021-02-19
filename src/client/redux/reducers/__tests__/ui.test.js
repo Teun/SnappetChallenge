@@ -1,7 +1,11 @@
 import {set, view} from 'ramda';
 
-import reducer, {isLoadingState, snackbarState} from '../ui';
-import {setIsLoading, unsetIsLoading, showSnackbar, hideSnackbar} from '../../actions/ui';
+import reducer, {drawerIsOpenState, isLoadingState, snackbarState} from '../ui';
+import {
+  setIsLoading, unsetIsLoading,
+  showSnackbar, hideSnackbar,
+  showDrawer, hideDrawer
+} from '../../actions/ui';
 
 import {SnackbarType} from '../../../constants';
 
@@ -59,5 +63,26 @@ describe('reducers', () => {
         ]);
       });
     });
+
+    describe('showDrawer', () => {
+      test('should set the state true to show the drawer', () => {
+        const store = set(drawerIsOpenState, false, {});
+
+        const newStore = reducer(store, showDrawer());
+        const result = view(drawerIsOpenState, newStore);
+
+        expect(result).toBeTruthy();
+      });
+
+      test('should set the state false to hide the drawer', () => {
+        const store = set(drawerIsOpenState, true, {});
+
+        const newStore = reducer(store, hideDrawer());
+        const result = view(drawerIsOpenState, newStore);
+
+        expect(result).toBeFalsy();
+      });
+    });
+
   });
 });

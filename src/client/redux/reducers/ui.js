@@ -1,22 +1,32 @@
-import {compose, lensPath, over, append, add, flip, subtract, lensProp, drop} from 'ramda';
+import {compose, over, append, add, flip, subtract, lensProp, drop, set, always} from 'ramda';
 import {v4 as uuid} from 'uuid';
 
 import {handleActions, defaultTo} from '../../utils/state';
 
-import {setIsLoading, unsetIsLoading, showSnackbar, hideSnackbar} from '../actions/ui';
+import {
+  setIsLoading, unsetIsLoading,
+  showSnackbar, hideSnackbar,
+  showDrawer, hideDrawer
+} from '../actions/ui';
 
 export const uiLens = lensProp('UI');
 
 export const isLoadingState = compose(
   uiLens,
-  lensPath(['isLoading']),
+  lensProp('isLoading'),
   defaultTo(0)
 );
 
 export const snackbarState = compose(
   uiLens,
-  lensPath(['snackbar']),
+  lensProp('snackbar'),
   defaultTo([])
+);
+
+export const drawerIsOpenState = compose(
+  uiLens,
+  lensProp('drawerIsOpen'),
+  defaultTo(false)
 );
 
 export default handleActions({
@@ -27,4 +37,6 @@ export default handleActions({
     append({text, severity, id: uuid()})
   ),
   [hideSnackbar]: () => over(snackbarState, drop(1)),
+  [showDrawer]: always(set(drawerIsOpenState, true)),
+  [hideDrawer]: always(set(drawerIsOpenState, false)),
 });
