@@ -4,6 +4,7 @@
   "extends": [
     "warp/es6",
     "warp/node",
+    "plugin:react/recommended",
     "plugin:react-hooks/recommended"
   ],
   "overrides": [
@@ -12,7 +13,8 @@
         "src/client/**/*.js"
       ],
       "extends": [
-        "warp/jsx"
+        "warp/jsx",
+        "warp/es6"
       ],
       "env": {
         "browser": true
