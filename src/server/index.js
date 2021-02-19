@@ -23,8 +23,8 @@ app.use((req, _, next) => {
 
 app.use('/api', routes(express));
 
-app.use('/', serve(join(__dirname, '../../build/frontend')));
-app.use('*', serve(join(__dirname, '../../build/frontend')));
+app.use('/', serve(join(__dirname, '../../dist')));
+app.use('*', serve(join(__dirname, '../../dist')));
 
 server.listen(port, () => {
   console.info(`Server is running, look it at: http://0.0.0.0:${port}`);
