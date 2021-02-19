@@ -20,21 +20,10 @@
         "browser": true
       },
       "plugins": [
-        "atomic-design",
         "react-hooks"
       ],
       "rules": {
-        "atomic-design/hierarchical-import": [
-          2,
-          {
-            "levels": [
-              "components/atoms",
-              "components/molecules",
-              "=components/organisms",
-              "components/pages"
-            ]
-          }
-        ]
+        "react/display-name": "off"
       }
     },
     {

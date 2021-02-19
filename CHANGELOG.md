@@ -8,7 +8,7 @@
 * Add README.md
 * Add CHANGELOG.md
 
-# Day 1 [18 Feb 2021] (± 2:00h)
+# Day 1 [18 Feb 2021] (± 2:30h)
 
 * Add web server with expressjs and mongodb
 * Add healthcheck endpoint
@@ -19,3 +19,8 @@
 # Day 2 [19 Feb 2021]
 
 * Add webpack along with react project
+* Add continuous deployment in heroku
+  * For every new pull request, a new temporary deploy is made
+  * For every merge on develop branch, a new deploy to development channel is made
+  * Development channel: http://snappet.herokuapp.com/
+* Add and configure Material UI
