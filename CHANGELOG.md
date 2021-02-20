@@ -1,4 +1,4 @@
-# Day 0 [17 Feb 2021] (± 1:30h)
+# Day 0 [17 Feb 2021] (± 0:30h)
 
 == No code day ==
 
@@ -16,11 +16,27 @@
 * Add populate-db script to load data into mongodb
 * Add environment variables strategy with .env
 
-# Day 2 [19 Feb 2021]
+# Day 2 [19 Feb 2021] (± 2:30h)
 
 * Add webpack along with react project
 * Add continuous deployment in heroku
   * For every new pull request, a new temporary deploy is made
   * For every merge on develop branch, a new deploy to development channel is made
-  * Development channel: http://snappet.herokuapp.com/
+  * "Production" channel: http://snappet.herokuapp.com/
 * Add and configure Material UI
+* Add state management with redux
+* Add react router (connected to redux)
+
+# Day 3 [20 Feb 2021] (± 4h)
+
+* Add report screen to visualize the report data in table format
+* Add a very simple about page (the idea is just to demonstrate the app working with navigation)
+* Add filter by date in the exercises endpoint
+* Add redux saga to manage side effects
+
+# Not implemented
+
+* The reducer and logic for displaying a snackbar when the front application gets an error
+is already implemented, but to due time restrictions I did not implement the snackbar component.
+* Translation to english and dutch.
+* More e2e tests (the implemented ones are too simple)

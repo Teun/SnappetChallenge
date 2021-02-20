@@ -1,9 +1,9 @@
 # Challenge
 
 This repository was originally forked from https://github.com/Snappet/SnappetChallenge and its
-purpose is to display in an user friendly interface the data provided in `./Data/work.{csv|json}`.
+purpose is to display in a user friendly interface the data provided in `./Data/work.{csv|json}`.
 
-The goal of this application is to show in an interface the data from students of a specific class
+The goal of this application is to show the data from the students of a specific class
 to a professer (user).
 
 ## Reference
@@ -14,7 +14,6 @@ to a professer (user).
   - [Environment variables](#Environment%20variables)
   - [Running](#Running)
   - [Testing](#Testing)
-  - [Deployment](#Deployment)
 - [Copyright](#Copyright)
 - [License](#License)
 
@@ -31,7 +30,7 @@ This helps me to review my own code and helps me to organize the "features" and 
 building.
 
 I used the [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-in this repository due its simplicity and velocity need for this kind of project.
+in this repository due to its simplicity, and velocity needed for this kind of project.
 
 ## Development
 
@@ -42,12 +41,13 @@ and [ReactJs](https://reactjs.org/) for the frontend application.
 ### Requirements
 
 NodeJs >= 14.15.x
+
 MongoDB >= 4.4.x
 
 ### Environment variables
 
-For running the app in development is necessary to create a `.env` file. You can use the sample
-located at the root path of this project or use the example bellow as input:
+For running the app in development mode it is necessary to create a `.env` file.
+You can use the sample located at the root path of this project or use the example bellow as input:
 
 ```bash
 PORT=4000
@@ -64,7 +64,7 @@ npm run dev # run development mode
 
 ### Testing
 
-This project contains linting and unit tests. Bellow you can find how to execute each of them:
+This project contains linting and unit tests. Below you can find how to execute each of them:
 
 ```bash
 npm run lint # run linting tests only
@@ -72,10 +72,6 @@ npm run unit # run unit tests only
 
 npm test # run unit and linting tests
 ```
-
-### Deployment
-
-
 
 ## Copyright
 
