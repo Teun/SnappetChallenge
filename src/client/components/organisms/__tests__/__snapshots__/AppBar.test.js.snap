@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components molecules AppBar should render AppBar with the provided title 1`] = `
+exports[`components organisms AppBar should render AppBar with the provided title 1`] = `
 <header
   className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
 >
@@ -12,6 +12,7 @@ exports[`components molecules AppBar should render AppBar with the provided titl
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
       disabled={false}
       onBlur={[Function]}
+      onClick={[MockFunction]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}

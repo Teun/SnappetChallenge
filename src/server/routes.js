@@ -17,12 +17,12 @@ export default express => {
   });
 
   router.get('/exercises-results', async ({query, repositories}, res) => {
-    const limit = parseInt(query.limit, 10) || 100;
-    const skip = parseInt(query.skip, 10) || 0;
+    const from = query.from;
+    const to = query.to;
 
     try {
-      const data = await repositories.exercisesResults.getAll({limit, skip});
-      return res.status(200).send({...data, limit, skip});
+      const data = await repositories.exercisesResults.getAll({from, to});
+      return res.status(200).send({...data, from, to});
     } catch (error) {
       return res.status(500).send(error);
     }

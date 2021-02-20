@@ -1,5 +1,3 @@
-import {LocalDateTime} from 'js-joda';
-
 export const CollectionName = 'exercise-results';
 
 const create = ({
@@ -14,16 +12,16 @@ const create = ({
   Domain,
   LearningObjective,
 }) => ({
-  SubmittedAnswerId: parseInt(SubmittedAnswerId, 10),
-  SubmitDateTime: LocalDateTime.parse(SubmitDateTime),
-  Correct: Boolean(Correct),
-  Progress: parseInt(Progress, 10),
-  UserId: parseInt(UserId, 10),
-  ExerciseId: parseInt(ExerciseId, 10),
-  Difficulty: parseFloat(Difficulty),
-  Subject: String(Subject),
-  Domain: String(Domain),
-  LearningObjective: String(LearningObjective),
+  submittedAnswerId: parseInt(SubmittedAnswerId, 10),
+  submitDateTime: new Date(SubmitDateTime),
+  correct: Boolean(Correct),
+  progress: parseInt(Progress, 10),
+  userId: parseInt(UserId, 10),
+  exerciseId: parseInt(ExerciseId, 10) || 0,
+  difficulty: parseFloat(Difficulty) || 0,
+  subject: String(Subject),
+  domain: String(Domain),
+  learningObjective: String(LearningObjective),
 });
 
 export default create;

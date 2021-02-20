@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components molecules GradientBar should render GradientBar with current at 0 and maximum as 200 1`] = `
+.c0 {
+  height: 16px;
+  width: 100%;
+  position: relative;
+  background: linear-gradient( 90deg,rgba(255,0,0,1) 0%,rgba(232,255,0,1) 50%,rgba(14,255,0,1) 100% );
+}
+
+.c1 {
+  height: 22px;
+  width: 3px;
+  margin-top: -4px;
+  background-color: black;
+  margin-left: calc(0% - 1.5px);
+}
+
+.c1 span {
+  position: absolute;
+  width: 20px;
+  text-align: center;
+  margin-left: -8px;
+  margin-top: 3px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <span>
+      0
+    </span>
+  </div>
+</div>
+`;
+
+exports[`components molecules GradientBar should render GradientBar with current at 50 and maximum as 100 1`] = `
+.c0 {
+  height: 16px;
+  width: 100%;
+  position: relative;
+  background: linear-gradient( 90deg,rgba(255,0,0,1) 0%,rgba(232,255,0,1) 50%,rgba(14,255,0,1) 100% );
+}
+
+.c1 {
+  height: 22px;
+  width: 3px;
+  margin-top: -4px;
+  background-color: black;
+  margin-left: calc(25% - 1.5px);
+}
+
+.c1 span {
+  position: absolute;
+  width: 20px;
+  text-align: center;
+  margin-left: -8px;
+  margin-top: 3px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <span>
+      50
+    </span>
+  </div>
+</div>
+`;
+
+exports[`components molecules GradientBar should render GradientBar with current at 100 and maximum as 100 1`] = `
+.c0 {
+  height: 16px;
+  width: 100%;
+  position: relative;
+  background: linear-gradient( 90deg,rgba(255,0,0,1) 0%,rgba(232,255,0,1) 50%,rgba(14,255,0,1) 100% );
+}
+
+.c1 {
+  height: 22px;
+  width: 3px;
+  margin-top: -4px;
+  background-color: black;
+  margin-left: calc(50% - 1.5px);
+}
+
+.c1 span {
+  position: absolute;
+  width: 20px;
+  text-align: center;
+  margin-left: -8px;
+  margin-top: 3px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <span>
+      100
+    </span>
+  </div>
+</div>
+`;

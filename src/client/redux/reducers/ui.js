@@ -2,6 +2,7 @@ import {compose, over, append, add, flip, subtract, lensProp, drop, set, always}
 import {v4 as uuid} from 'uuid';
 
 import {handleActions, defaultTo} from '../../utils/state';
+import {rootLens} from './_lenses';
 
 import {
   setIsLoading, unsetIsLoading,
@@ -9,7 +10,7 @@ import {
   showDrawer, hideDrawer
 } from '../actions/ui';
 
-export const uiLens = lensProp('UI');
+export const uiLens = compose(rootLens, lensProp('UI'));
 
 export const isLoadingState = compose(
   uiLens,
@@ -29,6 +30,8 @@ export const drawerIsOpenState = compose(
   defaultTo(false)
 );
 
+const hideDrawerHandler = always(set(drawerIsOpenState, false));
+
 export default handleActions({
   [setIsLoading]: () => over(isLoadingState, add(1)),
   [unsetIsLoading]: () => over(isLoadingState, flip(subtract)(1)),
@@ -38,5 +41,6 @@ export default handleActions({
   ),
   [hideSnackbar]: () => over(snackbarState, drop(1)),
   [showDrawer]: always(set(drawerIsOpenState, true)),
-  [hideDrawer]: always(set(drawerIsOpenState, false)),
+  [hideDrawer]: hideDrawerHandler,
+  '@@router/LOCATION_CHANGE': hideDrawerHandler,
 });
