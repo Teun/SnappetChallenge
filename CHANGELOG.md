@@ -34,9 +34,16 @@
 * Add filter by date in the exercises endpoint
 * Add redux saga to manage side effects
 
+# Day 4 [21 Feb 2021] (± 1h)
+
+* Add docker / docker compose to the project
+* Add e2e testing
+* Improve overall documentation
+* Small adjustments
+
 # Not implemented
 
 * The reducer and logic for displaying a snackbar when the front application gets an error
 is already implemented, but to due time restrictions I did not implement the snackbar component.
 * Translation to english and dutch.
-* More e2e tests (the implemented ones are too simple)
+* More reports
