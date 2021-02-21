@@ -24,7 +24,7 @@ export default express => {
       const data = await repositories.exercisesResults.getAll({from, to});
       return res.status(200).send({...data, from, to});
     } catch (error) {
-      return res.status(500).send(error);
+      return res.status(400).send(error);
     }
   });
 

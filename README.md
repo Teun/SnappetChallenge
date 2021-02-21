@@ -44,6 +44,8 @@ The main technologies used in this project are: [NodeJs](https://nodejs.org/en/)
 backend and all scripts tasks, [ESM](https://www.npmjs.com/package/esm) for ECMAScript module loader
 and [ReactJs](https://reactjs.org/) for the frontend application.
 
+To me mentioned, this project uses [CodeceptIO](https://codecept.io/) for e2e testing.
+
 The components in this application are being organized following the
 [Atomic Design Pattern](https://bradfrost.com/blog/post/atomic-web-design/).
 
@@ -77,6 +79,8 @@ Second: Run the following commands:
 npm install
 npm run populate-db # populate the mongo database with the work.json data
 npm run dev # run development mode
+
+# Your application can be accessed via http://localhost:5000
 ```
 
 Ps: After running the `populate-db` command, the failed items will be placed in the following
@@ -100,7 +104,7 @@ This project contains linting and unit tests. Below you can find how to execute 
 ```bash
 npm run lint # run linting tests only
 npm run unit # run unit tests only
-
+npm run e2e # run e2e tests only
 npm test # run unit and linting tests
 ```
 

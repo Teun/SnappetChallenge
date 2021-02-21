@@ -39,11 +39,10 @@
 * Add docker / docker compose to the project
 * Add e2e testing
 * Improve overall documentation
-* Small adjustments
+* Small adjustments in code
 
-# Not implemented
+# Not implemented (Due to time restrictions)
 
-* The reducer and logic for displaying a snackbar when the front application gets an error
-is already implemented, but to due time restrictions I did not implement the snackbar component.
-* Translation to english and dutch.
-* More reports
+Please check the following link to check what I couldn't implement within this project.
+
+https://github.com/renanborgez/z/projects/1

@@ -11,6 +11,7 @@ exports[`components organisms AppBar should render AppBar with the provided titl
       aria-label="menu"
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
       disabled={false}
+      id="sidemenu-button"
       onBlur={[Function]}
       onClick={[MockFunction]}
       onDragLeave={[Function]}

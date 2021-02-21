@@ -1,5 +1,11 @@
 export const UTCtoLocaleString = date => {
-  const locale = new Date(date);
+  let locale;
+  try {
+    locale = new Date(date);
+  } catch (error) {
+    locale = new Date();
+  }
+
   const d = locale.getDate().toString().padStart(2, '0');
   const M = (locale.getMonth() + 1).toString().padStart(2, '0');
   const y = locale.getFullYear();
@@ -10,4 +16,10 @@ export const UTCtoLocaleString = date => {
   return `${y}-${M}-${d}T${H}:${m}`;
 };
 
-export const localeToUTC = date => new Date(date).toISOString();
+export const localeToUTC = date => {
+  try {
+    return new Date(date).toISOString();
+  } catch (error) {
+    return null;
+  }
+};

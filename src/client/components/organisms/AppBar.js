@@ -10,6 +10,7 @@ export const AppBar = ({title, onMenuClick}) => (
   <MuiAppBar position="static">
     <Toolbar>
       <IconButton
+        id="sidemenu-button"
         onClick={onMenuClick}
         edge="start"
         color="inherit"

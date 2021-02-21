@@ -39,6 +39,9 @@
       ],
       "globals": {
         "require": true
+      },
+      "rules": {
+        "no-console": "off"
       }
     },
     {
@@ -56,6 +59,18 @@
       },
       "env": {
         "jest/globals": true
+      }
+    },
+    {
+      "files": [
+        "steps_file.js",
+        "e2e/__tests__/*.js"
+      ],
+      "plugins": [
+        "codeceptjs"
+      ],
+      "env": {
+        "codeceptjs/codeceptjs": true
       }
     }
   ]
