@@ -46,6 +46,7 @@ module.exports = {
   ],
   devServer: {
     stats: 'errors-only',
+    host: '0.0.0.0',
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, './dist'),
     open: true,

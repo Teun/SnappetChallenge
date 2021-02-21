@@ -6,6 +6,10 @@ purpose is to display in a user friendly interface the data provided in `./Data/
 The goal of this application is to show the data from the students of a specific class
 to a professer (user).
 
+## Check it online!
+
+http://snappet.herokuapp.com/
+
 ## Reference
 
 - [Workflow](#Workflow)
@@ -13,6 +17,8 @@ to a professer (user).
   - [Requirements](#Requirements)
   - [Environment variables](#Environment%20variables)
   - [Running](#Running)
+    - [Locally](#Locally)
+    - [Docker compose](#Docker%20compose)
   - [Testing](#Testing)
 - [Copyright](#Copyright)
 - [License](#License)
@@ -38,11 +44,16 @@ The main technologies used in this project are: [NodeJs](https://nodejs.org/en/)
 backend and all scripts tasks, [ESM](https://www.npmjs.com/package/esm) for ECMAScript module loader
 and [ReactJs](https://reactjs.org/) for the frontend application.
 
+The components in this application are being organized following the
+[Atomic Design Pattern](https://bradfrost.com/blog/post/atomic-web-design/).
+
 ### Requirements
 
 NodeJs >= 14.15.x
 
 MongoDB >= 4.4.x
+
+Docker (with docker-compose) >= 20.x (Optional)
 
 ### Environment variables
 
@@ -56,10 +67,30 @@ MONGODB_URI=mongodb://127.0.0.1:27017/snappet
 
 ### Running
 
+#### Locally
+
+First: Create your `.env` file as the example above.
+
+Second: Run the following commands:
+
 ```bash
 npm install
 npm run populate-db # populate the mongo database with the work.json data
 npm run dev # run development mode
+```
+
+Ps: After running the `populate-db` command, the failed items will be placed in the following
+folder for further investigations:
+
+`/src/data/word.failed.json`
+
+#### Docker compose
+
+There is a `docker-compose.yml` file in the root of this project. By running the following command
+all necessary services will ran for you.
+
+```sh
+docker-compose up -d
 ```
 
 ### Testing
