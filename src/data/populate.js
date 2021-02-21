@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {MongoClient} from 'mongodb';
 import betterConsole from 'better-logging';
 import dotenv from 'dotenv';
@@ -17,7 +16,7 @@ if (!uri) {
   throw new Error('MONGODB_URI not defined.');
 }
 
-const dbClient = new MongoClient(uri);
+const dbClient = new MongoClient(uri, {useUnifiedTopology: true});
 
 const loadData = async () => {
   const successData = [];

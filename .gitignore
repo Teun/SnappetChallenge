@@ -1,6 +1,7 @@
 node_modules/
 coverage/
 dist/
+e2e/output/*
 .env
 .vscode
 *.failed.json

@@ -134,13 +134,10 @@ const Home = ({
           InputLabelProps={{
             shrink: true,
           }}
-          InputProps={{
-            maxDate: new Date('2015-03-24T11:30:00Z')
-          }}
         />
       </View>
     </ActionsContainer>
-    <Summary>
+    <Summary id="summary">
       <Typography variant="body1">Total of correct answers: {data.totalCorrectAnswers}</Typography>
       <Typography variant="body1">Total of students: {data.totalStudents}</Typography>
       <Typography variant="body1">Total of exercises: {data.totalExercises}</Typography>
@@ -207,7 +204,9 @@ export default () => {
   const onDateToChangeHandler = value => dispatch(setDateTo(localeToUTC(value)));
 
   useEffect(() => {
-    dispatch(getExercisesResults({from: localeToUTC(from), to: localeToUTC(to)}));
+    if (localeToUTC(from) && localeToUTC(to)) {
+      dispatch(getExercisesResults({from: localeToUTC(from), to: localeToUTC(to)}));
+    }
     return () => { };
   }, [dispatch, from, to]);
 

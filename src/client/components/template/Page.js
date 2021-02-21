@@ -34,18 +34,18 @@ const ListItemText = styled(MuiListItemText)`
 
 export const Page = ({title, drawerIsOpen, onCloseDrawer, children}) => (
   <View flex="1" alignItems="stretch">
-    <Drawer anchor="left" open={drawerIsOpen} onClose={onCloseDrawer}>
+    <Drawer id="drawer-menu" anchor="left" open={drawerIsOpen} onClose={onCloseDrawer}>
       <List>
         <ListItem>
           <ListItemIcon><ReportIcon /></ListItemIcon>
           <ListItemText>
-            <Link to="/">Report</Link>
+            <Link id="report-link" to="/">Report</Link>
           </ListItemText>
         </ListItem>
         <ListItem>
           <ListItemIcon><InfoIcon /></ListItemIcon>
           <ListItemText>
-            <Link to="/about">About</Link>
+            <Link id="about-link" to="/about">About</Link>
           </ListItemText>
         </ListItem>
       </List>

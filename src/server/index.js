@@ -10,7 +10,7 @@ import repositories from './repositories';
 dotenv.config({path: join(__dirname, '../../.env')});
 betterConsole(console);
 
-console.info('Starting server, please wait!');
+console.info('Starting api, please wait!');
 
 const port = process.env.PORT || 4000;
 const app = express();
@@ -21,11 +21,22 @@ app.use((req, _, next) => {
   next();
 });
 
+app.use(serve(join(__dirname, '../../dist')));
+
 app.use('/api', routes(express));
 
-app.use('/', serve(join(__dirname, '../../dist')));
-app.use('*', serve(join(__dirname, '../../dist')));
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, '../../dist/index.html'));
+});
 
 server.listen(port, '0.0.0.0');
 
-console.info(`Server is running, look it at: http://0.0.0.0:${port}`);
+process.on('SIGTERM', () => {
+  console.info('SIGTERM signal received.');
+  server.close(() => {
+    console.log('Http server closed.');
+    process.exit(0);
+  });
+});
+
+console.info(`Api is running at http://0.0.0.0:${port}`);

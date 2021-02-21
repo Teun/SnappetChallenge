@@ -5,7 +5,7 @@ let client = null;
 
 const initiate = async () => {
   const uri = process.env.MONGODB_URI;
-  client = new MongoClient(uri);
+  client = new MongoClient(uri, {useUnifiedTopology: true});
 
   try {
     await client.connect();

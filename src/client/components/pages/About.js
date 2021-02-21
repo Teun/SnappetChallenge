@@ -9,9 +9,8 @@ export default () => (
     <View>
       <Typography variant="h2">Snappet Challenge</Typography>
       <Typography variant="body1">
-        The idea behind this about page is simply to show the navigation within the app.
-        <br />
-        (Connected to redux store)
+        The idea behind this about page is simply to show the navigation within the app also
+        connected to redux store.
       </Typography>
       <Typography variant="p">http://snappet.herokuapp.com</Typography>
     </View>
