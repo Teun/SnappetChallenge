@@ -22,9 +22,30 @@ namespace SnappetReports.Controllers
         [HttpGet("[action]")]
         public IActionResult GetReportRecords()
         {
-            var reportRecords = _service.GetReportRecords();
+            var reportRecords =  _service.GetReportRecords();
             return Ok(reportRecords);
         }
 
+        [HttpGet("GetReportJSON")]
+        public IActionResult GetReportJSON()
+        {
+            var reportRecords = _service.GetReportJSON();
+            return Ok(reportRecords);
+        }
+
+        [HttpGet("GetsubjectAnswerCount")]
+        public IActionResult GetSubjectAnswerCount()
+        {
+            var reportRecords = _service.GetSubjectAnswerCount();
+            return Ok(reportRecords);
+        }
+
+        [HttpGet("GetUserReports")]
+        public IActionResult GetUserReports()
+        {
+            var userRecords = _service.GetUserReports();
+            return Ok(userRecords);
+        }
+        
     }
 }

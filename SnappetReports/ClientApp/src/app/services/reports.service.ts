@@ -10,7 +10,12 @@ export class ReportsService {
 
   constructor(private http: HttpClient) { }
 
-  GetReportRecords() {
-    return this.http.get<ReportRecord[]>(this._baseURL + "/GetReportRecords");
+  GetReportJSON() {
+    return this.http.get<ReportRecord[]>(this._baseURL + "/GetReportJSON");
   }
+
+  GetSubjectAnswerCount() {
+    return this.http.get<SubjectAnswerCount[]>(this._baseURL + "/GetSubjectAnswerCount");
+  }
+
 }

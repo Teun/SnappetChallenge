@@ -9,5 +9,8 @@ namespace SnappetReports.Data.Services
     public interface IReportsService
     {
         public List<ReportRecord> GetReportRecords();
+        public string GetReportJSON();
+        public List<SubjectAnswerCount> GetSubjectAnswerCount();
+        public List<UserReport> GetUserReports();
     }
 }

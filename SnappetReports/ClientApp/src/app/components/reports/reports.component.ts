@@ -9,13 +9,18 @@ import { ReportsService } from '../../services/reports.service';
 export class ReportsComponent implements OnInit {
 
   public reportRecords: ReportRecord[]
+  public reportSubjectAnswerCount: SubjectAnswerCount[]
 
   constructor(private service: ReportsService) { }
 
 
   ngOnInit() {
-    this.service.GetReportRecords().subscribe(data => {
-      this.reportRecords = data;
+    this.service.GetReportJSON().subscribe(reportRecordData => {
+      this.reportRecords = reportRecordData;
+    })
+
+    this.service.GetSubjectAnswerCount().subscribe(subjectAnswerData => {
+      this.reportSubjectAnswerCount = subjectAnswerData;
     })
   }
 

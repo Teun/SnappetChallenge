@@ -20,14 +20,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 5
     };
 
 
-    this.service.GetReportRecords().subscribe(data => {
+    this.service.GetReportJSON().subscribe(data => {
       this.reportRecords = data;
-
-        // Calling the DT trigger to manually render the table
         this.dtTrigger.next();
       });
   }
