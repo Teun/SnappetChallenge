@@ -1,0 +1,36 @@
+<h1>Snappet Reports</h1>
+<p>View Student Work Reports</p>
+<ul>
+  <li>View All Work Report</li>
+</ul>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>UserId</th>
+      <th>Subject</th>
+      <th>learningObjective</th>
+      <th>Domain</th>
+      <th>Correct</th>
+      <th>Difficulty</th>
+      <th>ExerciseId</th>
+      <th>SubmitDateTime</th>
+      <th>SubmittedAnswerId</th>
+      <th>Progress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of reportRecords">
+      <td>{{record.userId}}</td>
+      <td>{{record.subject}}</td>
+      <td>{{record.learningObjective}}</td>
+      <td>{{record.domain}}</td>
+      <td>{{record.correct}}</td>
+      <td>{{record.difficulty}}</td>
+      <td>{{record.exerciseId}}</td>
+      <td>{{record.submitDateTime}}</td>
+      <td>{{record.submittedAnswerId}}</td>
+      <td>{{record.progress}}</td>
+    </tr>
+  </tbody>
+</table>
