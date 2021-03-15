@@ -1,0 +1,116 @@
+<div class="header">
+    <h1>Students Report</h1>
+    <p>Choose a date to show reports</p>
+    <input type="date" [(ngModel)]="today"> &nbsp; &nbsp;
+    <button (click)="onDateChange()">Go</button>
+    <br>
+    <br>
+    <hr>
+</div>
+<div *ngIf="filteredStudentData.length > 0">
+    <div class="topnav">
+        <a href="javascript:void(0)" [class]="selectedTab == 'dashboard' ? 'active' :''"
+            (click)="selectTab('dashboard')">Dashboard</a>
+        <a href="javascript:void(0)" [class]="selectedTab == 'studentData' ? 'active' :''"
+            (click)="selectTab('studentData')">All Data
+            <span>({{filteredStudentData.length}} records)</span>
+        </a>
+    </div>
+    <div *ngIf="selectedTab == 'dashboard'">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <google-chart style="margin: 0 auto;" [type]="chart1Config.type"
+                            [options]="chart1Config.options" [title]="chart1Config.title" [data]="chart1Data">
+                        </google-chart>
+                    </td>
+                    <td>
+                        <google-chart style="margin: 0 auto;" [type]="chart2Config.type"
+                            [options]="chart2Config.options" [title]="chart2Config.title" [data]="chart2Data">
+                        </google-chart>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="header"> Select a subject to see the top (upto 5) performing students :
+                            <select (change)="onSubjectChange($event)">
+                                <option>--select subject--</option>
+                                <option *ngFor="let subject of subjects" [value]="subject">
+                                    {{subject}}
+                                </option>
+                            </select>
+                        </p>
+                        <table *ngIf="chart3Data.length > 0">
+                            <thead>
+                                <th>User ID</th>
+                                <th>Progress</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of chart3Data">
+                                    <td>{{data.UserId}}</td>
+                                    <td>{{data.Progress}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <p class="header">Number of Students per Domain</p>
+
+                        <google-chart style="margin: 0 auto;" [type]="chart4Config.type"
+                            [options]="chart4Config.options" [title]="chart4Config.title" [data]="chart4Data">
+                        </google-chart>
+
+                        <!-- <table>
+                            <thead>
+                                <th>Domain</th>
+                                <th>No. of Students</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of chart4Data">
+                                    <td>{{data.Domain}}</td>
+                                    <td>{{data.Count}}</td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div *ngIf="selectedTab == 'studentData'">
+        <table *ngIf="filteredStudentData.length > 0">
+            <thead>
+                <th>SubmittedAnswerId</th>
+                <th>SubmitDateTime</th>
+                <th>Correct</th>
+                <th>Progress</th>
+                <th>UserId</th>
+                <th>ExerciseId</th>
+                <th>Difficulty</th>
+                <th>Subject</th>
+                <th>Domain</th>
+                <th>LearningObjective</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of filteredStudentData">
+                    <td>{{data.SubmittedAnswerId}}</td>
+                    <td>{{data.SubmitDateTime}}</td>
+                    <td>{{data.Correct}}</td>
+                    <td>{{data.Progress}}</td>
+                    <td>{{data.UserId}}</td>
+                    <td>{{data.ExerciseId}}</td>
+                    <td>{{data.Difficulty}}</td>
+                    <td>{{data.Subject}}</td>
+                    <td>{{data.Domain}}</td>
+                    <td>{{data.LearningObjective}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="filteredStudentData.length == 0">
+    No records found.
+</div>
