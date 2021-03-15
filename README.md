@@ -1,5 +1,8 @@
 Snappet Reports Challenge
 
+https://snappetreports.azurewebsites.net
+
+
 The Snappet Reports Challange application development requirements:
 - .Net Core 3.1
 - Newtonsoft.Json
