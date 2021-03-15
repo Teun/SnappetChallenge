@@ -1,6 +1,6 @@
 Snappet Reports Challenge
 
-https://snappetreports.azurewebsites.net/reports
+https://snappetreports.azurewebsites.net
 
 
 The Snappet Reports Challange application development requirements:
