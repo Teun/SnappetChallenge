@@ -15,7 +15,7 @@ The Snappet Reports Challange application development requirements:
 - rxjs                         6.5.4
 
 The application provides 2 NavBar menu items at the top of the screen.
-1. Student Reports Menu
+1. Student Reports Menu ---
 	The following report is available on the Student Reports page:
 	Student Work Report
 		- The report illstrates students' progress by subject.
@@ -24,7 +24,7 @@ The application provides 2 NavBar menu items at the top of the screen.
 		- A user can order the datagrid by column.
 		- The user is able to filter the data by subject and order the data to identity top and overall student performance. 
 		
-2. Report Dashboard Menu 
+2. Report Dashboard Menu --- 
 	The following reports are available on the Report Dashboard page:
 	
 	Daily Subject Report
