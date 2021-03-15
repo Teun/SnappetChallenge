@@ -7,6 +7,8 @@ The Snappet Reports Challange application development requirements:
 - Angular CLI: 9.1.15
 - Node: 14.16.0
 - OS: win32 x64
+
+
 - Package                      Version
 ------------------------------------------------------
 - @angular-devkit/architect    0.901.15
