@@ -35,7 +35,7 @@ The application provides 2 NavBar menu items at the top of the screen.
 		Overall Subject Activity
 		- The reports illustrates the overall ativity per subject.
 		
-Ensure that the system has the above listed development requirements installed and configure.
-Use the Developer PowerShell to run the application with the following command: dotnet run
+Ensure that the system has the above listed development requirements installed and configured.
+Use the Developer PowerShell to run the application using the command: dotnet run
 Browse the application on https://Localhost:5001
 
