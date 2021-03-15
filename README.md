@@ -28,10 +28,10 @@ The application provides 2 NavBar menu items at the top of the screen.
 		Daily Subject Report
 		- Daily subject reports in a datagrid format. 
 		- A user is can searh all the columns in the datagrid text by using the 'Search' input text. 
-		- The datagrid illustrates the day to day performance activity of students by subject. 
-		
+		- The datagrid illustrates the day to day performance activity of students by subject. 		
 		Overall Subject Activity
 		- The reports illustrates the overall ativity per subject.
+		
 		
 Ensure that the system has the above listed development requirements installed and configured.
 Use the Developer PowerShell to run the application using the command: dotnet run
