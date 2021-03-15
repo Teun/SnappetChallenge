@@ -9,7 +9,7 @@ The Snappet Reports Challange application development requirements:
 - OS: win32 x64
 
 
-- Package                      Version
+ Package                      Version
 ------------------------------------------------------
 - @angular-devkit/architect    0.901.15
 - @angular-devkit/core         9.1.15
