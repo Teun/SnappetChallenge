@@ -8,8 +8,7 @@ The Snappet Reports Challange application development requirements:
 - Node: 14.16.0
 - OS: win32 x64
 
-
- Package                      Version
+Package and Version 
 ------------------------------------------------------
 - @angular-devkit/architect    0.901.15
 - @angular-devkit/core         9.1.15
