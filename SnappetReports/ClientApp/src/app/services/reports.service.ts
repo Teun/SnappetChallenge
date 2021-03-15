@@ -6,16 +6,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReportsService {
 
-  _baseURL: string = "api/Reports";
+   _baseURL: string = "api/Reports";
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  GetReportJSON() {
-    return this.http.get<ReportRecord[]>(this._baseURL + "/GetReportJSON");
+    GetReportJSON() {
+      return this.http.get<ReportRecord[]>(this._baseURL + "/GetReportJSON");
+    }
+
+    GetSubjectAnswerCount() {
+      return this.http.get<SubjectAnswerCount[]>(this._baseURL + "/GetSubjectAnswerCount");
+    }
+
+
+    GetUserReports() {
+      return this.http.get<UserRport[]>(this._baseURL + "/GetUserReports");
+    }
+
+    GetSubjectDailyReports() {
+      return this.http.get<SubjectDailyReport[]>(this._baseURL + "/GetSubjectDailyReports");
   }
-
-  GetSubjectAnswerCount() {
-    return this.http.get<SubjectAnswerCount[]>(this._baseURL + "/GetSubjectAnswerCount");
-  }
-
 }

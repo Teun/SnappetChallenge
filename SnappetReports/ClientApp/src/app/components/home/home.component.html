@@ -1,36 +1,26 @@
-<h1>Snappet Reports</h1>
-<p>View Student Work Reports</p>
-<ul>
-  <li>View All Work Report</li>
-</ul>
+<p class="font-weight-bold text-danger">
+  Student Work Reports
+</p>
 
 <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
-  <thead>
+  <thead class="thead-light">
     <tr>
       <th>UserId</th>
       <th>Subject</th>
-      <th>learningObjective</th>
-      <th>Domain</th>
-      <th>Correct</th>
-      <th>Difficulty</th>
-      <th>ExerciseId</th>
-      <th>SubmitDateTime</th>
-      <th>SubmittedAnswerId</th>
-      <th>Progress</th>
+      <th>Mean Progress</th>
+      <th>High Progress</th>
+      <th>Low Progress</th>
+      <th>Answers</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let record of reportRecords">
-      <td>{{record.UserId}}</td>
-      <td>{{record.Subject}}</td>
-      <td>{{record.LearningObjective}}</td>
-      <td>{{record.Domain}}</td>
-      <td>{{record.Correct}}</td>
-      <td>{{record.Difficulty}}</td>
-      <td>{{record.exerciseId}}</td>
-      <td>{{record.submitDateTime}}</td>
-      <td>{{record.SubmittedAnswerId}}</td>
-      <td>{{record.Progress}}</td>
+      <td>{{record.userId}}</td>
+      <td>{{record.subject}}</td>
+      <td>{{record.meanProgress}}</td>
+      <td>{{record.maxProgress}}</td>
+      <td>{{record.minProgress}}</td>
+      <td>{{record.answerCount}}</td>
     </tr>
   </tbody>
 </table>

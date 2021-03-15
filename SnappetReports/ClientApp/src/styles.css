@@ -14,3 +14,20 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+
+body, html {
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.my-container {
+  width: 100%;
+
+}
+
+.myheadings {
+  color: #E95F15;
+}
+

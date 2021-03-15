@@ -12,5 +12,6 @@ namespace SnappetReports.Data.Services
         public string GetReportJSON();
         public List<SubjectAnswerCount> GetSubjectAnswerCount();
         public List<UserReport> GetUserReports();
+        public List<SubjectDailyReport> GetSubjectDailyReports();
     }
 }

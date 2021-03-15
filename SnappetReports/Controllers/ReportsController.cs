@@ -46,6 +46,13 @@ namespace SnappetReports.Controllers
             var userRecords = _service.GetUserReports();
             return Ok(userRecords);
         }
-        
+
+        [HttpGet("GetSubjectDailyReports")]
+        public IActionResult GetSubjectDailyReports()
+        {
+            var subjectDailyReports = _service.GetSubjectDailyReports();
+            return Ok(subjectDailyReports);
+        }
+
     }
 }
