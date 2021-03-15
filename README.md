@@ -16,21 +16,21 @@ The Snappet Reports Challange application development requirements:
 
 The application provides 2 NavBar menu items at the top of the screen.
 1. Student Reports Menu
-	The following report is available on the Student Reports page
-	1. Student Work Report: The report illstrates students' progress by subject.
+	The following report is available on the Student Reports page:
+	Student Work Report: The report illstrates students' progress by subject.
 		- The report is presented in a datagrid. 
 		- A user is able to searh all the columns in the datagrid text by using the 'Search' input text. 
 		- A user can order the datagrid by column.
 		- The user is able to filter the data by subject and order the data to identity top and overall student performance. 
 		
 2. Report Dashboard Menu 
-	The following reports are available on the Report Dashboard page 
-		Daily Subject Report
+	The following reports are available on the Report Dashboard page:
+	Daily Subject Report
 		- Daily subject reports in a datagrid format. 
 		- A user is can searh all the columns in the datagrid text by using the 'Search' input text. 
 		- The datagrid illustrates the day to day performance activity of students by subject. 		
-		Overall Subject Activity
-		- The reports illustrates the overall ativity per subject.
+	Overall Subject Activity
+		- The reports illustrates the overall activity per subject.
 		
 		
 Ensure that the system has the above listed development requirements installed and configured.
