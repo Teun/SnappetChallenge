@@ -35,12 +35,12 @@ namespace SnappetReports.Data.Services
                 group t by new { t.UserId, t.Subject} into grp
                 select new UserReport
                 {
-                UserId = grp.Key.UserId,
-                Subject =  grp.Key.Subject,
-                MeanProgress = Math.Round(grp.Average(a => a.Progress), 2),                            
-                MinProgress = grp.Min(a => a.Progress),
-                MaxProgress = grp.Max(a => a.Progress),
-                AnswerCount = grp.Count()                            
+                    UserId = grp.Key.UserId,
+                    Subject =  grp.Key.Subject,
+                    MeanProgress = Math.Round(grp.Average(a => a.Progress), 2),                            
+                    MinProgress = grp.Min(a => a.Progress),
+                    MaxProgress = grp.Max(a => a.Progress),
+                    AnswerCount = grp.Count()                            
                 }).ToList();
             return userReports;
         }
