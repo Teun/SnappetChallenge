@@ -50,7 +50,7 @@ namespace SnappetReports.Data.Services
         {
             List<SubjectDailyReport> subjectDailyReports = (from t in ReportData.workRecords  
                 orderby t.SubmitDateTime 
-                group t by new { d = Convert.ToDateTime(t.SubmitDateTime).ToShortDateString(), t.Subject } into grp
+                group t by new { d = t.SubmitDateTime.ToShortDateString(), t.Subject } into grp
                 select new SubjectDailyReport
                 {   
                     Subject = grp.Key.Subject,                                                
