@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { StudentreportComponent } from './components/studentreport/studentreport.component';
 import { ReportsService } from './services/reports.service';
-
 import { DataTablesModule } from "angular-datatables";
 
 @NgModule({
@@ -17,6 +17,7 @@ import { DataTablesModule } from "angular-datatables";
     NavMenuComponent,
     HomeComponent,
     ReportsComponent,
+    StudentreportComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,8 +26,8 @@ import { DataTablesModule } from "angular-datatables";
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'reports', component: ReportsComponent},
-        
+      { path: 'reports', component: ReportsComponent },
+      { path: 'studentreport', component: StudentreportComponent },        
     ])
   ],
   providers: [ReportsService],

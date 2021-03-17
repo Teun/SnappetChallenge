@@ -14,11 +14,16 @@
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
            [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
-          <li><a class="nav-link text-dark" [routerLink]="['/']">Student Reports</a></li>
+          <li><a class="nav-link text-warning" [routerLink]="['/']">Home </a></li>
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/reports']"> | Report Dashboard</a>
+            <a class="nav-link text-warning" [routerLink]="['/studentreport']">Students</a>
+          </li>
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-warning" [routerLink]="['/reports']">Dashboard</a>
           </li>
         </ul>
       </div>
