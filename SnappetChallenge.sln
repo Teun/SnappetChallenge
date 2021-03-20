@@ -8,8 +8,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Repository", "SnappetChallenge.Repository\SnappetChallenge.Repository.csproj", "{676FF5FE-9A1C-4238-B578-FF6EA4250D38}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A3C5B6E5-FEB1-4598-B620-8FC5FD2726F7}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Repository.Tests", "SnappetChallenge.Repository.Tests\SnappetChallenge.Repository.Tests.csproj", "{51CC7966-B507-4BAC-8A11-717EE7434EA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnappetChallenge.Queries", "SnappetChallenge.Queries\SnappetChallenge.Queries.csproj", "{A68C68E7-760F-4E2A-AA2D-A6697A1C086C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +34,10 @@ Global
 		{51CC7966-B507-4BAC-8A11-717EE7434EA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51CC7966-B507-4BAC-8A11-717EE7434EA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51CC7966-B507-4BAC-8A11-717EE7434EA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68C68E7-760F-4E2A-AA2D-A6697A1C086C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68C68E7-760F-4E2A-AA2D-A6697A1C086C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68C68E7-760F-4E2A-AA2D-A6697A1C086C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68C68E7-760F-4E2A-AA2D-A6697A1C086C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

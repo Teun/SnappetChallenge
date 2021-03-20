@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SnappetChallenge.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,19 +17,15 @@ namespace SnappetChallenge.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IRepository _repository;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IRepository repository)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            _repository = repository;
         }
 
         [HttpGet]
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
-            var workResults = await _repository.GetWorkResults();
-
             var rng = new Random();
 
             var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast

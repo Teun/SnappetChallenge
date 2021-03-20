@@ -5,10 +5,16 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SnappetChallenge.Queries;
+using SnappetChallenge.Queries.Handlers;
+using SnappetChallenge.Queries.Interfaces;
+using SnappetChallenge.Queries.Responses;
 using SnappetChallenge.Repository;
 using SnappetChallenge.Repository.Config;
 using SnappetChallenge.Repository.DataLoader;
 using SnappetChallenge.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SnappetChallenge
 {
@@ -26,8 +32,12 @@ namespace SnappetChallenge
         {
             services.Configure<RepositoryOptions>(Configuration.GetSection(RepositoryOptions.Repository));
 
+            // Repository DI
             services.AddSingleton<IFileDataLoader, JsonFileDataLoader>();
             services.AddSingleton<IRepository, JsonRepository>();
+
+            // Queries DI
+            services.AddScoped<IQueryHandler<GetDashboardQuery, Task<IEnumerable<DashboardResponse>>>, GetDashboardQueryHandler>();
             
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
