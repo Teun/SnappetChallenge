@@ -18,3 +18,7 @@ if (environment.production) {
 
 platformBrowserDynamic(providers).bootstrapModule(AppModule)
   .catch(err => console.log(err));
+
+// The line below is added by the Angular upgrade from 8 to 9 but causes it to break.
+//https://stackoverflow.com/questions/60114758/uncaught-syntaxerror-strict-mode-code-may-not-include-a-with-statement
+//export { renderModule, renderModuleFactory } from '@angular/platform-server';
