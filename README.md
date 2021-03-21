@@ -23,5 +23,12 @@ For running the solution please follow these steps:
 - Execute 'GET api/Rep/SubmittedAnswers/ClassProgress' and placed the 'Authorization' key at header with 'Bearer <JWT>' value.
 - Execute 'GET api/Rep/SubmittedAnswers/CarelessStudents' and placed the 'Authorization' key at header with 'Bearer <JWT>' value.
 
+Teachers Username and Password table:
+Username | Password
+--- | ---
+martijn.kooij@snappet.org | 1
+teun@snappet.org | 1
+heidarbozorg@gmail.com | 1
+
 ### How I imported work.csv into database?
 I have imported work.csv by T-SQL. First I designed normalized tables based on the problem concept. Then develop step by step read and import data from work.csv file. I attached 'import csv file.sql' file at Data folder for your attention.
