@@ -24,6 +24,10 @@ namespace Snappet.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Set swagger document
+            services.AddSwaggerDocument();
+
+
             services.AddControllers();
         }
 
@@ -34,6 +38,10 @@ namespace Snappet.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            //Swagger settings
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 
