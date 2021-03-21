@@ -1,7 +1,5 @@
-2021-03-21 12:06:49.2551 - INFO: WeatherForecast running
-2021-03-21 12:07:56.1107 - INFO: WeatherForecast running 
 
 
-2021-03-21 12:08:03.9641 - INFO: WeatherForecast running 
+2021-03-21 12:09:31.2363 - INFO: WeatherForecast running 
 
 
