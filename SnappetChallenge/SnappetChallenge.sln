@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Logic", "Snappet.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Models", "Snappet.Models\Snappet.Models.csproj", "{5BF0590A-2E00-4175-BB99-95E51662FF8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.ORM.Dapper", "Snappet.ORM.Dapper\Snappet.ORM.Dapper.csproj", "{E8BD3C87-12D5-4C9B-9DC7-AA45D33EAE51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5BF0590A-2E00-4175-BB99-95E51662FF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF0590A-2E00-4175-BB99-95E51662FF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BF0590A-2E00-4175-BB99-95E51662FF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8BD3C87-12D5-4C9B-9DC7-AA45D33EAE51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8BD3C87-12D5-4C9B-9DC7-AA45D33EAE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8BD3C87-12D5-4C9B-9DC7-AA45D33EAE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8BD3C87-12D5-4C9B-9DC7-AA45D33EAE51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
