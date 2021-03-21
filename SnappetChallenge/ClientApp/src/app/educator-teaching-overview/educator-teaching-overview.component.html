@@ -1,6 +1,46 @@
 <div>
     <h3 class="text-center">Teaching Overview</h3>
     <br/>
+    <div class="teaching-overview-date-range">
+        <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="fromPicker" 
+                            placeholder="From date and time"
+                            [formControl]="fromDateControl"
+                            [min]="minDate" 
+                            [max]="maxDate">
+            <mat-datepicker-toggle matSuffix [for]="$any(fromPicker)">
+            </mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #fromPicker 
+                [showSpinners]="true" 
+                [showSeconds]="false"
+                [stepHour]="1" 
+                [stepMinute]="1" 
+                [stepSecond]="1"
+                [touchUi]="false"
+                [color]="dateTimePickerColour">
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="toPicker" 
+                            placeholder="To date and time"
+                            [formControl]="toDateControl"
+                            [min]="minDate" 
+                            [max]="maxDate">
+            <mat-datepicker-toggle matSuffix [for]="$any(toPicker)">
+            </mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #toPicker 
+                [showSpinners]="true" 
+                [showSeconds]="false"
+                [stepHour]="1" 
+                [stepMinute]="1" 
+                [stepSecond]="1"
+                [touchUi]="false"
+                [color]="dateTimePickerColour">
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="applySelectedDateRange()">Apply</button>
+    </div>
+    <br/>
     <ngx-datatable
         class="material striped" 
         [rows]="educatorTeachingOverview$ | async"
@@ -9,7 +49,6 @@
         [headerHeight]="50"
         [footerHeight]="50"
         rowHeight="auto"
-        [limit]="10"
-        > 
+        [limit]="10">
     </ngx-datatable>
 </div>
