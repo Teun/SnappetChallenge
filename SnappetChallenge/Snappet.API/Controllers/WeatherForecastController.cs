@@ -18,15 +18,19 @@ namespace Snappet.API.Controllers
         };
 
         private readonly ILoggerManager _logger;
+        private readonly Logic.Database.IDatabaseContext _ctx;
 
-        public WeatherForecastController(ILoggerManager logger)
+        public WeatherForecastController(ILoggerManager logger, Logic.Database.IDatabaseContext ctx)
         {
             _logger = logger;
+            _ctx = ctx;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var rst = _ctx.SP_Teacher_Login(null);
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
