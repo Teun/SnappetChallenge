@@ -16,12 +16,27 @@ namespace Snappet.API
 {
     public class Startup
     {
+        private const string ConnectionStringName = "cns";
+
+        /// <summary>
+        /// Database connection string
+        /// </summary>
+        private string ConnectionString
+        {
+            get
+            {
+                var rst = Configuration.GetConnectionString(ConnectionStringName);
+                return (rst);
+            }
+        }
+
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -36,7 +51,7 @@ namespace Snappet.API
             services.AddMapper();
 
             //Add default ORM
-            services.AddORM();
+            services.AddORM(ConnectionString);
 
             //Set swagger document
             services.AddSwaggerDocument();

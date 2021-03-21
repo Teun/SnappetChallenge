@@ -27,9 +27,9 @@ namespace Snappet.API.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <param name="connectionString">Database connection string</param>
-        public static void AddORM(this IServiceCollection services)
+        public static void AddORM(this IServiceCollection services, string connectionString)
         {
-            var dapper = new Logic.Database.DatabaseContextDapper();
+            var dapper = new Logic.Database.DatabaseContextDapper(connectionString);
             services.AddSingleton<Logic.Database.IDatabaseContext>(dapper);
         }
     }
