@@ -5,6 +5,9 @@ using NSwag.Generation.Processors.Security;
 
 namespace Snappet.API.Extensions
 {
+    /// <summary>
+    /// Extension methods for add services to the service pool.
+    /// </summary>
     public static class Services
     {
         /// <summary>
@@ -90,7 +93,7 @@ namespace Snappet.API.Extensions
                 c.AllowNullableBodyParameters = true;
                 c.AddSecurity("Bearer", new NSwag.OpenApiSecurityScheme()
                 {
-                    Description = "WT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Description = "Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
                     In = NSwag.OpenApiSecurityApiKeyLocation.Header,
                     Type = NSwag.OpenApiSecuritySchemeType.ApiKey,

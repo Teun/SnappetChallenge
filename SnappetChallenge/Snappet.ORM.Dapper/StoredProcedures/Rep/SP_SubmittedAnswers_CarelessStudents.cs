@@ -6,7 +6,7 @@ using System;
 namespace Snappet.ORM.Dapper.StoredProcedures.Rep
 {
     /// <summary>
-    /// Implement SP_SubmittedAnswers_CarelessStudents
+    /// Execute SP_SubmittedAnswers_CarelessStudents at the database using Dapper.
     /// </summary>
     public class SP_SubmittedAnswers_CarelessStudents : BaseSP
     {

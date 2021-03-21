@@ -3,6 +3,9 @@ using System;
 
 namespace Snappet.ORM.Dapper.Features
 {
+    /// <summary>
+    /// Regular database operations like process the result or get the base input params.
+    /// </summary>
     public class Common
     {
         public static DynamicParameters GetEmptyParams()

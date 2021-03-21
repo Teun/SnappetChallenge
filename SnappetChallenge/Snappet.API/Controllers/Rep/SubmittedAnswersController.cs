@@ -8,7 +8,7 @@ namespace Snappet.API.Controllers.Rep
 {
     [Route("/api/Rep/[controller]/[action]")]
     [ApiController]
-    [Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]      //Only teachers could get these reports.
     public class SubmittedAnswersController : BaseController
     {
         private readonly IDatabaseContext _dbCTX;
@@ -53,6 +53,5 @@ namespace Snappet.API.Controllers.Rep
 
             return FromDatabase(rst);
         }
-
     }
 }

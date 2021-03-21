@@ -4,6 +4,9 @@ using System;
 
 namespace Snappet.ORM.Dapper.StoredProcedures.Rep
 {
+    /// <summary>
+    /// Execute SP_Class_Progress at the database using Dapper.
+    /// </summary>
     public class SP_Class_Progress : BaseSP
     {
         public SP_Class_Progress(ISQLExecuter executer)

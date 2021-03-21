@@ -2,6 +2,9 @@
 
 namespace Snappet.API.Controllers
 {
+    /// <summary>
+    /// All controllers will be inherited from this class.
+    /// </summary>
     public class BaseController : Controller
     {
         /// <summary>

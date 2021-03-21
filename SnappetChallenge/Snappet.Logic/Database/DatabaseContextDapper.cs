@@ -5,6 +5,9 @@ using System;
 
 namespace Snappet.Logic.Database
 {
+    /// <summary>
+    /// The implementation of IDatabaseContext interface.
+    /// </summary>
     public class DatabaseContextDapper : IDatabaseContext
     {
         private readonly ORM.Dapper.StoredProcedures.dbo.SP_Teacher_Login _sp_Teacher_Login;
