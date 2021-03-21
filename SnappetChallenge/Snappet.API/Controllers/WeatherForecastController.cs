@@ -27,8 +27,7 @@ namespace Snappet.API.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogInfo("WeatherForecast running");
-
+            throw new Exception("Test global error handling");
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

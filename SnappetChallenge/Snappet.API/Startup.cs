@@ -41,7 +41,10 @@ namespace Snappet.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            //Use my custom global error handling as a middleware
+            app.UseMiddleware<Middlewares.ExceptionMiddleware>();
+
             //Swagger settings
             app.UseOpenApi();
             app.UseSwaggerUi3();
