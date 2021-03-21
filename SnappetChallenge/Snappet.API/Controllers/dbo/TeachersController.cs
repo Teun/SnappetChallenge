@@ -6,7 +6,7 @@ namespace Snappet.API.Controllers.dbo
 {
     [Route("/api/dbo/[controller]/[action]")]
     [ApiController]
-    public class TeachersController : ControllerBase
+    public class TeachersController : BaseController
     {
         private readonly IConfiguration _configuration;
         private readonly Logic.Database.IDatabaseContext _dbCTX;
@@ -56,7 +56,7 @@ namespace Snappet.API.Controllers.dbo
         public IActionResult Login([FromBody] Logic.Security.Teacher teacher)
         {
             var rst = teacher.Login(_dbCTX, _mapper, JWTKey, JWTIssuer);
-            return Ok(rst);
+            return FromDatabase(rst);
         }
     }
 }
