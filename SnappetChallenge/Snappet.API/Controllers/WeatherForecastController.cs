@@ -19,17 +19,23 @@ namespace Snappet.API.Controllers
 
         private readonly ILoggerManager _logger;
         private readonly Logic.Database.IDatabaseContext _ctx;
+        private readonly AutoMapper.IMapper _mapper;
 
-        public WeatherForecastController(ILoggerManager logger, Logic.Database.IDatabaseContext ctx)
+        public WeatherForecastController(ILoggerManager logger, 
+            Logic.Database.IDatabaseContext ctx,
+            AutoMapper.IMapper mapper)
         {
             _logger = logger;
             _ctx = ctx;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            var rst = _ctx.SP_Teacher_Login(null);
+            var teacher = new Logic.Security.Teacher();
+            var rst = teacher.Login(_ctx, _mapper, "This is a key for testing JWT in the snappetCodeChallenge", "https://snappet.org/");
+
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
