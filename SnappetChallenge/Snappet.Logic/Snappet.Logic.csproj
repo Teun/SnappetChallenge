@@ -7,5 +7,9 @@
   <ItemGroup>
     <PackageReference Include="NLog.Extensions.Logging" Version="1.7.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Snappet.Models\Snappet.Models.csproj" />
+  </ItemGroup>
   
 </Project>
