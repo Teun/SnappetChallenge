@@ -5,9 +5,9 @@ using System;
 
 namespace SnappetChallenge.Mappers
 {
-    public class SubjectOverviewMapper : IMapper<DashboardResponse, SubjectOverviewDto>
+    public class SubjectOverviewMapper : IMapper<EducatorTeachingOverviewResponse, SubjectOverviewDto>
     {
-        public SubjectOverviewDto Map(DashboardResponse input)
+        public SubjectOverviewDto Map(EducatorTeachingOverviewResponse input)
         {
             if (input == null)
             {

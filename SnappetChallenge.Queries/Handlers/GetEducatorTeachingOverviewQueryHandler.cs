@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace SnappetChallenge.Queries.Handlers
 {
-    public class GetDashboardQueryHandler : IQueryHandler<GetDashboardQuery, Task<IEnumerable<DashboardResponse>>>
+    public class GetEducatorTeachingOverviewQueryHandler : IQueryHandler<GetEducatorTeachingOverviewQuery, Task<IEnumerable<EducatorTeachingOverviewResponse>>>
     {
         private readonly IRepository _repository;
 
-        public GetDashboardQueryHandler(IRepository repository)
+        public GetEducatorTeachingOverviewQueryHandler(IRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<IEnumerable<DashboardResponse>> Handle(GetDashboardQuery query)
+        public async Task<IEnumerable<EducatorTeachingOverviewResponse>> Handle(GetEducatorTeachingOverviewQuery query)
         {
             var workResults = await _repository.GetWorkResults();
+
+			// TotalReanswered calculates the number of exercises reanswered by a student.
 
 			var linqQuery = from workResult in workResults
 							where workResult.SubmitDateTime >= query.StartDateTimeUtc
@@ -42,7 +44,7 @@ namespace SnappetChallenge.Queries.Handlers
 												   }).Sum(x => x.Reanswers)
 							};
 
-			var response = linqQuery.Select(linqQueryResult => new DashboardResponse
+			var response = linqQuery.Select(linqQueryResult => new EducatorTeachingOverviewResponse
 			{
 				Subject = linqQueryResult.Subject,
 				UniqueExercises = linqQueryResult.UniqueExercises,

@@ -40,10 +40,11 @@ namespace SnappetChallenge
             services.AddSingleton<IRepository, JsonRepository>();
 
             // Queries DI
-            services.AddScoped<IQueryHandler<GetDashboardQuery, Task<IEnumerable<DashboardResponse>>>, GetDashboardQueryHandler>();
+            services.AddScoped<IQueryHandler<GetEducatorTeachingOverviewQuery, Task<IEnumerable<EducatorTeachingOverviewResponse>>>, 
+                GetEducatorTeachingOverviewQueryHandler>();
 
             // Mappers DI
-            services.AddScoped<IMapper<DashboardResponse, SubjectOverviewDto>, SubjectOverviewMapper>();
+            services.AddScoped<IMapper<EducatorTeachingOverviewResponse, SubjectOverviewDto>, SubjectOverviewMapper>();
             
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

@@ -15,12 +15,12 @@ namespace SnappetChallenge.Controllers
     [ApiController]
     public class EducatorTeachingOverviewController : ControllerBase
     {
-        private readonly IQueryHandler<GetDashboardQuery, Task<IEnumerable<DashboardResponse>>> _queryHandler;
-        private readonly IMapper<DashboardResponse, SubjectOverviewDto> _mapper;
+        private readonly IQueryHandler<GetEducatorTeachingOverviewQuery, Task<IEnumerable<EducatorTeachingOverviewResponse>>> _queryHandler;
+        private readonly IMapper<EducatorTeachingOverviewResponse, SubjectOverviewDto> _mapper;
 
         public EducatorTeachingOverviewController(
-            IQueryHandler<GetDashboardQuery, Task<IEnumerable<DashboardResponse>>> queryHandler,
-            IMapper<DashboardResponse, SubjectOverviewDto> mapper)
+            IQueryHandler<GetEducatorTeachingOverviewQuery, Task<IEnumerable<EducatorTeachingOverviewResponse>>> queryHandler,
+            IMapper<EducatorTeachingOverviewResponse, SubjectOverviewDto> mapper)
         {
             _queryHandler = queryHandler;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace SnappetChallenge.Controllers
         public async Task<IEnumerable<SubjectOverviewDto>> Get(DateTime startDateTimeUtc, DateTime endDateTimeUtc)
         {
             // TODO: Validation
-            var query = new GetDashboardQuery 
+            var query = new GetEducatorTeachingOverviewQuery 
             { 
                 StartDateTimeUtc = startDateTimeUtc,
                 EndDateTimeUtc = endDateTimeUtc

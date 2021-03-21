@@ -1,6 +1,6 @@
 ﻿namespace SnappetChallenge.Queries.Responses
 {
-    public class DashboardResponse
+    public class EducatorTeachingOverviewResponse
     {
         public string Subject { get; set; }
         public int UniqueExercises { get; set; }
