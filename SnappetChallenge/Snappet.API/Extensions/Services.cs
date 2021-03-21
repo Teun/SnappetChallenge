@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NSwag.Generation.Processors.Security;
 
 namespace Snappet.API.Extensions
 {
@@ -54,6 +55,33 @@ namespace Snappet.API.Extensions
                     options.TokenValidationParameters = Logic.Security.JWT.GetTokenValidationParameters(key, issuer);
                     options.Events = Logic.Security.JWT.GetJWTEvents();
                 });
+        }
+
+
+        /// <summary>
+        /// Set swagger setttings
+        /// </summary>
+        /// <param name="services"></param>
+        public static void setSwaggerSettings(this IServiceCollection services)
+        {
+            services.AddSwaggerDocument(c =>
+            {
+                c.DocumentName = "Snappet code challenge, 1.0.0";
+                c.Title = "Snappet code challenge API Document";
+                c.Description = "Snappet code challenge API {GET,Post,Put,Delete}";
+                c.OperationProcessors.Add(new OperationSecurityScopeProcessor("Bearer"));
+                c.GenerateExamples = true;
+                c.GenerateCustomNullableProperties = true;
+                c.AllowNullableBodyParameters = true;
+                c.AddSecurity("Bearer", new NSwag.OpenApiSecurityScheme()
+                {
+                    Description = "WT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = NSwag.OpenApiSecurityApiKeyLocation.Header,
+                    Type = NSwag.OpenApiSecuritySchemeType.ApiKey,
+                    BearerFormat = "Authorization: Bearer {token}"
+                });
+            });
         }
     }
 }

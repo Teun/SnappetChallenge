@@ -56,8 +56,8 @@ namespace Snappet.API
             //Add default ORM
             services.AddORM(ConnectionString);
 
-            //Set swagger document
-            services.AddSwaggerDocument();
+            //Set swagger settings
+            services.setSwaggerSettings();
 
             services.AddControllers();
         }

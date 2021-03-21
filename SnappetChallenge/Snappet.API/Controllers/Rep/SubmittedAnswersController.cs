@@ -8,7 +8,7 @@ namespace Snappet.API.Controllers.Rep
 {
     [Route("/api/Rep/[controller]/[action]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Teacher")]
     public class SubmittedAnswersController : BaseController
     {
         private readonly IDatabaseContext _dbCTX;
