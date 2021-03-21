@@ -5,6 +5,24 @@ namespace Snappet.API.Extensions
     public static class Services
     {
         /// <summary>
+        /// Add default mapper
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static void AddMapper(this IServiceCollection services)
+        {
+            //Create default mapper
+            var mapConfig = new AutoMapper.MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new Logic.CommonOperations.Mapper());
+            });
+
+            AutoMapper.IMapper mapper = mapConfig.CreateMapper();
+            services.AddSingleton(mapper);
+        }
+
+
+        /// <summary>
         /// Add default ORM
         /// </summary>
         /// <param name="services"></param>

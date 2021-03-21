@@ -29,6 +29,9 @@ namespace Snappet.API
             //Add logger service (NLog)
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
+            //Add default mapper
+            services.AddMapper();
+
             //Add default ORM
             services.AddORM();
 
