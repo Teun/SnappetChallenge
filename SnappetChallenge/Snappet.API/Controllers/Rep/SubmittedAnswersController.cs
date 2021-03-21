@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Snappet.Logic.Database;
 using Snappet.Models.Database.StoredProcedures.Rep;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace Snappet.API.Controllers.Rep
 {
     [Route("/api/Rep/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class SubmittedAnswersController : BaseController
     {
         private readonly IDatabaseContext _dbCTX;

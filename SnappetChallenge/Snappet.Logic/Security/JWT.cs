@@ -1,15 +1,61 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Snappet.Logic.Security
 {
     public class JWT
     {
+        /// <summary>
+        /// Generate token validation
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="issuer"></param>
+        /// <returns></returns>
+        public static TokenValidationParameters GetTokenValidationParameters(string key, string issuer)
+        {
+            if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(issuer))
+                throw new ArgumentNullException("key and issuer could not be empty. Check application settings.");
+
+            var rst = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = issuer,
+                ValidAudience = issuer,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+            };
+
+            return rst;
+        }
+
+        /// <summary>
+        /// Get authentication event handler by JWT
+        /// </summary>
+        /// <returns></returns>
+        public static JwtBearerEvents GetJWTEvents()
+        {
+            var rst = new JwtBearerEvents
+            {
+                OnAuthenticationFailed = context =>
+                {
+                    if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                        context.Response.Headers.Add("Token-Expired", "true");
+
+                    return Task.CompletedTask;
+                }
+            };
+
+            return rst;
+        }
+
+
         /// <summary>
         /// Validating input params
         /// </summary>

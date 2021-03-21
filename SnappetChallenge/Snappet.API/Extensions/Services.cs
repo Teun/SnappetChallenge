@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Snappet.API.Extensions
 {
@@ -31,6 +33,27 @@ namespace Snappet.API.Extensions
         {
             var dapper = new Logic.Database.DatabaseContextDapper(connectionString);
             services.AddSingleton<Logic.Database.IDatabaseContext>(dapper);
+        }
+
+
+        /// <summary>
+        /// Setup JWT validator
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public static void AddJWT(this IServiceCollection services, IConfiguration configuration)
+        {
+            string key = configuration.GetValue<string>("JWT:Key");
+            string issuer = configuration.GetValue<string>("JWT:Issuer");
+
+            //When a request receive, this operations check the JWT and set User object
+            services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = Logic.Security.JWT.GetTokenValidationParameters(key, issuer);
+                    options.Events = Logic.Security.JWT.GetJWTEvents();
+                });
         }
     }
 }

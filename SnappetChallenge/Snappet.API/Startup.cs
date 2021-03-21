@@ -47,6 +47,9 @@ namespace Snappet.API
             //Add configuration to the service pool
             services.AddSingleton<IConfiguration>(Configuration);
 
+            //Add Authuntication service based on JWT
+            services.AddJWT(Configuration);
+
             //Add default mapper
             services.AddMapper();
 
@@ -76,6 +79,7 @@ namespace Snappet.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
