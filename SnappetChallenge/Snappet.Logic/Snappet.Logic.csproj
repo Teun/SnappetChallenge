@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Snappet.Models\Snappet.Models.csproj" />
+    <ProjectReference Include="..\Snappet.ORM.Dapper\Snappet.ORM.Dapper.csproj" />
   </ItemGroup>
   
 </Project>

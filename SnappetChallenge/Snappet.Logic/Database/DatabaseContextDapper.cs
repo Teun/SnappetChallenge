@@ -10,19 +10,8 @@ namespace Snappet.Logic.Database
     {
         public DBResult SP_Teacher_Login(SP_Teacher_Login.Inputs inputs)
         {
-            var rst = new DBResult()
-            {
-                StatusCode = 200,
-                ErrorMessage = "",
-                Data = new SP_Teacher_Login.Outputs()
-                {
-                    Email = "test",
-                    Firstname = "fname",
-                    Lastname = "lname",
-                    TeacherId = 1
-                }
-            };
-
+            var dp = new ORM.Dapper.StoredProcedures.dbo.SP_Teacher_Login();
+            var rst = dp.Call(inputs);
             return rst;
         }
     }
