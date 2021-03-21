@@ -1,0 +1,10 @@
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\bin\Debug\netcoreapp3.1\Snappet.API.exe
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\obj\Debug\netcoreapp3.1\Snappet.API.csprojAssemblyReference.cache
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\obj\Debug\netcoreapp3.1\Snappet.API.AssemblyInfoInputs.cache
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\obj\Debug\netcoreapp3.1\Snappet.API.AssemblyInfo.cs
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\obj\Debug\netcoreapp3.1\Snappet.API.RazorTargetAssemblyInfo.cache
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\obj\Debug\netcoreapp3.1\staticwebassets\Snappet.API.StaticWebAssets.Manifest.cache
+C:\Github\SnappetChallenge\SnappetChallenge\Snappet.API\obj\Debug\netcoreapp3.1\staticwebassets\Snappet.API.StaticWebAssets.xml
