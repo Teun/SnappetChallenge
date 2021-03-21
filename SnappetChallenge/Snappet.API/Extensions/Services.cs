@@ -8,6 +8,21 @@ namespace Snappet.API.Extensions
     public static class Services
     {
         /// <summary>
+        /// Allow calling APIs from different domains
+        /// </summary>
+        /// <param name="services"></param>
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+        }
+
+        /// <summary>
         /// Add default mapper
         /// </summary>
         /// <param name="services"></param>

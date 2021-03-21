@@ -18,6 +18,7 @@ namespace Snappet.API
     {
         private const string ConnectionStringName = "cns";
 
+        #region properties
         /// <summary>
         /// Database connection string
         /// </summary>
@@ -31,6 +32,8 @@ namespace Snappet.API
         }
 
         public IConfiguration Configuration { get; }
+        #endregion
+
 
         public Startup(IConfiguration configuration)
         {
@@ -43,6 +46,8 @@ namespace Snappet.API
         {
             //Add logger service (NLog)
             services.AddSingleton<ILoggerManager, LoggerManager>();
+
+            services.ConfigureCors();
 
             //Add configuration to the service pool
             services.AddSingleton<IConfiguration>(Configuration);
