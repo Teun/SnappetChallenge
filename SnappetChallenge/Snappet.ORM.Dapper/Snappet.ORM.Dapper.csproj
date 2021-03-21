@@ -8,10 +8,6 @@
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.1" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Features\" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Snappet.Models\Snappet.Models.csproj" />
