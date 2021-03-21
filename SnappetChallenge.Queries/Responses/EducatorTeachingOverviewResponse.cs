@@ -1,12 +1,12 @@
 ﻿namespace SnappetChallenge.Queries.Responses
 {
-    public class EducatorTeachingOverviewResponse
+    public record EducatorTeachingOverviewResponse
     {
-        public string Subject { get; set; }
-        public int UniqueExercises { get; set; }
-        public int TotalAnswers { get; set; }
-        public decimal AssessedSkillLevelChange { get; set; }
-        public int TotalReanswered { get; set; }
-        public decimal? TotalReansweredPercentage { get; set; }
+        public string Subject { get; init; }
+        public int UniqueExercises { get; init; }
+        public int TotalAnswers { get; init; }
+        public decimal AssessedSkillLevelChange { get; init; }
+        public int TotalReanswered { get; init; }
+        public decimal? TotalReansweredPercentage { get; init; }
     }
 }

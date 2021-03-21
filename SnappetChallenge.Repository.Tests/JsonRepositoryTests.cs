@@ -6,6 +6,7 @@ using Moq;
 using SnappetChallenge.Repository.Config;
 using SnappetChallenge.Repository.Interfaces;
 using SnappetChallenge.Repository.Models;
+using System;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -17,7 +18,7 @@ namespace SnappetChallenge.Repository.Tests
         public async Task GivenThereIsNoCachedDataWhenCallingGetWorkResultsThenDataIsLoaded()
         {
             // Arrange
-            var expectedWorkResults = new WorkResult[] { new WorkResult() };
+            var expectedWorkResults = new WorkResult[] { };
 
             var options = Options.Create(new RepositoryOptions {  JsonFilePath = $"mockFileThatDoesNotExist.json" });
             var fileLoaderMock = new Mock<IFileDataLoader>();
@@ -41,7 +42,7 @@ namespace SnappetChallenge.Repository.Tests
         public async Task GivenThereIsCachedDataWhenCallingGetWorkResultsThenDataIsNotLoaded()
         {
             // Arrange
-            var expectedWorkResults = new WorkResult[] { new WorkResult() };
+            var expectedWorkResults = new WorkResult[] { };
             var cachingService = new LazyCache.CachingService();
             cachingService.Add("WorkResults", expectedWorkResults, new MemoryCacheEntryOptions());
 
