@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SnappetChallenge.Mappers;
+using SnappetChallenge.Mappers.Interfaces;
+using SnappetChallenge.Models;
 using SnappetChallenge.Queries;
 using SnappetChallenge.Queries.Handlers;
 using SnappetChallenge.Queries.Interfaces;
@@ -38,6 +41,9 @@ namespace SnappetChallenge
 
             // Queries DI
             services.AddScoped<IQueryHandler<GetDashboardQuery, Task<IEnumerable<DashboardResponse>>>, GetDashboardQueryHandler>();
+
+            // Mappers DI
+            services.AddScoped<IMapper<DashboardResponse, SubjectOverviewDto>, SubjectOverviewMapper>();
             
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

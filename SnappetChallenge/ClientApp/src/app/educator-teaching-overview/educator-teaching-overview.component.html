@@ -1,0 +1,15 @@
+<div>
+    <h3 class="text-center">Teaching Overview</h3>
+    <br/>
+    <ngx-datatable
+        class="material striped" 
+        [rows]="educatorTeachingOverview$ | async"
+        [columns]="columns"
+        [columnMode]="gridColumnMode"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="10"
+        > 
+    </ngx-datatable>
+</div>
