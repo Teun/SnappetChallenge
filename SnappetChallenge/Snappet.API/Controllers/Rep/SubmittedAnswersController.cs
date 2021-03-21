@@ -36,5 +36,23 @@ namespace Snappet.API.Controllers.Rep
             return FromDatabase(rst);
         }
 
+
+        /// <summary>
+        /// Report careless students group by domain during a certain datetime
+        /// </summary>
+        /// <param name="inputs"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> CarelessStudentsAsync([FromQuery] SP_SubmittedAnswers_CarelessStudents.Inputs inputs)
+        {
+            Models.Database.DBResult rst = null;
+            await Task.Run(() =>
+            {
+                rst = _dbCTX.SP_SubmittedAnswers_CarelessStudents(inputs);
+            });
+
+            return FromDatabase(rst);
+        }
+
     }
 }

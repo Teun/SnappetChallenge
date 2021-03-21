@@ -22,5 +22,12 @@ namespace Snappet.Logic.Database
         /// <param name="inputs"></param>
         /// <returns></returns>
         DBResult SP_Class_Progress(SP_Class_Progress.Inputs inputs);
+
+        /// <summary>
+        /// Get careless student during certain datetime range
+        /// </summary>
+        /// <param name="inputs"></param>
+        /// <returns></returns>
+        DBResult SP_SubmittedAnswers_CarelessStudents(SP_SubmittedAnswers_CarelessStudents.Inputs inputs);
     }
 }

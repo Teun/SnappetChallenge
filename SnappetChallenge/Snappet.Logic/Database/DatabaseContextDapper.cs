@@ -9,6 +9,7 @@ namespace Snappet.Logic.Database
     {
         private readonly ORM.Dapper.StoredProcedures.dbo.SP_Teacher_Login _sp_Teacher_Login;
         private readonly ORM.Dapper.StoredProcedures.Rep.SP_Class_Progress _sp_Class_Progress;
+        private readonly ORM.Dapper.StoredProcedures.Rep.SP_SubmittedAnswers_CarelessStudents _sp_SubmittedAnswers_CarelessStudents;
 
 
         /// <summary>
@@ -26,6 +27,7 @@ namespace Snappet.Logic.Database
 
             _sp_Teacher_Login = new ORM.Dapper.StoredProcedures.dbo.SP_Teacher_Login(sqlExecuter);
             _sp_Class_Progress = new ORM.Dapper.StoredProcedures.Rep.SP_Class_Progress(sqlExecuter);
+            _sp_SubmittedAnswers_CarelessStudents = new ORM.Dapper.StoredProcedures.Rep.SP_SubmittedAnswers_CarelessStudents(sqlExecuter);
         }
 
         /// <summary>
@@ -48,6 +50,18 @@ namespace Snappet.Logic.Database
         public DBResult SP_Class_Progress(SP_Class_Progress.Inputs inputs)
         {
             var rst = _sp_Class_Progress.Call(inputs);
+            return rst;
+        }
+
+
+        /// <summary>
+        /// Implement calling SP_SubmittedAnswers_CarelessStudents by Dapper ORM
+        /// </summary>
+        /// <param name="inputs"></param>
+        /// <returns></returns>
+        public DBResult SP_SubmittedAnswers_CarelessStudents(SP_SubmittedAnswers_CarelessStudents.Inputs inputs)
+        {
+            var rst = _sp_SubmittedAnswers_CarelessStudents.Call(inputs);
             return rst;
         }
     }
