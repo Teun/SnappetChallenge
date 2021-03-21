@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Snappet.API.Extensions;
 using Snappet.Logic.Logger;
 
 namespace Snappet.API
@@ -27,6 +28,9 @@ namespace Snappet.API
         {
             //Add logger service (NLog)
             services.AddSingleton<ILoggerManager, LoggerManager>();
+
+            //Add default ORM
+            services.AddORM();
 
             //Set swagger document
             services.AddSwaggerDocument();
