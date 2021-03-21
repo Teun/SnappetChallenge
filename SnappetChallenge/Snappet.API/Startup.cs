@@ -27,7 +27,6 @@ namespace Snappet.API
             //Set swagger document
             services.AddSwaggerDocument();
 
-
             services.AddControllers();
         }
 
