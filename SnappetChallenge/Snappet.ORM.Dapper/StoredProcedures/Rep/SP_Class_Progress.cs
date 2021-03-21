@@ -7,7 +7,7 @@ namespace Snappet.ORM.Dapper.StoredProcedures.Rep
     public class SP_Class_Progress : BaseSP
     {
         public SP_Class_Progress(ISQLExecuter executer)
-            : base("dbo.SP_Class_Progress", executer)
+            : base("Rep.SP_Class_Progress", executer)
         {
         }
 
