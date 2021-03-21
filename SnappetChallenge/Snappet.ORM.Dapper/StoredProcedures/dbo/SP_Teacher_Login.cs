@@ -1,8 +1,6 @@
 ﻿using Snappet.Models.Database;
 using Snappet.ORM.Dapper.Features;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Snappet.ORM.Dapper.StoredProcedures.dbo
 {
