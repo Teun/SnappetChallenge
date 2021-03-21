@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Snappet.Logic.Database;
 using Snappet.Models.Database.StoredProcedures.Rep;
+using System.Threading.Tasks;
 
 namespace Snappet.API.Controllers.Rep
 {
@@ -22,9 +23,14 @@ namespace Snappet.API.Controllers.Rep
         /// <param name="inputs"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult ClassProgress([FromQuery] SP_Class_Progress.Inputs inputs)
+        public async Task<IActionResult> ClassProgressAsync([FromQuery] SP_Class_Progress.Inputs inputs)
         {
-            var rst = _dbCTX.SP_Class_Progress(inputs);
+            Models.Database.DBResult rst = null;
+            await Task.Run(() =>
+            {
+                rst = _dbCTX.SP_Class_Progress(inputs);
+            });
+
             return FromDatabase(rst);
         }
 

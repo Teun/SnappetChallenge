@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace Snappet.API.Controllers.dbo
 {
@@ -53,9 +54,14 @@ namespace Snappet.API.Controllers.dbo
         /// <param name="teacher"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Login([FromBody] Logic.Security.Teacher teacher)
+        public async Task<IActionResult> LoginAsync([FromBody] Logic.Security.Teacher teacher)
         {
-            var rst = teacher.Login(_dbCTX, _mapper, JWTKey, JWTIssuer);
+            Models.Database.DBResult rst = null;
+            await Task.Run(() =>
+            {
+                rst = teacher.Login(_dbCTX, _mapper, JWTKey, JWTIssuer);
+            });
+
             return FromDatabase(rst);
         }
     }
