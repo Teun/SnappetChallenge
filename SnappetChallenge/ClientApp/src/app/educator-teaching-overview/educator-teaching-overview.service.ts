@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { throwError } from 'rxjs';
-import { catchError, switchMap, tap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 import { IDateRange } from '../models/date-range-model';
 import { ISubjectOverview } from '../models/subject-overview.model';
 
@@ -27,12 +27,10 @@ export class EducatorTeachingOverviewService {
         endDateTimeUtc: dateRange.toDate.toISOString()
       }
     }).pipe(
-      tap(data => console.log("educatorTeachingOverview: ", JSON.stringify(data)),
       catchError(error => {
-        //TODO: Remove logging and improve error handling
-        console.error(error);
+        console.error("An exception occurred retrieving the educator's teaching overview: " + error);
         return throwError("An exception occurred retrieving the educator's teaching overview.");
-      }))),
+      })),
     )
   );
 

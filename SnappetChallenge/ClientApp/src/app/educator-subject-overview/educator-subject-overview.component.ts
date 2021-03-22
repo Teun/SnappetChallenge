@@ -28,7 +28,6 @@ export class EducatorSubjectOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO: Should validate here, but limited due to time constraint.
     this.subject = this.route.snapshot.paramMap.get('subject');
     const fromDateIso = this.route.snapshot.queryParamMap.get('fromDate');
     const toDateIso = this.route.snapshot.queryParamMap.get('toDate');

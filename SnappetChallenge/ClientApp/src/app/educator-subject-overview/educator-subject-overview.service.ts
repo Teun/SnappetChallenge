@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { IDateRange } from '../models/date-range-model';
 import { ISubjectStudentOverview } from '../models/subject-student-overview.model';
 
@@ -21,11 +21,9 @@ export class EducatorSubjectOverviewService {
         endDateTimeUtc: dateRange.toDate.toISOString()
       }
     }).pipe(
-      tap(data => console.log("api/educatorsubjectoverview: ", JSON.stringify(data)),
       catchError(error => {
-        //TODO: Remove logging and improve error handling
-        console.error(error);
-        return throwError("An exception occurred retrieving the educator's teaching overview.");
-      })))
+        console.error("An exception occurred retrieving the educator's subject overview: " + error);
+        return throwError("An exception occurred retrieving the educator's subject overview.");
+      }));
   }
 }
