@@ -13,8 +13,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./educator-teaching-overview.component.scss']
 })
 export class EducatorTeachingOverviewComponent implements OnInit {
-  private defaultFromDate = this.educatorTeachingOverviewService.defaultFromDate;
-  private defaultToDate = this.educatorTeachingOverviewService.defaultToDate;
+  private lastAppliedDateRange = this.educatorTeachingOverviewService.defaultDateRange;
 
   @ViewChild('myTable') table: any;
   @ViewChild('fromPicker') fromPicker: any;
@@ -23,8 +22,8 @@ export class EducatorTeachingOverviewComponent implements OnInit {
   minDate: moment.Moment;
   maxDate: moment.Moment;
   dateTimePickerColour: ThemePalette = 'primary';
-  fromDateControl = new FormControl(this.defaultFromDate);
-  toDateControl = new FormControl(this.defaultToDate);
+  fromDateControl = new FormControl(this.educatorTeachingOverviewService.defaultDateRange.fromDate);
+  toDateControl = new FormControl(this.educatorTeachingOverviewService.defaultDateRange.toDate);
 
   gridColumnMode: ColumnMode = ColumnMode.force;
 
@@ -34,16 +33,16 @@ export class EducatorTeachingOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {    
-    moment.locale('nl');
-    console.log(moment.locale());
     this.educatorTeachingOverview$ = this.educatorTeachingOverviewService.educatorTeachingOverview$;
   }
 
   applySelectedDateRange() {
-    this.educatorTeachingOverviewService.selectedDateRangeChanged({
+    this.lastAppliedDateRange = {
       fromDate: this.fromDateControl.value,
       toDate: this.toDateControl.value
-    });
+    };
+
+    this.educatorTeachingOverviewService.selectedDateRangeChanged(this.lastAppliedDateRange);
   }
 
   toggleExpandRow(row) {

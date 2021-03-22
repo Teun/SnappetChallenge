@@ -10,13 +10,12 @@ import { ISubjectOverview } from '../models/subject-overview.model';
   providedIn: 'root'
 })
 export class EducatorTeachingOverviewService {
-  defaultFromDate = new Date(2015, 2, 24);
-  defaultToDate = new Date(2015, 2, 24, 12, 30);
+  defaultDateRange: ISubjectOverviewDateRange = {
+    fromDate: new Date(2015, 2, 24),
+    toDate: new Date(2015, 2, 24, 12, 30)
+  };
 
-  private dateRangeChangedSubject = new BehaviorSubject<ISubjectOverviewDateRange>({
-    fromDate: this.defaultFromDate,
-    toDate: this.defaultToDate
-  });
+  private dateRangeChangedSubject = new BehaviorSubject<ISubjectOverviewDateRange>(this.defaultDateRange);
 
   private dateRangeChangedAction$ = this.dateRangeChangedSubject.asObservable();
 
