@@ -33,7 +33,7 @@ namespace SnappetChallenge.Queries.Handlers
 								UniqueExercises = subjectGrouping.Select(x => x.ExerciseId).Distinct().Count(),
 								UniqueStudents = subjectGrouping.Select(x => x.UserId).Distinct().Count(),
 								TotalAnswers = subjectGrouping.Select(x => x.SubmittedAnswerId).Count(),
-								AssessedSkillLevelChange = subjectGrouping.Select(x => (decimal?)x.Progress).Sum(),
+								AssessedSkillLevelChange = subjectGrouping.Select(x => (decimal)x.Progress).Sum(),
 								TotalReanswered = (from subjectGroup in subjectGrouping
 												   group subjectGroup by new { subjectGroup.UserId, subjectGroup.ExerciseId } into reanswerGrouping
 												   where (reanswerGrouping.Count() - 1 > 0)

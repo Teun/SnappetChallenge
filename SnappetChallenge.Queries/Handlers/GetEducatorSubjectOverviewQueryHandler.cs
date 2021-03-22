@@ -37,7 +37,7 @@ namespace SnappetChallenge.Queries.Handlers
 								Domain = grp.Key.Domain,
 								LearningObjective = grp.Key.LearningObjective,
 								UserId = grp.Key.UserId,
-								AssessedSkillLevelChange = grp.Select(x => (decimal?)x.Progress).Sum()
+								AssessedSkillLevelChange = grp.Select(x => (decimal)x.Progress).Sum()
 							};
 
 			var response = linqQuery.ToList();

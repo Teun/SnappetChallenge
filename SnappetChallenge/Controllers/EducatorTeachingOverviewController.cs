@@ -29,7 +29,7 @@ namespace SnappetChallenge.Controllers
         [HttpGet]
         public async Task<IEnumerable<SubjectOverviewDto>> Get(DateTime startDateTimeUtc, DateTime endDateTimeUtc)
         {
-            // TODO: Validation
+            //TODO: Date range validation
             var query = new GetEducatorTeachingOverviewQuery 
             { 
                 StartDateTimeUtc = startDateTimeUtc,
