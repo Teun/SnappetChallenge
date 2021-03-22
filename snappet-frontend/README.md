@@ -22,6 +22,9 @@ Following commands run the back-end services on local machine
 (inside Snappet backend directory)
 * #### npm install
 * #### node index.js
+* Server project is now ready to serve from http://localhost:3000
+* Client project is now ready to serve from http://localhost:4200
+
 
 If both of the projects up and running, Snappet dashboard will come up with following pages and features.
 
