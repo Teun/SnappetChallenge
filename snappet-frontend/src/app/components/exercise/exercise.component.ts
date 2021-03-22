@@ -17,7 +17,7 @@ export class ExerciseComponent implements OnInit {
 
   @ViewChild('paginator') paginator: MatPaginator;
   exerciseColumns: ITdDataTableColumn[] = [
-    {name: 'user_id', label: 'User'},
+    {name: 'user_id', label: 'Student Name'},
     {name: 'progress', label: 'Progress'},
     {name: 'correct', label: 'Correct Answers'},
     {name: 'difficulty', label: 'Difficulty'},
