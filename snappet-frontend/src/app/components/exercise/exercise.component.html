@@ -1,0 +1,18 @@
+<mat-accordion *ngFor="let report of shown_reports">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{report[0].exercise_id}}
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <td-data-table [data]="report" [columns]="exerciseColumns">
+    </td-data-table>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator #paginator [length]="reports.length"
+               [pageSize]="10"
+               (page)="pageChanged($event)"
+               [pageSizeOptions]="[10]">
+</mat-paginator>

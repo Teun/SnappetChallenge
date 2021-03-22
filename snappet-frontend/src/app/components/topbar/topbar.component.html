@@ -1,0 +1,32 @@
+<td-layout class="layout-nav-demo" sidenavWidth="280px">
+  <td-navigation-drawer flex
+                        sidenavTitle="Soner Say"
+                        icon="security"
+                        name="Snappet Dashboard"
+  >
+    <mat-nav-list>
+
+      <a mat-list-item routerLink="/dashboard" tdLayoutToggle>
+        <mat-icon>assessment</mat-icon>
+        Overview
+      </a>
+
+      <a mat-list-item routerLink="/progress" tdLayoutToggle>
+        <mat-icon>assignments_ind</mat-icon>
+        Student Reports
+      </a>
+
+      <a mat-list-item routerLink="/exercise" tdLayoutToggle>
+        <mat-icon>assignments</mat-icon>
+        Exercise Results
+      </a>
+
+    </mat-nav-list>
+  </td-navigation-drawer>
+  <td-layout-nav icon="home" toolbarTitle="Snappet Dashboard" navigationRoute="/workspace">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </td-layout-nav>
+</td-layout>
