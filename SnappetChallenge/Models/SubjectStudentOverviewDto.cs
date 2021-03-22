@@ -1,6 +1,6 @@
 ﻿namespace SnappetChallenge.Models
 {
-    public class SubjectStudentOverviewDto
+    public record SubjectStudentOverviewDto
     {
         public string Domain { get; init; }
         public string LearningObjective { get; init; }

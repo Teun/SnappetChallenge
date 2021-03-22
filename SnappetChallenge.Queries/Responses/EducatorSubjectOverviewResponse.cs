@@ -1,6 +1,6 @@
 ﻿namespace SnappetChallenge.Queries.Responses
 {
-    public class EducatorSubjectOverviewResponse
+    public record EducatorSubjectOverviewResponse
     {
         public string Domain { get; init; }
         public string LearningObjective { get; init; }
