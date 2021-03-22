@@ -82,7 +82,7 @@
             <li>Total Answers: {{ row.totalAnswers }}</li>
             <li>Skill Level Change: {{ row.assessedSkillLevelChange }}</li>
             <li>Total Reanswered: {{ row.totalReanswered }}</li>
-            <li>Total Reanswered %: {{ row.totalReansweredPercentage }}</li>
+            <li>Total Reanswered %: {{ row.totalReansweredPercentage }}%</li>
           </ul>
         </div>
       </ng-template>
@@ -178,7 +178,7 @@
         <span class="mobile-hidden">{{ column.name }}</span>
       </ng-template>
       <ng-template let-value="value" ngx-datatable-cell-template>
-        <span class="mobile-hidden">{{ value }}</span>
+        <span class="mobile-hidden">{{ value }}%</span>
       </ng-template>
     </ngx-datatable-column>
   </ngx-datatable>
