@@ -3,18 +3,23 @@
 Snappet Dashboard has been implemented with Angular 11.2.6 at the front-end side and Node.js at the back-end side.
 
 Following are requirements to locally run dashboard.
-* Node.js 14.16.0
-* npm 6.14.11
+* Node.js 12 or 14 (preferred 14.16.0)
+* npm 6+ (preferred 6.14.11)
 
-Following commands run the dashboard on local machine.
+Following libraries have been used in this challenge
+* Teradata Covalent
+* ECharts
+* Angular Material
 
+Following commands run the Angular dashboard on local machine.
+(inside Snappet frontend directory)
 * #### npm install
 * #### ng serve
 
 **Dashboard relies on back-end services. Dashboard will not come up if Node.js project is not up and running.**
 
 Following commands run the back-end services on local machine
-
+(inside Snappet backend directory)
 * #### npm install
 * #### node index.js
 
@@ -51,6 +56,9 @@ If both of the projects up and running, Snappet dashboard will come up with foll
 
 * ### Further possible front-end optimizations and improvements
   * Server side filtering and paging for all pages
+  * Common filter mechanism so that all pages use the same filter component.
+  * Common style classes like container, ui-g
+  * More user friendly interface
 
 * ### Further possible back-end optimizations and improvements
   * Microservice infrastructure
