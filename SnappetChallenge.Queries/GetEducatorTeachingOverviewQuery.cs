@@ -8,7 +8,7 @@ namespace SnappetChallenge.Queries
 {
     public class GetEducatorTeachingOverviewQuery : IQuery<Task<IEnumerable<EducatorTeachingOverviewResponse>>>
     {
-        public DateTime StartDateTimeUtc { get; set; }
-        public DateTime EndDateTimeUtc { get; set; }
+        public DateTime StartDateTimeUtc { get; init; }
+        public DateTime EndDateTimeUtc { get; init; }
     }
 }

@@ -6,7 +6,6 @@ using Moq;
 using SnappetChallenge.Repository.Config;
 using SnappetChallenge.Repository.Interfaces;
 using SnappetChallenge.Repository.Models;
-using System;
 using System.Threading.Tasks;
 using Xunit;
 

@@ -2,8 +2,8 @@
 {
     public class RepositoryOptions
     {
-        public const string Repository = "Repository";
+        public const string KeyName = "Repository";
 
-        public string JsonFilePath { get; set; }
+        public string JsonFilePath { get; init; }
     }
 }
