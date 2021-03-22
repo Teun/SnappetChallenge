@@ -1,0 +1,151 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+// Plus imports for other components in your app.
+@import '~@covalent/core/common/platform.css';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$snappet-frontend-primary: mat-palette($mat-indigo);
+$snappet-frontend-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$snappet-frontend-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$snappet-frontend-theme: mat-light-theme((
+color: (
+primary: $snappet-frontend-primary,
+          accent: $snappet-frontend-accent,
+                   warn: $snappet-frontend-warn,
+)
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($snappet-frontend-theme);
+
+@import '~@angular/material/theming';
+@import '~@covalent/core/theming/all-theme';
+
+// (optional) Additional themes
+@import '~@covalent/markdown/markdown-theme';
+@import '~@covalent/highlight/highlight-theme';
+
+// Define a custom typography config that overrides the font-family
+// or any typography level.
+$typography: mat-typography-config(
+$font-family: 'Roboto, monospace',
+$headline: mat-typography-level(32px, 48px, 700)
+);
+
+@include mat-core($typography); // $typography is an **optional** argument for the mat-core
+
+$primary: mat-palette($mat-orange, 800, 100, 900);
+$accent:  mat-palette($mat-light-blue, 600, 100, 900);
+
+$warn:    mat-palette($mat-red, 600, 100, 900);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+@include covalent-theme($theme, $typography); // $typography is an **optional** argument for the covalent-theme
+
+// (optional) Additional themes
+@include covalent-markdown-theme($theme);
+@include covalent-highlight-theme();
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.ui-g {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.ui-g::after {
+  clear: both;
+  content: "";
+  display: table;
+  box-sizing: border-box;
+}
+
+.ui-g-1,
+.ui-g-2,
+.ui-g-3,
+.ui-g-4,
+.ui-g-5,
+.ui-g-6,
+.ui-g-7,
+.ui-g-8,
+.ui-g-9,
+.ui-g-10,
+.ui-g-11,
+.ui-g-12 {
+  float: left;
+  box-sizing: border-box;
+  padding: 0.5em;
+}
+
+.ui-g-1 {
+  width: 8.3333%;
+}
+
+.ui-g-2 {
+  width: 16.6667%;
+}
+
+.ui-g-3 {
+  width: 25%;
+}
+
+.ui-g-4 {
+  width: 33.3333%;
+}
+
+.ui-g-5 {
+  width: 41.6667%;
+}
+
+.ui-g-6 {
+  width: 50%;
+}
+
+.ui-g-7 {
+  width: 58.3333%;
+}
+
+.ui-g-8 {
+  width: 66.6667%;
+}
+
+.ui-g-9 {
+  width: 75%;
+}
+
+.ui-g-10 {
+  width: 83.3333%;
+}
+
+.ui-g-11 {
+  width: 91.6667%;
+}
+
+.ui-g-12 {
+  width: 100%;
+}
+
