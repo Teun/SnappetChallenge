@@ -1,54 +1,185 @@
 <div>
-    <h3 class="text-center">Teaching Overview</h3>
-    <br/>
-    <div class="teaching-overview-date-range">
-        <mat-form-field>
-            <input matInput [ngxMatDatetimePicker]="fromPicker" 
-                            placeholder="From date and time"
-                            [formControl]="fromDateControl"
-                            [min]="minDate" 
-                            [max]="maxDate">
-            <mat-datepicker-toggle matSuffix [for]="$any(fromPicker)">
-            </mat-datepicker-toggle>
-            <ngx-mat-datetime-picker #fromPicker 
-                [showSpinners]="true" 
-                [showSeconds]="false"
-                [stepHour]="1" 
-                [stepMinute]="1" 
-                [stepSecond]="1"
-                [touchUi]="false"
-                [color]="dateTimePickerColour">
-            </ngx-mat-datetime-picker>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [ngxMatDatetimePicker]="toPicker" 
-                            placeholder="To date and time"
-                            [formControl]="toDateControl"
-                            [min]="minDate" 
-                            [max]="maxDate">
-            <mat-datepicker-toggle matSuffix [for]="$any(toPicker)">
-            </mat-datepicker-toggle>
-            <ngx-mat-datetime-picker #toPicker 
-                [showSpinners]="true" 
-                [showSeconds]="false"
-                [stepHour]="1" 
-                [stepMinute]="1" 
-                [stepSecond]="1"
-                [touchUi]="false"
-                [color]="dateTimePickerColour">
-            </ngx-mat-datetime-picker>
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="applySelectedDateRange()">Apply</button>
-    </div>
-    <br/>
-    <ngx-datatable
-        class="material striped" 
-        [rows]="educatorTeachingOverview$ | async"
-        [columns]="columns"
-        [columnMode]="gridColumnMode"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        rowHeight="auto"
-        [limit]="10">
-    </ngx-datatable>
+  <h3 class="text-center">Teaching Overview</h3>
+  <br />
+  <div class="teaching-overview-date-range">
+    <mat-form-field>
+      <input
+        matInput
+        [ngxMatDatetimePicker]="fromPicker"
+        placeholder="From date and time"
+        [formControl]="fromDateControl"
+        [min]="minDate"
+        [max]="maxDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="$any(fromPicker)">
+      </mat-datepicker-toggle>
+      <ngx-mat-datetime-picker
+        #fromPicker
+        [showSpinners]="true"
+        [showSeconds]="false"
+        [stepHour]="1"
+        [stepMinute]="1"
+        [stepSecond]="1"
+        [touchUi]="false"
+        [color]="dateTimePickerColour"
+      >
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [ngxMatDatetimePicker]="toPicker"
+        placeholder="To date and time"
+        [formControl]="toDateControl"
+        [min]="minDate"
+        [max]="maxDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="$any(toPicker)">
+      </mat-datepicker-toggle>
+      <ngx-mat-datetime-picker
+        #toPicker
+        [showSpinners]="true"
+        [showSeconds]="false"
+        [stepHour]="1"
+        [stepMinute]="1"
+        [stepSecond]="1"
+        [touchUi]="false"
+        [color]="dateTimePickerColour"
+      >
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="applySelectedDateRange()"
+    >
+      Apply
+    </button>
+  </div>
+  <br />
+  <ngx-datatable
+    #myTable
+    class="material expandable"
+    [rows]="educatorTeachingOverview$ | async"
+    [columnMode]="gridColumnMode"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+  >
+    <!-- Row Detail Template -->
+    <ngx-datatable-row-detail
+      [rowHeight]="125"
+      #myDetailRow
+    >
+      <ng-template
+        let-row="row"
+        let-expanded="expanded"
+        ngx-datatable-row-detail-template
+      >
+        <div style="padding-left: 60px; font-size: 14px">
+          <ul>
+            <li>Unique Exercises: {{ row.uniqueExercises }}</li>
+            <li>Total Answers: {{ row.totalAnswers }}</li>
+            <li>Skill Level Change: {{ row.assessedSkillLevelChange }}</li>
+            <li>Total Reanswered: {{ row.totalReanswered }}</li>
+            <li>Total Reanswered %: {{ row.totalReansweredPercentage }}</li>
+          </ul>
+        </div>
+      </ng-template>
+    </ngx-datatable-row-detail>
+
+    <!-- Column Templates -->
+    <ngx-datatable-column
+      [width]="50"
+      [resizeable]="false"
+      [sortable]="false"
+      [draggable]="false"
+      [canAutoResize]="false"
+    >
+      <ng-template
+        let-row="row"
+        let-expanded="expanded"
+        ngx-datatable-cell-template
+      >
+        <a
+          href="#"
+          [class.datatable-icon-right]="!expanded"
+          [class.datatable-icon-down]="expanded"
+          title="Expand/Collapse Row"
+          (click)="toggleExpandRow(row)"
+          class="desktop-hidden"
+        >
+        </a>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="subject" [flexGrow]="6" [minWidth]="200">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="uniqueExercises" [flexGrow]="1">
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="totalAnswers" [flexGrow]="1">
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="assessedSkillLevelChange" [flexGrow]="1">
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="totalReanswered" [flexGrow]="1">
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      prop="totalReansweredPercentage"
+      name="Total Reanswered %"
+      [flexGrow]="1"
+    >
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 </div>

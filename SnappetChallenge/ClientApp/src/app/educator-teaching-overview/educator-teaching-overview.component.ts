@@ -16,6 +16,7 @@ export class EducatorTeachingOverviewComponent implements OnInit {
   private defaultFromDate = this.educatorTeachingOverviewService.defaultFromDate;
   private defaultToDate = this.educatorTeachingOverviewService.defaultToDate;
 
+  @ViewChild('myTable') table: any;
   @ViewChild('fromPicker') fromPicker: any;
   @ViewChild('toPicker') toPicker: any;
 
@@ -26,15 +27,6 @@ export class EducatorTeachingOverviewComponent implements OnInit {
   toDateControl = new FormControl(this.defaultToDate);
 
   gridColumnMode: ColumnMode = ColumnMode.force;
-  
-  columns = [
-    { prop: 'subject' },
-    { prop: 'uniqueExercises' }, 
-    { prop: 'totalAnswers' },
-    { prop: 'assessedSkillLevelChange' },
-    { prop: 'totalReanswered' },
-    { prop: 'totalReansweredPercentage', name: 'Total Reanswered %' },
-  ];
 
   educatorTeachingOverview$: Observable<ISubjectOverview[]>;
 
@@ -52,5 +44,9 @@ export class EducatorTeachingOverviewComponent implements OnInit {
       fromDate: this.fromDateControl.value,
       toDate: this.toDateControl.value
     });
+  }
+
+  toggleExpandRow(row) {
+    this.table.rowDetail.toggleExpandRow(row);
   }
 }
