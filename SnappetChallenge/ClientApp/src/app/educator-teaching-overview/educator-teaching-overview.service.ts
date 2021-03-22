@@ -3,19 +3,19 @@ import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
-import { ISubjectOverviewDateRange } from '../models/subject-overview-date-range-model';
+import { IDateRange } from '../models/date-range-model';
 import { ISubjectOverview } from '../models/subject-overview.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EducatorTeachingOverviewService {
-  defaultDateRange: ISubjectOverviewDateRange = {
+  defaultDateRange: IDateRange = {
     fromDate: new Date(2015, 2, 24),
     toDate: new Date(2015, 2, 24, 12, 30)
   };
 
-  private dateRangeChangedSubject = new BehaviorSubject<ISubjectOverviewDateRange>(this.defaultDateRange);
+  private dateRangeChangedSubject = new BehaviorSubject<IDateRange>(this.defaultDateRange);
 
   private dateRangeChangedAction$ = this.dateRangeChangedSubject.asObservable();
 
@@ -40,7 +40,7 @@ export class EducatorTeachingOverviewService {
   }
 
   // Trigger the dateRangeChangedSubject which in turn calls the API to retrieve data.
-  selectedDateRangeChanged(dateRange: ISubjectOverviewDateRange): void {
+  selectedDateRangeChanged(dateRange: IDateRange): void {
     this.dateRangeChangedSubject.next(dateRange);
   }
 }

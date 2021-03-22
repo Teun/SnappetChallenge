@@ -1,0 +1,107 @@
+<div>
+    <h3 class="text-center">Subject Overview: {{subject}}</h3>
+    <br />
+    <div>
+        <strong>From Date: </strong>{{fromDateFormattedString}}
+        <br/>
+        <strong>To Date: </strong>{{toDateFormattedString}}
+    </div>
+    <br/>
+    
+    <ngx-datatable
+    #mySubjectOverviewTable
+    class="material expandable"
+    [rows]="educatorSubjectStudentOverview$ | async"
+    [columnMode]="gridColumnMode"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [limit]="10"
+  >
+    <!-- Row Detail Template -->
+    <ngx-datatable-row-detail
+      [rowHeight]="200"
+      #mySubjectOverviewDetailRow
+    >
+      <ng-template
+        let-row="row"
+        let-expanded="expanded"
+        ngx-datatable-row-detail-template
+      >
+        <div style="padding-left: 10px; font-size: 14px; width: 250px">
+          <ul>
+            <li><em>Learning Objective:</em> {{ row.learningObjective }}</li>
+            <li><em>Student ID:</em> {{ row.userId }}</li>
+            <li><em>Skill Level Change:</em> {{ row.assessedSkillLevelChange }}</li>
+          </ul>
+        </div>
+      </ng-template>
+    </ngx-datatable-row-detail>
+
+    <!-- Column Templates -->
+    <ngx-datatable-column
+      [width]="50"
+      [resizeable]="false"
+      [sortable]="false"
+      [draggable]="false"
+      [canAutoResize]="false"
+    >
+      <ng-template
+        let-row="row"
+        let-expanded="expanded"
+        ngx-datatable-cell-template
+      >
+        <a
+          href="#"
+          [class.datatable-icon-right]="!expanded"
+          [class.datatable-icon-down]="expanded"
+          title="Expand/Collapse Row"
+          (click)="toggleExpandRow(row)"
+          class="desktop-hidden"
+        >
+        </a>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="domain" [flexGrow]="4" [minWidth]="200">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="learningObjective" [flexGrow]="1">
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="userId" name="Student ID" [flexGrow]="1">
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="assessedSkillLevelChange" [flexGrow]="1">
+      <ng-template
+        let-column="column"
+        let-sort="sortFn"
+        ngx-datatable-header-template
+      >
+        <span class="mobile-hidden">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{ value }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

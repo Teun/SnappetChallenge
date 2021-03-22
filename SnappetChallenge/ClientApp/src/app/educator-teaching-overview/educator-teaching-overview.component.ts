@@ -13,12 +13,11 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./educator-teaching-overview.component.scss']
 })
 export class EducatorTeachingOverviewComponent implements OnInit {
-  private lastAppliedDateRange = this.educatorTeachingOverviewService.defaultDateRange;
-
-  @ViewChild('myTable') table: any;
+  @ViewChild('myTeachingOverviewTable') table: any;
   @ViewChild('fromPicker') fromPicker: any;
   @ViewChild('toPicker') toPicker: any;
 
+  lastAppliedDateRange = this.educatorTeachingOverviewService.defaultDateRange;
   minDate: moment.Moment;
   maxDate: moment.Moment;
   dateTimePickerColour: ThemePalette = 'primary';
@@ -45,7 +44,8 @@ export class EducatorTeachingOverviewComponent implements OnInit {
     this.educatorTeachingOverviewService.selectedDateRangeChanged(this.lastAppliedDateRange);
   }
 
-  toggleExpandRow(row) {
+  toggleExpandRow(row) : boolean {
     this.table.rowDetail.toggleExpandRow(row);
+    return false;
   }
 }

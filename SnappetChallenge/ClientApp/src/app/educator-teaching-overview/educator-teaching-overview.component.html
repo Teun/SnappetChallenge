@@ -58,7 +58,7 @@
   </div>
   <br />
   <ngx-datatable
-    #myTable
+    #myTeachingOverviewTable
     class="material expandable"
     [rows]="educatorTeachingOverview$ | async"
     [columnMode]="gridColumnMode"
@@ -69,20 +69,20 @@
     <!-- Row Detail Template -->
     <ngx-datatable-row-detail
       [rowHeight]="125"
-      #myDetailRow
+      #myTeachingOverviewDetailRow
     >
       <ng-template
         let-row="row"
         let-expanded="expanded"
         ngx-datatable-row-detail-template
       >
-        <div style="padding-left: 60px; font-size: 14px">
+        <div style="padding-left: 10px; font-size: 14px">
           <ul>
-            <li>Unique Exercises: {{ row.uniqueExercises }}</li>
-            <li>Total Answers: {{ row.totalAnswers }}</li>
-            <li>Skill Level Change: {{ row.assessedSkillLevelChange }}</li>
-            <li>Total Reanswered: {{ row.totalReanswered }}</li>
-            <li>Total Reanswered %: {{ row.totalReansweredPercentage }}%</li>
+            <li><em>Unique Exercises:</em> {{ row.uniqueExercises }}</li>
+            <li><em>Total Answers:</em> {{ row.totalAnswers }}</li>
+            <li><em>Skill Level Change:</em> {{ row.assessedSkillLevelChange }}</li>
+            <li><em>Total Reanswered:</em> {{ row.totalReanswered }}</li>
+            <li><em>Total Reanswered %:</em> {{ row.totalReansweredPercentage }}%</li>
           </ul>
         </div>
       </ng-template>
@@ -114,7 +114,11 @@
     </ngx-datatable-column>
     <ngx-datatable-column prop="subject" [flexGrow]="6" [minWidth]="200">
       <ng-template let-value="value" ngx-datatable-cell-template>
-        {{ value }}
+        <a 
+          [routerLink]="['/subjectoverview', value]"
+          [queryParams]="{fromDate: lastAppliedDateRange.fromDate.toISOString(), toDate: lastAppliedDateRange.toDate.toISOString()}"
+          >{{ value }}
+        </a>
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column prop="uniqueExercises" [flexGrow]="1">

@@ -14,6 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMatMomentAdapter, NgxMatMomentModule} from '@angular-material-components/moment-adapter';
 import {MatButtonModule} from '@angular/material/button';
+import { EducatorSubjectOverviewComponent } from './educator-subject-overview/educator-subject-overview.component';
 
 export const CUSTOM_MOMENT_FORMATS  = {
   parse: {
@@ -32,7 +33,8 @@ export const CUSTOM_MOMENT_FORMATS  = {
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    EducatorTeachingOverviewComponent
+    EducatorTeachingOverviewComponent,
+    EducatorSubjectOverviewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,6 +49,7 @@ export const CUSTOM_MOMENT_FORMATS  = {
     NgxMatMomentModule,
     NgxDatatableModule,
     RouterModule.forRoot([
+      { path: 'subjectoverview/:subject', component: EducatorSubjectOverviewComponent},
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ], { relativeLinkResolution: 'legacy' }),
     NoopAnimationsModule
