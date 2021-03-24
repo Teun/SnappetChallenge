@@ -1,0 +1,13 @@
+@import "../../common/colours.scss";
+
+.header-bar-content {
+  height: 100px;
+  width: 100%;
+  border-bottom: 3px solid $base-blue;
+}
+
+.header-image {
+  height: 40px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
