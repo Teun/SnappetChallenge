@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{83A545F9-D2B0-4070-894B-17051408F70F}|Default">
+  <MonoDevelop.Ide.ItemProperties.Snappet-challenge-api FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Snappet-challenge-api/Controllers/HomeController.cs">
+    <Files>
+      <File FileName="Snappet-challenge-api/Program.cs" Line="1" Column="1" />
+      <File FileName="Snappet-challenge-api/Startup.cs" Line="1" Column="1" />
+      <File FileName="Snappet-challenge-api/appsettings.json" Line="1" Column="1" />
+      <File FileName="Snappet-challenge-api/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="Snappet-challenge-api/Properties/launchSettings.json" Line="23" Column="25" />
+      <File FileName="Snappet-challenge-api/Controllers/HomeController.cs" Line="21" Column="30" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Snappet-challenge-api" expanded="True">
+            <Node name="Snappet-challenge-api" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -21,6 +21,7 @@ const HomeScreen = () => {
             <SubjectBox />
             <SubjectBox />
             <SubjectBox />
+            <SubjectBox />
           </div>
         </div>
       </div>
