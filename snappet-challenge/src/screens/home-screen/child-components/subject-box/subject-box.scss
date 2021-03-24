@@ -1,0 +1,27 @@
+@import "../../../../common/colours.scss";
+
+.subject-box {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: $base-blue;
+  border-radius: 10px;
+  align-self: center;
+  justify-content: center;
+  flex: 1;
+  margin: 20px;
+}
+
+.subject-box-text-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.subject-box-name-text {
+  color: white;
+}
+
+.subject-box-result-text {
+  color: $base-blue;
+}

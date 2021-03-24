@@ -2,4 +2,24 @@
 
 .menu-item-content {
   display: flex;
+  cursor: pointer;
+  color: black;
+}
+
+.menu-item-content:hover {
+  color: $base-pink;
+}
+
+.menu-item-icon {
+  font-size: 30px;
+  color: $base-pink;
+  padding: 20px;
+  align-self: center;
+}
+
+.menu-item-text {
+  font-size: 16px;
+  font-weight: 500;
+  align-self: center;
+  margin-top: -6px;
 }

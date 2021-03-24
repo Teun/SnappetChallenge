@@ -3,8 +3,6 @@
 .side-bar-content {
   width: 300px;
   border-right: 3px solid $base-blue;
-  top: 103px;
-  left: 0;
-  bottom: 0;
-  position: fixed;
+  height: calc(100vh - 120px);
+  padding: 20px;
 }
