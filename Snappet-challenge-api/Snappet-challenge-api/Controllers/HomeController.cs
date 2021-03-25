@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Snappet_challenge_api.Models;
 using Snappet_challenge_api.Services;
 
 namespace Snappet_challenge_api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class HomeController : ControllerBase
     {
         public readonly IConfiguration _config;
@@ -25,10 +18,27 @@ namespace Snappet_challenge_api.Controllers
         }
 
         [HttpGet("get-dashboard-data")]
-        public IActionResult GetDashboardData()
+        public IActionResult GetDashboardData(string summaryDate)
         {
-            var usersSummaryData = _summaryDataService.GetSummaryData();
+            var usersSummaryData = _summaryDataService.GetSummaryData(summaryDate);
+            if(usersSummaryData is null)
+            {
+                return BadRequest("Error retrieving data");
+            }
+
             return Ok(usersSummaryData);
+        }
+
+        [HttpGet("get-subjects")]
+        public IActionResult GetSubjects(string summaryDate)
+        {
+            var subjects = _summaryDataService.GetSubjects(summaryDate);
+            if(subjects is null)
+            {
+                return BadRequest("Error retrieving data");
+            }
+
+            return Ok(subjects);
         }
         
     }

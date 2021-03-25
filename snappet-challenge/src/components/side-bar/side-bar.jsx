@@ -5,11 +5,11 @@ import { FaChild } from "react-icons/fa";
 
 const SideBar = () => {
   return (
-    <div class="side-bar-content">
-      <MenuItem menuItemText="Home">
+    <div className="side-bar-content">
+      <MenuItem menuItemText="Home" linkTo="/">
         <HiHome />
       </MenuItem>
-      <MenuItem menuItemText="Students">
+      <MenuItem menuItemText="Students" linkTo="/students">
         <FaChild />
       </MenuItem>
     </div>

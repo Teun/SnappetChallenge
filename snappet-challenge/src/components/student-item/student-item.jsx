@@ -1,10 +1,10 @@
 import "./student-item.scss";
 import { FaChild } from "react-icons/fa";
-const StudentItem = () => {
+const StudentItem = ({ studentDetails }) => {
   return (
-    <div class="student-item-content">
-      <FaChild class="student-icon" />
-      <div class="student-name-text">User 123</div>
+    <div className="student-item-content">
+      <FaChild className="student-icon" />
+      <div className="student-name-text">User {studentDetails.userId}</div>
     </div>
   );
 };

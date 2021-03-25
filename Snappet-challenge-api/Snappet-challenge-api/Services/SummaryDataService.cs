@@ -15,41 +15,85 @@ namespace Snappet_challenge_api.Services
             _config = config;
         }
 
-        public List<UserSummary> GetSummaryData()
+        public List<UserSummary> GetSummaryData(string summaryDate)
         {
-            var usersData = new List<UserSummary>();
-            var dbConnection = new SqlConnection(_config.GetConnectionString("primary"));
-            var command = new SqlCommand("Get_Summary_Data", dbConnection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            dbConnection.Open();
-            var dataReader = command.ExecuteReader();
-            while (dataReader.Read())
+            try
             {
-                bool isNewUser = false;
-                int userId = (int)dataReader["UserId"];
-                var userSummary = usersData.Find(x => x.UserId == userId);
-                if (userSummary is null)
+                var usersData = new List<UserSummary>();
+                var dbConnection = new SqlConnection(
+                    _config.GetConnectionString("primary"));
+                var command = new SqlCommand("Get_Summary_Data", dbConnection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("@SummaryDate", System.Data.SqlDbType.Date).Value = summaryDate;
+
+                dbConnection.Open();
+                var dataReader = command.ExecuteReader();
+                while (dataReader.Read())
                 {
-                    isNewUser = true;
-                    userSummary = new UserSummary(userId);
+                    bool isNewUser = false;
+                    int userId = (int)dataReader["UserId"];
+                    var userSummary = usersData.Find(x => x.UserId == userId);
+                    if (userSummary is null)
+                    {
+                        isNewUser = true;
+                        userSummary = new UserSummary(userId);
+                    }
+
+                    var subjectSummary = new SubjectSummary(
+                            (string)dataReader["Subject"],
+                            (int)dataReader["AnswersSubmitted"],
+                            (int)dataReader["CorrectAnswers"],
+                            (int)dataReader["Progress"]
+                        );
+                    userSummary.Subjects.Add(subjectSummary);
+
+                    if (isNewUser)
+                    {
+                        usersData.Add(userSummary);
+                    }
                 }
+                dbConnection.Close();
 
-                var subjectSummary = new SubjectSummary(
-                        (string)dataReader["Subject"],
-                        (int)dataReader["AnswersSubmitted"],
-                        (int)dataReader["CorrectAnswers"],
-                        (int)dataReader["Progress"]
-                    );
-                userSummary.Subjects.Add(subjectSummary);
-
-                if (isNewUser)
-                {
-                    usersData.Add(userSummary);
-                }                
+                return usersData;
             }
+            catch(Exception ex)
+            {
+                LogError(ex.Message);
+                return null;                
+            }
+        }
 
-            return usersData;
+        public List<string> GetSubjects(string summaryDate)
+        {
+            try
+            {
+                var subjects = new List<string>();
+                var dbConnection = new SqlConnection(
+                    _config.GetConnectionString("primary"));
+                var command = new SqlCommand("Get_Subjects", dbConnection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("@SummaryDate", System.Data.SqlDbType.Date).Value = summaryDate;
+
+                dbConnection.Open();
+                var dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    subjects.Add((string)dataReader["SubjectName"]);
+                }
+                dbConnection.Close();
+
+                return subjects;
+            }
+            catch (Exception ex)
+            {
+                LogError(ex.Message);
+                return null;
+            }
+        }
+
+        private void LogError(string errorMessage)
+        {
+            // todo: Add error logging
         }
     }
 }

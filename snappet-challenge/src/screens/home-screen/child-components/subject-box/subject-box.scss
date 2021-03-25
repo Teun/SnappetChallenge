@@ -2,20 +2,29 @@
 
 .subject-box {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   background-color: $base-blue;
   border-radius: 10px;
   align-self: center;
-  justify-content: center;
   flex: 1;
-  margin: 20px;
+  margin: 12px;
+  margin-left: 20px;
+}
+
+.subject-box-row {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 20px;
 }
 
 .subject-box-text-row {
   display: flex;
   justify-content: space-between;
   font-size: 20px;
+  margin-bottom: 6px;
 }
 
 .subject-box-name-text {
@@ -24,4 +33,53 @@
 
 .subject-box-result-text {
   color: $base-blue;
+}
+
+.subject-box-icon {
+  font-size: 80px;
+}
+
+.subject-box-icon-advancing {
+  color: greenyellow;
+}
+
+.subject-box-icon-regressing {
+  color: lightcoral;
+}
+
+.subject-box-icon-stagnating {
+  color: lightgrey;
+}
+
+@media only screen and (max-width: 1300px) {
+  .subject-box {
+    margin-top: 18px;
+  }
+
+  .subject-box-text-row {
+    font-size: 14px;
+  }
+
+  .subject-box-icon {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .subject-box {
+    margin-top: 6px;
+    margin-left: 4px;
+  }
+
+  .subject-box-name-text {
+    display: none;
+  }
+
+  .subject-box-row {
+    margin-right: 0px;
+  }
+
+  .subject-box-icon {
+    font-size: 20px;
+  }
 }

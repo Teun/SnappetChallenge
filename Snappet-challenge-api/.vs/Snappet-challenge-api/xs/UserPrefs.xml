@@ -1,30 +1,31 @@
 ﻿<Properties StartupConfiguration="{83A545F9-D2B0-4070-894B-17051408F70F}|Default">
   <MonoDevelop.Ide.ItemProperties.Snappet-challenge-api PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Snappet-challenge-api/Services/ISummaryDataService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Snappet-challenge-api/Controllers/StudentsController.cs">
     <Files>
       <File FileName="Snappet-challenge-api/Program.cs" Line="1" Column="1" />
-      <File FileName="Snappet-challenge-api/Startup.cs" Line="1" Column="1" />
+      <File FileName="Snappet-challenge-api/Startup.cs" Line="52" Column="49" />
       <File FileName="Snappet-challenge-api/appsettings.json" Line="11" Column="46" />
       <File FileName="Snappet-challenge-api/appsettings.Development.json" Line="7" Column="6" />
       <File FileName="Snappet-challenge-api/Properties/launchSettings.json" Line="23" Column="25" />
-      <File FileName="Snappet-challenge-api/Controllers/HomeController.cs" Line="55" Column="44" />
-      <File FileName="Snappet-challenge-api/Services/SummaryDataService.cs" Line="8" Column="10" />
-      <File FileName="Snappet-challenge-api/Models/SubjectSummary.cs" Line="32" Column="27" />
+      <File FileName="Snappet-challenge-api/Controllers/HomeController.cs" Line="14" Column="1" />
+      <File FileName="Snappet-challenge-api/Services/SummaryDataService.cs" Line="66" Column="9" />
+      <File FileName="Snappet-challenge-api/Models/SubjectSummary.cs" Line="33" Column="10" />
       <File FileName="Snappet-challenge-api/Models/UserSummary.cs" Line="14" Column="51" />
-      <File FileName="Snappet-challenge-api/Services/ISummaryDataService.cs" Line="1" Column="1" />
+      <File FileName="Snappet-challenge-api/Services/ISummaryDataService.cs" Line="10" Column="59" />
+      <File FileName="Snappet-challenge-api/Services/StudentsService.cs" Line="17" Column="1" />
+      <File FileName="Snappet-challenge-api/Services/IStudentsService.cs" Line="9" Column="48" />
+      <File FileName="Snappet-challenge-api/Controllers/StudentsController.cs" Line="4" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Snappet-challenge-api" expanded="True">
             <Node name="Snappet-challenge-api" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="ISummaryDataService.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="StudentsController.cs" selected="True" />
               </Node>
-              <Node name="appsettings.json" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>

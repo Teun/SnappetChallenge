@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import "./menu-item.scss";
 
-const MenuItem = ({ children, menuItemText }) => {
+const MenuItem = ({ children, menuItemText, linkTo }) => {
   return (
-    <div class="menu-item-content">
-      <div class="menu-item-icon">{children}</div>
-      <div class="menu-item-text">{menuItemText}</div>
-    </div>
+    <Link to={linkTo} className="menu-item-content">
+      <div className="menu-item-icon">{children}</div>
+      <div className="menu-item-text">{menuItemText}</div>
+    </Link>
   );
 };
 

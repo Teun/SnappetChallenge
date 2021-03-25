@@ -16,6 +16,8 @@ namespace Snappet_challenge_api
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,7 +29,16 @@ namespace Snappet_challenge_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ISummaryDataService, SummaryDataService>();
+            services.AddScoped<IStudentsService, StudentsService>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("*");
+                                  });
+            });
             services.AddControllers();
         }
 
@@ -38,6 +49,8 @@ namespace Snappet_challenge_api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
 

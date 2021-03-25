@@ -3,6 +3,12 @@
 .side-bar-content {
   width: 300px;
   border-right: 3px solid $base-blue;
-  height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
   padding: 20px;
+}
+
+@media only screen and (max-width: 1300px) {
+  .side-bar-content {
+    display: none;
+  }
 }

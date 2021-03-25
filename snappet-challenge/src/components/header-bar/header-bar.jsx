@@ -1,10 +1,19 @@
 import { images } from "../../assets/images";
 import "./header-bar.scss";
 
-const HeaderBar = () => {
+const HeaderBar = ({ isLoading }) => {
   return (
-    <div class="header-bar-content">
-      <img src={images.snappetLogo} alt="snappet-logo" class="header-image" />
+    <div className="header-bar-content">
+      <img
+        src={images.snappetLogo}
+        alt="snappet-logo"
+        className="header-image"
+      />
+      {isLoading && (
+        <div className="loader-box">
+          <div className="loader"></div>
+        </div>
+      )}
     </div>
   );
 };
