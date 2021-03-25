@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import StudentItem from "../../components/student-item/student-item";
 import { getStudentsApiData } from "../../libs/studentsApi";
+import { ToastContainer, toast } from "react-toastify";
 import "./students-screen.scss";
 
 const StudentsScreen = ({ setIsLoading }) => {
@@ -13,7 +14,13 @@ const StudentsScreen = ({ setIsLoading }) => {
   const getStudents = async () => {
     setIsLoading(true);
     const result = await getStudentsApiData();
-    setStudentList(result);
+    if (Array.isArray(result)) {
+      setStudentList(result);
+    } else {
+      toast.error(
+        "There was a problem accessing the data. Please check that the API is up and running"
+      );
+    }
     setIsLoading(false);
   };
 
@@ -28,6 +35,7 @@ const StudentsScreen = ({ setIsLoading }) => {
             </div>
           );
         })}
+        <ToastContainer />
       </div>
     </div>
   );

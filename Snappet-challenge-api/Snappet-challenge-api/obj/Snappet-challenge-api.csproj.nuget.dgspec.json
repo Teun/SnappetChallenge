@@ -14,7 +14,7 @@
         "outputPath": "/Users/matthewthomas/SnappetChallenge/Snappet-challenge-api/Snappet-challenge-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/matthewthomas/.config/NuGet/NuGet.Config"
+          "/Users/matthewthomas/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

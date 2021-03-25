@@ -1,22 +1,33 @@
 # SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+This is the project I have writted in response to the challenge posed to me by Snappet.
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+## Getting started
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+To get started you will need to have access to a local version of MS Sql Express. Any version above 2010 will do.\
+For simplicity sake, I have not used a Docker instance, but you are welcome to restore the backup file to a local Docker instance if you would like.
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+### Restoring the Sql Database
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+The backup of the database has been done on an early version of MS Sql Express (2014 / v11) to ensure backward compatability.\
+The file path to the backup data is "/snappet-challenge/Snappet-challenge-api/Snappet-challenge-api/Database/". In this folder you will find a subfolder called "Database backup for restore" and a folder called "Scripted database". You can use either of these to restore the database in whichever way you prefer.
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Typescript en Angular. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+### Running the locally hosted API
+
+In order to run the React app correctly, you will need to first run the API project located in the directory above named "/Snappet-challenge-api/Snappet-challenge-api/" and then run the command "dotnet run". This should start the API on your local machine. If not, please ensure that you have dotnet core 3.1 installed on your machine. In order to access the Sql database, you will need to ensure that you have provided the correct details for your MS Sql instance. This can be done by modifying the "appsettings.json" file within the aforementioned project directory. Once you have updated this file, you can stop and restart your instance of the API by pressing "Control + c" to stop it and running the command "dotnet run" once again.\
+
+Take note of the port that the app is being hosted on above as you will need to enter this into the React project.
+
+### Running the React.js project
+
+Open the folder above called "snappet-challenge" in your terminal of choice and run the command "npm i". This will install any node packages required to run the app.\
+
+Within the project folder, navigate to the "/src/libs/" folder and open the "general.js" file. Now update the baseApiUrl constant with the correct port mentioned above.
+
+Once you have installed the above packages and updated your api path, in the same directory, run the command "npm start".
+This will run the React app on port 3000 by default. Navigate to "http://localhost:3000" on your browser to view the app.
+
+### Ensuring that everything is running correctly
+
+If everything has gone smoothly above, you should see a dashboard layout with the summary data of the different students.
+If you receive an error, please check that you have completed the above steps correctly.

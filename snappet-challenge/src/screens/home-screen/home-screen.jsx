@@ -5,6 +5,8 @@ import {
   getApiDashboardData,
   getApiSubjects,
 } from "../../libs/dashboardDataApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./home-screen.scss";
 import DateSelector from "../../components/date-selector/date-selector";
@@ -25,8 +27,12 @@ const HomeScreen = ({ setIsLoading }) => {
     setIsLoading(true);
     await getSubjects(summaryDate);
     const result = await getApiDashboardData(summaryDate);
-    if (result) {
+    if (Array.isArray(result)) {
       setDashboardData(result);
+    } else {
+      toast.error(
+        "There was a problem accessing the data. Please check that the API is up and running"
+      );
     }
     setIsLoading(false);
   };
@@ -34,8 +40,12 @@ const HomeScreen = ({ setIsLoading }) => {
   const getSubjects = async (summaryDate) => {
     setIsLoading(true);
     const result = await getApiSubjects(summaryDate);
-    if (result) {
+    if (Array.isArray(result)) {
       setSubjectHeadings(result);
+    } else {
+      toast.error(
+        "There was a problem accessing the data. Please check that the API is up and running"
+      );
     }
     setIsLoading(false);
   };
@@ -114,6 +124,7 @@ const HomeScreen = ({ setIsLoading }) => {
             No data to show for this period
           </div>
         )}
+        <ToastContainer />
       </div>
     </div>
   );

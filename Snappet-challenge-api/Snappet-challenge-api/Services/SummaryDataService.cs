@@ -94,6 +94,7 @@ namespace Snappet_challenge_api.Services
         private void LogError(string errorMessage)
         {
             // todo: Add error logging
+            // Leaving out for challenge purposes
         }
     }
 }

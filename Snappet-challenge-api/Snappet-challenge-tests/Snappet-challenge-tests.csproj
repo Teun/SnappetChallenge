@@ -14,4 +14,10 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Snappet-challenge-api\Snappet-challenge-api.csproj" />
+  </ItemGroup>
 </Project>
