@@ -1,0 +1,45 @@
+@import "./common/colours.scss";
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content-container {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+}
+
+.content-header-bar {
+  height: 60px;
+  text-align: center;
+  padding-top: 35px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+  border-bottom: 1px solid $base-pink;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid $base-blue;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 500ms linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

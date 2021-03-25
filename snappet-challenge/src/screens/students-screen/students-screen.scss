@@ -1,0 +1,22 @@
+@import "../../common/colours.scss";
+
+.students-screen-content {
+  flex: 1;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.students-screen-students {
+  display: flex;
+  padding: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+}
+
+.students-screen-student-item {
+  margin: 20px;
+}
