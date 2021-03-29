@@ -1,0 +1,29 @@
+// Colors - based on Snapped colors
+$orange: #e76124;
+$blue: #34a3d7;
+$magenta: #c32451;
+$yellow: #f6cf17;
+
+:root {
+    --orange: #{$orange};
+    --blue: #{$blue};
+    --magenta: #{$magenta};
+    --yellow: #{$yellow};
+}
+
+$body-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 168.9 172.5'%3E%3Cg%3E%3Cpath fill='%233AA4D8' d='M168.9,172.5V51.8L31.3,79.7c-10.8,2.2-19.3,13-18.9,24.1l2.8,68.6H168.9z'/%3E%3Cpath fill='%23F6CF17' d='M38.2,5.6C5.7,20.1-8.9,58.1,5.6,90.6s52.5,47.1,85,32.6s47.1-52.5,32.6-85c0,0,0,0,0,0 C108.7,5.7,70.7-8.9,38.2,5.6'/%3E%3Cpath fill='%23C42353' d='M90.7,123.3c24.7-11,39.9-36.3,38-63.2L31.3,79.8C21,81.9,12.8,92,12.5,102.5C30.4,127,63,135.7,90.7,123.3'/%3E%3C/g%3E%3C/svg%3E") no-repeat right bottom #f2f5f7;
+
+$font-family: 'ABeeZee', sans-serif;
+$font-size: 16px;
+$line-height: 1.15;
+
+$max-page-wrapper-width: 1280px;
+$max-page-wrapper-height: 800px;
+$dashboard-bg: #fff;
+$dashboard-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+$border-radius: 4px;
+
+$input-text-color: #333;
+$input-border-color: #ddd;
+$input-focus-shadow-color: purple;

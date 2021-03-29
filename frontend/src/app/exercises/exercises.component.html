@@ -1,0 +1,71 @@
+<form class="filters" [formGroup]="params" (ngSubmit)="filter($event)">
+    <p>Filters</p>
+    <mat-form-field>
+        <mat-label>Date Range</mat-label>
+        <mat-date-range-input [rangePicker]="datePicker">
+            <input
+                    matDatepickerInput
+                    matStartDate
+                    placeholder="Start date"
+                    formControlName="startdate"
+                    [max]="maxDate">
+            <input
+                    matEndDate
+                    placeholder="End date"
+                    formControlName="enddate"
+                    [max]="maxDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #datePicker></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Student</mat-label>
+        <mat-select formControlName="UserId" required>
+            <mat-option *ngFor="let user of usersList" [value]="user.UserId">{{user.UserId}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button color="primary" type="submit">Search</button>
+</form>
+<section class="description">
+    <h2 class="text-magenta">Exercises</h2>
+    <p>In this page you can view a full report of exercises that has been submitted within the given date range.</p>
+</section>
+<div class="table-container">
+    <table mat-table [dataSource]="exercises" matSort>
+        <ng-container matColumnDef="SubmittedAnswerId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Answer #</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.SubmittedAnswerId}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="SubmitDateTime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Date Time</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.SubmitDateTime | date:'short'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Correct">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Correct</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Correct ? 'Ja' : 'Nee'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Progress">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Progress</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Progress}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="UserId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> User ID</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.UserId}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Difficulty">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Difficulty</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Difficulty}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Subject">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Subject</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Subject}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Domain">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Domain</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Domain}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+</div>

@@ -1,0 +1,41 @@
+<form class="filters" [formGroup]="params" (ngSubmit)="filter($event)">
+    <p>Filters</p>
+    <mat-form-field>
+        <mat-label>Date Range</mat-label>
+        <mat-date-range-input [rangePicker]="datePicker">
+            <input
+                    matDatepickerInput
+                    matStartDate
+                    placeholder="Start date"
+                    formControlName="startdate"
+                    [max]="maxDate">
+            <input
+                    matEndDate
+                    placeholder="End date"
+                    formControlName="enddate"
+                    [max]="maxDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #datePicker></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Student</mat-label>
+        <mat-select formControlName="UserId" required>
+            <mat-option *ngFor="let user of usersList" [value]="user.UserId">{{user.UserId}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button color="primary" type="submit">Search</button>
+</form>
+<h2 class="text-magenta">User Progress</h2>
+<p>In this page you can see progress of a student based on the exercises he/she has submitted within the given date range.</p>
+<div class="chart-container">
+    <canvas baseChart width="100%" height="400"
+            [datasets]="progress"
+            [labels]="labels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="false"
+            [plugins]="[]"
+            chartType="line"
+    ></canvas>
+</div>
