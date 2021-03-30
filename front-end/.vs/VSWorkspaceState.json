@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\services",
+    "\\src\\app\\views",
+    "\\src\\app\\views\\school",
+    "\\src\\app\\views\\school\\student\\student-overview",
+    "\\src\\app\\views\\school\\teacher\\teacher-dashboard"
+  ],
+  "SelectedNode": "\\src\\app\\views\\school\\school.module.ts",
+  "PreviewInSolutionExplorer": false
+}
