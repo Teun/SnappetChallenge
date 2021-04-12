@@ -34,7 +34,7 @@ namespace Snappet.Api.Controllers
             return summaries;
         }
 
-        [HttpGet]
+        [HttpGet]   
         [Route("domainsummary")]
         public IEnumerable<SummaryViewModel> LoadDomainSummary(DateTime date, string subject)
         {
