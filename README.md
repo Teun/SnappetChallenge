@@ -1,12 +1,12 @@
 # SnappetChallenge
 
-# Technology/Language used 
+## Technology/Language used 
 
 For Front End - Angular 10
 For Back End - .NET core Web Api
 For Database connectivity - EntityFramework Core
 
-#Installation Steps
+# Installation Steps
 
 1. There are two main projects in this repository
     a. snappet-app --> For Front end
