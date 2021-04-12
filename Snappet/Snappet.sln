@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Api", "Snappet.Api\Snappet.Api.csproj", "{071391D4-7478-459F-8AE3-19B207034996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.ServiceLayer", "Snappet.ServiceLayer\Snappet.ServiceLayer.csproj", "{74CFA8D6-9F94-44D4-841F-5A5440A41EDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.ServiceLayer", "Snappet.ServiceLayer\Snappet.ServiceLayer.csproj", "{74CFA8D6-9F94-44D4-841F-5A5440A41EDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Entities", "Snappet.Entities\Snappet.Entities.csproj", "{AE47EC9E-9B93-4BE5-8CFB-4406E9FADED5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Entities", "Snappet.Entities\Snappet.Entities.csproj", "{AE47EC9E-9B93-4BE5-8CFB-4406E9FADED5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Tests", "Snappet.Tests\Snappet.Tests.csproj", "{5006A174-AE52-4101-B1A5-E426DBB3CF5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{AE47EC9E-9B93-4BE5-8CFB-4406E9FADED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE47EC9E-9B93-4BE5-8CFB-4406E9FADED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE47EC9E-9B93-4BE5-8CFB-4406E9FADED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5006A174-AE52-4101-B1A5-E426DBB3CF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5006A174-AE52-4101-B1A5-E426DBB3CF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5006A174-AE52-4101-B1A5-E426DBB3CF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5006A174-AE52-4101-B1A5-E426DBB3CF5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

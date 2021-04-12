@@ -12,13 +12,35 @@ namespace Snappet.ServiceLayer
     public class SummaryService : ISummaryService
     {
 
+        #region Private region 
+
+        /// <summary>
+        /// Db context
+        /// </summary>
         private SnappetDBContext dbContext { get; set; }
 
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor for summary service 
+        /// </summary>
+        /// <param name="snappetDBContext">Dbcontext</param>
         public SummaryService(SnappetDBContext snappetDBContext)
         {
             dbContext = snappetDBContext;
         }
 
+        #endregion
+
+        #region Public methods
+        
+        /// <summary>
+        /// Loads the summary based on subjects
+        /// </summary>
+        /// <param name="date">Date</param>
+        /// <returns>List of summary</returns>
         public IEnumerable<SummaryViewModel> LoadSubjectSummaries(DateTime date)
         {
             var subjectGroupBy = dbContext.Summary.Where(summary => summary.SubmitDateTime.Value.Date == date.Date).GroupBy(item => item.Subject);
@@ -34,8 +56,7 @@ namespace Snappet.ServiceLayer
 
             return subjectSummary;
         }
-
-        public bool LoadSummaries()
+        public string LoadSummaries()
         {
             bool isDataPresent = dbContext.Summary.Any();
 
@@ -44,7 +65,7 @@ namespace Snappet.ServiceLayer
                 dbContext.Summary.AddRange(GenericHelper.LoadSummaryFromFile());
                 dbContext.SaveChanges();
             }
-            return true;
+            return "<h5>Api is running now</h5>";
         }
 
         public IEnumerable<SummaryViewModel> LoadDomainSummaries(DateTime date, string subject)
@@ -79,11 +100,17 @@ namespace Snappet.ServiceLayer
             return domainSummary;
         }
 
+        /// <summary>
+        /// Loads the list of student ids
+        /// </summary>
+        /// <returns>List of student ids</returns>
         public IEnumerable<int> LoadStudents()
         {
             IEnumerable<int> studentIds = dbContext.Summary.Select(summary => summary.UserId);
 
             return studentIds;
         }
+
+        #endregion
     }
 }

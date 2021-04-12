@@ -21,7 +21,7 @@ namespace Snappet.Entities
         {
             base.OnModelCreating(modelBuilder);
 
-          // modelBuilder.ApplyConfiguration(new SummaryConfiguration());
+          // modelBuilder.ApplyConfiguration(new SummaryConfiguration()); // To:do Data seeding is not working at the moment
         }
     }
 }

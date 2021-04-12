@@ -9,6 +9,11 @@ namespace Snappet.ServiceLayer
     /// </summary>
     public interface ISummaryService
     {
+        /// <summary>
+        /// Loads the summary based on subjects
+        /// </summary>
+        /// <param name="date">Date</param>
+        /// <returns>List of summary</returns>
         IEnumerable<SummaryViewModel> LoadSubjectSummaries(DateTime date);
 
         IEnumerable<SummaryViewModel> LoadDomainSummaries(DateTime date,string subject);
@@ -17,6 +22,6 @@ namespace Snappet.ServiceLayer
 
         IEnumerable<int> LoadStudents();
 
-        bool LoadSummaries();
+        string LoadSummaries();
     }
 }

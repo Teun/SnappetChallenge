@@ -18,9 +18,9 @@ namespace Snappet.Api.Controllers
         }
 
         [HttpGet]
-        public bool Get()
+        public string Get()
         {
-            bool result = SummaryService.LoadSummaries();
+            string result = SummaryService.LoadSummaries();
 
             return result;
         }
