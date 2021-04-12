@@ -1,0 +1,15 @@
+<div class="mt-4" *ngFor="let sum of summary" >
+    <h4><a [routerLink] ="['/domainsummary',date,sum.title]">{{sum.title}} </a></h4>
+    <h5> Correct answers - {{sum.totalCorrectAnswers}}</h5>
+    <h5> Total answers Submitted - {{sum.totalAnswersSubmitted}}</h5>
+    <h5> Total progress - {{sum.totalProgress}}</h5>
+    <div class="progress" *ngIf= "((sum.totalCorrectAnswers/sum.totalAnswersSubmitted).toFixed(2) * 100)>=70">
+        <div class="progress-bar bg-success" role="progressbar" [attr.style]="'width:' + ((sum.totalCorrectAnswers/sum.totalAnswersSubmitted) * 100) +'%' " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Correct Answer Percentage {{((sum.totalCorrectAnswers/sum.totalAnswersSubmitted).toFixed(2) * 100)}} % </div>
+    </div>
+    <div class="progress" *ngIf= "((sum.totalCorrectAnswers/sum.totalAnswersSubmitted).toFixed(2) * 100)<70">
+        <div class="progress-bar bg-danger" role="progressbar" [attr.style]="'width:' + ((sum.totalCorrectAnswers/sum.totalAnswersSubmitted) * 100) +'%' " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Correct Answer Percentage {{((sum.totalCorrectAnswers/sum.totalAnswersSubmitted).toFixed(2) * 100)}} % </div>
+    </div>
+</div>
+<div>
+    <a class="btn btn-link" [routerLink] ="['/domainsummary',date,subject]">Go Back</a>
+</div>
