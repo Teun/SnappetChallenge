@@ -1,0 +1,54 @@
+<div class="myclass">
+    <div >
+        <h1>What's my class is working on ?</h1>
+        <!--Drop Down Component with Output Binding-->
+    <div class="myclass__select-filter">
+        <app-drop-down (dropDownOutput)="latestDropDownValue($event)"></app-drop-down>
+    </div>
+
+    <!--Subscribe to chartGraphsData stream & display the Graph Container on conditional -->
+    <div *ngIf="chartGraphsData$ | async as graphData">
+        <div class="myclass__container">
+            <div class="myclass__container-items myclass__item1">
+                <h2 class="myclass__graph-title">Learning Objectives</h2>
+                <canvas baseChart [data]="graphData.objectiveChart.pieChartData"
+                    [labels]="graphData.objectiveChart.pieChartLabels" [chartType]="graphData.objectiveChart.pieChartType"
+                    [colors]="graphData.objectiveChart.pieChartColors" [legend]="graphData.objectiveChart.pieChartLegend"
+                    [options]="graphData.objectiveChart.pieChartOptions">
+                </canvas>
+            </div>
+    
+            <div class="myclass__container-items">
+                <h2 class="myclass__graph-title">Subject</h2>
+                <canvas baseChart [data]="graphData.subjectChart.pieChartData"
+                    [labels]="graphData.subjectChart.pieChartLabels" [chartType]="graphData.subjectChart.pieChartType"
+                    [colors]="graphData.subjectChart.pieChartColors" [legend]="graphData.subjectChart.pieChartLegend"
+                    [options]="graphData.subjectChart.pieChartOptions">
+                </canvas>
+    
+            </div>
+    
+    
+            <div class="myclass__container-items">
+                <h2 class="myclass__graph-title">Domain</h2>
+                <canvas baseChart [data]="graphData.domainChart.pieChartData"
+                    [labels]="graphData.domainChart.pieChartLabels" [chartType]="graphData.domainChart.pieChartType"
+                    [colors]="graphData.domainChart.pieChartColors" [legend]="graphData.domainChart.pieChartLegend"
+                    [options]="graphData.domainChart.pieChartOptions">
+                </canvas>
+    
+            </div>
+        </div>
+        <div class="myclass__container">
+            <div class="myclass__container-items">
+                <h2 class="myclass__graph-title">Excercise students finding most difficult</h2>
+                <canvas baseChart [data]="graphData.diffcultExcerciseChart.pieChartData" [labels]="graphData.diffcultExcerciseChart.pieChartLabels"
+                    [chartType]="graphData.diffcultExcerciseChart.pieChartType" [colors]="graphData.diffcultExcerciseChart.pieChartColors"
+                    [legend]="graphData.diffcultExcerciseChart.pieChartLegend" [options]="graphData.diffcultExcerciseChart.pieChartOptions">
+                </canvas>
+    
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

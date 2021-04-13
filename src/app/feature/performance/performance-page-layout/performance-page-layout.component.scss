@@ -1,0 +1,33 @@
+@import '../../../../styles/abstracts/config';
+
+.performance {
+
+    &__container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__select-filter{
+        padding: 0.5rem 0rem;
+    }
+
+    canvas{
+        width: 100% !important;
+    }
+
+    &__container-items {
+        flex-basis: 100%;
+        overflow: auto;
+        padding: 2rem;
+        margin: 2rem;
+    }
+
+    &__item1{
+        flex-basis: 100%;
+    }
+    &__graph-title{
+        text-align: center;
+        margin: 2rem 0rem 1rem;
+    }
+
+}

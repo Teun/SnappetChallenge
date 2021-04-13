@@ -1,0 +1,63 @@
+@import '../../../../styles/abstracts/config';
+
+.sidenav {
+    position: relative;
+    padding: 1rem 0.5rem;
+
+    &__bar{
+        min-height: 94vh;
+        background-color: $color-grey-dark-3;
+        color: $color-white;
+        transition: width 0.2s ease-out;
+        -webkit-transition: width 0.2s ease-out;
+        -moz-transition: width 0.2s ease-in;
+        -o-transition: width 0.2s ease-in;
+        transition: width 0.2s ease-in;
+    }
+
+}
+
+.menu {
+    &__expanded {
+        width: 14rem;
+    }
+
+    &__collapsed {
+        width: 3.75rem;
+    }
+
+    &__ul{
+        list-style-type: none;
+    }
+
+    &__angle-box {
+        position: absolute;
+        bottom: 2rem;
+        right: 0;
+        padding: 0.5rem;
+    }
+
+    &__angle-svg{
+        width: 2.5rem;
+        cursor: pointer;
+    }
+
+    &__angle-left {
+        transform: rotate(180deg);
+    }
+
+    &__item-box{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin: 1rem 0rem;
+    }
+
+    &__item-title{
+        font-size: 1.2rem;
+        padding-left: 0.8rem;
+    }
+
+
+
+}

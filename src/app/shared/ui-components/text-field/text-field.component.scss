@@ -1,0 +1,43 @@
+@import '../../../../styles/abstracts/config';
+
+.search{
+    &__search-container{
+        position: absolute;
+        top: 0.8rem;
+        left: 8rem;
+
+        @include respond(tab-port){
+            left: 4rem;
+        }
+
+        @include respond(tab-land) {
+            left: 4rem;
+        }
+    }
+
+    &__input {
+        height: 2.2rem;
+        border: 0;
+        border-radius: 2px;
+        padding-left: 0.5rem;
+        width: 14rem;
+    }
+
+    &__suggestion-box {
+        text-align: left;
+        position: absolute;
+        background-color: #fff;
+        color: black;
+        box-shadow: 0 0 3px;
+
+
+        :first-child{
+            border-top: 1px solid 80808061;
+        }
+    }
+    &__sug-item{
+        padding: 0.7rem;
+        border-bottom: 1px solid #80808061;
+        width: 14rem;
+    }
+}

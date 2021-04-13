@@ -1,0 +1,32 @@
+<div class="performance">
+        <h1>Class Performance</h1>
+    <div class="performance__select-filter">
+        <app-drop-down (dropDownOutput)="latestDropDownValue($event)"></app-drop-down>
+    </div>
+
+    <div class="performance__container" *ngIf="chartGraphsData$ | async as graphData">
+        <div class="performance__container-items">
+            <h2 class="performance__graph-title">Top Performers</h2>
+            <canvas baseChart [data]="graphData.topPerformerChart.barChartData"
+                [labels]="graphData.topPerformerChart.barChartLabels"
+                [chartType]="graphData.topPerformerChart.barChartType"
+                [colors]="graphData.topPerformerChart.barChartColors"
+                [legend]="graphData.topPerformerChart.barChartLegend">
+            </canvas>
+
+        </div>
+        <div class="performance__container-items">
+            <h2 class="performance__graph-title">Students Completing Difficult Excercise</h2>
+            <canvas baseChart [data]="graphData.studentsFinishingDiffExcChart.barChartData"
+                [labels]="graphData.studentsFinishingDiffExcChart.barChartLabels"
+                [chartType]="graphData.studentsFinishingDiffExcChart.barChartType"
+                [colors]="graphData.studentsFinishingDiffExcChart.barChartColors"
+                [legend]="graphData.studentsFinishingDiffExcChart.barChartLegend">
+            </canvas>
+
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="search__search-container">
+    <form  (submit)="onSearch()">
+        <div>
+            <div>
+             <input #searchInput class="search__input" type="text" 
+             placeholder="Search...">
+            </div>
+            <section class="search__suggestion-box" *ngIf="(suggestions$ | async) as suggestions">
+                <div *ngFor="let item of suggestions" class="search__sug-item">{{item.term}}</div>
+            </section>
+        </div>
+    </form>
+</div>
