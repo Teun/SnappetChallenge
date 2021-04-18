@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "p535cZBWm1Q1nq7+FuoSgch1xGvrcnBb4EqC3ar4Hlj+17m70aBTPMiTyn4yyZ3pmEJbAJRbuQlHmzP0LzBvew==",
+  "success": true,
+  "projectFilePath": "C:\\SnappetChallengeFork\\Snappet\\BlCore\\BlCore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\v.uchaev\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\v.uchaev\\.nuget\\packages\\unity\\5.11.10\\unity.5.11.10.nupkg.sha512"
+  ],
+  "logs": []
+}

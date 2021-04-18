@@ -1,0 +1,38 @@
+[
+  {
+    "SubmittedAnswerId": 1,
+    "SubmitDateTime": "2021-04-18T07:35:38.740",
+    "Correct": 1,
+    "Progress": 0,
+    "UserId": 1,
+    "ExerciseId": 1,
+    "Difficulty": "-1",
+    "Subject": "Subject1",
+    "Domain": "Domain1",
+    "LearningObjective": "Objective1"
+  },
+  {
+    "SubmittedAnswerId": 2,
+    "SubmitDateTime": "2021-04-18T07:36:48.530",
+    "Correct": 1,
+    "Progress": 2,
+    "UserId": 1,
+    "ExerciseId": 2,
+    "Difficulty": "1",
+    "Subject": "Subject2",
+    "Domain": "Domain2",
+    "LearningObjective": "Objective2"
+  },
+  {
+    "SubmittedAnswerId":3,
+    "SubmitDateTime":"2021-04-18T07:36:55.487",
+    "Correct":1,
+    "Progress":0,
+    "UserId":2,
+    "ExerciseId":3,
+    "Difficulty":"-2",
+    "Subject":"Subject3",
+    "Domain":"Domain3",
+    "LearningObjective":"Objective3"
+  }
+]

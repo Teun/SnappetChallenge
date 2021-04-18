@@ -1,0 +1,10 @@
+C:\SnappetChallenge\Snappet\BlCore\bin\Debug\netcoreapp3.1\BlCore.deps.json
+C:\SnappetChallenge\Snappet\BlCore\bin\Debug\netcoreapp3.1\BlCore.dll
+C:\SnappetChallenge\Snappet\BlCore\bin\Debug\netcoreapp3.1\BlCore.pdb
+C:\SnappetChallenge\Snappet\BlCore\obj\Debug\netcoreapp3.1\BlCore.Properties.Resources.resources
+C:\SnappetChallenge\Snappet\BlCore\obj\Debug\netcoreapp3.1\BlCore.csproj.GenerateResource.cache
+C:\SnappetChallenge\Snappet\BlCore\obj\Debug\netcoreapp3.1\BlCore.AssemblyInfoInputs.cache
+C:\SnappetChallenge\Snappet\BlCore\obj\Debug\netcoreapp3.1\BlCore.AssemblyInfo.cs
+C:\SnappetChallenge\Snappet\BlCore\obj\Debug\netcoreapp3.1\BlCore.csproj.CoreCompileInputs.cache
+C:\SnappetChallenge\Snappet\BlCore\obj\Debug\netcoreapp3.1\BlCore.dll
+C:\SnappetChallenge\Snappet\BlCore\obj\Debug\netcoreapp3.1\BlCore.pdb
