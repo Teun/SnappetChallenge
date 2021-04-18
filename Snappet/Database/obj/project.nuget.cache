@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "f31ba++vGmTjPWa9isTwL9QPgOJ8GLt8gmUmkiN3Buo3K2S8oVrY1ilJN+5WOu71Nmp+DrEL1bm3AhKYWqqDkw==",
+  "success": true,
+  "projectFilePath": "C:\\SnappetChallengeFork\\Snappet\\Database\\Database.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\v.uchaev\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\v.uchaev\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\v.uchaev\\.nuget\\packages\\unity\\5.11.10\\unity.5.11.10.nupkg.sha512"
+  ],
+  "logs": []
+}

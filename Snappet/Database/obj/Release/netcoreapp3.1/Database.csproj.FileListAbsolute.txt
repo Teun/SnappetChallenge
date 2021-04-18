@@ -1,0 +1,12 @@
+C:\SnappetChallenge\Snappet\Database\bin\Release\netcoreapp3.1\Database.deps.json
+C:\SnappetChallenge\Snappet\Database\bin\Release\netcoreapp3.1\Database.dll
+C:\SnappetChallenge\Snappet\Database\bin\Release\netcoreapp3.1\Database.pdb
+C:\SnappetChallenge\Snappet\Database\bin\Release\netcoreapp3.1\BlCore.dll
+C:\SnappetChallenge\Snappet\Database\bin\Release\netcoreapp3.1\BlCore.pdb
+C:\SnappetChallenge\Snappet\Database\obj\Release\netcoreapp3.1\Database.csprojAssemblyReference.cache
+C:\SnappetChallenge\Snappet\Database\obj\Release\netcoreapp3.1\Database.AssemblyInfoInputs.cache
+C:\SnappetChallenge\Snappet\Database\obj\Release\netcoreapp3.1\Database.AssemblyInfo.cs
+C:\SnappetChallenge\Snappet\Database\obj\Release\netcoreapp3.1\Database.csproj.CoreCompileInputs.cache
+C:\SnappetChallenge\Snappet\Database\obj\Release\netcoreapp3.1\Database.csproj.CopyComplete
+C:\SnappetChallenge\Snappet\Database\obj\Release\netcoreapp3.1\Database.dll
+C:\SnappetChallenge\Snappet\Database\obj\Release\netcoreapp3.1\Database.pdb
