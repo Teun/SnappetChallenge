@@ -1,0 +1,9 @@
+.layout{
+  &__drawer {
+    width: 300px;
+  }
+  &__content {
+    width: 95%;
+    margin: 16px auto 0 auto;
+  }
+}

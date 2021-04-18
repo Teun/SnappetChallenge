@@ -1,0 +1,12 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 8px;
+  &__item {
+    text-align: left;
+    &:not(:last-child){
+      margin-bottom: 8px;
+    }
+  }
+}

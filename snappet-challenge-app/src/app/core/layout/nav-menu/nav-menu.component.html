@@ -1,0 +1,20 @@
+<nav class="menu">
+    <a
+      *ngFor="let route of routes"
+      mat-flat-button
+      [routerLink]="route.path"
+      routerLinkActive="mat-primary"
+      class="menu__item"
+    >
+      {{route.data.title}}
+    </a>
+<!--    <a-->
+<!--      mat-flat-button-->
+<!--      routerLink=""-->
+<!--      routerLinkActive="mat-primary"-->
+<!--      class="menu__item"-->
+<!--    >Камеры</a-->
+<!--    >-->
+</nav>
+
+<!--      (click)="sideBarService.isMobile && sideBarService.setIsClose()"-->
