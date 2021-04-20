@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {EXERCISE_ROUTE, OVERVIEW_ROUTE, STUDENT_ROUTE} from "./routes";
+import {OVERVIEW_ROUTE, STUDENT_ROUTE} from "./routes";
 
 const routes: Routes = [
   {
@@ -18,11 +18,6 @@ const routes: Routes = [
     loadChildren: (): Promise<unknown> =>
       import('@student/student.module').then((m) => m.StudentModule),
   },
-  {
-    ...EXERCISE_ROUTE,
-    loadChildren: (): Promise<unknown> =>
-      import('@exercise/exercise.module').then((m) => m.ExerciseModule),
-  }
 ];
 
 @NgModule({

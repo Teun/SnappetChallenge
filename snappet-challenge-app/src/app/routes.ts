@@ -6,13 +6,8 @@ export const OVERVIEW_ROUTE: Route = {
 }
 
 export const STUDENT_ROUTE: Route = {
-  path: 'student',
-  data: { title: 'Student' },
+  path: 'students',
+  data: { title: 'Students' },
 }
 
-export const EXERCISE_ROUTE: Route = {
-  path: 'exercise',
-  data: { title: 'Exercise' },
-}
-
-export const rootRoutesMap = [OVERVIEW_ROUTE, STUDENT_ROUTE, EXERCISE_ROUTE];
+export const rootRoutesMap = [OVERVIEW_ROUTE, STUDENT_ROUTE];

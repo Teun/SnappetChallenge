@@ -1,1 +1,27 @@
-<p>main works!</p>
+<div class="overview">
+  <h1>Class overview</h1>
+  <app-interval></app-interval>
+  <section class="overview__part">
+    <h2>Students progress</h2>
+    <h3>Click on a student to check statistics</h3>
+    <app-students-table
+      *ngIf="students.length; else spinner"
+      [students]="students"
+    ></app-students-table>
+    <ng-template #spinner>
+      <div class="spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+  </section>
+
+  <section class="overview__part">
+    <h2>The most challenging exercises</h2>
+    <h3>Students find difficult to solve these exercises</h3>
+    <app-difficult-exercises
+      xAxisLabel="Exercise ID"
+      yAxisLabel="Times students failed this exercise"
+      [data]="difficultExercises"
+    ></app-difficult-exercises>
+  </section>
+</div>

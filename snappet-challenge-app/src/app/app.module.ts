@@ -8,6 +8,7 @@ import {SharedModule} from "./shared/shared.module";
 import { LayoutComponent } from './core/layout/layout.component';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { NavMenuComponent } from './core/layout/nav-menu/nav-menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NavMenuComponent } from './core/layout/nav-menu/nav-menu.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,20 @@
+<div *ngIf="student">
+  <h1>{{student.name}}</h1>
+  <app-interval></app-interval>
+  <div *ngIf="subjects.length">
+    <h2>Subjects student learned during period of time</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let subject of subjects">{{subject}}</mat-list-item>
+    </mat-list>
+  </div>
+  <h2>Trouble subjects</h2>
+  <app-difficult-exercises
+    *ngIf="difficultSubjects.length; else noDataText"
+    xAxisLabel="Subject"
+    yAxisLabel="Failed exercises"
+    [data]="difficultSubjects"
+  ></app-difficult-exercises>
+  <ng-template #noDataText>
+    <h3>No data</h3>
+  </ng-template>
+</div>

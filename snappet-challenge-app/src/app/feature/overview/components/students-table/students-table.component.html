@@ -1,0 +1,57 @@
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="table"
+>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-icon
+        class="table__icon"
+        [ngClass]="{'table__active-icon': sorting.id !== 'default'}"
+        aria-hidden="false"
+        (click)="filterData('id')"
+      >
+        {{sorting.id === 'asc' ? 'arrow_upward' : 'arrow_downward'}}
+      </mat-icon>
+      <span>Id</span>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.id}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-icon
+        class="table__icon"
+        [ngClass]="{'table__active-icon': sorting.name !== 'default'}"
+        aria-hidden="false"
+        (click)="filterData('name')"
+      >
+        {{sorting.name === 'asc' ? 'arrow_upward' : 'arrow_downward'}}
+      </mat-icon>
+      <span>Name </span>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <a mat-button [routerLink]="['../students', element.id]">{{element.name}}</a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="correctAnswers">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-icon
+        class="table__icon"
+        [ngClass]="{'table__active-icon': sorting.correctAnswers !== 'default'}"
+        aria-hidden="false"
+        (click)="filterData('correctAnswers')"
+      >
+        {{sorting.correctAnswers === 'asc' ? 'arrow_upward' : 'arrow_downward'}}
+      </mat-icon>
+      <span>Correct answers</span>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.correctAnswers}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
