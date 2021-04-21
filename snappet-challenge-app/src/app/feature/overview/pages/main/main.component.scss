@@ -1,0 +1,7 @@
+.overview {
+  &__part {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}

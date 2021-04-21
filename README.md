@@ -1,4 +1,32 @@
 # SnappetChallenge
+
+### Folder structure
+- Data\ - provided data - not used
+- server\ - Express.js server. Small application to send data to frontend. It includes data folder with ```work.json``` (base json) and ```students.json``` (list of students I generated)
+- snappet-challenge-app\ - Angular application - the main folder I worked with
+
+### Set up:
+1. Clone this repository
+2. ```$ cd SnappetChallenge```
+3. Install dependencies for the server ```$ cd server``` and ```$ npm install```
+4. Run the server: ```$ npm start```
+5. ```$ cd ..```
+6. Install dependencies for Angular application ```$ cd snappet-challenge-app``` and ```$ npm install```
+7. Run the app: ```$ ng serve```
+8. Open  ```http://localhost:4200``` in your browser
+
+### Extra info: 
+I generated a list of names for students to make application closer to real life (server/data/students.json). 
+
+### Technologies I used:
+- Angular 11 + RxJs
+- Angular Material
+- SCSS
+- ngx-charts
+- Express.js
+
+### Task: 
+
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
 ### Language

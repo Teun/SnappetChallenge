@@ -1,0 +1,11 @@
+<nav class="menu">
+    <a
+      *ngFor="let route of routes"
+      mat-flat-button
+      [routerLink]="route.path"
+      routerLinkActive="mat-primary"
+      class="menu__item"
+    >
+      {{route.data.title}}
+    </a>
+</nav>
