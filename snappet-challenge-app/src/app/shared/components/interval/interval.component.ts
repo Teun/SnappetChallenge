@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IntervalSelectItem} from "@overview/classes/interval-select-item";
 import {MatSelectChange} from "@angular/material/select";
 import {IntervalService} from "@core/services/interval.service";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 import {addDaysToDate} from "@shared/helpers/date-time.helper";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-interval',
   templateUrl: './interval.component.html',
   styleUrls: ['./interval.component.scss']
 })
-export class IntervalComponent implements OnInit {
+export class IntervalComponent implements OnInit, OnDestroy {
   from = new Date();
   to = new Date();
 
@@ -19,21 +20,32 @@ export class IntervalComponent implements OnInit {
 
   dateChanged = new BehaviorSubject(false);
 
+  private unsubscribe = new Subject();
+
   constructor(private intervalService: IntervalService) {
     this.intervals = intervalService.intervals;
-    this.from = intervalService.filter$.value.from;
-    this.to = intervalService.filter$.value.to;
+    this.from = intervalService.filterValue.from;
+    this.to = intervalService.filterValue.to;
   }
 
   ngOnInit(): void {
-    this.intervalService.selectedInterval$.subscribe((selectedItem) => {
-      this.selectedInterval = selectedItem;
-    });
-    this.dateChanged.subscribe(() => {
-      if (this.to){
-        this.intervalService.setFilter({from: this.from, to: addDaysToDate(this.to, 1)});
-      }
-    })
+    this.intervalService.selectedInterval$
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((selectedItem) => {
+        this.selectedInterval = selectedItem;
+      });
+    this.dateChanged
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(() => {
+        if (this.to){
+          this.intervalService.setFilter({from: this.from, to: addDaysToDate(this.to, 1)});
+        }
+      })
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   onDateChange() {

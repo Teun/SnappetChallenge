@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ChartItem} from "@shared/interfaces/chart-item.interface";
+import {ChartItem} from "@core/interfaces/chart-item.interface";
 
 @Component({
   selector: 'app-difficult-exercises',

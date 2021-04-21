@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {ApiAnswer} from "@shared/interfaces/api-answer.interface";
+import {ApiAnswer} from "@core/interfaces/api-answer.interface";
 import {BehaviorSubject, Observable} from "rxjs";
 import {ApiOverviewService} from "@core/services/api-overview.service";
-import {filter, first, map, tap} from "rxjs/operators";
-import {ChartItem} from "@shared/interfaces/chart-item.interface";
+import {first, map, tap} from "rxjs/operators";
+import {ChartItem} from "@core/interfaces/chart-item.interface";
 import {IntervalService} from "@core/services/interval.service";
 
 @Injectable({
@@ -11,10 +11,14 @@ import {IntervalService} from "@core/services/interval.service";
 })
 export class OverviewService {
   fetchedAnswers: ApiAnswer[] = [];
-  filteredAnswers$ = new BehaviorSubject<ApiAnswer[]>([]);
+  private _filteredAnswers$ = new BehaviorSubject<ApiAnswer[]>([]);
+
+  get filteredAnswers$(): Observable<ApiAnswer[]> {
+    return this._filteredAnswers$.asObservable();
+  }
 
   get mostDifficultExercises$(): Observable<ChartItem[]> {
-    return this.filteredAnswers$.pipe(map((data) => {
+    return this._filteredAnswers$.pipe(map((data) => {
       const exercises: ChartItem[] = [];
       data.forEach((answer) => {
         const existedExerciseIndex = exercises.findIndex(el => el.name === answer.ExerciseId.toString());
@@ -39,7 +43,7 @@ export class OverviewService {
 
   getAnswers(): Observable<ApiAnswer[]> {
     if (this.fetchedAnswers.length) {
-      return this.filteredAnswers$.pipe(first());
+      return this._filteredAnswers$.pipe(first());
     }
     return this.apiOverviewService.getOverview()
       .pipe(tap((data) => {
@@ -49,15 +53,15 @@ export class OverviewService {
   }
 
   getStudentStatistics(id: number): Observable<ApiAnswer[]> {
-    return this.filteredAnswers$.pipe(
+    return this._filteredAnswers$.pipe(
       map((answers) => answers.filter(el => el.UserId === id))
     );
   }
 
   private filterAnswers(){
     const filteredData = this.fetchedAnswers.filter((el) =>
-      new Date(el.SubmitDateTime) >= this.intervalService.filter$.value.from &&
-      new Date(el.SubmitDateTime) <= this.intervalService.filter$.value.to);
-    this.filteredAnswers$.next(filteredData);
+      new Date(el.SubmitDateTime) >= this.intervalService.filterValue.from &&
+      new Date(el.SubmitDateTime) <= this.intervalService.filterValue.to);
+    this._filteredAnswers$.next(filteredData);
   }
 }

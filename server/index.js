@@ -14,7 +14,7 @@ app.get('/overview', async (req, res) => {
             res.send(filteredData);
         })
         .catch(() => {
-            res.status(400).send('Error');
+            res.status(500).send('Could not load data');
         });
 });
 
@@ -25,7 +25,7 @@ app.get('/students', async (req, res) => {
             res.send(data);
         })
         .catch(() => {
-            res.status(400).send('Error');
+            res.status(500).send('Could not load students');
         });
 })
 

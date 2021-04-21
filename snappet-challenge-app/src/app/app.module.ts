@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { NavMenuComponent } from './core/layout/nav-menu/nav-menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import {ErrorHandlerService} from "@core/services/error-handler.service";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{ provide: ErrorHandler, useClass: ErrorHandlerService },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

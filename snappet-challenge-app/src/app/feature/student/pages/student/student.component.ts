@@ -4,9 +4,9 @@ import {StudentsService} from "@core/services/students.service";
 import {switchMap, takeUntil} from "rxjs/operators";
 import {OverviewService} from "@core/services/overview.service";
 import {of, Subject} from "rxjs";
-import {ApiStudent} from "@shared/interfaces/api-student.interface";
-import {ChartItem} from "@shared/interfaces/chart-item.interface";
-import {ApiAnswer} from "@shared/interfaces/api-answer.interface";
+import {ApiStudent} from "@core/interfaces/api-student.interface";
+import {ChartItem} from "@core/interfaces/chart-item.interface";
+import {ApiAnswer} from "@core/interfaces/api-answer.interface";
 
 @Component({
   selector: 'app-student',

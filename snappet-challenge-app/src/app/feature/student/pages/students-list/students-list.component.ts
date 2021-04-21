@@ -4,7 +4,7 @@ import {TableStudent} from "@overview/interfaces/table-student.interface";
 import {OverviewService} from "@core/services/overview.service";
 import {StudentsService} from "@core/services/students.service";
 import {switchMap, takeUntil} from "rxjs/operators";
-import {ApiStudent} from "@shared/interfaces/api-student.interface";
+import {ApiStudent} from "@core/interfaces/api-student.interface";
 import {Subject} from "rxjs";
 
 @Component({
@@ -33,10 +33,11 @@ export class StudentsListComponent implements OnInit, OnDestroy {
 
     this.studentsService.getStudents()
       .pipe(
-        takeUntil(this.unsubscribe),
         switchMap(() => {
           return this.overviewService.getAnswers();
-        }))
+        }),
+        takeUntil(this.unsubscribe)
+      )
       .subscribe()
   }
 

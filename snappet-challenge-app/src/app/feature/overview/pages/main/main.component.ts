@@ -3,7 +3,7 @@ import {OverviewService} from "@core/services/overview.service";
 import {StudentsService} from "@core/services/students.service";
 import {switchMap, takeUntil} from "rxjs/operators";
 import {TableStudent} from "@overview/interfaces/table-student.interface";
-import {ChartItem} from "@shared/interfaces/chart-item.interface";
+import {ChartItem} from "@core/interfaces/chart-item.interface";
 import {Subject} from "rxjs";
 
 @Component({
@@ -38,8 +38,8 @@ export class MainComponent implements OnInit, OnDestroy {
       })
     this.studentsService.getStudents()
       .pipe(
-        takeUntil(this.unsubscribe),
-        switchMap(() => this.overviewService.getAnswers())
+        switchMap(() => this.overviewService.getAnswers()),
+        takeUntil(this.unsubscribe)
       )
       .subscribe();
   }

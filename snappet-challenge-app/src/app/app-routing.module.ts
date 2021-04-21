@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: (): Promise<unknown> =>
       import('@student/student.module').then((m) => m.StudentModule),
   },
+  {
+    path: '**',
+    redirectTo: 'overview',
+  },
+
 ];
 
 @NgModule({

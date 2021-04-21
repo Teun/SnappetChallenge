@@ -17,6 +17,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { IntervalComponent } from './components/interval/interval.component';
 import {DifficultExercisesComponent} from "@shared/components/difficult-exercises/difficult-exercises.component";
 import {MatListModule} from '@angular/material/list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatListModule} from '@angular/material/list';
     MatInputModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   exports: [
     FormsModule,
@@ -62,7 +64,8 @@ import {MatListModule} from '@angular/material/list';
     MatProgressSpinnerModule,
     IntervalComponent,
     DifficultExercisesComponent,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }

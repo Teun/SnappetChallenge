@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {OverviewService} from "@core/services/overview.service";
-import {ApiStudent} from "@shared/interfaces/api-student.interface";
+import {ApiStudent} from "@core/interfaces/api-student.interface";
 import {BehaviorSubject, Observable, of} from "rxjs";
 import {TableStudent} from "@overview/interfaces/table-student.interface";
 import {ApiStudentsService} from "@core/services/api-students.service";
@@ -11,7 +11,11 @@ import {first, map, tap} from "rxjs/operators";
 })
 export class StudentsService {
   fetchedStudents$ = new BehaviorSubject<ApiStudent[]>([]);
-  usersTable$ = new BehaviorSubject<TableStudent[]>([]);
+  private _usersTable$ = new BehaviorSubject<TableStudent[]>([]);
+
+  get usersTable$(): Observable<TableStudent[]> {
+    return this._usersTable$.asObservable();
+  }
 
 
   constructor(overviewService: OverviewService, private apiStudentsService: ApiStudentsService) {
@@ -31,7 +35,7 @@ export class StudentsService {
           }
         }
       })
-      this.usersTable$.next(students);
+      this._usersTable$.next(students);
     })
   }
 

@@ -1,4 +1,4 @@
-import {ApiStudent} from "@shared/interfaces/api-student.interface";
+import {ApiStudent} from "@core/interfaces/api-student.interface";
 
 export interface TableStudent extends ApiStudent{
   progress: number;

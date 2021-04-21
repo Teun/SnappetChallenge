@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {OverviewFilter} from "@overview/interfaces/overview-filter.interface";
 import {IntervalSelectItem} from "@overview/classes/interval-select-item";
 
@@ -15,18 +15,31 @@ export class IntervalService {
     new IntervalSelectItem('Custom', 'custom', this.today),
   ];
 
-  selectedInterval$ = new BehaviorSubject<IntervalSelectItem>(this.intervals[0]);
-  filter$ = new BehaviorSubject<OverviewFilter>({
+
+  private _selectedInterval$ = new BehaviorSubject<IntervalSelectItem>(this.intervals[0]);
+  private _filter$ = new BehaviorSubject<OverviewFilter>({
     from: new Date('2015-03-24 00:00:00'),
     to: this.today
   });
+
+  get selectedInterval$(): Observable<IntervalSelectItem> {
+    return this._selectedInterval$.asObservable();
+  }
+
+  get filter$(): Observable<OverviewFilter> {
+    return this._filter$.asObservable();
+  }
+  get filterValue(): OverviewFilter {
+    return this._filter$.value;
+  }
+
   constructor() {}
 
   setSelectedInterval(value: string) {
-    this.selectedInterval$.next(this.intervals.find(el => el.value === value) || this.selectedInterval$.value);
+    this._selectedInterval$.next(this.intervals.find(el => el.value === value) || this._selectedInterval$.value);
   }
 
   setFilter(filter: OverviewFilter) {
-    this.filter$.next({...filter});
+    this._filter$.next({...filter});
   }
 }
