@@ -1,0 +1,23 @@
+<div *ngIf="!(isLoading | async); else loader">
+  <app-filter></app-filter>
+  <ng-container *ngIf="(chartData | async) as data">
+    <ngx-charts-pie-chart
+      *ngIf="data.length; else placeholder"
+      [labels]="true"
+      [legend]="true"
+      [results]="data"
+      [tooltipDisabled]="true"
+      [view]="[1200,500]"
+    >
+    </ngx-charts-pie-chart>
+  </ng-container>
+
+</div>
+<ng-template #loader>
+  <div class="placeholder">Loading...</div>
+</ng-template>
+<ng-template #placeholder>
+  <div class="placeholder">No data to display</div>
+</ng-template>
+
+

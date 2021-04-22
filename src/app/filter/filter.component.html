@@ -1,0 +1,16 @@
+<div *ngFor="let filterItem of (filter | async) | keyvalue">
+  <label class="select-container">
+    <span class="label">
+      {{labels[filterItem.key]}}
+    </span>
+    <select
+      class="select"
+      (change)="onSelectChange($event, filterItem.key)"
+      [ngModel]="getValues(filterItem.key) | async"
+    >
+      <option value=""></option>
+      <option *ngFor="let item of filterItem.value" [value]="item">{{item}}</option>
+    </select>
+
+  </label>
+</div>
