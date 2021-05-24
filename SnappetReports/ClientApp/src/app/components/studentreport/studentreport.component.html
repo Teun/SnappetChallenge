@@ -1,0 +1,26 @@
+<p class="font-weight-bold text-danger">
+  Student Work Reports
+</p>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead class="thead-light">
+    <tr>
+      <th>UserId</th>
+      <th>Subject</th>
+      <th>Mean Progress</th>
+      <th>High Progress</th>
+      <th>Low Progress</th>
+      <th>Answers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of reportRecords">
+      <td>{{record.userId}}</td>
+      <td>{{record.subject}}</td>
+      <td>{{record.meanProgress}}</td>
+      <td>{{record.maxProgress}}</td>
+      <td>{{record.minProgress}}</td>
+      <td>{{record.answerCount}}</td>
+    </tr>
+  </tbody>
+</table>
