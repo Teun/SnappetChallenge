@@ -1,0 +1,33 @@
+<mat-form-field appearance="fill">
+  <mat-label>Date</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [ngModel]="date.value"
+    (dateInput)="onDateChange($event)"
+    (dateChange)="onDateChange($event)"
+  >
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Student</mat-label>
+  <mat-select [value]="student.value" (selectionChange)="onStudentChange($event)">
+    <mat-option [value]="allStudentsId">
+      All
+    </mat-option>
+    <mat-option *ngFor="let s of students | async" [value]="s">
+      {{ s }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div *ngIf="filteredData | async as data; else loading">
+  <ng-container >
+    <app-subject-chart [single]="(subjectData | async)!"></app-subject-chart>
+    <app-progress-chart [single]="(cumulativeProgressBySubject | async)!"></app-progress-chart>
+    <app-table *ngIf="student.value !== allStudentsId" [data]="data"></app-table>
+  </ng-container>
+</div>
+<ng-template #loading>Loading...</ng-template>

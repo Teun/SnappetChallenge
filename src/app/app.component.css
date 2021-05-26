@@ -1,0 +1,7 @@
+mat-form-field {
+  margin-right: 10px;
+}
+
+app-subject-chart, app-progress-chart {
+  margin: 10px;
+}
