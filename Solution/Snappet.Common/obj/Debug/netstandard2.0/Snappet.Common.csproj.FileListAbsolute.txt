@@ -1,0 +1,9 @@
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\bin\Debug\netstandard2.0\Snappet.Common.deps.json
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\bin\Debug\netstandard2.0\Snappet.Common.dll
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\bin\Debug\netstandard2.0\Snappet.Common.pdb
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\obj\Debug\netstandard2.0\Snappet.Common.csprojAssemblyReference.cache
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\obj\Debug\netstandard2.0\Snappet.Common.AssemblyInfoInputs.cache
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\obj\Debug\netstandard2.0\Snappet.Common.AssemblyInfo.cs
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\obj\Debug\netstandard2.0\Snappet.Common.csproj.CoreCompileInputs.cache
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\obj\Debug\netstandard2.0\Snappet.Common.dll
+C:\Repos\SnappetChallenge\Solution\Snappet.Common\obj\Debug\netstandard2.0\Snappet.Common.pdb

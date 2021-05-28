@@ -1,0 +1,10 @@
+table,td,tr,th {
+    border : 1px solid black;     
+    border-collapse : collapse
+  }
+th {
+    background-color: burlywood;
+}
+td,th {
+    padding: 5px;
+}
