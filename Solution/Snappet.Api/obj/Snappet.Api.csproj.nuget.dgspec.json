@@ -1,0 +1,296 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Api\\Snappet.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Api\\Snappet.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Api\\Snappet.Api.csproj",
+        "projectName": "Snappet.Api",
+        "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Api\\Snappet.Api.csproj",
+        "packagesPath": "C:\\Users\\Muhammad_Waqas\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Muhammad_Waqas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Application\\Snappet.Application.csproj": {
+                "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Application\\Snappet.Application.csproj"
+              },
+              "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj": {
+                "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj"
+              },
+              "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\Snappet.Data.csproj": {
+                "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\Snappet.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.1, )",
+              "noWarn": [
+                "NU1605"
+              ]
+            },
+            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
+              "target": "Package",
+              "version": "[5.0.1, )",
+              "noWarn": [
+                "NU1605"
+              ]
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Application\\Snappet.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Application\\Snappet.Application.csproj",
+        "projectName": "Snappet.Application",
+        "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Application\\Snappet.Application.csproj",
+        "packagesPath": "C:\\Users\\Muhammad_Waqas\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Muhammad_Waqas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj": {
+                "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj"
+              },
+              "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\Snappet.Data.csproj": {
+                "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\Snappet.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj",
+        "projectName": "Snappet.Common",
+        "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj",
+        "packagesPath": "C:\\Users\\Muhammad_Waqas\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Muhammad_Waqas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\Snappet.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\Snappet.Data.csproj",
+        "projectName": "Snappet.Data",
+        "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\Snappet.Data.csproj",
+        "packagesPath": "C:\\Users\\Muhammad_Waqas\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Muhammad_Waqas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj": {
+                "projectPath": "C:\\Repos\\SnappetChallenge\\Solution\\Snappet.Common\\Snappet.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
