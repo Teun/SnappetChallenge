@@ -1,3 +1,23 @@
+# How to run this project
+
+Required software
+- dotnet 5
+- angular 12
+- npm
+- angular cli
+
+# Steps
+1) Open a command line tool, navigate to the root directory of this project
+2) In the WorkResultsApi folder, execute "dotnet run"
+3) In the ClassOverview folder, execute "npm i" then "ng serve"
+
+Access http://localhost:4200 for the frontend application
+Access https://localhost:5001 for the Web API
+
+# Extra info
+The data is loaded to an in memory database from the json file, so there's no need to deal with any databases
+
+----------------------------------------------------------------------------------------------------------------
 # SnappetChallenge
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 

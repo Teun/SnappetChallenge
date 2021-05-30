@@ -1,0 +1,24 @@
+<table class="table overview-table">
+    <thead>
+        <tr>
+            <th scope="col">Exercise Id</th>
+            <th scope="col">Submitted answers</th>
+            <th scope="col">Correct answers </th>
+            <th scope="col">difficulty</th>
+            <th scope="col">Learning Objective</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Domain</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let exerciseItem of exerciseItems">
+            <th scope="row">{{exerciseItem.exerciseId}}</th>
+            <td>{{exerciseItem.quantity}}</td>
+            <td>{{exerciseItem.correctAnswers}}</td>
+            <td>{{exerciseItem.difficulty}}</td>
+            <td>{{exerciseItem.learningObjective}}</td>
+            <td>{{exerciseItem.subject}}</td>
+            <td>{{exerciseItem.domain}}</td>
+        </tr>
+    </tbody>
+</table>

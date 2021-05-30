@@ -1,0 +1,18 @@
+Assignment
+
+This assignment is deliberately broadly formulated. You may use the techniques and tools you prefer. Explain in the readme how someone else can get it working. 
+
+In this repository you will find a folder Data containing work.csv and work.json. Both contain the same data, you only need to use one (whichever is convenient for you). This file contains the work results of the children in one class over a month.
+
+Create a report or screen or whatever that gives a teacher an overview of how his class has been working today and what. It is now Tuesday 2015-03-24 11:30:00 UTC. The answers from after that time are therefore not yet shown.
+
+The minimum requirement in the assignment is "what did my class work on today". This can be done in a list, in a graphic form, it can be numbers or colors.
+You can compare it with last week or an average score.
+Try to think about what is most important to a teacher in the classroom. 
+
+Create a pull request that includes at least a readme that explains what you need to do to view the result. 
+
+Background information
+All times are in UTC
+There is a Progress attribute. This represents the change in the students assessment of a learning objective. There are psychometric models behind this that take into account the difficulty of the problem, whether the problem has already been done by this student, etc. There are several situations where the Progress is 0. For example, if we do not yet have a good calibration of the difficulty of the problem. Or if the student has not yet completed enough exercises in a learning objective to make a good estimate of the skill.
+Since this dataset only shows changes and not an absolute value, you can't tell from this dataset what the skill of each student is. That does not have to be reflected in the results either. 

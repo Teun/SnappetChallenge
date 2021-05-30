@@ -1,0 +1,25 @@
+<app-filtering-form (onFilterResults)="filterResults($event)"></app-filtering-form>
+<table class="table overview-table">
+    <thead>
+        <tr>
+            <th scope="col">Exercise Id</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">Is Answer Correct</th>
+            <th scope="col">Progress</th>
+            <th scope="col">Learning Objective</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Domain</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let studentWorkItem of studentWorkItems">
+            <th scope="row">{{studentWorkItem.submittedAnswerId}}</th>
+            <td>{{studentWorkItem.difficulty}}</td>
+            <td>{{studentWorkItem.correct ? 'Yes' : 'No'}}</td>
+            <td>{{studentWorkItem.progress}}</td>
+            <td>{{studentWorkItem.learningObjective}}</td>
+            <td>{{studentWorkItem.subject}}</td>
+            <td>{{studentWorkItem.domain}}</td>
+        </tr>
+    </tbody>
+</table>

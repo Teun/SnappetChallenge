@@ -1,0 +1,23 @@
+<app-filtering-form (onFilterResults)="filterResults($event)"></app-filtering-form>
+<div class="overview-table" *ngIf="studentWorkItems">
+    <p><b>Difficulty:</b> {{difficulty}}</p>
+    <p><b>Learning Objective:</b> {{learningObjective}}</p>
+    <p><b>Subject:</b> {{subject}}</p>
+    <p><b>Domain:</b> {{domain}}</p>
+</div>
+<table class="table overview-table">
+    <thead>
+        <tr>
+            <th scope="col">Student Id</th>
+            <th scope="col">Is Answer Correct</th>
+            <th scope="col">Progress</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let studentWorkItem of studentWorkItems">
+            <th scope="row">{{studentWorkItem.userId}}</th>
+            <td>{{studentWorkItem.correct ? 'Yes' : 'No'}}</td>
+            <td>{{studentWorkItem.progress}}</td>
+        </tr>
+    </tbody>
+</table>
