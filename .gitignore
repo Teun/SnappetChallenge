@@ -1,0 +1,14 @@
+
+.idea/
+
+Snappet/bin/
+
+Snappet/obj/
+
+Test/bin/
+
+Test/obj/
+
+web/build/
+
+web/node_modules/

@@ -1,22 +1,33 @@
-# SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+# Snappet Challenge
+I implemented a simple project for the snappet challenge. I tried to spend as less time as possible to come up with a simple idea while abandoning lots of product ideas and technical possibilities to implement. My main aim is to talk about the code and the possibilities.
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+### Technologies
+I have used
+- .net 5 for the backend
+- reactjs, typescript for the front-end
+- docker & docker compose to build up the environment
+- nunit, moq & aspnetcore test host for testing 
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+### What I did
+- I created a simple back-end solution to load provided data on the startup. I decided not to use an in memory database since using it or not using it doesn't effect too much things while implementing it requires a little time.
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+- I used simple web api to communicate with the front-end. Considering different data format & possible interesting reports in a real world scenario I would consider graphql like communication infrastructures too.
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+- I used a simple factory pattern to create a dynamic set of auto complete functionality. At the end I only used user id auto complete but I left it in the project just to talk about it.
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+- I created a unit test project with 2 files. One is pure testing for services with all dependencies faked, the other creates a test host to make real calls to the api. I created few examples to not to spend too much time on it.
+![unit test](images/test.png)
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Typescript en Angular. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+- I used dockerfiles and docker compose to run the project with one command.
+![docker compose](images/docker-compose.png)
+
+- I decided not to use any css library to not to spend too much time on it. But with altering data a little and using correct libraries, front-end of the application would be more beautiful.
+
+- I used typescript and react hooks to create create a workable front-end with some reusable components. I was thinking about using css modules but then I decided not to include extra libraries. 
+
+- I was thinking about the "What a teacher would like to see", then I decided to go with a simple solution for the problem again. I didn't cover "progress" so I am unhappy about that. But again the decision making is all time based.
+
+- As a result, I show how many true and how many false answers are made for the whole class, or a specific student with possible day selection.
+![fe](images/sample-fe.png)
+
+
