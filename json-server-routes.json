@@ -1,0 +1,6 @@
+{
+    "/subjects/:id": "/subjects/:id",
+    "/domains/:id": "/domains/:id",
+    "/learningObjectives/:id": "/learningObjectives/:id",
+    "/exercises/:id": "/exercises/:id"
+}
