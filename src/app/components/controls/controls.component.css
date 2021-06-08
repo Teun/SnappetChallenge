@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+}
+
+.play {
+  color: lawngreen;
+}
+
+.pause {
+  color: yellow;
+}
+
+.stop {
+  color: red;
+}

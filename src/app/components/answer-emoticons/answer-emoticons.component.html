@@ -1,0 +1,4 @@
+<ng-container *ngFor="let answer of answers">
+  <mat-icon [className]="'correct'" *ngIf="answer.correct === 1">sentiment_satisfied_alt</mat-icon>
+  <mat-icon [className]="'incorrect'" *ngIf="answer.correct === 0">sentiment_very_dissatisfied</mat-icon>
+</ng-container>

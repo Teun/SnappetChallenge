@@ -1,0 +1,4 @@
+<ng-container *ngIf="performance != null">
+  <mat-icon *ngIf="performance >= 0.75" [className]="'upward'">arrow_upward</mat-icon>
+  <mat-icon *ngIf="performance < 0.75" [className]="'downward'">arrow_downward</mat-icon>
+</ng-container>

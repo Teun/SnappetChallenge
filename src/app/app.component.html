@@ -1,0 +1,18 @@
+<ng-container *ngIf="!showError">
+  <app-controls></app-controls>
+
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of links"
+       [routerLink]="link.url"
+       routerLinkActive
+       #rla="routerLinkActive"
+       [active]="rla.isActive"
+    > {{link.title}} </a>
+  </nav>
+
+  <app-learning-objective></app-learning-objective>
+
+  <router-outlet></router-outlet>
+</ng-container>
+<app-server-unavailable  *ngIf="showError"></app-server-unavailable>
+
