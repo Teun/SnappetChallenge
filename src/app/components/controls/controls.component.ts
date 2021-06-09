@@ -1,5 +1,10 @@
 import {Component} from "@angular/core";
-import {ControlsService, ControlsState} from "../../services/controls.service";
+import {Store} from "@ngrx/store";
+import {selectControlState} from "../../ngrx/answers.reducer";
+import {changeControlState} from "../../ngrx/answers.actions";
+import {map} from "rxjs/operators";
+import {ControlsState} from "../../interfaces/controls-state";
+import {State} from "../../interfaces/state";
 
 @Component({
   selector: 'app-controls',
@@ -7,30 +12,30 @@ import {ControlsService, ControlsState} from "../../services/controls.service";
   styleUrls: ['./controls.component.css'],
 })
 export class ControlsComponent {
-  constructor(public controlsService: ControlsService) {
+  constructor(public store: Store<State>) {
   }
 
   onPlay() {
-    this.controlsService.state.next(ControlsState.Play);
+    this.store.dispatch(changeControlState({ controlState: ControlsState.Play }));
   }
 
   onPause() {
-    this.controlsService.state.next(ControlsState.Pause);
+    this.store.dispatch(changeControlState({ controlState: ControlsState.Pause }));
   }
 
   onStop() {
-    this.controlsService.state.next(ControlsState.Stop);
+    this.store.dispatch(changeControlState({ controlState: ControlsState.Stop }));
   }
 
   get isPlay() {
-    return this.controlsService.state.value === ControlsState.Play;
+    return this.store.select(selectControlState).pipe(map(state => state === ControlsState.Play));
   }
 
   get isPause() {
-    return this.controlsService.state.value === ControlsState.Pause;
+    return this.store.select(selectControlState).pipe(map(state => state === ControlsState.Pause));
   }
 
   get isStop() {
-    return this.controlsService.state.value === ControlsState.Stop;
+    return this.store.select(selectControlState).pipe(map(state => state === ControlsState.Stop));
   }
 }

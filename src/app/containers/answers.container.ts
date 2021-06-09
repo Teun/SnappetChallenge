@@ -1,21 +1,18 @@
 import {Component} from "@angular/core";
-import {LearningObjectiveService} from "../services/learning-objective.service";
-import {ControlsService} from "../services/controls.service";
-import {AnswersTableService} from "../services/answers-table.service";
+import {selectVisibleRows} from "../ngrx/answers.reducer";
+import {Store} from "@ngrx/store";
+import {State} from "../interfaces/state";
 
 @Component({
   selector: 'app-answers-container',
   template: `
     <app-answers
-      [rows]="answersTableService.visibleRows$ | async"
+      [rows]="visibleRows$ | async"
     ></app-answers>
   `,
 })
 export class AnswersContainer {
-  constructor(
-    public answersTableService: AnswersTableService,
-    public learningObjectivesService: LearningObjectiveService,
-    public controlsService: ControlsService,
-  ) {
-  }
+  readonly visibleRows$ = this.store.select(selectVisibleRows);
+
+  constructor(private store: Store<State>) {}
 }

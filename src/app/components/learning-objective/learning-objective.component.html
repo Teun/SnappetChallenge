@@ -1,10 +1,10 @@
 <mat-form-field appearance="fill">
   <mat-label>Objective</mat-label>
-  <mat-select [value]="learningObjectiveService.learningObjective.value" (selectionChange)="onObjectiveChange($event)">
-    <mat-option [value]="learningObjectiveService.allLearningObjectives">
+  <mat-select [value]="learningObjective | async" (selectionChange)="onObjectiveChange($event)">
+    <mat-option [value]="allLearningObjectives">
       All
     </mat-option>
-    <mat-option *ngFor="let objective of learningObjectiveService.learningObjectives$ | async" [value]="objective">
+    <mat-option *ngFor="let objective of (learningObjectives | async)" [value]="objective">
       {{ objective }}
     </mat-option>
   </mat-select>

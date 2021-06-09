@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {TableAnswer} from "../answers/answers.component";
+import {TableAnswer} from "../../interfaces/table-row";
 
 @Component({
   selector: 'app-answer-emoticons',

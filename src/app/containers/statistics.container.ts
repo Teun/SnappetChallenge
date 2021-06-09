@@ -1,18 +1,20 @@
 import {Component} from "@angular/core";
-import {AnswersTableService} from "../services/answers-table.service";
+import {selectTotalAnswers, selectTotalStudents} from "../ngrx/answers.reducer";
+import {Store} from "@ngrx/store";
+import {State} from "../interfaces/state";
 
 @Component({
   selector: 'app-statistics-container',
   template: `
     <app-statistics
-      [students]="answersTableService.students$ | async"
-      [answers]="answersTableService.answers$ | async"
+      [students]="students$ | async"
+      [answers]="answers$ | async"
     ></app-statistics>
   `,
 })
 export class StatisticsContainer {
-  constructor(
-    public answersTableService: AnswersTableService
-  ) {
-  }
+  readonly students$ = this.store.select(selectTotalStudents);
+  readonly answers$ = this.store.select(selectTotalAnswers);
+
+  constructor(private store: Store<State>) {}
 }

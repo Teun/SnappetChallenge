@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
-import {UserService} from "./services/user.service";
-import {catchError} from "rxjs/operators";
-import {throwError} from "rxjs";
+import {Store} from "@ngrx/store";
+import {loadUsers} from "./ngrx/answers.actions";
+import {State} from "./interfaces/state";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import {throwError} from "rxjs";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public showError = false;
+  public showError$ = this.store.select(state => state.answers.serverUnavailable);
   public links = [
     {
       title: 'Answers',
@@ -21,13 +21,10 @@ export class AppComponent {
     },
   ];
 
-  readonly errors = this.userService.users$.pipe(
-    catchError(e => {
-      this.showError = true;
-      return throwError(e);
-    })
-  ).subscribe();
+  constructor(private store: Store<State>) {
+  }
 
-  constructor(public userService: UserService) {
+  ngOnInit() {
+    this.store.dispatch(loadUsers());
   }
 }

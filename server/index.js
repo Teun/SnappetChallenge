@@ -29,7 +29,7 @@ const sendAnswers = (index, delay) => {
 
     setTimeout(() => {
         sendAnswers(index + 1);
-    }, 3000);
+    }, 5000);
 };
 
 io.on('connection', (socket) => {

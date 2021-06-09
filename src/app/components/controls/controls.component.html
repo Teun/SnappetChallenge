@@ -1,17 +1,17 @@
 <div [className]="'container'">
-  <div [className]="isPlay && 'play'">
+  <div [className]="(isPlay | async) && 'play'">
     <button mat-button (click)="onPlay()">
       <mat-icon>play_arrow</mat-icon>
     </button>
   </div>
 
-  <div [className]="isPause && 'pause'">
+  <div [className]="(isPause | async) && 'pause'">
     <button mat-button (click)="onPause()">
       <mat-icon>pause</mat-icon>
     </button>
   </div>
 
-  <div [className]="isStop && 'stop'">
+  <div [className]="(isStop | async) && 'stop'">
     <button mat-button (click)="onStop()">
       <mat-icon>stop</mat-icon>
     </button>

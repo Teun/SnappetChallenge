@@ -1,6 +1,10 @@
 import {Component} from "@angular/core";
-import {LearningObjectiveService} from "../../services/learning-objective.service";
 import {MatSelectChange} from "@angular/material/select";
+import {AnswersState} from "../../ngrx/answers.reducer";
+import {Store} from "@ngrx/store";
+import {changeLearningObjective} from "../../ngrx/answers.actions";
+import {allLearningObjectives} from "src/app/models/answer";
+import {State} from "../../interfaces/state";
 
 @Component({
   selector: 'app-learning-objective',
@@ -8,10 +12,14 @@ import {MatSelectChange} from "@angular/material/select";
   styleUrls: ['./learning-objective.component.css'],
 })
 export class LearningObjectiveComponent {
-  constructor(public learningObjectiveService: LearningObjectiveService) {
+  readonly allLearningObjectives = allLearningObjectives;
+  readonly learningObjective = this.store.select(state => state.answers.learningObjective);
+  readonly learningObjectives = this.store.select(state => state.answers.learningObjectives);
+
+  constructor(public store: Store<State>) {
   }
 
   onObjectiveChange($event: MatSelectChange) {
-    this.learningObjectiveService.learningObjective.next($event.value);
+    this.store.dispatch(changeLearningObjective({ learningObjective: $event.value }));
   }
 }

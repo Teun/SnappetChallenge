@@ -1,18 +1,7 @@
 import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from "@angular/core";
-import {allLearningObjectives, Answer, LearningObjective, UserId} from "../../models/answer";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
-
-export interface TableAnswer {
-  correct: 0 | 1;
-  learningObjective: LearningObjective;
-}
-
-export interface Row {
-  userId: UserId;
-  userName: string;
-  answers: TableAnswer[];
-}
+import {TableRow} from "../../interfaces/table-row";
 
 @Component({
   selector: 'app-answers',
@@ -20,10 +9,10 @@ export interface Row {
   styleUrls: ['./answers.component.css'],
 })
 export class AnswersComponent implements AfterViewInit, OnChanges {
-  @Input() rows: Row[] | null = [];
+  @Input() rows: TableRow[] | null = [];
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  public dataSource = new MatTableDataSource<Row>([]);
+  public dataSource = new MatTableDataSource<TableRow>([]);
 
   readonly displayedColumns = [
     'Name',
@@ -53,7 +42,7 @@ export class AnswersComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  public performance(row: Row) {
+  public performance(row: TableRow) {
     if (row.answers.length === 0) {
       return null;
     }
