@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 import {AnswersContainer} from "./containers/answers.container";
-import {StatisticsContainer} from "./containers/statistics.container"; // CLI imports router
+import {StatisticsContainer} from "./containers/statistics.container";
 
 const routes: Routes = [
   {

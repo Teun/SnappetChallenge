@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {Store} from "@ngrx/store";
-import {loadUsers} from "./ngrx/answers.actions";
+import {loadUsers, refreshControlState} from "./ngrx/answers.actions";
 import {State} from "./interfaces/state";
 
 @Component({
@@ -26,5 +26,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.store.dispatch(loadUsers());
+    this.store.dispatch(refreshControlState());
   }
 }

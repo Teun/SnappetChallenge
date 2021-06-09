@@ -1,19 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {of} from 'rxjs';
-import {catchError, map, mergeMap, tap} from 'rxjs/operators';
+import {catchError, map, mergeMap, tap, withLatestFrom} from 'rxjs/operators';
 import {AnswersService} from "../services/answers.service";
 import {
   changeControlState,
   loadAnswers,
   loadAnswerSuccess,
   loadUsers,
-  loadUsersSuccess,
+  loadUsersSuccess, refreshControlState,
   serverUnavailable
 } from "./answers.actions";
 import {UserService} from "../services/user.service";
 import {ControlsState} from "../interfaces/controls-state";
 import {Socket} from "ngx-socket-io";
+import {Store} from "@ngrx/store";
+import {State} from "../interfaces/state";
+import {selectControlState} from "./answers.reducer";
 
 @Injectable()
 export class AnswersEffects {
@@ -53,10 +56,20 @@ export class AnswersEffects {
     })
   ), { dispatch: false });
 
+  refreshControlState$ = createEffect(() => this.actions$.pipe(
+    ofType(refreshControlState.type),
+    mergeMap(() => {
+      return this.store.select(selectControlState).pipe(
+        map(controlState => changeControlState({ controlState }))
+      );
+    }),
+  ));
+
   constructor(
     private actions$: Actions,
     private answersService: AnswersService,
     private userService: UserService,
     private socket: Socket,
+    private store: Store<State>,
   ) {}
 }

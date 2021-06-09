@@ -6,12 +6,11 @@ import {User} from "../models/user";
   providedIn: 'root',
 })
 export class UserService {
-  getUsers() {
-    return this.http.get<User[]>('http://localhost:8988/users');
-  }
-
   constructor(
     private http: HttpClient,
-  ) {
+  ) {}
+
+  getUsers() {
+    return this.http.get<User[]>('http://localhost:8988/users');
   }
 }
