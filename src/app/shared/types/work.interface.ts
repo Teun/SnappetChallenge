@@ -1,6 +1,6 @@
 export interface Work {
     submittedAnswerId: number
-    submitDateTime: Date,
+    submitDateTime: string,
     correct: number,
     progress: number,
     userId: number,

@@ -1,0 +1,18 @@
+<form *ngIf="drillForm" [formGroup]="drillForm" novalidate>
+    <select formControlName="subject" (change)="onChangeSubject()">
+        <option value="">Alle Onderwerpen</option>
+        <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
+    </select>
+    <select formControlName="domain" (change)="onChangeDomain()">
+        <option value="">Alle domeinen</option>
+        <option *ngFor="let domain of domains" [value]="domain">{{ domain }}</option>
+    </select>
+    <select formControlName="learningObjective" (change)="onChangeLearningObjective()">
+        <option value="">Alle Leerdoelen</option>
+        <option *ngFor="let learningObjective of learningObjectives" [value]="learningObjective">{{ learningObjective }}</option>
+    </select>
+    <select formControlName="exercise" (change)="onChangeExercise()">
+        <option value="">Alle oefeningen</option>
+        <option *ngFor="let exercise of exercises" [value]="exercise">{{ exercise }}</option>
+    </select>    
+</form>
