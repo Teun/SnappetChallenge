@@ -5,7 +5,7 @@ export interface Work {
     progress: number,
     userId: number,
     exerciseId: number,
-    difficulty: number,
+    difficulty: string,
     subject: string,
     domain: string,
     learningObjective: string

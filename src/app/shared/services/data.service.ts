@@ -116,11 +116,16 @@ export class DataService {
 
   private averageDifficulty(works: Work[]) {
     const currentWorks = works.filter(work => work.submitDateTime <= this.currentDateTime);
+    let numWork = currentWorks.length;
     let totDifficulty: number = 0;
     currentWorks.forEach(work => {
-      totDifficulty += Number(work.difficulty);
+      if (work.difficulty !== 'NULL') {
+        totDifficulty += Number(work.difficulty);
+      } else {
+        numWork--;
+      }
     });
-    const value = (totDifficulty / currentWorks.length).toFixed(1);
+    const value = (totDifficulty / numWork).toFixed(1);
     return { name: 'Gemiddelde moeilijkheid: ', value };
   }
 
