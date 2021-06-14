@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { WorkComponent } from './work.component';
+import { DrillComponent } from '../drill/drill.component';
+import { ResultComponent } from '../result/result.component';
 
 describe('WorkComponent', () => {
   let component: WorkComponent;
@@ -8,9 +12,19 @@ describe('WorkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorkComponent ]
+      imports: [
+        HttpClientTestingModule,
+      ],
+      declarations: [
+        WorkComponent,
+        DrillComponent,
+        ResultComponent
+      ],
+      providers: [
+        FormBuilder
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
