@@ -6,13 +6,10 @@ import { DataService } from 'src/app/shared/services/data.service';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit {
+export class ResultComponent {
 
   constructor(
     public dataService: DataService,
   ) { }
-
-  ngOnInit(): void {
-  }
 
 }
