@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-shell {
+  margin: 0.3rem;
+}
+
+.select {
+  font-size: 1.2rem;;
+  font-weight: 900;
+  color: #444;
+  padding: .6rem 1.4rem .5rem .8rem;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #aaa;
+  border-radius: .5rem;
+  appearance: none;
+  background-color: #fff;
+}
+
+.select:hover {
+  border-color: black;
+  color: black;
+}
+
+.select:focus {
+  box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+  outline: none;
+}
+
+.select option {
+  font-weight: normal;
+}
+
+@media screen and (min-width: 1255px) {
+  .container {
+    flex-direction: row;
+  }
+}

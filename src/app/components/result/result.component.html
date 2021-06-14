@@ -1,6 +1,6 @@
-<div>
-    <div *ngFor="let result of dataService.workResults">
-        <div>{{ result.name }}</div>
-        <div>{{ result.value }}</div>
-    </div>
+<div class="container">
+  <div class="note" *ngFor="let result of dataService.workResults">
+    <div class="note-element">{{ result.name }}</div>
+    <div class="note-element">{{ result.value }}</div>
+  </div>
 </div>

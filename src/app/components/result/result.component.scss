@@ -1,1 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
 
+.note {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  background-color: #f0f7fb;
+  border: solid 1px #3498db;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.note-element {
+  margin: 0.2rem;
+}
+
+@media screen and (min-width: 560px) {
+  .container {
+    flex-direction: row;
+  }
+  .note {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (min-width: 1255px) {
+  .container {
+    flex-direction: column;
+    max-width: 30rem;
+  }
+  .note {
+    flex-direction: row;
+    align-items: flex-start;
+
+  }
+}

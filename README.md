@@ -7,8 +7,11 @@ npm install -g json-server
 npm run json-server  
 ng serve -o
 
+-> change the size of your window to see some responsive action
+
 ## TODO
-- add unit tests
+- add unit tests (check if results are really correct)
+- better user experience when changing dropdown in drill: delete result direct, spinner and new results
 - fix issue in data object `Optellen en aftrekken tot �1000`
 - current datetime is now compared with strings, should be date format
 - sort subjects, domains, learningObjectives, exercises
