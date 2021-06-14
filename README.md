@@ -5,17 +5,20 @@ npm install -g @angular/cli
 npm install -g json-server  
 
 npm run json-server  
-ng serve  
+ng serve -o
 
-http://localhost:4200/create-backend
-
-Creating the backend takes some time (see json-server logging).
-
-http://localhost:4200  
-
-
-TODO
+## TODO
 - add unit tests
 - fix issue in data object `Optellen en aftrekken tot �1000`
 - current datetime is now compared with strings, should be date format
 - sort subjects, domains, learningObjectives, exercises
+- find out reason null value in difficulty
+
+## Note
+
+If you want to see how the backend is created from the original data set. Stop json sever, rename `work (org).json` into `work.json` and do:
+
+npm run json-server
+http://localhost:4200/create-backend
+
+Creating the backend takes about 10-15 minutes, see json-server logging for progress.

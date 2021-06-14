@@ -37,6 +37,7 @@ export class DrillComponent implements OnInit {
       this.selectedDomain.setValue('');
       this.selectedLearningObjective.setValue('');
       this.selectedExercise.setValue('');
+      this.dataService.getWork('', '', '', '').subscribe(() => { })
     })
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { forkJoin, Observable } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { Work } from '../types/work.interface';
 import { WorkResult } from '../types/work-result.interface';
 
@@ -12,12 +12,11 @@ export class DataService {
 
   currentDateTime: string = '2015-03-24T11:30:00.000';
   workResults: Array<WorkResult> = [];
+  private httpRequests: Observable<any>[] = [];
 
   constructor(
     private http: HttpClient
-  ) { 
-    this.getWork('', '', '', '').subscribe(() => {});
-  }
+  ) { }
 
   initGet() {
     return forkJoin([
@@ -72,7 +71,7 @@ export class DataService {
     const subjectUrl = subject ? `?subject=${subject}` : ``;
     const domainUrl = domain ? `?domain=${domain}` : ``;
     const learningObjectiveUrl = learningObjective ? `?learningObjective=${learningObjective}` : ``;
-    const exerciseUrl = exercise ? `?exercise=${exercise}` : ``;
+    const exerciseUrl = exercise ? `?exerciseId=${exercise}` : ``;
     const urlExtent = subjectUrl + domainUrl + learningObjectiveUrl + exerciseUrl;
     return this.http.get<Work[]>('http://localhost:3000/work' + urlExtent).pipe(tap((works: Work[]) => {
       this.workResults = [];
@@ -130,16 +129,22 @@ export class DataService {
   }
 
   createDataBackend() {
-    return this.http.get<Work[]>('http://localhost:3000/work').pipe(tap(work => {
-      this.createDataSubjects(work);
-      this.createDataDomains(work);
-      this.createDataLearningObjectives(work);
-      this.createDataExercises(work);
+    this.httpRequests = [];
+    return this.http.get<Work[]>('http://localhost:3000/work').pipe(mergeMap(work => {
+        return this.createDataSubjects(work).pipe(mergeMap(() => {
+          return this.createDataDomains(work).pipe(mergeMap(() => {
+            return this.createDataLearningObjectives(work).pipe(mergeMap(() => {
+              return this.createDataExercises(work).pipe(map(() => {
+                return this.httpRequests;
+              }))
+            }))
+          }))
+        }))
     }));
   }
 
   private createDataSubjects(work: Work[]) {
-    this.http.get<any>('http://localhost:3000/subjects').subscribe((results: any) => {
+    return this.http.get<any>('http://localhost:3000/subjects').pipe(tap((results: any) => {
       if (results.length === 0) {
         const subjects = [...new Set(work.map(workResult => workResult.subject))];
         subjects.forEach((subject, index) => {
@@ -155,14 +160,14 @@ export class DataService {
             .filter(workResult => workResult.subject === subject)
             .map(workResult => workResult.exerciseId)
           )];
-          this.http.post<any>('http://localhost:3000/subjects', { id: index + 1, name: subject, domains, learningObjectives, exercises }).subscribe(() => { })
+          this.httpRequests.push(this.http.post<any>('http://localhost:3000/subjects', { id: index + 1, name: subject, domains, learningObjectives, exercises }));
         })
       }
-    })
+    }))
   }
 
   private createDataDomains(work: Work[]) {
-    this.http.get<any>('http://localhost:3000/domains').subscribe((results: any) => {
+    return this.http.get<any>('http://localhost:3000/domains').pipe(tap((results: any) => {
       if (results.length === 0) {
         const domains = [...new Set(work.map(workResult => workResult.domain))];
         domains.forEach((domain, index) => {
@@ -178,14 +183,14 @@ export class DataService {
             .filter(workResult => workResult.domain === domain)
             .map(workResult => workResult.exerciseId)
           )];
-          this.http.post<any>('http://localhost:3000/domains', { id: index + 1, name: domain, subjects, learningObjectives, exercises }).subscribe(() => { })
+          this.httpRequests.push(this.http.post<any>('http://localhost:3000/domains', { id: index + 1, name: domain, subjects, learningObjectives, exercises }));
         })
       }
-    })
+    }))
   }
 
   private createDataLearningObjectives(work: Work[]) {
-    this.http.get<any>('http://localhost:3000/learningObjectives').subscribe((results: any) => {
+    return this.http.get<any>('http://localhost:3000/learningObjectives').pipe(tap((results: any) => {
       if (results.length === 0) {
         const learningObjectives = [...new Set(work.map(workResult => workResult.learningObjective))];
         learningObjectives.forEach((learningObjective, index) => {
@@ -201,14 +206,14 @@ export class DataService {
             .filter(workResult => workResult.learningObjective === learningObjective)
             .map(workResult => workResult.exerciseId)
           )];
-          this.http.post<any>('http://localhost:3000/learningObjectives', { id: index + 1, name: learningObjective, subjects, domains, exercises }).subscribe(() => { })
+          this.httpRequests.push(this.http.post<any>('http://localhost:3000/learningObjectives', { id: index + 1, name: learningObjective, subjects, domains, exercises }));
         })
       }
-    })
+    }))
   }
 
   private createDataExercises(work: Work[]) {
-    this.http.get<any>('http://localhost:3000/exercises').subscribe((results: any) => {
+    return this.http.get<any>('http://localhost:3000/exercises').pipe(tap((results: any) => {
       if (results.length === 0) {
         const exercises = [...new Set(work.map(workResult => workResult.exerciseId))];
         exercises.forEach((exercise, index) => {
@@ -224,9 +229,9 @@ export class DataService {
             .filter(workResult => workResult.exerciseId === exercise)
             .map(workResult => workResult.learningObjective)
           )];
-          this.http.post<any>('http://localhost:3000/exercises', { id: index + 1, name: exercise, subjects, domains, learningObjectives }).subscribe(() => { })
+          this.httpRequests.push(this.http.post<any>('http://localhost:3000/exercises', { id: index + 1, name: exercise, subjects, domains, learningObjectives }));
         })
       }
-    })
+    }))
   }
 }
