@@ -3,4 +3,8 @@
     <div class="note-element">{{ result.name }}</div>
     <div class="note-element">{{ result.value }}</div>
   </div>
+  <div class="note" *ngIf="dataService.workResults.length === 0">
+    <div class="note-element">Loading data</div>
+    <div class="note-element">....... </div>
+  </div>
 </div>

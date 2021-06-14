@@ -35,6 +35,10 @@ export class DataService {
     ])
   }
 
+  initWorkResults() {
+    this.workResults = [];
+  }
+
   getSubject(subject: string) {
     if (subject === '') {
       return this.http.get<any>(`http://localhost:3000/subjects`);

@@ -42,6 +42,7 @@ export class DrillComponent implements OnInit {
   }
 
   onChangeSubject() {
+    this.dataService.initWorkResults();
     if (this.selectedSubject.value) {
       this.dataService.getSubject(this.selectedSubject.value).subscribe(results => {
         this.domains = results[0].domains;
@@ -58,6 +59,7 @@ export class DrillComponent implements OnInit {
   }
 
   onChangeDomain() {
+    this.dataService.initWorkResults();
     if (this.selectedDomain.value) {
       this.dataService.getDomain(this.selectedDomain.value).subscribe(results => {
         this.learningObjectives = results[0].learningObjectives;
@@ -73,6 +75,7 @@ export class DrillComponent implements OnInit {
   }
 
   onChangeLearningObjective() {
+    this.dataService.initWorkResults();
     if (this.selectedLearningObjective.value) {
       this.dataService.getLearningObjective(this.selectedLearningObjective.value).subscribe(results => {
         this.exercises = results[0].exercises;
@@ -87,6 +90,7 @@ export class DrillComponent implements OnInit {
   }
 
   onChangeExercise() {
+    this.dataService.initWorkResults();
     if (this.selectedExercise.value) {
       this.dataService.getExercise(this.selectedExercise.value).subscribe(results => {
         this.selectedSubject.setValue(results[0].subjects[0]);
