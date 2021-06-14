@@ -1,4 +1,4 @@
-{
+export var mock = {
   "subjects": [
     {
       "id": 1,
