@@ -6,13 +6,13 @@ There is a date picker to select a different date. The default date is set to 24
 
 There are 4 types of reports.
 
-###1. Students & Their Learning Objectives
+### 1. Students & Their Learning Objectives
    This report shows which learning objectives the students achieved on a particular date. It represents the student count and the percentages for the available learning objectives.
-###2. Students & Their Subjects
+### 2. Students & Their Subjects
    This report shows which subjects the students learned, on a particular date. It represents the student count and the percentages for the available subjects.
-###3. Number of Students Per Domain
+### 3. Number of Students Per Domain
    This report shows which domains the students worked on, on a particular date. It represents the student count and the percentages for the available domains.
-###4. Top Performing Students
+### 4. Top Performing Students
    This report shows which students are the top 5 performers based on the subject on a particular date. There is a dropdown for the subjects. Select a subject to see the top (up to 5) performing students.
 
 ## Launching the app on local machine
