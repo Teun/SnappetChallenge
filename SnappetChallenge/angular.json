@@ -105,37 +105,6 @@
           }
         }
       }
-    },
-    "student-reporting": {
-      "projectType": "library",
-      "root": "projects/student-reporting",
-      "sourceRoot": "projects/student-reporting/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/student-reporting/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/student-reporting/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/student-reporting/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/student-reporting/src/test.ts",
-            "tsConfig": "projects/student-reporting/tsconfig.spec.json",
-            "karmaConfig": "projects/student-reporting/karma.conf.js"
-          }
-        }
-      }
     }
   },
   "defaultProject": "SnappetChallenge"
