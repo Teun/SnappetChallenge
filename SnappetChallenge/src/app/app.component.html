@@ -1,1 +1,70 @@
-<router-outlet></router-outlet>
+<div class="page">
+    <h1> Student Reports: </h1>
+
+    <article>
+
+        <div class="divider">
+            <div>
+                <mat-card>
+                    <mat-card-title>Students Not Rated:</mat-card-title>
+                    <mat-card-content>
+                        <mat-list role="list">
+                            <ng-container *ngFor="let students of unratedStudents">
+                                <mat-list-item role="listitem">
+                                    Student ID: {{ students.UserId }}
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div>
+                <mat-card>
+                    <mat-card-title>Struggling Students:</mat-card-title>
+                    <mat-card-content>
+                        <mat-list role="list">
+                            <ng-container *ngFor="let students of strugglingStudents">
+                                <mat-list-item role="listitem">
+                                    <div class="separate">
+                                        <span>
+                                            Student ID: {{ students.UserId }}
+                                        </span>
+                                        <span>
+                                            Student Difficulty: {{ students.Difficulty }}
+                                        </span>
+                                    </div>
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <mat-card>
+            <mat-card-title>Student List:</mat-card-title>
+            <mat-card-content>
+                <mat-list role="list">
+                    <ng-container *ngFor="let students of studentResults">
+                        <div class="separate">
+                            <span>
+                                Student ID: {{ students.UserId }}
+                            </span>
+                            <span>
+                                Student Learning Objective: {{ students.LearningObjective }}
+                            </span>
+                            <span>
+                                Student Progress: {{ students.Progress }}
+                            </span>
+                            <span>
+                                Student Difficulty: {{ students.Difficulty }}
+                            </span>
+                        </div>
+                    </ng-container>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+    </article>
+</div>
