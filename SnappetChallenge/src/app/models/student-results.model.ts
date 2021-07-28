@@ -10,3 +10,13 @@ export interface StudentResults {
     Domain: string;
     LearningObjective: string;
 }
+
+export interface StudentAverage {
+    UserId: number;
+    Average: number;
+}
+
+export interface SubjectAverage {
+    Subject: string;
+    Average: number;
+}
