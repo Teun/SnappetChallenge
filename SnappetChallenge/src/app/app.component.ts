@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   title = 'SnappetChallenge';
 
   // Student Averages
-  public studentResults: StudentAverage[] = [];
+  public studentAverages: StudentAverage[] = [];
   // Subject Averages
   public subjectsAverages: SubjectAverage[] = [];
   // Date list
@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
   }
 
   private getData(): void {
-    this.dataStoreService.studentResultsObservable.subscribe((response: StudentAverage) => {
-      this.studentResults.push(response);
+    this.dataStoreService.studentAveragesObservable.subscribe((response: StudentAverage) => {
+      this.studentAverages.push(response);
     });
 
     this.dataStoreService.subjectsObservable.subscribe((response: SubjectAverage) => {

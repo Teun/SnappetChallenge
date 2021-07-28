@@ -11,8 +11,8 @@ import { StudentResults, StudentAverage, SubjectAverage } from '../models/studen
 })
 export class DataStoreService {
 
-  private studentResultsSubject = new ReplaySubject<StudentAverage>(1);
-  public studentResultsObservable = this.studentResultsSubject.asObservable();
+  private studentAveragesSubject = new ReplaySubject<StudentAverage>(1);
+  public studentAveragesObservable = this.studentAveragesSubject.asObservable();
 
   private subjectsSubject = new ReplaySubject<SubjectAverage>(1);
   public subjectsObservable = this.subjectsSubject.asObservable();
@@ -69,7 +69,7 @@ export class DataStoreService {
       return;
     }
 
-    this.studentResultsSubject.next({ "UserId": userId, "Average": Math.round(correctAnswers / totalQuestions * 100) });
+    this.studentAveragesSubject.next({ "UserId": userId, "Average": Math.round(correctAnswers / totalQuestions * 100) });
   }
 
   private orderBySubject(studentResults: Array<StudentResults>): void {
