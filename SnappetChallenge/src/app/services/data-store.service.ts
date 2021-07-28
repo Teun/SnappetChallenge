@@ -46,7 +46,7 @@ export class DataStoreService {
       mergeMap((group) => group.pipe(toArray())) // Using 'mergeMap' to consume 'GroupedObservables' (output by 'groupBy' operator) and outputting new observable dataset in an array.
     ).subscribe((studentDataSetEntry) => {
       this.calculateUserAverage(studentDataSetEntry); // Passes array of grouped each students data entries.
-    })
+    });
   }
 
   private calculateUserAverage(studentDataSetEntry: Array<StudentResults>): void {
@@ -78,7 +78,7 @@ export class DataStoreService {
       mergeMap((group) => group.pipe(toArray()))
     ).subscribe((studentDataSetEntry) => {
       this.calculateSubjectDifficulty(studentDataSetEntry);
-    })
+    });
   }
 
   private calculateSubjectDifficulty(studentDataSetEntry: Array<StudentResults>): void {
@@ -126,7 +126,7 @@ export class DataStoreService {
       mergeMap((group) => group.pipe(toArray()))
     ).subscribe((studentDataSetEntry) => {
       this.setDayBreakdown(studentDataSetEntry, date);
-    })
+    });
   }
 
   private setDayBreakdown(studentDataSetEntry: Array<StudentResults>, date: string): void {
@@ -163,19 +163,19 @@ export class DataStoreService {
     if (begrijpendLezen > 0) {
       dayBreakdown.push({
         "Subject": "Begrijpend Lezen", "Average": Math.round(begrijpendLezen / subjectCount * 100),
-      })
+      });
     }
 
     if (rekenen > 0) {
       dayBreakdown.push({
         "Subject": "Rekenen", "Average": Math.round(rekenen / subjectCount * 100),
-      })
+      });
     }
 
     if (spelling > 0) {
       dayBreakdown.push({
         "Subject": "Spelling", "Average": Math.round(spelling / subjectCount * 100),
-      })
+      });
     }
 
     if (begrijpendLezen === 0 && rekenen === 0 && spelling === 0) {
