@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   public dayBreakdown: Array<SubjectAverage> = []
 
   constructor(
-    private dataStoreService: DataStoreService
+    private dataStoreService: DataStoreService // Bootstrap singleton.
   ) {
 
   }
