@@ -7,31 +7,33 @@ div.page {
         width: 80%;
         margin: 0 auto;
 
-        div.divider{
+        mat-card {
+            margin-bottom: 2rem;
+        }
+
+        mat-card:last-child {
+            margin-bottom: 0;
+        }
+
+        mat-list-item {
+            border-bottom: 1px dotted lightgrey;
+        }
+
+        mat-list-item:last-child {
+            border-bottom: none;
+        }
+
+        mat-list-item:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .separate {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 2rem;
+            width: 100%;
 
-            div {
-                width: 48%;
-
-                mat-list-item {
-                    border-bottom: 1px dotted lightgrey;
-                }
-
-                mat-list-item:last-child {
-                    border-bottom: none;
-                }
-
-                .separate {
-                    display: flex;
-                    justify-content: space-between;
-                    width: 100%;
-
-                    span {
-                        width: 30%;
-                    }
-                }
+            span {
+                width: 100%;
             }
         }
     }

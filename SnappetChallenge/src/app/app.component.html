@@ -2,65 +2,81 @@
     <h1> Student Reports: </h1>
 
     <article>
-
-        <div class="divider">
-            <div>
-                <mat-card>
-                    <mat-card-title>Students Not Rated:</mat-card-title>
-                    <mat-card-content>
-                        <mat-list role="list">
-                            <ng-container *ngFor="let students of unratedStudents">
-                                <mat-list-item role="listitem">
-                                    Student ID: {{ students.UserId }}
-                                </mat-list-item>
-                            </ng-container>
-                        </mat-list>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-
-            <div>
-                <mat-card>
-                    <mat-card-title>Struggling Students:</mat-card-title>
-                    <mat-card-content>
-                        <mat-list role="list">
-                            <ng-container *ngFor="let students of strugglingStudents">
-                                <mat-list-item role="listitem">
-                                    <div class="separate">
-                                        <span>
-                                            Student ID: {{ students.UserId }}
-                                        </span>
-                                        <span>
-                                            Student Difficulty: {{ students.Difficulty }}
-                                        </span>
-                                    </div>
-                                </mat-list-item>
-                            </ng-container>
-                        </mat-list>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>
+        <mat-card>
+            <mat-card-title>Subjects:</mat-card-title>
+            <mat-card-content>
+                <mat-list role="list">
+                    <ng-container *ngFor="let subject of subjectsAverages">
+                        <mat-list-item role="listitem">
+                            <div class="separate">
+                                <span>
+                                    {{ subject.Subject }}
+                                </span>
+                                <span>
+                                    Average Subject Difficulty:
+                                </span>
+                                <span>
+                                    {{ subject.Average }}
+                                </span>
+                            </div>
+                        </mat-list-item>
+                    </ng-container>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
 
         <mat-card>
-            <mat-card-title>Student List:</mat-card-title>
+            <mat-card-title>Day Breakdown:</mat-card-title>
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select Date</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let date of dates" [value]="date" (click)="getDayBreakdown(date)">
+                        {{ date }}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <ng-container *ngIf="dayBreakdown">
+                    <mat-list role="list">
+                        <ng-container *ngFor="let dayBreakdown of dayBreakdown">
+                            <mat-list-item role="listitem">
+                                <div class="separate">
+                                    <span>
+                                        {{ dayBreakdown.Subject }}
+                                    </span>
+                                    <span>
+                                        {{ dayBreakdown.Average }}
+                                    </span>
+                                </div>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+                </ng-container>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-title>Student Averages:</mat-card-title>
             <mat-card-content>
                 <mat-list role="list">
                     <ng-container *ngFor="let students of studentResults">
-                        <div class="separate">
-                            <span>
-                                Student ID: {{ students.UserId }}
-                            </span>
-                            <span>
-                                Student Learning Objective: {{ students.LearningObjective }}
-                            </span>
-                            <span>
-                                Student Progress: {{ students.Progress }}
-                            </span>
-                            <span>
-                                Student Difficulty: {{ students.Difficulty }}
-                            </span>
-                        </div>
+                        <mat-list-item role="listitem">
+                            <div class="separate">
+                                <span>
+                                    Student ID:
+                                </span>
+                                <span>
+                                    {{ students.UserId }}
+                                </span>
+                                <span>
+                                    Student Average:
+                                </span>
+                                <span>
+                                    {{ students.Average }}
+                                </span>
+                            </div>
+                        </mat-list-item>
                     </ng-container>
                 </mat-list>
             </mat-card-content>
