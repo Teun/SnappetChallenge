@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentResults } from './models/student-results.model';
-import { first } from 'rxjs';
+import { StudentAverage, SubjectAverage } from './models/student-results.model';
+
+import { first } from 'rxjs/operators';
 
 import { DataStoreService } from './services/data-store.service';
 
@@ -12,14 +13,14 @@ import { DataStoreService } from './services/data-store.service';
 export class AppComponent implements OnInit {
   title = 'SnappetChallenge';
 
-  // Progress = 0
-  public unratedStudents: StudentResults[] = [];
-
-  // Progress negative
-  public strugglingStudents: StudentResults[] = [];
-
-  // Progress positive
-  public studentResults: StudentResults[] = [];
+  // Student Averages
+  public studentResults: StudentAverage[] = [];
+  // Subject Averages
+  public subjectsAverages: SubjectAverage[] = [];
+  // Date list
+  public dates: Array<string> = [];
+  // Subject breadown per day
+  public dayBreakdown: Array<SubjectAverage> = []
 
   constructor(
     private dataStoreService: DataStoreService
@@ -28,20 +29,31 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.getStudentData();
+    this.getData();
+    this.getDates();
   }
 
-  private getStudentData(): void {
-    this.dataStoreService.unratedStudentsObservable.pipe(first()).subscribe((response: any) => {
-      this.unratedStudents = response;
+  private getData(): void {
+    this.dataStoreService.studentResultsObservable.subscribe((response: StudentAverage) => {
+      this.studentResults.push(response);
     });
 
-    this.dataStoreService.strugglingStudentsObservable.pipe(first()).subscribe((response: any) => {
-      this.strugglingStudents = response;
+    this.dataStoreService.subjectsObservable.subscribe((response: SubjectAverage) => {
+      this.subjectsAverages.push(response);
     });
+  }
 
-    this.dataStoreService.studentResultsObservable.pipe(first()).subscribe((response: any) => {
-      this.studentResults = response;
+  private getDates(): void {
+    this.dataStoreService.datesObserver.subscribe((response: Array<string>) => {
+      this.dates = response;
+    });
+  }
+
+  public getDayBreakdown(date: string) {
+    this.dataStoreService.getDayBreakdown(date);
+
+    this.dataStoreService.dayBreakdownObservable.pipe(first()).subscribe((response: any) => { // "first()" to prevent memory leak when selecting from the dates dropdown multiple times.
+      this.dayBreakdown = response;
     });
   }
 }
