@@ -1,0 +1,26 @@
+<div class="page home-page">
+  <app-overlay-loading [show]="loading"></app-overlay-loading>
+
+  <!-- <app-list-excercises *ngIf="(excercises | async) as data"
+                       [excercises]="data">
+  </app-list-excercises> -->
+
+  <div class="home-page_content">
+    <div class="home-page_content_chart"
+         *ngIf="chartValues">
+      <ngx-charts-pie-grid [view]="[0, 150]"
+                           [animations]="false"
+                           [results]="chartValues">
+      </ngx-charts-pie-grid>
+      <div>
+        *antwoorden per onderwerp
+      </div>
+    </div>
+
+    <div class="home-page_content_list">
+      <app-list-subject-groups *ngIf="subjectGroups | async as groups"
+                               [groups]="groups">
+      </app-list-subject-groups>
+    </div>
+  </div>
+</div>

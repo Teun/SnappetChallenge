@@ -1,0 +1,31 @@
+<div class="app-root">
+  <div class="app-root-header">
+    <mat-toolbar color="primary">
+      <span style="flex: 1 1 auto">Leraren dashboard</span>
+
+      <button mat-icon-button
+              (click)="previous()">
+        <mat-icon>arrow_left</mat-icon>
+      </button>
+
+
+      <span>{{date | async}}</span>
+
+      <button mat-icon-button
+              *ngIf="!isToday()"
+              (click)="next()">
+        <mat-icon>arrow_right</mat-icon>
+      </button>
+
+      <button mat-icon-button
+              *ngIf="!isToday()"
+              (click)="today()">
+        <mat-icon>calendar_today</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+
+  <div class="app-root-body">
+    <router-outlet></router-outlet>
+  </div>
+</div>

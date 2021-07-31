@@ -1,0 +1,24 @@
+.home-page {
+  .home-page {
+    &_content {
+      display: flex;
+      flex-direction: row-reverse;
+
+      &_chart {
+        flex: 0 0 auto;
+      }
+
+      &_list {
+        flex: 1 1 auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home-page {
+    .home-page_content {
+      flex-direction: column;
+    }
+  }
+}

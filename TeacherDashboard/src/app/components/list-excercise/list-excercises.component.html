@@ -1,0 +1,37 @@
+<table class="list-excercises"
+       *ngIf="excercises"
+       mat-table
+       [dataSource]="excercises">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell
+        *matHeaderCellDef>Vraag nummer</th>
+    <td mat-cell
+        *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="submissions">
+    <th mat-header-cell
+        *matHeaderCellDef>Antwoorden</th>
+    <td mat-cell
+        *matCellDef="let element"> {{element.submissions}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="difficulty">
+    <th mat-header-cell
+        *matHeaderCellDef>Moeilijkheid</th>
+    <td mat-cell
+        *matCellDef="let element"> {{parseDifficulty(element.difficulty)}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="progress">
+    <th mat-header-cell
+        *matHeaderCellDef>Voortgang</th>
+    <td mat-cell
+        *matCellDef="let element"> {{average(element.progress)}} </td>
+  </ng-container>
+
+  <tr mat-header-row
+      *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row
+      *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

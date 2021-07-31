@@ -1,0 +1,43 @@
+<div class="list-subject-groups"
+     *ngIf="groups">
+  <mat-tab-group (selectedTabChange)="expandedPanel = -1">
+    <mat-tab [label]="item.subject"
+             *ngFor="let item of groups">
+      <div class="list-subject-groups_container">
+        <div class="list-subject-groups_container_chart">
+          <ngx-charts-pie-chart [view]="[0, 200]"
+                                [animations]="false"
+                                [results]="getChartValues(item)"
+                                [labels]="true"
+                                [trimLabels]="false"
+                                (select)="onSelect($event, item)">
+          </ngx-charts-pie-chart>
+          <div>
+            *antwoorden per doelstelling
+          </div>
+        </div>
+
+        <div class="list-subject-groups_container_accordion">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle
+                                 *ngFor="let objective of item.objectives; let i = index"
+                                 [expanded]="expandedPanel === i"
+                                 (opened)="expandedPanel = i">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{objective.objective}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Antwoorden: {{objective.answers}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-template matExpansionPanelContent>
+                <app-list-excercises [excercises]="objective.excercises"></app-list-excercises>
+              </ng-template>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
