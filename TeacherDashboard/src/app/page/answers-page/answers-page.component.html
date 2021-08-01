@@ -7,11 +7,11 @@
       <app-graph-subject-groups [groups]="data"></app-graph-subject-groups>
 
       <div *ngIf="top | async as student">
-        Leerling ({{student.id}}) doet het vandaag goede
+        Leerling ({{student.id}}) maakt vandaag goede voortgang ({{student.progress}})
       </div>
 
       <div *ngIf="struggling | async as student">
-        Leerling ({{student.id}}) heeft vandaag misschien wat hulp nodig
+        Leerling ({{student.id}}) heeft vandaag misschien wat hulp nodig ({{student.progress}})
       </div>
     </div>
 

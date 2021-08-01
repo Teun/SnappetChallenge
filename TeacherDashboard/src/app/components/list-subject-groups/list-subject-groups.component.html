@@ -12,8 +12,7 @@
 
         <div class="list-subject-groups_container_list">
           <mat-accordion>
-            <mat-expansion-panel hideToggle
-                                 *ngFor="let objective of item.objectives; let i = index"
+            <mat-expansion-panel *ngFor="let objective of item.objectives; let i = index"
                                  [expanded]="expandedPanel === i"
                                  (opened)="this.expandPanel(i)">
               <mat-expansion-panel-header>

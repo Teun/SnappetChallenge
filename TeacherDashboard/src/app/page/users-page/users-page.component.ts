@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { delay, map, tap } from 'rxjs/operators';
 import { PieChartValue } from '../../interfaces/pie-chart-value';
 import { Student } from '../../objects/student';
 import { DataService } from '../../services/data.service';
@@ -24,7 +24,10 @@ export class UsersPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.students = this.dataService.getAnswersForDate()
-      .pipe(map(dataHolder => dataHolder.students));
+      .pipe(
+        map(dataHolder => dataHolder.students),
+        tap(students => this.student = students[0])
+      );
 
     const subscription = this.students
       .pipe(delay(1))

@@ -2,26 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
 
-## Development server
+## Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To start the app in run the `npm start` or `ng serve` command in the terminal. Navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+## What does the site contain
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The site is a single page application with 2 page within it. The pages are `answers` and `students`. Switching between pages can be done by clicking on the down error next to the title in the toolbar 
 
-## Build
+![](readme-res/navigate-arrow.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+In the top right the current date is visible. By pressing the arrows the date can be changed. Pressing the calander icon will change the date back to today. The date can not go into the future so not all icons will always be visible.
 
-## Running unit tests
+![](readme-res/date-buttons.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Students page
+The students page will show a radio group where each radio button represents a single student. Below the radio buttons a overview of the students activities are show.
 
-## Running end-to-end tests
+### Answers page
+The answers page will show an overview of all the answers given by the students. The overview is the same as for a single student but is now not grouped by student. The overview also shows which student is having the most trouble with the answer progress and might need some help.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Overal
+The pages both show tabs and a graph according to the different subjects and the percentage of answers given per subject. Each subject also has a graph showing the percentage answers given per objective. Selecting a pie slice will open the exercise list and show the amount of answers given and the average progress. Directly toggling a objective will also show or hide the given answers.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

@@ -10,46 +10,8 @@
     </mat-radio-button>
   </mat-radio-group>
 
+  <mat-divider></mat-divider>
+
   <app-summary-student *ngIf="student"
                        [student]="student"></app-summary-student>
-
-  <!-- <form class="example-form">
-    <mat-form-field class="example-full-width"
-                    appearance="fill">
-      <mat-label>Leerling id</mat-label>
-      <input type="text"
-             placeholder="Pick one"
-             aria-label="Number"
-             matInput
-             [formControl]="studentInput"
-             [matAutocomplete]="auto">
-      <mat-autocomplete autoActiveFirstOption
-                        (optionSelected)="studentSelected($event)"
-                        #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async"
-                    [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form> -->
-
-  <!-- <div class="answer-page_content">
-    <div class="answer-page_content_chart"
-         *ngIf="chartValues | async as values">
-      <ngx-charts-pie-grid [view]="[0, 150]"
-                           [animations]="false"
-                           [results]="values">
-      </ngx-charts-pie-grid>
-      <div>
-        *antwoorden per onderwerp
-      </div>
-    </div>
-
-    <div class="answer-page_content_list"> -->
-  <!-- <app-list-students *ngIf="students | async as data"
-                     [students]="data">
-  </app-list-students> -->
-  <!-- </div>
-  </div> -->
 </div>

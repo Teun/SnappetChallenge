@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   public today() {
-    this.dataService.setDateToday
+    this.dataService.setDateToday();
   }
 
   public isToday(): Boolean {
