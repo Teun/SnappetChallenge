@@ -20,7 +20,7 @@ In the top right the current date is visible. By pressing the arrows the date ca
 The students page will show a radio group where each radio button represents a single student. Below the radio buttons a overview of the students activities are show.
 
 ### Answers page
-The answers page will show an overview of all the answers given by the students. The overview is the same as for a single student but is now not grouped by student. The overview also shows which student is having the most trouble with the answer progress and might need some help.
+The answers page will show an overview of all the answers given by the students. The overview is the same as for a single student but is now for all the students. The overview also shows which student is having the most trouble with current average progress and might need some help.
 
 ### Overal
 The pages both show tabs and a graph according to the different subjects and the percentage of answers given per subject. Each subject also has a graph showing the percentage answers given per objective. Selecting a pie slice will open the exercise list and show the amount of answers given and the average progress. Directly toggling a objective will also show or hide the given answers.
