@@ -1,31 +1,41 @@
 <div class="app-root">
-  <div class="app-root-header">
+  <div class="app-root_header">
     <mat-toolbar color="primary">
-      <span style="flex: 1 1 auto">Leraren dashboard</span>
+      <span class="app-root_header_title">Leraren overzicht</span>
 
-      <button mat-icon-button
-              (click)="previous()">
-        <mat-icon>arrow_left</mat-icon>
-      </button>
+      <span class="mat-body-1">
+        <mat-select (selectionChange)="pageSelected($event)">
+          <mat-option value="students">Leerlingen</mat-option>
+          <mat-option value="answers">Antwoorden</mat-option>
+        </mat-select>
+      </span>
 
+      <span style="flex: 1 1 auto"></span>
 
-      <span>{{date | async}}</span>
+      <div class="mat-body-1">
+        <button mat-icon-button
+                (click)="previous()">
+          <mat-icon>arrow_left</mat-icon>
+        </button>
 
-      <button mat-icon-button
-              *ngIf="!isToday()"
-              (click)="next()">
-        <mat-icon>arrow_right</mat-icon>
-      </button>
+        <span>{{date | async}}</span>
 
-      <button mat-icon-button
-              *ngIf="!isToday()"
-              (click)="today()">
-        <mat-icon>calendar_today</mat-icon>
-      </button>
+        <button mat-icon-button
+                *ngIf="!isToday()"
+                (click)="next()">
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+
+        <button mat-icon-button
+                *ngIf="!isToday()"
+                (click)="today()">
+          <mat-icon>calendar_today</mat-icon>
+        </button>
+      </div>
     </mat-toolbar>
   </div>
 
-  <div class="app-root-body">
+  <div class="app-root_body">
     <router-outlet></router-outlet>
   </div>
 </div>

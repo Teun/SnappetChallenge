@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Excercise } from '../../interfaces/excercise';
+import { Excercise } from '../../objects/excercise';
 import { average } from '../../utils/average';
 
 @Component({
@@ -19,9 +19,5 @@ export class ListExcercisesComponent {
     }
 
     return average(values);
-  }
-
-  public parseDifficulty(value: string): string {
-    return Number.isNaN(Number.parseFloat(value)) ? "" : value;
   }
 }

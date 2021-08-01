@@ -1,0 +1,10 @@
+<div class="summary-student"
+     *ngIf="student">
+  <div class="summary-student_chart">
+    <app-graph-subject-groups [groups]="student.groups"></app-graph-subject-groups>
+  </div>
+
+  <div class="summary-student_list">
+    <app-list-subject-groups [groups]="student.groups"></app-list-subject-groups>
+  </div>
+</div>

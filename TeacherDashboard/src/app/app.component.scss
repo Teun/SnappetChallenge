@@ -9,11 +9,15 @@
   flex-direction: column;
 
   .app-root {
-    &-header {
+    &_header {
       flex: 0 0 auto;
+
+      &_title {
+        padding-right: 16px;
+      }
     }
 
-    &-body {
+    &_body {
       flex: 1 1 auto;
       position: relative;
       overflow-x: hidden;

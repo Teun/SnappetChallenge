@@ -1,4 +1,4 @@
-.list-subject-groups {
+.list-students {
   .mat-expansion-panel-header-description {
     justify-content: flex-end;
   }
@@ -11,7 +11,7 @@
       flex: 0 0 auto;
     }
 
-    &_list {
+    &_accordion {
       flex: 1 1 auto;
     }
   }

@@ -1,0 +1,13 @@
+<div class="graph-objectives"
+     *ngIf="objectives">
+  <ngx-charts-pie-chart [view]="[0, 200]"
+                        [animations]="false"
+                        [results]="chartValues"
+                        [labels]="true"
+                        [trimLabels]="false"
+                        (select)="onSelect.emit($event.name)">
+  </ngx-charts-pie-chart>
+  <div>
+    *antwoorden per doelstelling
+  </div>
+</div>

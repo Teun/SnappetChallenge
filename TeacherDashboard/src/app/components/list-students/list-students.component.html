@@ -1,0 +1,10 @@
+<div class="list-students"
+     *ngIf="students">
+  <mat-tab-group>
+    <mat-tab [label]="student.id + ''"
+             *ngFor="let student of students">
+      <app-summary-student *ngIf="student"
+                           [student]="student"></app-summary-student>
+    </mat-tab>
+  </mat-tab-group>
+</div>

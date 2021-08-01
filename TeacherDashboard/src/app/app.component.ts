@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from './services/data.service';
@@ -11,7 +13,10 @@ import { DataService } from './services/data.service';
 export class AppComponent implements OnInit {
   public date!: Observable<string>;
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private router: Router
+  ) { }
 
   public ngOnInit() {
     this.date = this.dataService.date
@@ -27,11 +32,15 @@ export class AppComponent implements OnInit {
   }
 
   public today() {
-    this.dataService.setDateToday();
+    this.dataService.setDateToday
   }
 
   public isToday(): Boolean {
     return this.dataService.isToday();
+  }
+
+  public pageSelected($event: MatSelectChange): void {
+    this.router.navigate([$event.value]);
   }
 
   private adjustDate(days: number) {

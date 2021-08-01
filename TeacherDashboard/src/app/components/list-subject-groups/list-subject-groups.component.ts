@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Excercise } from '../../interfaces/excercise';
 import { PieChartValue } from '../../interfaces/pie-chart-value';
-import { SubjectGroup } from '../../interfaces/subject-group';
-import { average } from '../../utils/average';
+import { SubjectGroup } from '../../objects/subject-group';
 
 @Component({
   selector: 'app-list-subject-groups',
@@ -14,21 +12,20 @@ export class ListSubjectGroupsComponent {
   public groups!: Array<SubjectGroup>;
   public expandedPanel = -1;
 
-
   public getChartValues(group: SubjectGroup): Array<PieChartValue> {
     return group.objectives
       .map(item => ({
         name: item.objective,
-        value: item.answers
+        value: item.answerCount
       }))
       .sort((a, b) => b.value - a.value);
   }
 
-  public progress(excercises: Array<Excercise>): number {
-    return average(excercises.map(item => average(item.progress)));
+  public onSelect(name: string, item: SubjectGroup) {
+    this.expandPanel(item.objectives.findIndex(objective => objective.objective === name));
   }
 
-  public onSelect(event: { name: string }, item: SubjectGroup) {
-    this.expandedPanel = item.objectives.findIndex(objective => objective.objective === event.name);
+  public expandPanel(index: number) {
+    this.expandedPanel = index;
   }
 }

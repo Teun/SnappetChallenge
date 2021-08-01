@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { HomePageComponent } from './home-page.component';
+import { AnswersPageComponent } from './answers-page.component';
 import { ComponentsModule } from '../../components/components.module';
+
+
 
 @NgModule({
   imports: [
@@ -11,10 +12,10 @@ import { ComponentsModule } from '../../components/components.module';
     ComponentsModule
   ],
   declarations: [
-    HomePageComponent
+    AnswersPageComponent
   ],
   exports: [
-    HomePageComponent
+    AnswersPageComponent
   ]
 })
-export class HomePageModule { }
+export class AnswersPageModule { }

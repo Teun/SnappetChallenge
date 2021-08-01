@@ -1,0 +1,16 @@
+.answer-page {
+  .answer-page {
+    &_content {
+      display: flex;
+      flex-direction: column;
+
+      &_chart {
+        flex: 0 0 auto;
+      }
+
+      &_list {
+        flex: 1 1 auto;
+      }
+    }
+  }
+}

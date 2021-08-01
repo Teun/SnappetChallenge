@@ -1,0 +1,12 @@
+.users-page {
+  .radio-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15px 0;
+
+    .radio-button {
+      flex: 0 0 20%;
+    }
+  }
+}

@@ -6,10 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageModule } from './page/home/home-page.module';
+import { ComponentsModule } from './components/components.module';
+import { AnswersPageModule } from './page/answers-page/answers-page.module';
+import { UsersPageModule } from './page/users-page/users-page.module';
 
 @NgModule({
   declarations: [
@@ -24,8 +27,11 @@ import { HomePageModule } from './page/home/home-page.module';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatSelectModule,
 
-    HomePageModule
+    ComponentsModule,
+    AnswersPageModule,
+    UsersPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

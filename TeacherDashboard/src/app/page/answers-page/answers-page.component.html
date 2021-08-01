@@ -1,0 +1,22 @@
+<div class="page answer-page">
+  <app-overlay-loading [show]="loading"></app-overlay-loading>
+
+  <div class="answer-page_content"
+       *ngIf="groups | async as data">
+    <div class="answer-page_content_chart">
+      <app-graph-subject-groups [groups]="data"></app-graph-subject-groups>
+
+      <div *ngIf="top | async as student">
+        Leerling ({{student.id}}) doet het vandaag goede
+      </div>
+
+      <div *ngIf="struggling | async as student">
+        Leerling ({{student.id}}) heeft vandaag misschien wat hulp nodig
+      </div>
+    </div>
+
+    <div class="answer-page_content_list">
+      <app-list-subject-groups [groups]="data"></app-list-subject-groups>
+    </div>
+  </div>
+</div>

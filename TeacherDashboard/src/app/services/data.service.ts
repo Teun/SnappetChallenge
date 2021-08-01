@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Answer } from '../interfaces/answer';
-import { Excercise } from '../interfaces/excercise';
-import { SubjectGroup } from '../interfaces/subject-group';
+import { DataHolder } from '../objects/data-holder';
 import { HttpService } from './http.service';
 
 const TODAY_STRING = '2015-03-24 11:30:00 UTC';
@@ -64,69 +63,12 @@ export class DataService {
     }
   }
 
-  public getDataForDate(): Observable<Array<Answer>> {
+  public getAnswersForDate(): Observable<DataHolder> {
     return combineLatest([this.date, this._data])
       .pipe(
-        map(([date, data]) => data.filter(item => this.isOnDate(date, item.SubmitDateTime)))
-      )
-  }
-
-  public getSubjectGroupsForDate(): Observable<Array<SubjectGroup>> {
-    return this.getDataForDate()
-      .pipe(
-        map(data => data.reduce((accumulator, item) => {
-          if (!accumulator[item.ExerciseId]) {
-            accumulator[item.ExerciseId] = {
-              id: item.ExerciseId,
-              submissions: 0,
-              difficulty: item.Difficulty,
-              subject: item.Subject,
-              objective: item.LearningObjective,
-              progress: []
-            }
-          }
-
-          accumulator[item.ExerciseId].submissions++;
-          if (item.Progress != 0) {
-            accumulator[item.ExerciseId].progress.push(item.Progress);
-          }
-
-          return accumulator;
-        }, {} as { [key: string]: Excercise })),
-        map(reduced => Object.keys(reduced).map(key => reduced[key]).reduce((accumulator, item) => {
-          if (!accumulator[item.subject]) {
-            accumulator[item.subject] = {
-              subject: item.subject,
-              objectives: {
-                [item.objective]: [item]
-              }
-            };
-          } else if (!accumulator[item.subject].objectives[item.objective]) {
-            accumulator[item.subject].objectives[item.objective] = [item];
-          } else {
-            accumulator[item.subject].objectives[item.objective].push(item);
-          }
-
-          return accumulator;
-        }, {} as { [key: string]: { subject: string, objectives: { [key: string]: [Excercise] } } })),
-        map(reduced => Object.keys(reduced).map(key => reduced[key]).reduce((accumulator, item) => {
-          accumulator.push({
-            subject: item.subject,
-            objectives: Object.keys(item.objectives)
-              .map(key => ({
-                objective: key,
-                excercises: item.objectives[key],
-                answers: this.answerCount(item.objectives[key])
-              }))
-              .sort((a, b) => b.answers - a.answers)
-          });
-          return accumulator;
-        }, [] as Array<SubjectGroup>))
-      )
-  }
-
-  private answerCount(excercises: Array<Excercise>): number {
-    return excercises.reduce((accumulator, item) => accumulator + item.submissions, 0);
+        map(([date, data]) => data.filter(item => this.isOnDate(date, item.SubmitDateTime))),
+        map(answers => answers.reduce((parser, answer) => parser.addAnswer(answer), new DataHolder()))
+      );
   }
 
   private isOnDate(date: Date, answerDate: Date): Boolean {
