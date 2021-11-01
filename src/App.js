@@ -1,58 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect } from "react"
+import "./App.css"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import DailyOverview from "./pages/DailyOverview"
+import DailyLog from "./pages/DailyLog"
+import Header from "./components/Header"
+import { store } from "./app/store"
+import styled from "styled-components"
+
+const PageArea = styled.div`
+  position: fixed;
+  background-color: #f5f6fa;
+  justify-content: center;
+  display: flex;
+  height: calc(100vh - 49px);
+  width: 100vw;
+`
 
 function App() {
+  useEffect(() => {
+    fetch("work.json")
+      .then((res) => res.json())
+      .then((data) => {
+        store.dispatch({ type: "SET_WORK_DATA", payload: data })
+      })
+      .catch((error) => console.log("Fetching local json error:", error))
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    <Router>
+      <Header />
+      <PageArea>
+        <Switch>
+          <Route path="/" exact component={DailyOverview} />
+          <Route path="/logs" exact component={DailyLog} />
+        </Switch>
+      </PageArea>
+    </Router>
+  )
 }
 
-export default App;
+export default App
