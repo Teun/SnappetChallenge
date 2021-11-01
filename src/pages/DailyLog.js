@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import styled from "styled-components"
 import Table from "../components/Table"
-import { getTodaysWork } from "../selectors/subject_selectors"
+import { getTodaysWork } from "../selectors/objective_selectors"
 
 const PageContainer = styled.div`
   height: calc(100vh - 50px);

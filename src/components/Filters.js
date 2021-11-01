@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import styled from "styled-components"
 import { store } from "../app/store"
-import { getActiveFilter } from "../selectors/subject_selectors"
+import { getActiveFilter } from "../selectors/objective_selectors"
 import { Button } from "./styled_components/styled_filter_components"
 
 const FILTER_TYPES = ["Subject", "Domain"]

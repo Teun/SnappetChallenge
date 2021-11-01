@@ -1,11 +1,9 @@
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import styled from "styled-components"
-import { store } from "../app/store"
 import { FilterContainer } from "../components/Filters"
 import InfoWidget from "../components/InfoWidget"
 import PieGraph from "../components/PieGraph"
-import { getFilteredDailyOverview } from "../selectors/subject_selectors"
+import { getFilteredDailyOverview } from "../selectors/objective_selectors"
 
 const PageContainer = styled.div`
   display: flex;

@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { VictoryPie, VictoryLabel, VictoryContainer, Slice } from "victory"
-import { getDailySubjectOverview, getTodaysWork } from "../selectors/subject_selectors"
-import _ from "lodash"
+import { VictoryPie, VictoryLabel, VictoryContainer } from "victory"
 
 const makeGraphData = (obj) => {
   return Object.keys(obj).map((key) => ({ x: key, y: obj[key], label: key }))
@@ -17,7 +14,7 @@ const ANIMATE_PRESETS = {
   onLoad: { duration: 1000 },
 }
 
-const PieGraph = ({ data, onAreaClick = _.noop }) => {
+const PieGraph = ({ data }) => {
   const [graphicData, setGraphicData] = useState(DEFAULT_PIE_DATA)
 
   useEffect(() => {

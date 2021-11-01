@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import styled from "styled-components"
 import useScrollToTop from "../hooks/useScrollToTop"
-import { getLearningObjectiveData, getActiveFilter } from "../selectors/subject_selectors"
+import { getLearningObjectiveData, getActiveFilter } from "../selectors/objective_selectors"
 import { ListItem, SubListItem } from "./styled_components/styled_list_components"
 
 const StyledWidgetBox = styled.div`
