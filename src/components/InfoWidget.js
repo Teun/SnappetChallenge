@@ -35,7 +35,7 @@ const InfoWidget = () => {
   return (
     <StyledWidgetBox ref={elementRef}>
       <InfoWidgetHeading>
-        <h3>{`Daily ${currentFilter} Undertaken`}</h3>
+        <h3>{`Today's ${currentFilter} Totals`}</h3>
         <p>Total</p>
       </InfoWidgetHeading>
 
