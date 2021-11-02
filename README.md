@@ -27,6 +27,6 @@ However, in order to demonstrate what a library can do, I implemented for the fi
 
 One of the hardest parts of the challenge was not 'biting off more than I could chew'.  Therefore there is a lot more I'd like to configure and add to the project.
 
-1. extend the overview page to with a date picker to allow users to view different days
+1. extend the overview page with a date picker to allow users to view different days
 2. add re-select to allow caching from selectors
 3. add sorting to the Daily Logs table
