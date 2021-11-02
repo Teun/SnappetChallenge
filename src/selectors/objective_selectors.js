@@ -5,7 +5,8 @@ import _ from "lodash"
 const getWorkData = (state) => state.workData.data
 export const getActiveFilter = (state) => state.workData.activeSubject
 
-const today = new Date(`2015-03-24 11:30:00 UTC`).toISOString()
+// Set todat as 2015-03-24 11:30:00 UTC
+const today = DateTime.fromISO("20150324T073000-0400", { zone: "utc" })
 
 const calculateTotals = (array = [], field) => {
   return array.reduce((acc, o) => ((acc[o[field]] = (acc[o[field]] || 0) + 1), acc), {})
