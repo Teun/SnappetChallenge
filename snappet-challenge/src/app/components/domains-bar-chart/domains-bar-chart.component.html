@@ -1,0 +1,48 @@
+<h1>
+  Domain - Learning Objectives Indication as on
+  {{ selectedDate$ | async | date: "longDate" }}
+</h1>
+<div class="dropdown-container">
+  <label>
+    <select
+      class="select-option"
+      #subjectSelect
+      (change)="onSubjectSelected(subjectSelect.value)"
+    >
+      <option
+        class="option"
+        *ngFor="let option of subjectData$ | async | keyvalue"
+        [value]="option.key"
+      >
+        {{ option.key }}
+      </option>
+    </select>
+  </label>
+  <label>
+    <select
+      class="select-option"
+      #domainSelect
+      (change)="onDomainSelected(domainSelect.value)"
+    >
+      <option
+        class="option"
+        *ngFor="let option of domainData$ | async | keyvalue"
+        [value]="option.key"
+      >
+        {{ option.key }}
+      </option>
+    </select>
+  </label>
+</div>
+<div style="display: block" *ngIf="objectivesData$ | async as objectivesData">
+  <canvas
+    baseChart
+    [datasets]="dataset"
+    [labels]="labels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType"
+  >
+  </canvas>
+</div>

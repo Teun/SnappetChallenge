@@ -1,0 +1,9 @@
+.dropdown-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.select-option {
+  padding: 0.5rem;
+}

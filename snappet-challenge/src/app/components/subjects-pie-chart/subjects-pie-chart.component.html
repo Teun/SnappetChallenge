@@ -1,0 +1,15 @@
+<h1>
+  Subject Data Indication as on {{ selectedDate$ | async | date: "longDate" }}
+</h1>
+<div style="display: block" *ngIf="subjectData$ | async as subjectData">
+  <canvas
+    baseChart
+    [data]="dataset"
+    [labels]="labels"
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    [plugins]="pieChartPlugins"
+    [legend]="pieChartLegend"
+  >
+  </canvas>
+</div>
