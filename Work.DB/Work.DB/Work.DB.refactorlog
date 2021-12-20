@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="53404ef6-f358-443f-8f62-2e2df7d706c1" ChangeDateTime="12/18/2021 14:13:42">
+    <Property Name="ElementName" Value="[dbo].[DayOverview].[SubmissionDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DayOverview]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TillDateTime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="afeace90-fd75-4d18-b88c-c4b63bb728f7" ChangeDateTime="12/18/2021 16:25:11">
+    <Property Name="ElementName" Value="[dbo].[DayOverview].[NumberOfProgress]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DayOverview]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SumOfProgress" />
+  </Operation>
+</Operations>
