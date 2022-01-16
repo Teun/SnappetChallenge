@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/src/Snappet.Challenge/.vs/Snappet.Challenge/v17
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB/bin/Release
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB/obj
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB/Properties
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB.Tests/obj
