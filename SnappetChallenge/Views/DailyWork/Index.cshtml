@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SnappetChallenge.AggregateModels.DailyWorkModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Daily Work</h1>
+
+<p>
+
+        @using(Html.BeginForm())
+        {
+           <label class="control-label"> Current Date/Time</label>
+           <input type="datetime" required name="momentInTime" value="@ViewData["MomentInTime"]"/>
+           <input type="submit" />
+        }
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LearningObjective)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct0)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgProgress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Domain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LearningObjective)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct0)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvgProgress)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

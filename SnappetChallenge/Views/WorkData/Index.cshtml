@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container py-5">  
+
+    @using (Html.BeginForm("Upload", "WorkData", FormMethod.Post, new { enctype = "multipart/form-data" }))  
+    {  
+        <div class="row">  
+            <div class="col-sm-1 col-md-6 col-xs-12">                    
+                <h5 class="text-danger">@ViewBag.ErrorMessage</h5>  
+                <h5 class="text-success">@ViewBag.Success</h5>  
+                <div class="form-group">  
+                    
+                    <div class="input-group">  
+                        <div class="custom-file">  
+                            <label>Choose JSON File:</label>  
+                            <input id="JSONfile" name="JSONFile" type="file" class="custom-file-input"  />  
+                            <label class="custom-file-label"></label>  
+                        </div>  
+                        <div class="input-group-append">  
+                            
+                            <input type="submit" class="btn btn-outline-primary" value="Upload" />  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    }  
+
+    <br/>
+
+    @using (Html.BeginForm("Delete", "WorkData", FormMethod.Post))  
+    {  
+        <div class="row">  
+            <div class="col-sm-1 col-md-6 col-xs-12">                    
+                <div class="form-group">  
+                    <div class="input-group">  
+                        <input type="submit" class="btn btn-outline-primary" value="Delete Data From DB" />  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    }  
+        
+</div>     

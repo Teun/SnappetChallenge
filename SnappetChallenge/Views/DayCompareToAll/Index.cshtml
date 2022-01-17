@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SnappetChallenge.AggregateModels.DayCompareToAllModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Compare Day To All Previous Data</h1>
+
+<p>
+	@using (Html.BeginForm())
+	{
+		<label class="control-label"> Current Date/Time</label>
+		<input type="datetime" required name="momentInTime" value="@ViewData["MomentInTime"]" />
+		<input type="submit"/>
+	}
+</p>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Subject)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Domain)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.LearningObjective)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.AvgProgressForDay)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.AvgProgressForAll)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ProgressChange)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Subject)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Domain)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.LearningObjective)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.AvgProgressForDay)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.AvgProgressForAll)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProgressChange)
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SnappetChallenge.AggregateModels.SummaryDataModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Summary</h1>
+
+<p>
+
+        @using(Html.BeginForm())
+        {
+           <label class="control-label"> Current Date/Time</label>
+           <input type="datetime" required name="momentInTime" value="@ViewData["MomentInTime"]"/>
+           <input type="submit" />
+        }
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct0)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct3)
+            </th>
+            <th>
+                Number of items with progress < 0 
+            </th>
+            <th>
+                Number of items with progress > 0 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgProgress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct0)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgressLessThan0)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgressOverThan0)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvgProgress)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
