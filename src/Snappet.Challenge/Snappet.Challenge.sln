@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Challenge.DataFileToDynamoDB", "Snappet.Challenge.DataFileToDynamoDB\Snappet.Challenge.DataFileToDynamoDB.csproj", "{12F96AE6-6594-41C0-A108-E5E84D1C0AB0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Challenge.DataFileToDynamoDB.Tests", "Snappet.Challenge.DataFileToDynamoDB.Tests\Snappet.Challenge.DataFileToDynamoDB.Tests.csproj", "{0A097F0D-47C2-4AD2-98E1-D930D4AB1317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snappet.Lambda.JsonToDynamo", "..\Snappet.Lambda.JsonToDynamo\Snappet.Lambda.JsonToDynamo.csproj", "{EF46990A-89CF-4D37-93DA-18C7A893E0DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{12F96AE6-6594-41C0-A108-E5E84D1C0AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12F96AE6-6594-41C0-A108-E5E84D1C0AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12F96AE6-6594-41C0-A108-E5E84D1C0AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12F96AE6-6594-41C0-A108-E5E84D1C0AB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A097F0D-47C2-4AD2-98E1-D930D4AB1317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A097F0D-47C2-4AD2-98E1-D930D4AB1317}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A097F0D-47C2-4AD2-98E1-D930D4AB1317}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A097F0D-47C2-4AD2-98E1-D930D4AB1317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF46990A-89CF-4D37-93DA-18C7A893E0DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF46990A-89CF-4D37-93DA-18C7A893E0DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF46990A-89CF-4D37-93DA-18C7A893E0DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF46990A-89CF-4D37-93DA-18C7A893E0DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

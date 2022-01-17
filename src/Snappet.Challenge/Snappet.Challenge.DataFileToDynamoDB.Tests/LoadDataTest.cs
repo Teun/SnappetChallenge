@@ -15,8 +15,8 @@ namespace Snappet.Challenge.DataFileToDynamoDB.Tests
             var context = new TestLambdaContext();
             var casing = function.LoadDataHandler("hello world", context);
 
-            Assert.Equal("hello world", casing.Lower);
-            Assert.Equal("HELLO WORLD", casing.Upper);
+            Assert.Equal("hello world", casing);
+            Assert.Equal("HELLO WORLD", casing);
         }
     }
 }
