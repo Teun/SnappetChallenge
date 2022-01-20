@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/Snappet.Challenge/.vs/Snappet.Challenge/v17
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB/bin/Release
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB/obj
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB/Properties
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB.Tests/obj
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB/bin/Debug/net6.0
+/src/Snappet.Challenge/.vs/Snappet.Challenge
+/src/Snappet.Challenge/Snappet.Challenge.DataFileToDynamoDB.Tests/bin/Debug/net6.0
+/src/Snappet.Lambda.JsonToDynamo/bin
+/src/Snappet.Lambda.JsonToDynamo/obj
+/src/Snappet.Lambda.JsonToDynamo/Properties
+/src/Snappet.Lambda.API/obj
+/src/Snappet.GraphQL.API/obj
+/src/Snappet.GraphQL.API/Properties
+/src/Snappet.Lambda.API/Properties

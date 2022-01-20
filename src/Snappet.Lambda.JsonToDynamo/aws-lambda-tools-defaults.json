@@ -1,0 +1,25 @@
+
+{
+    "Information" : [
+        "This file provides default values for the deployment wizard inside Visual Studio and the AWS Lambda commands added to the .NET Core CLI.",
+        "To learn more about the Lambda commands with the .NET Core CLI execute the following command at the command line in the project root directory.",
+        "dotnet lambda help",
+        "All the command line options for the Lambda command can be specified in this file."
+    ],
+    "profile"     : "TeddyG",
+    "region"      : "eu-west-2",
+    "configuration" : "Release",
+    "package-type"  : "Image",
+    "function-memory-size" : 256,
+    "function-timeout"     : 30,
+    "image-command"        : "Snappet.Lambda.JsonToDynamo::Snappet.Lambda.JsonToDynamo.LoadData::LoadDataHandler",
+    "docker-host-build-output-dir" : "./bin/Release/lambda-publish",
+    "function-name"                : "LoadData",
+    "function-description"         : "",
+    "function-role"                : "arn:aws:iam::698541116585:role/service-role/s3_json_dynamo-role-ye6zjaqn",
+    "function-architecture"        : "x86_64",
+    "tracing-mode"                 : "PassThrough",
+    "environment-variables"        : "",
+    "dockerfile"                   : "Dockerfile",
+    "image-tag"                    : "snappet:latest"
+}
