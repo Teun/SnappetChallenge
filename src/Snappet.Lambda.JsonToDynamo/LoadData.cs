@@ -20,8 +20,8 @@ namespace Snappet.Lambda.JsonToDynamo
         {
             _config = new AwsConfig()
             {
-                AccessKeyId = "AKIA2FJCLRSUYZRSIRF3",
-                SecretAccessKey = "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"
+                AccessKeyId = "",
+                SecretAccessKey = ""
             };
         }
         public async Task LoadDataHandler(string input, ILambdaContext context)
