@@ -14,3 +14,7 @@
 /src/Snappet.Lambda.JsonToDynamo/bin
 /src/Snappet.Lambda.JsonToDynamo/obj
 /src/Snappet.Lambda.JsonToDynamo/Properties
+/src/Snappet.Lambda.API/obj
+/src/Snappet.GraphQL.API/obj
+/src/Snappet.GraphQL.API/Properties
+/src/Snappet.Lambda.API/Properties

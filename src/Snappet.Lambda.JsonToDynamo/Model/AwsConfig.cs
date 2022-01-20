@@ -1,6 +1,6 @@
-﻿namespace Snappet.Lambda.JsonToDynamo
+﻿namespace Snappet.Lambda.JsonToDynamo.Model
 {
-    internal class UserSecret
+    public class AwsConfig
     {
         public string SecretAccessKey { get; set; }
         public string AccessKeyId { get; set; }

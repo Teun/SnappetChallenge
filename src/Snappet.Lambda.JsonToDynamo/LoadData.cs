@@ -3,15 +3,10 @@ using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.S3;
 using Amazon.S3.Model;
-using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.DocumentModel;
 using System.Text;
 using Newtonsoft.Json;
-using System.Diagnostics;
 using Snappet.Lambda.JsonToDynamo.Model;
 using System.Collections.Generic;
-using System;
-using Newtonsoft.Json.Linq;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -20,13 +15,22 @@ namespace Snappet.Lambda.JsonToDynamo
 {
     public class LoadData
     {
+        AwsConfig _config;
+        public LoadData()
+        {
+            _config = new AwsConfig()
+            {
+                AccessKeyId = "AKIA2FJCLRSUYZRSIRF3",
+                SecretAccessKey = "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"
+            };
+        }
         public async Task LoadDataHandler(string input, ILambdaContext context)
         {
-            await GetS3DataFileAsync("kYsusPwEKmCY+G4IYyAkeQymQHCjHTTD5gLGbltC", "AKIA2FJCLRSUYZRSIRF3");
+            await GetS3DataFileAsync();
         }
-        private async Task GetS3DataFileAsync(string secretAccessKey, string accessKeyId)
+        private async Task GetS3DataFileAsync()
         {
-            var s3Client = new AmazonS3Client(accessKeyId, secretAccessKey);
+            var s3Client = new AmazonS3Client(_config.AccessKeyId, _config.SecretAccessKey);
             var buckets = await s3Client.ListBucketsAsync();
             if (buckets == null) return;
             foreach (var bucket in buckets.Buckets)
@@ -51,16 +55,17 @@ namespace Snappet.Lambda.JsonToDynamo
                             });
 
                             var data = DeserializeData(response.ResponseStream);
-                            LoadJsonToDynamo(secretAccessKey, accessKeyId, data);
+                            await LoadJsonToDynamo(data);
                         }
                     }
                 }
             }
         }
 
-        private void LoadJsonToDynamo(string secretAccessKey, string accessKeyId, List<SubmittedAnswers> data)
+        private async Task LoadJsonToDynamo(List<SubmittedAnswers> data)
         {
-            throw new NotImplementedException();
+            DynamoDBClient dynamoClient = new DynamoDBClient(_config);
+            await dynamoClient.SaveAnswersAsync(data);
         }
 
         private List<SubmittedAnswers>  DeserializeData(Stream stream)
@@ -74,6 +79,5 @@ namespace Snappet.Lambda.JsonToDynamo
             
         }
 
-        public record Casing(string Lower, string Upper);
     }
 }
