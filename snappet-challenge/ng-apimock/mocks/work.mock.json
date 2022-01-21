@@ -1,13 +1,13 @@
 {
   "name": "work",
   "request": {
-    "url": "/work",
+    "url": "/results",
     "method": "GET"
   },
   "responses": {
     "ok": {
       "default": true,
-      "file": "ng-apimock/mock-assets/work.json",
+      "file": "../mock-assets/work.json",
       "statusText": "OK",
       "headers": {
         "Content-type": "application/json"

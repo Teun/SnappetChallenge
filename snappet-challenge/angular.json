@@ -61,6 +61,14 @@
               ],
               "outputHashing": "all"
             },
+            "frontend": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -77,6 +85,9 @@
           "configurations": {
             "production": {
               "browserTarget": "snappet-challenge:build:production"
+            },
+            "frontend": {
+              "browserTarget": "snappet-challenge:build:frontend"
             },
             "development": {
               "browserTarget": "snappet-challenge:build:development"

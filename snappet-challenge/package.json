@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:fe:mock": "npm run mocks:dev | ng serve --port=8000 --proxy-config ng-apimock/proxy.config.json --disable-host-check ",
+    "start:fe:mock": "npm run mocks:dev | ng serve --port=8000 --proxy-config ng-apimock/proxy.config.json --disable-host-check -c=frontend",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -22,6 +22,9 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "chart.js": "^3.7.0",
+    "moment": "^2.29.1",
+    "ng2-charts": "^3.0.8",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
