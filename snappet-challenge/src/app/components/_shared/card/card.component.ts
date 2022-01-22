@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {ButtonToggleModel} from "../../../models/button-toggle.model";
 import {Subscription} from "rxjs";
@@ -8,7 +8,7 @@ import {Subscription} from "rxjs";
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent{
   @Input() state: string;
   @Input() title: string;
   @Input() subTitle: string;
@@ -19,19 +19,14 @@ export class CardComponent implements OnInit {
   compareToGroup: FormGroup;
   compareToControl = new FormControl(null);
 
-  compareSubscription: Subscription;
-
-
   constructor() {
     this.compareToGroup = new FormGroup({
       compareToControl: this.compareToControl
     });
   }
 
-  ngOnInit(): void {
-    this.compareSubscription = this.compareToControl.valueChanges.subscribe(value => {
-      this.eventEmitter.emit(value);
-    })
+  onChange(): void {
+      this.eventEmitter.emit(this.compareToControl.value);
   }
 
 }

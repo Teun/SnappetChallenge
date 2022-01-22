@@ -6,7 +6,7 @@
       <br>
       <section>
         <mat-button-toggle-group [formControl]="compareToControl" aria-label="Font Style">
-          <mat-button-toggle *ngFor="let item of buttonToggleValues" [value]="item.value">{{item.label}}</mat-button-toggle>
+          <mat-button-toggle *ngFor="let item of buttonToggleValues" [checked]="item.active"  [value]="item.value" (change)="onChange()">{{item.label}}</mat-button-toggle>
         </mat-button-toggle-group>
       </section>
     </mat-card-actions>

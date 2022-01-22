@@ -33,9 +33,9 @@ export class ClassResultsComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.buttonToggleValues = [
-      {value: 'yesterday', label: 'Gisteren'},
-      {value: 'previous-week', label: 'Vorige week'},
-      {value: 'previous-month', label: 'Vorige maand'}
+      {value: 'yesterday', label: 'Gisteren', active: false},
+      {value: 'previous-week', label: 'Vorige week', active: false},
+      {value: 'previous-month', label: 'Vorige maand', active: false}
     ]
   }
 

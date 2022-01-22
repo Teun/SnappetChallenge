@@ -5,7 +5,10 @@
     <app-class-results [results]="results" [resultsToday]="resultsToday" [state]="state"
                        [dataTimesToday]="dateTimesToday" (eventEmitter)="updateResults()"></app-class-results>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="1" [rowspan]="3"> </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="3">
+    <app-domain-results [results]="results" [resultsToday]="resultsToday" [state]="state"
+    [dataTimesToday]="dateTimesToday" (eventEmitter)="updateResults()"></app-domain-results>
+  </mat-grid-tile>
 
 </mat-grid-list>
 
