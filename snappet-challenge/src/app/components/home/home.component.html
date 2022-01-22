@@ -2,29 +2,8 @@
 
 <mat-grid-list cols="2" rowHeight="12em">
   <mat-grid-tile [colspan]="1" [rowspan]="3">
-    <mat-card class="mat-card-today">
-      <mat-card-title>Voortgang vandaag</mat-card-title>
-      <div class="card-options">
-        <mat-card-subtitle>Gehele klas</mat-card-subtitle>
-        <mat-card-actions *ngIf="state === 'ready'">
-          <br>
-          <section>
-              <mat-button-toggle-group [formControl]="compareToControl" aria-label="Font Style">
-                <mat-button-toggle value="yesterday">Gisteren</mat-button-toggle>
-                <mat-button-toggle value="previous-week">Deze dag vorige week</mat-button-toggle>
-                <mat-button-toggle value="previous-month">Deze dag vorige maand</mat-button-toggle>
-            </mat-button-toggle-group>
-          </section>
-        </mat-card-actions>
-      </div>
-      <mat-card-content>
-        <app-my-line-chart *ngIf="state === 'ready'" [dataPoints]="dataPoints" [labels]="subjects"></app-my-line-chart>
-        <button *ngIf="state === 'error'" (click)="updateResults()" mat-raised-button color="primary">Haal gegevens op</button>
-      </mat-card-content>
-      <mat-card-footer>
-        <mat-progress-bar *ngIf="state === 'loading'" mode="indeterminate"></mat-progress-bar>
-      </mat-card-footer>
-    </mat-card>
+    <app-class-results [results]="results" [resultsToday]="resultsToday" [state]="state"
+                       [dataTimesToday]="dateTimesToday" (eventEmitter)="updateResults()"></app-class-results>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="1" [rowspan]="3"> </mat-grid-tile>
 

@@ -21,15 +21,21 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 //Components
 import {HomeComponent} from './components/home/home.component';
 import {MenuComponent} from './components/_shared/menu/menu.component';
-import {MyLineChartComponent} from './components/_shared/my-line-chart/my-line-chart.component';
+import {ChartComponent} from './components/_shared/chart/chart.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ClassResultsComponent } from './components/home/class-results/class-results.component';
+import { DomainResultsComponent } from './components/home/domain-results/domain-results.component';
+import { CardComponent } from './components/_shared/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    MyLineChartComponent
+    ChartComponent,
+    ClassResultsComponent,
+    DomainResultsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
