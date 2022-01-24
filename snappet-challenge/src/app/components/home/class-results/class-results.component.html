@@ -1,0 +1,6 @@
+<app-card [state]="state" [title]="'Voortgang vandaag'" [subTitle]="'Gehele klas'" [buttonToggleValues]="buttonToggleValues"
+          (eventEmitter)="setDataPoints($event)">
+  <app-my-line-chart *ngIf="state === 'ready'" [dataPoints]="chartData" [labels]="subjects"></app-my-line-chart>
+  <button *ngIf="state === 'error'" (click)="updateResults()" mat-raised-button color="primary">Haal gegevens op</button>
+</app-card>
+

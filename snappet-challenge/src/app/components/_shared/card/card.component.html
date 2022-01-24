@@ -1,0 +1,20 @@
+<mat-card class="mat-card-today">
+  <mat-card-title>{{title}}</mat-card-title>
+  <div class="card-options">
+    <mat-card-subtitle>{{subTitle}}</mat-card-subtitle>
+    <mat-card-actions *ngIf="state === 'ready'">
+      <br>
+      <section>
+        <mat-button-toggle-group [formControl]="compareToControl" aria-label="Font Style">
+          <mat-button-toggle *ngFor="let item of buttonToggleValues" [checked]="item.active"  [value]="item.value" (change)="onChange()">{{item.label}}</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+    </mat-card-actions>
+  </div>
+  <mat-card-content>
+    <ng-content></ng-content>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar *ngIf="state === 'loading'" mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>
