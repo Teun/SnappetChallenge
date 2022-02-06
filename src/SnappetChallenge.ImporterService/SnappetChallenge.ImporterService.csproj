@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-TvMazeScraper.ScraperService-58BEFFFC-CE61-4354-86E8-D0138FD2A8FB</UserSecretsId>
+    <UserSecretsId>dotnet-SnappetChallenge.ImporterService-58BEFFFC-CE61-4354-86E8-D0138FD2A8FB</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
