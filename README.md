@@ -1,4 +1,4 @@
-# Snapped Challenge
+# Snappet Challenge
 
 ## Requirements:
     - .net 6
