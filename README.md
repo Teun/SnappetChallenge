@@ -1,22 +1,44 @@
-# SnappetChallenge
-At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
+# Snapped Challenge
 
-### Language
-From the next paragraph on, this challenge is worded in Dutch. Snappet is a Dutch organisation. We are present in several European countries and part of our development team is based in Russia, but still, most of the organisation is Dutch. We all speak English, standups, code and documentation are in English, but being able to operate in a Dutch environment is a required skill. So use whatever tools you can to make sense of the rest of the challenge if you are not a Dutch speaker. It is part of the exercise. :)
+## Requirements:
+    - .net 6
+    - node (built with v.14.17.0)
+    - ng has to be installed (built with v. 12.2.14)
+        npm install -g @angular/cli
+        if same version: npm install -g @angular/cli@12.2.14
+## Setup:
+    - Build entire solution;
+    - If for some reason the database is not at the path src\Database\SnappetChallenge.db
+        - Run SnappetChallenge.ImporterService;
+            - This is going to build the database, based on the work.json file;
+            - The whole import takes between 5-10 min, depending on your hardware;
+            
+> Note: I have added the SnappetChallenge.db file into the repository to make it quicker for you, as otherwise you'd have to generate it as explained above(it takes some time to import all the data from the json file provided). Otherwise, ofc, no database would be seen in the repository. Also, to make it simpler, as the database is small I decided to not use Git LFS.
+## Running:
+    - Have both projects running at the same time, from Visual Studio
+        - SnappetChallenge.Api
+        - SnappetChallenge-Front
+            - This one takes between 5-10 min the first time, depending on your hardware as it downloads all npm packages;
+![Setup](img/startup.png?raw=true "Setup")
 
-### De opdracht
-In deze repository vind je een folder Data met daarin work.csv en work.json. Beiden bevatten dezelfde data, je hoeft er maar één te gebruiken (wat jij handig vindt). In dit bestand zitten de werkresultaten van de kinderen in één klas over een maand. 
+> Note: SnappetChallenge.Api runs by default at http://localhost:5099. If you change it, make sure the environment.ts file is also updated in the SnappetChallenge-Front project.
 
-Maak een rapport of scherm of wat ook dat een leerkracht een overzicht geeft van hoe zijn klas vandaag heeft gewerkt en waaraan. Het is nu dinsdag 2015-03-24 11:30:00 UTC. De antwoorden van na dat tijdstip worden dus nog niet getoond.
+## The development:
 
-Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die uitlegt wat je moet doen om het resultaat te kunnen bekijken.
+While building this solution it was never my intention to create a production ready solution, therefoe, many minor details were intentionaly left uncovered due to the constraint of time as well as I believe the purpose of this challenge is not to seek for perfection but instead measure my skills and coding style.
 
-### Achtergrond informatie
-- Alle tijden zijn in UTC
-- Er is een attribuut Progress. Dit geeft de verandering in de inschatting van de vaardigheid van de leerling op een leerdoel. Daar zitten psychometrische modellen achter die rekening houden met de moeilijkheid van de opgave, of de opgave al eerder door deze leerling is gemaakt, etc. Er zijn meerdere situaties waarbij de Progress 0 is. Bijvoorbeeld als we nog geen goede calibratie van de moeilijkheid van de opgave hebben. Of als de leerling nog te weinig opgaven in een leerdoel heeft gemaakt om een goede schatting van de vaardigheid te maken.
-- Aangezien deze dataset alleen wijzigingen laat zien en geen absolute waarde, kan je aan deze dataset niet zien wat de vaardigheid van iedere leerling is. Dat hoeft ook niet in de resultaten terug te komen.
+## The deployment:
+Unfortunatelly I dont have an active AWS account, therefore I built the solution in a simple way so that it can be run easily in a local environment.
 
-### Vrijheid
-Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Typescript en Angular. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
-Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
-De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+Now, although I haven't developed with AWS deployment in mind, IF I were to do so, here's how I would do and deploy it:
+    - Have the SPA served as a static page from a S3 bucket;
+    - Have the Api served from a Lambda function;
+    - The data, could come from a DynamoDb table;
+    - Have them all deployed via a SAM template(Cloud Formation Template).
+
+Now considering running localy was in mind, Im using SQLite as the database in order to make it easier to work with the data. For that, there`s a small console appication, that imports the data from the json file into a SQLite table.
+No caching, validation, authentication, authorization, tests(unit & integration) and other details were considered for this simple project for the reasons afore mentioned, but Im more than open to discuss it during the interview, if you want.
+
+## The Task:
+Since there was no explicitly defined requirement on what/how to display the data - just suggestions - I have decided to show a comparison between Today's progress vs LastWeek's average(total progress / 5 days) progress, in 2 (grouped)Column charts: by Domain and by Subject.
+![report](img/report.png?raw=true "Report")

@@ -1,0 +1,31 @@
+<p>Progress report</p>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <google-chart #chart
+                      [title]="bySubjectChart.title"
+                      [data]="bySubjectChart.data"
+                      [type]="chartSettings.type"
+                      [columns]="chartSettings.columnNames"
+                      [options]="chartSettings.options"
+                      [height]="chartSettings.height"
+                      [dynamicResize]="chartSettings.dynamicResize"
+                      style="width: 100%;">
+        </google-chart>
+      </div>
+      <div class="col-12">
+        <google-chart #chart
+                      [title]="byDomainChart.title"
+                      [data]="byDomainChart.data"
+                      [type]="chartSettings.type"
+                      [columns]="chartSettings.columnNames"
+                      [options]="chartSettings.options"
+                      [height]="chartSettings.height"
+                      [dynamicResize]="chartSettings.dynamicResize"
+                      style="width: 100%;">
+        </google-chart>
+      </div>
+    </div>
+  </div>
+</div>
