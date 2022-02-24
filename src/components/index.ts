@@ -1,3 +1,4 @@
 import DetailedReport from "./DetailedReport";
+import ChartReport from "./ChartReport";
 
-export { DetailedReport };
+export { DetailedReport, ChartReport };

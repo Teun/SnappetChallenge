@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import {DetailedReportProps} from "./Types";
 
-const DetailedReport = ({reportData}: DetailedReportProps) => {
+const DetailedReport = ({reportData}: DetailedReportProps): JSX.Element => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{minWidth: 650}} aria-label="simple table">

@@ -20,3 +20,7 @@ export interface DataStructure {
    Domain: string;
    LearningObjective: string;
  }
+
+ export interface SubjectValue {
+  [subject: string]: number;
+ }
