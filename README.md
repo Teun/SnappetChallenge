@@ -1,3 +1,40 @@
+# Solution
+
+This is what I got working on so far with the time assigned, I understand this does not need to be completely resolved for the interview purposes but still wanted to share some of my coding skills for the assigment.
+
+## Scope
+There are two tabs in the home page that will show two reports; `General Report` & `Detailed Report`
+
+### General Report
+
+This tab show the amount of correct answers as well as the average difficulty for each subject, it should be a bar chart with two values;
+* Blue: for the total amount of correct answers for that subject.
+* Red: for the average difficulty of the questions for that subject.
+
+I couldn't complete the `Detailed Report` which was going to show a table of a more detailed structure of what was going on according to the learning objectives, but because of timing issues, I was not able to finish it as expected.
+
+## Starting the project
+
+This is a React project using local data from a JSON file, so for you to be able to run the project, you would need [NodeJS](https://nodejs.org/en/) installed in your computer.
+
+Once tou have node, please go to your terminal, and in the root folder run the following:
+
+```shell
+npm install
+```
+
+And once all dependencies have been installed, run the next command:
+
+```shell
+npm start
+```
+
+That should be enough for the project to run.
+
+## Improvements
+
+This is an extremely short solution for what was asked, but with enough time this should have both reports implemented, with its correct documentation, an `AWS` lambda function configured to return the processed file so all the logic can come from a backend endpoint, as well as Unit Testing implemented for all the components & business logic.
+
 # SnappetChallenge
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
