@@ -1,4 +1,18 @@
+
+## Solution
+
+This is a basic solution that has a lot of room for improvement since I had very limited time. Currently, it only has one page that shows all data for given date.
+
+### Starting the project
+
+To start this project first you will need to install dependencies and then run it, for that you have to type these two commands into the terminal
+```
+npm install 
+npm start
+```
+
 # SnappetChallenge
+
 At [Snappet](http://www.snappet.org), we care about data and we care about code. When we interview for development positions, we want to see code and we want to discuss code. That's why we want candidates to show some work on our challenge. This challenge is not meant to cost you tons of time. A few hours should be enough. The challenge is defined very broadly. You could spend weeks on it, or half an hour. We understand that in 2 hours, you can only do so much. Don't worry about completeness, work on something that works and shows your skills.
 
 ### Language
