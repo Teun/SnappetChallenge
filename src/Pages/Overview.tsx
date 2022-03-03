@@ -19,9 +19,12 @@ const Overview = () => {
 
   const todaysWork = allItems.filter((e:WorkType) => new Date(e.SubmitDateTime) < currentDate && new Date(e.SubmitDateTime) > startOfCurrentDate)
 
+  const progressArr = todaysWork.map(e => e.Progress);
+  const maxProgress = Math.max(...progressArr);
 
   return (
     <div>
+    <span>{`Max progress: ${maxProgress}`}</span>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -50,7 +53,7 @@ const Overview = () => {
               <TableCell align="right">{row.Subject}</TableCell>
               <TableCell align="right">{row.Domain}</TableCell>
               <TableCell align="right">{row.LearningObjective}</TableCell>
-              <TableCell align="right">{row.Difficulty}</TableCell>
+              <TableCell align="right">{Math.round(parseInt(row.Difficulty))}</TableCell>
               <TableCell align="right">{row.Progress}</TableCell>
             </TableRow>
           ))}
