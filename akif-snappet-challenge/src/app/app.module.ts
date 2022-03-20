@@ -1,27 +1,43 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { HttpClientModule } from '@angular/common/http'
 
-import { AppComponent } from './app.component';
-import { ClassChartsComponent } from './pages/class-charts/class-charts.component';
-import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component'
+import { RouterModule } from '@angular/router'
+import { DomainNames } from './models/class.model'
+import { NgxEchartsModule } from 'ngx-echarts'
+import { ActualLevelEstimationComponent } from './pages/actual-level-estimation/actual-level-estimation.component'
+import { RelativeProgressComponent } from './pages/relative-progress/relative-progress.component'
 
-const ROUTES = [{
-  path:'',
-  component:ClassChartsComponent
-}]
+const domains = DomainNames
+
+const ROUTES = [
+  {
+    path:'',
+    pathMatch: 'full',
+    redirectTo:'actual-level'
+  },
+  {
+    path: 'actual-level',
+    component: ActualLevelEstimationComponent,
+  },
+  {
+    path: 'relative-progress',
+    component: RelativeProgressComponent,
+  },
+]
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ClassChartsComponent,
-  ],
+  declarations: [AppComponent, ActualLevelEstimationComponent, RelativeProgressComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
+    RouterModule.forRoot(ROUTES),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
