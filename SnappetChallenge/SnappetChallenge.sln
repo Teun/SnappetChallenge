@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.API", "Snappet.API\Snappet.API.csproj", "{2B1A9900-93BA-4FFF-9041-80ADD511ACB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Domain", "Snappet.Domain\Snappet.Domain.csproj", "{1F8CE491-0E0D-46A5-9B63-FF363EC0B464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Infrastructure", "Snappet.Infrastructure\Snappet.Infrastructure.csproj", "{D8AFFE0E-17EB-4F8D-8E53-B73F0EE753C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappet.Test", "Snappet.Test\Snappet.Test.csproj", "{E8FE124F-5537-4432-9B8F-25136F8C0716}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B1A9900-93BA-4FFF-9041-80ADD511ACB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B1A9900-93BA-4FFF-9041-80ADD511ACB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B1A9900-93BA-4FFF-9041-80ADD511ACB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B1A9900-93BA-4FFF-9041-80ADD511ACB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8CE491-0E0D-46A5-9B63-FF363EC0B464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8CE491-0E0D-46A5-9B63-FF363EC0B464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8CE491-0E0D-46A5-9B63-FF363EC0B464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8CE491-0E0D-46A5-9B63-FF363EC0B464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8AFFE0E-17EB-4F8D-8E53-B73F0EE753C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8AFFE0E-17EB-4F8D-8E53-B73F0EE753C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8AFFE0E-17EB-4F8D-8E53-B73F0EE753C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8AFFE0E-17EB-4F8D-8E53-B73F0EE753C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8FE124F-5537-4432-9B8F-25136F8C0716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8FE124F-5537-4432-9B8F-25136F8C0716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8FE124F-5537-4432-9B8F-25136F8C0716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8FE124F-5537-4432-9B8F-25136F8C0716}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FDE976D-F835-49DE-96C9-592FF320CBBF}
+	EndGlobalSection
+EndGlobal
