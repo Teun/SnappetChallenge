@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Snappet.Domain\Snappet.Domain.csproj" />
     <ProjectReference Include="..\Snappet.Infrastructure\Snappet.Infrastructure.csproj" />
   </ItemGroup>
