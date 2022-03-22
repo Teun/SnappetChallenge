@@ -1,6 +1,20 @@
-﻿namespace Snappet.API.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using Snappet.API.ViewModels;
+
+namespace Snappet.API.Controllers
 {
-    public class ReportController
+
+    [ApiController]
+    [Route("[controller]")]
+    public class ReportController : ControllerBase
     {
+
+        [HttpPost("daily-report")]
+        public IActionResult DailyReport(DailyReportRequest date)
+        {
+
+            return Ok();
+        }
+
     }
 }
