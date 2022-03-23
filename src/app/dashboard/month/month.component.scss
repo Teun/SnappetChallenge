@@ -1,0 +1,15 @@
+.month-chart {
+  background: aliceblue;
+  height: 100%;
+  padding: 10px;
+  position: relative;
+}
+
+.user-selector {
+  margin-left: 20px;
+}
+
+.chart-row {
+  display: flex;
+  flex-direction: column;
+}

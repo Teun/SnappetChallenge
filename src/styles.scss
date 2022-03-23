@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+html * { box-sizing: border-box }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.chart-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
+  position: relative;
+}
+
+.mat-card {
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.mat-card-header {
+  justify-content: center;
+}
+
+.chart-container canvas {
+  max-height: 250px;
+  width: auto;
+}
+
+.chart-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.no-data-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.arrow-button {
+  margin: 5px;
+}

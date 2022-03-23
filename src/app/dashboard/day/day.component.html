@@ -1,0 +1,56 @@
+<div class="day-chart">
+    <div class="chart-header">
+        <h1>Student Report for: {{ selectedDate | date:'YYYY:MM:dd' }}</h1>
+
+        <div class="day-switcher">
+            <button class="arrow-button" mat-mini-fab color="primary" aria-label="Back one day" (click)="switchDay(-1)">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <button class="arrow-button" mat-mini-fab color="primary" aria-label="Forward one day" (click)="switchDay(1)" [disabled]="isSameDay(currentDate, selectedDate)">
+                <mat-icon>arrow_forward</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <ng-container *ngIf="report.studentNumber; else noData">
+        <div class="card-row">
+            <mat-card class="dashboard-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>
+                        <h1 class="value-text">{{ report.studentNumber }}</h1>
+                    </mat-card-title>
+                </mat-card-header>
+                <h3 class="title-text">Students</h3>
+            </mat-card>
+
+            <mat-card class="dashboard-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>
+                        <h1 class="value-text">{{ report.submittedEntries }}</h1>
+                    </mat-card-title>
+                </mat-card-header>
+                <h3 class="title-text">Completed tasks</h3>
+            </mat-card>
+
+            <mat-card class="dashboard-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>
+                        <h1 class="value-text">{{ report.correctEntries }} ({{report.successRate | percent:'2.1-2'}})</h1>
+                    </mat-card-title>
+                </mat-card-header>
+                <h3 class="title-text">Correct answers</h3>
+            </mat-card>
+
+        </div>
+
+        <div class="chart-container">
+            <app-answers-chart [barChartData]="chartData"></app-answers-chart>
+        </div>
+    </ng-container>
+
+    <ng-template #noData>
+        <div class="no-data-message">
+            No Data Available
+        </div>
+    </ng-template>
+</div>

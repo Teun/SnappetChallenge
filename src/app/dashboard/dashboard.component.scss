@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-bar {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.nav-item {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  height: 40px;
+  text-align: left;
+  padding: 10px;
+  width: 190px;
+
+  &:hover,
+  &.active {
+    color: #333333;
+    background: aliceblue;
+    width: 200px;
+  }
+}
+
+.dashboard-content {
+  width: 100%;
+}

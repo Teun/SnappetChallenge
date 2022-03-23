@@ -1,0 +1,44 @@
+<div class="month-chart">
+    <h1>Student Report for: {{ currentDate | date:'MMMM' }}</h1>
+
+    <div class="card-row">
+        <mat-card class="dashboard-card">
+            <mat-card-header class="card-header">
+                <mat-card-title>
+                    <h1 class="value-text">{{ monthData.submittedEntries }}</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <h3 class="title-text">Tasks complete</h3>
+        </mat-card>
+
+        <mat-card class="dashboard-card">
+            <mat-card-header class="card-header">
+                <mat-card-title>
+                    <h1 class="value-text">{{ monthData.correctEntries }} ({{monthData.successRate | percent:'2.1-2'}})</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <h3 class="title-text">Correct answers</h3>
+        </mat-card>
+
+    </div>
+
+    <div class="student-chart">
+        <h1>Student Statistics:</h1>
+        <mat-form-field appearance="fill" class="user-selector">
+            <mat-label>Student</mat-label>
+            <mat-select (selectionChange)="onStudentSelect($event)">
+                <mat-option *ngFor="let student of students" [value]="student">
+                    {{student}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="chart-row chart-container" *ngIf="student">
+            <h2>Student's Subject Split</h2>
+            <app-subject-split-chart [pieChartData]="splitChartData"></app-subject-split-chart>
+            <h2>Subject Success Rate</h2>
+            <app-subject-success-chart [barChartData]="successChartData"></app-subject-success-chart>
+        </div>
+    </div>
+
+</div>
