@@ -15,7 +15,7 @@ export class DataHttpService {
 
   getClassData():Observable<Subjects> {
     if(!this._cachedData$){
-      this._cachedData$ = this.httpService.get('../../assets/work1.json').pipe(
+      this._cachedData$ = this.httpService.get('../../assets/work.json').pipe(
         map((items: RawData[]) => {
           return items.map((i) => (i.Domain === '-' ? { ...i, Domain: 'noDomain' } : i))
         }),
