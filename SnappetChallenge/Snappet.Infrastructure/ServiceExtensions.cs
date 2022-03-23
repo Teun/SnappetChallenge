@@ -15,6 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<DbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
+            services.AddScoped<IProgressCalculatorService, ProgressCalculatorService>();
         }
     }
 }

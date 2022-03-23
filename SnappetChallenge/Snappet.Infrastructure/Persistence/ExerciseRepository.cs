@@ -1,40 +1,38 @@
-﻿using Snappet.Domain.Interface.Repository;
+﻿using Snappet.Domain;
+using Snappet.Domain.Interface.Repository;
+using Snappet.Domain.Interface.Service;
 using Snappet.Domain.Models;
-using System.Linq;
 
 namespace Snappet.Infrastructure.Persistence
 {
     public class ExerciseRepository : IExerciseRepository
     {
         private readonly DbContext _dbContext;
+        private readonly IProgressCalculatorService _progressCalculatorService;
 
-        public ExerciseRepository(DbContext dbContext)
+        public ExerciseRepository(DbContext dbContext, IProgressCalculatorService progressCalculatorService)
         {
             _dbContext = dbContext;
+            _progressCalculatorService = progressCalculatorService;
         }
 
-        //public IEnumerable<ExerciseReportModel> GetDailyReport(DateOnly date)
-        //{
-        //    var exe = _dbContext.ExerciseReports.Select(x => x.ExerciseId).Distinct();
-        //    return _dbContext.ExerciseReports.Where(i => DateOnly.FromDateTime(i.SubmitDateTime) == date).ToList();
-        //}
-
-        public IEnumerable<StudentExerciseActivityModel> GetStudentActivity(DateOnly date, int skip = 0, int take = 10)
+        public IEnumerable<StudentExerciseActivityModel> GetStudentActivity(DateOnly date, int skip = 0, int take = SnappetConstants.PAGE_SIZE)
         {
             var data = _dbContext.ExerciseReports
                 .Where(i => DateOnly.FromDateTime(i.SubmitDateTime) == date)
-                .GroupBy(x => x.UserId, x => x);
+                .GroupBy(x => x.UserId, x => x).ToList();
 
             return data.Select(x => new StudentExerciseActivityModel
             {
                 UserId = x.Key,
-                OverallProgress = 0, // TODO
-
+                OverallProgress = _progressCalculatorService.CalculateProgress(x.Key, date),
+                CorrectAnswersCount = x.Select(i => i.Correct).Count(i => i > 0),
+                ExerciseCount = x.Select(i => i.ExerciseId).Count(),
             }).Skip(skip).Take(take).ToList();
 
         }
 
-        public IEnumerable<ExerciseModel> GetStudentExercises(DateOnly date, int studentId, int skip = 0, int take = 10)
+        public IEnumerable<ExerciseModel> GetStudentExercises(DateOnly date, int studentId, int skip = 0, int take = SnappetConstants.PAGE_SIZE)
         {
             var data = _dbContext.ExerciseReports
                 .Where(i => DateOnly.FromDateTime(i.SubmitDateTime) == date)

@@ -11,5 +11,7 @@ namespace Snappet.Domain.Models
         public int UserId { get; set; }
 
         public int OverallProgress { get; set; }
+        public int CorrectAnswersCount { get; set; }
+        public int ExerciseCount { get; set; }
     }
 }
