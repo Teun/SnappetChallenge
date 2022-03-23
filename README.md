@@ -1,27 +1,12 @@
-# Test
+Snappet challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+Tried to make it more convenient, so the only thing needed to launch the server is to install the dependencies and run the `npm start` script.
 
-## Development server
+Starts on `localhost:4200`, you will see a side navigation with two buttons, Daily and Monthly:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Daily is the default task of the challenge, slightly expanded to allow for viewing of other days.
+- Monthly shows general statistics for the entire month, and allows to view some monthly data for separate students.
 
-## Code scaffolding
+A lot can be expanded upon, to improve UX, like relative progress, more detailed data on subjects, and goals.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Focused on FE part, so DashboardService basically emulates a DB with some basic transformation, and data processing.
