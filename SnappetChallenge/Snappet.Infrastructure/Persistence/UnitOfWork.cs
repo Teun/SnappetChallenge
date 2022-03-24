@@ -6,7 +6,7 @@ namespace Snappet.Infrastructure.Persistence
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ISnappetDbContext _dbContext;
-        private List<ExerciseReportModel> previousReports = new List<ExerciseReportModel>();
+        private List<ExerciseReportModel>? previousReports = new List<ExerciseReportModel>();
 
         public UnitOfWork(ISnappetDbContext dbContext)
         {
@@ -24,12 +24,15 @@ namespace Snappet.Infrastructure.Persistence
 
         public void Rollback()
         {
-            ((List<ExerciseReportModel>)_dbContext.ExerciseReports).RemoveRange(0, _dbContext.ExerciseReports.Count());
-            ((List<ExerciseReportModel>)_dbContext.ExerciseReports).AddRange(previousReports);
+            if (previousReports != null)
+            {
+                ((List<ExerciseReportModel>)_dbContext.ExerciseReports).RemoveRange(0, _dbContext.ExerciseReports.Count());
+                ((List<ExerciseReportModel>)_dbContext.ExerciseReports).AddRange(previousReports);
+            }
         }
         public void Dispose()
         {
-            Rollback();
+            previousReports = null;
         }
 
     }

@@ -1,7 +1,6 @@
 
 using FluentValidation.AspNetCore;
 using Serilog;
-using Snappet.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 // serilog

@@ -17,7 +17,7 @@ namespace Snappet.Infrastructure.Persistence
             _progressCalculatorService = progressCalculatorService;
         }
 
-        public IEnumerable<StudentExerciseActivityModel> GetStudentActivity(DateOnly date, int skip = 0, int take = SnappetConstants.PAGE_SIZE)
+        public IEnumerable<StudentExerciseActivityModel> GetStudentActivity(DateOnly date, int skip, int take)
         {
             var data = _dbContext.ExerciseReports
                 .Where(i => DateOnly.FromDateTime(i.SubmitDateTime) == date)
@@ -33,7 +33,7 @@ namespace Snappet.Infrastructure.Persistence
 
         }
 
-        public IEnumerable<ExerciseModel> GetStudentExercises(DateOnly date, int studentId, int skip = 0, int take = SnappetConstants.PAGE_SIZE)
+        public IEnumerable<ExerciseModel> GetStudentExercises(DateOnly date, int studentId, int skip, int take)
         {
             var data = _dbContext.ExerciseReports
                 .Where(i => DateOnly.FromDateTime(i.SubmitDateTime) == date)
