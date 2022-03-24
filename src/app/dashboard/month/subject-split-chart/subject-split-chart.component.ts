@@ -10,12 +10,10 @@ export class SubjectSplitChartComponent {
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
-  public pieChartLabels = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  public pieChartLabels = [];
   @Input() pieChartData: ChartData<'pie'> = {
   labels: [],
-  datasets: [{
-    data: [300, 500, 100]
-  }]
+  datasets: []
 };
 
   public pieChartType: ChartType = 'pie';

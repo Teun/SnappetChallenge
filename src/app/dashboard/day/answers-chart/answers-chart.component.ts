@@ -10,7 +10,7 @@ export class AnswersChartComponent {
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: string[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];

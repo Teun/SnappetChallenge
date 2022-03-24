@@ -14,17 +14,15 @@
 .nav-item {
   background: #1976d2;
   color: #fff;
-  border: none;
   height: 40px;
   text-align: left;
   padding: 10px;
-  width: 190px;
 
   &:hover,
   &.active {
     color: #333333;
     background: aliceblue;
-    width: 200px;
+    border-right: none;
   }
 }
 

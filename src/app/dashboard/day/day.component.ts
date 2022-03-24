@@ -25,15 +25,6 @@ export class DayComponent implements OnInit {
     successRate: 0,
     studentNumber: 0,
   };
-  public displayedColumns = [
-    'SubmittedAnswerId',
-    'SubmitDateTime',
-    'Correct',
-    'UserId',
-    'ExerciseId',
-    'Difficulty',
-    'Subject',
-  ];
 
   constructor(private dashboardService: DashboardService) { }
 
