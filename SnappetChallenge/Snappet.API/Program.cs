@@ -24,8 +24,6 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-var context = app.Services.GetRequiredService<DbContext>();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

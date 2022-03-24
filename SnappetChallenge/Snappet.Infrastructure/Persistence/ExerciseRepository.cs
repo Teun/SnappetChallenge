@@ -1,4 +1,5 @@
 ﻿using Snappet.Domain;
+using Snappet.Domain.Interface;
 using Snappet.Domain.Interface.Repository;
 using Snappet.Domain.Interface.Service;
 using Snappet.Domain.Models;
@@ -7,10 +8,10 @@ namespace Snappet.Infrastructure.Persistence
 {
     public class ExerciseRepository : IExerciseRepository
     {
-        private readonly DbContext _dbContext;
+        private readonly ISnappetDbContext _dbContext;
         private readonly IProgressCalculatorService _progressCalculatorService;
 
-        public ExerciseRepository(DbContext dbContext, IProgressCalculatorService progressCalculatorService)
+        public ExerciseRepository(ISnappetDbContext dbContext, IProgressCalculatorService progressCalculatorService)
         {
             _dbContext = dbContext;
             _progressCalculatorService = progressCalculatorService;

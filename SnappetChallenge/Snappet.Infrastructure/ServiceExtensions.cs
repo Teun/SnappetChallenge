@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IDateService, DateService>();
-            services.AddSingleton<DbContext>();
+            services.AddSingleton<ISnappetDbContext, DbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
             services.AddScoped<IProgressCalculatorService, ProgressCalculatorService>();

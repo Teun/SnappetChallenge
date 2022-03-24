@@ -1,15 +1,13 @@
-﻿using Snappet.Domain.Models;
+﻿using Snappet.Domain.Interface;
+using Snappet.Domain.Models;
 using Snappet.Infrastructure.Parsers;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Text.Json;
 
 namespace Snappet.Infrastructure.Persistence
 {
-    public class DbContext
+    public class DbContext: ISnappetDbContext
     {
-        public IEnumerable<ExerciseReportModel> ExerciseReports { get; init; }
-
         public DbContext()
         {
             // parse json

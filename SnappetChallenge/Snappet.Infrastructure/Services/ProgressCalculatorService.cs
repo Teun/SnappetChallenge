@@ -1,18 +1,13 @@
-﻿using Snappet.Domain.Interface.Service;
-using Snappet.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Snappet.Domain.Interface;
+using Snappet.Domain.Interface.Service;
 
 namespace Snappet.Infrastructure.Services
 {
     public class ProgressCalculatorService : IProgressCalculatorService
     {
-        private readonly DbContext _dbContext;
+        private readonly ISnappetDbContext _dbContext;
 
-        public ProgressCalculatorService(DbContext dbContext)
+        public ProgressCalculatorService(ISnappetDbContext dbContext)
         {
             _dbContext = dbContext;
         }

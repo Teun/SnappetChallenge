@@ -5,10 +5,10 @@ namespace Snappet.Infrastructure.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _dbContext;
+        private readonly ISnappetDbContext _dbContext;
         private List<ExerciseReportModel> previousReports = new List<ExerciseReportModel>();
 
-        public UnitOfWork(DbContext dbContext)
+        public UnitOfWork(ISnappetDbContext dbContext)
         {
             _dbContext = dbContext;
         }
