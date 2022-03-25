@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RelativeProgressComponent } from './relative-progress.component'
+import { RelativeProgressComponent } from './relative-progress.component';
 
 describe('RelativeProgressComponent', () => {
-  let component: RelativeProgressComponent
-  let fixture: ComponentFixture<RelativeProgressComponent>
+  let component: RelativeProgressComponent;
+  let fixture: ComponentFixture<RelativeProgressComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RelativeProgressComponent],
-    }).compileComponents()
-  })
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RelativeProgressComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
+    fixture = TestBed.createComponent(RelativeProgressComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy()
-  })
-})
+    expect(component).toBeTruthy();
+  });
+});

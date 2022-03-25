@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActualLevelEstimationComponent } from './actual-level-estimation.component'
+import { ActualLevelEstimationComponent } from './actual-level-estimation.component';
 
 describe('ActualLevelEstimationComponent', () => {
-  let component: ActualLevelEstimationComponent
-  let fixture: ComponentFixture<ActualLevelEstimationComponent>
+  let component: ActualLevelEstimationComponent;
+  let fixture: ComponentFixture<ActualLevelEstimationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ActualLevelEstimationComponent],
-    }).compileComponents()
-  })
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActualLevelEstimationComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
+    fixture = TestBed.createComponent(ActualLevelEstimationComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy()
-  })
-})
+    expect(component).toBeTruthy();
+  });
+});

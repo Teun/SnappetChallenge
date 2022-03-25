@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
-import { Domain, Subjects } from 'src/app/models/class.model'
-import { DataHttpService } from 'src/app/services/data-http.service'
-import { getProgressData } from 'src/app/utils/mappers'
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Domain, Subjects } from 'src/app/models/class.model';
+import { DataHttpService } from 'src/app/services/data-http.service';
+import { getProgressData } from 'src/app/utils/mappers';
 
 @Component({
   selector: 'app-relative-progress',
@@ -11,7 +11,7 @@ import { getProgressData } from 'src/app/utils/mappers'
   styleUrls: ['./relative-progress.component.scss'],
 })
 export class RelativeProgressComponent implements OnInit {
-  data$: Observable<any>
+  data$: Observable<any>;
   constructor(private readonly dataService: DataHttpService) {}
 
   ngOnInit(): void {
@@ -19,11 +19,11 @@ export class RelativeProgressComponent implements OnInit {
       map((subjects: Subjects) => {
         return Object.values(subjects).map((subject: Domain[]) => {
           if (!subject.length) {
-            return
+            return;
           }
           return subject.map((domain: Domain) => {
-            const title = domain.items[0].Subject + ' ' + (domain.name === 'noDomain' ? '' : domain.name)
-            const progressData = getProgressData(domain)
+            const title = domain.items[0].Subject + ' ' + (domain.name === 'noDomain' ? '' : domain.name);
+            const progressData = getProgressData(domain);
             return {
               title: {
                 text: title,
@@ -51,10 +51,10 @@ export class RelativeProgressComponent implements OnInit {
                 totalProgress: progressData[progressData.length - 1],
                 averageProgressAtTheEnd: progressData[progressData.length - 1] / progressData.length,
               },
-            }
-          })
-        })
+            };
+          });
+        });
       })
-    )
+    );
   }
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
-import { Domain, DomainItem } from 'src/app/models/class.model'
-import { DataHttpService } from 'src/app/services/data-http.service'
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Domain, DomainItem } from 'src/app/models/class.model';
+import { DataHttpService } from 'src/app/services/data-http.service';
 
 @Component({
   selector: 'app-actual-level-estimation',
@@ -10,24 +10,23 @@ import { DataHttpService } from 'src/app/services/data-http.service'
   styleUrls: ['./actual-level-estimation.component.scss'],
 })
 export class ActualLevelEstimationComponent implements OnInit {
-  data$: Observable<any>
+  data$: Observable<any>;
   constructor(private readonly dataService: DataHttpService) {}
 
   ngOnInit(): void {
     this.data$ = this.dataService.getClassData().pipe(
       map((subjects) => {
-        const averageDifficultyData = {}
+        const averageDifficultyData = {};
 
         Object.values(subjects).forEach((subject: Domain[]) => {
           subject.forEach((domain) => {
-            const dataPerStudent = this.mapDataPerStudent(domain)
-            const averageSolvingAbilityPerStudent = this.getAverageSolvingAbilityPerStudent(dataPerStudent)
+            const dataPerStudent = this.mapDataPerStudent(domain);
+            const averageSolvingAbilityPerStudent = this.getAverageSolvingAbilityPerStudent(dataPerStudent);
 
-            const domainName = `${domain.items[0].Subject}-${domain.name}`
-            console.log(domainName)
-            averageDifficultyData[domainName] = averageSolvingAbilityPerStudent
-          })
-        })
+            const domainName = `${domain.items[0].Subject}-${domain.name}`;
+            averageDifficultyData[domainName] = averageSolvingAbilityPerStudent;
+          });
+        });
 
         return {
           tooltip: {
@@ -68,42 +67,39 @@ export class ActualLevelEstimationComponent implements OnInit {
               data: Object.values(averageDifficultyData),
             },
           ],
-        }
+        };
       })
-    )
+    );
   }
 
   private mapDataPerStudent = (domain: Domain): { [id: string]: DomainItem[] } => {
     return domain.items.reduce((acc, item) => {
       if (!acc[item.UserId]) {
-        acc[item.UserId] = []
+        acc[item.UserId] = [];
       }
-      acc[item.UserId].push(item)
-      return acc
-    }, {})
-  }
+      acc[item.UserId].push(item);
+      return acc;
+    }, {});
+  };
 
   private getAverageSolvingAbilityPerStudent(studentsData: { [id: string]: DomainItem[] }): number {
-    const totalDifficulty = Object.entries(studentsData).reduce(
-      (acc, [_id, studentData]: [string, DomainItem[]], index) => {
-        const solvedExercises = studentData.filter((i) => !!i.Correct).sort((a, b) => +b.Difficulty - +a.Difficulty)
-        const failedExercises = studentData.filter((i) => !i.Correct).sort((a, b) => +a.Difficulty - +b.Difficulty)
+    const totalDifficulty = Object.entries(studentsData).reduce((acc, [_id, studentData]: [string, DomainItem[]]) => {
+      const solvedExercises = studentData.filter((i) => !!i.Correct).sort((a, b) => +b.Difficulty - +a.Difficulty);
+      const failedExercises = studentData.filter((i) => !i.Correct).sort((a, b) => +a.Difficulty - +b.Difficulty);
 
-        const maxDifficulty = parseInt(solvedExercises[0]?.Difficulty)
-        const minDifficulty = parseInt(failedExercises[0]?.Difficulty)
+      const maxDifficulty = parseInt(solvedExercises[0]?.Difficulty, 10);
+      const minDifficulty = parseInt(failedExercises[0]?.Difficulty, 10);
 
-        if (maxDifficulty && minDifficulty) {
-          acc = acc + (maxDifficulty + minDifficulty) / 2
-        } else if (maxDifficulty) {
-          acc = acc + maxDifficulty
-        } else if (minDifficulty) {
-          acc = acc + minDifficulty
-        }
-        return acc
-      },
-      0
-    )
+      if (maxDifficulty && minDifficulty) {
+        acc = acc + (maxDifficulty + minDifficulty) / 2;
+      } else if (maxDifficulty) {
+        acc = acc + maxDifficulty;
+      } else if (minDifficulty) {
+        acc = acc + minDifficulty;
+      }
+      return acc;
+    }, 0);
 
-    return totalDifficulty / Object.keys(studentsData).length
+    return totalDifficulty / Object.keys(studentsData).length;
   }
 }

@@ -9,7 +9,7 @@ There are two routes:
 
 ### Actual class level estimation
 
-Here there is a chart that displays the average difficulty level of exercises class students ara capable to handle per domain. With that data, teacher can see average current level of students in a specific domain and compare which domain they are struggling with. 
+Here there is a chart that displays the average difficulty level of exercises which class students are capable to handle per domain. With that data, teacher can see average current level of students in a specific domain and compare which domain they are struggling with. 
 
 The logic is splitting data per domain and then per student, checking the average level of student per domain and taking the average class level by dividing to students number. While defining the average level of a student, The logic is checking highest difficulty score that the student answered correctly and lowest difficulty score that the student answered incorrectly. First one indicates the highest level, and second one is the lowest. And the average level of a student is the average of this two number. 
 If the student doesn't have any incorrect answer, it means its level is the highest difficulty score that he/she answered. 

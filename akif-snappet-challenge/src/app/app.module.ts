@@ -1,21 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser'
-import { NgModule } from '@angular/core'
-import { HttpClientModule } from '@angular/common/http'
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component'
-import { RouterModule } from '@angular/router'
-import { DomainNames } from './models/class.model'
-import { NgxEchartsModule } from 'ngx-echarts'
-import { ActualLevelEstimationComponent } from './pages/actual-level-estimation/actual-level-estimation.component'
-import { RelativeProgressComponent } from './pages/relative-progress/relative-progress.component'
+import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { DomainNames } from './models/class.model';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { ActualLevelEstimationComponent } from './pages/actual-level-estimation/actual-level-estimation.component';
+import { RelativeProgressComponent } from './pages/relative-progress/relative-progress.component';
 
-const domains = DomainNames
+const domains = DomainNames;
 
 const ROUTES = [
   {
-    path:'',
+    path: '',
     pathMatch: 'full',
-    redirectTo:'actual-level'
+    redirectTo: 'actual-level',
   },
   {
     path: 'actual-level',
@@ -25,7 +25,7 @@ const ROUTES = [
     path: 'relative-progress',
     component: RelativeProgressComponent,
   },
-]
+];
 
 @NgModule({
   declarations: [AppComponent, ActualLevelEstimationComponent, RelativeProgressComponent],

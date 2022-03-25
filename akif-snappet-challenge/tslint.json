@@ -33,10 +33,9 @@
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [true, "as-needed"],
+    "allow-leading-underscore": true,
     "quotemark": [true, "single"],
-    "semicolon": {
-      "options": ["always"]
-    },
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "space-before-function-paren": {
       "options": {
         "anonymous": "never",
@@ -66,8 +65,9 @@
       ]
     },
     "variable-name": {
-      "options": ["ban-keywords", "check-format", "allow-pascal-case"]
+      "options": ["ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"]
     },
+
     "whitespace": {
       "options": ["check-branch", "check-decl", "check-operator", "check-separator", "check-type", "check-typecast"]
     },
