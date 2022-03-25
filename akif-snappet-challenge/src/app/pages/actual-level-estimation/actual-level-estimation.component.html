@@ -1,16 +1,10 @@
 <ng-container *ngIf="data$ | async as data; else loadingState">
-  <div class="card card-body shadow">
-    <span class="d-block ml-5 mb-5 pb-5">
-      This chart indicates average difficulty level of exercises that class students ara capable to handle per domain
-    </span>
+  <div class="sp-card">
+    <span> This chart indicates average difficulty level of exercises that class students ara capable to handle per domain </span>
     <div echarts [options]="data" class="demo-chart"></div>
   </div>
 </ng-container>
 
 <ng-template #loadingState>
-  <div class="d-flex justify-content-center mt-5">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
+  <app-spinner></app-spinner>
 </ng-template>

@@ -8,6 +8,7 @@ import { DomainNames } from './models/class.model';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ActualLevelEstimationComponent } from './pages/actual-level-estimation/actual-level-estimation.component';
 import { RelativeProgressComponent } from './pages/relative-progress/relative-progress.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 const domains = DomainNames;
 
@@ -28,7 +29,7 @@ const ROUTES = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ActualLevelEstimationComponent, RelativeProgressComponent],
+  declarations: [AppComponent, ActualLevelEstimationComponent, RelativeProgressComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
