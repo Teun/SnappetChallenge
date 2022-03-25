@@ -34,6 +34,10 @@ namespace Snappet.API.Controllers
                 var take = dailyReportRequest.PageSize == 0 ? SnappetConstants.PAGE_SIZE : dailyReportRequest.PageSize;
                 _logger.LogInformation("Daily report for: {date}", dailyReportRequest.Date);
                 var data = _exerciseRepository.GetStudentActivity(DateOnly.FromDateTime(dailyReportRequest.Date), skip, take);
+                if (data == null || data.Count() == 0)
+                {
+                    return NotFound();
+                }
                 return Ok(data);
             }
         }
@@ -47,6 +51,10 @@ namespace Snappet.API.Controllers
                 var take = dailyReportRequest.PageSize == 0 ? SnappetConstants.PAGE_SIZE : dailyReportRequest.PageSize;
                 _logger.LogInformation("Daily report for: {date}", dailyReportRequest.Date);
                 var data = _exerciseRepository.GetStudentExercises(DateOnly.FromDateTime(dailyReportRequest.Date), userId, skip, take);
+                if (data == null || data.Count() == 0)
+                {
+                    return NotFound();
+                }
                 return Ok(data);
             }
         }
