@@ -9,6 +9,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { ActualLevelEstimationComponent } from './pages/actual-level-estimation/actual-level-estimation.component';
 import { RelativeProgressComponent } from './pages/relative-progress/relative-progress.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const domains = DomainNames;
 
@@ -21,10 +22,12 @@ const ROUTES = [
   {
     path: 'actual-level',
     component: ActualLevelEstimationComponent,
+    data: { animation: 'ActualLevelPage' },
   },
   {
     path: 'relative-progress',
     component: RelativeProgressComponent,
+    data: { animation: 'RelativeProgressPage' },
   },
 ];
 
@@ -37,6 +40,7 @@ const ROUTES = [
       echarts: () => import('echarts'),
     }),
     RouterModule.forRoot(ROUTES),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
