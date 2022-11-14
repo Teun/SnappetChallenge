@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnappetChallengeAPI", "SnappetChallengeAPI\SnappetChallengeAPI.csproj", "{776FF885-E51E-4543-8D33-BF03B034EE83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnappetChallengeAPI", "SnappetChallengeBackEnd\SnappetChallengeAPI\SnappetChallengeAPI\SnappetChallengeAPI.csproj", "{8E61A488-F1EA-441B-B45B-41530A56B8BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{776FF885-E51E-4543-8D33-BF03B034EE83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{776FF885-E51E-4543-8D33-BF03B034EE83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{776FF885-E51E-4543-8D33-BF03B034EE83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{776FF885-E51E-4543-8D33-BF03B034EE83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E61A488-F1EA-441B-B45B-41530A56B8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E61A488-F1EA-441B-B45B-41530A56B8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E61A488-F1EA-441B-B45B-41530A56B8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E61A488-F1EA-441B-B45B-41530A56B8BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
