@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SnappetChallenge.Client.View.TodayStatisticalReportPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Clicked="LoadTodayStatisticalReport" Text="Load Today Statistical Report"/>
+            <ListView x:Name="lstStudentReport" 
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    SeparatorColor="LightGray" 
+                    SeparatorVisibility="Default" 
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding StatisticalReport}" 
+                    CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5" VerticalOptions="FillAndExpand"
+                                    MinimumHeightRequest="100">
+                                <StackLayout Orientation="Vertical" Padding="2" VerticalOptions="Center" Spacing="2">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                        <Label Text="Subject" FontSize="12" TextColor="Gray"/>
+                                        <Label Text="{Binding Subject}" FontSize="12" TextColor="Gray"/>
+
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                        <Label Text="Correct" FontSize="12" TextColor="Gray"/>
+                                        <Label Text="{Binding Correct}" FontSize="12" TextColor="Gray"/>
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                        <Label Text="Pass Count" FontSize="12" TextColor="Gray"/>
+                                        <Label Text="{Binding PassCount}" FontSize="12" TextColor="Gray"/>
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Fail Count" FontSize="12" TextColor="#3483eb"/>
+                                        <Label Text="{Binding FailCount}" FontSize="12" TextColor="#3483eb"/>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

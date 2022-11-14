@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:control="clr-namespace:SnappetChallenge.Client.Control"
+             x:Class="SnappetChallenge.Client.View.ItemLoaderView">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="10"
+                      Padding="10,10,10,10"
+                      ColumnDefinitions="60,*"
+                      HeightRequest="60">
+
+                <control:SkeletonView
+                                Grid.Column="0"                        
+                                Grid.Row="0"
+                                HeightRequest="60"
+                                WidthRequest="60"                        
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+                <Grid   
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        VerticalOptions="Start"                        
+                        RowDefinitions="*,0.8*"
+                        RowSpacing="5">
+
+                    <control:SkeletonView 
+                            Grid.Row="0"
+                            VerticalOptions="Start"/>
+
+                    <control:SkeletonView  
+                            Grid.Row="1"
+                            VerticalOptions="Start"/>
+
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+
+</ContentView>

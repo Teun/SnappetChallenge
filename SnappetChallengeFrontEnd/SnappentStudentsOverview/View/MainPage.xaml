@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SnappetChallenge.View.MainPage">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+        <Button Text="Open StatisticalReport" Clicked="OpenStatisticalReportClikced"/>
+        <Button Text="Open Filter student" Clicked="OpenFilterStudentClikced"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Change the switch to work on developmet environment http://localhost:5226/api/Student"/>
+            <Switch IsToggled="{Binding IsDevelopmetEnvironment}" />
+        </StackLayout>
+        
+    </StackLayout>
+
+</ContentPage>
