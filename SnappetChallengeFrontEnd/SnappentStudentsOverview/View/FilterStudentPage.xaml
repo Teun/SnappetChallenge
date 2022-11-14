@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Views="clr-namespace:SnappetChallenge.Client.View"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+             xmlns:converter="clr-namespace:SnappetChallenge.Client.Control"
+             xmlns:viewModels="clr-namespace:SnappetChallenge.Client.ViewModel"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="SnappetChallenge.Client.View.FilterStudentPage">
+    <ContentPage.Resources>
+        <converter:CollectionHasElementsConverter x:Key="CollectionHasElementsConverter"/>
+        <converter:IsEqualConverter x:Key="IsEqualConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="2*,8*">
+            <StackLayout Grid.Column="0">
+                <Button Command="{Binding GetFilterStudentItemsCommand}"
+                    Text="Get Student By Filter"/>
+                <Label Text="Start time"/>
+                <DatePicker Date="{Binding FilterStartSpecificTime}"
+                             MaximumDate="03/24/2015" />
+
+                <Label Text="End time"/>
+                <DatePicker Date="{Binding FilterEndSpecificTime}" 
+                             MaximumDate="03/24/2015"/>
+                
+                <Label Text="Select Domain or multi domains for filter student"/>
+                <syncfusion:SfListView 
+                            SelectionMode="Multiple"
+                            SelectionGesture="Tap"
+                            SelectedItems ="{Binding SelectedDomains}"
+                            ItemsSource="{Binding StudentDomains}"
+                            ItemSize="40">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Label Text="{Binding .}" 
+                                   FontAttributes="Bold" 
+                                   TextColor="Black" 
+                                   FontSize="15" />
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+                <BoxView  HeightRequest="5"
+                          BackgroundColor="Black"
+                          HorizontalOptions="FillAndExpand"/>
+                <Label Text="Select Subject or multi Subjects for filter student  "/>
+                <syncfusion:SfListView  
+                            SelectionMode="Multiple"
+                            SelectionGesture="Tap"
+                            SelectedItems="{Binding SelectedSubjects}"
+                            ItemsSource="{Binding StudentSubjects}"
+                            ItemSize="40">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Label Text="{Binding .}" 
+                                   FontAttributes="Bold" 
+                                   TextColor="Black" 
+                                   FontSize="15" />
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+               
+            </StackLayout>
+            <StackLayout Grid.Column="1">
+                <Views:ItemLoaderView 
+                        IsVisible="{Binding IsStudentListLoading}"/>
+                <Grid  
+                    IsVisible="{Binding IsStudentListLoading,Converter={StaticResource IsEqualConverter},ConverterParameter=True?False:True}">
+                        <StackLayout    
+                            IsVisible="{Binding CustomStudentReport, Converter={StaticResource CollectionHasElementsConverter}}"
+                            Spacing="0">
+                            <Label 
+                                Margin="15,15,15,0"
+                                HorizontalTextAlignment="Center"
+                                Text="There are no items" />
+                            <buttons:SfButton
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="White"
+                                    Command="{Binding ClearFilterCommand}">
+                                <buttons:SfButton.Content>
+                                    <Label  Text="Clear filter"
+                                        TextDecorations="Underline"/>
+                                </buttons:SfButton.Content>
+                            </buttons:SfButton>
+                        </StackLayout>
+
+                    <syncfusion:SfListView  
+                                    AutoFitMode="DynamicHeight"
+                                    BackgroundColor="White"
+                                    x:Name="StudentList"
+                                    VerticalOptions="FillAndExpand"
+                                    IsVisible="{Binding CustomStudentReport, Converter={StaticResource CollectionHasElementsConverter}}"
+                                    ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModels:FilterStudentViewModel}}, Path=CustomStudentReport}"
+                                    SelectionMode="Single"
+                                    ItemSize="60"
+                                    FocusBorderColor="White"
+                                    SelectionBackgroundColor="Transparent"
+                                    LoadMoreCommand="{Binding LoadMoreStudentApplyFilterCommand}"
+                                    LoadMoreCommandParameter="{Binding Source={x:Reference Name=StudentList}}"
+                                    LoadMoreOption="AutoOnScroll"
+                                    IsBusy="{Binding IsStudentListLoading}"
+                                    TapCommand="{Binding SelectedMeetingCommand,ConverterParameter={Binding .}}">
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10"
+                                      RowDefinitions="*,*,2"
+                                      ColumnDefinitions="2*,8*">
+                                    <StackLayout 
+                                        Grid.Row="0"
+                                        Grid.Column="0">
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="UserId" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding UserId}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="ExerciseId" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding ExerciseId}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        
+                                    </StackLayout>
+
+                                    <StackLayout
+                                         Grid.Row="1"
+                                        Grid.Column="0">
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="SubmittedAnswerId" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding SubmittedAnswerId}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Correct" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding Correct}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start">
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Difficulty" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding Difficulty}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Subject" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding Subject}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout
+                                         Grid.Row="1"
+                                        Grid.Column="1"
+                                         HorizontalOptions="Start">
+
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Domain" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding Domain}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="LearningObjective" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding LearningObjective}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label  FontAttributes="Bold" 
+                                               TextColor="Teal" FontSize="21" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="SubmitDateTime" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding SubmitDateTime}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <BoxView Grid.Row="2"
+                                             Grid.ColumnSpan="2"
+                                            HeightRequest="2"
+                                             BackgroundColor="Black"/>
+                                </Grid>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                        <syncfusion:SfListView.LoadMoreTemplate>
+                            <DataTemplate>
+                                <Grid HeightRequest="80"
+                                        IsVisible="{Binding IsStudentListLoading}">
+                                    <syncfusion:LoadMoreIndicator
+                                            Color="LightGray" 
+                                            IsRunning="{Binding IsBusy, Source={x:Reference Name=StudentList}}" 
+                                            VerticalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </syncfusion:SfListView.LoadMoreTemplate>
+                    </syncfusion:SfListView>    
+                </Grid>
+            </StackLayout>
+        </Grid>
+        
+        
+        
+        
+    </ContentPage.Content>
+</ContentPage>
