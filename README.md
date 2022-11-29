@@ -39,3 +39,10 @@ And then run the app in the development mode:
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Todo:
+* Create unit tests.
+* Structure backend controller better.
+* Create tooltip for the dropdown options.
+* Expand feature have check report for the other day/dates.
+*
+

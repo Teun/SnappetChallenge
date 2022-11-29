@@ -64,6 +64,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Student Progress Report</h1>
+        <p>Correct answers chart  per student.</p>
       </header>
       <SelectionWrapper>
           <Dropdown 

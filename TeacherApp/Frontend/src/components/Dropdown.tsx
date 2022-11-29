@@ -45,7 +45,7 @@ const Dropdown: FunctionComponent<Props> = ({ title, options, checked, setChecke
                 onChange={() => {}} 
               />
               <Label htmlFor={`option-${i}`} onClick={() => setChecked(option)}>
-                {option}
+                {option?.charAt(0).toUpperCase() + option.slice(1)}
               </Label>
             </Fragment>
           )

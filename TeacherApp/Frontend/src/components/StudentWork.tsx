@@ -32,7 +32,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Day ... Subject A Chart',
+      text: 'Correct answer chart per student.',
     },
   },
 };
