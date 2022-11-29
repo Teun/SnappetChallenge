@@ -1,0 +1,11 @@
+﻿@model IQueryable<Work>
+
+@foreach (var w in Model ?? Enumerable.Empty<Work>())
+{
+	<div>
+		<h1>@w.SubmittedAnswerId</h1>
+		<h3>@w.UserId.ToString()</h3>
+		@w.Subject
+		<h4>@w.LearningObjective</h4>
+	</div>
+}

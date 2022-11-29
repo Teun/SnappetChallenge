@@ -1,0 +1,13 @@
+@model StudentListViewModel
+
+@foreach (var s in Model?.Students ?? Enumerable.Empty<Student>())
+{
+	<div>
+		<h1>@s.StudentId</h1>
+		<h3>@s.Name</h3>
+		<h4>@s.Description</h4>
+	</div>
+}
+
+<span>XXX</span>
+<div page-model="@Model?.PagingInfo" page-action="Index" page-class="btn"></div>
