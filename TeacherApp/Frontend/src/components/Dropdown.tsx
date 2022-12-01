@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent, MouseEvent, useState } from 'react';
 import styled from 'styled-components';
 
-type Props = {
+interface Props {
   title: string,
   options?: string[],
   checked: string,

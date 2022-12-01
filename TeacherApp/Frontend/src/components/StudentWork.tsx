@@ -37,7 +37,7 @@ export const options = {
   },
 };
 
-type Props = {
+interface Props {
   subject: string;
   objective: string | null;
 };

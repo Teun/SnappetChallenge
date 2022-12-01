@@ -38,7 +38,7 @@ namespace TeacherApp.Controllers
 
 		// GET: /students/
 		[HttpGet("students")]
-		public async Task<ActionResult<List<Work>>> GetStudents()
+		public async Task<ActionResult<List<Student>>> GetStudents()
         {
             var students = await repository.Students.OrderBy(s => s.StudentId).ToListAsync();
             return Ok(students);
@@ -56,7 +56,7 @@ namespace TeacherApp.Controllers
 
 		// GET: /subjects/
 		[HttpGet("subjects")]
-		public async Task<ActionResult<List<Work>>> GetSubjects()
+		public async Task<ActionResult<List<string>>> GetSubjects()
 		{
 			var subjects = await repository.Works
                 .Where(w => w.SubmitDateTime >= toDateUtc)
@@ -69,7 +69,7 @@ namespace TeacherApp.Controllers
 
         // POST: /learningObjectives/
         [HttpPost("learningobjectives")]
-        public async Task<ActionResult<List<Work>>> GetLearningObjectives([FromBody] string subject)
+        public async Task<ActionResult<List<string>>> GetLearningObjectives([FromBody] string subject)
         {
             var learningObjectives = await repository.Works
                 .Where(w => w.SubmitDateTime >= toDateUtc && w.Subject == subject)
