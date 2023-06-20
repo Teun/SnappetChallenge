@@ -6,7 +6,7 @@ import Table from "./components/table.svelte"
 import Chart from "./components/chart.svelte"
 let selectedDate = new Date("2015-03-25T07:35:38.740")
 let users = null;
-const client = new GraphQLClient('http://localhost:4000/graphql'); // Replace with your GraphQL endpoint URL
+const client = new GraphQLClient('/graphql'); // Replace with your GraphQL endpoint URL
 const query = `
     query WorkOfTheDay($submitDateTime: String!) {
     workOfTheDay(SubmitDateTime: $submitDateTime) {

@@ -89,6 +89,8 @@ async function startServer() {
 
   server.applyMiddleware({ app });
 
+  app.use(express.static('../client/build/'))
+
   app.use((req, res) => {
     res.status(200);
     res.send('Hello!');
