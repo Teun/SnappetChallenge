@@ -1,0 +1,83 @@
+service: snappet-challenge
+  
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  buckets:
+    answers: ${self:service}-answers
+    client-app: ${self:service}-client-app
+  tables:
+    answers: ${self:service}-answers
+  apiGatewayCaching:
+    enabled: false
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+  - serverless-api-gateway-caching
+  - serverless-iam-roles-per-function
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  apiGateway:
+    minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    ANSWERS_BUCKET: ${self:custom.buckets.answers}
+    ANSWERS_TABLE: ${self:custom.tables.answers}
+    ANSWERS_FILE_KEY: work.json
+
+
+functions:
+  getAnswers:
+    handler: src/read/answers.main
+    caching:
+      enabled: false
+    iamRoleStatements:
+      - Effect: "Allow"        
+        Action:
+          - dynamodb:Scan  
+        Resource: !GetAtt AnswersTable.Arn
+    events:
+      - http:
+          method: get
+          path: answers
+  createAnswers:
+    handler: src/create/answers.main
+    timeout: 30
+    iamRoleStatements:
+      - Effect: "Allow"        
+        Action:
+          - dynamodb:PutItem  
+        Resource: !GetAtt AnswersTable.Arn
+      - Effect: "Allow"        
+        Action:
+          - s3:GetObject     
+        Resource: arn:aws:s3:::${self:custom.buckets.answers}/*
+    events:
+      - s3:
+          bucket: ${self:custom.buckets.answers}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix:
+              - .json
+
+resources:
+  Resources:
+    ClientApp:
+      Type: AWS::S3::Bucket
+      Properties: 
+        BucketName: ${self:custom.buckets.client-app}
+    AnswersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tables.answers}
+        AttributeDefinitions:
+          - AttributeName: SubmittedAnswerId
+            AttributeType: N
+        KeySchema: 
+          - AttributeName: SubmittedAnswerId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
