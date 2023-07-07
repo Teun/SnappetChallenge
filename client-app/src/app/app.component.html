@@ -1,6 +1,21 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td
+      mat-cell
+      [style.background-color]="
+        element[column].Correct === 1
+          ? '#85b72b'
+          : element[column].Correct === 0
+          ? '#E66060'
+          : 'white'
+      "
+      *matCellDef="let element"
+    >
+      {{ format(element, column) }}
+    </td>
+  </ng-container>
 
-
-<!-- Toolbar -->
-<div>
-  <students />
-</div>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
