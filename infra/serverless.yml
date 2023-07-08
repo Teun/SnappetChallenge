@@ -31,14 +31,14 @@ provider:
 
 
 functions:
-  getAnswers:
+  readAnswers:
     handler: src/read/answers.main
     caching:
       enabled: false
     iamRoleStatements:
       - Effect: "Allow"        
         Action:
-          - dynamodb:Scan  
+          - dynamodb:Query  
         Resource: !GetAtt AnswersTable.Arn
     events:
       - http:
@@ -75,9 +75,13 @@ resources:
       Properties:
         TableName: ${self:custom.tables.answers}
         AttributeDefinitions:
-          - AttributeName: SubmittedAnswerId
-            AttributeType: N
+          - AttributeName: yyyy-mm-dd
+            AttributeType: S
+          - AttributeName: SubmitDateTime
+            AttributeType: S
         KeySchema: 
-          - AttributeName: SubmittedAnswerId
+          - AttributeName: yyyy-mm-dd
             KeyType: HASH
+          - AttributeName: SubmitDateTime
+            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
