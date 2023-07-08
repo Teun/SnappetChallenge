@@ -25,9 +25,8 @@ export async function main(): Promise<void | Error> {
 
   const records: Answer[] = JSON.parse(jsonContent);
 
-  const insertRecords: Promise<PromiseResult<PutItemOutput, any>>[] = records
-    .slice(0, 300)
-    .map((Item) => {
+  const insertRecords: Promise<PromiseResult<PutItemOutput, any>>[] =
+    records.map((Item) => {
       const insertRecord: Request<PutItemOutput, any> = dynamodb.put({
         TableName,
         Item: {
