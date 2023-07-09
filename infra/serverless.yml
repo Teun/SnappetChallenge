@@ -25,7 +25,12 @@ provider:
     minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
-    ANSWERS_BUCKET: ${self:custom.buckets.answers}
+    ANSWERS_BUCKET:
+      Fn::Join:
+        - ""
+        - - Ref: "ApiGatewayRestApi"
+          - "-"
+          - ${self:custom.buckets.answers}
     ANSWERS_TABLE: ${self:custom.tables.answers}
     ANSWERS_FILE_KEY: work.json
 
