@@ -15,24 +15,18 @@ jobs:
           node-version: "16"
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Deploy Infrastructure
+      - name: Deploy Infrastructure and App
         run: |
           cd infra
           npm i && npm i serverless -g
           sls_deployment_output=$(sls deploy --verbose --force)
+          echo "output ------------------------"
           echo "$sls_deployment_output"
-          echo "SLS_OUTPUT=$sls_deployment_output" >> $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
+          echo "output ------------------------"
           cd ..
-        env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: us-east-1
-      - name: Deploy App
-        run: |
           cd client-app
           npm i && npm i @angular/cli -g
-          endpoint=$(echo "$SLS_OUTPUT" | sed -n 's/endpoint: GET - \(.*\)/\1/p')
+          endpoint=$(echo "$sls_deployment_output" | sed -n 's/endpoint: GET - \(.*\)/\1/p')
           echo "$endpoint"
           echo "export const environment = {
             API_ENDPOINT: '$endpoint'
