@@ -7,7 +7,7 @@ It took me about 16 hours to make.
 For the solution, I tried using a few approaches:
 
 - Use the job's stack as seen in the job description (AWS, Angular, TypeScript)
-- Use IaC and CI/CD as much as possible (CloudFormation and Github Actions)
+- Use IaC and CI/CD (CloudFormation and Github Actions) to have the project as automated, scalable, versionable, and consistent as possible
 - Minimum configuration needed
 - Using serverless (benefits of "inifite" scalability, less config, and no costs for idle time). I used Serverless Framework to facilitate the provisioning of resources, which is just an abstraction for CloudFormation
 
@@ -17,7 +17,7 @@ The result is you can run the project on your AWS account simply by configuring 
 
 1. Have an AWS account
 2. Fork the repo
-3. In the repo, go to Settings > Actions and add your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as repository secrets.
+3. In the repo, go to Settings > Secrets and variables > Actions and add your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as repository secrets.
 4. Push something to master branch. Within a few minutes your Angular project stored in your S3 bucket should be able to query your DynamoDB tables and show the students' answers
 5. Get the app's URL on your client-app bucket's properties on AWS console.
 
