@@ -31,7 +31,8 @@ jobs:
           echo "export const environment = {
             API_ENDPOINT: '$endpoint'
           };" > src/environments/environment.ts
-          endpoint_hash=${${endpoint#"https://"}%%.*}
+          endpoint_hash=${endpoint#"https://"}
+          endpoint_hash=${endpoint_hash%%.*}
           ng build && aws s3 sync ../client-app/dist/client-app s3://$endpoint_hash-snappet-challenge-client-app
           cd ..
         env:
