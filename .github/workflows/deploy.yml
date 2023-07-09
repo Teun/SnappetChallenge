@@ -19,15 +19,11 @@ jobs:
         run: |
           cd infra
           npm i && npm i serverless -g
-          sls_deployment_output=$(sls deploy --verbose --force)
-          echo "output ------------------------"
-          echo "$sls_deployment_output"
-          echo "output -  -----------------------"
+          sls_deployment_output=$(sls deploy --verbose --force)s
           cd ..
           cd client-app
           npm i && npm i @angular/cli -g
           endpoint=$(echo "$sls_deployment_output" | sed -n 's/endpoint: GET - \(.*\)/\1/p')
-          echo "$endpoint"
           echo "export const environment = {
             API_ENDPOINT: '$endpoint'
           };" > src/environments/environment.ts
@@ -35,7 +31,7 @@ jobs:
           endpoint_hash=${endpoint_hash%%.*}
           ng build && aws s3 sync ../client-app/dist/client-app s3://$endpoint_hash-snappet-challenge-client-app
           cd ..
-          aws s3api put-object --bucket s3://$endpoint_hash-snappet-challenge-answers --key work.json --body Data/work.json
+          aws s3api put-object --bucket $endpoint_hash-snappet-challenge-answers --key work.json --body Data/work.json
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
