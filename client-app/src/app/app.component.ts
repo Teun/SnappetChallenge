@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 export interface Answer {
   Correct: number;
@@ -32,11 +33,8 @@ export class AppComponent implements OnInit {
   }
 
   fetchData() {
-    alert('shit');
     this.http
-      .get<any>(
-        `https://hrufbcl8y2.execute-api.us-east-1.amazonaws.com/dev/answers?date=${this.dateChoices[0]}`
-      )
+      .get<any>(`${environment.API_ENDPOINT}?date=${this.dateChoices[0]}`)
       .subscribe(
         (data) => {
           [this.dataSource, this.displayedColumns] = this._processData(

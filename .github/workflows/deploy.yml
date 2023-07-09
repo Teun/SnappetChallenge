@@ -1,0 +1,39 @@
+name: Deploy
+run-name: Deployment of Snappet Challenge App
+on:
+  push:
+    branches:
+      - master
+      - cd
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm ci && npm i serverless -g && npm i @angular/cli -g
+      - name: Deploy Infrastructure
+        run: |
+          cd infra
+          npm ci
+          sls_deployment_output=$(sls deploy --verbose --force)
+          echo "$sls_deployment_output"
+          cd ..
+      - name: Deploy App
+        run: |
+          cd client-app
+          npm ci
+          endpoint=$(echo "$sls_deployment_output" | sed -n 's/endpoint: GET - \(.*\)/\1/p')
+          echo "$endpoint"
+          echo "export const environment = {
+            API_ENDPOINT: '$endpoint'
+          };" > src/environments/environment.ts
+          ng build && aws s3 sync ../client-app/dist/client-app s3://snappet-challenge-client-app
+          cd ..
+      - name: Complete Deployment
+        run: echo Deployment Complete
