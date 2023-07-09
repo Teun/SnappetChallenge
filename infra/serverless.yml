@@ -75,7 +75,12 @@ resources:
     ClientApp:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${self:custom.buckets.client-app}
+        BucketName:
+          Fn::Join:
+            - ""
+            - - Ref: "ApiGatewayRestApi"
+              - "-"
+              - ${self:custom.buckets.client-app}
         WebsiteConfiguration: 
           IndexDocument: index.html
           ErrorDocument: index.html
@@ -84,7 +89,7 @@ resources:
           BlockPublicPolicy: false
           IgnorePublicAcls: false
           RestrictPublicBuckets: false
-          
+
     ClientAppPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
@@ -97,7 +102,14 @@ resources:
               Principal: "*"
               Action:
                 - s3:GetObject
-              Resource: arn:aws:s3:::snappet-challenge-client-app/*
+              Resource:
+                Fn::Join:
+                  - ""
+                  - - "arn:aws:s3:::"
+                    - Ref: "ApiGatewayRestApi"
+                    - "-"
+                    - ${self:custom.buckets.client-app}
+                    - "/*"
     AnswersTable:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -118,4 +130,4 @@ resources:
       Value: !GetAtt
         - ClientApp
         - WebsiteURL
-      Description: URL for website hosted on S3%
+      Description: URL for website hosted on S3

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - cd
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -22,7 +21,7 @@ jobs:
           sls_deployment_output=$(sls deploy --verbose --force)
           echo "output ------------------------"
           echo "$sls_deployment_output"
-          echo "output ------------------------"
+          echo "output -  -----------------------"
           cd ..
           cd client-app
           npm i && npm i @angular/cli -g
@@ -31,7 +30,8 @@ jobs:
           echo "export const environment = {
             API_ENDPOINT: '$endpoint'
           };" > src/environments/environment.ts
-          ng build && aws s3 sync ../client-app/dist/client-app s3://snappet-challenge-client-app
+          endpoint_hash=${${endpoint#"https://"}%%.*}
+          ng build && aws s3 sync ../client-app/dist/client-app s3://$endpoint_hash-snappet-challenge-client-app
           cd ..
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
