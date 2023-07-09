@@ -15,19 +15,17 @@ jobs:
           node-version: "16"
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm ci && npm i serverless -g && npm i @angular/cli -g
       - name: Deploy Infrastructure
         run: |
           cd infra
-          npm ci
+          npm ci && npm i serverless -g
           sls_deployment_output=$(sls deploy --verbose --force)
           echo "$sls_deployment_output"
           cd ..
       - name: Deploy App
         run: |
           cd client-app
-          npm ci
+          npm ci && npm i @angular/cli -g
           endpoint=$(echo "$sls_deployment_output" | sed -n 's/endpoint: GET - \(.*\)/\1/p')
           echo "$endpoint"
           echo "export const environment = {
