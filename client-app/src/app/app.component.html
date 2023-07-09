@@ -1,32 +1,51 @@
-<div>
-  <select (change)="onChange()">
-    <option *ngFor="let choice of dateChoices">{{ choice }}</option>
-  </select>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container
-      *ngFor="let column of displayedColumns"
-      [matColumnDef]="column"
-    >
-      <th mat-header-cell style="font-size: 10px" *matHeaderCellDef>
-        {{ column }}
-      </th>
-      <td
-        style="font-size: 10px"
-        mat-cell
-        [style.background-color]="
-          element[column].Correct === 1
-            ? '#85b72b'
-            : element[column].Correct === 0
-            ? '#E66060'
-            : 'white'
-        "
-        *matCellDef="let element"
-      >
-        {{ format(element, column) }}
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+<div class="container">
+  <h1>Classroom Dashboard</h1>
+  <p>
+    Challenge for Full-stack developer position @ Snappet done by
+    <a href="https://www.linkedin.com/in/caiodellalibera">Caio Della Libera</a>
+    <br>
+    <a href="https://github.com/dlcaio/SnappetChallenge">Github repo</a>
+  </p>
+  
+  <p class="loading-message" [style.display]="loading ? 'block' : 'none'">
+    Loading {{ dateChoices[0] }}'s answers
+  </p>
+  <div class="content" [style.display]="loading ? 'none' : 'block'">
+    <select class="choice-select" (change)="onChange()">
+      <option *ngFor="let choice of dateChoices">
+        View {{ choice }}'s answers
+      </option>
+    </select>
+    <ul *ngFor="let student of Object.keys(dataSource)">
+      <li>
+        <a class="student-link" href="#" (click)="toggleAnswers(student)">
+          Student {{ student }} worked on the following exercises
+          {{ dateChoices[0] }}:
+        </a>
+        <ul *ngIf="showAnswers[student]">
+          <li
+            *ngFor="
+              let objective of Object.keys(dataSource[student]);
+              let i = index
+            "
+          >
+            {{ objective }}
+            <ul>
+              <li
+                class="answer-item"
+                [style.color]="answer.Correct === 1 ? 'green' : 'red'"
+                *ngFor="
+                  let answer of dataSource[student][objective];
+                  let i = index
+                "
+              >
+                Exercise: {{ answer.ExerciseId }}; Difficulty:
+                {{ answer.Difficulty }}; Progress: {{ answer.Progress }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>

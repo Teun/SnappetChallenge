@@ -20,69 +20,68 @@ export interface Answer {
   styleUrls: ['app.component.css'],
 })
 export class AppComponent implements OnInit {
-  dateChoices: string[] = ['today', 'this-week'];
+  dateChoices: string[] = ['today', 'this week'];
   students: {};
-  dataSource: any[] = [];
+  dataSource: any = {};
   displayedColumns: any[] = [];
+  loading: boolean = false;
+  cache: any = {};
+  Object = Object;
+  showAnswers: { [student: string]: boolean } = {};
 
   constructor(private http: HttpClient) {}
+
+  toggleAnswers(student: string) {
+    this.showAnswers[student] = !this.showAnswers[student];
+  }
 
   onChange() {
     this.dateChoices = this.dateChoices.reverse();
     this.fetchData();
   }
 
+  aggregateArrayByKey(arr: Array<any>, key: string): any {
+    return arr.reduce((result, obj) => {
+      const value = obj[key];
+      if (!result[value]) {
+        result[value] = [];
+      }
+      result[value].push(obj);
+      return result;
+    }, {});
+  }
+
   fetchData() {
+    this.loading = true;
+
+    if (this.cache[this.dateChoices[0]]) {
+      this.dataSource = this.cache[this.dateChoices[0]];
+      this.loading = false;
+      return;
+    }
+
     this.http
       .get<any>(`${environment.API_ENDPOINT}?date=${this.dateChoices[0]}`)
       .subscribe(
         (data) => {
-          [this.dataSource, this.displayedColumns] = this._processData(
-            data.items
-          );
+          const res = this.aggregateArrayByKey(data.items, 'UserId');
+          Object.keys(res).forEach((user) => {
+            res[user] = this.aggregateArrayByKey(
+              res[user],
+              'LearningObjective'
+            );
+          });
+
+          this.dataSource = res;
           console.log(this.dataSource);
+          this.cache[this.dateChoices[0]] = this.dataSource;
+          this.loading = false;
         },
         (error) => {
           console.error('Error fetching data from the API:', error);
+          this.loading = false;
         }
       );
-  }
-  format(el, column) {
-    if (column === 'UserId') return el[column];
-    if (!el[column].ExerciseId) return ``;
-    return `Exercise: ${el[column].ExerciseId}\nProgress: ${el[column].Progress}`;
-  }
-  _processData(data: Answer[]) {
-    // Group the data by UserId
-    const groupedData = data.reduce((acc, exercise) => {
-      const { UserId, SubmitDateTime, ...rest } = exercise;
-      if (!acc[UserId]) {
-        acc[UserId] = { UserId };
-      }
-      acc[UserId][SubmitDateTime] = rest;
-      return acc;
-    }, {});
-
-    // Extract unique SubmitDateTime values
-    const submitDateTimes = [
-      ...new Set(data.map((exercise) => exercise.SubmitDateTime)),
-    ]
-      .sort()
-      .reverse();
-
-    // Convert groupedData object into an array of user objects
-    const result = Object.values(groupedData);
-
-    // Add missing SubmitDateTime properties with a value of 0
-    result.forEach((user) => {
-      submitDateTimes.forEach((dateTime: string) => {
-        if (!user.hasOwnProperty(dateTime)) {
-          user[dateTime] = ``;
-        }
-      });
-    });
-    console.log(result);
-    return [result, ['UserId', ...submitDateTimes]];
   }
 
   ngOnInit() {
