@@ -64,7 +64,12 @@ functions:
         Resource: arn:aws:s3:::${self:custom.buckets.answers}/*
     events:
       - s3:
-          bucket: ${self:custom.buckets.answers}
+          bucket:
+            Fn::Join:
+              - ""
+              - - Ref: "ApiGatewayRestApi"
+                - "-"
+                - ${self:custom.buckets.answers}
           event: s3:ObjectCreated:*
           rules:
             - suffix:
