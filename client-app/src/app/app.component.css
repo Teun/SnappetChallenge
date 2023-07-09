@@ -1,0 +1,33 @@
+.container {
+  margin: 20px;
+}
+
+.loading-message {
+  display: none;
+}
+
+.content {
+  display: block;
+}
+
+.choice-select {
+  margin-bottom: 10px;
+}
+
+.student-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.answer-item {
+  margin-bottom: 5px;
+}
+
+.answer-item [style.color='green'] {
+  color: green;
+}
+
+.answer-item [style.color='red'] {
+  color: red;
+}
