@@ -61,23 +61,26 @@ functions:
       - Effect: "Allow"
         Action:
           - s3:GetObject
-        Resource: arn:aws:s3:::${self:custom.buckets.answers}/*
+        Resource:
+          Fn::Join:
+            - ""
+            - - "arn:aws:s3:::"
+              - Ref: "ApiGatewayRestApi"
+              - "-"
+              - ${self:custom.buckets.answers}
+              - "/*"
     events:
       - s3:
-          bucket:
-            Fn::Join:
-              - ""
-              - - Ref: "ApiGatewayRestApi"
-                - "-"
-                - ${self:custom.buckets.answers}
+          bucket: !Ref AnswersBucket
           event: s3:ObjectCreated:*
+          existing: true
           rules:
             - suffix:
                 - .json
 
 resources:
   Resources:
-    ClientApp:
+    ClientAppBucket:
       Type: AWS::S3::Bucket
       Properties:
         BucketName:
@@ -95,10 +98,20 @@ resources:
           IgnorePublicAcls: false
           RestrictPublicBuckets: false
 
-    ClientAppPolicy:
+    AnswersBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName:
+          Fn::Join:
+            - ""
+            - - Ref: "ApiGatewayRestApi"
+              - "-"
+              - ${self:custom.buckets.answers}
+
+    ClientAppBucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
-        Bucket: !Ref ClientApp
+        Bucket: !Ref ClientAppBucket
         PolicyDocument:
           Version: "2012-10-17"
           Statement:
@@ -115,6 +128,7 @@ resources:
                     - "-"
                     - ${self:custom.buckets.client-app}
                     - "/*"
+                
     AnswersTable:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -133,6 +147,6 @@ resources:
   Outputs:
     WebsiteURL:
       Value: !GetAtt
-        - ClientApp
+        - ClientAppBucket
         - WebsiteURL
       Description: URL for website hosted on S3
