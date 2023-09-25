@@ -1,0 +1,10 @@
+<section>
+  <h1>Snappet Class</h1>
+  <div class="frame">
+    <div class="col-md-4">
+      <app-student (updatedEvent)="gotData($event)"></app-student>
+    </div>
+
+    <app-student-details data="{{ studentCurrent }}"></app-student-details>
+  </div>
+</section>

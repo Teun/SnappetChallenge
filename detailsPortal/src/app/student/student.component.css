@@ -1,0 +1,36 @@
+.center {
+  top: 50%;
+  position: absolute;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+.studentsList {
+  overflow-y: auto;
+  max-height: 400px;
+}
+.todo-cmp li:hover {
+  background: rgba(251, 183, 49, 1);
+  color: white;
+  text-align: center;
+  font-weight: 600;
+}
+.active {
+  background: rgba(251, 183, 49, 1);
+  color: white;
+  text-align: center;
+  font-weight: 600;
+}
+.todo-cmp li {
+  cursor: pointer;
+  padding: 5px;
+  text-align: center;
+  font-weight: 600;
+}
+.todo-cmp {
+  background: #ffffff;
+  color: #497081;
+  padding: 10px 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.15);
+  width: 180px;
+}

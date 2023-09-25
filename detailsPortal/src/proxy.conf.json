@@ -1,0 +1,7 @@
+{
+    "/": {
+        "target": "http://16.16.63.147:5000",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

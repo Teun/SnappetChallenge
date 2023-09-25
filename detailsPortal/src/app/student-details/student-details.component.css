@@ -1,0 +1,96 @@
+.progress-container {
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+.totalRecords {
+  float: right;
+}
+.statusTab {
+  position: relative;
+  width: 50%;
+  left: 40%;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  color: #497081;
+  font-weight: 600;
+  background: white;
+  width: 43%;
+  padding: 10px 20px;
+}
+.calendarBlock {
+  margin-left: 10%;
+  margin-top: 10px;
+}
+.progress {
+  text-align: center;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #4caf50;
+}
+
+.blog-container {
+  overflow-y: auto;
+  max-height: 450px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+a {
+  font-family: Roboto;
+}
+.blog-card-blog {
+  margin-top: 30px;
+}
+.dateTimeSpan {
+  float: right;
+}
+.blog-card-description {
+  font-size: 13px;
+}
+.blog-card {
+  position: relative;
+  width: 50%;
+  left: 40%;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.blog-card .blog-table {
+  padding: 15px 30px;
+}
+.blog-table {
+  margin-bottom: 0px;
+}
+.blog-category {
+  position: relative;
+  line-height: 0;
+  margin: 15px 0;
+}
+.blog-text-success {
+  color: #28a745 !important;
+  font-size: 12px;
+}
+
+.blog-card-caption {
+  font-weight: 700;
+}
+.blog-card-caption,
+.blog-card-caption a {
+  color: #333;
+  text-decoration: none;
+}
+
+p {
+  color: #3c4857;
+}
+
+.blog-card .ftr div {
+  display: inline-block;
+}

@@ -1,0 +1,49 @@
+<div class="calendarBlock">
+  <input
+    type="date"
+    name="selectDate"
+    [(ngModel)]="currentD"
+    value="2015-03-02"
+    [max]="getToday()"
+    (input)="onDateChnge()"
+  />
+</div>
+<div class="statusTab">
+  {{ currentStatus }}
+  <span class="totalRecords">Total Records: {{ total }}</span>
+</div>
+<div class="blog-container">
+  <div *ngFor="let data of newdata" class="blog-card blog-card-blog">
+    <div class="blog-table">
+      <div class="blog-text-success">
+        Submitted Answer Id: {{ data.SubmittedAnswerId
+        }}<span class="dateTimeSpan"
+          >{{ data.SubmitDateTime | date : "YYYY-MM-dd HH:m" }}
+        </span>
+      </div>
+      <div class="blog-text-success">ExerciseId: {{ data.ExerciseId }}</div>
+      <h4 class="blog-card-caption">
+        <a href="#">{{ data.UserId }}</a>
+      </h4>
+      <p class="blog-card-description">Domain:{{ data.Domain }}</p>
+      <p class="blog-card-description">Subject:{{ data.Subject }}</p>
+      <p class="blog-card-description">
+        Correctness {{ data.Correct }} over Difficulty {{ data.Difficulty }}
+      </p>
+      <p class="blog-card-description">
+        LearningObjective:{{ data.LearningObjective }}
+      </p>
+      <div class="progress-container">
+        <div
+          class="progress"
+          [ngStyle]="{
+            width: data.Percent + '%',
+            'background-color': data.Color
+          }"
+        >
+          {{ data.Progress }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

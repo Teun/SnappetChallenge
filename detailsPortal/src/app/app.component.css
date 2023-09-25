@@ -1,0 +1,40 @@
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.frame {
+  padding-bottom: 70px;
+  max-height: 500px;
+  position: absolute;
+  top: 42%;
+  width: 100%;
+  height: 500px;
+  margin-top: -200px;
+  border-radius: 2px;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgb(253, 162, 49);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(253, 162, 49, 1) 0%,
+    rgba(251, 183, 49, 1) 60%,
+    rgba(253, 202, 49, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(253, 162, 49, 1) 0%,
+    rgba(251, 183, 49, 1) 60%,
+    rgba(253, 202, 49, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(253, 162, 49, 1) 0%,
+    rgba(251, 183, 49, 1) 60%,
+    rgba(253, 202, 49, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fda231', endColorstr='#fdca31',GradientType=1 );
+}

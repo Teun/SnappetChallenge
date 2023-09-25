@@ -1,0 +1,16 @@
+<div class="center">
+  <section class="todo-cmp">
+    <header class="todo-cmp__header">
+      <h2>Student List</h2>
+    </header>
+    <div class="studentsList">
+      <ul *ngFor="let student of students" class="todo-cmp__list">
+        <li [class.active]="student == activeStudent"> <!-- Current selected userId is set with active class -->
+          <label for="todo-01" (click)="discoverClicked(student)"> <!--Click event to send the studentId is set -->
+            <span>{{ student }}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
