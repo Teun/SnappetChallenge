@@ -1,6 +1,6 @@
 /* This is the middleware which is used for setting the headers to the response of system
 */
-module.exports = function addData(req, res, next) {
+module.exports = function addHeadersToResponse(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   // Request methods you wish to allow
   res.setHeader(

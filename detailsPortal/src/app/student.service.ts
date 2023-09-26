@@ -16,7 +16,7 @@ export class StudentService {
   }
 
   //This service fetches the details of student by calling node api
-  getStudentDetails(studentId:number = 0,newDate:any = 0){
+  getStudentDetails(studentId:Number = 0,newDate:any = 0){
     return this.http.get(environment.apiUrl+'/students/details?id='+studentId+'&dates='+newDate)
   }
 }

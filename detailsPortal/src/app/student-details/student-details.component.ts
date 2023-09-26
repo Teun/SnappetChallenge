@@ -24,7 +24,7 @@ interface StudentData {
 export class StudentDetailsComponent implements OnInit {
   newdata: StudentData[] = [];
   total: number = 0;
-  currentD = '2015-03-18'; //Current Date is set here
+  currentD:String = '2015-03-18'; //Current Date is set here
   currentStatus = "All Student's Progress on " + this.currentD;
 
   @Input() data: any; //Student Id from student component fetched here
@@ -37,7 +37,7 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   //This function shows details like selected date and total selected records are shown
-  showDetails(data: any = 0, newDate: any = 0) {
+  showDetails(data: Number = 0, newDate: any = 0) {
     if (data == 0) {
       this.currentStatus = "All Student's Progress on " + newDate;
     } else {

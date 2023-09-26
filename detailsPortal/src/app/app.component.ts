@@ -13,12 +13,9 @@ interface StudentData {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = '';
+  title = 'Snappet Class';
   studentCurrent: Number = 0;
 
-  /*This acts as a bridge to take selected studentId from student component and set to 
-  current selected student variable i.e studentCurrent so this variable can be used by student-details component
-  */
   gotData($event: number) {
     this.studentCurrent = $event;
   }
