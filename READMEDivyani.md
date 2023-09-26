@@ -67,6 +67,10 @@ npm install
 ```
 - Step 3:
 ```bash
+ng test
+```
+- Step 4:
+```bash
 ng serve
 ```
 ### Installation and Backend start application
