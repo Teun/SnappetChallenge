@@ -1,0 +1,1 @@
+export { default as StudentWorkService } from './studentwork.service.js'

@@ -20,3 +20,38 @@ Maak een pull request aan waarin je in ieder geval een readme hebt opgenomen die
 Deze opdracht is expres ruim geformuleerd. Je mag de technieken en tools gebruiken die je het liefst gebruikt. Je mag je tijd besteden aan de aspecten die je zelf het belangrijkst vindt. Er is geen tijd om alles te doen: maak een keuze. Bij Snappet werken we met C#, .NET, Typescript en Angular. Maar we denken dat een goede programmeur op een ander platform zich dat snel genoeg eigen maakt. 
 Je mag frameworks en libraries gebruiken. Je mag de data in een ander formaat omzetten of importeren in databases. Dan wel in de readme uitleggen hoe een ander het werkend kan krijgen.
 De minimale requirement in de opdracht is "waar heeft mijn klas vandaag aan gewerkt". Dat kan in een lijstje, in een grafisch vorm, het kan als getallen of kleuren. Je kan het vergelijken met vorige week of een gemiddelde score. Probeer te bedenken wat voor een leerkracht in de klas het belangrijkst is.
+
+## Implementation
+
+## Endpoints
+
+### 1. Get All Student Works Today
+
+- **Endpoint**: `GET /api/studentwork/today`
+- **Description**: Retrieves a list of all student work submissions made today.
+- **Response**: Returns a list of `StudentWork` objects.
+
+
+### 2. Get Submission Count Today
+- **Endpoint**: `GET /api/studentwork/today/submission-count`
+- **Description**: Retrieves the total count of student submissions made today.
+- **Response**: Returns the count as an integer.
+
+### 3. Get Average Score of Subject Today
+- **Endpoint**: `GET /api/studentwork/today/average-score`
+- **Description**: Retrieves the average score for each subject based on today's submissions.
+- **Response**: Returns a list of subject scores.
+
+### 4. Get Top-Performing Students Today
+- **Endpoint**: `GET /api/studentwork/today/top-performing-students`
+- **Description**: Retrieves a list of top-performing students based on the number of correct submissions made today.
+- **Query Parameters**: limit (optional): The maximum number of top-performing students to return. Defaults to 10 if not provided.
+- **Response**: Returns a list of top-performing students.
+
+## RUN
+### frontend
+```npm install && npm start```
+
+### backend
+```dotnet build && dotnet run```
+
