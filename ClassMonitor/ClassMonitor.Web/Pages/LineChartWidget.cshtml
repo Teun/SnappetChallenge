@@ -1,0 +1,21 @@
+﻿@page
+@model ClassMonitor.Web.Pages.LineChartWidgetModel
+@using System.Text.Json
+@using System.Text.Encodings.Web
+@{
+    Layout = null;
+    var randomId = Guid.NewGuid();
+}
+
+<h6 class="text-center">@Model.Title</h6>
+
+<div id="chart@(randomId)"></div>
+
+<script>
+    var options = JSON.parse('@Html.Raw(JsonSerializer.Serialize(Model.ChartModel, new JsonSerializerOptions { PropertyNamingPolicy =  JsonNamingPolicy.KebabCaseLower }))')
+
+
+    var chart = new ApexCharts(document.querySelector("#chart@(randomId)"), options);
+
+    chart.render();
+</script>

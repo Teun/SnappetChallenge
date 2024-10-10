@@ -1,0 +1,59 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center vh-25">
+    <h2 class="display-4">What did my class do</h2>
+</div>
+
+<form id="form" method="get">
+    <div class="d-flex justify-content-between">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <input class="nav-link @(Model.SelectedTab == IndexModel.Tabs.Daily ? "active" : "")" type="submit" asp-for="SelectedTab" value="Daily" />
+            </li>
+            <li class="nav-item">
+                <input class="nav-link @(Model.SelectedTab == IndexModel.Tabs.Monthly ? "active" : "")" type="submit" asp-for="SelectedTab" value="Monthly" />
+            </li>
+            <li class="nav-item">
+                <button class="nav-link disabled" type="submit">Yearly</button>
+            </li>
+
+        </ul>
+        <input type="hidden" asp-for="SelectedTab" value="@Model.SelectedTab" />
+        <input id="datepicker" type="@(Model.SelectedTab == IndexModel.Tabs.Daily ? "date" : "month")" class="form-control w-25" asp-for="DateTime" value="@(Model.SelectedTab == IndexModel.Tabs.Daily ? Model.DateTime?.ToString("yyyy-MM-dd") : Model.DateTime?.ToString("yyyy-MM"))" onchange="$('#form').submit()" />
+    </div>
+</form>
+<hr />
+
+<div class="row">
+    <div id="chart1" class="col-12 col-lg-6">
+    </div>
+    <div id="chart2" class="col-12 col-lg-6">
+    </div>
+    <div id="chart3" class="col-12 col-lg-6">
+    </div>
+    <div id="chart4" class="col-12 col-lg-6">
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $.ajax({
+            url: '@Url.Page("LineChartWidget")',
+            type: 'GET',
+            cache: false,
+            data: { Date: '@Model.DateTime?.ToString("o")', handler: '@Model.SelectedTab'+'Relative' }
+        }).done((result) => $('#chart1').append(result));
+
+        $.ajax({
+            url: '@Url.Page("LineChartWidget")',
+            type: 'GET',
+            cache: false,
+            data: { Date: '@Model.DateTime?.ToString("o")', handler: '@Model.SelectedTab'+'Absolute' }
+        }).done((result) => $('#chart2').append(result));
+    });
+
+</script>
