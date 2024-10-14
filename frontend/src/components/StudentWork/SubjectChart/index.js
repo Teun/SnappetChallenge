@@ -30,11 +30,11 @@ const SubjectChart = () => {
 
 			}}
         >
-            <h1>Average Score per Subject Today</h1>
+            <h1>Average Progress per Subject Today</h1>
             <Column
                 data={subjects}
                 xField='subject'
-                yField='score'
+                yField='averageProgress'
                 style={
                     {
                         fill: ({ score }) => {

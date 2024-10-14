@@ -12,7 +12,25 @@ const columns = [
 		title: 'Correct Submissions',
 		dataIndex: 'correctSubmissions',
 		key: 'correctSubmissions',
+		defaultSortOrder: 'descend',
+		sortDirections: ['ascend', 'descend', 'ascend'],
+		sorter: (a, b) => a.correctSubmissions - b.correctSubmissions,
 	},
+    {
+        title: 'Incorrect Submissions',
+        dataIndex: 'incorrectSubmissions',
+        key: 'incorrectSubmissions',
+		sortDirections: ['ascend', 'descend', 'ascend'],
+        sorter: (a, b) => a.incorrectSubmissions - b.incorrectSubmissions,
+    },
+    {
+        title: 'Total Progress',
+        dataIndex: 'totalProgress',
+        key: 'totalProgress',
+		defaultSortOrder: 'ascend',
+		sortDirections: ['ascend', 'descend', 'ascend'],
+        sorter: (a, b) => a.totalProgress - b.totalProgress,
+    },
 ];
 
 const TopStudentTable = () => {
@@ -42,7 +60,7 @@ const TopStudentTable = () => {
 
 			}}
         >
-            <h1>Top Student Today</h1>
+            <h1>Student Performance</h1>
             <Table columns={columns} dataSource={students} style={{ width: '80vw' }} />
         </div>
 	)

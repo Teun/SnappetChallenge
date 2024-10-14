@@ -8,10 +8,16 @@ public class StudentWorkService : IStudentWorkService
     // This could be a DbContext if you're using EF Core, or any data access service.
     private readonly List<StudentWork> _studentWorks;
 
-    public StudentWorkService()
+    public StudentWorkService(string jsonPath = "./Data/work.json")
     {
-        // Dummy data for the sake of the example.
-        _studentWorks =  Json.LoadJson<StudentWork>("./Data/work.json");
+        if (File.Exists(jsonPath))
+        {
+            _studentWorks = Json.LoadJson<StudentWork>(jsonPath);
+        }
+        else
+        {
+            throw new FileNotFoundException("The specified JSON file was not found.", jsonPath);
+        }
     }
 
     public List<StudentWork> GetAllStudentWorks()
@@ -19,45 +25,53 @@ public class StudentWorkService : IStudentWorkService
         return _studentWorks;
     }
 
-    public List<StudentWork> GetStudentWorksBySubmitDateTime(DateTime submitDateTime)
+    public IEnumerable<StudentWork> GetStudentWorksBySubmitDateTime(DateTime submitDateTime)
     {
-        return _studentWorks.Where(sw => sw.SubmitDateTime.Year == submitDateTime.Year && sw.SubmitDateTime.Month == submitDateTime.Month && sw.SubmitDateTime.Day == submitDateTime.Day).ToList();
+        return _studentWorks
+            .Where(work =>
+                    work.SubmitDateTime.Date == submitDateTime.Date
+                    && work.SubmitDateTime < submitDateTime);
     }
 
     public int GetSubmissionCountBySubmitDateTime(DateTime submitDateTime)
     {
-        List<StudentWork> studentWorks = GetStudentWorksBySubmitDateTime(submitDateTime);
-        return studentWorks.Count;
+        return GetStudentWorksBySubmitDateTime(submitDateTime).Count();
     }
 
-    public List<SubjectScore> GetAverageScoreOfSubjectBySubmitDateTime(DateTime submitDateTime)
+    public List<SubjectProgress> GetAverageScoreOfSubjectBySubmitDateTime(DateTime submitDateTime)
     {
-        List<StudentWork> studentWorks = GetStudentWorksBySubmitDateTime(submitDateTime);
-        List<SubjectScore> subjectScores = studentWorks.Where(sw => sw.Correct == 1)  // Filter correct submissions
+        IEnumerable<StudentWork> studentWorks = GetStudentWorksBySubmitDateTime(submitDateTime);
+        List<SubjectProgress> SubjectProgresss = studentWorks
             .GroupBy(sw => sw.Subject)
-            .Select(group => new SubjectScore
+            .Select(group => new SubjectProgress
             {
                 Subject = group.Key,
-                Score = group.Average(sw => sw.Correct)
+                AverageProgress = group
+                    .GroupBy(sw => sw.UserId)
+                    .Average(userGroup => userGroup.Sum(work => work.Progress)),
+                IncorrectPercentage = (double)group.Count(sw => sw.Correct == 0) / group.Count() * 100
             })
             .ToList();
-        return subjectScores;
+            
+        return SubjectProgresss;
     }
 
-    public List<StudentPerformance> GetTopPerformingStudentsBySubmitDateTime(DateTime submitDateTime, int limit)
+    public List<StudentPerformance> GetStudentPerformancesBySubmitDateTime(DateTime submitDateTime)
     {
-        List<StudentWork> studentWorks = GetStudentWorksBySubmitDateTime(submitDateTime);
-        List<StudentPerformance> topPerformingStudents = studentWorks
-            .Where(sw => sw.Correct == 1)  // Filter correct submissions
+        // We should use a cache here if there's more time
+
+        IEnumerable<StudentWork> studentWorks = GetStudentWorksBySubmitDateTime(submitDateTime);
+        List<StudentPerformance> studentPerformances = studentWorks
             .GroupBy(sw => sw.UserId)
             .Select(group => new StudentPerformance
             {
                 UserId = group.Key,
-                CorrectSubmissions = group.Count()
+                CorrectSubmissions = group.Count(sw => sw.Correct == 1),
+                IncorrectSubmissions = group.Count(sw => sw.Correct == 0),
+                TotalProgress = group.Sum(sw => sw.Progress)
             })
-            .OrderByDescending(x => x.CorrectSubmissions)
-            .Take(limit)
             .ToList();
-        return topPerformingStudents;
+
+        return studentPerformances;
     }
 }

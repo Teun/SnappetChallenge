@@ -1,7 +1,8 @@
 namespace backend.Models;
 
-public class SubjectScore
+public class SubjectProgress
 {
     public string? Subject { get; set; }
-    public double Score { get; set; }
+    public double AverageProgress { get; set; }
+    public double IncorrectPercentage { get; set; }
 }

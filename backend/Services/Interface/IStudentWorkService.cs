@@ -6,11 +6,11 @@ public interface IStudentWorkService
 {
     List<StudentWork> GetAllStudentWorks();
 
-    List<StudentWork> GetStudentWorksBySubmitDateTime(DateTime submitDateTime);
+    IEnumerable<StudentWork> GetStudentWorksBySubmitDateTime(DateTime submitDateTime);
 
     int GetSubmissionCountBySubmitDateTime(DateTime submitDateTime);
     
-    List<SubjectScore> GetAverageScoreOfSubjectBySubmitDateTime(DateTime submitDateTime);
+    List<SubjectProgress> GetAverageScoreOfSubjectBySubmitDateTime(DateTime submitDateTime);
 
-    List<StudentPerformance> GetTopPerformingStudentsBySubmitDateTime(DateTime submitDateTime, int limit);
+    List<StudentPerformance> GetStudentPerformancesBySubmitDateTime(DateTime submitDateTime);
 }

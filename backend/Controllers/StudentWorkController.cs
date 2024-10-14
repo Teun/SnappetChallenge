@@ -34,15 +34,15 @@ namespace backend.Controllers
         [HttpGet("today/average-score")]
         public IActionResult GetAverageScoreOfSubjectToday()
         {
-            var subjectScores = _studentWorkService.GetAverageScoreOfSubjectBySubmitDateTime(DateTime.Parse("2015-03-24T11:30:00.000"));
-            return Ok(subjectScores);
+            var SubjectProgresss = _studentWorkService.GetAverageScoreOfSubjectBySubmitDateTime(DateTime.Parse("2015-03-24T11:30:00.000"));
+            return Ok(SubjectProgresss);
         }
 
         // Endpoint to get top-performing students by submit date and limit
         [HttpGet("today/top-performing-students")]
-        public IActionResult GetTopPerformingStudentsToday([FromQuery] int? limit)
+        public IActionResult GetTopPerformingStudentsToday()
         {
-            var topStudents = _studentWorkService.GetTopPerformingStudentsBySubmitDateTime(DateTime.Parse("2015-03-24T11:30:00.000"), limit ?? 10);
+            var topStudents = _studentWorkService.GetStudentPerformancesBySubmitDateTime(DateTime.Parse("2015-03-24T11:30:00.000"));
             return Ok(topStudents);
         }
     }
