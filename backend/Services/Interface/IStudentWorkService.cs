@@ -10,7 +10,7 @@ public interface IStudentWorkService
 
     int GetSubmissionCountBySubmitDateTime(DateTime submitDateTime);
     
-    List<SubjectProgress> GetAverageScoreOfSubjectBySubmitDateTime(DateTime submitDateTime);
+    List<SubjectProgress> GetAverageProgressOfSubjectBySubmitDateTime(DateTime submitDateTime);
 
     List<StudentPerformance> GetStudentPerformancesBySubmitDateTime(DateTime submitDateTime);
 }

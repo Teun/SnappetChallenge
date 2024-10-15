@@ -31,16 +31,16 @@ namespace backend.Controllers
         }
 
         // Endpoint to get average score of subject by submit date
-        [HttpGet("today/average-score")]
-        public IActionResult GetAverageScoreOfSubjectToday()
+        [HttpGet("today/average-progress")]
+        public IActionResult GetAverageProgressOfSubjectToday()
         {
-            var SubjectProgresss = _studentWorkService.GetAverageScoreOfSubjectBySubmitDateTime(DateTime.Parse("2015-03-24T11:30:00.000"));
+            var SubjectProgresss = _studentWorkService.GetAverageProgressOfSubjectBySubmitDateTime(DateTime.Parse("2015-03-24T11:30:00.000"));
             return Ok(SubjectProgresss);
         }
 
         // Endpoint to get top-performing students by submit date and limit
-        [HttpGet("today/top-performing-students")]
-        public IActionResult GetTopPerformingStudentsToday()
+        [HttpGet("today/student-performances")]
+        public IActionResult GetStudentPerformancesToday()
         {
             var topStudents = _studentWorkService.GetStudentPerformancesBySubmitDateTime(DateTime.Parse("2015-03-24T11:30:00.000"));
             return Ok(topStudents);

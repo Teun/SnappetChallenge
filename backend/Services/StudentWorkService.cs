@@ -38,7 +38,7 @@ public class StudentWorkService : IStudentWorkService
         return GetStudentWorksBySubmitDateTime(submitDateTime).Count();
     }
 
-    public List<SubjectProgress> GetAverageScoreOfSubjectBySubmitDateTime(DateTime submitDateTime)
+    public List<SubjectProgress> GetAverageProgressOfSubjectBySubmitDateTime(DateTime submitDateTime)
     {
         IEnumerable<StudentWork> studentWorks = GetStudentWorksBySubmitDateTime(submitDateTime);
         List<SubjectProgress> SubjectProgresss = studentWorks

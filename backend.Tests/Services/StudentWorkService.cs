@@ -36,7 +36,7 @@ namespace backend.Tests
         }
 
         [Fact]
-        public void GetAverageScoreOfSubjectBySubmitDateTime_given2Subjects_returnAverage()
+        public void GetAverageProgressOfSubjectBySubmitDateTime_given2Subjects_returnAverage()
         {
             var currentDirectory = Directory.GetCurrentDirectory();
             var jsonPath = Path.Combine(currentDirectory, "TestData", "test_group_by_subject.json");
@@ -60,7 +60,7 @@ namespace backend.Tests
                 }
             };
 
-            var actual = studentWorkService.GetAverageScoreOfSubjectBySubmitDateTime(testDateTime);
+            var actual = studentWorkService.GetAverageProgressOfSubjectBySubmitDateTime(testDateTime);
             Assert.NotNull(actual);
             Assert.Equal(expected.Count, actual.Count);
             

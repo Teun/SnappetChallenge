@@ -33,7 +33,7 @@ const columns = [
     },
 ];
 
-const TopStudentTable = () => {
+const StudentPerformanceTable = () => {
 	const [students, setStudents] = useState([])
 
 	useEffect(() => {
@@ -41,14 +41,14 @@ const TopStudentTable = () => {
 	}, [])
 
 	const fetchData = async () => {
-		const response = await StudentWorkService.getTopPerformingStudentsToday({ limit: 10 })
+		const response = await StudentWorkService.getStudentPerformancesToday({ limit: 10 })
 		if (response) {
 			setStudents(response)
 		}
 	}
 
 	return (
-		<div 
+		<div
             className='sw-student-work-table'
             style={{
 				width: "100vw",
@@ -66,4 +66,4 @@ const TopStudentTable = () => {
 	)
 }
 
-export default TopStudentTable
+export default StudentPerformanceTable

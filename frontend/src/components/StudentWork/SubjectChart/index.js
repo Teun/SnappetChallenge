@@ -10,7 +10,7 @@ const SubjectChart = () => {
 	}, [])
 
 	const fetchData = async () => {
-		const response = await StudentWorkService.getAverageScoreOfSubjectToday()
+		const response = await StudentWorkService.getAverageProgressOfSubjectToday()
         console.log("subject: ", response)
 		if (response) {
 			setSubjects(response)

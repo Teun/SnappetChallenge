@@ -13,9 +13,9 @@ const getAllStudentWorksToday = async () => {
 	}
 }
 
-const getTopPerformingStudentsToday = async ({ ...params }) => {
+const getStudentPerformancesToday = async ({ ...params }) => {
 	try {
-		const [students, errRes] = await Fetch.get('/StudentWork/today/top-performing-students', { ...params })
+		const [students, errRes] = await Fetch.get('/StudentWork/today/student-performances', { ...params })
 
 		if (errRes) throw errRes
 		console.log(errRes)
@@ -26,9 +26,9 @@ const getTopPerformingStudentsToday = async ({ ...params }) => {
 	}
 }
 
-const getAverageScoreOfSubjectToday = async () => {
+const getAverageProgressOfSubjectToday = async () => {
 	try {
-		const [subjects, errRes] = await Fetch.get('/StudentWork/today/average-score', {})
+		const [subjects, errRes] = await Fetch.get('/StudentWork/today/average-progress', {})
 
 		if (errRes) throw errRes
 		console.log(errRes)
@@ -54,7 +54,7 @@ const getSubmissionCountToday = async () => {
 
 export default {
 	getAllStudentWorksToday,
-    getTopPerformingStudentsToday,
-    getAverageScoreOfSubjectToday,
+    getAverageProgressOfSubjectToday,
+    getStudentPerformancesToday,
     getSubmissionCountToday
 }

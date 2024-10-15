@@ -1,11 +1,11 @@
 import React from 'react'
-import { StudentWorkTable, TopStudentTable, SubjectChart } from '../../components/StudentWork'
+import { StudentWorkTable, StudentPerformanceTable, SubjectChart } from '../../components/StudentWork'
 
 const StudentWork = () => {
 	return (
 		<div>
             <StudentWorkTable/>
-            <TopStudentTable/>
+            <StudentPerformanceTable/>
             <SubjectChart/>
         </div>
 	)
