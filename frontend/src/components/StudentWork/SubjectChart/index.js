@@ -37,8 +37,8 @@ const SubjectChart = () => {
                 yField='averageProgress'
                 style={
                     {
-                        fill: ({ score }) => {
-                            return score < 0.5 ? '#22CBCC' : '#2989FF'; 
+                        fill: ({ averageProgress }) => {
+                            return averageProgress < 20 ? '#22CBCC' : '#2989FF'; 
                         },
                     }
                 }

@@ -58,8 +58,6 @@ public class StudentWorkService : IStudentWorkService
 
     public List<StudentPerformance> GetStudentPerformancesBySubmitDateTime(DateTime submitDateTime)
     {
-        // We should use a cache here if there's more time
-
         IEnumerable<StudentWork> studentWorks = GetStudentWorksBySubmitDateTime(submitDateTime);
         List<StudentPerformance> studentPerformances = studentWorks
             .GroupBy(sw => sw.UserId)
