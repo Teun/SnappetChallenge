@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "GyScRjBCpfiRJ1P4hml3erRO0lG0qDMAVYm23xHGv7eAtRT4a2VgxkDa9efNbXESNhrz7Ii5FfO1gXn1IyvskA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\viole\\OneDrive\\Desktop\\Vi\\CodeProjects\\SnappetChallenge\\SnappetChallenge\\SnappetChallenge\\SnappetChallenge.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\viole\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
