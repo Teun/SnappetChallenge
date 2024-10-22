@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SnappetChallenge.Classroom.Api.Extensions;
+using SnappetChallenge.Classroom.Api.Middleware;
 using SnappetChallenge.Classroom.Application.Context;
 using SnappetChallenge.Classroom.Infrastructure;
 
@@ -46,6 +47,8 @@ public class Startup
         }
         
         app.UseHttpsRedirection();
+
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
 
         app.UseRouting();
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SnappetChallenge.Classroom.Domain.Errors;
 using SnappetChallenge.Classroom.Infrastructure.Repositories;
 
 namespace SnappetChallenge.Classroom.Api.Controllers;
@@ -12,6 +13,12 @@ public class ClassroomController(ILogger<ClassroomController> logger, IReadonlyC
     public async Task<IActionResult> Get(int classroomId, CancellationToken cancellationToken)
     {
         var classroom = await repository.GetClassroomOverviewAsync(classroomId, DateTime.UtcNow, cancellationToken);
+
+        if (classroom == null)
+        {
+            return Problem(detail: ClassroomErrors.NotFound(classroomId).Description);
+        }
+
         return Ok(classroom);
     }
     
